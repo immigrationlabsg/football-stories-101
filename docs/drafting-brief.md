@@ -26,11 +26,14 @@ three digits). Copy the front matter shape from
 - `hero.src`: `/images/stories/NNN-short-name.jpg` (the file does not exist yet; it is painted automatically)
 - `hero.alt`: describes the illustration as it will look (a scene, not a named person's face)
 - `hero.credit`: `Illustration: Football Stories 101`
-- `hero.prompt`: at most 20 words, the main object first, describing an evocative still life or place that stands for the story, in the spirit of
-  The Morning Founder's watercolours: an object (boots, a leather ball, a shirt on a peg, a trophy, a ticket stub, a
-  train, a stadium in mist, a pitch from above) with era and colour detail. Avoid people's faces and close-up figures,
-  never name a real person, club, crest, badge or sponsor, never ask for text or numbers, and do not write
-  negatives ("no …"). The watercolour style is added automatically.
+- `hero.commons`: **preferred.** A real photograph from Wikimedia Commons that shows the story's subject (the player,
+  the team, the match, the stadium), as `"File:Exact file name.jpg"`. Find it with WebSearch restricted to
+  commons.wikimedia.org; the Dutch National Archief (Anefo), Fortepan and Agência Brasil collections are rich and
+  freely licensed. Only public domain, CC0, CC BY or CC BY-SA files: never NC or ND, never a photo from a news
+  agency site. The build fetches it, checks the licence and writes the credit automatically; leave `credit` as
+  `Illustration: Football Stories 101`. Then write `hero.alt` to describe that photograph.
+- `hero.prompt`: fallback only, when no suitable Commons photo exists: at most 20 words, an evocative still life
+  or place, main object first, no people, no text. It is painted as a watercolour automatically.
 - `sources`: five to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
 - `facts`: three to five standalone facts for social posts, each true and sourced
