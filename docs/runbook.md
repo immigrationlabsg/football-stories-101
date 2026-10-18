@@ -205,7 +205,7 @@ Things only you can do, because they need your accounts:
 - [ ] **Pages CMS**: sign in once at app.pagescms.org and authorise the repository.
 - [ ] **Contact address**: `editor@footballstories101.com` is a placeholder in `src/site.config.ts` (Pages CMS → Site settings). Change it to a mailbox you read; it is on the About, Privacy and every story page.
 - [ ] **Domain** (optional; section 11).
-- [ ] **Illustrations**: nothing to do; they are painted automatically (section 13).
+- [ ] **Photos**: nothing to do; they are fetched and credited automatically (section 13).
 - [ ] **A first dry run** (section 6) to see the whole pipeline in the log.
 
 ## 8. The daily ten minutes
@@ -272,21 +272,22 @@ and rebuild; the preview moves to `/preview/<new word>/`.
 Every draft has already been fact-checked before it reaches you. The audit trail for each story is in
 `docs/fact-checks/NNN.md` if you are ever curious; you never need to read it.
 
-## 13. Illustrations
+## 13. Story photos
 
-Each story's front matter has a `hero.prompt`: one or two sentences describing the scene. When a story is saved
-without an image file, the **Illustrate** workflow paints a watercolour from that prompt on GitHub's servers, using
-the free Pollinations service (no account, no cost), commits the image and rebuilds the site. Until it finishes, a
-cream placeholder shows. It takes about a minute per image.
+Each story's hero is a **real photograph from Wikimedia Commons** (the free media library behind Wikipedia),
+named in the story's `hero.commons` field, for example `File:Ronaldo 2002 cropped.jpg`. When a story is saved, the
+**Illustrate** workflow downloads the photo on GitHub's servers, checks that its licence allows reuse (public
+domain, CC0, CC BY or CC BY-SA only), crops it square, and writes the photographer, licence and a link into the
+caption under the photo. That credit is a legal requirement of the licence: never remove it.
 
-- **Don't like an illustration?** Actions → Illustrate → Run workflow → type the story number in "Repaint one
-  story" → Run. It paints a new version with a different seed.
-- **Want a different scene?** Edit the story's Hero prompt in Pages CMS, delete the old image file
-  (`public/images/stories/NNN-….jpg`) in GitHub, and save. The next Illustrate run paints the new scene.
-- **The overall style** (watercolour and ink, no text, no crests, no real faces) is set once in
-  `scripts/illustrate-ai.ts`.
-- Figures are deliberately generic, not portraits of real players: that keeps clear of likeness and copyright
-  problems.
+- **Change a story's photo:** browse https://commons.wikimedia.org, open the photo's page, copy its file name
+  (it starts with `File:`), paste it into the story's Commons field in Pages CMS, update the alt text, save.
+- **Never** use photos from Google Images, news agencies (Getty, AP, Reuters, PA) or club websites: those are not
+  free to reuse, and turning them into cartoons does not change that.
+- **No free photo exists?** Leave the Commons field empty and the story gets a watercolour still life painted from
+  its `hero.prompt` instead (a free AI service, no account needed). To repaint one: Actions → Illustrate → Run
+  workflow → story number.
+- The record of which photo each story uses, with its licence, is in `data/hero-sources.json`.
 
 ## 14. Weekly drafting and the launch date
 
