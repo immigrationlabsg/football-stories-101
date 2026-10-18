@@ -19,13 +19,11 @@ import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR } from './lib/stories';
 import { pad3 } from '../src/schema/story';
 
-/** Put first: image models weight the start of a prompt most. */
-export const STYLE =
-  'Watercolour painting on cold-press paper, loose wet brushstrokes, soft bleeding washes, fine ink linework, ' +
-  'muted earthy palette with warm cream highlights, white paper showing at the edges, vintage magazine illustration';
-
-/** Put last: object-led scenes avoid the faces and shirt lettering free models get wrong. */
-export const COMPOSITION = 'quiet evocative still life, painterly and impressionistic, generous empty paper around the subject';
+/**
+ * Free models read only about the first 77 tokens, so the scene goes first
+ * and the style is kept to a few words after it.
+ */
+export const STYLE = 'loose watercolour painting, ink outlines, soft muted colours, textured paper, vintage editorial illustration';
 
 const GAP_MS = 50_000;
 const SIZE = 768;
@@ -90,7 +88,7 @@ let made = 0;
 for (const [i, s] of todo.entries()) {
   const dest = path.join(PUBLIC_DIR, s.data.hero.src);
   const seed = redo !== null ? Math.floor(Math.random() * 1e6) : 1000 + s.data.number;
-  const prompt = `${STYLE}. ${s.data.hero.prompt}. ${COMPOSITION}`;
+  const prompt = `${s.data.hero.prompt}, ${STYLE}`;
   console.log(`[${pad3(s.data.number)}] ${s.data.slug}`);
   try {
     const raw = await fetchImage(prompt, seed);

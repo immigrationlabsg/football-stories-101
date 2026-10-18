@@ -26,7 +26,7 @@ three digits). Copy the front matter shape from
 - `hero.src`: `/images/stories/NNN-short-name.jpg` (the file does not exist yet; it is painted automatically)
 - `hero.alt`: describes the illustration as it will look (a scene, not a named person's face)
 - `hero.credit`: `Illustration: Football Stories 101`
-- `hero.prompt`: one sentence describing an evocative still life or place that stands for the story, in the spirit of
+- `hero.prompt`: at most 20 words, the main object first, describing an evocative still life or place that stands for the story, in the spirit of
   The Morning Founder's watercolours: an object (boots, a leather ball, a shirt on a peg, a trophy, a ticket stub, a
   train, a stadium in mist, a pitch from above) with era and colour detail. Avoid people's faces and close-up figures,
   never name a real person, club, crest, badge or sponsor, never ask for text or numbers, and do not write
