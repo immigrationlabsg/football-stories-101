@@ -1,0 +1,228 @@
+/**
+ * The daily publish run (spec 7.1), executed by .github/workflows/publish-daily.yml
+ * after the site has been built and deployed.
+ *
+ *   select  -> the story whose `date` fell in the last 24 hours and is not yet in data/sent.json
+ *   send    -> the newsletter provider (Buttondown by default)
+ *   post    -> Telegram channel: hero image, headline, dek, link
+ *   write   -> social/NNN.md (Facebook, Instagram, Threads captions) + card copies
+ *   record  -> data/sent.json so a re-run never double-sends
+ *   fallback-> no story due: archive story with the nearest anniversary, "From the archive"
+ *
+ * Environment:
+ *   BUTTONDOWN_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID   secrets
+ *   WEB_LAG_DAYS (default 7), SITE_URL, SITE_BASE               variables
+ *   DRY_RUN=1                 log instead of sending, record nothing
+ *   PUBLISH_NOW=<ISO date>    pretend it is another time (testing)
+ *   PUBLISH_STORY_NUMBER=<n>  force a specific story (manual run)
+ *   ALLOW_ARCHIVE_FALLBACK=0  disable the archive fallback
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { loadStories, ROOT, PUBLIC_DIR, type LoadedStory } from './lib/stories';
+import { selectProvider } from './lib/providers';
+import { emailSubject, emailMarkdown, webLiveDate } from './lib/email';
+import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
+import { sendTelegramPhoto, telegramConfigured } from './lib/telegram';
+import { pad3, storyNumber } from '../src/schema/story';
+import { isoDate } from '../src/lib/format';
+
+interface SentRecord {
+  key: string;
+  number: number;
+  slug: string;
+  kind: 'scheduled' | 'archive';
+  sentAt: string;
+  provider: string;
+  providerId: string | null;
+  telegram: boolean;
+  subject: string;
+}
+interface SentFile {
+  sent: SentRecord[];
+}
+
+const SENT_PATH = path.join(ROOT, 'data/sent.json');
+const SOCIAL_DIR = path.join(ROOT, 'social');
+const DUE_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+const now = process.env.PUBLISH_NOW ? new Date(process.env.PUBLISH_NOW) : new Date();
+if (Number.isNaN(now.getTime())) throw new Error(`PUBLISH_NOW is not a valid date: ${process.env.PUBLISH_NOW}`);
+
+function readSent(): SentFile {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(SENT_PATH, 'utf8')) as SentFile;
+    return { sent: Array.isArray(parsed.sent) ? parsed.sent : [] };
+  } catch {
+    return { sent: [] };
+  }
+}
+
+function writeSent(file: SentFile) {
+  fs.mkdirSync(path.dirname(SENT_PATH), { recursive: true });
+  fs.writeFileSync(SENT_PATH, JSON.stringify(file, null, 2) + '\n');
+}
+
+/** Distance in days between a story's month/day and today's, ignoring the year. */
+function anniversaryDistance(date: Date, today: Date): number {
+  const y = today.getUTCFullYear();
+  const candidates = [y - 1, y, y + 1].map((yy) => Date.UTC(yy, date.getUTCMonth(), date.getUTCDate()));
+  const t = Date.UTC(y, today.getUTCMonth(), today.getUTCDate());
+  return Math.min(...candidates.map((c) => Math.abs(c - t))) / 86_400_000;
+}
+
+function pickDue(stories: LoadedStory[], sent: SentFile): LoadedStory | null {
+  const sentNumbers = new Set(sent.sent.filter((r) => r.kind === 'scheduled').map((r) => r.number));
+  const forced = process.env.PUBLISH_STORY_NUMBER?.trim();
+  if (forced) {
+    const n = Number.parseInt(forced, 10);
+    const s = stories.find((x) => x.data.number === n);
+    if (!s) throw new Error(`PUBLISH_STORY_NUMBER=${forced} does not match any story`);
+    if (sentNumbers.has(n) && process.env.FORCE_RESEND !== '1') {
+      console.log(`${storyNumber(n)} has already been sent; set FORCE_RESEND=1 to send it again.`);
+      return null;
+    }
+    return s;
+  }
+  const due = stories
+    .filter((s) => !s.data.draft)
+    .filter((s) => s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - DUE_WINDOW_MS)
+    .filter((s) => !sentNumbers.has(s.data.number))
+    .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  return due[0] ?? null;
+}
+
+function pickArchive(stories: LoadedStory[], sent: SentFile): LoadedStory | null {
+  const resends = new Map<number, number>();
+  for (const r of sent.sent) if (r.kind === 'archive') resends.set(r.number, (resends.get(r.number) ?? 0) + 1);
+  const todayKeyPrefix = `archive:`;
+  const sentToday = new Set(sent.sent.filter((r) => r.key.startsWith(todayKeyPrefix) && r.key.endsWith(isoDate(now))).map((r) => r.number));
+  const pool = stories
+    .filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - DUE_WINDOW_MS)
+    .filter((s) => !sentToday.has(s.data.number));
+  if (pool.length === 0) return null;
+  pool.sort(
+    (a, b) =>
+      anniversaryDistance(a.data.date, now) - anniversaryDistance(b.data.date, now) ||
+      (resends.get(a.data.number) ?? 0) - (resends.get(b.data.number) ?? 0) ||
+      a.data.date.getTime() - b.data.date.getTime(),
+  );
+  return pool[0];
+}
+
+function cardFiles(story: LoadedStory): string[] {
+  const n = pad3(story.data.number);
+  const dir = path.join(PUBLIC_DIR, 'images/derived');
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.startsWith(`${n}-ig-`) && f.endsWith('.png'))
+    .sort()
+    .map((f) => path.join(dir, f));
+}
+
+async function main() {
+  const { stories, errors } = loadStories();
+  if (errors.length) {
+    for (const e of errors) console.error(`error: ${e}`);
+    process.exit(1);
+  }
+  const sent = readSent();
+  const { provider, dryRun } = selectProvider();
+
+  let story = pickDue(stories, sent);
+  let kind: 'scheduled' | 'archive' = 'scheduled';
+  if (!story) {
+    if (process.env.ALLOW_ARCHIVE_FALLBACK === '0') {
+      console.log('No story due in the last 24 hours and the archive fallback is disabled. Nothing to do.');
+      return;
+    }
+    story = pickArchive(stories, sent);
+    kind = 'archive';
+    if (!story) {
+      console.log('No story due and nothing in the archive to fall back on. Nothing to do.');
+      return;
+    }
+    console.log(`No story due. Falling back to the archive: ${storyNumber(story.data.number)} (${story.data.slug}).`);
+  } else {
+    console.log(`Due: ${storyNumber(story.data.number)} (${story.data.slug}), dated ${story.data.date.toISOString()}.`);
+  }
+
+  const key = kind === 'scheduled' ? String(story.data.number) : `archive:${story.data.number}:${isoDate(now)}`;
+  if (sent.sent.some((r) => r.key === key) && process.env.FORCE_RESEND !== '1') {
+    console.log(`Already sent (${key}). Nothing to do.`);
+    return;
+  }
+
+  const webLive = webLiveDate(story).getTime() <= now.getTime();
+  const ctx = { kind, now };
+
+  // 1. Email
+  const subject = emailSubject(story, ctx);
+  const markdown = emailMarkdown(story, ctx);
+  fs.mkdirSync(SOCIAL_DIR, { recursive: true });
+  fs.writeFileSync(path.join(SOCIAL_DIR, `${pad3(story.data.number)}-email.md`), `Subject: ${subject}\n\n${markdown}\n`);
+  const result = await provider.send({ subject, markdown, reference: `story-${pad3(story.data.number)}${kind === 'archive' ? `-archive-${isoDate(now)}` : ''}` });
+  console.log(`[${provider.name}] ${result.note ?? 'sent'}${result.id ? ` (id ${result.id})` : ''}`);
+
+  // 2. Telegram
+  let telegramOk = false;
+  let telegramError: Error | null = null;
+  const caption = telegramCaption(story, { webLive, kind });
+  if (dryRun || !telegramConfigured()) {
+    console.log(`[telegram] ${dryRun ? 'dry run' : 'not configured'}; caption would be:\n${caption}\n`);
+  } else {
+    try {
+      const r = await sendTelegramPhoto({ photoPath: path.join(PUBLIC_DIR, story.data.hero.src), caption });
+      telegramOk = true;
+      console.log(`[telegram] posted${r.messageId ? ` (message ${r.messageId})` : ''}`);
+    } catch (e) {
+      telegramError = e as Error;
+      console.error(`[telegram] failed: ${telegramError.message}`);
+    }
+  }
+
+  // 3. Social assets
+  const cards = cardFiles(story);
+  const cardsOut = path.join(SOCIAL_DIR, 'cards');
+  fs.mkdirSync(cardsOut, { recursive: true });
+  const cardPaths: string[] = [];
+  for (const c of cards) {
+    const dest = path.join(cardsOut, path.basename(c));
+    fs.copyFileSync(c, dest);
+    cardPaths.push(path.relative(ROOT, dest));
+  }
+  if (cards.length === 0) console.warn('[social] no Instagram cards found; run `npm run images` before publishing');
+  const socialPath = path.join(ROOT, socialFilename(story));
+  fs.writeFileSync(socialPath, socialMarkdown(story, { kind, now, webLive, cardPaths }));
+  console.log(`[social] wrote ${path.relative(ROOT, socialPath)} and ${cardPaths.length} card(s)`);
+
+  // 4. Record
+  if (dryRun) {
+    console.log('[record] dry run: data/sent.json left unchanged.');
+  } else {
+    sent.sent.push({
+      key,
+      number: story.data.number,
+      slug: story.data.slug,
+      kind,
+      sentAt: now.toISOString(),
+      provider: provider.name,
+      providerId: result.id,
+      telegram: telegramOk,
+      subject,
+    });
+    writeSent(sent);
+    console.log(`[record] ${key} added to data/sent.json`);
+  }
+
+  if (telegramError) {
+    // The email went out and is recorded; surface the Telegram failure as a red run.
+    process.exitCode = 1;
+  }
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
