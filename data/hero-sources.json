@@ -125,5 +125,26 @@
     "license": "CC BY 2.0",
     "artist": "Smabs Sputzer",
     "url": "https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg"
+  },
+  "019": {
+    "commons": "File:The Munich Clock, Old Trafford - geograph.org.uk - 5671544.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "David Dixon",
+    "url": "https://commons.wikimedia.org/wiki/File:The_Munich_Clock,_Old_Trafford_-_geograph.org.uk_-_5671544.jpg",
+    "crop": "attention"
+  },
+  "020": {
+    "commons": "File:Pep Guardiola, 2009 UEFA Champions League Final.jpg",
+    "license": "CC BY 2.0",
+    "artist": "funnydae",
+    "url": "https://commons.wikimedia.org/wiki/File:Pep_Guardiola,_2009_UEFA_Champions_League_Final.jpg",
+    "crop": "attention"
+  },
+  "024": {
+    "commons": "File:Juninho-free-kick 2.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "User:Babboleolr",
+    "url": "https://commons.wikimedia.org/wiki/File:Juninho-free-kick_2.jpg",
+    "crop": "attention"
   }
 }
