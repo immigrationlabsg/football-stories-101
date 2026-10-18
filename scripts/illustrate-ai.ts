@@ -19,11 +19,15 @@ import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR } from './lib/stories';
 import { pad3 } from '../src/schema/story';
 
+/** Put first: image models weight the start of a prompt most. */
 export const STYLE =
-  'Loose hand-painted watercolour and fine ink editorial illustration, soft washes, visible cold-press paper texture, ' +
-  'muted natural palette with warm cream highlights, gentle bleeding edges, elegant and nostalgic, like a classic magazine illustration. ' +
-  'Generic anonymous figures with simplified faces, not portraits of real people. ' +
-  'No text, no letters, no numbers, no logos, no club crests, no badges, no watermarks.';
+  'Watercolour painting on cold-press paper, loose wet brushstrokes, soft bleeding washes, fine ink linework, ' +
+  'muted earthy palette with warm cream highlights, white paper showing at the edges, vintage magazine illustration';
+
+/** Put last: keeps faces small and kits plain, which models handle far better. */
+export const COMPOSITION =
+  'wide shot, players small in the frame, seen from behind or in side profile, faces not visible, ' +
+  'plain kits without numbers or lettering, painterly and impressionistic';
 
 const GAP_MS = 50_000;
 const SIZE = 768;
@@ -36,11 +40,24 @@ const redo = args.includes('--redo') ? Number(args[args.indexOf('--redo') + 1]) 
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+const MODELS = ['flux', ''];
+
 async function fetchImage(prompt: string, seed: number): Promise<Buffer> {
+  for (const model of MODELS) {
+    try {
+      return await fetchWith(prompt, seed, model);
+    } catch (e) {
+      console.warn(`  model "${model || 'default'}" failed: ${(e as Error).message}`);
+    }
+  }
+  throw new Error('no model returned an image');
+}
+
+async function fetchWith(prompt: string, seed: number, model: string): Promise<Buffer> {
   const url =
     `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}` +
-    `?width=${SIZE}&height=${SIZE}&seed=${seed}&nologo=true&safe=true`;
-  for (let attempt = 1; attempt <= 5; attempt++) {
+    `?width=${SIZE}&height=${SIZE}&seed=${seed}&nologo=true&safe=true${model ? `&model=${model}` : ''}`;
+  for (let attempt = 1; attempt <= 3; attempt++) {
     const res = await fetch(url, { headers: { 'User-Agent': 'football-stories-101' } });
     if (res.ok && (res.headers.get('content-type') ?? '').startsWith('image/')) {
       return Buffer.from(await res.arrayBuffer());
@@ -49,7 +66,7 @@ async function fetchImage(prompt: string, seed: number): Promise<Buffer> {
     console.warn(`  attempt ${attempt}: HTTP ${res.status}; waiting ${Math.round(wait / 1000)}s`);
     await sleep(wait);
   }
-  throw new Error('image service did not return an image after 5 attempts');
+  throw new Error('image service did not return an image after 3 attempts');
 }
 
 const { stories, errors } = loadStories();
@@ -75,7 +92,7 @@ let made = 0;
 for (const [i, s] of todo.entries()) {
   const dest = path.join(PUBLIC_DIR, s.data.hero.src);
   const seed = redo !== null ? Math.floor(Math.random() * 1e6) : 1000 + s.data.number;
-  const prompt = `${s.data.hero.prompt}. ${STYLE}`;
+  const prompt = `${STYLE}. ${s.data.hero.prompt}. ${COMPOSITION}`;
   console.log(`[${pad3(s.data.number)}] ${s.data.slug}`);
   try {
     const raw = await fetchImage(prompt, seed);
