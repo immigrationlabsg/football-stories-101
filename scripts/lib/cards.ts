@@ -62,26 +62,33 @@ function fit(text: string, max: number, big: number, small: number) {
 export async function renderOg(story: StoryFrontmatter, hero: Buffer): Promise<Buffer> {
   const { subject, angle } = splitTitle(story.title);
   const img = await heroDataUri(hero, 630);
+  const abs = (top: number, height: number, extra: Record<string, unknown> = {}) => ({
+    position: 'absolute',
+    left: 56,
+    top,
+    width: 600,
+    height,
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    ...extra,
+  });
   const node = h(
     'div',
-    { style: { width: 1200, height: 630, display: 'flex', background: C.bg, color: C.ink } },
+    { style: { width: 1200, height: 630, display: 'flex', background: C.bg, color: C.ink, position: 'relative' } },
+    h('div', { style: abs(44, 40) }, brand(20)),
     h(
       'div',
-      { style: { display: 'flex', flexDirection: 'column', padding: '44px 40px 40px 56px', width: 700, height: 630 } },
-      h('div', { style: { display: 'flex', height: 40, width: 604 } }, brand(20)),
-      h(
-        'div',
-        { style: { display: 'flex', flexDirection: 'column', justifyContent: 'center', width: 604, flex: 1, overflow: 'hidden' } },
-        h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, color: C.accent, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14, width: 604, lineClamp: 1 } }, `${storyNumber(story.number)} · ${subject}`),
-        h('div', { style: { fontFamily: 'Libre Baskerville', fontWeight: 700, fontSize: fit(angle, 60, 48, 38), lineHeight: 1.15, color: C.ink, width: 604, lineClamp: 4 } }, angle || subject),
-      ),
-      h(
-        'div',
-        { style: { display: 'flex', width: 604, height: 62, overflow: 'hidden' } },
-        h('div', { style: { fontFamily: 'Libre Baskerville', fontStyle: 'italic', fontSize: 21, color: C.soft, lineHeight: 1.4, width: 604, lineClamp: 2 } }, story.dek),
-      ),
+      { style: abs(120, 400, { justifyContent: 'center' }) },
+      h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 20, color: C.accent, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 14, width: 600, lineClamp: 1 } }, `${storyNumber(story.number)} · ${subject}`),
+      h('div', { style: { fontFamily: 'Libre Baskerville', fontWeight: 700, fontSize: fit(angle, 60, 48, 38), lineHeight: 1.15, color: C.ink, width: 600, lineClamp: 4 } }, angle || subject),
     ),
-    h('img', { src: img, width: 500, height: 630, style: { width: 500, height: 630, objectFit: 'cover' } }),
+    h(
+      'div',
+      { style: abs(528, 62) },
+      h('div', { style: { fontFamily: 'Libre Baskerville', fontStyle: 'italic', fontSize: 21, color: C.soft, lineHeight: 1.4, width: 600, lineClamp: 2 } }, story.dek),
+    ),
+    h('img', { src: img, width: 500, height: 630, style: { position: 'absolute', left: 700, top: 0, width: 500, height: 630, objectFit: 'cover' } }),
   );
   return toPng(node, 1200, 630);
 }
