@@ -1,0 +1,6 @@
+{
+  "_help": "Set launch_date (YYYY-MM-DD, Singapore date of Story No. 001's email) to start scheduling. While it is null, new stories stay as drafts. Weekdays send 8:00 am Singapore (00:00Z), weekends 10:00 am (02:00Z).",
+  "launch_date": null,
+  "stories_per_week": 7,
+  "min_buffer_days": 14
+}
