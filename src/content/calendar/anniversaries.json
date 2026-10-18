@@ -1,0 +1,18 @@
+[
+  { "id": "1953-11-25-wembley", "month": 11, "day": 25, "year": 1953, "text": "Hungary beat England 6–3 at Wembley, the first defeat there by a team from outside the British Isles.", "story": "ferenc-puskas-real-madrid-exile" },
+  { "id": "1954-07-04-bern", "month": 7, "day": 4, "year": 1954, "text": "West Germany come from 2–0 down to beat Hungary 3–2 in the World Cup final in Bern.", "story": "ferenc-puskas-real-madrid-exile" },
+  { "id": "1960-05-18-hampden", "month": 5, "day": 18, "year": 1960, "text": "Real Madrid beat Eintracht Frankfurt 7–3 at Hampden Park; Puskás scores four, Di Stéfano three.", "story": "ferenc-puskas-real-madrid-exile" },
+  { "id": "1927-04-01-puskas", "month": 4, "day": 1, "year": 1927, "text": "Ferenc Puskás is born in Budapest.", "story": "ferenc-puskas-real-madrid-exile" },
+  { "id": "2006-11-17-puskas", "month": 11, "day": 17, "year": 2006, "text": "Ferenc Puskás dies in Budapest aged 79. He is given a state funeral.", "story": "ferenc-puskas-real-madrid-exile" },
+  { "id": "1975-01-06-clough", "month": 1, "day": 6, "year": 1975, "text": "Brian Clough is appointed manager of Nottingham Forest, 13th in the Second Division.", "story": "nottingham-forest-two-european-cups" },
+  { "id": "1979-05-30-munich", "month": 5, "day": 30, "year": 1979, "text": "Nottingham Forest beat Malmö 1–0 in Munich to win the European Cup; Trevor Francis heads the goal.", "story": "nottingham-forest-two-european-cups" },
+  { "id": "1980-05-28-madrid", "month": 5, "day": 28, "year": 1980, "text": "Nottingham Forest retain the European Cup, beating Hamburg 1–0 in Madrid with a John Robertson goal.", "story": "nottingham-forest-two-european-cups" },
+  { "id": "2004-09-20-clough", "month": 9, "day": 20, "year": 2004, "text": "Brian Clough dies aged 69.", "story": "nottingham-forest-two-european-cups" },
+  { "id": "1971-06-02-wembley", "month": 6, "day": 2, "year": 1971, "text": "Ajax beat Panathinaikos 2–0 at Wembley for their first European Cup.", "story": "ajax-1971-1973-total-football" },
+  { "id": "1972-05-31-rotterdam", "month": 5, "day": 31, "year": 1972, "text": "Ajax beat Inter 2–0 in Rotterdam; Johan Cruyff scores both goals.", "story": "ajax-1971-1973-total-football" },
+  { "id": "1973-05-30-belgrade", "month": 5, "day": 30, "year": 1973, "text": "Ajax beat Juventus 1–0 in Belgrade for a third consecutive European Cup.", "story": "ajax-1971-1973-total-football" },
+  { "id": "1947-04-25-cruyff", "month": 4, "day": 25, "year": 1947, "text": "Johan Cruyff is born in Amsterdam.", "story": "ajax-1971-1973-total-football" },
+  { "id": "2016-03-24-cruyff", "month": 3, "day": 24, "year": 2016, "text": "Johan Cruyff dies in Barcelona aged 68.", "story": "ajax-1971-1973-total-football" },
+  { "id": "1966-12-07-fog", "month": 12, "day": 7, "year": 1966, "text": "Ajax beat Liverpool 5–1 in thick fog at De Meer in the European Cup.", "story": "ajax-1971-1973-total-football" },
+  { "id": "2026-10-18-launch", "month": 10, "day": 18, "year": 2026, "text": "Football Stories 101 publishes its build specification and the first three sample stories." }
+]

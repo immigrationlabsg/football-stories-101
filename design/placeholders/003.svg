@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1600" viewBox="0 0 1600 1600">
+  <defs>
+    <linearGradient id="grass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a9a58"/><stop offset="1" stop-color="#2f6b3a"/></linearGradient>
+    <filter id="wc" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" seed="21"/><feDisplacementMap in="SourceGraphic" scale="26"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="9"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1600" height="1600" fill="url(#grass)"/>
+  <g filter="url(#soft)" opacity="0.5"><circle cx="300" cy="300" r="300" fill="#8fc98a"/><circle cx="1350" cy="1300" r="340" fill="#1f4f2a"/></g>
+  <!-- pitch markings, top-down -->
+  <g filter="url(#wc)" stroke="#f4f1e8" stroke-width="10" fill="none" opacity="0.85">
+    <rect x="120" y="120" width="1360" height="1360"/>
+    <line x1="120" y1="800" x2="1480" y2="800"/>
+    <circle cx="800" cy="800" r="170"/>
+    <rect x="420" y="120" width="760" height="260"/>
+    <rect x="420" y="1220" width="760" height="260"/>
+  </g>
+  <!-- triangles of passing / space -->
+  <g filter="url(#wc)" opacity="0.9">
+    <polygon points="420,1050 760,620 1120,1000" fill="#f4f1e8" opacity="0.18"/>
+    <polygon points="760,620 1120,1000 1240,540" fill="#f4f1e8" opacity="0.14"/>
+    <polygon points="420,1050 760,620 300,560" fill="#f4f1e8" opacity="0.12"/>
+    <g stroke="#fff7d6" stroke-width="12" stroke-dasharray="6 30" stroke-linecap="round" fill="none">
+      <path d="M420 1050 L760 620 L1120 1000 Z"/><path d="M760 620 L1240 540"/><path d="M420 1050 L300 560"/><path d="M1120 1000 L1380 1260"/>
+    </g>
+  </g>
+  <!-- players as top-down tokens: white shirt with red band -->
+  <defs><g id="p"><circle r="62" fill="#ffffff"/><rect x="-62" y="-24" width="124" height="48" fill="#c8102e"/><circle r="26" fill="#d9c3ac"/></g></defs>
+  <g filter="url(#wc)">
+    <use href="#p" x="420" y="1050"/><use href="#p" x="760" y="620"/><use href="#p" x="1120" y="1000"/><use href="#p" x="1240" y="540"/><use href="#p" x="300" y="560"/><use href="#p" x="1380" y="1260"/><use href="#p" x="800" y="1300"/>
+    <!-- opponents in dark blue, static -->
+    <circle cx="600" cy="880" r="56" fill="#1f2a44"/><circle cx="980" cy="760" r="56" fill="#1f2a44"/><circle cx="1000" cy="1180" r="56" fill="#1f2a44"/><circle cx="520" cy="420" r="56" fill="#1f2a44"/>
+    <!-- the ball -->
+    <circle cx="760" cy="620" r="22" fill="#fff7d6" stroke="#333" stroke-width="4"/>
+  </g>
+  <rect width="1600" height="1600" filter="url(#paper)" opacity="0.9"/>
+</svg>
