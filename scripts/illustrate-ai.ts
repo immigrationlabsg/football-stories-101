@@ -71,8 +71,13 @@ if (errors.length) {
   process.exit(1);
 }
 
+const recordPath = path.join(PUBLIC_DIR, '../data/hero-sources.json');
+const commonsDone = new Set<string>(fs.existsSync(recordPath) ? Object.keys(JSON.parse(fs.readFileSync(recordPath, 'utf8'))) : []);
+
 const todo = stories.filter((s) => {
-  if (!s.data.hero.prompt || s.data.hero.commons) return false;
+  if (!s.data.hero.prompt) return false;
+  // A Commons photo wins once it has been fetched; until then (or if its licence was refused) paint the fallback.
+  if (s.data.hero.commons && commonsDone.has(pad3(s.data.number))) return false;
   if (only !== null && s.data.number !== only) return false;
   if (redo !== null) return s.data.number === redo;
   return !fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src));

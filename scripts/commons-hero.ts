@@ -47,7 +47,7 @@ async function info(title: string) {
     download: ii.thumburl ?? ii.url,
     pageUrl: ii.descriptionurl as string,
     license: strip(md.LicenseShortName?.value ?? ''),
-    artist: strip(md.Artist?.value ?? 'Unknown author').slice(0, 120),
+    artist: strip(md.Artist?.value ?? 'Unknown author').split(';')[0].trim().slice(0, 80),
   };
 }
 
