@@ -1,0 +1,16 @@
+# build output
+dist/
+.astro/
+node_modules/
+npm-debug.log*
+
+# generated at build time from the story heroes (responsive sizes, share cards)
+public/images/derived/
+
+# local env
+.env
+.env.*
+!.env.example
+
+.DS_Store
+public/images/default-share.png
