@@ -14,3 +14,6 @@ public/images/derived/
 
 .DS_Store
 public/images/default-share.png
+
+# rehearsal output of the publish script
+social/dry-run/

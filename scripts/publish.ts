@@ -43,7 +43,6 @@ interface SentFile {
 }
 
 const SENT_PATH = path.join(ROOT, 'data/sent.json');
-const SOCIAL_DIR = path.join(ROOT, 'social');
 const DUE_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 const now = process.env.PUBLISH_NOW ? new Date(process.env.PUBLISH_NOW) : new Date();
@@ -129,6 +128,9 @@ async function main() {
   }
   const sent = readSent();
   const { provider, dryRun } = selectProvider();
+  // Dry runs write their files to an ignored folder so a rehearsal (or a
+  // morning without secrets) never commits anything back to the repository.
+  const SOCIAL_DIR = path.join(ROOT, dryRun ? 'social/dry-run' : 'social');
 
   let story = pickDue(stories, sent);
   let kind: 'scheduled' | 'archive' = 'scheduled';
