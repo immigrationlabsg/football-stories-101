@@ -1,0 +1,222 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/)
+# Log in at https://app.pagescms.org with GitHub, pick this repository, and
+# the "Stories" collection below becomes a form that mirrors the story front
+# matter in src/schema/story.ts.
+
+media:
+  input: public/images
+  output: /images
+  categories: [image]
+  extensions: [jpg, jpeg, png, webp, avif, svg]
+
+content:
+  - name: stories
+    label: Stories
+    description: One file per story. The number must be unique; the file name does not matter.
+    type: collection
+    path: src/content/stories
+    filename: "{fields.number}-{fields.slug}.mdx"
+    exclude: ["_*"]
+    view:
+      fields: [number, title, pillar, date, draft]
+      primary: title
+      sort: [number, date]
+      default:
+        sort: number
+        order: desc
+    fields:
+      - name: number
+        label: Story No.
+        type: number
+        required: true
+        description: Unique running number. Shown as "Story No. 001".
+        options: { min: 1, step: 1 }
+      - name: title
+        label: Headline
+        type: string
+        required: true
+        description: 'Subject / angle, with a spaced slash. Example: "Ferenc Puskás / The exile who scored 156 goals for Real Madrid"'
+        pattern:
+          regex: "^.+ / .+$"
+          message: 'Use the "Subject / angle" convention with a space, a slash and a space between the two parts.'
+      - name: dek
+        label: Dek (one sentence, max 160 characters)
+        type: string
+        required: true
+        pattern:
+          regex: "^.{1,160}$"
+          message: "The dek must be 160 characters or fewer."
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        description: Lower-case words joined by hyphens. Becomes /stories/<slug>/. Do not change after sending.
+        pattern:
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          message: "Lower-case letters, numbers and hyphens only."
+      - name: date
+        label: Send date and time (UTC)
+        type: date
+        required: true
+        description: "8:00 am Singapore weekdays = 00:00 UTC. 10:00 am Singapore weekends = 02:00 UTC. The web page appears 7 days later."
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+      - name: updated
+        label: Last updated
+        type: date
+        options:
+          format: "yyyy-MM-dd"
+      - name: pillar
+        label: Pillar
+        type: select
+        required: true
+        options:
+          values:
+            - { value: players, label: Players }
+            - { value: clubs, label: Clubs }
+            - { value: eras, label: "Eras & Dynasties" }
+            - { value: moments, label: Moments }
+      - name: players
+        label: Players
+        type: string
+        list: true
+        description: Full names, one per entry.
+      - name: clubs
+        label: Clubs
+        type: string
+        list: true
+      - name: countries
+        label: Countries
+        type: string
+        list: true
+      - name: competitions
+        label: Competitions
+        type: string
+        list: true
+      - name: decades
+        label: Decades
+        type: string
+        list: true
+        description: 'Like "1950s".'
+      - name: themes
+        label: Themes
+        type: string
+        list: true
+        description: "migration, politics, injury, money, management, goalkeeping, youth, or your own."
+      - name: series
+        label: Series name (optional)
+        type: string
+      - name: seriesOrder
+        label: Part number in the series (optional)
+        type: number
+        options: { min: 1, step: 1 }
+      - name: hero
+        label: Hero illustration
+        type: object
+        required: true
+        fields:
+          - name: src
+            label: Image
+            type: image
+            required: true
+            description: Square or 4:3 works best. At least 1200 pixels wide.
+          - name: alt
+            label: Alt text (required)
+            type: string
+            required: true
+            description: Describe the picture for someone who cannot see it.
+          - name: credit
+            label: Credit
+            type: string
+            default: "Illustration: Football Stories 101"
+      - name: sources
+        label: Sources
+        type: string
+        list: true
+        required: true
+        description: One per line. Books as "Author, Title (Publisher, year)"; web sources as full URLs. Two independent sources for every claim.
+      - name: question
+        label: Question to the reader
+        type: string
+        description: One line. Ends the story, the email and the Facebook post.
+      - name: facts
+        label: Facts for social (3 to 6)
+        type: string
+        list: true
+        description: Short standalone facts. They become the Threads post and the Instagram carousel slides.
+      - name: draft
+        label: Draft (not sent, not published)
+        type: boolean
+        default: false
+      - name: body
+        label: Story
+        type: code
+        options:
+          language: markdown
+        description: "Markdown. A blockquote whose last line starts with an em dash becomes a pull quote. End with a heading 'What it tells us'. See docs/runbook.md."
+
+  - name: calendar
+    label: On this day
+    description: Anniversaries shown on the home page when the date matches.
+    type: file
+    path: src/content/calendar/anniversaries.json
+    format: json
+    fields:
+      - name: id
+        label: Id (unique, e.g. 1960-05-18-hampden)
+        type: string
+        required: true
+      - name: month
+        type: number
+        required: true
+        options: { min: 1, max: 12, step: 1 }
+      - name: day
+        type: number
+        required: true
+        options: { min: 1, max: 31, step: 1 }
+      - name: year
+        type: number
+      - name: text
+        type: string
+        required: true
+      - name: story
+        label: Story slug to link to (optional)
+        type: string
+    list: true
+
+  - name: corrections
+    label: Corrections log
+    type: file
+    path: src/content/corrections.json
+    format: json
+    fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique, e.g. 2027-01-05-story-003
+      - name: date
+        type: date
+        required: true
+        options:
+          format: "yyyy-MM-dd"
+      - name: story
+        label: Story slug
+        type: string
+      - name: text
+        label: What was corrected
+        type: text
+        required: true
+    list: true
+
+  - name: site
+    label: Site settings (advanced)
+    description: Names, handles and contact address. Edit with care; this is code.
+    type: file
+    path: src/site.config.ts
+    format: code
+    fields:
+      - name: body
+        type: code
+        options:
+          language: typescript
