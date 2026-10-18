@@ -1,0 +1,123 @@
+name: Publish daily
+
+# The heart of the publication (spec 7.1). Runs at the send times, rebuilds
+# and redeploys the website (so stories cross the web-lag threshold), then
+# sends today's story by email, posts it to Telegram, writes the social
+# captions and records the send in data/sent.json.
+on:
+  schedule:
+    - cron: "0 0 * * 1-5" # 08:00 Singapore, Monday to Friday
+    - cron: "0 2 * * 0,6" # 10:00 Singapore, Saturday and Sunday
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: build, write social files, but send nothing and record nothing"
+        type: boolean
+        default: true
+      story_number:
+        description: "Force a specific story number (leave empty for the normal selection)"
+        type: string
+        default: ""
+      force_resend:
+        description: "Allow re-sending a story already in data/sent.json"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+      PUBLIC_BUTTONDOWN_USERNAME: ${{ vars.PUBLIC_BUTTONDOWN_USERNAME }}
+      PUBLIC_TELEGRAM_CHANNEL: ${{ vars.PUBLIC_TELEGRAM_CHANNEL }}
+      PUBLIC_FACEBOOK_URL: ${{ vars.PUBLIC_FACEBOOK_URL }}
+      PUBLIC_INSTAGRAM_URL: ${{ vars.PUBLIC_INSTAGRAM_URL }}
+      PUBLIC_THREADS_URL: ${{ vars.PUBLIC_THREADS_URL }}
+      PUBLIC_UMAMI_SCRIPT: ${{ vars.PUBLIC_UMAMI_SCRIPT }}
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+      NEWSLETTER_PROVIDER: ${{ vars.NEWSLETTER_PROVIDER || 'buttondown' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The publish step commits back to main, so fetch the branch properly.
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Restore generated images
+        uses: actions/cache@v4
+        with:
+          path: public/images/derived
+          key: derived-images-${{ github.run_id }}
+          restore-keys: derived-images-
+      - run: npm ci
+
+      # 1 and 2: build with the web lag applied, deploy to GitHub Pages.
+      - name: Build site
+        run: npm run build
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+        continue-on-error: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      # 3 to 8: select, send, Telegram, social assets, record, archive fallback.
+      - name: Send today's story
+        id: send
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
+          PUBLISH_STORY_NUMBER: ${{ inputs.story_number }}
+          FORCE_RESEND: ${{ inputs.force_resend && '1' || '0' }}
+        run: npm run publish:daily
+
+      - name: Commit send record and social assets
+        if: always() && steps.send.outcome != 'skipped'
+        run: |
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git add data/sent.json social
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(publish): record send $(date -u +%Y-%m-%dT%H:%MZ)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "Could not push the send record." >&2
+          exit 1
+
+      - name: Keep the social assets as a downloadable artifact too
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-${{ github.run_id }}
+          path: |
+            social
+            public/images/derived/*-og.png
+          if-no-files-found: ignore
+          retention-days: 14

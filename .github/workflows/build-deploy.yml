@@ -1,0 +1,59 @@
+name: Build and deploy
+
+# Rebuilds the website on every push to main. Never sends email.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Shared with the daily publish workflow so deployments never overlap.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+      PUBLIC_BUTTONDOWN_USERNAME: ${{ vars.PUBLIC_BUTTONDOWN_USERNAME }}
+      PUBLIC_TELEGRAM_CHANNEL: ${{ vars.PUBLIC_TELEGRAM_CHANNEL }}
+      PUBLIC_FACEBOOK_URL: ${{ vars.PUBLIC_FACEBOOK_URL }}
+      PUBLIC_INSTAGRAM_URL: ${{ vars.PUBLIC_INSTAGRAM_URL }}
+      PUBLIC_THREADS_URL: ${{ vars.PUBLIC_THREADS_URL }}
+      PUBLIC_UMAMI_SCRIPT: ${{ vars.PUBLIC_UMAMI_SCRIPT }}
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Restore generated images
+        uses: actions/cache@v4
+        with:
+          path: public/images/derived
+          key: derived-images-${{ github.run_id }}
+          restore-keys: derived-images-
+      - run: npm ci
+      - name: Validate stories, generate images, build site, index search
+        run: npm run build
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+        continue-on-error: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
