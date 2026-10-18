@@ -16,6 +16,10 @@ Contents
 9. [When something goes wrong](#9-when-something-goes-wrong)
 10. [Corrections, the calendar and site settings](#10-corrections-the-calendar-and-site-settings)
 11. [Moving to your own domain](#11-moving-to-your-own-domain)
+12. [Reading the drafts](#12-reading-the-drafts)
+13. [Illustrations](#13-illustrations)
+14. [Weekly drafting and the launch date](#14-weekly-drafting-and-the-launch-date)
+15. [Testing on social media before launch](#15-testing-on-social-media-before-launch)
 
 ---
 
@@ -201,7 +205,7 @@ Things only you can do, because they need your accounts:
 - [ ] **Pages CMS**: sign in once at app.pagescms.org and authorise the repository.
 - [ ] **Contact address**: `editor@footballstories101.com` is a placeholder in `src/site.config.ts` (Pages CMS → Site settings). Change it to a mailbox you read; it is on the About, Privacy and every story page.
 - [ ] **Domain** (optional; section 11).
-- [ ] **Illustrations**: the three sample heroes are placeholders. Replace them by uploading new images in Pages CMS and updating each story's Hero field. The SVG sources are in `design/placeholders/` if an illustrator wants the compositions.
+- [ ] **Illustrations**: nothing to do; they are painted automatically (section 13).
 - [ ] **A first dry run** (section 6) to see the whole pipeline in the log.
 
 ## 8. The daily ten minutes
@@ -253,3 +257,59 @@ When `footballstories101.com` (or .co or .net) is bought:
 5. Run **Build and deploy**. All links, the RSS feed, the sitemap and the share cards switch to the new address; the old github.io address redirects.
 
 Buttondown emails already sent keep their old links; GitHub redirects them.
+
+## 12. Reading the drafts
+
+Every story, drafts included, is readable exactly as subscribers will see it at:
+
+**https://immigrationlabsg.github.io/football-stories-101/preview/editors-desk/**
+
+Bookmark it on your phone. Each entry shows its status (Draft, Scheduled, Emailed, Live). The page is not linked
+from the site, is hidden from search engines and from the site's own search, but it is not password-protected:
+anyone with the address can read it. To retire the address, set a repository variable `PREVIEW_KEY` to a new word
+and rebuild; the preview moves to `/preview/<new word>/`.
+
+Every draft has already been fact-checked before it reaches you. The audit trail for each story is in
+`docs/fact-checks/NNN.md` if you are ever curious; you never need to read it.
+
+## 13. Illustrations
+
+Each story's front matter has a `hero.prompt`: one or two sentences describing the scene. When a story is saved
+without an image file, the **Illustrate** workflow paints a watercolour from that prompt on GitHub's servers, using
+the free Pollinations service (no account, no cost), commits the image and rebuilds the site. Until it finishes, a
+cream placeholder shows. It takes about a minute per image.
+
+- **Don't like an illustration?** Actions → Illustrate → Run workflow → type the story number in "Repaint one
+  story" → Run. It paints a new version with a different seed.
+- **Want a different scene?** Edit the story's Hero prompt in Pages CMS, delete the old image file
+  (`public/images/stories/NNN-….jpg`) in GitHub, and save. The next Illustrate run paints the new scene.
+- **The overall style** (watercolour and ink, no text, no crests, no real faces) is set once in
+  `scripts/illustrate-ai.ts`.
+- Figures are deliberately generic, not portraits of real players: that keeps clear of likeness and copyright
+  problems.
+
+## 14. Weekly drafting and the launch date
+
+- A scheduled Claude session runs **every Saturday at 8:47 am Singapore time**. It drafts seven new stories from
+  `docs/story-bank.md`, researches and fact-checks each one on the web, and pushes them. You get a phone
+  notification when it finishes; read them on the preview page. Its standing instructions are in
+  `docs/weekly-drafting.md`. Manage or pause it at claude.ai under your scheduled tasks.
+- **Launch date.** While `launch_date` in `data/schedule.json` is empty, new stories stay as drafts and nothing is
+  emailed. When you are ready, ask Claude to "set the launch date to YYYY-MM-DD and schedule stories 001 to 030";
+  it gives each story its morning slot and switches them from draft to scheduled. From then on the weekly run
+  schedules its seven stories itself, keeping at least two weeks ahead.
+
+## 15. Testing on social media before launch
+
+Before any money is spent, test the idea on Facebook, Instagram, Threads and Telegram by hand:
+
+1. Open `social/001.md` in the repository: it contains the Facebook post and first comment, the Instagram caption
+   with hashtags and alt text, the Threads post and reply, and a Telegram message.
+2. The Instagram carousel images are in `social/cards/` (`001-ig-01.png` onwards). On a phone, open each file in
+   GitHub and use "Download".
+3. The link in each post points to the story's web page.
+
+For another story, ask Claude to "make the social pack for story N" (it runs `npm run social -- N`).
+
+Buttondown is free up to 100 subscribers and Telegram is always free, so the email and channel can also be
+tested at no cost when you are ready.
