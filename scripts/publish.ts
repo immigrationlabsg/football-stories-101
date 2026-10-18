@@ -195,7 +195,7 @@ async function main() {
     cardPaths.push(path.relative(ROOT, dest));
   }
   if (cards.length === 0) console.warn('[social] no Instagram cards found; run `npm run images` before publishing');
-  const socialPath = path.join(ROOT, socialFilename(story));
+  const socialPath = path.join(SOCIAL_DIR, path.basename(socialFilename(story)));
   fs.writeFileSync(socialPath, socialMarkdown(story, { kind, now, webLive, cardPaths }));
   console.log(`[social] wrote ${path.relative(ROOT, socialPath)} and ${cardPaths.length} card(s)`);
 
