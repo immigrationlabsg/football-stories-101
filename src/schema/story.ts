@@ -27,6 +27,15 @@ export const heroSchema = z.object({
    * does not exist yet, scripts/illustrate-ai.ts generates it from this.
    */
   prompt: z.string().trim().min(1).optional(),
+  /**
+   * A freely licensed photo on Wikimedia Commons, e.g. "File:Ronaldo 2002 cropped.jpg".
+   * When set, scripts/commons-hero.ts downloads it (on GitHub's servers), checks
+   * the licence, crops it, and writes the credit and creditUrl below. Takes
+   * precedence over `prompt`.
+   */
+  commons: z.string().trim().regex(/^File:/, 'commons must start with "File:"').optional(),
+  /** Link for the credit (the Commons file page), filled in automatically. */
+  creditUrl: z.string().url().optional(),
 });
 
 /** Shown wherever a story's illustration has not been generated yet. */

@@ -72,7 +72,7 @@ if (errors.length) {
 }
 
 const todo = stories.filter((s) => {
-  if (!s.data.hero.prompt) return false;
+  if (!s.data.hero.prompt || s.data.hero.commons) return false;
   if (only !== null && s.data.number !== only) return false;
   if (redo !== null) return s.data.number === redo;
   return !fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src));

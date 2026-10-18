@@ -35,6 +35,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Fetch Wikimedia Commons photos
+        continue-on-error: true
+        run: npm run photos
       - name: Generate missing illustrations
         run: |
           if [ -n "${{ inputs.redo }}" ]; then
@@ -46,14 +49,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add public/images/stories
+          git add public/images/stories src/content/stories data/hero-sources.json
           if git diff --cached --quiet; then
             echo "No new illustrations."
             exit 0
           fi
           git config user.name "football-stories-101[bot]"
           git config user.email "football-stories-101[bot]@users.noreply.github.com"
-          git commit -m "art: illustrations for $(git diff --cached --name-only | wc -l) stor(ies)"
+          git commit -m "art: hero images and credits updated"
           for attempt in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && break
             sleep 5

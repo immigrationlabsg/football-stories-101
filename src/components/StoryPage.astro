@@ -103,7 +103,7 @@ const jsonLd = {
 
     <figure class="wrap hero">
       <HeroImage number={story.data.number} src={story.data.hero.src} alt={story.data.hero.alt} loading="eager" fetchpriority="high" />
-      <figcaption>{story.data.hero.credit}</figcaption>
+      <figcaption>{story.data.hero.creditUrl ? <a href={story.data.hero.creditUrl} rel="noopener">{story.data.hero.credit}</a> : story.data.hero.credit}</figcaption>
     </figure>
 
     <div class="narrow body">
