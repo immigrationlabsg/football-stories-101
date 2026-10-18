@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { storySchema, type StoryFrontmatter, countWords } from '../../src/schema/story';
+import { storySchema, type StoryFrontmatter, countWords, PLACEHOLDER_HERO } from '../../src/schema/story';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const STORIES_DIR = path.join(ROOT, 'src/content/stories');
@@ -22,6 +22,12 @@ export interface LoadResult {
   stories: LoadedStory[];
   errors: string[];
   warnings: string[];
+}
+
+/** Local path of the hero to use: the real file, or the placeholder while it is being generated. */
+export function heroFile(s: { data: { hero: { src: string } } }): string {
+  const p = path.join(PUBLIC_DIR, s.data.hero.src);
+  return fs.existsSync(p) ? p : path.join(PUBLIC_DIR, PLACEHOLDER_HERO);
 }
 
 export function loadStories(): LoadResult {
@@ -66,7 +72,10 @@ export function loadStories(): LoadResult {
     if (sl) errors.push(`${s.file}: duplicate slug "${s.data.slug}" (also in ${sl})`);
     bySlug.set(s.data.slug, s.file);
     const heroPath = path.join(PUBLIC_DIR, s.data.hero.src);
-    if (!fs.existsSync(heroPath)) errors.push(`${s.file}: hero image not found at public${s.data.hero.src}`);
+    if (!fs.existsSync(heroPath)) {
+      if (s.data.hero.prompt) warnings.push(`${s.file}: illustration not generated yet; a placeholder is used until it is`);
+      else errors.push(`${s.file}: hero image not found at public${s.data.hero.src}, and there is no hero.prompt to generate one`);
+    }
   }
 
   stories.sort((a, b) => a.data.number - b.data.number);

@@ -1,0 +1,61 @@
+name: Illustrate
+
+# Paints the watercolour hero for any story that has a hero.prompt but no
+# image yet, commits the images, then rebuilds the site. Free: uses
+# Pollinations, which needs no account. Roughly one image a minute.
+on:
+  push:
+    branches: [main]
+    paths: ["src/content/stories/**"]
+  workflow_dispatch:
+    inputs:
+      redo:
+        description: "Repaint one story with a new seed (story number), or leave empty"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: illustrate
+  cancel-in-progress: false
+
+jobs:
+  illustrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generate missing illustrations
+        run: |
+          if [ -n "${{ inputs.redo }}" ]; then
+            npm run illustrate -- --redo "${{ inputs.redo }}"
+          else
+            npm run illustrate
+          fi
+      - name: Commit and rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add public/images/stories
+          if git diff --cached --quiet; then
+            echo "No new illustrations."
+            exit 0
+          fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "art: illustrations for $(git diff --cached --name-only | wc -l) stor(ies)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done
+          gh workflow run build-deploy.yml --ref main

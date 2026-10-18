@@ -1,0 +1,312 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HeroImage from '../components/HeroImage.astro';
+import Share from '../components/Share.astro';
+import SubscribeBox from '../components/SubscribeBox.astro';
+import StoryCard from '../components/StoryCard.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Timeline from '../components/Timeline.astro';
+import Figure from '../components/Figure.astro';
+import {
+  relatedStories,
+  seriesNeighbours,
+  numberNeighbours,
+  storyReadingMinutes,
+  storyWords,
+  storyTitleParts,
+} from '../lib/stories';
+import { storyNumber, slugify } from '../schema/story';
+import { formatDate } from '../lib/format';
+import { withBase, absoluteUrl, paths } from '../lib/url';
+import { site, taxonomies, type TaxonomyKey } from '../site.config';
+
+import type { Story } from '../lib/stories';
+
+interface Props {
+  story: Story;
+  pool: Story[];
+  /** Editor's preview: not indexed, not searchable, with a status banner. */
+  preview?: { status: string } | false;
+}
+
+const { story, pool, preview = false } = Astro.props;
+const { Content } = await render(story);
+const { subject, angle } = storyTitleParts(story);
+const related = relatedStories(story, pool);
+const series = seriesNeighbours(story, pool);
+const neighbours = numberNeighbours(story, pool);
+const url = absoluteUrl(paths.story(story.data.slug));
+const ogImage = absoluteUrl(paths.ogImage(story.data.number));
+const minutes = storyReadingMinutes(story);
+const words = storyWords(story);
+
+const tagGroups = (Object.keys(taxonomies) as TaxonomyKey[])
+  .filter((k) => k !== 'series')
+  .map((k) => ({ key: k, label: taxonomies[k].label, values: story.data[k] as string[] }))
+  .filter((g) => g.values.length > 0);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: story.data.title,
+  description: story.data.dek,
+  image: [ogImage, absoluteUrl(story.data.hero.src)],
+  datePublished: story.data.date.toISOString(),
+  dateModified: (story.data.updated ?? story.data.date).toISOString(),
+  author: { '@type': 'Organization', name: site.byline },
+  publisher: { '@type': 'Organization', name: site.name, url: absoluteUrl('/') },
+  mainEntityOfPage: url,
+  wordCount: words,
+  articleSection: site.pillars[story.data.pillar].label,
+  keywords: [...story.data.players, ...story.data.clubs, ...story.data.competitions, ...story.data.themes].join(', '),
+  isAccessibleForFree: true,
+};
+---
+
+<Base
+  title={story.data.title}
+  description={story.data.dek}
+  path={paths.story(story.data.slug)}
+  image={ogImage}
+  imageAlt={story.data.hero.alt}
+  type="article"
+  jsonLd={jsonLd}
+  publishedTime={story.data.date}
+  modifiedTime={story.data.updated}
+  noindex={Boolean(preview)}
+>
+  {preview && <p class="preview-banner wrap">Editor's preview · {preview.status} · not public until it is sent</p>}
+  <article class="story" data-pagefind-body={preview ? undefined : ''} data-pagefind-meta={preview ? undefined : `title:${story.data.title}`}>
+    <header class="wrap story-head">
+      <p class="eyebrow">
+        <a href={withBase(paths.pillar(story.data.pillar))}>{site.pillars[story.data.pillar].label}</a> · {storyNumber(story.data.number)}
+        {story.data.series && (
+          <>
+            {' '}· <a href={withBase(paths.term('series', slugify(story.data.series)))}>{story.data.series}</a>
+            {story.data.seriesOrder && <>, part {story.data.seriesOrder}</>}
+          </>
+        )}
+      </p>
+      <h1>
+        <span class="subject" data-pagefind-meta="subject">{subject}</span>
+        <span class="angle">{angle}</span>
+      </h1>
+      <p class="dek">{story.data.dek}</p>
+      <ul class="meta">
+        <li>By {site.byline}</li>
+        <li><time datetime={story.data.date.toISOString()}>{formatDate(story.data.date)}</time></li>
+        <li>{minutes} min read</li>
+        {story.data.updated && <li>Updated <time datetime={story.data.updated.toISOString()}>{formatDate(story.data.updated)}</time></li>}
+      </ul>
+    </header>
+
+    <figure class="wrap hero">
+      <HeroImage number={story.data.number} src={story.data.hero.src} alt={story.data.hero.alt} loading="eager" fetchpriority="high" />
+      <figcaption>{story.data.hero.credit}</figcaption>
+    </figure>
+
+    <div class="narrow body">
+      <div class="prose">
+        <Content components={{ PullQuote, Timeline, Figure }} />
+        {story.data.question && <p class="reader-question">{story.data.question}</p>}
+      </div>
+
+      <section class="sources" aria-labelledby="sources-heading" data-pagefind-ignore>
+        <h2 id="sources-heading">Sources</h2>
+        <ol>
+          {
+            story.data.sources.map((s) =>
+              /^https?:\/\//.test(s) ? (
+                <li>
+                  <a href={s} rel="noopener noreferrer">{s}</a>
+                </li>
+              ) : (
+                <li>{s}</li>
+              ),
+            )
+          }
+        </ol>
+        <p class="small">
+          Two independent sources support every factual claim; where they disagree the text says so. Spotted an error? <a href={`mailto:${site.contactEmail}?subject=Correction: ${encodeURIComponent(storyNumber(story.data.number))}`}>Email the editor</a>. Corrections are logged <a href={withBase(paths.corrections())}>here</a>.
+        </p>
+      </section>
+
+      <div class="share-row" data-pagefind-ignore>
+        <Share url={url} title={`${storyNumber(story.data.number)} · ${story.data.title}`} />
+      </div>
+
+      {
+        tagGroups.length > 0 && (
+          <section class="tags" aria-label="Topics" data-pagefind-ignore>
+            {tagGroups.map((g) => (
+              <div class="tag-group">
+                <span class="tag-label">{g.label}</span>
+                <ul class="chips">
+                  {g.values.map((v) => (
+                    <li>
+                      <a href={withBase(paths.term(g.key, slugify(v)))}>{v}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        )
+      }
+
+      {
+        (series.prev || series.next) && (
+          <nav class="series-nav" aria-label="Series navigation">
+            {series.prev && (
+              <a href={withBase(paths.story(series.prev.data.slug))}>
+                <span class="eyebrow">Previous in series</span>
+                {series.prev.data.title}
+              </a>
+            )}
+            {series.next && (
+              <a href={withBase(paths.story(series.next.data.slug))} class="next">
+                <span class="eyebrow">Next in series</span>
+                {series.next.data.title}
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </div>
+
+    <div class="wrap">
+      <SubscribeBox heading="Read tomorrow's story a week before it reaches this page" />
+
+      {
+        related.length > 0 && (
+          <section class="related" aria-labelledby="related-heading">
+            <div class="section-head">
+              <h2 id="related-heading">Related stories</h2>
+            </div>
+            <div class="grid">
+              {related.map((s) => (
+                <StoryCard story={s} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <nav class="number-nav" aria-label="Previous and next story">
+        {neighbours.prev ? (
+          <a href={withBase(paths.story(neighbours.prev.data.slug))}>← {storyNumber(neighbours.prev.data.number)}</a>
+        ) : (
+          <span />
+        )}
+        <a href={withBase(paths.allStories())}>All stories</a>
+        {neighbours.next ? (
+          <a href={withBase(paths.story(neighbours.next.data.slug))}>{storyNumber(neighbours.next.data.number)} →</a>
+        ) : (
+          <span />
+        )}
+      </nav>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .preview-banner {
+    font: 600 0.85rem/1.4 var(--sans);
+    background: var(--highlight);
+    color: #fff;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .story-head {
+    max-width: 52rem;
+    padding-top: 0.5rem;
+  }
+  .story-head h1 .subject {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .story-head .dek {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    color: var(--ink-soft);
+    margin: 1rem 0;
+  }
+  .hero {
+    margin: 1.5rem auto 2.5rem;
+  }
+  .hero :global(img) {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+  .hero figcaption {
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+  .share-row {
+    margin: 2rem 0;
+  }
+  .tags {
+    display: grid;
+    gap: 0.75rem;
+    margin: 2rem 0;
+    font-family: var(--sans);
+  }
+  .tag-group {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.5rem;
+    align-items: start;
+  }
+  .tag-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 0.3rem;
+  }
+  .series-nav {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    margin: 2rem 0;
+  }
+  .series-nav a {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+    font-family: var(--serif);
+  }
+  .series-nav a.next {
+    text-align: right;
+  }
+  .series-nav a:hover {
+    border-color: var(--accent);
+  }
+  .number-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    font-family: var(--sans);
+    font-weight: 600;
+  }
+  .related {
+    margin-top: 2rem;
+  }
+</style>

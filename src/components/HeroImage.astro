@@ -30,5 +30,5 @@ const height = entry?.height ?? 1600;
 <picture class={Astro.props.class}>
   {widths.length > 0 && <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />}
   {widths.length > 0 && <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />}
-  <img src={withBase(src)} alt={alt} width={width} height={height} loading={loading} decoding="async" fetchpriority={fetchpriority} />
+  <img src={withBase(entry?.src ?? src)} alt={alt} width={width} height={height} loading={loading} decoding="async" fetchpriority={fetchpriority} />
 </picture>

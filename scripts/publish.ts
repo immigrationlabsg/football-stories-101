@@ -19,7 +19,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadStories, ROOT, PUBLIC_DIR, type LoadedStory } from './lib/stories';
+import { loadStories, ROOT, PUBLIC_DIR, heroFile, type LoadedStory } from './lib/stories';
 import { selectProvider } from './lib/providers';
 import { emailSubject, emailMarkdown, webLiveDate } from './lib/email';
 import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
@@ -175,7 +175,7 @@ async function main() {
     console.log(`[telegram] ${dryRun ? 'dry run' : 'not configured'}; caption would be:\n${caption}\n`);
   } else {
     try {
-      const r = await sendTelegramPhoto({ photoPath: path.join(PUBLIC_DIR, story.data.hero.src), caption });
+      const r = await sendTelegramPhoto({ photoPath: heroFile(story), caption });
       telegramOk = true;
       console.log(`[telegram] posted${r.messageId ? ` (message ${r.messageId})` : ''}`);
     } catch (e) {

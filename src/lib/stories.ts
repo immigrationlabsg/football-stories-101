@@ -23,6 +23,23 @@ export function isWebPublished(story: Story, now = buildNow()): boolean {
   return !story.data.draft && story.data.date.getTime() <= webCutoff(now).getTime();
 }
 
+/** Every story including drafts, by number. Editor's preview only. */
+export async function getAllStories(): Promise<Story[]> {
+  const all = await getCollection('stories');
+  assertUniqueNumbers(all);
+  return all.sort((a, b) => a.data.number - b.data.number);
+}
+
+/** Human status line for the editor's preview. */
+export function storyStatus(story: Story, now = buildNow()): string {
+  const d = story.data.date;
+  const fmt = (x: Date) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Singapore' }).format(x);
+  if (story.data.draft) return 'Draft';
+  if (d.getTime() > now.getTime()) return `Scheduled, email ${fmt(d)}`;
+  if (!isWebPublished(story, now)) return `Emailed ${fmt(d)}, on the web ${fmt(addDays(d, WEB_LAG_DAYS))}`;
+  return 'Live on the web';
+}
+
 /** Stories that are live on the web, newest first. */
 export async function getPublishedStories(now = buildNow()): Promise<Story[]> {
   const all = await getCollection('stories');

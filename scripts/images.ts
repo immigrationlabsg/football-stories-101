@@ -12,9 +12,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { loadStories, PUBLIC_DIR } from './lib/stories';
+import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
 import { renderOg, renderIgCover, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
-import { pad3 } from '../src/schema/story';
+import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
 
@@ -60,7 +60,8 @@ const widthsKey = WIDTHS.join(',');
 
 for (const story of stories) {
   const n = pad3(story.data.number);
-  const heroPath = path.join(PUBLIC_DIR, story.data.hero.src);
+  const heroPath = heroFile(story);
+  const placeholder = heroPath !== path.join(PUBLIC_DIR, story.data.hero.src);
   const hero = fs.readFileSync(heroPath);
   const meta = await sharp(hero).metadata();
   const width = meta.width ?? 1600;
@@ -103,7 +104,7 @@ for (const story of stories) {
     if (f.startsWith(`${n}-ig-`) && !cards.includes(`/images/derived/${f}`)) fs.unlinkSync(path.join(OUT, f));
   }
 
-  manifest[n] = { src: story.data.hero.src, width, height, widths, cards, og: `/images/derived/${n}-og.png`, hash };
+  manifest[n] = { src: placeholder ? PLACEHOLDER_HERO : story.data.hero.src, width, height, widths, cards, og: `/images/derived/${n}-og.png`, hash };
 }
 
 const def = path.join(PUBLIC_DIR, 'images/default-share.png');

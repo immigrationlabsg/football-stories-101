@@ -22,7 +22,15 @@ export const heroSchema = z.object({
   src: nonEmpty('hero.src').regex(/^\/images\//, 'hero.src must start with /images/'),
   alt: nonEmpty('hero.alt (alt text is mandatory)'),
   credit: z.string().trim().default('Illustration: Football Stories 101'),
+  /**
+   * Scene description for the AI watercolour. When the image file at `src`
+   * does not exist yet, scripts/illustrate-ai.ts generates it from this.
+   */
+  prompt: z.string().trim().min(1).optional(),
 });
+
+/** Shown wherever a story's illustration has not been generated yet. */
+export const PLACEHOLDER_HERO = '/images/placeholder-hero.jpg';
 
 export const storySchema = z.object({
   number: z.number().int().positive('number must be a positive integer'),

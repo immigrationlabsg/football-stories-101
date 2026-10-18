@@ -13,7 +13,8 @@
     "preview": "astro preview",
     "publish:daily": "tsx scripts/publish.ts",
     "check": "astro check",
-    "images": "tsx scripts/images.ts"
+    "images": "tsx scripts/images.ts",
+    "illustrate": "tsx scripts/illustrate-ai.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.3",

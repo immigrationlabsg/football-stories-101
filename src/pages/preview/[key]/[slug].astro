@@ -1,0 +1,13 @@
+---
+import StoryPage from '../../../components/StoryPage.astro';
+import { getAllStories, storyStatus } from '../../../lib/stories';
+import { PREVIEW_KEY } from '../../../site.config';
+
+export async function getStaticPaths() {
+  const stories = await getAllStories();
+  return stories.map((story) => ({ params: { key: PREVIEW_KEY, slug: story.data.slug }, props: { story, pool: stories } }));
+}
+const { story, pool } = Astro.props;
+---
+
+<StoryPage story={story} pool={pool} preview={{ status: storyStatus(story) }} />

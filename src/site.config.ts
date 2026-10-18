@@ -22,6 +22,13 @@ export const SITE_BASE = (() => {
   return '/' + raw.replace(/^\/+|\/+$/g, '');
 })();
 
+/**
+ * Unlisted editor's preview of every story, drafts included, at
+ * /preview/<key>/. Not linked, not indexed, not searchable. Change the key
+ * (repository variable PREVIEW_KEY) to retire an old preview address.
+ */
+export const PREVIEW_KEY = env('PREVIEW_KEY', 'editors-desk');
+
 /** Days between the email send and the web publication. */
 export const WEB_LAG_DAYS = Number.parseInt(env('WEB_LAG_DAYS', '7'), 10);
 

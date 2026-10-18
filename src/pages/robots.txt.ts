@@ -7,6 +7,7 @@ export const GET: APIRoute = () =>
       'User-agent: *',
       'Allow: /',
       `Disallow: ${absoluteUrl('/search/').replace(/^https?:\/\/[^/]+/, '')}`,
+      `Disallow: ${absoluteUrl('/preview/').replace(/^https?:\/\/[^/]+/, '')}`,
       '',
       `Sitemap: ${absoluteUrl('/sitemap-index.xml')}`,
       '',
