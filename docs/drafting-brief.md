@@ -26,11 +26,11 @@ three digits). Copy the front matter shape from
 - `hero.src`: `/images/stories/NNN-short-name.jpg` (the file does not exist yet; it is painted automatically)
 - `hero.alt`: describes the illustration as it will look (a scene, not a named person's face)
 - `hero.credit`: `Illustration: Football Stories 101`
-- `hero.prompt`: one sentence describing the scene to paint, as a wide shot: setting and era first, then the action,
-  with players small in the frame, seen from behind, in side profile or from high in the stands, never a close-up
-  face. Describe kit colours plainly ("sky-blue shirt and white shorts"). Never name a real person, a club, a crest,
-  a badge, a sponsor or any text; do not write negatives ("no …"), they confuse image models. The watercolour style
-  is added automatically.
+- `hero.prompt`: one sentence describing an evocative still life or place that stands for the story, in the spirit of
+  The Morning Founder's watercolours: an object (boots, a leather ball, a shirt on a peg, a trophy, a ticket stub, a
+  train, a stadium in mist, a pitch from above) with era and colour detail. Avoid people's faces and close-up figures,
+  never name a real person, club, crest, badge or sponsor, never ask for text or numbers, and do not write
+  negatives ("no …"). The watercolour style is added automatically.
 - `sources`: five to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
 - `facts`: three to five standalone facts for social posts, each true and sourced

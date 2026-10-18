@@ -24,10 +24,8 @@ export const STYLE =
   'Watercolour painting on cold-press paper, loose wet brushstrokes, soft bleeding washes, fine ink linework, ' +
   'muted earthy palette with warm cream highlights, white paper showing at the edges, vintage magazine illustration';
 
-/** Put last: keeps faces small and kits plain, which models handle far better. */
-export const COMPOSITION =
-  'wide shot, players small in the frame, seen from behind or in side profile, faces not visible, ' +
-  'plain kits without numbers or lettering, painterly and impressionistic';
+/** Put last: object-led scenes avoid the faces and shirt lettering free models get wrong. */
+export const COMPOSITION = 'quiet evocative still life, painterly and impressionistic, generous empty paper around the subject';
 
 const GAP_MS = 50_000;
 const SIZE = 768;
