@@ -6,7 +6,7 @@ name: Illustrate
 on:
   push:
     branches: [main]
-    paths: ["src/content/stories/**"]
+    paths: ["src/content/stories/**", "public/images/stories/**"]
   workflow_dispatch:
     inputs:
       redo:
