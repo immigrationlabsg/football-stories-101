@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, WEB_LAG_DAYS } from '../site.config';
+import { withBase, paths } from '../lib/url';
+---
+
+<Base title="About" description={`What ${site.name} is, how it is written, and the standards it holds itself to.`} path={paths.about()}>
+  <div class="narrow prose about">
+    <p class="eyebrow">About</p>
+    <h1>About Football Stories 101</h1>
+    <p>
+      Football Stories 101 is a free, non-commercial football storytelling publication. One researched story goes out
+      every morning, seven days a week, 1,200 to 1,800 words long, with its own illustration. The email is the product;
+      this website is the archive, and each story appears here {WEB_LAG_DAYS} days after it was sent.
+    </p>
+    <p>
+      The scope is global: footballers and stars past and present, clubs, and the eras and dynasties that defined the game.
+      Stories are written under the byline <em>{site.byline}</em>. There is no advertising, no paywall and no sponsorship.
+    </p>
+
+    <h2>The four pillars</h2>
+    <ul>
+      {Object.entries(site.pillars).map(([key, p]) => (
+        <li>
+          <a href={withBase(paths.pillar(key))}><strong>{p.label}</strong></a>: {p.blurb}
+        </li>
+      ))}
+    </ul>
+
+    <h2>Editorial standards</h2>
+    <h3>The two-source rule</h3>
+    <p>
+      Every factual claim rests on two independent sources, and every story lists its sources in a footer. When reputable
+      sources disagree, the story says so rather than picking one quietly. Quotations are short, verbatim and attributed to
+      where they were first recorded.
+    </p>
+    <h3>The living-persons rule</h3>
+    <p>
+      An allegation about a living person, whether about match-fixing, doping, misconduct or private life, appears only if
+      it is an established fact from a reputable primary source such as a conviction, an official finding or the person's
+      own admission; only when it is phrased as attributed fact; and only when the story needs it. Otherwise it is left out.
+      Where in doubt, the publication prefers documented events and deceased subjects.
+    </p>
+    <h3>AI-assistance disclosure</h3>
+    <p>
+      Research, drafting and editing are done with the help of AI tools, under a strict rule: AI assistance is allowed for
+      structure and prose, never for facts. Every fact in a published story traces to a source in the research brief that
+      the editor assembled and checked. The editor is responsible for every word.
+    </p>
+    <h3>Images</h3>
+    <p>
+      The hero image on each story is the publication's own illustration unless credited otherwise. Photographs are used
+      only from Wikimedia Commons with author, licence and source credited, from the editor's own camera, or under a paid
+      licence. No club crests are used as design elements, and no match footage appears anywhere.
+    </p>
+    <h3>Style</h3>
+    <p>
+      Third person, past tense for history, present tense for the closing "What it tells us". British English. Numerals for
+      scores, ages, fees and attendances. Full names on first mention. No exclamation marks.
+    </p>
+
+    <h2>Corrections and contact</h2>
+    <p>
+      Errors are corrected on the web version and logged, with dates, on the <a href={withBase(paths.corrections())}>corrections page</a>.
+      For corrections, takedown requests or anything else, email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+
+    <h2>Colophon</h2>
+    <p>
+      The site is a static build published through GitHub Pages. Search runs in the browser. There are no cookies, no
+      third-party share scripts and no tracking pixels. Subscriptions are handled by Buttondown; see the
+      <a href={withBase(paths.privacy())}>privacy page</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .about h1 {
+    margin-bottom: 1rem;
+  }
+  .about :global(.eyebrow) {
+    margin-bottom: 0;
+  }
+</style>

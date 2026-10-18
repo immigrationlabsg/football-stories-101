@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase, paths } from '../lib/url';
+const pagefindBase = withBase('/pagefind/');
+---
+
+<Base title="Search" description="Search every published story." path={paths.search()} noindex>
+  <div class="narrow">
+    <p class="eyebrow">Search</p>
+    <h1>Search the stories</h1>
+    <p class="meta">Full-text search of every story on the web, built into the site. Nothing is sent to a server.</p>
+    <link rel="stylesheet" href={`${pagefindBase}pagefind-ui.css`} />
+    <div id="search" class="search-box"></div>
+    <noscript><p>Search needs JavaScript. You can also browse <a href={withBase(paths.allStories())}>all stories by number</a>.</p></noscript>
+    <script is:inline define:vars={{ pagefindBase }}>
+      const s = document.createElement('script');
+      s.src = pagefindBase + 'pagefind-ui.js';
+      s.onload = () => {
+        new PagefindUI({
+          element: '#search',
+          showSubResults: false,
+          showImages: true,
+          pageSize: 8,
+          excerptLength: 30,
+          translations: { placeholder: 'Search players, clubs, finals, years…' },
+        });
+        const input = document.querySelector('#search input');
+        input && input.focus();
+      };
+      s.onerror = () => {
+        document.getElementById('search').innerHTML =
+          '<p>The search index is built when the site is deployed, so it is not available in local development.</p>';
+      };
+      document.head.appendChild(s);
+    </script>
+  </div>
+</Base>
+
+<style>
+  .search-box {
+    margin-top: 1.5rem;
+  }
+</style>

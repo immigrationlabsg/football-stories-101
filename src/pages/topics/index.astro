@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPublishedStories, termsFor } from '../../lib/stories';
+import { taxonomies, type TaxonomyKey } from '../../site.config';
+import { withBase, paths } from '../../lib/url';
+
+const stories = await getPublishedStories();
+const groups = (Object.keys(taxonomies) as TaxonomyKey[]).map((key) => ({
+  key,
+  label: taxonomies[key].label,
+  terms: termsFor(stories, key),
+}));
+---
+
+<Base title="Topics" description="Browse every story by club, player, country, competition, decade, theme and series." path={paths.taxonomy('').replace(/\/$/, '/')}>
+  <div class="wrap">
+    <p class="eyebrow">Index</p>
+    <h1>Topics</h1>
+    {
+      groups.map((g) => (
+        <section>
+          <div class="section-head">
+            <h2>
+              <a href={withBase(paths.taxonomy(g.key))}>{g.label}</a>
+            </h2>
+            <span class="meta">{g.terms.length}</span>
+          </div>
+          {g.terms.length === 0 ? (
+            <p class="meta">None yet.</p>
+          ) : (
+            <ul class="chips">
+              {g.terms.map((t) => (
+                <li>
+                  <a href={withBase(paths.term(g.key, t.slug))}>
+                    {t.value} <span class="count">{t.stories.length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .section-head h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .count {
+    color: var(--ink-mute);
+    font-size: 0.8em;
+  }
+</style>

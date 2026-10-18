@@ -1,0 +1,42 @@
+---
+/**
+ * Timeline for club histories and careers.
+ *
+ *   <Timeline items={[
+ *     { when: '1865', what: 'Club founded by a group of shinty players at the Clinton Arms.' },
+ *     { when: '1979', what: 'European Cup, Munich: Francis heads in Robertson’s cross.' },
+ *   ]} />
+ */
+interface Item {
+  when: string;
+  what: string;
+}
+interface Props {
+  items: Item[];
+  title?: string;
+}
+const { items, title } = Astro.props;
+---
+
+<figure class="timeline-wrap">
+  {title && <figcaption class="eyebrow">{title}</figcaption>}
+  <ol class="timeline">
+    {
+      items.map((item) => (
+        <li>
+          <span class="when">{item.when}</span>
+          <span class="what">{item.what}</span>
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .timeline-wrap {
+    margin: 2em 0;
+  }
+  .timeline-wrap .timeline {
+    margin-top: 0.5rem;
+  }
+</style>

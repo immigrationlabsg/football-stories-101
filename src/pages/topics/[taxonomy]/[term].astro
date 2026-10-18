@@ -1,0 +1,33 @@
+---
+import Base from '../../../layouts/Base.astro';
+import StoryList from '../../../components/StoryList.astro';
+import { getPublishedStories, allTerms } from '../../../lib/stories';
+import { taxonomies } from '../../../site.config';
+import { withBase, paths } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  const stories = await getPublishedStories();
+  return allTerms(stories).map((term) => ({
+    params: { taxonomy: term.taxonomy, term: term.slug },
+    props: { term },
+  }));
+}
+const { term } = Astro.props;
+const info = taxonomies[term.taxonomy];
+const title = term.taxonomy === 'series' ? `Series: ${term.value}` : term.value;
+---
+
+<Base title={title} description={`Stories about ${term.value} on Football Stories 101.`} path={paths.term(term.taxonomy, term.slug)}>
+  <div class="wrap">
+    <p class="eyebrow"><a href={withBase(paths.taxonomy(term.taxonomy))}>{info.label}</a></p>
+    <h1>{title}</h1>
+    <p class="meta">{term.stories.length} {term.stories.length === 1 ? 'story' : 'stories'}{term.taxonomy === 'series' ? ', in reading order' : ''}</p>
+    <div class="list"><StoryList stories={term.stories} /></div>
+  </div>
+</Base>
+
+<style>
+  .list {
+    margin-top: 1.5rem;
+  }
+</style>

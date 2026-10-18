@@ -1,0 +1,34 @@
+---
+/**
+ * Responsive hero. The original lives in /public/images/stories; the AVIF and
+ * WebP sizes are produced by scripts/images.ts before each build and listed in
+ * /public/images/derived/manifest.json.
+ */
+import { withBase } from '../lib/url';
+import { pad3 } from '../schema/story';
+import { readManifest } from '../lib/image-manifest';
+
+interface Props {
+  number: number;
+  src: string;
+  alt: string;
+  sizes?: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'auto';
+  class?: string;
+}
+
+const { number, src, alt, sizes = '(min-width: 1120px) 1120px, 100vw', loading = 'lazy', fetchpriority = 'auto' } = Astro.props;
+const manifest = readManifest();
+const entry = manifest[pad3(number)];
+const widths = entry?.widths ?? [];
+const srcset = (ext: string) => widths.map((w) => `${withBase(`/images/derived/${pad3(number)}-${w}.${ext}`)} ${w}w`).join(', ');
+const width = entry?.width ?? 1600;
+const height = entry?.height ?? 1600;
+---
+
+<picture class={Astro.props.class}>
+  {widths.length > 0 && <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />}
+  {widths.length > 0 && <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />}
+  <img src={withBase(src)} alt={alt} width={width} height={height} loading={loading} decoding="async" fetchpriority={fetchpriority} />
+</picture>

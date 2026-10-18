@@ -1,0 +1,59 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPublishedStories, termsFor } from '../../../lib/stories';
+import { taxonomies, type TaxonomyKey } from '../../../site.config';
+import { withBase, paths } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  const stories = await getPublishedStories();
+  return (Object.keys(taxonomies) as TaxonomyKey[]).map((taxonomy) => ({
+    params: { taxonomy },
+    props: { taxonomy, terms: termsFor(stories, taxonomy) },
+  }));
+}
+const { taxonomy, terms } = Astro.props;
+const info = taxonomies[taxonomy];
+const alpha = [...terms].sort((a, b) => a.value.localeCompare(b.value));
+---
+
+<Base title={info.label} description={`Every story by ${info.singular}.`} path={paths.taxonomy(taxonomy)}>
+  <div class="narrow">
+    <p class="eyebrow"><a href={withBase('/topics/')}>Topics</a></p>
+    <h1>{info.label}</h1>
+    <p class="meta">{terms.length} {terms.length === 1 ? info.singular : info.label.toLowerCase()} so far</p>
+    {
+      alpha.length === 0 ? (
+        <p>Nothing here yet.</p>
+      ) : (
+        <ul class="terms">
+          {alpha.map((t) => (
+            <li>
+              <a href={withBase(paths.term(taxonomy, t.slug))}>{t.value}</a>
+              <span class="meta">{t.stories.length} {t.stories.length === 1 ? 'story' : 'stories'}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .terms {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .terms li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--serif);
+  }
+  .terms a {
+    color: inherit;
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import { buildNow } from '../lib/stories';
+import { withBase, paths } from '../lib/url';
+import { monthName } from '../lib/format';
+
+const now = buildNow();
+const month = now.getUTCMonth() + 1;
+const day = now.getUTCDate();
+const entries = (await getCollection('calendar'))
+  .filter((e) => e.data.month === month && e.data.day === day)
+  .sort((a, b) => (a.data.year ?? 0) - (b.data.year ?? 0));
+---
+
+{
+  entries.length > 0 && (
+    <section class="panel otd" aria-labelledby="otd-heading">
+      <p class="eyebrow">On this day · {day} {monthName(month)}</p>
+      <h2 id="otd-heading" class="visually-hidden">On this day</h2>
+      <ul>
+        {entries.map((e) => (
+          <li>
+            {e.data.year && <strong>{e.data.year}</strong>} {e.data.text}
+            {e.data.story && (
+              <>
+                {' '}
+                <a href={withBase(paths.story(e.data.story))}>Read the story</a>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .otd ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-family: var(--serif);
+  }
+  .otd li + li {
+    margin-top: 0.5rem;
+  }
+  .otd strong {
+    color: var(--accent);
+  }
+</style>

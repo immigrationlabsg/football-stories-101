@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPublishedStories, storyTitleParts } from '../../lib/stories';
+import { storyNumber } from '../../schema/story';
+import { formatDate } from '../../lib/format';
+import { withBase, paths } from '../../lib/url';
+import { site } from '../../site.config';
+
+const stories = (await getPublishedStories()).sort((a, b) => a.data.number - b.data.number);
+---
+
+<Base title="All stories by number" description={`Every ${site.name} story in order, from No. 001.`} path={paths.allStories()}>
+  <div class="narrow">
+    <p class="eyebrow">Index</p>
+    <h1>All stories by number</h1>
+    <p class="meta">{stories.length} on the web so far. Stories reach the site a week after the email.</p>
+    <ol class="numbered">
+      {
+        stories.map((s) => {
+          const { subject, angle } = storyTitleParts(s);
+          return (
+            <li>
+              <span class="num">{storyNumber(s.data.number).replace('Story ', '')}</span>
+              <span>
+                <a href={withBase(paths.story(s.data.slug))}>
+                  <strong>{subject}</strong> / {angle}
+                </a>
+                <span class="meta-inline">
+                  {site.pillars[s.data.pillar].label} · <time datetime={s.data.date.toISOString()}>{formatDate(s.data.date)}</time>
+                </span>
+              </span>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .numbered {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .numbered li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--serif);
+  }
+  .num {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .numbered a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .numbered a:hover {
+    text-decoration: underline;
+  }
+  .meta-inline {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-mute);
+    margin-top: 0.2rem;
+  }
+</style>

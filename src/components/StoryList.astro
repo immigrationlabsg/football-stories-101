@@ -1,0 +1,22 @@
+---
+import type { Story } from '../lib/stories';
+import StoryCard from './StoryCard.astro';
+
+interface Props {
+  stories: Story[];
+  empty?: string;
+}
+const { stories, empty = 'No stories here yet.' } = Astro.props;
+---
+
+{
+  stories.length === 0 ? (
+    <p class="meta">{empty}</p>
+  ) : (
+    <div class="grid">
+      {stories.map((s) => (
+        <StoryCard story={s} />
+      ))}
+    </div>
+  )
+}

@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+import StoryCard from '../components/StoryCard.astro';
+import HeroImage from '../components/HeroImage.astro';
+import SubscribeBox from '../components/SubscribeBox.astro';
+import OnThisDay from '../components/OnThisDay.astro';
+import { getPublishedStories, getInboxOnlyStories, storyReadingMinutes, storyTitleParts } from '../lib/stories';
+import { storyNumber } from '../schema/story';
+import { formatDate } from '../lib/format';
+import { withBase, paths } from '../lib/url';
+import { site, WEB_LAG_DAYS, type PillarKey } from '../site.config';
+
+const stories = await getPublishedStories();
+const inbox = await getInboxOnlyStories();
+const lead = stories[0];
+const latest = stories.slice(1, 8);
+const pillars = Object.entries(site.pillars) as [PillarKey, (typeof site.pillars)[PillarKey]][];
+const counts = Object.fromEntries(pillars.map(([k]) => [k, stories.filter((s) => s.data.pillar === k).length]));
+---
+
+<Base title={site.name} path="/">
+  <div class="wrap">
+    <section class="masthead">
+      <h1 class="visually-hidden">{site.name}</h1>
+      <p class="strap">{site.tagline}</p>
+      <p class="strap-sub">
+        A new story lands by email every morning. It appears here {WEB_LAG_DAYS} days later.
+        {inbox.length > 0 && <strong> Today's story is in your inbox.</strong>}
+        {' '}<a href={withBase(paths.subscribe())}>Subscribe free</a>.
+      </p>
+    </section>
+
+    {
+      lead && (
+        <section class="lead" aria-labelledby="lead-heading">
+          <a class="lead-image" href={withBase(paths.story(lead.data.slug))} tabindex="-1" aria-hidden="true">
+            <HeroImage number={lead.data.number} src={lead.data.hero.src} alt="" loading="eager" fetchpriority="high" sizes="(min-width: 900px) 55vw, 100vw" />
+          </a>
+          <div class="lead-text">
+            <p class="eyebrow">Latest on the web · {storyNumber(lead.data.number)} · {site.pillars[lead.data.pillar].label}</p>
+            <h2 id="lead-heading">
+              <a href={withBase(paths.story(lead.data.slug))}>
+                <span class="subject">{storyTitleParts(lead).subject}</span>
+                {storyTitleParts(lead).angle}
+              </a>
+            </h2>
+            <p class="dek">{lead.data.dek}</p>
+            <ul class="meta">
+              <li><time datetime={lead.data.date.toISOString()}>{formatDate(lead.data.date)}</time></li>
+              <li>{storyReadingMinutes(lead)} min read</li>
+            </ul>
+            <a class="btn" href={withBase(paths.story(lead.data.slug))}>Read the story</a>
+          </div>
+        </section>
+      )
+    }
+
+    <div class="two-col">
+      <OnThisDay />
+      <section class="panel panel-accent inbox">
+        <p class="eyebrow">Email first</p>
+        <h2>{inbox.length > 0 ? "Today's story is in your inbox" : 'Tomorrow morning, another story'}</h2>
+        <p>
+          Subscribers read each story on the morning it is sent: {site.sendTimes.weekdays.replace('Singapore time', 'SGT')}, {site.sendTimes.weekends.replace('Singapore time', 'SGT')}. The website catches up {WEB_LAG_DAYS} days later.
+        </p>
+        <a class="btn" href={withBase(paths.subscribe())}>Subscribe free</a>
+      </section>
+    </div>
+
+    <div class="section-head">
+      <h2>Latest stories</h2>
+      <a href={withBase(paths.allStories())}>All stories by number</a>
+    </div>
+    {
+      latest.length > 0 ? (
+        <div class="grid">
+          {latest.map((s) => (
+            <StoryCard story={s} />
+          ))}
+        </div>
+      ) : (
+        <p class="meta">The archive is just getting started. The next story is on its way.</p>
+      )
+    }
+
+    <div class="section-head">
+      <h2>Start with a pillar</h2>
+    </div>
+    <div class="grid pillars">
+      {
+        pillars.map(([key, p]) => (
+          <a class="pillar card" href={withBase(paths.pillar(key))}>
+            <div class="card-body">
+              <p class="eyebrow">{counts[key]} {counts[key] === 1 ? 'story' : 'stories'}</p>
+              <h3>{p.label}</h3>
+              <p class="dek">{p.blurb}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="home-subscribe">
+      <SubscribeBox />
+    </div>
+  </div>
+</Base>
+
+<style>
+  .masthead {
+    padding-block: 0.5rem 1.5rem;
+  }
+  .strap {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 1rem + 1.4vw, 1.9rem);
+    line-height: 1.3;
+    margin: 0 0 0.4rem;
+    max-width: 30ch;
+    text-wrap: balance;
+  }
+  .strap-sub {
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 60ch;
+  }
+  .lead {
+    display: grid;
+    gap: var(--space);
+    grid-template-columns: 1fr;
+    align-items: center;
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 820px) {
+    .lead {
+      grid-template-columns: 1.15fr 1fr;
+    }
+  }
+  .lead-image :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .lead-text {
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+  .lead h2 {
+    font-size: clamp(1.6rem, 1.1rem + 2vw, 2.4rem);
+  }
+  .lead h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .lead h2 a:hover {
+    text-decoration: underline;
+  }
+  .subject {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 0.3rem;
+  }
+  .dek {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+  }
+  .lead .btn {
+    margin-top: 1rem;
+  }
+  .two-col {
+    display: grid;
+    gap: var(--space);
+    margin-top: var(--space);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  }
+  .inbox h2 {
+    font-size: 1.3rem;
+  }
+  .pillar {
+    text-decoration: none;
+    color: inherit;
+  }
+  .pillar:hover h3 {
+    color: var(--accent);
+  }
+  .home-subscribe {
+    margin-top: 3rem;
+  }
+</style>

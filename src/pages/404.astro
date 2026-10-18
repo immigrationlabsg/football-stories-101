@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPublishedStories } from '../lib/stories';
+import StoryList from '../components/StoryList.astro';
+import { withBase, paths } from '../lib/url';
+const latest = (await getPublishedStories()).slice(0, 3);
+---
+
+<Base title="Page not found" description="That page is not here." noindex>
+  <div class="wrap">
+    <p class="eyebrow">404</p>
+    <h1>Over the bar</h1>
+    <p class="intro">That page is not here. Perhaps the story has not reached the web yet, or the link was mistyped.</p>
+    <p>
+      <a class="btn" href={withBase(paths.search())}>Search the stories</a>
+      <a class="btn btn-ghost" href={withBase('/')}>Back to the front page</a>
+    </p>
+    {latest.length > 0 && (
+      <>
+        <div class="section-head"><h2>Recent stories</h2></div>
+        <StoryList stories={latest} />
+      </>
+    )}
+  </div>
+</Base>
+
+<style>
+  .intro {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+  }
+  .btn + .btn {
+    margin-left: 0.5rem;
+  }
+</style>

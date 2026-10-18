@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPublishedStories, archiveTree } from '../../lib/stories';
+import { monthName } from '../../lib/format';
+import { withBase, paths } from '../../lib/url';
+
+const stories = await getPublishedStories();
+const tree = archiveTree(stories);
+---
+
+<Base title="Archive" description="Every story by year and month." path={paths.archive()}>
+  <div class="narrow">
+    <p class="eyebrow">Index</p>
+    <h1>Archive</h1>
+    <p class="meta">{stories.length} {stories.length === 1 ? 'story' : 'stories'} on the web. <a href={withBase(paths.allStories())}>See them by number</a> or <a href={withBase('/topics/')}>by topic</a>.</p>
+    {
+      tree.map((y) => (
+        <section>
+          <div class="section-head">
+            <h2>
+              <a href={withBase(paths.archiveYear(y.year))}>{y.year}</a>
+            </h2>
+          </div>
+          <ul class="months">
+            {y.months.map((m) => (
+              <li>
+                <a href={withBase(paths.archiveMonth(y.year, m.month))}>{monthName(m.month)}</a>
+                <span class="meta">{m.stories.length}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .section-head h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .months {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem 1rem;
+  }
+  .months li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+</style>

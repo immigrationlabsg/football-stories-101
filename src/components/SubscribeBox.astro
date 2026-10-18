@@ -1,0 +1,51 @@
+---
+import { site } from '../site.config';
+import { withBase, paths } from '../lib/url';
+
+interface Props {
+  compact?: boolean;
+  heading?: string;
+}
+const { compact = false, heading = 'Get the next story in your inbox' } = Astro.props;
+const action = `https://buttondown.com/api/emails/embed-subscribe/${site.buttondownUsername}`;
+---
+
+<section class:list={['subscribe', 'panel', 'panel-accent', { compact }]} aria-labelledby="subscribe-heading">
+  <h2 id="subscribe-heading">{heading}</h2>
+  <p>
+    One researched football story a day, 1,200 to 1,800 words, free. Sent at {site.sendTimes.weekdays.replace(' Singapore time', '')} and {site.sendTimes.weekends.replace(' Singapore time', '')}, Singapore time. The web version follows a week later.
+  </p>
+  <form action={action} method="post" target="_blank" class="form">
+    <label class="visually-hidden" for="bd-email">Email address</label>
+    <input type="email" name="email" id="bd-email" placeholder="you@example.com" required autocomplete="email" />
+    <input type="hidden" name="tag" value="website" />
+    <button type="submit" class="btn">Subscribe</button>
+  </form>
+  <p class="small consent">
+    By subscribing you consent to receive the daily story by email. We use your address for nothing else, and every email
+    has an unsubscribe link. <a href={withBase(paths.privacy())}>Privacy</a>. Prefer no email? <a href={site.social.telegram} rel="noopener">Join the Telegram channel</a>.
+  </p>
+</section>
+
+<style>
+  .subscribe h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.35rem;
+  }
+  .form {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 1rem 0 0.75rem;
+  }
+  .form input[type='email'] {
+    flex: 1 1 240px;
+  }
+  .consent {
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  .compact p:first-of-type {
+    display: none;
+  }
+</style>

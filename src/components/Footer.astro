@@ -1,0 +1,92 @@
+---
+import { site } from '../site.config';
+import { withBase, paths } from '../lib/url';
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap cols">
+    <div>
+      <p class="brand">{site.name}</p>
+      <p class="small">{site.tagline}</p>
+      <p class="small">
+        Written under the byline <em>{site.byline}</em>. Free, non-commercial, no advertising.
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href={withBase(paths.allStories())}>All stories by number</a></li>
+        <li><a href={withBase(paths.archive())}>Archive by month</a></li>
+        <li><a href={withBase(paths.search())}>Search</a></li>
+        <li><a href={withBase(paths.rss())}>RSS (full text)</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="About">
+      <ul>
+        <li><a href={withBase(paths.about())}>About and editorial standards</a></li>
+        <li><a href={withBase(paths.corrections())}>Corrections</a></li>
+        <li><a href={withBase(paths.privacy())}>Privacy</a></li>
+        <li><a href={withBase(paths.links())}>Links</a></li>
+        <li><a href={withBase(paths.subscribe())}>Subscribe</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Elsewhere">
+      <ul>
+        {site.social.telegram && <li><a href={site.social.telegram} rel="me noopener">Telegram</a></li>}
+        {site.social.facebook && <li><a href={site.social.facebook} rel="me noopener">Facebook</a></li>}
+        {site.social.instagram && <li><a href={site.social.instagram} rel="me noopener">Instagram</a></li>}
+        {site.social.threads && <li><a href={site.social.threads} rel="me noopener">Threads</a></li>}
+        <li><a href={`mailto:${site.contactEmail}`}>Email the editor</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap legal small">
+    <p>
+      © {year} {site.name}. Text may be quoted briefly with attribution and a link. Illustrations are the publication's own
+      unless credited otherwise. No club crests are used; club names are the property of their clubs.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    background: var(--bg-sunken);
+    padding-block: 2.5rem 1.5rem;
+    margin-top: 3rem;
+    color: var(--ink-soft);
+  }
+  .cols {
+    display: grid;
+    gap: 1.5rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  }
+  .cols > div:first-child {
+    grid-column: span 1;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.92rem;
+  }
+  a {
+    color: var(--ink-soft);
+  }
+  a:hover {
+    color: var(--accent);
+  }
+  .legal {
+    margin-top: 2rem;
+    color: var(--ink-mute);
+  }
+</style>

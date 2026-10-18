@@ -1,0 +1,35 @@
+---
+import Base from '../../../layouts/Base.astro';
+import StoryList from '../../../components/StoryList.astro';
+import { getPublishedStories, archiveTree } from '../../../lib/stories';
+import { monthName } from '../../../lib/format';
+import { withBase, paths } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  const stories = await getPublishedStories();
+  return archiveTree(stories).map((y) => ({ params: { year: String(y.year) }, props: { year: y } }));
+}
+const { year } = Astro.props;
+const stories = year.months.flatMap((m) => m.stories);
+---
+
+<Base title={`Archive: ${year.year}`} description={`Stories published in ${year.year}.`} path={paths.archiveYear(year.year)}>
+  <div class="wrap">
+    <p class="eyebrow"><a href={withBase(paths.archive())}>Archive</a></p>
+    <h1>{year.year}</h1>
+    <ul class="chips">
+      {year.months.map((m) => (
+        <li>
+          <a href={withBase(paths.archiveMonth(year.year, m.month))}>{monthName(m.month)} ({m.stories.length})</a>
+        </li>
+      ))}
+    </ul>
+    <div class="list"><StoryList stories={stories} /></div>
+  </div>
+</Base>
+
+<style>
+  .list {
+    margin-top: 1.5rem;
+  }
+</style>

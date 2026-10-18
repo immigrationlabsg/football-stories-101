@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoryList from '../../components/StoryList.astro';
+import SubscribeBox from '../../components/SubscribeBox.astro';
+import { getPublishedStories } from '../../lib/stories';
+import { site, type PillarKey } from '../../site.config';
+import { paths } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const stories = await getPublishedStories();
+  return (Object.keys(site.pillars) as PillarKey[]).map((pillar) => ({
+    params: { pillar },
+    props: { pillar, stories: stories.filter((s) => s.data.pillar === pillar) },
+  }));
+}
+const { pillar, stories } = Astro.props;
+const info = site.pillars[pillar];
+---
+
+<Base title={info.label} description={info.blurb} path={paths.pillar(pillar)}>
+  <div class="wrap">
+    <p class="eyebrow">Pillar</p>
+    <h1>{info.label}</h1>
+    <p class="intro">{info.blurb}</p>
+    <p class="meta">{stories.length} {stories.length === 1 ? 'story' : 'stories'} on the web</p>
+    <div class="list">
+      <StoryList stories={stories} empty="The first story in this pillar is on its way." />
+    </div>
+    <div class="sub"><SubscribeBox compact /></div>
+  </div>
+</Base>
+
+<style>
+  .intro {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .list {
+    margin-top: 1.5rem;
+  }
+  .sub {
+    margin-top: 3rem;
+  }
+</style>

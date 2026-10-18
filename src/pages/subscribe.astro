@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import SubscribeBox from '../components/SubscribeBox.astro';
+import { site, WEB_LAG_DAYS } from '../site.config';
+import { withBase, paths } from '../lib/url';
+---
+
+<Base title="Subscribe" description="Get one researched football story in your inbox every morning. Free, no advertising." path={paths.subscribe()}>
+  <div class="narrow">
+    <p class="eyebrow">Subscribe</p>
+    <h1>One story every morning</h1>
+    <p class="intro">
+      Subscribers get the whole story by email on the morning it is published, {WEB_LAG_DAYS} days before it appears on this website.
+      It is free and will stay free. There is no advertising and your address is never shared.
+    </p>
+    <SubscribeBox heading="Join the list" />
+
+    <h2>When the email arrives</h2>
+    <table>
+      <tbody>
+        <tr><th scope="row">Monday to Friday</th><td>{site.sendTimes.weekdays.replace(', Monday to Friday', '')}</td></tr>
+        <tr><th scope="row">Saturday and Sunday</th><td>{site.sendTimes.weekends.replace(', Saturday and Sunday', '')}</td></tr>
+      </tbody>
+    </table>
+    <p class="small meta-note">
+      Singapore time is UTC+8, so that is 00:00 and 02:00 UTC. Deliveries can run a few minutes late.
+    </p>
+
+    <h2>Other ways to follow</h2>
+    <ul class="ways">
+      {site.social.telegram && <li><a href={site.social.telegram} rel="noopener">Telegram channel</a>: the same story, posted automatically each morning, no email needed.</li>}
+      <li><a href={withBase(paths.rss())}>RSS feed</a>: full text of every story once it reaches the web.</li>
+      {site.social.facebook && <li><a href={site.social.facebook} rel="noopener">Facebook</a>, {site.social.instagram && <a href={site.social.instagram} rel="noopener">Instagram</a>} and {site.social.threads && <a href={site.social.threads} rel="noopener">Threads</a>}: a summary and the illustration each day.</li>}
+    </ul>
+
+    <h2>Consent and privacy</h2>
+    <p class="small">
+      Your email address is collected for one purpose: sending you Football Stories 101. Every email carries an unsubscribe
+      link and requests are honoured immediately by the mailing system, well within the ten business days Singapore's
+      Personal Data Protection Act allows. Read the short <a href={withBase(paths.privacy())}>privacy page</a>.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .intro {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  h2 {
+    margin-top: 2.5rem;
+  }
+  .meta-note {
+    color: var(--ink-mute);
+  }
+  .ways li + li {
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+import { paths } from '../lib/url';
+---
+
+<Base title="Privacy" description="What Football Stories 101 collects, which is very little, and why." path={paths.privacy()}>
+  <div class="narrow prose">
+    <p class="eyebrow">Privacy</p>
+    <h1>Privacy</h1>
+    <p>This page is short because the publication collects almost nothing.</p>
+
+    <h2>The website</h2>
+    <p>
+      The site is static. It sets no cookies, runs no advertising and loads no third-party share buttons or social
+      widgets. Search runs entirely in your browser. If visitor statistics are ever switched on they will use a
+      cookieless, privacy-respecting counter that stores no personal data, which is why there is no cookie banner.
+    </p>
+
+    <h2>The email list</h2>
+    <p>
+      When you subscribe, your email address is stored by Buttondown, the newsletter service that sends the daily story,
+      together with the date you subscribed and, if you confirm by email, that confirmation. It is used for one purpose:
+      sending you Football Stories 101. It is never sold, shared or used for anything else.
+    </p>
+    <p>
+      Every email contains an unsubscribe link. Unsubscribing takes effect immediately in the mailing system, well within
+      the ten business days required by Singapore's Personal Data Protection Act and Spam Control Act. You can also ask
+      for your address to be deleted entirely by emailing <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+
+    <h2>Telegram and social media</h2>
+    <p>
+      The Telegram channel and the Facebook, Instagram and Threads accounts are run by their respective platforms under
+      their own privacy policies. The publication sees only what those platforms show every page owner.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this page, corrections or takedown requests: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+  </div>
+</Base>

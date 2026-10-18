@@ -1,0 +1,94 @@
+---
+/** Plain-URL share links. No third-party scripts. */
+interface Props {
+  url: string; // absolute
+  title: string;
+}
+const { url, title } = Astro.props;
+const u = encodeURIComponent(url);
+const t = encodeURIComponent(title);
+const links = [
+  { label: 'WhatsApp', href: `https://wa.me/?text=${t}%20${u}` },
+  { label: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
+  { label: 'Threads', href: `https://www.threads.net/intent/post?text=${t}%20${u}` },
+  { label: 'X', href: `https://twitter.com/intent/tweet?text=${t}&url=${u}` },
+  { label: 'Telegram', href: `https://t.me/share/url?url=${u}&text=${t}` },
+];
+---
+
+<div class="share" aria-label="Share this story">
+  <span class="label">Share</span>
+  <ul>
+    {
+      links.map((l) => (
+        <li>
+          <a href={l.href} target="_blank" rel="noopener noreferrer">
+            {l.label}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <button type="button" class="copy" data-url={url}>Copy link</button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.share .copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url ?? location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        const old = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => (btn.textContent = old), 1600);
+      } catch {
+        prompt('Copy this link', url);
+      }
+    });
+  });
+</script>
+
+<style>
+  .share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+  }
+  .label {
+    font-weight: 600;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a,
+  button {
+    display: inline-block;
+    font: inherit;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: var(--bg-raised);
+    color: var(--ink-soft);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:hover,
+  button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

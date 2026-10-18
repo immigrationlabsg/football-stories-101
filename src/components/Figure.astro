@@ -1,0 +1,26 @@
+---
+/**
+ * Captioned image inside a story body.
+ *   <Figure src="/images/stories/001-detail.jpg" alt="…" caption="…" credit="Wikimedia Commons, CC BY-SA 4.0, Author" />
+ */
+import { withBase } from '../lib/url';
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  width?: number;
+  height?: number;
+}
+const { src, alt, caption, credit, width, height } = Astro.props;
+---
+
+<figure class="figure">
+  <img src={withBase(src)} alt={alt} loading="lazy" decoding="async" width={width} height={height} />
+  {(caption || credit) && (
+    <figcaption>
+      {caption}
+      {credit && <span class="credit"> {caption ? '· ' : ''}{credit}</span>}
+    </figcaption>
+  )}
+</figure>

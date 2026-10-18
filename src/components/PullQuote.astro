@@ -1,0 +1,17 @@
+---
+/**
+ * Explicit pull quote for MDX. Plain Markdown blockquotes become pull quotes
+ * automatically; use this when you want to pass the attribution as a prop.
+ *
+ *   <PullQuote cite="Brian Clough, 1979">Give him a ball and a yard of grass…</PullQuote>
+ */
+interface Props {
+  cite?: string;
+}
+const { cite } = Astro.props;
+---
+
+<figure class="pullquote">
+  <blockquote><slot /></blockquote>
+  {cite && <figcaption>{cite}</figcaption>}
+</figure>

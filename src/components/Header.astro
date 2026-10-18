@@ -1,0 +1,176 @@
+---
+import { site } from '../site.config';
+import { withBase, paths } from '../lib/url';
+
+const nav = [
+  { href: paths.allStories(), label: 'Stories' },
+  { href: paths.pillar('players'), label: 'Players' },
+  { href: paths.pillar('clubs'), label: 'Clubs' },
+  { href: paths.pillar('eras'), label: 'Eras' },
+  { href: paths.pillar('moments'), label: 'Moments' },
+  { href: paths.archive(), label: 'Archive' },
+  { href: paths.about(), label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href={withBase('/')} aria-label={`${site.name} home`}>
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="3" />
+        <path d="M32 14l10 7-4 12H26l-4-12z" fill="currentColor" />
+        <path d="M22 21l-9 6 2 12 9-3M42 21l9 6-2 12-9-3M26 33l-4 12 10 6 10-6-4-12" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">{site.name}</span>
+        <span class="brand-tag">One story a day</span>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={withBase(item.href)} aria-current={current.startsWith(withBase(item.href)) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="actions">
+      <a class="icon-link" href={withBase(paths.search())} aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+      </a>
+      <button class="icon-link" type="button" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" /></svg>
+      </button>
+      <a class="btn subscribe-cta" href={withBase(paths.subscribe())}>Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = root.dataset.theme ?? (prefersDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('fs101-theme', next);
+    } catch {}
+  });
+</script>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: saturate(1.2) blur(6px);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    padding-block: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .brand svg {
+    color: var(--accent);
+    flex: none;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .brand-name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .brand-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    display: inline-block;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .icon-link {
+    display: inline-grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  .icon-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .subscribe-cta {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.88rem;
+  }
+  @media (max-width: 720px) {
+    .bar {
+      gap: 0.5rem 1rem;
+    }
+    nav {
+      order: 3;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav ul {
+      flex-wrap: nowrap;
+    }
+    .brand-tag {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import type { Story } from '../lib/stories';
+import { storyReadingMinutes, storyTitleParts } from '../lib/stories';
+import { storyNumber } from '../schema/story';
+import { formatDate } from '../lib/format';
+import { withBase, paths } from '../lib/url';
+import { site } from '../site.config';
+import HeroImage from './HeroImage.astro';
+
+interface Props {
+  story: Story;
+  eager?: boolean;
+  hideImage?: boolean;
+}
+const { story, eager = false, hideImage = false } = Astro.props;
+const { subject, angle } = storyTitleParts(story);
+const href = withBase(paths.story(story.data.slug));
+---
+
+<article class="card">
+  {
+    !hideImage && (
+      <a href={href} tabindex="-1" aria-hidden="true">
+        <HeroImage number={story.data.number} src={story.data.hero.src} alt="" sizes="(min-width: 900px) 360px, 100vw" loading={eager ? 'eager' : 'lazy'} />
+      </a>
+    )
+  }
+  <div class="card-body">
+    <p class="eyebrow">{storyNumber(story.data.number)} · {site.pillars[story.data.pillar].label}</p>
+    <h3>
+      <a href={href}>
+        <span class="subject">{subject}</span>
+        {angle}
+      </a>
+    </h3>
+    <p class="dek">{story.data.dek}</p>
+    <ul class="meta">
+      <li><time datetime={story.data.date.toISOString()}>{formatDate(story.data.date)}</time></li>
+      <li>{storyReadingMinutes(story)} min read</li>
+    </ul>
+  </div>
+</article>
