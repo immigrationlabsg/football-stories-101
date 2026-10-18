@@ -34,6 +34,8 @@ export const heroSchema = z.object({
    * precedence over `prompt`.
    */
   commons: z.string().trim().regex(/^File:/, 'commons must start with "File:"').optional(),
+  /** How to square-crop the photo: keep the busiest area (default), the top, or the centre. */
+  crop: z.enum(['attention', 'top', 'centre']).default('attention'),
   /** Link for the credit (the Commons file page), filled in automatically. */
   creditUrl: z.string().url().optional(),
 });

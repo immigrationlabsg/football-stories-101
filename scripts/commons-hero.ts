@@ -20,11 +20,19 @@ const RECORD = path.join(ROOT, 'data/hero-sources.json');
 const force = process.argv.includes('--force');
 const UA = 'FootballStories101/1.0 (https://github.com/immigrationlabsg/football-stories-101)';
 
-type Rec = Record<string, { commons: string; license: string; artist: string; url: string }>;
+type Rec = Record<string, { commons: string; license: string; artist: string; url: string; crop?: string }>;
 const record: Rec = fs.existsSync(RECORD) ? JSON.parse(fs.readFileSync(RECORD, 'utf8')) : {};
 
 const strip = (html: string) =>
   html.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
+
+function cleanArtist(a: string): string {
+  let x = a.split(';')[0].trim();
+  x = x.replace(/^(.+?)\s+\1$/i, '$1'); // "Unknown author Unknown author"
+  if (!x || /^unknown/i.test(x)) return 'Unknown photographer';
+  if (/own (work|picture)|^self/i.test(x)) return 'Wikimedia Commons contributor';
+  return x.slice(0, 80);
+}
 
 function licenceOk(short: string): boolean {
   const s = short.toLowerCase();
@@ -47,7 +55,7 @@ async function info(title: string) {
     download: ii.thumburl ?? ii.url,
     pageUrl: ii.descriptionurl as string,
     license: strip(md.LicenseShortName?.value ?? ''),
-    artist: strip(md.Artist?.value ?? 'Unknown author').split(';')[0].trim().slice(0, 80),
+    artist: cleanArtist(strip(md.Artist?.value ?? '')),
   };
 }
 
@@ -73,7 +81,8 @@ for (const s of stories) {
   if (!title) continue;
   const n = pad3(s.data.number);
   const dest = path.join(PUBLIC_DIR, s.data.hero.src);
-  if (!force && record[n]?.commons === title && fs.existsSync(dest)) continue;
+  const crop = s.data.hero.crop;
+  if (!force && record[n]?.commons === title && (record[n]?.crop ?? 'attention') === crop && fs.existsSync(dest)) continue;
   console.log(`[${n}] ${title}`);
   try {
     const meta = await info(title);
@@ -89,7 +98,10 @@ for (const s of stories) {
     // then a gentle warm print grade so photos sit with the site's palette.
     await sharp(raw)
       .rotate()
-      .resize(OUT, OUT, { fit: 'cover', position: sharp.strategy.attention })
+      .resize(OUT, OUT, {
+        fit: 'cover',
+        position: crop === 'top' ? 'top' : crop === 'centre' ? 'centre' : sharp.strategy.attention,
+      })
       .modulate({ saturation: 0.9, brightness: 1.02 })
       .tint({ r: 255, g: 246, b: 232 })
       .jpeg({ quality: 88, mozjpeg: true })
@@ -97,7 +109,7 @@ for (const s of stories) {
     const credit = `Photo: ${meta.artist}, ${meta.license}, via Wikimedia Commons`;
     setHeroField(s.file, 'credit', credit);
     setHeroField(s.file, 'creditUrl', meta.pageUrl);
-    record[n] = { commons: title, license: meta.license, artist: meta.artist, url: meta.pageUrl };
+    record[n] = { commons: title, license: meta.license, artist: meta.artist, url: meta.pageUrl, crop };
     done++;
     console.log(`  saved; ${credit}`);
   } catch (e) {
