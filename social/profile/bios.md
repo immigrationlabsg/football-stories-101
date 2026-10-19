@@ -10,3 +10,9 @@ Instagram and Threads allow 150 characters. Facebook Page "short description" al
 
 Link for the bio: https://immigrationlabsg.github.io/football-stories-101/
 
+
+## Chosen
+
+Profile picture: `profile-picture.png` (option D, the big "101" on green).
+
+Bio: The true stories behind the football you think you know. One a day, three minutes, free every morning.
