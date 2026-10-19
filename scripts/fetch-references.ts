@@ -11,7 +11,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { ROOT } from './lib/stories';
 
-type Ref = { commons: string; licence?: string; why?: string };
+type Ref = { commons: string | null; licence?: string; why?: string };
 const list = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const OUT = path.join(ROOT, 'design/references');
 const UA = 'FootballStories101/1.0 (https://github.com/immigrationlabsg/football-stories-101)';
@@ -24,6 +24,10 @@ const rows: string[] = ['| File | Story | Licence | Photographer | Source |', '|
 for (const [n, refs] of Object.entries(list).sort()) {
   for (const [i, ref] of (refs ?? []).slice(0, 2).entries()) {
     const name = `${n}-${i + 1}.jpg`;
+    if (!ref.commons) {
+      rows.push(`| (paint without a reference) | ${n} | | | ${ref.why ?? ''} |`);
+      continue;
+    }
     try {
       const api = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1600&titles=' + encodeURIComponent(ref.commons);
       const json = (await (await fetch(api, { headers: { 'User-Agent': UA } })).json()) as any;
