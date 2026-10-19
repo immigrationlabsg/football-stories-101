@@ -1,0 +1,44 @@
+name: Reference candidates
+
+# Searches Wikimedia Commons with the queries in data/reference-queries.json
+# and commits one numbered contact sheet per story to design/candidates/.
+on:
+  push:
+    branches: [main]
+    paths: ["data/reference-queries.json", "scripts/search-references.ts"]
+  workflow_dispatch:
+    inputs:
+      stories:
+        description: "Story numbers to search, space separated (blank for all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run candidates -- $STORIES
+        env:
+          STORIES: ${{ inputs.stories }}
+      - name: Commit
+        run: |
+          git add design/candidates
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "design: reference candidates searched"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done
