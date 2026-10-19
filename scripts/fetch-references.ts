@@ -16,6 +16,8 @@ type Ref = { commons: string | null; licence?: string; why?: string };
 const list = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const OUT = path.join(ROOT, 'design/references');
 fs.mkdirSync(OUT, { recursive: true });
+// Start clean, so a photo dropped from the list does not linger under its old number.
+for (const f of fs.readdirSync(OUT)) if (f.endsWith('.jpg')) fs.rmSync(path.join(OUT, f));
 
 
 const rows: string[] = ['| File | Story | Licence | Photographer | Source |', '|---|---|---|---|---|'];
