@@ -1,6 +1,7 @@
 /**
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
+ * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542.
  */
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
@@ -20,6 +21,20 @@ if (id === 'list') {
   process.exit(0);
 }
 const del = process.argv[3] === '--delete';
+if (id?.startsWith('ig:')) {
+  // An Instagram post, by its media id, through the Instagram login token.
+  const ig = process.env.INSTAGRAM_ACCESS_TOKEN;
+  const media = id.slice(3);
+  const url = `https://graph.instagram.com/v21.0/${media}?access_token=${ig}`;
+  const r = del ? await fetch(url, { method: 'DELETE' }) : await fetch(`${url}&fields=id,caption,media_type,permalink,timestamp`);
+  const d = (await r.json()) as any;
+  if (!r.ok || d.error) {
+    console.log(`Meta says: ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'})`);
+    process.exit(1);
+  }
+  console.log(del ? `DELETED Instagram post ${media}` : JSON.stringify({ ...d, caption: d.caption ? `${String(d.caption).slice(0, 80)}…` : undefined }, null, 2));
+  process.exit(0);
+}
 if (!id || !token) throw new Error('Usage: npm run check-facebook -- <post id>, with META_PAGE_ACCESS_TOKEN set');
 if (del) {
   const r = await fetch(`https://graph.facebook.com/v21.0/${id}?access_token=${token}`, { method: 'DELETE' });
