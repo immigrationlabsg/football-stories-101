@@ -23,7 +23,8 @@ const n = (process.argv[2] ?? '').padStart(3, '0');
 const ref = refs[n]?.[0];
 if (!ref?.commons) throw new Error(`No reference photo for story ${n}`);
 const colour = path.join(ROOT, 'design/references/colour', `${n}-1.jpg`);
-const source = fs.existsSync(colour) ? colour : path.join(ROOT, 'design/references', `${n}-1.jpg`);
+// The colourised copy is used only when asked for (USE_COLOUR=1); the original photo is the default.
+const source = process.env.USE_COLOUR === '1' && fs.existsSync(colour) ? colour : path.join(ROOT, 'design/references', `${n}-1.jpg`);
 const STYLE_REF = path.join(ROOT, 'public/images/stories/001-ronaldo-r9.jpg');
 const OUT = path.join(ROOT, 'design/paintings/test');
 fs.mkdirSync(OUT, { recursive: true });
