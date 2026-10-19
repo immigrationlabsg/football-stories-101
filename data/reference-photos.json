@@ -202,7 +202,8 @@
     {
       "commons": null,
       "licence": "n/a",
-      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette."
+      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette.",
+      "alt": "Watercolour painting of a Cameroon striker in a green shirt and red shorts, seen from behind, leaping to head the ball under floodlights"
     },
     {
       "commons": "File:Milla2008cropped.jpg",
@@ -242,7 +243,8 @@
     {
       "commons": "File:FC Barcelona Team 2011.jpg",
       "licence": "CC BY-SA 2.0",
-      "why": "Barcelona's players throwing Guardiola into the air after winning a trophy."
+      "why": "Barcelona's players throwing Guardiola into the air after winning a trophy.",
+      "crop": "left top"
     },
     {
       "commons": "File:FC Barcelona Team, 2011.jpg",
@@ -254,7 +256,8 @@
     {
       "commons": null,
       "licence": "n/a",
-      "why": "Commons has no free photo of Denmark at Euro 1992. Paint without a reference: a Danish player in the red 1992 shirt, arms raised to a Gothenburg evening sky, seen from behind."
+      "why": "Commons has no free photo of Denmark at Euro 1992. Paint without a reference: a Danish player in the red 1992 shirt, arms raised to a Gothenburg evening sky, seen from behind.",
+      "alt": "Watercolour painting of a Danish player in a red shirt, seen from behind, both arms raised in celebration"
     },
     {
       "commons": "File:Peter Schmeichel juli 1991.JPG",
@@ -266,7 +269,8 @@
     {
       "commons": "File:Maradona vs england.jpg",
       "licence": "Public domain",
-      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground."
+      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
+      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
     },
     {
       "commons": "File:Maradona pateando v inglaterra.jpg",
@@ -279,7 +283,8 @@
       "commons": "File:Grande Torino 1948 49.jpg",
       "licence": "Public domain",
       "why": "Grande Torino, the 1948–49 team, in colour.",
-      "kit": "Torino garnet (dark red) shirts, white shorts, 1949"
+      "kit": "Torino garnet (dark red) shirts, white shorts, 1949",
+      "alt": "Watercolour painting of the Grande Torino team in garnet shirts lined up for a team photograph in 1949"
     },
     {
       "commons": "File:Italy v Hungary - Turin, 1947 - Valentino Mazzola.jpg",
@@ -291,7 +296,8 @@
     {
       "commons": "File:Juninho-free-kick 2.jpg",
       "licence": "CC BY-SA 3.0 (User:Babboleolr)",
-      "why": "Juninho striking a free kick, the signature image of Lyon's seven-title era."
+      "why": "Juninho striking a free kick, the signature image of Lyon's seven-title era.",
+      "alt": "Watercolour painting of Juninho in Lyon's white shirt about to strike a free kick, with the goalkeeper and defenders ahead of him"
     },
     {
       "commons": "File:Juninho Pernambucano.JPG",

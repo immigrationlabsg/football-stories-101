@@ -17,7 +17,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { ROOT } from './lib/stories';
 
-type Ref = { commons: string | null; why: string; kit?: string };
+type Ref = { commons: string | null; why: string; kit?: string; crop?: string };
 const refs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const KEY = process.env.OPENAI_API_KEY;
 const MODEL = process.env.MODEL || 'gpt-image-1';
@@ -56,7 +56,7 @@ for (const n of stories) {
     // Original photo by default; the colourised copy only when asked for (USE_COLOUR=1).
     const colour = path.join(ROOT, 'design/references/colour', `${n}-1.jpg`);
     const source = process.env.USE_COLOUR === '1' && fs.existsSync(colour) ? colour : path.join(ROOT, 'design/references', `${n}-1.jpg`);
-    const cropped = await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer();
+    const cropped = await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: ref.crop ?? sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer();
     form.append('image[]', new Blob([cropped], { type: 'image/jpeg' }), `${n}.jpg`);
     form.append('image[]', style, 'style.jpg');
     prompt =
