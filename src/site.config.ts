@@ -52,7 +52,7 @@ export const site = {
   /** Public handles. Empty string hides the link. */
   social: {
     telegram: env('PUBLIC_TELEGRAM_CHANNEL', 'https://t.me/footballstories101'),
-    facebook: env('PUBLIC_FACEBOOK_URL', 'https://www.facebook.com/footballstories101'),
+    facebook: env('PUBLIC_FACEBOOK_URL', 'https://www.facebook.com/foot.ballstories101'),
     instagram: env('PUBLIC_INSTAGRAM_URL', 'https://www.instagram.com/foot.ballstories101'),
     threads: env('PUBLIC_THREADS_URL', 'https://www.threads.net/@foot.ballstories101'),
   },
