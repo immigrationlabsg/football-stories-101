@@ -39,7 +39,7 @@ three digits). Copy the front matter shape from
 - `facts`: exactly five, one per carousel card (cover, five fact cards, closing card makes seven). Each restates
   something the body says, in the order the story tells it, at most 110 characters, with nothing the body leaves out
 
-## The body (about 380 to 400 words)
+## The body (about 340 to 360 words)
 
 Read docs/editorial-standards.md "The story template" and "Style" and follow them exactly. In short:
 
@@ -54,7 +54,7 @@ Read docs/editorial-standards.md "The story template" and "Style" and follow the
 5. Close with "Here's what stays with me." and two to four short sentences. The reader question goes in the
    `question` field, not the body.
 6. Length: the Facebook and Instagram post is the whole story, word for word, so the story plus question and sign-off must fit Instagram's 2,200-character caption: aim for 2,000 to 2,150
-   characters, about 380 to 400 words, and check with `npm run social-length`. Never cut a fact to fit by
+   characters, about 340 to 360 words, and check with `npm run social-length`. Never cut a fact to fit by
    making a sentence vague; drop a whole minor detail instead.
 
 ## Fact-check (mandatory, before the draft is saved)

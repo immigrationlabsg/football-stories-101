@@ -14,9 +14,9 @@ The model is The Morning Founder: a fast story told by a friend who has just fou
 4. **The reveal line, early:** straight after the hook, about 15% of the way in, a line of its own:
    "Here's what I didn't know until recently." (variants: "Here's what I only found out recently.", "Here's the
    part nobody told me."). Then the backstory that answers the hook.
-5. **Body:** about 380 to 400 words in total (The Morning Founder runs about 390). The Facebook and Instagram
+5. **Body:** about 340 to 360 words in total (The Morning Founder runs about 390). The Facebook and Instagram
    post is the whole story word for word, so the story plus question and sign-off must fit Instagram's 2,200-character caption: aim for 2,000 to 2,150
-   characters, about 380 to 400 words, and check with `npm run social-length`. Never cut a fact to fit by
+   characters, about 340 to 360 words, and check with `npm run social-length`. Never cut a fact to fit by
    making a sentence vague; drop a whole minor detail instead.
    No section headings. Paragraphs of one to three short sentences; single-line
    paragraphs for punch ("He stayed 35 years."). Around the middle, a second turn on a line of its own: "Then came the
