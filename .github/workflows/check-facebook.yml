@@ -1,0 +1,26 @@
+name: Check a Facebook post
+
+# Asks Meta whether a post or draft exists and whether it is published. Changes nothing.
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "Post ID, e.g. 1419297047928388_122094755013522790"
+        required: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check-facebook -- "$POST_ID"
+        env:
+          POST_ID: ${{ inputs.post_id }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
