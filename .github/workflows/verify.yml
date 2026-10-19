@@ -1,0 +1,30 @@
+name: Verify
+
+# The same end-to-end check Claude runs before finishing any work, every evening before the next
+# morning's post and after every push. A red run means something would go wrong; GitHub emails you.
+on:
+  schedule:
+    - cron: "7 13 * * *" # 21:07 Singapore, the evening before each post
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+        env:
+          CHECK_SECRETS: "1"
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          SECRETS_ADMIN_TOKEN: ${{ secrets.SECRETS_ADMIN_TOKEN }}
