@@ -34,6 +34,19 @@ for (const s of stories) {
   const len = socialPosts(s, { kind: 'scheduled', webLive: false }).facebook.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
 }
+// No story twice: a subject may return only as a marked follow-up with a different angle.
+const seen = new Map<string, number>();
+for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
+  const [subject, angle = ''] = s.data.title.split(' / ');
+  const key = subject.replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase();
+  const titleKey = s.data.title.trim().toLowerCase();
+  if (stories.some((o) => o !== s && o.data.title.trim().toLowerCase() === titleKey)) errors.push(`${pad(s.data.number)}: the same title as another story`);
+  const earlier = seen.get(key);
+  if (earlier && !/follow-up/i.test(s.data.series ?? '') && !/follow-up/i.test(angle)) {
+    warnings.push(`${pad(s.data.number)} returns to "${subject}" (also ${pad(earlier)}); make sure the angle is new and mark it as a follow-up`);
+  }
+  if (!earlier) seen.set(key, s.data.number);
+}
 const numbers = stories.map((s) => s.data.number);
 if (new Set(numbers).size !== numbers.length) errors.push('two stories share a number');
 

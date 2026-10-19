@@ -34,3 +34,37 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 028 | Eras | Arsenal's Invincibles, 2003–04: 38 league games unbeaten | scheduled |
 | 029 | Moments | Greece win Euro 2004 at odds of 150 to 1 | scheduled |
 | 030 | Players | Lily Parr and the Dick, Kerr Ladies: 53,000 at Goodison, then a ban | scheduled |
+| 031 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
+| 032 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming | reserved |
+| 033 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
+| 034 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
+| 035 | Clubs | Parma in the 1990s: the small-town club Parmalat built, and how it fell | reserved |
+| 036 | Eras | France 1998–2000: World Cup and European champions back to back | reserved |
+| 037 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
+| 038 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
+| 039 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
+| 040 | Eras | Manchester United's Class of 92: six youth-team players and a first team | reserved |
+| 041 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
+| 042 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
+| 043 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
+| 044 | Eras | Van Gaal's Ajax 1994–95: champions of Europe with a team of teenagers | reserved |
+| 045 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
+| 046 | Players | Romário: the 1994 World Cup he promised, and the 1,000-goal claim | reserved |
+| 047 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
+| 048 | Eras | Mourinho's Porto, 2002–04: UEFA Cup, then Champions League | reserved |
+| 049 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
+| 050 | Players | Kaká: the last Ballon d'Or before Messi and Ronaldo, 2007 | reserved |
+| 051 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
+| 052 | Eras | Brazil 1970: Pelé, Jairzinho and the team that won with five number tens | reserved |
+| 053 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
+| 054 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
+
+## Rules for new angles
+- **Never repeat a story.** A subject may come back only with a new angle the earlier story did not cover, marked
+  "(follow-up of NNN)", and it may repeat at most a one-line recap of the earlier story. Example: 042, Ronaldo's
+  second career, follows 001, which covered the knees and the 2002 World Cup.
+- **Lead with names fans know.** At least half of each week's stories are built around globally famous players or teams
+  (Zlatan, Ronaldinho, Rivaldo, Romário, Beckham and the like). Their documented careers are fair subjects while they are alive.
+  The promise stays the same: a true, sourced story that makes a fan say "I never knew that", not news or gossip.
+- **Keep the rotation:** player, club, era, moment, in that order, with no more than two stories in a row from one country.
+- **Use the research notes** in `docs/research/` for ideas and timing, but only as inspiration; never copy another account's post.
