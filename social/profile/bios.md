@@ -15,4 +15,4 @@ Link for the bio: https://immigrationlabsg.github.io/football-stories-101/
 
 Profile picture: `profile-picture.png` (option D, the big "101" on green).
 
-Bio: The true stories behind the football you think you know. One a day, three minutes, free every morning.
+Bio: True stories behind the football you think you know. One a day, three minutes, free every morning.
