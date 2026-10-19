@@ -275,6 +275,17 @@ caption under the photo. That credit is a legal requirement of the licence: neve
   workflow → story number.
 - The record of which photo each story uses, with its licence, is in `data/hero-sources.json`.
 
+### Paintings with GPT Image (optional, paid)
+
+The free way is by hand in ChatGPT: see `docs/picture-guide.md`. To have GitHub paint them instead:
+
+1. On platform.openai.com, add billing and set a monthly budget limit under Limits. API use is billed separately from ChatGPT Plus.
+2. Create an API key under API keys. Do not paste it into any chat.
+3. In the GitHub repo, go to Settings → Secrets and variables → Actions → New repository secret. Name it `OPENAI_API_KEY` and paste the key as the value.
+4. Under Actions → "Paint with GPT Image" → Run workflow, enter the story numbers, such as `2 3 4`.
+
+The paintings land in `design/paintings/NNN.png`. Nothing goes live until the editor approves one and it is set as the story's hero.
+
 ## 14. Weekly drafting and the launch date
 
 - A scheduled Claude session runs **every Saturday at 8:47 am Singapore time**. It drafts seven new stories from
