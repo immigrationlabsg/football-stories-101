@@ -34,7 +34,7 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 015-2.jpg | 015 | CC BY-SA 4.0 | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:La_Boca_del_Riachuelo_-_Boteros_cruzando_personas_c.1900.jpg) |
 | 016-1.jpg | 016 | CC0 | Eric Koch for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Celtic_tegen_Feijenoord_1-2_finale_Europacup-I_in_Milaan_spelmoment,_Bestanddeelnr_923-5041.jpg) |
 | 016-2.jpg | 016 | CC0 | Hans Peters for Anefo , Nationaal Archief, Den Haag, Rijksfo | [Commons](https://commons.wikimedia.org/wiki/File:Jimmy_Johnstone_(cropped).jpg) |
-| (paint without a reference) | 017 | | | Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt and red shorts rising high for a header under San Siro floodlights, seen side-on with the face in shadow. |
+| (paint without a reference) | 017 | | | Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette. |
 | 017-2.jpg | 017 | CC BY-SA 3.0 | Jmex60 | [Commons](https://commons.wikimedia.org/wiki/File:Milla2008cropped.jpg) |
 | 018-1.jpg | 018 | CC0 | Jack de Nijs for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Ajax_tegen_Benfica_2-1,_Schrijvers_in_duel_met_Eusebio,_Bestanddeelnr_917-7453.jpg) |
 | 018-2.jpg | 018 | CC0 | Jack de Nijs for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Ajax_tegen_Benfica_2-1,_Eus%C3%A9bio_in_actie,_Bestanddeelnr_917-7451.jpg) |
@@ -54,7 +54,7 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 025-2.jpg | 025 | CC BY 2.0 | Jarrett Campbell | [Commons](https://commons.wikimedia.org/wiki/File:Euro_2004_Final.jpg) |
 | 026-1.jpg | 026 | CC BY 2.0 | Smabs Sputzer | [Commons](https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg) |
 | 026-2.jpg | 026 | CC BY-SA 3.0 | Oldelpaso | [Commons](https://commons.wikimedia.org/wiki/File:Sculpture_of_Bert_Trautmann.jpg) |
-| (paint without a reference) | 027 | | | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal, face hidden. |
+| (paint without a reference) | 027 | | | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal with his face turned away from us. Show a natural head with hair and an ear, not a featureless silhouette. |
 | 027-2.jpg | 027 | CC BY-SA 3.0 | The original uploader was Holdenbuckley at English Wikipedia | [Commons](https://commons.wikimedia.org/wiki/File:Beasant.jpg) |
 | 028-1.jpg | 028 | CC BY-SA 2.5 | Mr. Alexander Ottesen | [Commons](https://commons.wikimedia.org/wiki/File:Trophy_presentation_Highbury_2004.JPG) |
 | 028-2.jpg | 028 | CC0 | John Nesejas | [Commons](https://commons.wikimedia.org/wiki/File:Thierry_Henry%E2%80%99s_iconic_knee_slide.jpg) |
