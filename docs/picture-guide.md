@@ -6,7 +6,7 @@ The candidate photos for every story, two per story with the best first, are in 
 
 ## What is in design/references/ (checked 19 October 2026)
 
-The Reference photos workflow downloaded 45 photos from Wikimedia Commons, read each licence from Commons itself and refused anything that was not free. Every file's photographer and licence is in `design/references/README.md`.
+The Reference photos workflow downloaded 49 photos from Wikimedia Commons, 46 after review,, read each licence from Commons itself and refused anything that was not free. Every file's photographer and licence is in `design/references/README.md`.
 
 **Strongest references.** One person, the right moment, the right era. Start with these:
 004-1 (Cruyff scoring), 005-1 (Gerrard striking), 006-1 (Garrincha dribbling), 009-1 (Ghiggia's goal), 010-1 (Weah for PSG), 012-2 (Di Stéfano), 014-1 (Yashin's save), 018-1 (Eusébio shooting), 019-1 (Bobby Charlton), 020-1 (Guardiola), 022-1 (Maradona celebrating), 023-1 (Valentino Mazzola), 028-1 (Henry), 002-1 (Puskás), 003-2 (Clough).
