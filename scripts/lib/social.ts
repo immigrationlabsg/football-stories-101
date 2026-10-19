@@ -1,6 +1,6 @@
 import type { LoadedStory } from './stories';
 import { mdxToMarkdown, markdownToText } from './markdown';
-import { splitTitle, storyNumber, pad3, slugify } from '../../src/schema/story';
+import { splitTitle, storyNumber, pad3 } from '../../src/schema/story';
 import { site } from '../../src/site.config';
 import { absoluteUrl, paths } from '../../src/lib/url';
 import { formatDate } from '../../src/lib/format';
@@ -11,21 +11,6 @@ export interface SocialContext {
   now: Date;
   webLive: boolean;
   cardPaths: string[]; // repo-relative paths of the Instagram cards
-}
-
-function hashtags(story: LoadedStory): string {
-  const tags = new Set<string>(['FootballStories101', 'FootballHistory', 'Football']);
-  for (const v of [...story.data.players, ...story.data.clubs, ...story.data.competitions, ...story.data.decades]) {
-    const t = slugify(v)
-      .split('-')
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join('');
-    if (t && /^[A-Za-z]/.test(t)) tags.add(t);
-  }
-  return Array.from(tags)
-    .slice(0, 12)
-    .map((t) => `#${t}`)
-    .join(' ');
 }
 
 export function linkFor(story: LoadedStory, ctx: { webLive: boolean }): string {
@@ -53,7 +38,7 @@ export interface SocialPosts {
 }
 
 const THREADS_LIMIT = 500;
-const INSTAGRAM_LIMIT = 2200;
+export const INSTAGRAM_LIMIT = 2200;
 
 /** The text for each network. Shared by the social/NNN.md file and by the automatic posting. */
 export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'archive'; webLive: boolean }): SocialPosts {
@@ -61,9 +46,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   const md = mdxToMarkdown(story.body, { absoluteUrl });
   const link = linkFor(story, ctx);
   const webUrl = absoluteUrl(paths.story(story.data.slug));
-  const facts = story.data.facts;
   const num = storyNumber(story.data.number);
-  const archiveNote = ctx.kind === 'archive' ? ' (from the archive)' : '';
 
   // The Morning Founder posts the whole story natively, ending with the question,
   // a rule, and a one-line signature with the link.
@@ -119,24 +102,9 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-  // Instagram shows about 125 characters before "more": the one-line hook, then the reveal phrase.
-  const igHook = story.data.hook ?? `${subject} / ${angle}`;
-  const instagramFor = (n: number) =>
-    [
-      igHook,
-      ``,
-      REVEAL,
-      ``,
-      payoff || story.data.dek,
-      ``,
-      ...facts.slice(0, n).map((f) => `• ${f}`),
-      ``,
-      `Follow for one true football story every morning. ${num}${archiveNote}.`,
-      ``,
-      hashtags(story),
-    ].join('\n');
-  let instagram = instagramFor(3);
-  for (let n = 2; instagram.length > INSTAGRAM_LIMIT && n >= 0; n--) instagram = instagramFor(n);
+  // Instagram carries the same text as Facebook, with the same picture. It is never cut: if it is over
+  // Instagram's 2,200-character limit, posting stops and says by how much, so the story can be tightened.
+  const instagram = facebook;
 
   // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff.
   const threadsTries = m
@@ -167,11 +135,11 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
 
 ${facebook}
 
-## Instagram (carousel: the cards listed below, in order)
+## Instagram (the same text and picture as Facebook: social/cards/${pad3(story.data.number)}-fb.png)
 
 ${instagram}
 
-Alt text for the carousel: ${story.data.hero.alt}
+${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text: ${story.data.hero.alt}
 
 ## Threads (post the hook and facts, then the Instagram page as a reply)
 

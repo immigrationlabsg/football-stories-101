@@ -90,6 +90,23 @@ export async function postFacebookPhoto(a: { imageUrl: string; message: string; 
   return String(post.id);
 }
 
+/** A single-picture Instagram post. */
+export async function postInstagramImage(a: { imageUrl: string; caption: string }, env = process.env): Promise<string> {
+  const ig = env.META_IG_USER_ID;
+  const direct = Boolean(env.INSTAGRAM_ACCESS_TOKEN?.trim());
+  const base = direct ? INSTAGRAM : GRAPH;
+  const token = (direct ? env.INSTAGRAM_ACCESS_TOKEN : env.META_PAGE_ACCESS_TOKEN)!;
+  const container = await call(`${base}/${ig}/media`, { image_url: a.imageUrl, caption: a.caption, access_token: token });
+  for (let i = 0; i < 20; i++) {
+    const s = await call(`${base}/${container.id}`, { fields: 'status_code', access_token: token }, 'GET');
+    if (s.status_code === 'FINISHED') break;
+    if (s.status_code === 'ERROR' || s.status_code === 'EXPIRED') throw new Error(`Instagram container ${s.status_code}`);
+    await sleep(3000);
+  }
+  const published = await call(`${base}/${ig}/media_publish`, { creation_id: container.id, access_token: token });
+  return String(published.id);
+}
+
 /** An Instagram carousel (2 to 10 images). */
 export async function postInstagramCarousel(a: { imageUrls: string[]; caption: string }, env = process.env): Promise<string> {
   const ig = env.META_IG_USER_ID;
