@@ -372,14 +372,18 @@ main {
 /* Long-form prose */
 .prose {
   font-family: var(--serif);
-  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
-  line-height: 1.75;
+  font-size: clamp(1.08rem, 1rem + 0.3vw, 1.22rem);
+  line-height: 1.7;
+  max-width: 36em;
+}
+/* Short paragraphs need clear air between them, like a newsletter.
+   Reset first, then space: the spacing rule must come last and be at least
+   as specific as any element rule, or the gaps disappear. */
+.prose > * {
+  margin-block: 0;
 }
 .prose > * + * {
-  margin-top: 1.25em;
-}
-.prose p {
-  margin: 0;
+  margin-top: 1.5em;
 }
 .prose h2 {
   margin-top: 2.2em;
@@ -403,13 +407,9 @@ main {
   color: inherit;
   text-decoration-color: var(--accent);
 }
-.prose > p:first-of-type::first-letter {
-  font-size: 3.1em;
-  float: left;
-  line-height: 0.85;
-  padding: 0.08em 0.1em 0 0;
-  font-weight: 700;
-  color: var(--accent);
+.prose > p:first-of-type {
+  font-size: 1.12em;
+  line-height: 1.6;
 }
 
 /* Pull quote (from Markdown blockquotes, see remark-pullquotes) */
