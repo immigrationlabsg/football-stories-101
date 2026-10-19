@@ -4,12 +4,17 @@
  */
 import { loadStories } from './lib/stories';
 import { WORDS_MIN, WORDS_MAX } from '../src/schema/story';
+import { INSTAGRAM_LIMIT, socialPosts } from './lib/social';
 
 const { stories, errors, warnings } = loadStories();
 
 for (const s of stories) {
   if (s.words < WORDS_MIN || s.words > WORDS_MAX) {
-    warnings.push(`${s.file}: body is ${s.words} words; the target is 500 to 700 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
+    warnings.push(`${s.file}: body is ${s.words} words; the target is about 400 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
+  }
+  const social = socialPosts(s, { kind: 'scheduled', webLive: false }).facebook.length;
+  if (social > INSTAGRAM_LIMIT) {
+    warnings.push(`${s.file}: the Facebook and Instagram text is ${social} characters, over Instagram's ${INSTAGRAM_LIMIT}; Instagram will refuse it`);
   }
   if (s.data.facts.length > 0 && s.data.facts.length < 3) {
     warnings.push(`${s.file}: only ${s.data.facts.length} fact(s); the Threads post and Instagram carousel work best with 3 to 5`);

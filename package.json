@@ -25,6 +25,7 @@
     "paint": "tsx scripts/paint-gpt.ts",
     "post-social": "tsx scripts/post-social.ts",
     "check-facebook": "tsx scripts/check-facebook-post.ts",
+    "social-length": "tsx scripts/social-length.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },
   "dependencies": {

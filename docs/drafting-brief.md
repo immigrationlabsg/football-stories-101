@@ -38,7 +38,7 @@ three digits). Copy the front matter shape from
 - `question`: one line to the reader, ends the story
 - `facts`: three to five standalone facts for the Instagram carousel, each true and sourced
 
-## The body (500 to 700 words)
+## The body (about 380 to 400 words)
 
 Read docs/editorial-standards.md "The story template" and "Style" and follow them exactly. In short:
 
@@ -52,6 +52,9 @@ Read docs/editorial-standards.md "The story template" and "Style" and follow the
    no timelines.
 5. Close with "Here's what stays with me." and two to four short sentences. The reader question goes in the
    `question` field, not the body.
+6. Length: the Facebook and Instagram post is the whole story, word for word, so the story plus question and sign-off must fit Instagram's 2,200-character caption: aim for 2,000 to 2,150
+   characters, about 380 to 400 words, and check with `npm run social-length`. Never cut a fact to fit by
+   making a sentence vague; drop a whole minor detail instead.
 
 ## Fact-check (mandatory, before the draft is saved)
 
@@ -78,8 +81,8 @@ anything changed or cut. This is the audit trail; the owner never has to read it
 ## Social banner line (required for every story)
 
 Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts.
-It is the banner on the Facebook picture and the Instagram cover, and the first line of the Instagram caption.
+It is the banner on the Facebook and Instagram picture.
 Example: "He won the World Cup on two rebuilt knees."
 
-The Facebook post is the whole story. The tooling moves "Here's what I didn't know until recently." up so it begins within the first
+The Facebook post and the Instagram caption are the whole story, with the same picture (the Facebook card). The tooling moves "Here's what I didn't know until recently." up so it begins within the first
 230 characters, ahead of Facebook's "See more", and the remaining sentences of the opening follow it. Nothing is cut.

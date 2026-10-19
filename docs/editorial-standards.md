@@ -14,7 +14,11 @@ The model is The Morning Founder: a fast story told by a friend who has just fou
 4. **The reveal line, early:** straight after the hook, about 15% of the way in, a line of its own:
    "Here's what I didn't know until recently." (variants: "Here's what I only found out recently.", "Here's the
    part nobody told me."). Then the backstory that answers the hook.
-5. **Body:** 500 to 700 words in total. No section headings. Paragraphs of one to three short sentences; single-line
+5. **Body:** about 380 to 400 words in total (The Morning Founder runs about 390). The Facebook and Instagram
+   post is the whole story word for word, so the story plus question and sign-off must fit Instagram's 2,200-character caption: aim for 2,000 to 2,150
+   characters, about 380 to 400 words, and check with `npm run social-length`. Never cut a fact to fit by
+   making a sentence vague; drop a whole minor detail instead.
+   No section headings. Paragraphs of one to three short sentences; single-line
    paragraphs for punch ("He stayed 35 years."). Around the middle, a second turn on a line of its own: "Then came the
    part that surprised me." or "But here's where it gets interesting." At most one quote, woven in.
 6. **Close**: "Here's what stays with me." then two to four short sentences of reflection, present tense. Then the
@@ -65,8 +69,8 @@ says so publicly.
 ## Social banner line (required for every story)
 
 Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts.
-It is the banner on the Facebook picture and the Instagram cover, and the first line of the Instagram caption.
+It is the banner on the Facebook and Instagram picture.
 Example: "He won the World Cup on two rebuilt knees."
 
-The Facebook post is the whole story. The tooling moves "Here's what I didn't know until recently." up so it begins within the first
+The Facebook post and the Instagram caption are the whole story, with the same picture (the Facebook card). The tooling moves "Here's what I didn't know until recently." up so it begins within the first
 230 characters, ahead of Facebook's "See more", and the remaining sentences of the opening follow it. Nothing is cut.
