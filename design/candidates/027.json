@@ -1,0 +1,45 @@
+{
+  "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy",
+  "candidates": [
+    {
+      "no": 1,
+      "commons": "File:Alex Pearce at Bracknell Town FC.jpg",
+      "title": "File:Alex Pearce at Bracknell Town FC.jpg",
+      "licence": "CC0",
+      "artist": "Danharrisdavey",
+      "caption": "Pearce during a pre-season friendly at Bracknell Town",
+      "date": "2024-08-03",
+      "url": "https://commons.wikimedia.org/wiki/File:Alex_Pearce_at_Bracknell_Town_FC.jpg"
+    },
+    {
+      "no": 2,
+      "commons": "File:England mai 2007 040.jpg",
+      "title": "File:England mai 2007 040.jpg",
+      "licence": "Public domain",
+      "artist": "Øyvind Vik",
+      "caption": "FA-cup final at New Wembley: Chelsea vs Man. United 1-0 a.e.t.",
+      "date": "2007-05-19",
+      "url": "https://commons.wikimedia.org/wiki/File:England_mai_2007_040.jpg"
+    },
+    {
+      "no": 3,
+      "commons": "File:Alex Pearce.png",
+      "title": "File:Alex Pearce.png",
+      "licence": "CC BY 3.0",
+      "artist": "Robwingfield",
+      "caption": "Alex Pearce warming up against Aston Villa",
+      "date": "2008-01-12",
+      "url": "https://commons.wikimedia.org/wiki/File:Alex_Pearce.png"
+    },
+    {
+      "no": 4,
+      "commons": "File:Wembley Stadium closeup.jpg",
+      "title": "File:Wembley Stadium closeup.jpg",
+      "licence": "CC BY-SA 3.0",
+      "artist": "Billy Hicks",
+      "caption": "Το στάδιο του Γουέμπλεϊ αποτελεί το ακριβότερο στάδιο στον κόσμο και έδρα του αγγλικού ποδοσφαίρου.",
+      "date": "2007-05-18",
+      "url": "https://commons.wikimedia.org/wiki/File:Wembley_Stadium_closeup.jpg"
+    }
+  ]
+}
