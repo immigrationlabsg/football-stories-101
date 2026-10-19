@@ -2,6 +2,7 @@
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
  */
+const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
 if (id === 'list') {
   // What is on the Page: published posts, and unpublished (draft or scheduled) ones. IDs are printed without the Page prefix.
@@ -19,7 +20,6 @@ if (id === 'list') {
   process.exit(0);
 }
 const del = process.argv[3] === '--delete';
-const token = process.env.META_PAGE_ACCESS_TOKEN;
 if (!id || !token) throw new Error('Usage: npm run check-facebook -- <post id>, with META_PAGE_ACCESS_TOKEN set');
 if (del) {
   const r = await fetch(`https://graph.facebook.com/v21.0/${id}?access_token=${token}`, { method: 'DELETE' });
