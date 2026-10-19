@@ -95,28 +95,35 @@ export async function renderOg(story: StoryFrontmatter, hero: Buffer): Promise<B
   return toPng(node, 1200, 630);
 }
 
-/** 1080x1350 Instagram cover: hero top, headline below. */
-export async function renderIgCover(story: StoryFrontmatter, hero: Buffer): Promise<Buffer> {
-  const { subject, angle } = splitTitle(story.title);
-  const img = await heroDataUri(hero, 1080, 760);
+/**
+ * Headline card: a dark banner with one punchy line, the painting below it.
+ * Used for the Facebook picture (1080x1080) and the Instagram cover (1080x1350).
+ */
+async function headlineCard(story: StoryFrontmatter, hero: Buffer, height: number): Promise<Buffer> {
+  const { angle, subject } = splitTitle(story.title);
+  const line = story.hook ?? (angle || subject);
+  const bannerH = 300;
+  const img = await heroDataUri(hero, 1080, height - bannerH - 4);
+  const size = line.length > 80 ? 50 : line.length > 55 ? 58 : 66;
   const node = h(
     'div',
-    { style: { width: 1080, height: 1350, display: 'flex', flexDirection: 'column', background: C.bg, color: C.ink } },
-    h('img', { src: img, width: 1080, height: 760, style: { width: 1080, height: 760, objectFit: 'cover' } }),
+    { style: { width: 1080, height, display: 'flex', flexDirection: 'column', background: '#f4f1ea' } },
     h(
       'div',
-      { style: { display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 1080, height: 590, padding: '44px 64px 52px', overflow: 'hidden' } },
-      h(
-        'div',
-        { style: { display: 'flex', flexDirection: 'column', width: 952 } },
-        h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 26, color: C.accent, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16, width: 952, lineClamp: 1 } }, `${storyNumber(story.number)} · ${subject}`),
-        h('div', { style: { fontFamily: 'Libre Baskerville', fontWeight: 700, fontSize: fit(angle, 55, 58, 46), lineHeight: 1.15, width: 952, lineClamp: 4 } }, angle || subject),
-      ),
-      brand(24),
+      { style: { width: 1080, height: bannerH, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#141414' } },
+      h('div', { style: { width: 940, fontFamily: 'Libre Baskerville', fontWeight: 400, fontSize: size, lineHeight: 1.22, color: '#ffffff', textAlign: 'center', lineClamp: 3, display: 'block' } }, line),
     ),
+    h('div', { style: { width: 1080, height: 4, background: '#c9a24a', display: 'flex' } }),
+    h('img', { src: img, width: 1080, height: height - bannerH - 4, style: { width: 1080, height: height - bannerH - 4, objectFit: 'cover' } }),
   );
-  return toPng(node, 1080, 1350);
+  return toPng(node, 1080, height);
 }
+
+/** 1080x1350 Instagram cover. */
+export const renderIgCover = (story: StoryFrontmatter, hero: Buffer) => headlineCard(story, hero, 1350);
+
+/** 1080x1080 Facebook picture. */
+export const renderFbCard = (story: StoryFrontmatter, hero: Buffer) => headlineCard(story, hero, 1080);
 
 /** 1080x1350 fact slide. */
 export async function renderIgFact(story: StoryFrontmatter, fact: string, index: number, total: number): Promise<Buffer> {
@@ -140,19 +147,19 @@ export async function renderIgFact(story: StoryFrontmatter, fact: string, index:
   return toPng(node, 1080, 1350);
 }
 
-/** 1080x1350 closing slide. */
-export async function renderIgClose(story: StoryFrontmatter, siteLabel: string): Promise<Buffer> {
+/** 1080x1350 closing slide: no website, just a follow line. */
+export async function renderIgClose(story: StoryFrontmatter): Promise<Buffer> {
   const node = h(
     'div',
-    { style: { width: 1080, height: 1350, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: C.accent, color: '#ffffff', padding: '80px' } },
-    h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 26, letterSpacing: 2, textTransform: 'uppercase', opacity: 0.85 } }, storyNumber(story.number)),
+    { style: { width: 1080, height: 1350, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#141414', color: '#ffffff', padding: '80px' } },
+    h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 26, letterSpacing: 2, textTransform: 'uppercase', color: '#c9a24a' } }, storyNumber(story.number)),
     h(
       'div',
       { style: { display: 'flex', flexDirection: 'column' } },
-      h('div', { style: { fontFamily: 'Libre Baskerville', fontWeight: 700, fontSize: 64, lineHeight: 1.15, marginBottom: 36, width: 920 } }, 'Full story in the link in bio'),
-      h('div', { style: { fontFamily: 'Libre Baskerville', fontStyle: 'italic', fontSize: 32, lineHeight: 1.4, opacity: 0.9, width: 920 } }, 'One researched football story every morning, free, by email.'),
+      h('div', { style: { fontFamily: 'Libre Baskerville', fontWeight: 700, fontSize: 64, lineHeight: 1.18, marginBottom: 36, width: 920 } }, 'Follow for one true football story every morning.'),
+      h('div', { style: { fontFamily: 'Libre Baskerville', fontStyle: 'italic', fontSize: 32, lineHeight: 1.4, opacity: 0.85, width: 920 } }, story.question ?? ''),
     ),
-    h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 30 } }, siteLabel),
+    h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 30, letterSpacing: 2, textTransform: 'uppercase' } }, 'Football Stories 101'),
   );
   return toPng(node, 1080, 1350);
 }

@@ -75,7 +75,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     ``,
     `_____`,
     ``,
-    `Follow Football Stories 101 for one true football story every morning.`,
+    `Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.`,
   ]
     .join('\n')
     .replace(/\n{3,}/g, '\n\n')
@@ -101,14 +101,14 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   let threads = threadsFor(5);
   for (let n = 4; threads.length > THREADS_LIMIT && n >= 0; n--) threads = threadsFor(n);
 
-  // No website link on social posts, by the editor's choice.
-  const threadsReply = '';
+  // No website link on social posts, by the editor's choice. Threads points to the Instagram page instead.
+  const threadsReply = `More on Instagram: ${process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram}`;
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
   const num = storyNumber(story.data.number);
-  const { facebook, instagram, threads, webUrl } = socialPosts(story, ctx);
+  const { facebook, instagram, threads, threadsReply, webUrl } = socialPosts(story, ctx);
 
   return `# ${num} · ${story.data.title}
 
@@ -117,7 +117,7 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
 - Hero: public${story.data.hero.src}
 - Hero alt text: ${story.data.hero.alt}
 
-## Facebook (post the whole text with the picture, exactly as below)
+## Facebook (post the whole text with the picture social/cards/${pad3(story.data.number)}-fb.png, exactly as below)
 
 ${facebook}
 
@@ -127,9 +127,13 @@ ${instagram}
 
 Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (post the hook and facts; no link anywhere)
+## Threads (post the hook and facts, then the Instagram page as a reply)
 
 ${threads}
+
+### Reply
+
+${threadsReply}
 
 ## Cards (1080x1350)
 

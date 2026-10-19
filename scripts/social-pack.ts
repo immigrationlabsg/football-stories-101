@@ -26,6 +26,9 @@ const cardsOut = path.join(outDir, 'cards');
 fs.mkdirSync(cardsOut, { recursive: true });
 const derived = path.join(PUBLIC_DIR, 'images/derived');
 const cardPaths: string[] = [];
+// The Facebook picture goes with the Instagram cards.
+const fbCard = `${pad3(n)}-fb.png`;
+if (fs.existsSync(path.join(derived, fbCard))) fs.copyFileSync(path.join(derived, fbCard), path.join(cardsOut, fbCard));
 for (const f of fs.readdirSync(derived).filter((f) => f.startsWith(`${pad3(n)}-ig-`)).sort()) {
   fs.copyFileSync(path.join(derived, f), path.join(cardsOut, f));
   cardPaths.push(`social/cards/${f}`);

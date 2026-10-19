@@ -13,7 +13,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
-import { renderOg, renderIgCover, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
+import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
@@ -74,21 +74,22 @@ for (const story of stories) {
   const slides: Array<() => Promise<Buffer>> = [
     () => renderIgCover(story.data, hero),
     ...story.data.facts.map((fact, i) => () => renderIgFact(story.data, fact, i + 1, story.data.facts.length)),
-    () => renderIgClose(story.data, SITE_LABEL),
+    () => renderIgClose(story.data),
   ];
   const og = path.join(OUT, `${n}-og.png`);
+  const fb = path.join(OUT, `${n}-fb.png`);
   const cardFiles = slides.map((_, i) => path.join(OUT, `${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   const cards = cardFiles.map((f) => `/images/derived/${path.basename(f)}`);
 
   // What the outputs depend on: the hero bytes, the fields that appear on cards, the renderer, the sizes.
   const hash = hashOf(
     hero,
-    JSON.stringify({ number: story.data.number, title: story.data.title, dek: story.data.dek, facts: story.data.facts, site: SITE_LABEL }),
+    JSON.stringify({ number: story.data.number, title: story.data.title, dek: story.data.dek, hook: story.data.hook, question: story.data.question, facts: story.data.facts, site: SITE_LABEL }),
     cardsSource,
     widthsKey,
   );
 
-  if (fresh(n, hash, [...sizeFiles, og, ...cardFiles])) {
+  if (fresh(n, hash, [...sizeFiles, og, fb, ...cardFiles])) {
     console.log(`${n} ${story.data.slug}: up to date`);
   } else {
     for (const w of widths) {
@@ -96,6 +97,7 @@ for (const story of stories) {
       await sharp(hero).resize(w).webp({ quality: 78 }).toFile(path.join(OUT, `${n}-${w}.webp`));
     }
     fs.writeFileSync(og, await renderOg(story.data, hero));
+    fs.writeFileSync(fb, await renderFbCard(story.data, hero));
     for (let i = 0; i < slides.length; i++) fs.writeFileSync(cardFiles[i], await slides[i]());
     console.log(`${n} ${story.data.slug}: ${widths.length} sizes, og, ${cards.length} carousel cards`);
   }

@@ -28,6 +28,7 @@ jobs:
       SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
       SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
       WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+      PUBLIC_INSTAGRAM_URL: ${{ vars.PUBLIC_INSTAGRAM_URL }}
     steps:
       - uses: actions/checkout@v4
         with:

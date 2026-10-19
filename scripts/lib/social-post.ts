@@ -18,7 +18,7 @@ export async function postStoryToSocials(
   const posts = socialPosts(story, opts);
   const configured = metaConfigured();
   const n = pad3(story.data.number);
-  const heroUrl = absoluteUrl(story.data.hero.src);
+  const heroUrl = absoluteUrl(`/images/derived/${n}-fb.png`); // the headline card for Facebook
   const cardUrls = Array.from({ length: CARDS }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   const out: Outcome[] = [];
 

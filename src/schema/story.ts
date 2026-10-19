@@ -49,6 +49,8 @@ export const storySchema = z.object({
     message: 'title must follow the "Subject / angle" convention, with " / " between the two parts',
   }),
   dek: nonEmpty('dek').max(DEK_MAX, `dek must be ${DEK_MAX} characters or fewer`),
+  /** One punchy line for the share cards (Facebook image, Instagram cover): a banner above the painting. */
+  hook: z.string().trim().max(100, 'hook must be 100 characters or fewer').optional(),
   slug: nonEmpty('slug').regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug must be lower-case words joined by hyphens'),
   date: z.coerce.date(),
   updated: z.coerce.date().optional(),
