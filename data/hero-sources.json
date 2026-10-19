@@ -1,22 +1,4 @@
 {
-  "015": {
-    "commons": "File:La Bombonera football stadium.jpg",
-    "license": "CC BY-SA 4.0",
-    "artist": "Julia Sumangil",
-    "url": "https://commons.wikimedia.org/wiki/File:La_Bombonera_football_stadium.jpg"
-  },
-  "016": {
-    "commons": "File:Trainer Jock Stein van Celtic in het Hiltonhotel, Bestanddeelnr 924-3395.jpg",
-    "license": "CC0",
-    "artist": "Anefo",
-    "url": "https://commons.wikimedia.org/wiki/File:Trainer_Jock_Stein_van_Celtic_in_het_Hiltonhotel,_Bestanddeelnr_924-3395.jpg"
-  },
-  "018": {
-    "commons": "File:Feijenoord tegen Benfica 0-0 Eusébio met Leo Horn, Bestanddeelnr 915-0312.jpg",
-    "license": "CC0",
-    "artist": "Eric Koch for Anefo",
-    "url": "https://commons.wikimedia.org/wiki/File:Feijenoord_tegen_Benfica_0-0_Eus%C3%A9bio_met_Leo_Horn,_Bestanddeelnr_915-0312.jpg"
-  },
   "021": {
     "commons": "File:Peter Schmeichel juli 1991.JPG",
     "license": "Public domain",
@@ -40,13 +22,6 @@
     "license": "CC BY 2.0",
     "artist": "Smabs Sputzer",
     "url": "https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg"
-  },
-  "019": {
-    "commons": "File:The Munich Clock, Old Trafford - geograph.org.uk - 5671544.jpg",
-    "license": "CC BY-SA 2.0",
-    "artist": "David Dixon",
-    "url": "https://commons.wikimedia.org/wiki/File:The_Munich_Clock,_Old_Trafford_-_geograph.org.uk_-_5671544.jpg",
-    "crop": "attention"
   },
   "020": {
     "commons": "File:Pep Guardiola, 2009 UEFA Champions League Final.jpg",
