@@ -40,17 +40,17 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 018-2.jpg | 018 | CC0 | Eric Koch for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Feijenoord_tegen_Benfica_0-0_Eus%C3%A9bio_met_Leo_Horn,_Bestanddeelnr_915-0312.jpg) |
 | 019-1.jpg | 019 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Bobby_charlton_elgrafico.JPG) |
 | 020-1.jpg | 020 | CC BY 2.0 | tpower1978 | [Commons](https://commons.wikimedia.org/wiki/File:Manager_Josep_Guardiola.jpg) |
-| (not downloaded) | 020 | Input buffer contains unsupported image format | | File:Pep Guardiola, 2009 UEFA Champions League Final.jpg |
+| 020-2.jpg | 020 | CC BY 2.0 | funnydae | [Commons](https://commons.wikimedia.org/wiki/File:Pep_Guardiola,_2009_UEFA_Champions_League_Final.jpg) |
 | 021-1.jpg | 021 | Public domain | my own picture | [Commons](https://commons.wikimedia.org/wiki/File:Peter_Schmeichel_juli_1991.JPG) |
-| (not downloaded) | 021 | Input buffer contains unsupported image format | | File:Kim vilfort-2006.jpg |
+| 021-2.jpg | 021 | CC BY-SA 3.0 | Unknown | [Commons](https://commons.wikimedia.org/wiki/File:Kim_vilfort-2006.jpg) |
 | 022-1.jpg | 022 | Public domain | Dani Yako | [Commons](https://commons.wikimedia.org/wiki/File:Maradona_vs_england.jpg) |
 | 022-2.jpg | 022 | Public domain | Dani Yako | [Commons](https://commons.wikimedia.org/wiki/File:Maradona_scoring_england_1986.jpg) |
 | 023-1.jpg | 023 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Italy_v_Hungary_-_Turin,_1947_-_Valentino_Mazzola.jpg) |
 | 023-2.jpg | 023 | Public domain | The original uploader was Caulfield at Italian Wikipedia . | [Commons](https://commons.wikimedia.org/wiki/File:Valentino_Sandro_Mazzola.jpg) |
-| (not downloaded) | 024 | Input buffer contains unsupported image format | | File:Juninho-free-kick 2.jpg |
+| 024-1.jpg | 024 | CC BY-SA 3.0 | User:Babboleolr | [Commons](https://commons.wikimedia.org/wiki/File:Juninho-free-kick_2.jpg) |
 | 024-2.jpg | 024 | CC BY 3.0 br | TV Brasil | [Commons](https://commons.wikimedia.org/wiki/File:Juninho_Pernambucano.JPG) |
-| 025-1.jpg | 025 | CC BY-SA 3.0 | Fritz Duras | [Commons](https://commons.wikimedia.org/wiki/File:Charisteas%27_Siegtreffer_im_Finale_der_Euro_2004.jpg) |
-| 025-2.jpg | 025 | CC BY-SA 3.0 | Fritz Duras | [Commons](https://commons.wikimedia.org/wiki/File:Griechische_Nationalmannschaft_bei_der_Siegerehrung.jpg) |
+| (not downloaded) | 025 | Input buffer contains unsupported image format | | File:Charisteas' Siegtreffer im Finale der Euro 2004.jpg |
+| (not downloaded) | 025 | Input buffer contains unsupported image format | | File:Griechische Nationalmannschaft bei der Siegerehrung.jpg |
 | (paint without a reference) | 026 | | | Commons has no free 1956 photo of Trautmann. Paint without a reference: a 1950s goalkeeper in a grey roll-neck jersey and flat cap at old Wembley, seen from behind, one hand pressed to his neck while teammates run toward him. |
 | 026-2.jpg | 026 | CC BY 2.0 | Smabs Sputzer | [Commons](https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg) |
 | (paint without a reference) | 027 | | | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal, face hidden. |
@@ -58,6 +58,6 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 028-1.jpg | 028 | CC BY 2.0 | Richard Moross | [Commons](https://commons.wikimedia.org/wiki/File:Thierry_Henry_Charlton.jpg) |
 | (not downloaded) | 028 | Input buffer contains unsupported image format | | File:Trophy presentation Highbury 2004.JPG |
 | 029-1.jpg | 029 | CC BY-SA 2.0 | Photo by Seán Murray Cropped and retouched by Danyele | [Commons](https://commons.wikimedia.org/wiki/File:1999_UEFA_Champions_League_celebration_(edited).jpg) |
-| (not downloaded) | 029 | Input buffer contains unsupported image format | | File:Alex Ferguson.jpg |
+| 029-2.jpg | 029 | CC BY 2.0 | Austin Osuide | [Commons](https://commons.wikimedia.org/wiki/File:Alex_Ferguson.jpg) |
 | (not downloaded) | 030 | Input buffer contains unsupported image format | | File:Dick, Kerr's Ladies kiss.jpg |
 | (not downloaded) | 030 | Input buffer contains unsupported image format | | File:Dick kerr ladies team.jpg |
