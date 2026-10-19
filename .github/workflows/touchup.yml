@@ -1,0 +1,45 @@
+name: Touch up a painting
+
+# Makes one small change to design/paintings/NNN-base.png with OpenAI's API and
+# saves the result as design/paintings/NNN.png. Run by hand only (billed per image).
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Story number, e.g. 2"
+        required: true
+      change:
+        description: "What to change, e.g. Add the club crest on the left chest of the shirt"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  touchup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run touchup -- "$STORY" "$CHANGE"
+        env:
+          STORY: ${{ inputs.story }}
+          CHANGE: ${{ inputs.change }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Commit
+        run: |
+          git add design/paintings
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "design: painting touched up"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done
