@@ -43,7 +43,7 @@ export async function postStoryToSocials(
       if (network === 'facebook') {
         await waitForUrl(heroUrl);
         const id = await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook, draft: opts.draft, scheduleAt: opts.scheduleAt });
-        out.push({ network, status: opts.scheduleAt ? 'drafted' : opts.draft ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : opts.draft ? 'draft' : 'post'} ${id}` });
+        out.push({ network, status: opts.scheduleAt ? 'drafted' : opts.draft ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : opts.draft ? 'draft' : 'post'} ${id} (short id ${id.split('_')[1] ?? id})` });
       } else if (network === 'instagram') {
         for (const u of cardUrls) await waitForUrl(u);
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });

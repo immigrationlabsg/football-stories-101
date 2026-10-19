@@ -8,8 +8,8 @@ import { z } from 'zod';
 export const PILLARS = ['players', 'clubs', 'eras', 'moments'] as const;
 
 export const DEK_MAX = 160;
-export const WORDS_MIN = 450;
-export const WORDS_MAX = 800;
+export const WORDS_MIN = 300;
+export const WORDS_MAX = 700;
 
 const nonEmpty = (label: string) => z.string().trim().min(1, `${label} is required`);
 

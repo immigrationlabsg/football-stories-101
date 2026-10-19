@@ -3,6 +3,21 @@
  *   npm run check-facebook -- 1419297047928388_122094755013522790
  */
 const id = process.argv[2];
+if (id === 'list') {
+  // What is on the Page: published posts, and unpublished (draft or scheduled) ones. IDs are printed without the Page prefix.
+  const page = process.env.META_PAGE_ID;
+  const show = async (label: string, path: string) => {
+    const r = await fetch(`https://graph.facebook.com/v21.0/${page}/${path}&access_token=${token}`);
+    const j = (await r.json()) as any;
+    if (!r.ok || j.error) return console.log(`${label}: Meta says ${j.error?.message ?? r.status}`);
+    console.log(`${label}: ${j.data.length}`);
+    for (const p of j.data) console.log(`  ${String(p.id).split('_')[1] ?? p.id} | ${p.created_time} | ${p.is_published === false ? 'UNPUBLISHED' : 'PUBLISHED'} | ${String(p.message ?? '').slice(0, 50)}`);
+  };
+  await show('PUBLISHED on the Page', 'published_posts?fields=id,created_time,message,is_published&limit=10');
+  await show('UNPUBLISHED (drafts and scheduled)', 'promotable_posts?is_published=false&fields=id,created_time,message,is_published&limit=10');
+  await show('SCHEDULED', 'scheduled_posts?fields=id,created_time,message,is_published,scheduled_publish_time&limit=10');
+  process.exit(0);
+}
 const del = process.argv[3] === '--delete';
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 if (!id || !token) throw new Error('Usage: npm run check-facebook -- <post id>, with META_PAGE_ACCESS_TOKEN set');
