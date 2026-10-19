@@ -17,6 +17,10 @@ const soonest = Date.now() + 15 * 60 * 1000; // Meta needs at least 10 minutes' 
 
 let failed = 0;
 for (const story of loadStories().stories.filter((s) => s.data.number >= from && s.data.number <= to && !s.data.draft)) {
+  if (story.data.date.getTime() > Date.now() + 27 * 86_400_000) {
+    console.log(`${story.data.number}: ${story.data.date.toISOString()} is beyond Meta's scheduling window; the daily run schedules it once it is within 27 days.`);
+    continue;
+  }
   if (story.data.date.getTime() < soonest) {
     console.log(`${story.data.number}: ${story.data.date.toISOString()} is too soon to schedule; the daily run will post it.`);
     continue;

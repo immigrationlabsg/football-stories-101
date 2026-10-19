@@ -47,6 +47,8 @@ interface SentFile {
 
 const SENT_PATH = path.join(ROOT, 'data/sent.json');
 const DUE_WINDOW_MS = 24 * 60 * 60 * 1000;
+// Meta refuses Facebook schedule times much more than four weeks ahead (30 Nov failed on 19 Oct at 29.3 days).
+const FACEBOOK_WINDOW_MS = 27 * DUE_WINDOW_MS;
 
 const now = process.env.PUBLISH_NOW ? new Date(process.env.PUBLISH_NOW) : new Date();
 if (Number.isNaN(now.getTime())) throw new Error(`PUBLISH_NOW is not a valid date: ${process.env.PUBLISH_NOW}`);
@@ -196,6 +198,11 @@ async function main() {
     const socialDry = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
     socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun: socialDry, skipDone: true });
     if (!socialDry) recordSocial(story.data.number, socialOutcomes);
+    // Keep Facebook's Planner filled: schedule each upcoming story once it is inside Meta's scheduling window.
+    for (const next of stories.filter((s) => !s.data.draft && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
+      const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
+      if (!socialDry) recordSocial(next.data.number, ahead);
+    }
   } else {
     console.log('[social] archive re-run: not posted automatically to Facebook, Instagram or Threads.');
   }

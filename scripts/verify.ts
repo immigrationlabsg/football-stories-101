@@ -65,12 +65,12 @@ if (schedule.launch_date && (!last || last.data.date.getTime() < now.getTime() +
   warnings.push(`stories run out on ${last?.data.date.toISOString().slice(0, 10) ?? 'launch'}: less than ${schedule.min_buffer_days ?? 14} days ahead; draft more`);
 }
 
-// 3. Social posts: every upcoming story inside Facebook's 30-day scheduling window is scheduled.
+// 3. Social posts: every upcoming story inside Facebook's scheduling window (the daily run fills it to 27 days) is scheduled.
 const social = (sent.social ?? []) as { number: number; network: string; status?: string }[];
 const has = (n: number, net: string) => social.some((r) => r.number === n && r.network === net);
 for (const s of live) {
   const t = s.data.date.getTime();
-  if (t > now.getTime() + 20 * 60e3 && t < now.getTime() + 29 * DAY && !has(s.data.number, 'facebook')) {
+  if (t > now.getTime() + 20 * 60e3 && t < now.getTime() + 26 * DAY && !has(s.data.number, 'facebook')) {
     warnings.push(`${pad(s.data.number)} (${s.data.date.toISOString().slice(0, 10)}) is not scheduled on Facebook yet; run "Schedule Facebook posts"`);
   }
   if (t < now.getTime() - 2 * 3600e3 && t > now.getTime() - 7 * DAY) {
