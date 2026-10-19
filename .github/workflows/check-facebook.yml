@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       post_id:
-        description: "Post ID, or the word list to list what is on the Page, or ig:<media id> for an Instagram post"
+        description: "Post ID, or the word list to list what is on the Page, or ig:<media id> for an Instagram post, or threads to check the Threads key"
         required: true
       delete:
         description: "Delete this post or draft"
@@ -32,3 +32,4 @@ jobs:
           META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}

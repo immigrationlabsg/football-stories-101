@@ -337,9 +337,11 @@ Instagram app, then click **Generate token** next to the account. Save that toke
 6. Request `{page id}?fields=instagram_business_account`. Its `id` is the Instagram user ID.
 7. In the GitHub repo, **Settings → Secrets and variables → Actions → New repository secret**, add:
    `META_PAGE_ID`, `META_PAGE_ACCESS_TOKEN` (the Page token from step 5), `META_IG_USER_ID`.
-8. Threads: in the same app, add the **Threads** use case, give your Threads account the tester role, generate a token with
-   `threads_basic` and `threads_content_publish`, exchange it for a long-lived token, and add `THREADS_USER_ID` and `THREADS_ACCESS_TOKEN`.
-   The Threads token lasts 60 days, so put a reminder in your calendar to renew it every 50 days.
+8. Threads needs **its own app**: Meta does not offer the Threads use case alongside the others. Create a second app with the
+   "Access the Threads API" use case, add `threads_content_publish` and `threads_manage_replies`, make your Threads account a
+   Threads Tester, accept the invite, then generate a token under the use case's Settings. Save it as `THREADS_ACCESS_TOKEN`
+   (`THREADS_USER_ID` is optional). Check it with **Check a Facebook post** and the word `threads`. It lasts 60 days and is
+   renewed automatically by **Refresh social keys**.
 
 Never paste a token or secret into a chat or a file in the repository.
 

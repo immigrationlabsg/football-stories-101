@@ -25,7 +25,7 @@ export function metaConfigured(env: NodeJS.ProcessEnv = process.env): MetaConfig
   return {
     facebook: has('META_PAGE_ID', 'META_PAGE_ACCESS_TOKEN'),
     instagram: Boolean(env.META_IG_USER_ID?.trim() && (env.INSTAGRAM_ACCESS_TOKEN?.trim() || env.META_PAGE_ACCESS_TOKEN?.trim())),
-    threads: has('THREADS_USER_ID', 'THREADS_ACCESS_TOKEN'),
+    threads: has('THREADS_ACCESS_TOKEN'), // the user ID is optional: 'me' works with the token alone
   };
 }
 
@@ -116,7 +116,7 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
 
 /** A Threads post with the link as a reply to it. */
 export async function postThreads(a: { text: string; reply?: string }, env = process.env): Promise<string> {
-  const user = env.THREADS_USER_ID;
+  const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
   const publish = async (params: Record<string, string>) => {
     const c = await call(`${THREADS}/${user}/threads`, { media_type: 'TEXT', ...params, access_token: token });

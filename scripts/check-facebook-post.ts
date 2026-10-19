@@ -1,7 +1,7 @@
 /**
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
- * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542.
+ * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key.
  */
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
@@ -21,6 +21,13 @@ if (id === 'list') {
   process.exit(0);
 }
 const del = process.argv[3] === '--delete';
+if (id === 'threads') {
+  // Checks the Threads key: which account it belongs to. Changes nothing.
+  const r = await fetch(`https://graph.threads.net/v1.0/me?fields=id,username&access_token=${process.env.THREADS_ACCESS_TOKEN}`);
+  const d = (await r.json()) as any;
+  console.log(r.ok && !d.error ? `Threads key works for @${d.username} (user ID ${d.id})` : `Meta says: ${d.error?.message ?? r.status}`);
+  process.exit(r.ok && !d.error ? 0 : 1);
+}
 if (id?.startsWith('ig:')) {
   // An Instagram post, by its media id, through the Instagram login token.
   const ig = process.env.INSTAGRAM_ACCESS_TOKEN;
