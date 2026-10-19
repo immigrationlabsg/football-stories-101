@@ -90,8 +90,17 @@ function pickDue(stories: LoadedStory[], sent: SentFile): LoadedStory | null {
     }
     return s;
   }
+  // A story counts as handled once it is recorded as sent, or once it has gone out on Instagram or Threads
+  // (the email may still be in dry-run mode). Without this, Monday's run re-picks Sunday's 10:00 story,
+  // which is only 22 hours earlier.
+  const posted = new Set(
+    ((sent.social ?? []) as { number: number; network: string; status?: string }[])
+      .filter((r) => r.network !== 'facebook' && r.status !== 'scheduled')
+      .map((r) => r.number),
+  );
   const due = stories
     .filter((s) => !s.data.draft)
+    .filter((s) => !posted.has(s.data.number))
     .filter((s) => s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - DUE_WINDOW_MS)
     .filter((s) => !sentNumbers.has(s.data.number))
     .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
@@ -202,6 +211,7 @@ async function main() {
     for (const next of stories.filter((s) => !s.data.draft && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
       const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
       if (!socialDry) recordSocial(next.data.number, ahead);
+      if (ahead.some((o) => o.status === 'failed')) process.exitCode = 1; // a refused schedule turns the run red too
     }
   } else {
     console.log('[social] archive re-run: not posted automatically to Facebook, Instagram or Threads.');
