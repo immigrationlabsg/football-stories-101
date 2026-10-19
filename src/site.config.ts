@@ -53,8 +53,8 @@ export const site = {
   social: {
     telegram: env('PUBLIC_TELEGRAM_CHANNEL', 'https://t.me/footballstories101'),
     facebook: env('PUBLIC_FACEBOOK_URL', 'https://www.facebook.com/footballstories101'),
-    instagram: env('PUBLIC_INSTAGRAM_URL', 'https://www.instagram.com/footballstories101'),
-    threads: env('PUBLIC_THREADS_URL', 'https://www.threads.net/@footballstories101'),
+    instagram: env('PUBLIC_INSTAGRAM_URL', 'https://www.instagram.com/foot.ballstories101'),
+    threads: env('PUBLIC_THREADS_URL', 'https://www.threads.net/@foot.ballstories101'),
   },
   /** Optional cookieless analytics (Umami Cloud). Leave empty to load nothing. */
   analytics: {
