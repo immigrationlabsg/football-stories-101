@@ -1,6 +1,6 @@
 # Football Stories 101
 
-One researched football story a day, 1,200 to 1,800 words, by email first and on
+One researched football story a day, a three-minute read, by email first and on
 the web seven days later. Free and non-commercial. Players, clubs, eras and
 moments, worldwide.
 

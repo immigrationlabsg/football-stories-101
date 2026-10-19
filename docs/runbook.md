@@ -73,45 +73,31 @@ Tips
 
 ## 3. Writing the body: the little Markdown you need
 
-The story box is plain text with a handful of conventions. Paste from your
-writing app; it works.
+The house format follows The Morning Founder (full rules in `docs/editorial-standards.md`):
+
+- **500 to 700 words.** No section headings.
+- **Short paragraphs:** one to three sentences, with plenty of one-line paragraphs. A blank line between paragraphs.
+- **The editor's voice for reactions only:** "Here's what I didn't know until recently.", "Then came the part that
+  surprised me.", and a close that starts "Here's what stays with me." The narrator never invents personal memories.
+- **At most one quote,** woven into a sentence: `As Cruyff put it: "…"`.
+- **The question to the reader** goes in its own field, not in the body. Sources go in the Sources field; they show
+  at the foot of the web page only.
 
 ```
-Paragraphs are separated by a blank line.
+Ronaldo came off the bench in Rome on 12 April 2000.
 
-## A section heading
+Within minutes his right knee buckled beneath him.
 
-*italic* and **bold**.
+Here's what I didn't know until recently.
 
-> A quotation drawn from a sourced interview or contemporary report.
-> — Who said it, where, when
+…
 
-## What it tells us
+Here's what stays with me.
 
-Two to four sentences in the present tense.
+He was the best in the world before the knee went, and again after it was rebuilt.
 ```
 
-- A quotation block (`>` lines) becomes a styled pull quote automatically. Put the attribution on the last line, starting with an em dash (—) or two hyphens (--).
-- The heading `## What it tells us` is recognised and gets its own tinted box at the end of the story. Keep it as the last heading.
-- Do not type the question to the reader into the body; it goes in the "Question to the reader" field so that the email and the Facebook caption can use it too.
-- Do not put the sources in the body; they go in the Sources field.
-- Optional, for club histories and careers, a timeline:
-
-  ```
-  <Timeline title="From the Second Division to two European Cups" items={[
-    { when: '6 January 1975', what: 'Brian Clough appointed manager.' },
-    { when: '30 May 1979', what: 'European Cup final, Munich: Forest 1 Malmö 0.' },
-  ]} />
-  ```
-
-  Keep the single quotes; if a line needs an apostrophe, write it as a curly one (’). The email version turns this into a bulleted list.
-- Optional, a captioned picture inside the body (after uploading it through the Hero field's media library, so it lands in `public/images/stories/`):
-
-  ```
-  <Figure src="/images/stories/007-detail.jpg" alt="…" caption="…" credit="Wikimedia Commons, CC BY-SA 4.0, Author Name" />
-  ```
-
-The three sample stories (`src/content/stories/001…003`) show all of this in use. Open one in Pages CMS and read it before writing your first.
+*italic* and **bold** work as usual.
 
 ## 4. How scheduling works
 

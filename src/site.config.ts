@@ -37,7 +37,7 @@ export const site = {
   shortName: 'FS101',
   tagline: 'One researched football story a day. Players, clubs, eras and moments.',
   description:
-    'Football Stories 101 is a free, non-commercial football storytelling publication: one researched story every day, 1,200 to 1,800 words, by email first and on the web a week later.',
+    'Football Stories 101 is a free, non-commercial football storytelling publication: one researched story every day, a three-minute read, by email first and on the web a week later.',
   byline: 'The Editor, Football Stories 101',
   language: 'en-GB',
   /** Contact for corrections and takedown requests. Change when the publication has its own mailbox. */
