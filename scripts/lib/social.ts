@@ -1,5 +1,5 @@
 import type { LoadedStory } from './stories';
-import { mdxToMarkdown, extractClose, firstParagraph } from './markdown';
+import { mdxToMarkdown, markdownToText } from './markdown';
 import { splitTitle, storyNumber, pad3, slugify } from '../../src/schema/story';
 import { site } from '../../src/site.config';
 import { absoluteUrl, paths } from '../../src/lib/url';
@@ -50,33 +50,28 @@ export function telegramCaption(story: LoadedStory, ctx: { webLive: boolean; kin
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
   const { subject, angle } = splitTitle(story.data.title);
   const md = mdxToMarkdown(story.body, { absoluteUrl });
-  const close = extractClose(md);
-  const opener = firstParagraph(md);
   const link = linkFor(story, ctx);
   const webUrl = absoluteUrl(paths.story(story.data.slug));
   const facts = story.data.facts;
   const num = storyNumber(story.data.number);
   const archiveNote = ctx.kind === 'archive' ? ' (from the archive)' : '';
 
+  // The Morning Founder posts the whole story natively, ending with the question,
+  // a rule, and a one-line signature with the link.
+  const plain = markdownToText(md);
   const facebook = [
-    `${num}${archiveNote}`,
-    `${subject} / ${angle}`,
-    ``,
-    story.data.dek,
-    ``,
-    opener,
-    ``,
-    close,
+    plain,
     ``,
     story.data.question ?? '',
+    ``,
+    `_____`,
+    ``,
+    `Football's greatest stories, one every morning, free: ${ctx.webLive ? webUrl : absoluteUrl(paths.subscribe())}`,
   ]
     .join('\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-  const facebookComment = ctx.webLive
-    ? `Full story, with sources: ${webUrl}`
-    : `The full story is in this morning's email. Subscribe free and get tomorrow's: ${link}`;
 
   const instagram = [
     `${subject} / ${angle}`,
@@ -107,13 +102,9 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
 - Hero: public${story.data.hero.src}
 - Hero alt text: ${story.data.hero.alt}
 
-## Facebook (post as text + the hero image, link in the first comment)
+## Facebook (post the whole text with the picture, exactly as below)
 
 ${facebook}
-
-### First comment
-
-${facebookComment}
 
 ## Instagram (carousel: the cards listed below, in order)
 

@@ -1,6 +1,6 @@
 import type { LoadedStory } from './stories';
 import { mdxToMarkdown } from './markdown';
-import { splitTitle, storyNumber, readingMinutes } from '../../src/schema/story';
+import { splitTitle, storyNumber } from '../../src/schema/story';
 import { site, WEB_LAG_DAYS } from '../../src/site.config';
 import { absoluteUrl, paths } from '../../src/lib/url';
 import { formatDate, addDays } from '../../src/lib/format';
@@ -25,46 +25,37 @@ export function emailMarkdown(story: LoadedStory, ctx: EmailContext): string {
   const live = webLiveDate(story);
   const isLive = live.getTime() <= ctx.now.getTime();
   const body = mdxToMarkdown(story.body, { absoluteUrl });
-  const sources = story.data.sources.map((s, i) => `${i + 1}. ${s}`).join('\n');
-  const pillar = site.pillars[story.data.pillar].label;
-  const minutes = readingMinutes(story.words);
 
-  const intro =
-    ctx.kind === 'archive'
-      ? `*From the archive. No new story was due today, so here is one whose anniversary is close.*\n\n`
-      : '';
-
+  // Mirrors The Morning Founder: name, dek, read-online link, picture with caption,
+  // the story in short paragraphs, the question, a quiet footer.
   return [
+    ctx.kind === 'archive' ? `*From the archive.*\n` : '',
+    `# ${subject}`,
+    ``,
+    `**${angle || story.data.dek}**`,
+    ``,
+    angle ? `${story.data.dek}` : '',
+    ``,
+    isLive ? `[Read online](${url})` : `[Read online from ${formatDate(live)}](${url})`,
+    ``,
     `![${story.data.hero.alt}](${absoluteUrl(story.data.hero.src)})`,
     ``,
-    `**${storyNumber(story.data.number)} · ${pillar}** · ${formatDate(story.data.date)} · ${minutes} min read`,
+    `*${subject}. ${story.data.hero.credit}*`,
     ``,
-    `# ${angle || subject}`,
+    body,
     ``,
-    `**${subject}**`,
+    story.data.question ? `**${story.data.question}**` : '',
     ``,
-    `*${story.data.dek}*`,
-    ``,
-    intro + body,
-    ``,
-    story.data.question ? `*${story.data.question}* Reply to this email and tell me.` : `Reply to this email and tell me what you think.`,
+    `Hit reply and tell me.`,
     ``,
     `---`,
     ``,
-    `**Sources**`,
+    `${storyNumber(story.data.number)} · ${site.name}. Every fact in this story is checked against two sources; they are listed on [the web page](${url}).`,
     ``,
-    sources,
+    `Forward this to a football friend. They can subscribe free at ${absoluteUrl(paths.subscribe())}. No email? Follow on Telegram: ${site.social.telegram}`,
     ``,
-    `---`,
-    ``,
-    `Written by ${site.byline}. ${story.data.hero.credit}.`,
-    ``,
-    isLive
-      ? `Read and share this story on the web: ${url}`
-      : `This story will be on the website from ${formatDate(live)}: ${url}`,
-    ``,
-    `Forward this to a football friend. They can subscribe free at ${absoluteUrl(paths.subscribe())}. Prefer no email? The Telegram channel: ${site.social.telegram}`,
-    ``,
-    `You are receiving this because you subscribed to ${site.name}. [Unsubscribe]({{ unsubscribe_url }}) at any time.`,
-  ].join('\n');
+    `[Unsubscribe]({{ unsubscribe_url }})`,
+  ]
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n');
 }
