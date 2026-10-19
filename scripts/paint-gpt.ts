@@ -48,6 +48,7 @@ for (const n of stories) {
         `face and expression exactly as photographed; change only the style. The second image is the style reference: ` +
         `copy its painting style only (the loose transparent washes, paper texture, soft edges, colour palette and plain warm paper ` +
         `background), and do not copy its subject, pose or composition. Reduce the background to faint washes. ` +
+        `Keep every crest, logo, stripe, shirt number and lettering exactly as in the photo, as real to the original as possible. ` +
         `Kit: ${ref.kit}. Scene: ${ref.why}`
       : `Repaint the attached photo as ${STYLE} Keep every person\u2019s likeness, face, expression and pose as in the photo, ` +
         `so they are recognisable, and keep the moment the photo captures. Simplify the background into loose washes. Scene: ${ref.why}`;
