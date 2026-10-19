@@ -1,0 +1,49 @@
+name: Colourise references
+
+# Colourises the black-and-white reference photos with OpenAI's API and
+# commits them to design/references/colour/. Run by hand only: each image
+# is billed to the OpenAI account behind the OPENAI_API_KEY secret.
+on:
+  workflow_dispatch:
+    inputs:
+      stories:
+        description: "Story numbers, space separated (blank for every black-and-white photo)"
+        required: false
+        default: ""
+      quality:
+        description: "low, medium or high (higher costs more)"
+        required: false
+        default: "medium"
+
+permissions:
+  contents: write
+
+jobs:
+  paint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run colourise -- $STORIES
+        env:
+          STORIES: ${{ inputs.stories }}
+          QUALITY: ${{ inputs.quality }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Commit
+        if: always()
+        run: |
+          git add design/references/colour
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "design: colourised reference photos"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done

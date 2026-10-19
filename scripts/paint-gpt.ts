@@ -41,7 +41,8 @@ for (const n of stories) {
   }
   let res: Response;
   if (ref.commons) {
-    const photo = path.join(OUT, '..', 'references', `${n}-1.jpg`);
+    const colour = path.join(OUT, '..', 'references', 'colour', `${n}-1.jpg`);
+    const photo = fs.existsSync(colour) ? colour : path.join(OUT, '..', 'references', `${n}-1.jpg`);
     const celebrate = ref.style === 'celebrate';
     const prompt = celebrate
       ? `Repaint the first image as ${STYLE} Keep the first image\u2019s composition, pose, framing and every person\u2019s likeness, ` +

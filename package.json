@@ -19,6 +19,7 @@
     "photos": "tsx scripts/commons-hero.ts",
     "references": "tsx scripts/fetch-references.ts",
     "candidates": "tsx scripts/search-references.ts",
+    "colourise": "tsx scripts/colourise-references.ts",
     "paint": "tsx scripts/paint-gpt.ts"
   },
   "dependencies": {
