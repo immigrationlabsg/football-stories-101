@@ -103,16 +103,6 @@
     },
     {
       "no": 11,
-      "commons": "File:Dick, Kerr Ladies.jpg",
-      "title": "File:Dick, Kerr Ladies.jpg",
-      "licence": "Public domain",
-      "artist": "Unknown author Unknown author",
-      "caption": "Dick, Kerr Ladies - official unveiling of a statue at Preston North End's Deepdale ground.",
-      "date": "1925",
-      "url": "https://commons.wikimedia.org/wiki/File:Dick,_Kerr_Ladies.jpg"
-    },
-    {
-      "no": 12,
       "commons": "File:24-4-20, équipe française (de football féminin) - btv1b53036373k.jpg",
       "title": "File:24-4-20, équipe française (de football féminin) - btv1b53036373k.jpg",
       "licence": "Public domain",
@@ -120,6 +110,16 @@
       "caption": "Sujet : Football féminin -- Équipes nationales -- France Joueuses de football -- France Portraits collectifs -- 1914-1945 Référence bibliographique : Rol, 59029 Appartient à l’ensemble documentaire : Pho20Rol Image de pr",
       "date": "1920 date QS:P571,+1920-00-00T",
       "url": "https://commons.wikimedia.org/wiki/File:24-4-20,_%C3%A9quipe_fran%C3%A7aise_(de_football_f%C3%A9minin)_-_btv1b53036373k.jpg"
+    },
+    {
+      "no": 12,
+      "commons": "File:Dick, Kerr Ladies.jpg",
+      "title": "File:Dick, Kerr Ladies.jpg",
+      "licence": "Public domain",
+      "artist": "Unknown author Unknown author",
+      "caption": "Dick, Kerr Ladies - official unveiling of a statue at Preston North End's Deepdale ground.",
+      "date": "1925",
+      "url": "https://commons.wikimedia.org/wiki/File:Dick,_Kerr_Ladies.jpg"
     },
     {
       "no": 13,
@@ -133,13 +133,13 @@
     },
     {
       "no": 14,
-      "commons": "File:Equipe de France (de) football (féminine) - btv1b53036389p.jpg",
-      "title": "File:Equipe de France (de) football (féminine) - btv1b53036389p.jpg",
+      "commons": "File:24-4-20, équipe de France (de football féminin) - btv1b53036387s.jpg",
+      "title": "File:24-4-20, équipe de France (de football féminin) - btv1b53036387s.jpg",
       "licence": "Public domain",
-      "artist": "Agence Rol. Agence photographique (commanditaire)",
-      "caption": "Sujet : Football féminin -- Équipes nationales -- France Joueuses de football -- France Portraits collectifs -- 1914-1945 Référence bibliographique : Rol, 59024 Appartient à l’ensemble documentaire : Pho20Rol Image de pr",
+      "artist": "Agence Rol",
+      "caption": "Sujet : Football féminin -- Équipes nationales -- France Joueuses de football -- France Portraits collectifs -- 1914-1945 Référence bibliographique : Rol, 59030 Appartient à l’ensemble documentaire : Pho20Rol Image de pr",
       "date": "1920 date QS:P571,+1920-00-00T",
-      "url": "https://commons.wikimedia.org/wiki/File:Equipe_de_France_(de)_football_(f%C3%A9minine)_-_btv1b53036389p.jpg"
+      "url": "https://commons.wikimedia.org/wiki/File:24-4-20,_%C3%A9quipe_de_France_(de_football_f%C3%A9minin)_-_btv1b53036387s.jpg"
     },
     {
       "no": 15,
@@ -153,13 +153,13 @@
     },
     {
       "no": 16,
-      "commons": "File:24-4-20, équipe de France (de football féminin) - btv1b53036387s.jpg",
-      "title": "File:24-4-20, équipe de France (de football féminin) - btv1b53036387s.jpg",
+      "commons": "File:Equipe de France (de) football (féminine) - btv1b53036389p.jpg",
+      "title": "File:Equipe de France (de) football (féminine) - btv1b53036389p.jpg",
       "licence": "Public domain",
-      "artist": "Agence Rol",
-      "caption": "Sujet : Football féminin -- Équipes nationales -- France Joueuses de football -- France Portraits collectifs -- 1914-1945 Référence bibliographique : Rol, 59030 Appartient à l’ensemble documentaire : Pho20Rol Image de pr",
+      "artist": "Agence Rol. Agence photographique (commanditaire)",
+      "caption": "Sujet : Football féminin -- Équipes nationales -- France Joueuses de football -- France Portraits collectifs -- 1914-1945 Référence bibliographique : Rol, 59024 Appartient à l’ensemble documentaire : Pho20Rol Image de pr",
       "date": "1920 date QS:P571,+1920-00-00T",
-      "url": "https://commons.wikimedia.org/wiki/File:24-4-20,_%C3%A9quipe_de_France_(de_football_f%C3%A9minin)_-_btv1b53036387s.jpg"
+      "url": "https://commons.wikimedia.org/wiki/File:Equipe_de_France_(de)_football_(f%C3%A9minine)_-_btv1b53036389p.jpg"
     }
   ]
 }
