@@ -3,13 +3,16 @@
  * Credentials come from environment variables (GitHub secrets):
  *
  *   META_PAGE_ID, META_PAGE_ACCESS_TOKEN   Facebook Page (the token never expires if it was made from a long-lived user token)
- *   META_IG_USER_ID                        Instagram professional account linked to that Page (uses the same page token)
+ *   META_IG_USER_ID                        Instagram professional account ID
+ *   INSTAGRAM_ACCESS_TOKEN                 (optional, preferred) token from "Instagram API with Instagram login": needs no Facebook Page link.
+ *                                          Without it, Instagram posts through the Page token (the account must be linked to the Page).
  *   THREADS_USER_ID, THREADS_ACCESS_TOKEN  Threads (the token lasts 60 days and needs refreshing)
  *
  * Instagram and Facebook fetch pictures themselves, so every image must be a public https URL.
  */
 const GRAPH = 'https://graph.facebook.com/v21.0';
 const THREADS = 'https://graph.threads.net/v1.0';
+const INSTAGRAM = 'https://graph.instagram.com/v21.0';
 
 export interface MetaConfig {
   facebook: boolean;
@@ -21,7 +24,7 @@ export function metaConfigured(env: NodeJS.ProcessEnv = process.env): MetaConfig
   const has = (...k: string[]) => k.every((x) => Boolean(env[x]?.trim()));
   return {
     facebook: has('META_PAGE_ID', 'META_PAGE_ACCESS_TOKEN'),
-    instagram: has('META_IG_USER_ID', 'META_PAGE_ACCESS_TOKEN'),
+    instagram: Boolean(env.META_IG_USER_ID?.trim() && (env.INSTAGRAM_ACCESS_TOKEN?.trim() || env.META_PAGE_ACCESS_TOKEN?.trim())),
     threads: has('THREADS_USER_ID', 'THREADS_ACCESS_TOKEN'),
   };
 }
@@ -67,21 +70,24 @@ export async function postFacebookPhoto(a: { imageUrl: string; message: string }
 /** An Instagram carousel (2 to 10 images). */
 export async function postInstagramCarousel(a: { imageUrls: string[]; caption: string }, env = process.env): Promise<string> {
   const ig = env.META_IG_USER_ID;
-  const token = env.META_PAGE_ACCESS_TOKEN!;
+  // Instagram login token (graph.instagram.com) when we have one, otherwise the Facebook Page token.
+  const direct = Boolean(env.INSTAGRAM_ACCESS_TOKEN?.trim());
+  const base = direct ? INSTAGRAM : GRAPH;
+  const token = (direct ? env.INSTAGRAM_ACCESS_TOKEN : env.META_PAGE_ACCESS_TOKEN)!;
   if (a.imageUrls.length < 2 || a.imageUrls.length > 10) throw new Error(`Instagram carousels need 2 to 10 images, got ${a.imageUrls.length}`);
   const children: string[] = [];
   for (const image_url of a.imageUrls) {
-    const c = await call(`${GRAPH}/${ig}/media`, { image_url, is_carousel_item: true, access_token: token });
+    const c = await call(`${base}/${ig}/media`, { image_url, is_carousel_item: true, access_token: token });
     children.push(c.id);
   }
-  const parent = await call(`${GRAPH}/${ig}/media`, { media_type: 'CAROUSEL', children: children.join(','), caption: a.caption, access_token: token });
+  const parent = await call(`${base}/${ig}/media`, { media_type: 'CAROUSEL', children: children.join(','), caption: a.caption, access_token: token });
   for (let i = 0; i < 20; i++) {
-    const s = await call(`${GRAPH}/${parent.id}`, { fields: 'status_code', access_token: token }, 'GET');
+    const s = await call(`${base}/${parent.id}`, { fields: 'status_code', access_token: token }, 'GET');
     if (s.status_code === 'FINISHED') break;
     if (s.status_code === 'ERROR' || s.status_code === 'EXPIRED') throw new Error(`Instagram carousel container ${s.status_code}`);
     await sleep(3000);
   }
-  const published = await call(`${GRAPH}/${ig}/media_publish`, { creation_id: parent.id, access_token: token });
+  const published = await call(`${base}/${ig}/media_publish`, { creation_id: parent.id, access_token: token });
   return String(published.id);
 }
 

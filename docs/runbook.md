@@ -319,6 +319,11 @@ GitHub secrets exist. Until each one is set, that network is simply skipped. You
 **Post to social** workflow (Actions tab): leave "Dry run" ticked first. It prints exactly what would be posted and checks
 that every picture is live, without posting anything.
 
+**Simplest route for Instagram (recommended):** in the app dashboard, open the **Instagram** use case and choose
+"API setup with Instagram login". Add the Instagram account as an **Instagram Tester** (App roles → Roles), accept the invite in the
+Instagram app, then click **Generate token** next to the account. Save that token as `INSTAGRAM_ACCESS_TOKEN` and the account ID shown beside it as
+`META_IG_USER_ID`. This needs no Facebook Page link. The token lasts 60 days, so renew it every 50 days. The Facebook Page route below still works for Facebook.
+
 **One-time setup (about 30 minutes, free; allow extra time because Meta's screens change):**
 
 1. The Instagram account must be a Professional (Creator) account, linked to the Facebook Page (Business Suite shows both).
