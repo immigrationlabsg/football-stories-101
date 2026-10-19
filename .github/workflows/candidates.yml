@@ -12,6 +12,10 @@ on:
         description: "Story numbers to search, space separated (blank for all)"
         required: false
         default: ""
+      colour_only:
+        description: "1 to keep only colour photos (saved to design/candidates-colour)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -31,9 +35,10 @@ jobs:
       - run: npm run candidates -- $STORIES
         env:
           STORIES: ${{ inputs.stories }}
+          COLOUR_ONLY: ${{ inputs.colour_only }}
       - name: Commit
         run: |
-          git add design/candidates
+          git add design/candidates design/candidates-colour
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "football-stories-101[bot]"
           git config user.email "football-stories-101[bot]@users.noreply.github.com"

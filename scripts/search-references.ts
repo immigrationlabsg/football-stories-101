@@ -22,14 +22,29 @@ import { api, free, image, strip } from './lib/commons';
 type Query = { want: string; queries: string[] };
 const all = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-queries.json'), 'utf8')) as Record<string, Query>;
 const only = process.argv.slice(2).map((n) => n.padStart(3, '0'));
-const OUT = path.join(ROOT, 'design/candidates');
+const COLOUR_ONLY = process.env.COLOUR_ONLY === '1';
+const OUT = path.join(ROOT, COLOUR_ONLY ? 'design/candidates-colour' : 'design/candidates');
 fs.mkdirSync(OUT, { recursive: true });
 
-const PER_STORY = 16;
+const PER_STORY = COLOUR_ONLY ? 24 : 16;
+// In colour-only mode many hits are black and white, so look at more of them before filtering.
+const FETCH_LIMIT = COLOUR_ONLY ? 80 : PER_STORY;
 const TILE = 300;
 const COLS = 4;
 // Logos, crests, maps, kits and stadium shots without people are no use as references.
 const SKIP = /logo|crest|badge|escudo|emblem|coat of arms|map|kit[ _]|jersey[ _]template|signature|autograph|stamp|coin|\.svg|\.tif/i;
+
+/** Mean HSV saturation on a 0-255 scale; black-and-white and sepia scans come out under 25. */
+async function saturation(buf: Buffer): Promise<number> {
+  const { data, info } = await sharp(buf).resize(120, 120, { fit: 'inside' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  let sum = 0;
+  for (let i = 0; i < data.length; i += info.channels) {
+    const max = Math.max(data[i], data[i + 1], data[i + 2]);
+    const min = Math.min(data[i], data[i + 1], data[i + 2]);
+    sum += max ? ((max - min) / max) * 255 : 0;
+  }
+  return sum / (data.length / info.channels);
+}
 
 for (const [n, q] of Object.entries(all).sort()) {
   if (only.length && !only.includes(n)) continue;
@@ -37,14 +52,14 @@ for (const [n, q] of Object.entries(all).sort()) {
   // Take hits from each query in turn, so the first query cannot fill every slot.
   const lists: string[][] = [];
   for (const query of q.queries) {
-    const res = await api({ action: 'query', list: 'search', srnamespace: '6', srlimit: '15', srsearch: `${query} filetype:bitmap` });
+    const res = await api({ action: 'query', list: 'search', srnamespace: '6', srlimit: COLOUR_ONLY ? '40' : '15', srsearch: `${query} filetype:bitmap` });
     lists.push((res.query?.search ?? []).map((hit: any) => hit.title).filter((t: string) => !SKIP.test(t)));
   }
   const titles: string[] = [];
-  for (let i = 0; i < 15; i++) for (const list of lists) if (list[i] && !titles.includes(list[i])) titles.push(list[i]);
+  for (let i = 0; i < 40; i++) for (const list of lists) if (list[i] && !titles.includes(list[i])) titles.push(list[i]);
 
   const found: { title: string; licence: string; artist: string; caption: string; date: string; thumb: string; url: string }[] = [];
-  for (let i = 0; i < titles.length && found.length < PER_STORY; i += 20) {
+  for (let i = 0; i < titles.length && found.length < FETCH_LIMIT; i += 20) {
     const res = await api({
       action: 'query', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '600',
       titles: titles.slice(i, i + 20).join('|'),
@@ -53,6 +68,7 @@ for (const [n, q] of Object.entries(all).sort()) {
     // The API returns pages in its own order; keep the search order, which ranks by relevance.
     pages.sort((a, b) => titles.indexOf(a.title) - titles.indexOf(b.title));
     for (const page of pages) {
+      if (found.length >= FETCH_LIMIT) break;
       const ii = page.imageinfo?.[0];
       if (!ii || !/jpeg|png/.test(ii.mime) || ii.width < 500) continue;
       const licence = strip(ii.extmetadata?.LicenseShortName?.value ?? '');
@@ -66,16 +82,19 @@ for (const [n, q] of Object.entries(all).sort()) {
         thumb: ii.thumburl ?? ii.url,
         url: ii.descriptionurl,
       });
-      if (found.length === PER_STORY) break;
+      if (found.length === FETCH_LIMIT) break;
     }
   }
 
   const tiles: sharp.OverlayOptions[] = [];
   const kept: (Omit<(typeof found)[number], 'thumb'> & { no: number; commons: string })[] = [];
   for (const f of found) {
+    if (kept.length >= PER_STORY) break;
     let buf: Buffer;
     try {
-      buf = await sharp(await image(f.thumb)).rotate().resize(TILE, TILE, { fit: 'contain', background: '#ffffff' }).jpeg().toBuffer();
+      const raw = await image(f.thumb);
+      if (COLOUR_ONLY && (await saturation(raw)) < 25) continue; // black-and-white or sepia: skip
+      buf = await sharp(raw).rotate().resize(TILE, TILE, { fit: 'contain', background: '#ffffff' }).jpeg().toBuffer();
     } catch (e) {
       console.warn(`${n} ${f.title}: ${(e as Error).message}`);
       continue;
