@@ -68,8 +68,17 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   // The Morning Founder posts the whole story natively, ending with the question,
   // a rule, and a one-line signature with the link.
   const plain = markdownToText(md);
+
+  // Facebook cuts a post at "See more" after roughly 250 characters. So the opening is a short
+  // version of the story's hook, with "Here's what I didn't know until recently." right after it,
+  // and the rest of the story follows unchanged.
+  const REVEAL = "Here's what I didn't know until recently.";
+  const m = /Here[\u2019']s what I didn[\u2019']t know until recently\./.exec(plain);
+  const afterReveal = m ? plain.slice(m.index + m[0].length).trim() : '';
+  const payoff = afterReveal.split(/\n\s*\n/)[0] ?? '';
+  const opening = m && story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}\n\n${afterReveal}` : plain;
   const facebook = [
-    plain,
+    opening,
     ``,
     story.data.question ?? '',
     ``,
@@ -81,11 +90,15 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
+  // Instagram shows about 125 characters before "more": the one-line hook, then the reveal phrase.
+  const igHook = story.data.hook ?? `${subject} / ${angle}`;
   const instagramFor = (n: number) =>
     [
-      `${subject} / ${angle}`,
+      igHook,
       ``,
-      story.data.dek,
+      REVEAL,
+      ``,
+      payoff || story.data.dek,
       ``,
       ...facts.slice(0, n).map((f) => `• ${f}`),
       ``,
@@ -96,12 +109,10 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   let instagram = instagramFor(3);
   for (let n = 2; instagram.length > INSTAGRAM_LIMIT && n >= 0; n--) instagram = instagramFor(n);
 
-  const threadsFor = (n: number) =>
-    [`${story.data.dek}`, ``, ...facts.slice(0, n).map((f) => `• ${f}`), ``, `${num}: ${subject} / ${angle}.`].join('\n');
-  let threads = threadsFor(5);
-  for (let n = 4; threads.length > THREADS_LIMIT && n >= 0; n--) threads = threadsFor(n);
+  // Threads: the same opening, the reveal phrase, and the first line of the payoff. 500 characters at most.
+  const threadsFull = story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}\n\n${payoff}` : `${story.data.dek}\n\n${num}: ${subject} / ${angle}.`;
+  const threads = threadsFull.length <= THREADS_LIMIT ? threadsFull : story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}` : threadsFull.slice(0, THREADS_LIMIT - 1) + '…';
 
-  // No website link on social posts, by the editor's choice. Threads points to the Instagram page instead.
   const threadsReply = `More on Instagram: ${process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram}`;
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }

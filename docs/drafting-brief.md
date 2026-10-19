@@ -74,3 +74,10 @@ Then run `npm run validate` and fix every error.
 
 Append a short entry per story to `docs/fact-checks/NNN.md`: each checked claim, the two sources, and
 anything changed or cut. This is the audit trail; the owner never has to read it.
+
+## Social openings (required for every story)
+
+Each story needs two extra front-matter lines, written from the story itself with no new facts:
+
+- `hook`: one punchy line of 100 characters or fewer. It is the banner on the Facebook picture and the Instagram cover, and the first line of the Instagram caption. Example: "He won the World Cup on two rebuilt knees."
+- `socialHook`: a short version of the story's opening, about 250 characters (never more than 280), made of the story's own sentences. On Facebook and Threads it replaces the full opening, and "Here's what I didn't know until recently." follows it directly, so the reader sees that line before "See more". Keep the strongest fact (the punchline) in it.

@@ -51,6 +51,8 @@ export const storySchema = z.object({
   dek: nonEmpty('dek').max(DEK_MAX, `dek must be ${DEK_MAX} characters or fewer`),
   /** One punchy line for the share cards (Facebook image, Instagram cover): a banner above the painting. */
   hook: z.string().trim().max(100, 'hook must be 100 characters or fewer').optional(),
+  /** A short opening (about 250 characters) for Facebook and Threads: the same story, cut so "Here's what I didn't know until recently." shows before "See more". */
+  socialHook: z.string().trim().max(280, 'socialHook must be 280 characters or fewer').optional(),
   slug: nonEmpty('slug').regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug must be lower-case words joined by hyphens'),
   date: z.coerce.date(),
   updated: z.coerce.date().optional(),
