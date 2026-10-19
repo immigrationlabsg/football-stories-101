@@ -3,15 +3,43 @@ import { INSTAGRAM_LIMIT, socialPosts } from './social';
 import { metaConfigured, postFacebookPhoto, postInstagramCarousel, postThreads, waitForUrl } from './meta';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
+import fs from 'node:fs';
+import path from 'node:path';
+import { ROOT } from './stories';
 
 export type Network = 'facebook' | 'instagram' | 'threads';
 export type Outcome = { network: Network; status: 'posted' | 'drafted' | 'dry-run' | 'skipped' | 'failed'; detail: string };
 
 
+const SENT = path.join(ROOT, 'data/sent.json');
+type SocialRecord = { number: number; network: Network; status?: 'posted' | 'scheduled'; at: string; detail: string };
+
+/** Networks this story has already been posted or scheduled to (from data/sent.json). */
+export function socialDone(number: number): Set<Network> {
+  try {
+    const records = (JSON.parse(fs.readFileSync(SENT, 'utf8')).social ?? []) as SocialRecord[];
+    return new Set(records.filter((r) => r.number === number).map((r) => r.network));
+  } catch {
+    return new Set();
+  }
+}
+
+/** Adds real posts and scheduled Facebook posts to data/sent.json, keeping everything else in the file. */
+export function recordSocial(number: number, outcomes: Outcome[]): void {
+  const keep = outcomes.filter((o) => o.status === 'posted' || (o.status === 'drafted' && o.detail.startsWith('scheduled')));
+  if (!keep.length) return;
+  const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
+  file.social = [
+    ...(file.social ?? []),
+    ...keep.map((o): SocialRecord => ({ number, network: o.network, status: o.status === 'posted' ? 'posted' : 'scheduled', at: new Date().toISOString(), detail: o.detail })),
+  ];
+  fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+}
+
 /** Posts one story to the chosen networks. Never throws: each network reports its own outcome. */
 export async function postStoryToSocials(
   story: LoadedStory,
-  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[]; draft?: boolean; scheduleAt?: Date },
+  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[]; draft?: boolean; scheduleAt?: Date; skipDone?: boolean },
 ): Promise<Outcome[]> {
   const networks = opts.networks ?? ['facebook', 'instagram', 'threads'];
   const posts = socialPosts(story, opts);
@@ -22,7 +50,12 @@ export async function postStoryToSocials(
   const cardUrls = Array.from({ length: story.data.facts.length + 2 }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   const out: Outcome[] = [];
 
+  const done = opts.skipDone ? socialDone(story.data.number) : new Set<Network>();
   for (const network of networks) {
+    if (done.has(network)) {
+      out.push({ network, status: 'skipped', detail: 'already posted or scheduled (data/sent.json)' });
+      continue;
+    }
     try {
       if (opts.dryRun) {
         const urls = network === 'facebook' ? [heroUrl] : network === 'instagram' ? cardUrls : [];

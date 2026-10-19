@@ -41,11 +41,11 @@ Every pick shows the moment the story is about: the goal, the final, the trophy,
 - 019: the Busby Babes' last line-up
 - 020: Guardiola thrown in the air
 - 022: Maradona celebrating against England
-- 023: the Grande Torino team
-- 025: Charisteas's header
+- 027: the Grande Torino team
+- 029: Charisteas's header
 - 026: Trautmann's neck brace
 - 028: the Highbury trophy day
-- 029: United behind the WINNERS banner
+- 025: United behind the WINNERS banner
 - 030: the Dick, Kerr Ladies, 1920
 
 **Close, but tell ChatGPT what to change**
@@ -56,7 +56,7 @@ Every pick shows the moment the story is about: the goal, the final, the trophy,
 - 024: Juninho's free kick, a dark night shot.
 
 **Paint without a reference**
-- 017, 021 and 027: there is no free photo of the match. The first entry in `data/reference-photos.json` describes the scene to ask for.
+- 017, 021 and 023: there is no free photo of the match. The first entry in `data/reference-photos.json` describes the scene to ask for.
 - 001: Ronaldo already has its painting.
 
 ## How to pick a good reference photo
@@ -145,19 +145,19 @@ First choice first. The files are in `design/references/`.
 |  |  | 021-2.jpg | Peter Schmeichel juli 1991.JPG | Schmeichel in 1991, a year before Euro 92; a clear face but probably not in Denmark kit. Ask for the red 1992 Denmark goalkeeper kit. |
 | 022 | Diego Maradona | 022-1.jpg | Maradona vs england.jpg | Maradona celebrating against England, 22 June 1986, with Fenwick on the ground. |
 |  |  | 022-2.jpg | Maradona pateando v inglaterra.jpg | Maradona sliding the Goal of the Century past Shilton. |
-| 023 | Grande Torino | 023-1.jpg | Grande Torino 1948 49.jpg | Grande Torino, the 1948–49 team, in colour. |
-|  |  | 023-2.jpg | Italy v Hungary - Turin, 1947 - Valentino Mazzola.jpg | Valentino Mazzola shooting, Turin 1947. |
+| 027 | Grande Torino | 027-1.jpg | Grande Torino 1948 49.jpg | Grande Torino, the 1948–49 team, in colour. |
+|  |  | 027-2.jpg | Italy v Hungary - Turin, 1947 - Valentino Mazzola.jpg | Valentino Mazzola shooting, Turin 1947. |
 | 024 | Lyon 2002–08 | 024-1.jpg | Juninho-free-kick 2.jpg | Juninho striking a free kick, the signature image of Lyon's seven-title era. |
 |  |  | 024-2.jpg | Juninho Pernambucano.JPG | Juninho at Stade Gerland in 2009; check the pose. |
-| 025 | Greece at Euro 2004 | 025-1.jpg | Charisteas' Siegtreffer im Finale der Euro 2004.jpg | Charisteas heading the winning goal in the Euro 2004 final. |
-|  |  | 025-2.jpg | Euro 2004 Final.jpg | The giant Greek flag on the pitch at the Estádio da Luz before the final. |
+| 029 | Greece at Euro 2004 | 029-1.jpg | Charisteas' Siegtreffer im Finale der Euro 2004.jpg | Charisteas heading the winning goal in the Euro 2004 final. |
+|  |  | 029-2.jpg | Euro 2004 Final.jpg | The giant Greek flag on the pitch at the Estádio da Luz before the final. |
 | 026 | Bert Trautmann | 026-1.jpg | Bert Trautmann's Neck Brace.jpg | The neck brace Trautmann wore after the 1956 final: the object the story turns on. |
 |  |  | 026-2.jpg | Sculpture of Bert Trautmann.jpg | The sculpture of Bert Trautmann in goal. |
-| 027 | Wimbledon | (paint) |  | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal, face hidden. |
-|  |  | 027-2.jpg | Beasant.jpg | Dave Beasant in 2003, for a likeness only (older, other club). |
+| 023 | Wimbledon | (paint) |  | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal, face hidden. |
+|  |  | 023-2.jpg | Beasant.jpg | Dave Beasant in 2003, for a likeness only (older, other club). |
 | 028 | Arsenal’s Invincibles | 028-1.jpg | Trophy presentation Highbury 2004.JPG | The trophy presentation at Highbury, 15 May 2004, the day the Invincibles finished unbeaten. |
 |  |  | 028-2.jpg | Thierry Henry’s iconic knee slide.jpg | Thierry Henry's knee-slide celebration in Arsenal red and white. |
-| 029 | Camp Nou, 26 May 1999 | 029-1.jpg | 1999 UEFA Champions League celebration (edited).jpg | Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999. |
-|  |  | 029-2.jpg | Manchester United Treble celebration.jpg | The Treble parade, the three trophies on the open-top bus. |
+| 025 | Camp Nou, 26 May 1999 | 025-1.jpg | 1999 UEFA Champions League celebration (edited).jpg | Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999. |
+|  |  | 025-2.jpg | Manchester United Treble celebration.jpg | The Treble parade, the three trophies on the open-top bus. |
 | 030 | Lily Parr | 030-1.jpg | Dick, Kerr's Ladies kiss.jpg | The Dick, Kerr captain and the French captain kissing before their 1920 match. |
 |  |  | 030-2.jpg | Dick, Kerr Ladies.jpg | The Dick, Kerr Ladies team photo. |

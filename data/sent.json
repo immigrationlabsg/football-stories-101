@@ -1,4 +1,12 @@
 {
   "sent": [],
-  "social": []
+  "social": [
+    {
+      "number": 1,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-19T15:41:50.846Z",
+      "detail": "scheduled for 2026-10-20T00:00:00.000Z post 122094843627522790"
+    }
+  ]
 }

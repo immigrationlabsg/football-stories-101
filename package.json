@@ -24,6 +24,7 @@
     "post-social": "tsx scripts/post-social.ts",
     "check-facebook": "tsx scripts/check-facebook-post.ts",
     "social-length": "tsx scripts/social-length.ts",
+    "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },
   "dependencies": {

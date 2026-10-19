@@ -220,12 +220,14 @@
     ]
   },
   "023": {
-    "want": "Grande Torino in action or team photo, Valentino Mazzola",
+    "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy",
     "queries": [
-      "Grande Torino",
-      "Valentino Mazzola",
-      "Torino 1949",
-      "Torino calcio 1948"
+      "Wimbledon FC",
+      "Vinnie Jones Wimbledon",
+      "Plough Lane Wimbledon",
+      "Lawrie Sanchez",
+      "Wimbledon Liverpool 1988",
+      "Dave Beasant Wimbledon"
     ]
   },
   "024": {
@@ -240,12 +242,13 @@
     ]
   },
   "025": {
-    "want": "Greece Euro 2004: Charisteas header, team celebrating with trophy",
+    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
     "queries": [
-      "Greece Euro 2004",
-      "Charisteas Euro 2004",
-      "Euro 2004 final",
-      "Greece national team 2004 celebration"
+      "1999 UEFA Champions League Final",
+      "Manchester United 1999 Champions League",
+      "Solskjaer 1999",
+      "Manchester United treble 1999",
+      "Teddy Sheringham 1999"
     ]
   },
   "026": {
@@ -258,14 +261,12 @@
     ]
   },
   "027": {
-    "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy",
+    "want": "Grande Torino in action or team photo, Valentino Mazzola",
     "queries": [
-      "Wimbledon FC",
-      "Vinnie Jones Wimbledon",
-      "Plough Lane Wimbledon",
-      "Lawrie Sanchez",
-      "Wimbledon Liverpool 1988",
-      "Dave Beasant Wimbledon"
+      "Grande Torino",
+      "Valentino Mazzola",
+      "Torino 1949",
+      "Torino calcio 1948"
     ]
   },
   "028": {
@@ -279,13 +280,12 @@
     ]
   },
   "029": {
-    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
+    "want": "Greece Euro 2004: Charisteas header, team celebrating with trophy",
     "queries": [
-      "1999 UEFA Champions League Final",
-      "Manchester United 1999 Champions League",
-      "Solskjaer 1999",
-      "Manchester United treble 1999",
-      "Teddy Sheringham 1999"
+      "Greece Euro 2004",
+      "Charisteas Euro 2004",
+      "Euro 2004 final",
+      "Greece national team 2004 celebration"
     ]
   },
   "030": {

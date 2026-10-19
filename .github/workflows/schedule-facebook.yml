@@ -1,0 +1,57 @@
+name: Schedule Facebook posts
+
+# Schedules each story's Facebook post for its own date and time, so the run of upcoming
+# posts shows in Business Suite's Planner (phone too). Already posted or scheduled stories
+# are skipped. Instagram and Threads are posted by the daily run at the same slot.
+on:
+  workflow_dispatch:
+    inputs:
+      from:
+        description: "First story number"
+        required: true
+      to:
+        description: "Last story number"
+        required: true
+      dry_run:
+        description: "Dry run: show what would be scheduled, schedule nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+      WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run schedule-facebook -- "$FROM" "$TO"
+        env:
+          FROM: ${{ inputs.from }}
+          TO: ${{ inputs.to }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+      - name: Commit the record
+        if: ${{ always() && !inputs.dry_run }}
+        run: |
+          git add data/sent.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "chore(publish): record scheduled Facebook posts ${{ inputs.from }}-${{ inputs.to }}"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done

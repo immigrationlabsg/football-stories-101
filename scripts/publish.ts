@@ -24,7 +24,7 @@ import { selectProvider } from './lib/providers';
 import { emailSubject, emailMarkdown, webLiveDate } from './lib/email';
 import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
 import { sendTelegramPhoto, telegramConfigured } from './lib/telegram';
-import { postStoryToSocials, type Outcome } from './lib/social-post';
+import { postStoryToSocials, recordSocial, type Outcome } from './lib/social-post';
 import { pad3, storyNumber } from '../src/schema/story';
 import { isoDate } from '../src/lib/format';
 
@@ -42,6 +42,7 @@ interface SentRecord {
 }
 interface SentFile {
   sent: SentRecord[];
+  social?: unknown[]; // written by recordSocial(); kept as is
 }
 
 const SENT_PATH = path.join(ROOT, 'data/sent.json');
@@ -53,7 +54,7 @@ if (Number.isNaN(now.getTime())) throw new Error(`PUBLISH_NOW is not a valid dat
 function readSent(): SentFile {
   try {
     const parsed = JSON.parse(fs.readFileSync(SENT_PATH, 'utf8')) as SentFile;
-    return { sent: Array.isArray(parsed.sent) ? parsed.sent : [] };
+    return { ...parsed, sent: Array.isArray(parsed.sent) ? parsed.sent : [] };
   } catch {
     return { sent: [] };
   }
@@ -61,7 +62,9 @@ function readSent(): SentFile {
 
 function writeSent(file: SentFile) {
   fs.mkdirSync(path.dirname(SENT_PATH), { recursive: true });
-  fs.writeFileSync(SENT_PATH, JSON.stringify(file, null, 2) + '\n');
+  // Keep the social records as they are on disk now (recordSocial may have added some since this file was read).
+  const onDisk = fs.existsSync(SENT_PATH) ? (JSON.parse(fs.readFileSync(SENT_PATH, 'utf8')) as SentFile) : { sent: [] };
+  fs.writeFileSync(SENT_PATH, JSON.stringify({ ...file, social: onDisk.social ?? file.social }, null, 2) + '\n');
 }
 
 /** Distance in days between a story's month/day and today's, ignoring the year. */
@@ -189,7 +192,10 @@ async function main() {
   // 2b. Facebook, Instagram and Threads (each is skipped until its credentials are set)
   let socialOutcomes: Outcome[] = [];
   if (kind === 'scheduled') {
-    socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun });
+    // Social posting does not depend on the email service: it is a dry run only when DRY_RUN=1 is asked for.
+    const socialDry = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
+    socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun: socialDry, skipDone: true });
+    if (!socialDry) recordSocial(story.data.number, socialOutcomes);
   } else {
     console.log('[social] archive re-run: not posted automatically to Facebook, Instagram or Threads.');
   }
@@ -229,7 +235,7 @@ async function main() {
     console.log(`[record] ${key} added to data/sent.json`);
   }
 
-  if (!dryRun && socialOutcomes.some((o) => o.status === 'failed')) process.exitCode = 1;
+  if (socialOutcomes.some((o) => o.status === 'failed')) process.exitCode = 1;
   if (telegramError) {
     // The email went out and is recorded; surface the Telegram failure as a red run.
     process.exitCode = 1;
