@@ -9,6 +9,8 @@ Rules for the research run:
 - Record patterns, not copies: which subjects, formats and hooks get engagement, with links and rough numbers.
 - Judge every idea against our promise: one true, researched football story a day that makes a fan say
   "I never knew that". News, transfer gossip, rankings, memes and hot takes are noted only as "not for us".
+- Stories from Africa, Asia or North America come through players with a European or world profile (Okocha,
+  Drogba, Mané and the like), not clubs or leagues most fans have no context for.
 - End with up to 10 suggested angles. Each one names its pillar and whether it is a new subject or a follow-up of an
   earlier story, and confirms it does not repeat a story in `docs/story-bank.md`.
 - Ideas that would change the page itself (recent football, new formats, series) go under "For the owner to review";

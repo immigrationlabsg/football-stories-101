@@ -50,10 +50,10 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 044 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
 | 045 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
 | 046 | Players | Romário at Barcelona: the hat-trick in the 5–0 against Real Madrid, January 1994 | reserved |
-| 047 | Clubs | TP Mazembe 2010: the first African club in a Club World Cup final | reserved |
+| 047 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
 | 048 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
 | 049 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
-| 050 | Players | Kaká: the last Ballon d'Or before Messi and Ronaldo, 2007 | reserved |
+| 050 | Players | Didier Drogba: the 2005 dressing-room appeal for peace in Côte d'Ivoire | reserved |
 | 051 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
 | 052 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
 | 053 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
@@ -65,8 +65,10 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
   recap of the earlier story. Example: 042, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
   People may appear in more than one story (Beckham in the Class of 92 and in his own story) as long as each story
   tells a different event; never two stories about the same match or tournament within a week.
-- **Spread the world:** each week includes at least one story from outside Europe and South America, and women's
-  football at least every other week.
+- **Spread the world through stars fans know:** African, Asian and North American stories are told through players
+  with a European or world profile (Okocha, Drogba, Mané, Eto'o, Weah, Son and the like), never through clubs or
+  leagues most fans have no context for. Women's football at least every other week, again through names and
+  moments with real reach.
 - **Lead with names fans know.** At least half of each week's stories are built around globally famous players or teams
   (Zlatan, Ronaldinho, Rivaldo, Romário, Beckham and the like). Their documented careers are fair subjects while they are alive.
   The promise stays the same: a true, sourced story that makes a fan say "I never knew that", not news or gossip.
