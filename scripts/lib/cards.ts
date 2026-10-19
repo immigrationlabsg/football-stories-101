@@ -35,8 +35,10 @@ const h = (type: string, props: Record<string, unknown> = {}, ...children: unkno
   props: { ...props, children: children.length === 1 ? children[0] : children },
 });
 
-async function heroDataUri(hero: Buffer, size: number): Promise<string> {
-  const buf = await sharp(hero).resize(size, size, { fit: 'cover', position: 'attention' }).jpeg({ quality: 82 }).toBuffer();
+async function heroDataUri(hero: Buffer, width: number, height = width): Promise<string> {
+  // Crop to the exact frame here (keeping the most detailed area, usually the face)
+  // rather than letting the card layout cut the top off.
+  const buf = await sharp(hero).resize(width, height, { fit: 'cover', position: 'attention' }).jpeg({ quality: 82 }).toBuffer();
   return `data:image/jpeg;base64,${buf.toString('base64')}`;
 }
 
@@ -61,7 +63,7 @@ function fit(text: string, max: number, big: number, small: number) {
 /** 1200x630 Open Graph image: hero on the right, headline on the left. */
 export async function renderOg(story: StoryFrontmatter, hero: Buffer): Promise<Buffer> {
   const { subject, angle } = splitTitle(story.title);
-  const img = await heroDataUri(hero, 630);
+  const img = await heroDataUri(hero, 500, 630);
   const abs = (top: number, height: number, extra: Record<string, unknown> = {}) => ({
     position: 'absolute',
     left: 56,
@@ -96,7 +98,7 @@ export async function renderOg(story: StoryFrontmatter, hero: Buffer): Promise<B
 /** 1080x1350 Instagram cover: hero top, headline below. */
 export async function renderIgCover(story: StoryFrontmatter, hero: Buffer): Promise<Buffer> {
   const { subject, angle } = splitTitle(story.title);
-  const img = await heroDataUri(hero, 1080);
+  const img = await heroDataUri(hero, 1080, 760);
   const node = h(
     'div',
     { style: { width: 1080, height: 1350, display: 'flex', flexDirection: 'column', background: C.bg, color: C.ink } },
