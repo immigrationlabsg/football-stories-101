@@ -34,16 +34,12 @@ export function linkFor(story: LoadedStory, ctx: { webLive: boolean }): string {
 
 export function telegramCaption(story: LoadedStory, ctx: { webLive: boolean; kind: 'scheduled' | 'archive' }): string {
   const { subject, angle } = splitTitle(story.data.title);
-  const link = linkFor(story, ctx);
-  const linkLine = ctx.webLive ? `Read the full story: ${link}` : `Full story in today's email. Subscribe free: ${link}`;
   const prefix = ctx.kind === 'archive' ? 'From the archive · ' : '';
   return [
     `<b>${escapeHtml(prefix + storyNumber(story.data.number))}</b>`,
     `<b>${escapeHtml(subject)}</b> / ${escapeHtml(angle)}`,
     ``,
     escapeHtml(story.data.dek),
-    ``,
-    escapeHtml(linkLine),
   ].join('\n');
 }
 
@@ -79,7 +75,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     ``,
     `_____`,
     ``,
-    `Football's greatest stories, one every morning, free: ${ctx.webLive ? webUrl : absoluteUrl(paths.subscribe())}`,
+    `Follow Football Stories 101 for one true football story every morning.`,
   ]
     .join('\n')
     .replace(/\n{3,}/g, '\n\n')
@@ -93,7 +89,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
       ``,
       ...facts.slice(0, n).map((f) => `• ${f}`),
       ``,
-      `Full story in the link in bio. ${num}${archiveNote}.`,
+      `Follow for one true football story every morning. ${num}${archiveNote}.`,
       ``,
       hashtags(story),
     ].join('\n');
@@ -101,22 +97,23 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   for (let n = 2; instagram.length > INSTAGRAM_LIMIT && n >= 0; n--) instagram = instagramFor(n);
 
   const threadsFor = (n: number) =>
-    [`${story.data.dek}`, ``, ...facts.slice(0, n).map((f) => `• ${f}`), ``, `${num}: ${subject} / ${angle}. Link in reply.`].join('\n');
+    [`${story.data.dek}`, ``, ...facts.slice(0, n).map((f) => `• ${f}`), ``, `${num}: ${subject} / ${angle}.`].join('\n');
   let threads = threadsFor(5);
   for (let n = 4; threads.length > THREADS_LIMIT && n >= 0; n--) threads = threadsFor(n);
 
-  const threadsReply = ctx.webLive ? webUrl : `Subscribe free and read it this morning: ${link}`;
+  // No website link on social posts, by the editor's choice.
+  const threadsReply = '';
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
   const num = storyNumber(story.data.number);
-  const { facebook, instagram, threads, threadsReply, webUrl } = socialPosts(story, ctx);
+  const { facebook, instagram, threads, webUrl } = socialPosts(story, ctx);
 
   return `# ${num} · ${story.data.title}
 
 - Sent: ${ctx.now.toISOString()} (${ctx.kind})
-- Web page: ${webUrl}${ctx.webLive ? ' (live)' : ` (live from ${formatDate(new Date(story.data.date.getTime() + 7 * 86_400_000))})`}
+- Web page (for your reference only, do not post): ${webUrl}${ctx.webLive ? ' (live)' : ` (live from ${formatDate(new Date(story.data.date.getTime() + 7 * 86_400_000))})`}
 - Hero: public${story.data.hero.src}
 - Hero alt text: ${story.data.hero.alt}
 
@@ -130,13 +127,9 @@ ${instagram}
 
 Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (post the hook and facts, link in the reply)
+## Threads (post the hook and facts; no link anywhere)
 
 ${threads}
-
-### Reply
-
-${threadsReply}
 
 ## Cards (1080x1350)
 

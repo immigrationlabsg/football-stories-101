@@ -29,7 +29,7 @@ export async function postStoryToSocials(
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         out.push({ network, status: 'dry-run', detail: `${configured[network] ? 'credentials present' : 'no credentials yet'}; pictures reachable: ${urls.length}; text ${text.length} characters` });
-        console.log(`\n[${network}] dry run\n${urls.map((u) => `  image: ${u}`).join('\n')}\n---\n${text}\n---${network === 'threads' ? `\n(reply) ${posts.threadsReply}` : ''}`);
+        console.log(`\n[${network}] dry run\n${urls.map((u) => `  image: ${u}`).join('\n')}\n---\n${text}\n---${network === 'threads' && posts.threadsReply ? `\n(reply) ${posts.threadsReply}` : ''}`);
         continue;
       }
       if (!configured[network]) {
@@ -43,7 +43,7 @@ export async function postStoryToSocials(
         for (const u of cardUrls) await waitForUrl(u);
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });
       } else {
-        out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply })}` });
+        out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply || undefined })}` });
       }
     } catch (e) {
       out.push({ network, status: 'failed', detail: (e as Error).message });
