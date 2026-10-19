@@ -4,6 +4,30 @@ How to make the hero picture for each story: pick a free reference photo, then a
 
 The candidate photos for every story, two per story with the best first, are in `data/reference-photos.json`. The table at the end lists the best one for each story.
 
+## What is in design/references/ (checked 19 October 2026)
+
+The Reference photos workflow downloaded 45 photos from Wikimedia Commons, read each licence from Commons itself and refused anything that was not free. Every file's photographer and licence is in `design/references/README.md`.
+
+**Strongest references.** One person, the right moment, the right era. Start with these:
+004-1 (Cruyff scoring), 005-1 (Gerrard striking), 006-1 (Garrincha dribbling), 009-1 (Ghiggia's goal), 010-1 (Weah for PSG), 012-2 (Di Stéfano), 014-1 (Yashin's save), 018-1 (Eusébio shooting), 019-1 (Bobby Charlton), 020-1 (Guardiola), 022-1 (Maradona celebrating), 023-1 (Valentino Mazzola), 028-1 (Henry), 002-1 (Puskás), 003-2 (Clough).
+
+**Usable but weaker.** These are static portraits, group shots that need cropping, or the wrong era, so mention the year and kit in the prompt: 007, 008, 011, 013, 016, 017, 021, 024, 025, 026, 027 and 029.
+
+**No usable photo.** For 015, 017, 026 and 027 the first choice is "paint without a reference", using the scene in the table below.
+
+**Did not download.** Commons did not recognise these file names, so the names need checking:
+- 020-2 (Guardiola, 2009 final)
+- 021-2 (Vilfort)
+- 024-1 (Juninho free kick)
+- 028-2 (Highbury trophy)
+- 029-2 (Ferguson)
+- both 030 picks (Dick, Kerr Ladies)
+
+**Removed after review:**
+- 001-2: Ronaldo in a suit, years later. Story 001 already has its painting.
+- 010-2: Weah as president, which is not the footballer the story is about.
+- 019-2: the Busby photo is marked public domain but credited to Scanpix, so its licence is doubtful.
+
 ## How to pick a good reference photo
 
 1. **One person.** A single player or manager fills the square. Avoid team line-ups and crowds. If a good photo has two people, crop to one before you upload it.

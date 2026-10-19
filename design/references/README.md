@@ -5,7 +5,6 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | File | Story | Licence | Photographer | Source |
 |---|---|---|---|---|
 | 001-1.jpg | 001 | CC BY-SA 4.0 | Milly barzellai | [Commons](https://commons.wikimedia.org/wiki/File:Ronaldo_2002_cropped.jpg) |
-| 001-2.jpg | 001 | CC BY-SA 3.0 | Дмитрий Садовников | [Commons](https://commons.wikimedia.org/wiki/File:Ronaldo_Naz%C3%A1rio.jpg) |
 | 002-1.jpg | 002 | CC0 | Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Ferenc_Pusk%C3%A1s.jpg) |
 | 002-2.jpg | 002 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:1961%E2%80%9362_European_Cup_-_Juventus_v_Real_Madrid_-_Pusk%C3%A1s,_Gento_and_Araquist%C3%A1in.jpg) |
 | 003-1.jpg | 003 | CC0 | Hans van Dijk for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Nottingham_Forest_FC_(Amsterdam,_1980)_-_Francis,_Clough,_Robertson.jpg) |
@@ -23,7 +22,6 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 009-1.jpg | 009 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Gol_ghiggia_vs_brasil.jpg) |
 | 009-2.jpg | 009 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Ghiggia_con_la_Copa_Jules_Rimet,_Estadio,_1950-07-29_(376).jpg) |
 | 010-1.jpg | 010 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Coppa_UEFA_1992-93_-_Napoli_vs_PSG_-_George_Weah.jpg) |
-| 010-2.jpg | 010 | Public domain | U.S. Embassy in Monrovia, Liberia | [Commons](https://commons.wikimedia.org/wiki/File:George_Weah_2019_(cropped).png) |
 | 011-1.jpg | 011 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Zarra_Final_Copa_1950.png) |
 | 011-2.jpg | 011 | CC BY 2.0 | Maider Goikoetxea Hidalgo | [Commons](https://commons.wikimedia.org/wiki/File:I%C3%B1aki_Williams.png) |
 | 012-1.jpg | 012 | CC0 | Wim van Rossem for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Di_Stefano_1959.jpg) |
@@ -41,7 +39,6 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 018-1.jpg | 018 | CC0 | Jack de Nijs for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Ajax_tegen_Benfica_2-1,_Schrijvers_in_duel_met_Eusebio,_Bestanddeelnr_917-7453.jpg) |
 | 018-2.jpg | 018 | CC0 | Eric Koch for Anefo | [Commons](https://commons.wikimedia.org/wiki/File:Feijenoord_tegen_Benfica_0-0_Eus%C3%A9bio_met_Leo_Horn,_Bestanddeelnr_915-0312.jpg) |
 | 019-1.jpg | 019 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Bobby_charlton_elgrafico.JPG) |
-| 019-2.jpg | 019 | Public domain | Kurt Nielsen © Scanpix | [Commons](https://commons.wikimedia.org/wiki/File:Matt_Busby_cropped.jpg) |
 | 020-1.jpg | 020 | CC BY 2.0 | tpower1978 | [Commons](https://commons.wikimedia.org/wiki/File:Manager_Josep_Guardiola.jpg) |
 | (not downloaded) | 020 | Input buffer contains unsupported image format | | File:Pep Guardiola, 2009 UEFA Champions League Final.jpg |
 | 021-1.jpg | 021 | Public domain | my own picture | [Commons](https://commons.wikimedia.org/wiki/File:Peter_Schmeichel_juli_1991.JPG) |
