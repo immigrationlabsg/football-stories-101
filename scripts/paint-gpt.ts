@@ -44,9 +44,10 @@ for (const n of stories) {
     const photo = path.join(OUT, '..', 'references', `${n}-1.jpg`);
     const celebrate = ref.style === 'celebrate';
     const prompt = celebrate
-      ? `Repaint this as ${STYLE} The first image is the photo: use it for the player\u2019s face, likeness, hair and expression, ` +
-        `so he is recognisable. The second image is the style reference: match its look exactly. One player only, from the waist up, ` +
-        `filling the square, arms spread wide in joyful celebration, painted loose on plain warm paper with the background reduced to faint washes. ` +
+      ? `Repaint the first image as ${STYLE} Keep the first image\u2019s composition, pose, framing and every person\u2019s likeness, ` +
+        `face and expression exactly as photographed; change only the style. The second image is the style reference: ` +
+        `copy its painting style only (the loose transparent washes, paper texture, soft edges, colour palette and plain warm paper ` +
+        `background), and do not copy its subject, pose or composition. Reduce the background to faint washes. ` +
         `Kit: ${ref.kit}. Scene: ${ref.why}`
       : `Repaint the attached photo as ${STYLE} Keep every person\u2019s likeness, face, expression and pose as in the photo, ` +
         `so they are recognisable, and keep the moment the photo captures. Simplify the background into loose washes. Scene: ${ref.why}`;
