@@ -9,11 +9,14 @@ The model is The Morning Founder: a fast story told by a friend who has just fou
 
 1. **Headline** in the "Subject / angle" form: `Ferenc Puskás / The exile who scored 156 goals for Real Madrid`.
 2. **Dek**: one sentence, 160 characters or fewer. The counter-intuitive hook or the striking number.
-3. **Opening**: start inside a specific moment, or with a striking fact. First line hooks; no throat-clearing.
-4. **Body**: **500 to 700 words.** No section headings. Paragraphs of one to three short sentences; single-line
-   paragraphs for punch ("He stayed 35 years."). Chronological or hinge-and-flashback. At most one quote, woven in.
-5. **The turn**: somewhere in the middle, a line like "Here's what I didn't know until recently." or "Then came the
-   part that surprised me." followed by the decision, accident or trait that explains the outcome.
+3. **Hook (first 50 to 100 words):** two to five very short paragraphs that set a scene or a striking fact and
+   make the reader ask "who?" or "how?".
+4. **The reveal line, early:** straight after the hook, about 15% of the way in, a line of its own:
+   "Here's what I didn't know until recently." (variants: "Here's what I only found out recently.", "Here's the
+   part nobody told me."). Then the backstory that answers the hook.
+5. **Body:** 500 to 700 words in total. No section headings. Paragraphs of one to three short sentences; single-line
+   paragraphs for punch ("He stayed 35 years."). Around the middle, a second turn on a line of its own: "Then came the
+   part that surprised me." or "But here's where it gets interesting." At most one quote, woven in.
 6. **Close**: "Here's what stays with me." then two to four short sentences of reflection, present tense. Then the
    one-line question to the reader (the `question` field, not typed into the body).
 7. **Sources**: every story lists its sources in the `sources` field; they appear at the foot of the web page, not in

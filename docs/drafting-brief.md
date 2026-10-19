@@ -44,8 +44,10 @@ Read docs/editorial-standards.md "The story template" and "Style" and follow the
 
 1. First line hooks: a specific moment, or a striking fact.
 2. No `##` headings at all. Paragraphs of one to three short sentences, plenty of one-line paragraphs.
-3. First-person editor's voice for reactions only: "Here's what I didn't know until recently." / "Then came the part
-   that surprised me." / "Here's what stays with me." Never invent personal experiences.
+3. First-person editor's voice for reactions only, in this order: a 50 to 100 word hook; then, early (about 15% in),
+   "Here's what I didn't know until recently." on its own line; around the middle, "Then came the part that
+   surprised me." or "But here's where it gets interesting."; and the close "Here's what stays with me."
+   Never invent personal experiences.
 4. At most one quote, woven into a sentence ("As Cruyff put it: …"), verified like any fact. No pull-quote blocks,
    no timelines.
 5. Close with "Here's what stays with me." and two to four short sentences. The reader question goes in the
