@@ -12,7 +12,7 @@ on:
       quality:
         description: "low, medium or high (higher costs more)"
         required: false
-        default: "medium"
+        default: "high"
 
 permissions:
   contents: write
