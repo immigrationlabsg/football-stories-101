@@ -1,0 +1,59 @@
+name: Refresh social keys
+
+# Instagram and Threads keys last 60 days. This renews them every two weeks and saves the
+# new keys back into the repository secrets, so they never run out. It also checks that the
+# Facebook Page key still works; a red run means a key needs attention (GitHub emails you).
+#
+# Needs one extra secret, SECRETS_ADMIN_TOKEN: a fine-grained GitHub token for this
+# repository only, with "Secrets: Read and write" permission (docs/runbook.md section 16).
+on:
+  schedule:
+    - cron: "17 3 1,15 * *"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.SECRETS_ADMIN_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Facebook Page key
+        env:
+          TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "No Facebook Page key saved; skipping."; exit 0; fi
+          r=$(curl -s "https://graph.facebook.com/v21.0/me?fields=id,name&access_token=$TOKEN")
+          if echo "$r" | jq -e '.error' >/dev/null; then
+            echo "::error::The Facebook Page key no longer works: $(echo "$r" | jq -r '.error.message')"
+            exit 1
+          fi
+          echo "Facebook Page key works for: $(echo "$r" | jq -r '.name')"
+
+      - name: Instagram key
+        if: always()
+        env:
+          TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "No Instagram key saved; skipping."; exit 0; fi
+          r=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$TOKEN")
+          new=$(echo "$r" | jq -r '.access_token // empty')
+          if [ -z "$new" ]; then echo "::error::Instagram refresh failed: $(echo "$r" | jq -r '.error.message // .')"; exit 1; fi
+          echo "::add-mask::$new"
+          if [ -z "$GH_TOKEN" ]; then echo "::error::SECRETS_ADMIN_TOKEN is not set, so the new Instagram key could not be saved"; exit 1; fi
+          gh secret set INSTAGRAM_ACCESS_TOKEN --body "$new"
+          echo "Instagram key renewed for another $(( $(echo "$r" | jq -r '.expires_in') / 86400 )) days."
+
+      - name: Threads key
+        if: always()
+        env:
+          TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "No Threads key saved; skipping."; exit 0; fi
+          r=$(curl -s "https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=$TOKEN")
+          new=$(echo "$r" | jq -r '.access_token // empty')
+          if [ -z "$new" ]; then echo "::error::Threads refresh failed: $(echo "$r" | jq -r '.error.message // .')"; exit 1; fi
+          echo "::add-mask::$new"
+          if [ -z "$GH_TOKEN" ]; then echo "::error::SECRETS_ADMIN_TOKEN is not set, so the new Threads key could not be saved"; exit 1; fi
+          gh secret set THREADS_ACCESS_TOKEN --body "$new"
+          echo "Threads key renewed for another $(( $(echo "$r" | jq -r '.expires_in') / 86400 )) days."

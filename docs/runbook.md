@@ -348,3 +348,13 @@ Never paste a token or secret into a chat or a file in the repository.
 **What the API cannot do:** it cannot switch on Instagram's "AI info" label or write alt text for carousel images.
 If you want those on a post, post that one by hand in the app.
 
+
+### Keys that never run out
+
+- **Facebook Page key:** make it from an *extended* user key (Access Token Tool, "Extend Access Token"), then
+  `GET me/accounts`. A Page key made that way does not expire unless you change your Facebook password.
+  An even sturdier option is a System User key from Business Settings, Users, System users, with expiry "Never".
+- **Instagram and Threads keys** last 60 days. The "Refresh social keys" workflow renews them on the 1st and 15th
+  of each month and saves the new keys back into the secrets. It needs one secret, `SECRETS_ADMIN_TOKEN`: create a
+  fine-grained token at https://github.com/settings/personal-access-tokens/new for this repository only, with
+  Repository permissions, Secrets: Read and write. The same run checks the Facebook key and goes red if it stops working.
