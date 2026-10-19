@@ -1,43 +1,9 @@
 {
-  "026": {
-    "commons": "File:Bert Trautmann's Neck Brace.jpg",
-    "license": "CC BY 2.0",
-    "artist": "Smabs Sputzer",
-    "url": "https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg"
-  },
-  "020": {
-    "commons": "File:Pep Guardiola, 2009 UEFA Champions League Final.jpg",
-    "license": "CC BY 2.0",
-    "artist": "funnydae",
-    "url": "https://commons.wikimedia.org/wiki/File:Pep_Guardiola,_2009_UEFA_Champions_League_Final.jpg",
-    "crop": "attention"
-  },
-  "025": {
-    "commons": "File:Estádio da Luz - Euro 2004 - Portugal v Greece.jpg",
-    "license": "CC BY 2.0",
-    "artist": "Jarrett Campbell",
-    "url": "https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_da_Luz_-_Euro_2004_-_Portugal_v_Greece.jpg",
-    "crop": "attention"
-  },
   "028": {
     "commons": "File:Trophy presentation Highbury 2004.JPG",
     "license": "CC BY-SA 2.5",
     "artist": "Mr. Alexander Ottesen",
     "url": "https://commons.wikimedia.org/wiki/File:Trophy_presentation_Highbury_2004.JPG",
-    "crop": "attention"
-  },
-  "029": {
-    "commons": "File:Camp Nou Panoramic Interior View.jpg",
-    "license": "CC BY-SA 3.0",
-    "artist": "Johannes Falke",
-    "url": "https://commons.wikimedia.org/wiki/File:Camp_Nou_Panoramic_Interior_View.jpg",
-    "crop": "attention"
-  },
-  "030": {
-    "commons": "File:Dick kerr ladies team.jpg",
-    "license": "Public domain",
-    "artist": "Unknown photographer",
-    "url": "https://commons.wikimedia.org/wiki/File:Dick_kerr_ladies_team.jpg",
     "crop": "attention"
   }
 }
