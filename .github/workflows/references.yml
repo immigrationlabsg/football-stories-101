@@ -3,9 +3,6 @@ name: Reference photos
 # Downloads the reference photos chosen in data/reference-photos.json into
 # design/references/ so they can be saved on a phone and repainted in ChatGPT.
 on:
-  push:
-    branches: [main]
-    paths: ["data/reference-photos.json"]
   workflow_dispatch:
 
 permissions:

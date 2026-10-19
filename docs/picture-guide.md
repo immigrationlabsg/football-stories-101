@@ -4,6 +4,21 @@ How to make the hero picture for each story: pick a free reference photo, then a
 
 The candidate photos for every story, two per story with the best first, are in `data/reference-photos.json`. The table at the end lists the best one for each story.
 
+## Housekeeping
+
+All 30 paintings are live, so the working folders were deleted to keep the repository small: the downloaded reference photos
+(`design/references/`), the search contact sheets (`design/candidates/`) and the 1024-pixel paintings (`design/paintings/*.png`).
+The photo choices (`data/reference-photos.json`), the search queries (`data/reference-queries.json`) and the live images
+(`public/images/stories/`) stay. GitHub keeps old versions in its history, which is fine.
+
+To make the hero for a new story (the recipe the editor chose, "C": high quality, the Ronaldo painting as the style reference):
+
+1. Add the story's search queries to `data/reference-queries.json` and run **Reference candidates** (Actions tab) for that story.
+   Look at `design/candidates/NNN.jpg`, pick the photo, and put its Commons file name, a one-line "why", the kit and an "alt" in `data/reference-photos.json`.
+2. Run **Reference photos** to download the photo, then **Paint with GPT Image** for the story number. Look at `design/paintings/NNN.png`.
+3. Run `npm run publish-painting -- N`. It writes the hero, the alt text and the credit ("Painting after a photo by NAME, LICENCE, via Wikimedia Commons. Image generated with AI.").
+4. Delete the working files again (`design/references/`, `design/candidates/`, `design/paintings/*.png`).
+
 ## What is in design/references/ (picked 19 October 2026)
 
 Every pick shows the moment the story is about: the goal, the final, the trophy, the celebration. A portrait is used only when the story is about that person and no match photo exists. `design/references/NNN-1.jpg` is the first choice for story NNN and `NNN-2.jpg` the second. Each photo's licence was read from Commons itself, and the credits are in `design/references/README.md`.
