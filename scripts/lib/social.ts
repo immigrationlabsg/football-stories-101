@@ -69,14 +69,43 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   // a rule, and a one-line signature with the link.
   const plain = markdownToText(md);
 
-  // Facebook cuts a post at "See more" after roughly 250 characters. So the opening is a short
-  // version of the story's hook, with "Here's what I didn't know until recently." right after it,
-  // and the rest of the story follows unchanged.
-  const REVEAL = "Here's what I didn't know until recently.";
+  // Facebook cuts a post at "See more" after roughly 250 characters. The whole story is posted, but
+  // "Here's what I didn't know until recently." is moved up so it starts inside that window: the opening
+  // sentences are kept in order up to about 230 characters, then the reveal, then the rest of the opening,
+  // then the rest of the story. Nothing is removed.
   const m = /Here[\u2019']s what I didn[\u2019']t know until recently\./.exec(plain);
+  const REVEAL = m ? m[0] : "Here's what I didn't know until recently.";
   const afterReveal = m ? plain.slice(m.index + m[0].length).trim() : '';
   const payoff = afterReveal.split(/\n\s*\n/)[0] ?? '';
-  const opening = m && story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}\n\n${afterReveal}` : plain;
+  const WINDOW = 230;
+  let head = '';
+  let tailOfOpening = '';
+  if (m) {
+    const paragraphs = plain.slice(0, m.index).trim().split(/\n\s*\n/);
+    let used = 0;
+    let full = false;
+    const headParas: string[] = [];
+    const tailParas: string[] = [];
+    for (const para of paragraphs) {
+      const sentences = para.split(/(?<=[.!?])\s+/);
+      const h: string[] = [];
+      const t: string[] = [];
+      for (const sentence of sentences) {
+        if (!full && (used === 0 || used + sentence.length + 1 <= WINDOW)) {
+          h.push(sentence);
+          used += sentence.length + 1;
+        } else {
+          full = true;
+          t.push(sentence);
+        }
+      }
+      if (h.length) headParas.push(h.join(' '));
+      if (t.length) tailParas.push(t.join(' '));
+    }
+    head = headParas.join('\n\n');
+    tailOfOpening = tailParas.join('\n\n');
+  }
+  const opening = m ? [head, REVEAL, tailOfOpening, afterReveal].filter(Boolean).join('\n\n') : plain;
   const facebook = [
     opening,
     ``,
@@ -109,9 +138,15 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   let instagram = instagramFor(3);
   for (let n = 2; instagram.length > INSTAGRAM_LIMIT && n >= 0; n--) instagram = instagramFor(n);
 
-  // Threads: the same opening, the reveal phrase, and the first line of the payoff. 500 characters at most.
-  const threadsFull = story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}\n\n${payoff}` : `${story.data.dek}\n\n${num}: ${subject} / ${angle}.`;
-  const threads = threadsFull.length <= THREADS_LIMIT ? threadsFull : story.data.socialHook ? `${story.data.socialHook}\n\n${REVEAL}` : threadsFull.slice(0, THREADS_LIMIT - 1) + '…';
+  // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff.
+  const threadsTries = m
+    ? [
+        [head, REVEAL, tailOfOpening, payoff],
+        [head, REVEAL, tailOfOpening],
+        [head, REVEAL],
+      ].map((parts) => parts.filter(Boolean).join('\n\n'))
+    : [`${story.data.dek}\n\n${num}: ${subject} / ${angle}.`];
+  const threads = threadsTries.find((t) => t.length <= THREADS_LIMIT) ?? threadsTries[threadsTries.length - 1].slice(0, THREADS_LIMIT - 1) + '…';
 
   const threadsReply = `More on Instagram: ${process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram}`;
   return { facebook, instagram, threads, threadsReply, webUrl, link };
