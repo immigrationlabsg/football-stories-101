@@ -47,7 +47,20 @@ export function telegramCaption(story: LoadedStory, ctx: { webLive: boolean; kin
   ].join('\n');
 }
 
-export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
+export interface SocialPosts {
+  facebook: string;
+  instagram: string;
+  threads: string;
+  threadsReply: string;
+  webUrl: string;
+  link: string;
+}
+
+const THREADS_LIMIT = 500;
+const INSTAGRAM_LIMIT = 2200;
+
+/** The text for each network. Shared by the social/NNN.md file and by the automatic posting. */
+export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'archive'; webLive: boolean }): SocialPosts {
   const { subject, angle } = splitTitle(story.data.title);
   const md = mdxToMarkdown(story.body, { absoluteUrl });
   const link = linkFor(story, ctx);
@@ -72,28 +85,33 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
+  const instagramFor = (n: number) =>
+    [
+      `${subject} / ${angle}`,
+      ``,
+      story.data.dek,
+      ``,
+      ...facts.slice(0, n).map((f) => `• ${f}`),
+      ``,
+      `Full story in the link in bio. ${num}${archiveNote}.`,
+      ``,
+      hashtags(story),
+    ].join('\n');
+  let instagram = instagramFor(3);
+  for (let n = 2; instagram.length > INSTAGRAM_LIMIT && n >= 0; n--) instagram = instagramFor(n);
 
-  const instagram = [
-    `${subject} / ${angle}`,
-    ``,
-    story.data.dek,
-    ``,
-    ...facts.slice(0, 3).map((f) => `• ${f}`),
-    ``,
-    `Full story in the link in bio. ${num}${archiveNote}.`,
-    ``,
-    hashtags(story),
-  ].join('\n');
-
-  const threads = [
-    `${story.data.dek}`,
-    ``,
-    ...facts.slice(0, 5).map((f) => `• ${f}`),
-    ``,
-    `${num}: ${subject} / ${angle}. Link in reply.`,
-  ].join('\n');
+  const threadsFor = (n: number) =>
+    [`${story.data.dek}`, ``, ...facts.slice(0, n).map((f) => `• ${f}`), ``, `${num}: ${subject} / ${angle}. Link in reply.`].join('\n');
+  let threads = threadsFor(5);
+  for (let n = 4; threads.length > THREADS_LIMIT && n >= 0; n--) threads = threadsFor(n);
 
   const threadsReply = ctx.webLive ? webUrl : `Subscribe free and read it this morning: ${link}`;
+  return { facebook, instagram, threads, threadsReply, webUrl, link };
+}
+
+export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
+  const num = storyNumber(story.data.number);
+  const { facebook, instagram, threads, threadsReply, webUrl } = socialPosts(story, ctx);
 
   return `# ${num} · ${story.data.title}
 

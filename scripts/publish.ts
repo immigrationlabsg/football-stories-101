@@ -24,6 +24,7 @@ import { selectProvider } from './lib/providers';
 import { emailSubject, emailMarkdown, webLiveDate } from './lib/email';
 import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
 import { sendTelegramPhoto, telegramConfigured } from './lib/telegram';
+import { postStoryToSocials, type Outcome } from './lib/social-post';
 import { pad3, storyNumber } from '../src/schema/story';
 import { isoDate } from '../src/lib/format';
 
@@ -36,6 +37,7 @@ interface SentRecord {
   provider: string;
   providerId: string | null;
   telegram: boolean;
+  social?: Record<string, string>;
   subject: string;
 }
 interface SentFile {
@@ -184,6 +186,14 @@ async function main() {
     }
   }
 
+  // 2b. Facebook, Instagram and Threads (each is skipped until its credentials are set)
+  let socialOutcomes: Outcome[] = [];
+  if (kind === 'scheduled') {
+    socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun });
+  } else {
+    console.log('[social] archive re-run: not posted automatically to Facebook, Instagram or Threads.');
+  }
+
   // 3. Social assets
   const cards = cardFiles(story);
   const cardsOut = path.join(SOCIAL_DIR, 'cards');
@@ -212,12 +222,14 @@ async function main() {
       provider: provider.name,
       providerId: result.id,
       telegram: telegramOk,
+      social: Object.fromEntries(socialOutcomes.map((o) => [o.network, o.status])),
       subject,
     });
     writeSent(sent);
     console.log(`[record] ${key} added to data/sent.json`);
   }
 
+  if (!dryRun && socialOutcomes.some((o) => o.status === 'failed')) process.exitCode = 1;
   if (telegramError) {
     // The email went out and is recorded; surface the Telegram failure as a red run.
     process.exitCode = 1;

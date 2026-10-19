@@ -1,0 +1,61 @@
+name: Post to social
+
+# Posts one story to Facebook, Instagram and Threads through Meta's official APIs.
+# Dry run is on by default: it prints exactly what would be posted and checks that
+# every picture is live, but posts nothing. Untick it to post for real.
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "Story number, e.g. 1"
+        required: true
+      dry_run:
+        description: "Dry run: show the posts and check the pictures, post nothing"
+        type: boolean
+        default: true
+      networks:
+        description: "Networks, space separated (facebook instagram threads)"
+        required: false
+        default: "facebook instagram threads"
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+      WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run post-social -- "$STORY" $NETWORKS
+        env:
+          STORY: ${{ inputs.story }}
+          NETWORKS: ${{ inputs.networks }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+      - name: Commit the record
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git add data/sent.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "chore(publish): record social posts for story ${{ inputs.story }}"
+          for attempt in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push origin HEAD:main && break
+            sleep 5
+          done

@@ -23,6 +23,7 @@
     "touchup": "tsx scripts/touch-up.ts",
     "painttest": "tsx scripts/paint-test.ts",
     "paint": "tsx scripts/paint-gpt.ts",
+    "post-social": "tsx scripts/post-social.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },
   "dependencies": {

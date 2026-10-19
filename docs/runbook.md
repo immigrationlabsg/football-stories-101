@@ -311,3 +311,35 @@ For another story, ask Claude to "make the social pack for story N" (it runs `np
 
 Buttondown is free up to 100 subscribers and Telegram is always free, so the email and channel can also be
 tested at no cost when you are ready.
+
+## 16. Automatic posting to Facebook, Instagram and Threads
+
+The daily "Publish daily" run posts to Facebook, Instagram and Threads after the email and Telegram, as soon as these five
+GitHub secrets exist. Until each one is set, that network is simply skipped. You can also post one story by hand with the
+**Post to social** workflow (Actions tab): leave "Dry run" ticked first. It prints exactly what would be posted and checks
+that every picture is live, without posting anything.
+
+**One-time setup (about 30 minutes, free; allow extra time because Meta's screens change):**
+
+1. The Instagram account must be a Professional (Creator) account, linked to the Facebook Page (Business Suite shows both).
+2. Go to developers.facebook.com, log in, **My Apps → Create app**. Choose the **Business** type, name it "Football Stories 101".
+   While the app stays in Development mode you can post to Pages and Instagram accounts you own without app review.
+3. In **Tools → Graph API Explorer**, pick your app, click **Generate access token**, and tick: `pages_show_list`,
+   `pages_manage_posts`, `pages_read_engagement`, `instagram_basic`, `instagram_content_publish`. Approve for the Football Stories 101 Page and its Instagram account.
+4. Make the token long-lived: in the **Access Token Debugger** (developers.facebook.com/tools/debug/accesstoken) paste it and click **Extend access token**.
+5. In the Graph API Explorer, with that long-lived token, request `me/accounts`. The entry for Football Stories 101 has its `id` (the Page ID)
+   and an `access_token` (the Page token, which does not expire when it comes from a long-lived user token).
+6. Request `{page id}?fields=instagram_business_account`. Its `id` is the Instagram user ID.
+7. In the GitHub repo, **Settings → Secrets and variables → Actions → New repository secret**, add:
+   `META_PAGE_ID`, `META_PAGE_ACCESS_TOKEN` (the Page token from step 5), `META_IG_USER_ID`.
+8. Threads: in the same app, add the **Threads** use case, give your Threads account the tester role, generate a token with
+   `threads_basic` and `threads_content_publish`, exchange it for a long-lived token, and add `THREADS_USER_ID` and `THREADS_ACCESS_TOKEN`.
+   The Threads token lasts 60 days, so put a reminder in your calendar to renew it every 50 days.
+
+Never paste a token or secret into a chat or a file in the repository.
+
+**Test:** Actions → **Post to social** → story `1` → dry run on → Run. Read the log. Then untick "Dry run" and post story 1 for real.
+
+**What the API cannot do:** it cannot switch on Instagram's "AI info" label or write alt text for carousel images.
+If you want those on a post, post that one by hand in the app.
+
