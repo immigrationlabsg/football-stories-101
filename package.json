@@ -21,6 +21,7 @@
     "candidates": "tsx scripts/search-references.ts",
     "colourise": "tsx scripts/colourise-references.ts",
     "touchup": "tsx scripts/touch-up.ts",
+    "painttest": "tsx scripts/paint-test.ts",
     "paint": "tsx scripts/paint-gpt.ts"
   },
   "dependencies": {
