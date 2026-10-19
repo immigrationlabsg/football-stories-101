@@ -1,32 +1,301 @@
 {
-  "001": { "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt", "queries": ["Ronaldo Brazil 2002 World Cup", "Ronaldo Nazário 2002 final", "Ronaldo Brasil Copa 2002", "Ronaldo celebrating Brazil"] },
-  "002": { "want": "Puskás in Real Madrid white, in action or celebrating, ideally a European Cup final", "queries": ["Puskás Real Madrid", "Puskas Real Madrid 1960", "Puskás European Cup final", "Ferenc Puskás Real Madrid goal"] },
-  "003": { "want": "Nottingham Forest winning the European Cup 1979 or 1980: trophy, team celebration, final action", "queries": ["Nottingham Forest European Cup", "Nottingham Forest 1979", "Nottingham Forest 1980 European Cup final", "Nottingham Forest Hamburger SV 1980", "Nottingham Forest Ajax 1980"] },
-  "004": { "want": "Ajax 1971-73: Cruyff and team in action or celebrating a European Cup, red-and-white shirts", "queries": ["Ajax European Cup 1971", "Ajax Europa Cup 1972", "Ajax Inter 1972 Cruijff", "Ajax Juventus 1973 Europa Cup", "Ajax Panathinaikos 1971", "Ajax huldiging Europa Cup"] },
-  "005": { "want": "Liverpool 2005 Champions League final: Gerrard, the comeback, players celebrating, the trophy", "queries": ["Liverpool 2005 Champions League", "Steven Gerrard Champions League trophy", "Liverpool Istanbul 2005", "Gerrard Liverpool celebration"] },
-  "006": { "want": "Garrincha for Brazil at the 1962 World Cup, dribbling or celebrating, yellow shirt", "queries": ["Garrincha 1962", "Garrincha Copa 1962", "Garrincha Brasil", "Garrincha dribbling"] },
-  "007": { "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring", "queries": ["Leicester City Premier League trophy 2016", "Jamie Vardy celebrating", "Leicester City champions 2016", "Leicester City celebration King Power"] },
-  "008": { "want": "Sacchi's Milan 1988-90: Gullit, Van Basten, Rijkaard in action or with the European Cup", "queries": ["AC Milan 1989 European Cup", "Van Basten Milan 1989", "Gullit Milan 1989", "Milan Steaua 1989", "Rijkaard Milan Benfica 1990", "Arrigo Sacchi"] },
-  "009": { "want": "1950 World Cup final at the Maracanã: Ghiggia's goal, Uruguay celebrating, the crowd", "queries": ["Maracanazo", "Ghiggia 1950", "Uruguay Brasil 1950 final", "Maracanã 1950 World Cup", "Obdulio Varela 1950"] },
-  "010": { "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG", "queries": ["George Weah Milan", "George Weah PSG", "George Weah 1995", "George Weah footballer"] },
-  "011": { "want": "Athletic Club in action or celebrating, the barge (gabarra) celebration of 2024", "queries": ["Gabarra Athletic 2024", "Athletic Club gabarra", "Athletic Club Copa del Rey 2024", "Athletic Bilbao celebration", "Zarra Athletic"] },
-  "012": { "want": "Real Madrid European Cups 1956-60: Di Stéfano in action, team with trophy", "queries": ["Di Stéfano Real Madrid", "Real Madrid European Cup 1960", "Real Madrid Eintracht 1960", "Real Madrid Copa de Europa", "Di Stefano goal"] },
-  "013": { "want": "Agüero's 93:20 goal against QPR, City celebrating the 2012 title", "queries": ["Agüero QPR 2012", "Aguero goal QPR", "Manchester City 2012 title celebration", "Manchester City QPR 2012", "Sergio Agüero Manchester City celebration"] },
-  "014": { "want": "Lev Yashin in goal, making a save or diving", "queries": ["Lev Yashin save", "Lev Yashin", "Yashin goalkeeper", "Яшин"] },
-  "015": { "want": "Boca Juniors history: early team, La Boca port, blue and gold", "queries": ["Boca Juniors 1905", "Boca Juniors 1907", "La Boca Riachuelo 1900", "Boca Juniors history", "Vuelta de Rocha 1900"] },
-  "016": { "want": "Celtic's 1967 European Cup win in Lisbon: team, trophy, final action", "queries": ["Celtic 1967 European Cup", "Lisbon Lions", "Celtic Inter 1967", "Billy McNeill European Cup", "Estádio Nacional 1967"] },
-  "017": { "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing", "queries": ["Cameroon Argentina 1990", "Italia 90 Cameroon", "Roger Milla 1990", "Omam-Biyik", "Cameroon national football team 1990"] },
-  "018": { "want": "Eusébio in action for Benfica or Portugal 1966, shooting or celebrating", "queries": ["Eusébio Benfica", "Eusébio 1966", "Eusebio Portugal 1966", "Eusébio goal"] },
-  "019": { "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley", "queries": ["Manchester United 1968 European Cup", "Bobby Charlton 1968", "George Best Manchester United", "Manchester United Benfica 1968", "Busby Babes"] },
-  "020": { "want": "Guardiola's Barcelona 2008-12: team celebrating, Messi, Xavi, Iniesta, the 2009 or 2011 final", "queries": ["Barcelona 2009 Champions League final", "Barcelona 2011 Champions League final", "Barcelona sextuple 2009", "Guardiola Barcelona celebration", "Messi Xavi Iniesta"] },
-  "021": { "want": "Denmark Euro 1992: the final, team celebrating, Schmeichel, Vilfort", "queries": ["Denmark Euro 1992", "Danmark EM 1992", "EM 1992 finale", "Euro 1992 final", "Peter Schmeichel Denmark"] },
-  "022": { "want": "Maradona against England 1986, scoring or celebrating", "queries": ["Maradona England 1986", "Maradona 1986", "Maradona Azteca", "Maradona goal of the century"] },
-  "023": { "want": "Grande Torino in action or team photo, Valentino Mazzola", "queries": ["Grande Torino", "Valentino Mazzola", "Torino 1949", "Torino calcio 1948"] },
-  "024": { "want": "Lyon 2002-08: Juninho free kick, team celebrating a title", "queries": ["Juninho Lyon", "Olympique Lyonnais champion", "Olympique Lyonnais 2005", "Juninho Pernambucano free kick", "Olympique Lyonnais Gerland"] },
-  "025": { "want": "Greece Euro 2004: Charisteas header, team celebrating with trophy", "queries": ["Greece Euro 2004", "Charisteas Euro 2004", "Euro 2004 final", "Greece national team 2004 celebration"] },
-  "026": { "want": "Bert Trautmann in goal for Manchester City, 1950s", "queries": ["Bert Trautmann", "Trautmann Manchester City", "Trautmann goalkeeper", "1956 FA Cup Final"] },
-  "027": { "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy", "queries": ["Wimbledon 1988 FA Cup", "Dave Beasant", "Wimbledon FC 1988", "1988 FA Cup Final"] },
-  "028": { "want": "Arsenal Invincibles 2003-04: Henry scoring or celebrating, team with the trophy", "queries": ["Arsenal 2004 Premier League trophy", "Thierry Henry Arsenal celebrating", "Arsenal Invincibles", "Thierry Henry goal Arsenal", "Arsenal Highbury 2004"] },
-  "029": { "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating", "queries": ["1999 UEFA Champions League Final", "Manchester United 1999 Champions League", "Solskjaer 1999", "Manchester United treble 1999", "Teddy Sheringham 1999"] },
-  "030": { "want": "Dick, Kerr Ladies in action or team photo, Lily Parr", "queries": ["Dick, Kerr Ladies", "Dick Kerr Ladies", "Lily Parr", "women's football 1920", "Dick Kerr Ladies 1921"] }
+  "001": {
+    "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt",
+    "queries": [
+      "Ronaldo Brazil 2002 World Cup",
+      "Ronaldo Nazário 2002 final",
+      "Ronaldo Brasil Copa 2002",
+      "Ronaldo celebrating Brazil"
+    ]
+  },
+  "002": {
+    "want": "Puskás in Real Madrid white, in action or celebrating, ideally a European Cup final",
+    "queries": [
+      "Puskás Real Madrid",
+      "Puskas Real Madrid 1960",
+      "Puskás European Cup final",
+      "Ferenc Puskás Real Madrid goal"
+    ]
+  },
+  "003": {
+    "want": "Nottingham Forest winning the European Cup 1979 or 1980: trophy, team celebration, final action",
+    "queries": [
+      "Nottingham Forest Europa Cup",
+      "Nottingham Forest Hamburg finale 1980",
+      "Malmö FF Nottingham Forest 1979",
+      "Trevor Francis Nottingham Forest",
+      "Nottingham Forest supporters",
+      "Peter Shilton Nottingham Forest"
+    ]
+  },
+  "004": {
+    "want": "Ajax 1971-73: Cruyff and team in action or celebrating a European Cup, red-and-white shirts",
+    "queries": [
+      "Ajax European Cup 1971",
+      "Ajax Europa Cup 1972",
+      "Ajax Inter 1972 Cruijff",
+      "Ajax Juventus 1973 Europa Cup",
+      "Ajax Panathinaikos 1971",
+      "Ajax huldiging Europa Cup"
+    ]
+  },
+  "005": {
+    "want": "Liverpool 2005 Champions League final: Gerrard, the comeback, players celebrating, the trophy",
+    "queries": [
+      "Liverpool 2005 Champions League",
+      "Steven Gerrard Champions League trophy",
+      "Liverpool Istanbul 2005",
+      "Gerrard Liverpool celebration"
+    ]
+  },
+  "006": {
+    "want": "Garrincha for Brazil at the 1962 World Cup, dribbling or celebrating, yellow shirt",
+    "queries": [
+      "Garrincha 1962",
+      "Garrincha Copa 1962",
+      "Garrincha Brasil",
+      "Garrincha dribbling"
+    ]
+  },
+  "007": {
+    "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring",
+    "queries": [
+      "Leicester City Premier League trophy 2016",
+      "Jamie Vardy celebrating",
+      "Leicester City champions 2016",
+      "Leicester City celebration King Power"
+    ]
+  },
+  "008": {
+    "want": "Sacchi's Milan 1988-90: Gullit, Van Basten, Rijkaard in action or with the European Cup",
+    "queries": [
+      "Milan Steaua finale 1989",
+      "Van Basten Gullit Milan",
+      "Marco van Basten AC Milan",
+      "Ruud Gullit AC Milan",
+      "Frank Rijkaard AC Milan",
+      "Milan Coppa dei Campioni 1990",
+      "Franco Baresi Milan 1989"
+    ]
+  },
+  "009": {
+    "want": "1950 World Cup final at the Maracanã: Ghiggia's goal, Uruguay celebrating, the crowd",
+    "queries": [
+      "Maracanazo",
+      "Ghiggia 1950",
+      "Uruguay Brasil 1950 final",
+      "Maracanã 1950 World Cup",
+      "Obdulio Varela 1950"
+    ]
+  },
+  "010": {
+    "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG",
+    "queries": [
+      "George Weah AC Milan",
+      "Weah Milan 1996",
+      "George Weah Monaco",
+      "George Weah Ballon d'Or",
+      "Weah Milan goal"
+    ]
+  },
+  "011": {
+    "want": "Athletic Club in action or celebrating, the barge (gabarra) celebration of 2024",
+    "queries": [
+      "Gabarra Athletic 2024",
+      "Athletic Club gabarra",
+      "Athletic Club Copa del Rey 2024",
+      "Athletic Bilbao celebration",
+      "Zarra Athletic"
+    ]
+  },
+  "012": {
+    "want": "Real Madrid European Cups 1956-60: Di Stéfano in action, team with trophy",
+    "queries": [
+      "Real Madrid Stade de Reims 1956",
+      "Real Madrid 1957 Fiorentina",
+      "Real Madrid Eintracht Frankfurt 1960",
+      "Gento Real Madrid",
+      "Di Stéfano 1957",
+      "Real Madrid Copa de Europa 1958"
+    ]
+  },
+  "013": {
+    "want": "Agüero's 93:20 goal against QPR, City celebrating the 2012 title",
+    "queries": [
+      "Sergio Agüero 2012",
+      "Agüero Manchester City",
+      "Manchester City Premier League trophy 2012",
+      "Manchester City parade 2012",
+      "Vincent Kompany trophy 2012"
+    ]
+  },
+  "014": {
+    "want": "Lev Yashin in goal, making a save or diving",
+    "queries": [
+      "Lev Yashin save",
+      "Lev Yashin",
+      "Yashin goalkeeper",
+      "Яшин"
+    ]
+  },
+  "015": {
+    "want": "Boca Juniors history: early team, La Boca port, blue and gold",
+    "queries": [
+      "Boca Juniors 1905",
+      "Boca Juniors 1907",
+      "La Boca Riachuelo 1900",
+      "Boca Juniors history",
+      "Vuelta de Rocha 1900"
+    ]
+  },
+  "016": {
+    "want": "Celtic's 1967 European Cup win in Lisbon: team, trophy, final action",
+    "queries": [
+      "Celtic Glasgow 1967",
+      "Jock Stein Celtic",
+      "Billy McNeill Celtic",
+      "Jimmy Johnstone Celtic",
+      "Celtic Feyenoord 1970",
+      "Celtic Ajax 1971"
+    ]
+  },
+  "017": {
+    "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing",
+    "queries": [
+      "Roger Milla",
+      "Cameroun 1990",
+      "Lions Indomptables 1990",
+      "Argentina Mundial 1990",
+      "Coppa del Mondo 1990 San Siro",
+      "François Omam-Biyik"
+    ]
+  },
+  "018": {
+    "want": "Eusébio in action for Benfica or Portugal 1966, shooting or celebrating",
+    "queries": [
+      "Eusébio Benfica",
+      "Eusébio 1966",
+      "Eusebio Portugal 1966",
+      "Eusébio goal"
+    ]
+  },
+  "019": {
+    "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley",
+    "queries": [
+      "Manchester United 1968 European Cup",
+      "Bobby Charlton 1968",
+      "George Best Manchester United",
+      "Manchester United Benfica 1968",
+      "Busby Babes"
+    ]
+  },
+  "020": {
+    "want": "Guardiola's Barcelona 2008-12: team celebrating, Messi, Xavi, Iniesta, the 2009 or 2011 final",
+    "queries": [
+      "Barcelona 2009 Champions League final",
+      "Barcelona 2011 Champions League final",
+      "Barcelona sextuple 2009",
+      "Guardiola Barcelona celebration",
+      "Messi Xavi Iniesta"
+    ]
+  },
+  "021": {
+    "want": "Denmark Euro 1992: the final, team celebrating, Schmeichel, Vilfort",
+    "queries": [
+      "Danmarks fodboldlandshold 1992",
+      "EM-guld 1992",
+      "Brian Laudrup 1992",
+      "John Jensen Denmark",
+      "Richard Møller Nielsen",
+      "Denmark national football team 1992"
+    ]
+  },
+  "022": {
+    "want": "Maradona against England 1986, scoring or celebrating",
+    "queries": [
+      "Maradona England 1986",
+      "Maradona 1986",
+      "Maradona Azteca",
+      "Maradona goal of the century"
+    ]
+  },
+  "023": {
+    "want": "Grande Torino in action or team photo, Valentino Mazzola",
+    "queries": [
+      "Grande Torino",
+      "Valentino Mazzola",
+      "Torino 1949",
+      "Torino calcio 1948"
+    ]
+  },
+  "024": {
+    "want": "Lyon 2002-08: Juninho free kick, team celebrating a title",
+    "queries": [
+      "Olympique Lyonnais 2005",
+      "Juninho Pernambucano Lyon",
+      "Sidney Govou",
+      "Karim Benzema Lyon 2008",
+      "Olympique Lyonnais champion de France",
+      "OL Gerland 2006"
+    ]
+  },
+  "025": {
+    "want": "Greece Euro 2004: Charisteas header, team celebrating with trophy",
+    "queries": [
+      "Greece Euro 2004",
+      "Charisteas Euro 2004",
+      "Euro 2004 final",
+      "Greece national team 2004 celebration"
+    ]
+  },
+  "026": {
+    "want": "Bert Trautmann in goal for Manchester City, 1950s",
+    "queries": [
+      "Bert Trautmann",
+      "Trautmann Manchester City",
+      "Trautmann goalkeeper",
+      "1956 FA Cup Final"
+    ]
+  },
+  "027": {
+    "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy",
+    "queries": [
+      "Wimbledon FC",
+      "Vinnie Jones Wimbledon",
+      "Plough Lane Wimbledon",
+      "Lawrie Sanchez",
+      "Wimbledon Liverpool 1988",
+      "Dave Beasant Wimbledon"
+    ]
+  },
+  "028": {
+    "want": "Arsenal Invincibles 2003-04: Henry scoring or celebrating, team with the trophy",
+    "queries": [
+      "Arsenal 2004 Premier League trophy",
+      "Thierry Henry Arsenal celebrating",
+      "Arsenal Invincibles",
+      "Thierry Henry goal Arsenal",
+      "Arsenal Highbury 2004"
+    ]
+  },
+  "029": {
+    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
+    "queries": [
+      "1999 UEFA Champions League Final",
+      "Manchester United 1999 Champions League",
+      "Solskjaer 1999",
+      "Manchester United treble 1999",
+      "Teddy Sheringham 1999"
+    ]
+  },
+  "030": {
+    "want": "Dick, Kerr Ladies in action or team photo, Lily Parr",
+    "queries": [
+      "Dick, Kerr Ladies",
+      "Dick Kerr Ladies",
+      "Lily Parr",
+      "women's football 1920",
+      "Dick Kerr Ladies 1921"
+    ]
+  }
 }
