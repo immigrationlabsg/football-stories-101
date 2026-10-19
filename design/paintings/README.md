@@ -1,7 +1,5 @@
 # Paintings
 
-Upload each finished ChatGPT painting here, named by story number: `002.jpg`, `003.png` and so on.
-Then tell Claude in the chat. Claude sets it as the story's picture, crops it, adds the credit line
-("Painting after a photo by NAME, LICENCE" where the reference photo needs one) and republishes the site.
-
-Nothing in this folder goes live by itself.
+Working folder for the **Paint with GPT Image** workflow. A run saves its painting here as `NNN.png`
+for the editor to review; nothing in this folder goes live by itself. Once a painting is approved it
+becomes the story's picture, and the working files here are deleted again (docs/picture-guide.md).

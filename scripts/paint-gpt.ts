@@ -53,9 +53,7 @@ for (const n of stories) {
   const style = new Blob([fs.readFileSync(STYLE_REF)], { type: 'image/jpeg' });
   let prompt: string;
   if (ref.commons) {
-    // Original photo by default; the colourised copy only when asked for (USE_COLOUR=1).
-    const colour = path.join(ROOT, 'design/references/colour', `${n}-1.jpg`);
-    const source = process.env.USE_COLOUR === '1' && fs.existsSync(colour) ? colour : path.join(ROOT, 'design/references', `${n}-1.jpg`);
+    const source = path.join(ROOT, 'design/references', `${n}-1.jpg`);
     const cropped = await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: ref.crop ?? sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer();
     form.append('image[]', new Blob([cropped], { type: 'image/jpeg' }), `${n}.jpg`);
     form.append('image[]', style, 'style.jpg');
