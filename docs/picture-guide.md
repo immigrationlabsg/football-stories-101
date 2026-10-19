@@ -59,9 +59,14 @@ If no free photo exists, paint a scene without a real person's face: a figure se
 
 ## Licence and credit
 
-- **CC BY or CC BY-SA photo.** The painting needs a credit line under the picture: *Painting after a photo by NAME, LICENCE*, for example *Painting after a photo by Peter Woodentop, CC BY-SA 2.0*. Take the name and licence from the photo's Commons page.
-- **Public domain or CC0 photo.** No credit is needed. A short "after a photo from the Nationaal Archief" is a nice courtesy.
-- **"Licence to confirm"** in the table means the search result did not show the licence clearly. Open the Commons page and check the licence box before you use the photo. If it is not one of the four free licences above, use the second choice.
+Every painting is credited on the story page, in the emails and in the social posts, in this form:
+
+- **CC BY or CC BY-SA photo:** *Painting after a photo by NAME, LICENCE, via Wikimedia Commons. Image generated with AI.* The credit links to the photo's Commons page. Take the name and licence from `design/references/README.md`.
+- **Public domain or CC0 photo:** *Painting after a public-domain photo, via Wikimedia Commons. Image generated with AI.* (Name the photographer or archive when it is known.)
+- **No photo (a painted scene):** *Illustration: Football Stories 101. Image generated with AI.*
+
+The "Image generated with AI" line is on every painting, the way The Morning Founder labels its images.
+
 - **Never use as a reference:** Google Images results, Getty Images, AP, Reuters, PA, or photos from club or league websites. A painting copied closely from one of those is still a copy of their photo.
 
 ## The ChatGPT prompt
