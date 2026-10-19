@@ -56,15 +56,26 @@ export async function waitForUrl(url: string, attempts = 18, delayMs = 10_000): 
   throw new Error(`${url} is not reachable yet`);
 }
 
-/** A photo post on the Page with the full text as its message. */
-export async function postFacebookPhoto(a: { imageUrl: string; message: string }, env = process.env): Promise<string> {
-  const j = await call(`${GRAPH}/${env.META_PAGE_ID}/photos`, {
-    url: a.imageUrl,
+/**
+ * A photo post on the Page with the full text as its message.
+ * With draft: true the post is saved as a DRAFT, which shows in Meta Business Suite
+ * (Planner or Posts) and in the Pages app, and nothing is published.
+ */
+export async function postFacebookPhoto(a: { imageUrl: string; message: string; draft?: boolean }, env = process.env): Promise<string> {
+  const token = env.META_PAGE_ACCESS_TOKEN!;
+  if (!a.draft) {
+    const j = await call(`${GRAPH}/${env.META_PAGE_ID}/photos`, { url: a.imageUrl, message: a.message, published: true, access_token: token });
+    return String(j.post_id ?? j.id);
+  }
+  const photo = await call(`${GRAPH}/${env.META_PAGE_ID}/photos`, { url: a.imageUrl, published: false, access_token: token });
+  const post = await call(`${GRAPH}/${env.META_PAGE_ID}/feed`, {
     message: a.message,
-    published: true,
-    access_token: env.META_PAGE_ACCESS_TOKEN!,
+    attached_media: JSON.stringify([{ media_fbid: photo.id }]),
+    published: false,
+    unpublished_content_type: 'DRAFT',
+    access_token: token,
   });
-  return String(j.post_id ?? j.id);
+  return String(post.id);
 }
 
 /** An Instagram carousel (2 to 10 images). */

@@ -13,6 +13,10 @@ on:
         description: "Dry run: show the posts and check the pictures, post nothing"
         type: boolean
         default: true
+      draft:
+        description: "Facebook only: save as a DRAFT you can see in Meta Business Suite, publish nothing"
+        type: boolean
+        default: false
       networks:
         description: "Networks, space separated (facebook instagram threads)"
         required: false
@@ -43,6 +47,7 @@ jobs:
           STORY: ${{ inputs.story }}
           NETWORKS: ${{ inputs.networks }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          POST_AS_DRAFT: ${{ inputs.draft && '1' || '0' }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}

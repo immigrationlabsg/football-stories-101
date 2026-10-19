@@ -20,7 +20,7 @@ if (!story) throw new Error(`No story ${num}`);
 const networks = (rest.length ? rest : ['facebook', 'instagram', 'threads']) as Network[];
 const dryRun = process.env.DRY_RUN !== '0';
 
-const outcomes = await postStoryToSocials(story, { kind: 'scheduled', webLive: webLiveDate(story).getTime() <= Date.now(), dryRun, networks });
+const outcomes = await postStoryToSocials(story, { kind: 'scheduled', webLive: webLiveDate(story).getTime() <= Date.now(), dryRun, networks, draft: process.env.POST_AS_DRAFT === '1' });
 if (!dryRun) {
   const file = path.join(ROOT, 'data/sent.json');
   const sent = JSON.parse(fs.readFileSync(file, 'utf8')) as { sent: any[]; social?: any[] };

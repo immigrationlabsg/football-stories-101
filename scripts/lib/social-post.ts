@@ -5,14 +5,14 @@ import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
 
 export type Network = 'facebook' | 'instagram' | 'threads';
-export type Outcome = { network: Network; status: 'posted' | 'dry-run' | 'skipped' | 'failed'; detail: string };
+export type Outcome = { network: Network; status: 'posted' | 'drafted' | 'dry-run' | 'skipped' | 'failed'; detail: string };
 
 const CARDS = 7;
 
 /** Posts one story to the chosen networks. Never throws: each network reports its own outcome. */
 export async function postStoryToSocials(
   story: LoadedStory,
-  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[] },
+  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[]; draft?: boolean },
 ): Promise<Outcome[]> {
   const networks = opts.networks ?? ['facebook', 'instagram', 'threads'];
   const posts = socialPosts(story, opts);
@@ -36,9 +36,14 @@ export async function postStoryToSocials(
         out.push({ network, status: 'skipped', detail: 'credentials not set' });
         continue;
       }
+      if (opts.draft && network !== 'facebook') {
+        out.push({ network, status: 'skipped', detail: 'Instagram and Threads have no draft feature in their APIs; only Facebook can be saved as a draft' });
+        continue;
+      }
       if (network === 'facebook') {
         await waitForUrl(heroUrl);
-        out.push({ network, status: 'posted', detail: `post ${await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook })}` });
+        const id = await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook, draft: opts.draft });
+        out.push({ network, status: opts.draft ? 'drafted' : 'posted', detail: `${opts.draft ? 'draft' : 'post'} ${id}` });
       } else if (network === 'instagram') {
         for (const u of cardUrls) await waitForUrl(u);
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });
