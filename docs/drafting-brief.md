@@ -34,24 +34,22 @@ three digits). Copy the front matter shape from
   `Illustration: Football Stories 101`. Then write `hero.alt` to describe that photograph.
 - `hero.prompt`: fallback only, when no suitable Commons photo exists: at most 20 words, an evocative still life
   or place, main object first, no people, no text. It is painted as a watercolour automatically.
-- `sources`: five to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
+- `sources`: three to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
-- `facts`: three to five standalone facts for social posts, each true and sourced
+- `facts`: three to five standalone facts for the Instagram carousel, each true and sourced
 
-## The body (1,300 to 1,700 words)
+## The body (500 to 700 words)
 
-1. Open inside a specific moment with a date and a place. No throat-clearing.
-2. Two to four `##` section headings with short, concrete titles.
-3. Two or three pull quotes as Markdown blockquotes, last line starting with an em dash:
-   `> quote` then `> — Who, where, when`. Quotes must be real and attributable to where they were first recorded.
-   If you cannot verify a quote's wording and origin, do not use it; paraphrase in prose instead.
-4. A `## The turn` section: the decision, accident or trait that explains the outcome.
-5. Close with `## What it tells us`: two to four sentences, present tense.
-6. Optional: a `<Timeline title="…" items={[ { when: '…', what: '…' }, … ]} />` for careers or club histories
-   (single quotes inside; use a curly apostrophe ’ inside text).
+Read docs/editorial-standards.md "The story template" and "Style" and follow them exactly. In short:
 
-Style: third person, past tense for history, British English, numerals for scores, ages,
-fees, attendances; full names on first mention; no "I", no exclamation marks; an en dash in scores (3–2).
+1. First line hooks: a specific moment, or a striking fact.
+2. No `##` headings at all. Paragraphs of one to three short sentences, plenty of one-line paragraphs.
+3. First-person editor's voice for reactions only: "Here's what I didn't know until recently." / "Then came the part
+   that surprised me." / "Here's what stays with me." Never invent personal experiences.
+4. At most one quote, woven into a sentence ("As Cruyff put it: …"), verified like any fact. No pull-quote blocks,
+   no timelines.
+5. Close with "Here's what stays with me." and two to four short sentences. The reader question goes in the
+   `question` field, not the body.
 
 ## Fact-check (mandatory, before the draft is saved)
 

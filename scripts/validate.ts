@@ -9,7 +9,7 @@ const { stories, errors, warnings } = loadStories();
 
 for (const s of stories) {
   if (s.words < WORDS_MIN || s.words > WORDS_MAX) {
-    warnings.push(`${s.file}: body is ${s.words} words; the target is 1,200 to 1,800 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
+    warnings.push(`${s.file}: body is ${s.words} words; the target is 500 to 700 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
   }
   if (s.data.facts.length > 0 && s.data.facts.length < 3) {
     warnings.push(`${s.file}: only ${s.data.facts.length} fact(s); the Threads post and Instagram carousel work best with 3 to 5`);
@@ -17,8 +17,12 @@ for (const s of stories) {
   if (!s.data.question) {
     warnings.push(`${s.file}: no reader question; the Facebook caption will end without one`);
   }
-  if (!/what it tells us/i.test(s.body)) {
-    warnings.push(`${s.file}: no "What it tells us" heading in the body`);
+  if (/^#{1,6}\s/m.test(s.body)) {
+    warnings.push(`${s.file}: has section headings; the house format has none`);
+  }
+  const longest = Math.max(0, ...s.body.split(/\n\s*\n/).filter((p) => !/^[<>#]/.test(p.trim())).map((p) => p.split(/\s+/).length));
+  if (longest > 70) {
+    warnings.push(`${s.file}: a paragraph runs to ${longest} words; keep paragraphs to one to three short sentences`);
   }
 }
 

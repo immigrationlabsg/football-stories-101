@@ -5,23 +5,33 @@ so it lives next to the stories.
 
 ## The story template
 
+The model is The Morning Founder: a fast story told by a friend who has just found out something remarkable.
+
 1. **Headline** in the "Subject / angle" form: `Ferenc Puskás / The exile who scored 156 goals for Real Madrid`.
 2. **Dek**: one sentence, 160 characters or fewer. The counter-intuitive hook or the striking number.
-3. **Opening**: start inside a specific moment, with a date and a place. No throat-clearing.
-4. **Body**: 1,200 to 1,800 words, chronological or hinge-and-flashback, with two or three pull quotes from sourced interviews or contemporary reports.
-5. **The turn**: the decision, accident or trait that explains the outcome. A heading `## The turn` is the convention.
-6. **Close**: a heading `## What it tells us`, two to four sentences in the present tense, then the one-line question to the reader (the `question` field).
-7. **Sources**: every story lists its sources. Two independent sources for every factual claim; disagreements stated in the text.
-8. **Illustration**: one hero image, square-friendly, used for the web, the email, Instagram and the share card.
+3. **Opening**: start inside a specific moment, or with a striking fact. First line hooks; no throat-clearing.
+4. **Body**: **500 to 700 words.** No section headings. Paragraphs of one to three short sentences; single-line
+   paragraphs for punch ("He stayed 35 years."). Chronological or hinge-and-flashback. At most one quote, woven in.
+5. **The turn**: somewhere in the middle, a line like "Here's what I didn't know until recently." or "Then came the
+   part that surprised me." followed by the decision, accident or trait that explains the outcome.
+6. **Close**: "Here's what stays with me." then two to four short sentences of reflection, present tense. Then the
+   one-line question to the reader (the `question` field, not typed into the body).
+7. **Sources**: every story lists its sources in the `sources` field; they appear at the foot of the web page, not in
+   the email or social posts. Two independent sources for every factual claim.
+8. **Picture**: one hero image used for the web, the email, Instagram and the share card.
 
 ## Style
 
-- Third person. Past tense for history, present tense for "What it tells us".
+- **Voice:** first person, as "the Editor". The narrator reacts and reflects ("Here's what I didn't know", "Here's
+  what stays with me", "Then came the part that surprised me"). The narrator **never invents personal experiences**:
+  no "when I was a kid", no "I was there", no memories, travels or opinions attributed to a real person. The owner
+  stays out of frame; the "I" is the publication's editor.
+- Past tense for history, present tense for the reflection.
 - British English spelling.
 - Numerals for scores, ages, fees and attendances: 7–3, aged 31, £1 million, 127,621.
 - Full names on first mention, surnames after.
-- No "I". No exclamation marks.
-- Quotations short, verbatim and attributed to where they were first recorded.
+- No exclamation marks. No clichés ("the rest is history", "etched in folklore").
+- Quotations short, verbatim and attributed in the sentence ("As Puskás put it: …").
 
 ## The living-persons rule (non-negotiable)
 
