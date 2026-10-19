@@ -36,7 +36,8 @@ three digits). Copy the front matter shape from
   or place, main object first, no people, no text. It is painted as a watercolour automatically.
 - `sources`: three to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
-- `facts`: three to five standalone facts for the Instagram carousel, each true and sourced
+- `facts`: exactly five, one per carousel card (cover, five fact cards, closing card makes seven). Each restates
+  something the body says, in the order the story tells it, at most 110 characters, with nothing the body leaves out
 
 ## The body (about 380 to 400 words)
 
@@ -81,8 +82,8 @@ anything changed or cut. This is the audit trail; the owner never has to read it
 ## Social banner line (required for every story)
 
 Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts.
-It is the banner on the Facebook and Instagram picture.
+It is the banner on the Facebook picture and the Instagram cover.
 Example: "He won the World Cup on two rebuilt knees."
 
-The Facebook post and the Instagram caption are the whole story, with the same picture (the Facebook card). The tooling moves "Here's what I didn't know until recently." up so it begins within the first
+The Facebook post and the Instagram caption are the whole story; Instagram shows it under the 7-card carousel. The tooling moves "Here's what I didn't know until recently." up so it begins within the first
 230 characters, ahead of Facebook's "See more", and the remaining sentences of the opening follow it. Nothing is cut.

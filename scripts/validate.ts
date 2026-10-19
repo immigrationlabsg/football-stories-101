@@ -16,8 +16,8 @@ for (const s of stories) {
   if (social > INSTAGRAM_LIMIT) {
     warnings.push(`${s.file}: the Facebook and Instagram text is ${social} characters, over Instagram's ${INSTAGRAM_LIMIT}; Instagram will refuse it`);
   }
-  if (s.data.facts.length > 0 && s.data.facts.length < 3) {
-    warnings.push(`${s.file}: only ${s.data.facts.length} fact(s); the Threads post and Instagram carousel work best with 3 to 5`);
+  if (s.data.facts.length !== 5) {
+    warnings.push(`${s.file}: ${s.data.facts.length} fact(s); the 7-card Instagram carousel needs exactly 5`);
   }
   if (!s.data.question) {
     warnings.push(`${s.file}: no reader question; the Facebook caption will end without one`);

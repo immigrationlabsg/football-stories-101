@@ -1,6 +1,6 @@
 import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
-import { metaConfigured, postFacebookPhoto, postInstagramImage, postThreads, waitForUrl } from './meta';
+import { metaConfigured, postFacebookPhoto, postInstagramCarousel, postThreads, waitForUrl } from './meta';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
 
@@ -18,12 +18,14 @@ export async function postStoryToSocials(
   const configured = metaConfigured();
   const n = pad3(story.data.number);
   const heroUrl = absoluteUrl(`/images/derived/${n}-fb.png`); // the headline card for Facebook
+  // The Instagram carousel: the cover, one card per fact, and the closing card.
+  const cardUrls = Array.from({ length: story.data.facts.length + 2 }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   const out: Outcome[] = [];
 
   for (const network of networks) {
     try {
       if (opts.dryRun) {
-        const urls = network === 'facebook' ? [heroUrl] : network === 'instagram' ? [heroUrl] : [];
+        const urls = network === 'facebook' ? [heroUrl] : network === 'instagram' ? cardUrls : [];
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         const over = network === 'instagram' && text.length > INSTAGRAM_LIMIT ? `; TOO LONG for Instagram by ${text.length - INSTAGRAM_LIMIT}` : '';
@@ -45,8 +47,8 @@ export async function postStoryToSocials(
         out.push({ network, status: opts.scheduleAt ? 'drafted' : opts.draft ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : opts.draft ? 'draft' : 'post'} ${id} (short id ${id.split('_')[1] ?? id})` });
       } else if (network === 'instagram') {
         if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
-        await waitForUrl(heroUrl);
-        out.push({ network, status: 'posted', detail: `media ${await postInstagramImage({ imageUrl: heroUrl, caption: posts.instagram })}` });
+        for (const u of cardUrls) await waitForUrl(u);
+        out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });
       } else {
         out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply || undefined })}` });
       }

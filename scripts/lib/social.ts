@@ -102,7 +102,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-  // Instagram carries the same text as Facebook, with the same picture. It is never cut: if it is over
+  // Instagram carries the same text as Facebook, under the carousel. It is never cut: if it is over
   // Instagram's 2,200-character limit, posting stops and says by how much, so the story can be tightened.
   const instagram = facebook;
 
@@ -135,11 +135,11 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
 
 ${facebook}
 
-## Instagram (the same text and picture as Facebook: social/cards/${pad3(story.data.number)}-fb.png)
+## Instagram (carousel: the cards listed below, in order; the same text as Facebook)
 
 ${instagram}
 
-${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text: ${story.data.hero.alt}
+${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text for the carousel: ${story.data.hero.alt}
 
 ## Threads (post the hook and facts, then the Instagram page as a reply)
 

@@ -69,8 +69,12 @@ says so publicly.
 ## Social banner line (required for every story)
 
 Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts.
-It is the banner on the Facebook and Instagram picture.
+It is the banner on the Facebook picture and the Instagram cover.
+
+The Instagram carousel is seven cards: the cover, five fact cards from the `facts` field, and a closing card with the
+question. Each fact restates something the body says, in story order, at most 110 characters, so the cards always
+match the post. The caption is the same text as the Facebook post.
 Example: "He won the World Cup on two rebuilt knees."
 
-The Facebook post and the Instagram caption are the whole story, with the same picture (the Facebook card). The tooling moves "Here's what I didn't know until recently." up so it begins within the first
+The Facebook post and the Instagram caption are the whole story; Instagram shows it under the 7-card carousel. The tooling moves "Here's what I didn't know until recently." up so it begins within the first
 230 characters, ahead of Facebook's "See more", and the remaining sentences of the opening follow it. Nothing is cut.

@@ -67,7 +67,7 @@ export const storySchema = z.object({
   sources: z.array(z.string().trim().min(1)).min(1, 'at least one source is required'),
   /** The one-line question to the reader that closes the story. */
   question: z.string().trim().min(1).optional(),
-  /** Three to six short facts for the Threads post and the Instagram carousel. */
+  /** Five short facts, one per Instagram carousel card, each restating something the body says. */
   facts: z.array(z.string().trim().min(1)).max(6).default([]),
   draft: z.boolean().default(false),
 });
