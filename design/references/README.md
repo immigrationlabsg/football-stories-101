@@ -54,7 +54,7 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 025-2.jpg | 025 | CC BY 2.0 | Jarrett Campbell | [Commons](https://commons.wikimedia.org/wiki/File:Euro_2004_Final.jpg) |
 | 026-1.jpg | 026 | CC BY 2.0 | Smabs Sputzer | [Commons](https://commons.wikimedia.org/wiki/File:Bert_Trautmann%27s_Neck_Brace.jpg) |
 | 026-2.jpg | 026 | CC BY-SA 3.0 | Oldelpaso | [Commons](https://commons.wikimedia.org/wiki/File:Sculpture_of_Bert_Trautmann.jpg) |
-| (paint without a reference) | 027 | | | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal with his face turned away from us. Show a natural head with hair and an ear, not a featureless silhouette. |
+| (paint without a reference) | 027 | | | Commons has no free 1988 final photo. Paint without a reference: a tall goalkeeper in a 1988 jersey diving full-length to his left to save a penalty at old Wembley, seen from behind the goal with his face turned away from us. Show a natural head with hair and an ear, not a featureless silhouette. The goalkeeper's jersey is a plain colour with no lettering, no words, no numbers and no badge. |
 | 027-2.jpg | 027 | CC BY-SA 3.0 | The original uploader was Holdenbuckley at English Wikipedia | [Commons](https://commons.wikimedia.org/wiki/File:Beasant.jpg) |
 | 028-1.jpg | 028 | CC BY-SA 2.5 | Mr. Alexander Ottesen | [Commons](https://commons.wikimedia.org/wiki/File:Trophy_presentation_Highbury_2004.JPG) |
 | 028-2.jpg | 028 | CC0 | John Nesejas | [Commons](https://commons.wikimedia.org/wiki/File:Thierry_Henry%E2%80%99s_iconic_knee_slide.jpg) |
