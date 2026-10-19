@@ -36,6 +36,7 @@ three digits). Copy the front matter shape from
   or place, main object first, no people, no text. It is painted as a watercolour automatically.
 - `sources`: three to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
+- `followUpOf`: only when the story returns to the subject of an earlier one with a new angle: that story's number
 - `facts`: exactly five, one per carousel card (cover, five fact cards, closing card makes seven). Each restates
   something the body says, in the order the story tells it, at most 110 characters, with nothing the body leaves out
 

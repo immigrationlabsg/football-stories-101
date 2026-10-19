@@ -297,6 +297,11 @@ The paintings land in `design/paintings/NNN.png`. Nothing goes live until the ed
   it gives each story its morning slot and switches them from draft to scheduled. From then on the weekly run
   schedules its seven stories itself, keeping at least two weeks ahead.
 
+**Weekly research.** Every Thursday morning a scheduled session researches what football storytelling posts are
+drawing attention elsewhere and writes a note in `docs/research/` (rules in its README). It adds up to seven angles to
+the story bank. The Saturday drafting run reads the newest note. Ideas that would change the page go to the owner first
+(`docs/content-evolution.md`).
+
 ## 15. Testing on social media before launch
 
 Before any money is spent, test the idea on Facebook, Instagram, Threads and Telegram by hand:

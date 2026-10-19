@@ -42,10 +42,18 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
   const titleKey = s.data.title.trim().toLowerCase();
   if (stories.some((o) => o !== s && o.data.title.trim().toLowerCase() === titleKey)) errors.push(`${pad(s.data.number)}: the same title as another story`);
   const earlier = seen.get(key);
-  if (earlier && !/follow-up/i.test(s.data.series ?? '') && !/follow-up/i.test(angle)) {
-    warnings.push(`${pad(s.data.number)} returns to "${subject}" (also ${pad(earlier)}); make sure the angle is new and mark it as a follow-up`);
+  if (earlier && s.data.followUpOf !== earlier) {
+    errors.push(`${pad(s.data.number)} returns to "${subject}" (story ${pad(earlier)}) without followUpOf: ${earlier}; give it a new angle and mark it, or drop it`);
   }
   if (!earlier) seen.set(key, s.data.number);
+}
+// Reserved angles in the story bank: a returning subject must say "(follow-up of NNN)".
+const bank = fs.readFileSync(path.join(ROOT, 'docs/story-bank.md'), 'utf8');
+const subjects = new Map(stories.map((s) => [s.data.title.split(' / ')[0].replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase(), s.data.number]));
+for (const m of bank.matchAll(/^\| (\d{3}) \| \w+ \| (.+?) \| reserved \|$/gm)) {
+  const subject = m[2].split(/[:/]/)[0].replace(/\s*\(.*?\)\s*/g, '').replace(/'s .*$/, '').trim().toLowerCase();
+  const hit = [...subjects.entries()].find(([k]) => k === subject || k.startsWith(subject + ' ') || subject.startsWith(k + ' '));
+  if (hit && !/follow-up of/i.test(m[2])) warnings.push(`bank angle ${m[1]} ("${m[2].slice(0, 50)}") returns to story ${pad(hit[1])} without "(follow-up of ${pad(hit[1])})"`);
 }
 const numbers = stories.map((s) => s.data.number);
 if (new Set(numbers).size !== numbers.length) errors.push('two stories share a number');

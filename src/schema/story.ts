@@ -61,6 +61,8 @@ export const storySchema = z.object({
   competitions: stringList,
   decades: stringList,
   themes: stringList,
+  /** Number of an earlier story about the same subject that this one follows up with a new angle. */
+  followUpOf: z.number().int().positive().optional(),
   series: z.string().trim().min(1).nullable().optional().transform((v) => v ?? null),
   seriesOrder: z.number().int().positive().nullable().optional().transform((v) => v ?? null),
   hero: heroSchema,
