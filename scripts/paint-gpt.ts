@@ -29,8 +29,7 @@ const STYLE =
   'a loose, hand-made watercolour illustration in the style of an editorial newsletter cover. ' +
   'Soft, transparent washes, visible paper texture, confident brush edges with no ink outlines and gentle colour bleeds, ' +
   'on a warm off-white paper background that fades out at the edges. Square (1:1) frame. ' +
-  'Keep the shirt colours true to the period. Remove all club crests, badges, sponsor logos, kit-maker logos, shirt numbers, ' +
-  'advertising boards and any lettering. Do not add text, a signature or a frame.';
+  'Keep the shirt colours true to the period. Do not add text, a signature or a frame.';
 
 for (const n of stories) {
   const ref = refs[n]?.[0];
@@ -42,7 +41,7 @@ for (const n of stories) {
   if (ref.commons) {
     const photo = path.join(OUT, '..', 'references', `${n}-1.jpg`);
     const prompt =
-      `Repaint the attached photo as ${STYLE} Keep every person's likeness, face, expression and pose as in the photo, ` +
+      `Repaint the attached photo as ${STYLE} Keep every person\u2019s likeness, face, expression and pose as in the photo, ` +
       `so they are recognisable, and keep the moment the photo captures. Simplify the background into loose washes. Scene: ${ref.why}`;
     const form = new FormData();
     form.append('model', MODEL);

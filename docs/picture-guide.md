@@ -68,7 +68,7 @@ If no free photo exists, paint a scene without a real person's face: a figure se
 
 Attach the reference photo and paste:
 
-> Repaint the attached photo as a loose, hand-made watercolour illustration in the style of an editorial newsletter cover. Keep every person's likeness, face, expression and pose as in the photo, so they are recognisable, and keep the moment the photo captures (the goal, the celebration, the trophy). Use soft, transparent washes, visible paper texture, confident brush edges with no ink outlines, and gentle colour bleeds, on a warm off-white paper background that fades out at the edges, in a square (1:1) frame. Simplify the crowd and stadium into loose washes. Keep the shirt colours true to the period: [KIT, YEAR]. Remove all club crests, badges, sponsor logos, kit-maker logos, shirt numbers, advertising boards and any lettering in the background. Do not add text, a signature or a frame. Scene: [SCENE NOTE FROM THE TABLE].
+> Repaint the attached photo as a loose, hand-made watercolour illustration in the style of an editorial newsletter cover. Soft, transparent washes, visible paper texture, confident brush edges with no ink outlines and gentle colour bleeds, on a warm off-white paper background that fades out at the edges. Square (1:1) frame. Keep the shirt colours true to the period. Do not add text, a signature or a frame. Keep every person’s likeness, face, expression and pose as in the photo, so they are recognisable, and keep the moment the photo captures. Simplify the background into loose washes. Scene: [the “what it shows” line for that story]
 
 Follow-up fixes, one line each:
 
