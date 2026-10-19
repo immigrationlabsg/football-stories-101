@@ -12,7 +12,7 @@ const CARDS = 7;
 /** Posts one story to the chosen networks. Never throws: each network reports its own outcome. */
 export async function postStoryToSocials(
   story: LoadedStory,
-  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[]; draft?: boolean },
+  opts: { kind: 'scheduled' | 'archive'; webLive: boolean; dryRun: boolean; networks?: Network[]; draft?: boolean; scheduleAt?: Date },
 ): Promise<Outcome[]> {
   const networks = opts.networks ?? ['facebook', 'instagram', 'threads'];
   const posts = socialPosts(story, opts);
@@ -36,14 +36,14 @@ export async function postStoryToSocials(
         out.push({ network, status: 'skipped', detail: 'credentials not set' });
         continue;
       }
-      if (opts.draft && network !== 'facebook') {
-        out.push({ network, status: 'skipped', detail: 'Instagram and Threads have no draft feature in their APIs; only Facebook can be saved as a draft' });
+      if ((opts.draft || opts.scheduleAt) && network !== 'facebook') {
+        out.push({ network, status: 'skipped', detail: 'Instagram and Threads have no draft feature in their APIs; only Facebook can be saved as a draft or scheduled' });
         continue;
       }
       if (network === 'facebook') {
         await waitForUrl(heroUrl);
-        const id = await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook, draft: opts.draft });
-        out.push({ network, status: opts.draft ? 'drafted' : 'posted', detail: `${opts.draft ? 'draft' : 'post'} ${id}` });
+        const id = await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook, draft: opts.draft, scheduleAt: opts.scheduleAt });
+        out.push({ network, status: opts.scheduleAt ? 'drafted' : opts.draft ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : opts.draft ? 'draft' : 'post'} ${id}` });
       } else if (network === 'instagram') {
         for (const u of cardUrls) await waitForUrl(u);
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });

@@ -61,8 +61,20 @@ export async function waitForUrl(url: string, attempts = 18, delayMs = 10_000): 
  * With draft: true the post is saved as a DRAFT, which shows in Meta Business Suite
  * (Planner or Posts) and in the Pages app, and nothing is published.
  */
-export async function postFacebookPhoto(a: { imageUrl: string; message: string; draft?: boolean }, env = process.env): Promise<string> {
+export async function postFacebookPhoto(a: { imageUrl: string; message: string; draft?: boolean; scheduleAt?: Date }, env = process.env): Promise<string> {
   const token = env.META_PAGE_ACCESS_TOKEN!;
+  if (a.scheduleAt) {
+    // A scheduled post shows in Business Suite (phone and computer) under Content and in the Planner, and publishes itself at that time.
+    const photo = await call(`${GRAPH}/${env.META_PAGE_ID}/photos`, { url: a.imageUrl, published: false, access_token: token });
+    const post = await call(`${GRAPH}/${env.META_PAGE_ID}/feed`, {
+      message: a.message,
+      attached_media: JSON.stringify([{ media_fbid: photo.id }]),
+      published: false,
+      scheduled_publish_time: Math.floor(a.scheduleAt.getTime() / 1000),
+      access_token: token,
+    });
+    return String(post.id);
+  }
   if (!a.draft) {
     const j = await call(`${GRAPH}/${env.META_PAGE_ID}/photos`, { url: a.imageUrl, message: a.message, published: true, access_token: token });
     return String(j.post_id ?? j.id);

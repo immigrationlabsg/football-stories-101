@@ -17,6 +17,10 @@ on:
         description: "Facebook only: save as a DRAFT you can see in Meta Business Suite, publish nothing"
         type: boolean
         default: false
+      schedule_at:
+        description: "Facebook only: schedule for this time instead (ISO, UTC, e.g. 2026-10-20T00:00:00Z = 8:00 am Singapore). Shows on phones in Business Suite."
+        required: false
+        default: ""
       networks:
         description: "Networks, space separated (facebook instagram threads)"
         required: false
@@ -48,6 +52,7 @@ jobs:
           NETWORKS: ${{ inputs.networks }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
           POST_AS_DRAFT: ${{ inputs.draft && '1' || '0' }}
+          SCHEDULE_AT: ${{ inputs.schedule_at }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
