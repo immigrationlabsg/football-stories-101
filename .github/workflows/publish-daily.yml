@@ -5,9 +5,14 @@ name: Publish daily
 # sends today's story by email, posts it to Telegram, writes the social
 # captions and records the send in data/sent.json.
 on:
+  # GitHub starts jobs scheduled on the hour late (hours late on 19 Oct 2026) or not at all, so the run starts
+  # about an hour early, builds the site, then waits for the slot below and posts on time. A backup run 17
+  # minutes after each slot covers a morning when the first run never starts; it does nothing if the story is out.
   schedule:
-    - cron: "0 0 * * 1-5" # 08:00 Singapore, Monday to Friday
-    - cron: "0 2 * * 0,6" # 10:00 Singapore, Saturday and Sunday
+    - cron: "53 22 * * 0-4" # 06:53 Singapore, Monday to Friday: posts at 08:00
+    - cron: "53 0 * * 6,0" # 08:53 Singapore, Saturday and Sunday: posts at 10:00
+    - cron: "17 0 * * 1-5" # backup, 08:17 Singapore
+    - cron: "17 2 * * 0,6" # backup, 10:17 Singapore
   workflow_dispatch:
     inputs:
       dry_run:
@@ -82,6 +87,22 @@ jobs:
         uses: actions/deploy-pages@v4
 
       # 3 to 8: select, send, Telegram, social assets, record, archive fallback.
+      - name: Wait for today's posting time
+        if: github.event_name == 'schedule'
+        run: |
+          # Weekdays post at 00:00 UTC (08:00 Singapore), weekends at 02:00 UTC (10:00 Singapore).
+          dow=$(TZ=Asia/Singapore date +%u)   # 1 = Monday ... 7 = Sunday, in Singapore
+          day=$(TZ=Asia/Singapore date +%F)
+          if [ "$dow" -ge 6 ]; then slot="$day 10:00"; else slot="$day 08:00"; fi
+          target=$(TZ=Asia/Singapore date -d "$slot" +%s)
+          wait=$(( target - $(date +%s) ))
+          if [ "$wait" -gt 0 ] && [ "$wait" -lt 10800 ]; then
+            echo "Waiting $wait seconds until $slot Singapore time."
+            sleep "$wait"
+          else
+            echo "Posting time $slot Singapore has passed or is not today; going ahead now."
+          fi
+
       - name: Send today's story
         id: send
         env:
@@ -96,6 +117,8 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
           PUBLISH_STORY_NUMBER: ${{ inputs.story_number }}
+          # Every day has a story now, so a scheduled run never falls back to the archive (a backup run would re-send one).
+          ALLOW_ARCHIVE_FALLBACK: ${{ github.event_name == 'schedule' && '0' || '1' }}
           FORCE_RESEND: ${{ inputs.force_resend && '1' || '0' }}
         run: npm run publish:daily
 
