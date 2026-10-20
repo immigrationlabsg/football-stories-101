@@ -20,6 +20,12 @@ on:
 permissions:
   contents: write
 
+# One posting run at a time: a second run starts only after the first has saved its record, so the same
+# story can never go out twice (on 20 Oct two overlapping runs both posted story 001 to Threads).
+concurrency:
+  group: social-posting
+  cancel-in-progress: false
+
 jobs:
   schedule:
     runs-on: ubuntu-latest
