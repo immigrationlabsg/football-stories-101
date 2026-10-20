@@ -1,7 +1,7 @@
 name: Delivery check
 
-# 20 minutes after each posting slot: fails (and GitHub emails the owner) if today's story is missing on
-# Facebook, Instagram or Threads. Asked twice per slot because GitHub's scheduler can skip a run.
+# 21 and 41 minutes after each posting slot: fails (and GitHub emails the owner) if today's story is missing on
+# Facebook, Instagram or Threads, or if Meta has not actually published the scheduled Facebook post. Asked twice per slot because GitHub's scheduler can skip a run.
 on:
   schedule:
     - cron: "21,41 0 * * 1-5" # 08:21 and 08:41 Singapore, Monday to Friday
@@ -21,3 +21,9 @@ jobs:
       - run: npm run verify
         env:
           DELIVERY_GRACE_MIN: "20"
+      - run: npm run check-delivery
+        if: always()
+        env:
+          DELIVERY_GRACE_MIN: "20"
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}

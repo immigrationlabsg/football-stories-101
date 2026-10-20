@@ -25,6 +25,7 @@
     "check-facebook": "tsx scripts/check-facebook-post.ts",
     "social-length": "tsx scripts/social-length.ts",
     "verify": "tsx scripts/verify.ts",
+    "check-delivery": "tsx scripts/check-delivery.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },

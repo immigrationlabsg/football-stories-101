@@ -58,7 +58,7 @@ needs no installation.
    | Hero illustration | Upload the image (square or 4:3, at least 1,200 pixels wide). Write the alt text; the form will not save without it. |
    | Sources | One per line. At least one; in practice five or more. Books as "Author, Title (Publisher, year)"; websites as full links. |
    | Question to the reader | One line. It ends the story, the email and the Facebook post. |
-   | Facts for social | Three to six short standalone facts. They become the Threads post and the Instagram carousel slides, so each must make sense on its own. |
+   | Facts for social | Exactly five short standalone facts, each restating the story, in story order. They become the five fact cards in the Instagram and Threads carousels. |
    | Draft | Tick while you are still working on it. **Untick to schedule.** A draft is never sent and never published. |
    | Story | The body. See section 3. |
 
@@ -124,7 +124,7 @@ Each run does this, in order:
 3. **Select** today's story: the one whose date falls in the last 24 hours and is not yet in `data/sent.json`. If two qualify, the earlier one goes.
 4. **Send** the email through Buttondown. Subject: `Story No. 007 · Subject / angle`. Body: the hero image, the story, the question, the sources, a link to the web page (with the date it will be live), a subscribe link and the unsubscribe link.
 5. **Post to Telegram**: hero image, headline, dek and link (to the web page if it is live, otherwise to the Subscribe page).
-6. **Write `social/007.md`** with the Facebook caption and first comment, the Instagram caption with hashtags and alt text, the Threads post and reply, and copy the 1080x1350 carousel cards into `social/cards/`.
+6. **Write `social/007.md`** with the Facebook text, the Instagram caption (the same text) and alt text, and the Threads text, and copy the carousel cards into `social/cards/` (format: `docs/posting-format.md`).
 7. **Record** the send in `data/sent.json` and commit both back to the repository. A re-run of the same morning finds the record and does nothing.
 8. **Fallback**: if no story was due, pick the past story whose anniversary (month and day) is nearest to today, preferring ones that have been re-sent least, and send it as "From the archive: Story No. …". It is recorded with today's date so it cannot go twice in one day.
 
@@ -199,9 +199,9 @@ Things only you can do, because they need your accounts:
 After the morning run (check the Actions tab, or just wait for your own copy of the email):
 
 1. Open the repository → `social/` → today's `NNN.md`. GitHub shows it formatted.
-2. **Facebook**: paste the "Facebook" text as a post with the hero image attached (the hero is in `public/images/stories/`). Post the "First comment" line as the first comment.
+2. **Facebook**: paste the "Facebook" text as a post with the banner picture `social/cards/NNN-fb.png`.
 3. **Instagram**: download the cards listed under "Cards" (`social/cards/NNN-ig-01.png` onwards; click a file, then "Download raw file") and post them as a carousel in order, with the "Instagram" caption. Add the alt text.
-4. **Threads**: post the "Threads" text, then the "Reply" line as a reply.
+4. **Threads**: post the same cards as a carousel with the "Threads" text (it already ends with the Instagram link).
 5. Reply to comments and to email replies.
 
 The same files are attached to the workflow run as a downloadable zip ("social-…") for 14 days, which is handy on a phone.
@@ -310,8 +310,8 @@ check-in at the same time reposts anything missing. Incidents are written up in 
 
 Before any money is spent, test the idea on Facebook, Instagram, Threads and Telegram by hand:
 
-1. Open `social/001.md` in the repository: it contains the Facebook post and first comment, the Instagram caption
-   with hashtags and alt text, the Threads post and reply, and a Telegram message.
+1. Open `social/001.md` in the repository: it contains the Facebook post, the Instagram caption and alt text, and the
+   Threads text (format: `docs/posting-format.md`).
 2. The Instagram carousel images are in `social/cards/` (`001-ig-01.png` onwards). On a phone, open each file in
    GitHub and use "Download".
 3. The link in each post points to the story's web page.
@@ -365,7 +365,7 @@ If you want those on a post, post that one by hand in the app.
 - **Facebook Page key:** make it from an *extended* user key (Access Token Tool, "Extend Access Token"), then
   `GET me/accounts`. A Page key made that way does not expire unless you change your Facebook password.
   An even sturdier option is a System User key from Business Settings, Users, System users, with expiry "Never".
-- **Instagram and Threads keys** last 60 days. The "Refresh social keys" workflow renews them on the 1st and 15th
+- **Instagram and Threads keys** last 60 days. The "Refresh social keys" workflow renews them on the 1st, 8th, 15th and 22nd
   of each month and saves the new keys back into the secrets. It needs one secret, `SECRETS_ADMIN_TOKEN`: create a
   fine-grained token at https://github.com/settings/personal-access-tokens/new for this repository only, with
   Repository permissions, Secrets: Read and write. The same run checks the Facebook key and goes red if it stops working.

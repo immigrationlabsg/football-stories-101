@@ -29,11 +29,14 @@ change it only when the owner decides to.
 ## Everywhere
 - **No website link** on any post.
 - Every picture credits its photo and says "Image generated with AI" (on the website).
-- A story never goes out twice on the same network: `data/sent.json` records every post and schedule, and posting
-  jobs never run at the same time.
+- A story never goes out twice on the same network: `data/sent.json` records every post and schedule. Manual
+  "Post to social" and "Schedule Facebook posts" runs share one queue; the daily run reads the record just before
+  posting and saves it straight after. Never start a manual posting run between 06:00 and 08:45 (10:45 at weekends).
 
 ## Delivery
 - The daily run is asked eight times each morning (GitHub's scheduler is unreliable); whichever starts first waits
   for the slot, posts, and saves the record at once; later ones do nothing; a network that failed is retried.
-- **Delivery check, 20 minutes after each slot:** a GitHub workflow fails (and emails the owner) if any network is
-  missing, and a Claude check-in reposts what is missing and reports.
+- **Delivery check:** the GitHub "Delivery check" workflow runs 21 and 41 minutes after each slot and fails (emailing
+  the owner) if any network is missing or Meta has not actually published the Facebook post. A scheduled Claude task
+  (in the owner's Claude account, not in this repo) checks at 08:16 (10:16 at weekends), reposts anything missing
+  once, and reports.
