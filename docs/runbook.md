@@ -302,6 +302,10 @@ drawing attention elsewhere and writes a note in `docs/research/` (rules in its 
 the story bank. The Saturday drafting run reads the newest note. Ideas that would change the page go to the owner first
 (`docs/content-evolution.md`).
 
+**Posting format and delivery.** The format the owner signed off on 20 Oct 2026 is in `docs/posting-format.md`.
+The **Delivery check** workflow runs 20 minutes after each slot and emails you if a network is missing; a Claude
+check-in at the same time reposts anything missing. Incidents are written up in `docs/incidents/`.
+
 ## 15. Testing on social media before launch
 
 Before any money is spent, test the idea on Facebook, Instagram, Threads and Telegram by hand:

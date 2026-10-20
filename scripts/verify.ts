@@ -34,6 +34,8 @@ for (const s of stories) {
   const posts = socialPosts(s, { kind: 'scheduled', webLive: false });
   if (Buffer.byteLength(posts.threads, 'utf8') > 500) errors.push(`${n}: Threads text is over 500 bytes`);
   if (!/More on Instagram: instagram\.com\//.test(posts.threads)) errors.push(`${n}: Threads text has no Instagram link`);
+  if (/github\.io|football-stories-101\//i.test(posts.facebook + posts.threads)) errors.push(`${n}: a social post links the website`);
+  if (posts.threadsReply) errors.push(`${n}: Threads has a separate reply; the link belongs in the post`);
   const len = posts.facebook.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
 }
@@ -97,7 +99,9 @@ for (const s of live) {
   if (t > now.getTime() + 20 * 60e3 && t < now.getTime() + 26 * DAY && !has(s.data.number, 'facebook')) {
     warnings.push(`${pad(s.data.number)} (${s.data.date.toISOString().slice(0, 10)}) is not scheduled on Facebook yet; run "Schedule Facebook posts"`);
   }
-  if (t < now.getTime() - 2 * 3600e3 && t > now.getTime() - 7 * DAY) {
+  // A story is late once its slot is DELIVERY_GRACE_MIN minutes past (2 hours by default; the delivery check uses 20).
+  const grace = Number(process.env.DELIVERY_GRACE_MIN ?? 120) * 60e3;
+  if (t < now.getTime() - grace && t > now.getTime() - 7 * DAY) {
     for (const net of ['facebook', 'instagram', 'threads']) if (!has(s.data.number, net)) errors.push(`${pad(s.data.number)} was due ${s.data.date.toISOString().slice(0, 16)}Z but has no ${net} record in data/sent.json`);
   }
 }
