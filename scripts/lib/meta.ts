@@ -114,7 +114,7 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
   return String(published.id);
 }
 
-/** A Threads post with the link as a reply to it. */
+/** A Threads post: the carousel cards with the teaser text (or text only), and an optional reply. */
 export async function postThreads(a: { text: string; reply?: string; imageUrls?: string[] }, env = process.env): Promise<string> {
   const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
@@ -125,6 +125,7 @@ export async function postThreads(a: { text: string; reply?: string; imageUrls?:
       if (s.status === 'ERROR' || s.status === 'EXPIRED') throw new Error(`Threads container ${s.status}`);
       await sleep(3000);
     }
+    throw new Error(`Threads container ${id} was not ready after 60 seconds`);
   };
   const publish = async (params: Record<string, string>) => {
     const c = await call(`${THREADS}/${user}/threads`, { ...params, access_token: token });
