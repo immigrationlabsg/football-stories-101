@@ -11,7 +11,8 @@ permissions:
   pages: write
   id-token: write
 
-# Shared with the daily publish workflow so deployments never overlap.
+# Website deploys queue one at a time. The daily publish run has its own group (it may wait up to two hours
+# for the posting time) and redeploys after posting; if two deploys ever collide, the next push redeploys.
 concurrency:
   group: pages
   cancel-in-progress: false

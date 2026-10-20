@@ -94,6 +94,10 @@ jobs:
             echo "Posting time $slot Singapore has passed or is not today; going ahead now."
           fi
 
+      - name: Get the latest posting record
+        # The run may have waited up to two hours; pick up anything posted or scheduled meanwhile.
+        run: git pull --ff-only origin main
+
       - name: Send today's story
         id: send
         env:
@@ -119,13 +123,16 @@ jobs:
         if: always()
         run: npm run build
       - uses: actions/configure-pages@v5
+        if: always()
         with:
           enablement: true
         continue-on-error: true
       - uses: actions/upload-pages-artifact@v3
+        if: always()
         with:
           path: dist
       - id: deployment
+        if: always()
         uses: actions/deploy-pages@v4
 
       - name: Commit send record and social assets
