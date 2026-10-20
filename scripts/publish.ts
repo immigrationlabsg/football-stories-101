@@ -25,6 +25,7 @@ import { emailSubject, emailMarkdown, webLiveDate } from './lib/email';
 import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
 import { sendTelegramPhoto, telegramConfigured } from './lib/telegram';
 import { postStoryToSocials, recordSocial, type Outcome } from './lib/social-post';
+import { metaConfigured } from './lib/meta';
 import { pad3, storyNumber } from '../src/schema/story';
 import { isoDate } from '../src/lib/format';
 
@@ -90,20 +91,21 @@ function pickDue(stories: LoadedStory[], sent: SentFile): LoadedStory | null {
     }
     return s;
   }
-  // A story counts as handled once it is recorded as sent, or once it has gone out on Instagram or Threads
-  // (the email may still be in dry-run mode). Without this, Monday's run re-picks Sunday's 10:00 story,
-  // which is only 22 hours earlier.
+  // A story counts as handled once it is on every network that has keys (the email may still be in dry-run
+  // mode). If one network failed, the next try posts only that one (postStoryToSocials skips the rest).
+  // Without this, Monday's run would re-pick Sunday's 10:00 story, which is only 22 hours earlier.
+  const configured = metaConfigured();
+  const needed = (['facebook', 'instagram', 'threads'] as const).filter((n) => configured[n]);
+  const records = (sent.social ?? []) as { number: number; network: string }[];
   const posted = new Set(
-    ((sent.social ?? []) as { number: number; network: string; status?: string }[])
-      .filter((r) => r.network !== 'facebook' && r.status !== 'scheduled')
-      .map((r) => r.number),
+    stories.map((s) => s.data.number).filter((n) => needed.length > 0 && needed.every((net) => records.some((r) => r.number === n && r.network === net))),
   );
   const due = stories
     .filter((s) => !s.data.draft)
     .filter((s) => !posted.has(s.data.number))
     .filter((s) => s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - DUE_WINDOW_MS)
     .filter((s) => !sentNumbers.has(s.data.number))
-    .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()); // newest first: today's story beats a retry
   return due[0] ?? null;
 }
 

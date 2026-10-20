@@ -5,14 +5,18 @@ name: Publish daily
 # sends today's story by email, posts it to Telegram, writes the social
 # captions and records the send in data/sent.json.
 on:
-  # GitHub starts jobs scheduled on the hour late (hours late on 19 Oct 2026) or not at all, so the run starts
-  # about an hour early, builds the site, then waits for the slot below and posts on time. A backup run 17
-  # minutes after each slot covers a morning when the first run never starts; it does nothing if the story is out.
+  # GitHub's scheduler is "best effort": it starts jobs late or drops them, worst on the hour (on 18-20 Oct 2026
+  # only one of three 08:00 runs started, 2h23m late). So it is asked eight times each morning, at odd minutes.
+  # Every run builds the site, waits until the posting time and posts; once a story is out, later runs do nothing.
   schedule:
-    - cron: "53 22 * * 0-4" # 06:53 Singapore, Monday to Friday: posts at 08:00
-    - cron: "53 0 * * 6,0" # 08:53 Singapore, Saturday and Sunday: posts at 10:00
-    - cron: "17 0 * * 1-5" # backup, 08:17 Singapore
-    - cron: "17 2 * * 0,6" # backup, 10:17 Singapore
+    # Monday to Friday, posting at 08:00 Singapore (00:00 UTC): tries from 06:07 to 07:47, backups 08:07 and 08:27.
+    - cron: "7,27,47 22 * * 0-4"
+    - cron: "7,27,47 23 * * 0-4"
+    - cron: "7,27 0 * * 1-5"
+    # Saturday and Sunday, posting at 10:00 Singapore (02:00 UTC): same pattern two hours later.
+    - cron: "7,27,47 0 * * 6,0"
+    - cron: "7,27,47 1 * * 6,0"
+    - cron: "7,27 2 * * 6,0"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -34,7 +38,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: publish-daily
   cancel-in-progress: false
 
 jobs:
@@ -73,19 +77,6 @@ jobs:
           restore-keys: derived-images-
       - run: npm ci
 
-      # 1 and 2: build with the web lag applied, deploy to GitHub Pages.
-      - name: Build site
-        run: npm run build
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-        continue-on-error: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - id: deployment
-        uses: actions/deploy-pages@v4
-
       # 3 to 8: select, send, Telegram, social assets, record, archive fallback.
       - name: Wait for today's posting time
         if: github.event_name == 'schedule'
@@ -121,6 +112,21 @@ jobs:
           ALLOW_ARCHIVE_FALLBACK: ${{ github.event_name == 'schedule' && '0' || '1' }}
           FORCE_RESEND: ${{ inputs.force_resend && '1' || '0' }}
         run: npm run publish:daily
+
+      # Then rebuild and redeploy the website, so stories cross the web-lag threshold. This comes after
+      # posting so the post goes out on time; a failed deploy does not stop the record being committed.
+      - name: Build site
+        if: always()
+        run: npm run build
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+        continue-on-error: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Commit send record and social assets
         if: always() && steps.send.outcome != 'skipped'

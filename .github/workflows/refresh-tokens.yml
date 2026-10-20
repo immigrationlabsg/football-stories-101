@@ -8,7 +8,7 @@ name: Refresh social keys
 # repository only, with "Secrets: Read and write" permission (docs/runbook.md section 16).
 on:
   schedule:
-    - cron: "17 3 1,15 * *"
+    - cron: "17 3 1,8,15,22 * *" # four tries a month; keys last 60 days, so any one that runs is enough
   workflow_dispatch:
 
 jobs:
