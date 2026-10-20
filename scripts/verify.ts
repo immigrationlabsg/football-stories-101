@@ -31,7 +31,10 @@ for (const s of stories) {
   if (!s.data.question) errors.push(`${n}: no reader question`);
   if (!fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src))) errors.push(`${n}: hero picture ${s.data.hero.src} is missing`);
   if (!fs.existsSync(path.join(ROOT, `docs/fact-checks/${n}.md`))) errors.push(`${n}: no fact-check log docs/fact-checks/${n}.md`);
-  const len = socialPosts(s, { kind: 'scheduled', webLive: false }).facebook.length;
+  const posts = socialPosts(s, { kind: 'scheduled', webLive: false });
+  if (Buffer.byteLength(posts.threads, 'utf8') > 500) errors.push(`${n}: Threads text is over 500 bytes`);
+  if (!/More on Instagram: instagram\.com\//.test(posts.threads)) errors.push(`${n}: Threads text has no Instagram link`);
+  const len = posts.facebook.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
 }
 // No story twice: a subject may return only as a marked follow-up with a different angle.

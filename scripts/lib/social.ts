@@ -106,7 +106,10 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   // Instagram's 2,200-character limit, posting stops and says by how much, so the story can be tightened.
   const instagram = facebook;
 
-  // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff.
+  // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff,
+  // ending with the Instagram link (in the post itself, not as a separate reply).
+  const igLink = (process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram).replace(/^https?:\/\/(www\.)?/, '');
+  const threadsFooter = `\n\nMore on Instagram: ${igLink}`;
   const threadsTries = m
     ? [
         [head, REVEAL, tailOfOpening, payoff],
@@ -114,15 +117,19 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
         [head, REVEAL],
       ].map((parts) => parts.filter(Boolean).join('\n\n'))
     : [`${story.data.dek}\n\n${num}: ${subject} / ${angle}.`];
-  const threads = threadsTries.find((t) => t.length <= THREADS_LIMIT) ?? threadsTries[threadsTries.length - 1].slice(0, THREADS_LIMIT - 1) + '…';
-
-  const threadsReply = `More on Instagram: ${process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram}`;
+  // Counted in UTF-8 bytes to be safe: Threads counts some characters (emoji) by their byte length.
+  const bytes = (t: string) => Buffer.byteLength(t, 'utf8');
+  const room = THREADS_LIMIT - bytes(threadsFooter);
+  let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
+  while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
+  const threads = threadsBody + threadsFooter;
+  const threadsReply = ''; // no separate reply any more: the link is in the post
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
   const num = storyNumber(story.data.number);
-  const { facebook, instagram, threads, threadsReply, webUrl } = socialPosts(story, ctx);
+  const { facebook, instagram, threads, webUrl } = socialPosts(story, ctx);
 
   return `# ${num} · ${story.data.title}
 
@@ -141,13 +148,9 @@ ${instagram}
 
 ${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (the same 7 cards as Instagram with this text, then the Instagram page as a reply)
+## Threads (the same 7 cards as Instagram with this text)
 
 ${threads}
-
-### Reply
-
-${threadsReply}
 
 ## Cards (1080x1350)
 
