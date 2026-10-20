@@ -115,16 +115,37 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
 }
 
 /** A Threads post with the link as a reply to it. */
-export async function postThreads(a: { text: string; reply?: string }, env = process.env): Promise<string> {
+export async function postThreads(a: { text: string; reply?: string; imageUrls?: string[] }, env = process.env): Promise<string> {
   const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
+  const ready = async (id: string) => {
+    for (let i = 0; i < 20; i++) {
+      const s = await call(`${THREADS}/${id}`, { fields: 'status', access_token: token }, 'GET');
+      if (s.status === 'FINISHED') return;
+      if (s.status === 'ERROR' || s.status === 'EXPIRED') throw new Error(`Threads container ${s.status}`);
+      await sleep(3000);
+    }
+  };
   const publish = async (params: Record<string, string>) => {
-    const c = await call(`${THREADS}/${user}/threads`, { media_type: 'TEXT', ...params, access_token: token });
+    const c = await call(`${THREADS}/${user}/threads`, { ...params, access_token: token });
     await sleep(5000); // Threads asks for a short wait between creating and publishing
+    await ready(c.id);
     const p = await call(`${THREADS}/${user}/threads_publish`, { creation_id: c.id, access_token: token });
     return String(p.id);
   };
-  const id = await publish({ text: a.text });
-  if (a.reply) await publish({ text: a.reply, reply_to_id: id });
+  let id: string;
+  if (a.imageUrls && a.imageUrls.length >= 2) {
+    // The same cards as the Instagram carousel, with the post text above them.
+    const children: string[] = [];
+    for (const image_url of a.imageUrls) {
+      const c = await call(`${THREADS}/${user}/threads`, { media_type: 'IMAGE', image_url, is_carousel_item: true, access_token: token });
+      children.push(c.id);
+    }
+    for (const c of children) await ready(c);
+    id = await publish({ media_type: 'CAROUSEL', children: children.join(','), text: a.text });
+  } else {
+    id = await publish({ media_type: 'TEXT', text: a.text });
+  }
+  if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
   return id;
 }

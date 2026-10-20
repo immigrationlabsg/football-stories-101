@@ -1,7 +1,7 @@
 /**
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
- * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key.
+ * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key; threads:<id> reads (or with --delete deletes) a Threads post.
  */
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
@@ -21,6 +21,19 @@ if (id === 'list') {
   process.exit(0);
 }
 const del = process.argv[3] === '--delete';
+if (id?.startsWith('threads:')) {
+  // A Threads post, by its id: read it, or delete it with --delete (needs the threads_delete permission).
+  const tid = id.slice(8);
+  const url = `https://graph.threads.net/v1.0/${tid}?access_token=${process.env.THREADS_ACCESS_TOKEN}`;
+  const r = del ? await fetch(url, { method: 'DELETE' }) : await fetch(`${url}&fields=id,media_type,text,permalink,timestamp`);
+  const d = (await r.json()) as any;
+  if (!r.ok || d.error) {
+    console.log(`Meta says: ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'})`);
+    process.exit(1);
+  }
+  console.log(del ? `DELETED Threads post ${tid}` : JSON.stringify({ ...d, text: d.text ? `${String(d.text).slice(0, 80)}…` : undefined }, null, 2));
+  process.exit(0);
+}
 if (id === 'threads') {
   // Checks the Threads key: which account it belongs to. Changes nothing.
   const r = await fetch(`https://graph.threads.net/v1.0/me?fields=id,username&access_token=${process.env.THREADS_ACCESS_TOKEN}`);

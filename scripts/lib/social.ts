@@ -141,7 +141,7 @@ ${instagram}
 
 ${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (post the hook and facts, then the Instagram page as a reply)
+## Threads (the same 7 cards as Instagram with this text, then the Instagram page as a reply)
 
 ${threads}
 

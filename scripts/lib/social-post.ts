@@ -58,7 +58,7 @@ export async function postStoryToSocials(
     }
     try {
       if (opts.dryRun) {
-        const urls = network === 'facebook' ? [heroUrl] : network === 'instagram' ? cardUrls : [];
+        const urls = network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         const over = network === 'instagram' && text.length > INSTAGRAM_LIMIT ? `; TOO LONG for Instagram by ${text.length - INSTAGRAM_LIMIT}` : '';
@@ -83,7 +83,8 @@ export async function postStoryToSocials(
         for (const u of cardUrls) await waitForUrl(u);
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });
       } else {
-        out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply || undefined })}` });
+        for (const u of cardUrls) await waitForUrl(u);
+        out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply || undefined, imageUrls: cardUrls })}` });
       }
     } catch (e) {
       out.push({ network, status: 'failed', detail: (e as Error).message });
