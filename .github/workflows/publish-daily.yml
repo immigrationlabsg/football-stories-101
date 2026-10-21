@@ -5,8 +5,9 @@ name: Publish daily
 # sends today's story by email, posts it to Telegram, writes the social
 # captions and records the send in data/sent.json.
 on:
-  # GitHub's scheduler is "best effort": it starts jobs late or drops them, worst on the hour (on 18-20 Oct 2026
-  # only one of three 08:00 runs started, 2h23m late). So it is asked eight times each morning, at odd minutes.
+  # The main start is a Claude scheduled task that runs this workflow at 07:50 (09:50 at weekends) with
+  # wait_for_slot ticked: GitHub's own scheduler started 2 of 11 morning runs on 18-21 Oct 2026, hours late.
+  # The schedule below stays as a backup, asked eight times each morning at odd minutes.
   # Every run builds the site, waits until the posting time and posts; once a story is out, later runs do nothing.
   schedule:
     # Monday to Friday, posting at 08:00 Singapore (00:00 UTC): tries from 06:07 to 07:47, backups 08:07 and 08:27.
@@ -29,6 +30,10 @@ on:
         default: ""
       force_resend:
         description: "Allow re-sending a story already in data/sent.json"
+        type: boolean
+        default: false
+      wait_for_slot:
+        description: "Morning run: wait until today's posting time, then post (used by the 07:50 Claude trigger)"
         type: boolean
         default: false
 
@@ -79,7 +84,7 @@ jobs:
 
       # 3 to 8: select, send, Telegram, social assets, record, archive fallback.
       - name: Wait for today's posting time
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.wait_for_slot
         run: |
           # Weekdays post at 00:00 UTC (08:00 Singapore), weekends at 02:00 UTC (10:00 Singapore).
           dow=$(TZ=Asia/Singapore date +%u)   # 1 = Monday ... 7 = Sunday, in Singapore
@@ -113,7 +118,7 @@ jobs:
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
           PUBLISH_STORY_NUMBER: ${{ inputs.story_number }}
           # Every day has a story now, so a scheduled run never falls back to the archive (a backup run would re-send one).
-          ALLOW_ARCHIVE_FALLBACK: ${{ github.event_name == 'schedule' && '0' || '1' }}
+          ALLOW_ARCHIVE_FALLBACK: ${{ (github.event_name == 'schedule' || inputs.wait_for_slot) && '0' || '1' }}
           FORCE_RESEND: ${{ inputs.force_resend && '1' || '0' }}
         run: npm run publish:daily
 
