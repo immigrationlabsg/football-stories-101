@@ -8,8 +8,9 @@ import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
 
 const now = process.env.VERIFY_NOW ? new Date(process.env.VERIFY_NOW) : new Date();
+// Slots more than 3 minutes ago in the last 24 hours (Meta can take a moment to publish).
 const story = loadStories()
-  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - 3 * 60e3 && s.data.date.getTime() > now.getTime() - 86_400_000 // Meta can take a moment to publish)
+  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - 3 * 60e3 && s.data.date.getTime() > now.getTime() - 86_400_000)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
 if (!story) {
   console.log('No story slot in the last 24 hours to check.');
