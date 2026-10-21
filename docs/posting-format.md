@@ -34,8 +34,9 @@ change it only when the owner decides to.
   posting and saves it straight after. Never start a manual posting run between 06:00 and 08:45 (10:45 at weekends).
 
 ## Delivery
-- The daily run is asked eight times each morning (GitHub's scheduler is unreliable); whichever starts first waits
-  for the slot, posts, and saves the record at once; later ones do nothing; a network that failed is retried.
+- **Start:** a Claude scheduled task starts the daily run at 07:50 (09:50 at weekends); the run waits for the slot,
+  posts, and saves the record at once. GitHub's own schedule (eight tries each morning) is only a backup: it skipped
+  every try on 21 Oct. Later runs do nothing once a story is out; a network that failed is retried.
 - **Delivery check:** the GitHub "Delivery check" workflow runs 21 and 41 minutes after each slot and fails (emailing
   the owner) if any network is missing or Meta has not actually published the Facebook post. A scheduled Claude task
   (in the owner's Claude account, not in this repo) checks at 08:16 (10:16 at weekends), reposts anything missing
