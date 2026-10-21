@@ -1,6 +1,6 @@
 /**
  * Delivery check, part 2 (workflow "Delivery check"): asks Meta whether the Facebook post of the story whose slot
- * has just passed is actually published. data/sent.json only knows it was scheduled.
+ * has passed (in the last 24 hours) is actually published. data/sent.json only knows it was scheduled.
  *   npm run check-delivery
  */
 import fs from 'node:fs';
@@ -8,9 +8,8 @@ import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
 
 const now = process.env.VERIFY_NOW ? new Date(process.env.VERIFY_NOW) : new Date();
-const grace = Number(process.env.DELIVERY_GRACE_MIN ?? 20) * 60e3;
 const story = loadStories()
-  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - grace && s.data.date.getTime() > now.getTime() - 86_400_000)
+  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - 86_400_000)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
 if (!story) {
   console.log('No story slot in the last 24 hours to check.');
