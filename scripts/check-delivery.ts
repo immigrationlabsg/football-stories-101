@@ -9,7 +9,7 @@ import { loadStories, ROOT } from './lib/stories';
 
 const now = process.env.VERIFY_NOW ? new Date(process.env.VERIFY_NOW) : new Date();
 const story = loadStories()
-  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - 86_400_000)
+  .stories.filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - 3 * 60e3 && s.data.date.getTime() > now.getTime() - 86_400_000 // Meta can take a moment to publish)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
 if (!story) {
   console.log('No story slot in the last 24 hours to check.');
