@@ -252,6 +252,20 @@
       "status": "scheduled",
       "at": "2026-10-22T00:01:29.678Z",
       "detail": "scheduled for 2026-11-18T00:00:00.000Z 1419297047928388_122096804241522790 (short id 122096804241522790)"
+    },
+    {
+      "number": 4,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-10-23T00:01:30.404Z",
+      "detail": "media 18349094299251045"
+    },
+    {
+      "number": 4,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-10-23T00:01:30.404Z",
+      "detail": "thread 18134221852674856"
     }
   ]
 }
