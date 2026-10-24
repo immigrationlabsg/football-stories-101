@@ -28,6 +28,7 @@ const sgHour = (new Date().getUTCHours() + 8) % 24 + new Date().getUTCMinutes() 
 if (action === 'switch' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new Error('Not between 06:00 and 10:45 Singapore time: the daily run may be posting. Run it later.');
 const stories = loadStories().stories.filter((s) => !s.data.draft && s.data.number >= from && s.data.number <= to);
 let failed = 0;
+let uploads = 0;
 
 async function call(url: string, params: Record<string, string>, method = 'POST'): Promise<any> {
   const q = new URLSearchParams(params);
@@ -113,6 +114,8 @@ for (const story of stories) {
     console.log(`${n}: would schedule the Facebook Reel for ${story.data.date.toISOString()}${oldId ? ` and then delete picture post ${oldId}` : ''}`);
     continue;
   }
+  // Meta's anti-spam limit stopped uploads after 20 Reels in 10 minutes (24 Oct 2026, code 368): pace them.
+  if (uploads++) await new Promise((r) => setTimeout(r, 60_000));
   const [o] = await postStoryToSocials(story, { kind: 'scheduled', webLive: false, dryRun: false, networks: ['facebook'], scheduleAt: story.data.date });
   if (o.status !== 'drafted') {
     console.log(`${n}: ERROR the Reel could not be scheduled (${o.detail}); the picture post stays scheduled`);
