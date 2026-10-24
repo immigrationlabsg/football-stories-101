@@ -11,14 +11,20 @@ const env = process.env;
 async function get(base: string, path: string, token: string | undefined, params: Record<string, string> = {}): Promise<any> {
   if (!token) return { error: 'no key saved' };
   const q = new URLSearchParams({ ...params, access_token: token });
-  const r = await fetch(`${base}/${path}?${q}`);
+  let r: Response;
+  try {
+    r = await fetch(`${base}/${path}?${q}`);
+  } catch {
+    return { error: 'network error' }; // never print the error: it can contain the URL with the key
+  }
   const j = (await r.json().catch(() => ({}))) as any;
   return !r.ok || j.error ? { error: `${j.error?.message ?? r.status}${j.error?.code ? ` (code ${j.error.code})` : ''}` } : j;
 }
 const out: string[] = [];
 const say = (s = '') => out.push(s);
 const sum = (vals?: { value: number }[]) => (vals ?? []).reduce((a, v) => a + (typeof v.value === 'number' ? v.value : 0), 0);
-const short = (s?: string) => String(s ?? '').replace(/\s+/g, ' ').slice(0, 45);
+const short = (s?: string) => String(s ?? '').replace(/\s+/g, ' ').replace(/\|/g, '/').slice(0, 45);
+const day = (s?: string) => String(s ?? '?').slice(0, 10);
 const since = String(Math.floor(Date.now() / 1000) - 28 * 86400);
 const until = String(Math.floor(Date.now() / 1000));
 
@@ -28,18 +34,18 @@ async function metric(base: string, path: string, token: string | undefined, nam
   if (j.error) return `n/a (${j.error})`;
   const d = j.data?.[0];
   if (!d) return 'n/a (no data)';
-  if (d.total_value) return String(d.total_value.value);
+  if (d.total_value) return String(d.total_value.value ?? 'n/a');
   return String(d.values?.length > 1 ? sum(d.values) : d.values?.[0]?.value ?? '?');
 }
 
 // Facebook Page
 {
-  const page = env.META_PAGE_ID;
+  const page = encodeURIComponent(env.META_PAGE_ID?.trim() || 'me');
   const t = env.META_PAGE_ACCESS_TOKEN;
   say('## Facebook Page');
-  const p = await get(FB, page ?? 'me', t, { fields: 'name,followers_count,fan_count' });
+  const p = await get(FB, page, t, { fields: 'name,followers_count,fan_count' });
   say(p.error ? `Page: ${p.error}` : `${p.name}: ${p.followers_count ?? '?'} followers, ${p.fan_count ?? '?'} likes`);
-  for (const m of ['page_impressions_unique', 'page_post_engagements', 'page_views_total', 'page_daily_follows_unique', 'page_media_view']) {
+  for (const m of ['page_post_engagements', 'page_views_total', 'page_daily_follows_unique', 'page_media_view']) {
     say(`last 28 days ${m}: ${await metric(FB, `${page}/insights`, t, m, { period: 'day', since, until })}`);
   }
   const posts = await get(FB, `${page}/published_posts`, t, { fields: 'id,created_time,message,shares,reactions.summary(true).limit(0),comments.summary(true).limit(0)', limit: '15' });
@@ -48,11 +54,11 @@ async function metric(base: string, path: string, token: string | undefined, nam
     say('');
     say('| date | post | reach | views | clicks | reactions | comments | shares |');
     say('|---|---|---|---|---|---|---|---|');
-    for (const x of posts.data) {
+    for (const x of posts.data ?? []) {
       const reach = await metric(FB, `${x.id}/insights`, t, 'post_impressions_unique', {});
       const views = await metric(FB, `${x.id}/insights`, t, 'post_media_view', {});
       const clicks = await metric(FB, `${x.id}/insights`, t, 'post_clicks', {});
-      say(`| ${x.created_time.slice(0, 10)} | ${short(x.message)} | ${reach} | ${views} | ${clicks} | ${x.reactions?.summary?.total_count ?? 0} | ${x.comments?.summary?.total_count ?? 0} | ${x.shares?.count ?? 0} |`);
+      say(`| ${day(x.created_time)} | ${short(x.message)} | ${reach} | ${views} | ${clicks} | ${x.reactions?.summary?.total_count ?? 0} | ${x.comments?.summary?.total_count ?? 0} | ${x.shares?.count ?? 0} |`);
     }
   }
   say('');
@@ -73,10 +79,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
     say('');
     say('| date | post | reach | views | likes | comments | saves | shares | follows |');
     say('|---|---|---|---|---|---|---|---|---|');
-    for (const x of media.data) {
+    for (const x of media.data ?? []) {
       const m: Record<string, string> = {};
       for (const k of ['reach', 'views', 'saved', 'shares', 'follows']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
-      say(`| ${x.timestamp.slice(0, 10)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.follows} |`);
+      say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.follows} |`);
     }
   }
   say('');
@@ -97,10 +103,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
     say('');
     say('| date | post | views | likes | replies | reposts | shares |');
     say('|---|---|---|---|---|---|---|');
-    for (const x of posts.data) {
+    for (const x of posts.data ?? []) {
       const m: Record<string, string> = {};
       for (const k of ['views', 'likes', 'replies', 'reposts', 'shares']) m[k] = await metric(TH, `${x.id}/insights`, t, k, {});
-      say(`| ${x.timestamp.slice(0, 10)} | ${short(x.text)} | ${m.views} | ${m.likes} | ${m.replies} | ${m.reposts} | ${m.shares} |`);
+      say(`| ${day(x.timestamp)} | ${short(x.text)} | ${m.views} | ${m.likes} | ${m.replies} | ${m.reposts} | ${m.shares} |`);
     }
   }
 }

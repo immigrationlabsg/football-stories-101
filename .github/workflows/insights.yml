@@ -5,6 +5,9 @@ name: Audience report
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   report:
     runs-on: ubuntu-latest
