@@ -59,7 +59,7 @@ if (id?.startsWith('reel:')) {
   // A Facebook Reel, by its video id: its processing and publishing status (or delete it with --delete).
   const vid = id.slice(5);
   const url = `https://graph.facebook.com/v21.0/${vid}?access_token=${token}`;
-  const r = del ? await fetch(url, { method: 'DELETE' }) : await fetch(`${url}&fields=id,published,status,post_id,created_time,description`);
+  const r = del ? await fetch(url, { method: 'DELETE' }) : await fetch(`${url}&fields=id,status,created_time,description`);
   const d = (await r.json()) as any;
   if (!r.ok || d.error) {
     console.log(`Meta says: ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'})`);

@@ -67,6 +67,8 @@ try {
 const reels: Record<string, string> = {};
 const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/reel.ts'));
 const DAY = 86_400_000;
+const reelFailures: string[] = [];
+for (const f of fs.readdirSync(OUT)) if (f.endsWith('.tmp.mp4')) fs.rmSync(path.join(OUT, f), { force: true }); // left by an interrupted render
 const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/cards.ts');
 const cardsSource = fs.readFileSync(cardsScript);
 const widthsKey = WIDTHS.join(',');
@@ -123,10 +125,16 @@ for (const story of stories) {
     if (!force && reelsPrev[n] === reelHash && fs.existsSync(reel)) console.log(`${n} reel: up to date`);
     else {
       const started = Date.now();
-      await renderReel(cardFiles, track, reel);
-      console.log(`${n} reel: made with ${path.basename(track)} in ${Math.round((Date.now() - started) / 1000)}s`);
+      try {
+        await renderReel(cardFiles, track, reel);
+        console.log(`${n} reel: made with ${path.basename(track)} in ${Math.round((Date.now() - started) / 1000)}s`);
+        reels[n] = reelHash;
+      } catch (e) {
+        reelFailures.push(`${n}: ${(e as Error).message.slice(0, 300)}`);
+        fs.rmSync(`${reel}.tmp.mp4`, { force: true });
+      }
     }
-    reels[n] = reelHash;
+    if (reelsPrev[n] === reelHash && fs.existsSync(reel)) reels[n] = reelHash;
   } else if (fs.existsSync(reel)) fs.unlinkSync(reel);
   // Remove stale slides from a previous, longer facts list
   for (const f of fs.readdirSync(OUT)) {
@@ -141,4 +149,9 @@ if (force || !fs.existsSync(def)) fs.writeFileSync(def, await renderDefault(site
 
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(REELS, JSON.stringify(reels, null, 2));
+if (reelFailures.length) {
+  // Fail the build so GitHub emails the owner; everything else above is already written and cached.
+  for (const f of reelFailures) console.error(`error: Reel ${f}`);
+  process.exit(1);
+}
 console.log(`manifest written for ${Object.keys(manifest).length} stories`);

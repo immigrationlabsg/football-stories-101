@@ -79,6 +79,7 @@ export async function postStoryToSocials(
         continue;
       }
       if (reel) {
+        if (opts.draft) throw new Error('a Reel cannot be saved as a Facebook draft through the API; nothing was posted (use a dry run to preview)');
         await waitForUrl(reelUrl);
         if (network === 'facebook') {
           const id = await postFacebookReel({ videoUrl: reelUrl, description: posts.facebook, scheduleAt: opts.scheduleAt });

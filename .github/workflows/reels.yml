@@ -23,7 +23,8 @@ on:
 permissions:
   contents: write
 
-# Shares the posting group, so it never overlaps a posting or scheduling run.
+# Shares the manual posting group; scripts/reels.ts also refuses to switch during the morning posting window
+# (06:00-10:45 Singapore), when the daily run (its own group) may be saving data/sent.json.
 concurrency:
   group: social-posting
   cancel-in-progress: false

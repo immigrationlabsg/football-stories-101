@@ -196,7 +196,22 @@ export async function postFacebookReel(a: { videoUrl: string; description: strin
       : { video_state: 'PUBLISHED' }),
     access_token: token,
   });
-  return String(start.video_id);
+  // Wait until Meta has fetched and processed the video, so a caller never removes the post it replaces too early.
+  let last = '';
+  for (let i = 0; i < 100; i++) {
+    const v = await call(`${GRAPH}/${start.video_id}`, { fields: 'status', access_token: token }, 'GET');
+    const st = v.status ?? {};
+    last = JSON.stringify(st).slice(0, 300);
+    const phases = [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status];
+    if (st.video_status === 'error' || phases.includes('error')) {
+      throw new Error(`Facebook could not process the Reel (video ${start.video_id}): ${JSON.stringify(st).slice(0, 300)}`);
+    }
+    if (st.processing_phase?.status === 'complete' && (a.scheduleAt ? st.publishing_phase?.publish_status === 'scheduled' || st.publishing_phase?.status === 'complete' : true)) {
+      return String(start.video_id);
+    }
+    await sleep(3000);
+  }
+  throw new Error(`Facebook Reel ${start.video_id} was not confirmed after 5 minutes (last status ${last})`);
 }
 
 /** Deletes a Facebook post or video on the Page (used when a scheduled picture post is replaced by a Reel). */

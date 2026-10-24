@@ -115,6 +115,9 @@ if (schedule.reels_from) {
     if (!fs.existsSync(path.join(MUSIC_DIR, t))) errors.push(`music track assets/music/${t} is missing (the Reels need it)`);
     else if (!credits.includes(t)) errors.push(`music track ${t} has no row in assets/music/CREDITS.md`);
   }
+  for (const r of social as { number: number; network: string; leftover?: string }[]) {
+    if (r.leftover) errors.push(`${pad(r.number)}: Facebook picture post ${r.leftover} was replaced by a Reel but could not be deleted; both would publish (delete it with "Check a Facebook post")`);
+  }
   for (const s of live) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;
     if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && !r.detail?.includes(' reel ')) {

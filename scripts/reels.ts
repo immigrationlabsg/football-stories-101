@@ -23,6 +23,9 @@ const to = Number(b || a);
 if (!['check', 'switch'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch <first> [last]');
 const dryRun = process.env.DRY_RUN === '1';
 const SENT = path.join(ROOT, 'data/sent.json');
+// Never during the morning posting window (06:00-10:45 Singapore): the daily run saves data/sent.json then too.
+const sgHour = (new Date().getUTCHours() + 8) % 24 + new Date().getUTCMinutes() / 60;
+if (action === 'switch' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new Error('Not between 06:00 and 10:45 Singapore time: the daily run may be posting. Run it later.');
 const stories = loadStories().stories.filter((s) => !s.data.draft && s.data.number >= from && s.data.number <= to);
 let failed = 0;
 
@@ -116,22 +119,26 @@ for (const story of stories) {
     failed++;
     continue;
   }
-  let note = '';
+  // Save the Reel at once (a re-run must never schedule a second one). Until the picture post is deleted, the record
+  // keeps its id under "leftover", and npm run verify reports it as an error every evening.
+  const save = (leftover?: string) => {
+    const f = JSON.parse(fs.readFileSync(SENT, 'utf8'));
+    f.social = [
+      ...(f.social ?? []).filter((r: { number: number; network: string }) => !(r.number === story.data.number && r.network === 'facebook')),
+      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail: o.detail, ...(leftover ? { leftover } : {}) },
+    ];
+    fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
+  };
+  save(oldId);
   if (oldId) {
     try {
       await deleteFacebookObject(oldId);
-      note = `; deleted picture post ${oldId}`;
+      save();
+      console.log(`${n}: ${o.detail}; deleted picture post ${oldId}`);
     } catch (e) {
-      // Both would go out: say so loudly, and keep the old record visible in the detail so it can be removed by hand.
-      note = `; ERROR could not delete picture post ${oldId}: ${(e as Error).message}`;
+      console.log(`${n}: ERROR ${o.detail}, but the picture post ${oldId} could not be deleted (${(e as Error).message}); both would publish`);
       failed++;
     }
-  }
-  file.social = [
-    ...records.filter((r) => r !== old),
-    { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail: `${o.detail}${note}` },
-  ];
-  fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
-  console.log(`${n}: ${o.detail}${note}`);
+  } else console.log(`${n}: ${o.detail}`);
 }
 if (failed) process.exitCode = 1;
