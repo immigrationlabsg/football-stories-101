@@ -213,7 +213,7 @@ async function main() {
     for (const next of stories.filter((s) => !s.data.draft && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
       const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
       if (!socialDry) recordSocial(next.data.number, ahead);
-      if (ahead.some((o) => o.status === 'failed')) process.exitCode = 1; // a refused schedule turns the run red too
+      if (ahead.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1; // a refused or unconfirmed schedule turns the run red too
     }
   } else {
     console.log('[social] archive re-run: not posted automatically to Facebook, Instagram or Threads.');

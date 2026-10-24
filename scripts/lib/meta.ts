@@ -194,15 +194,29 @@ export async function postFacebookReel(a: { videoUrl: string; description: strin
   });
   const uj = (await up.json().catch(() => ({}))) as any;
   if (!up.ok || !uj.success) throw new Error(`Facebook Reel upload responded ${up.status}: ${uj.error?.message ?? uj.debug_info?.message ?? 'unknown error'}`);
-  await call(`${GRAPH}/${page}/video_reels`, {
-    upload_phase: 'finish',
-    video_id: start.video_id,
-    description: a.description,
-    ...(a.scheduleAt
-      ? { video_state: 'SCHEDULED', scheduled_publish_time: String(Math.floor(a.scheduleAt.getTime() / 1000)) }
-      : { video_state: 'PUBLISHED' }),
-    access_token: token,
-  });
+  try {
+    await call(`${GRAPH}/${page}/video_reels`, {
+      upload_phase: 'finish',
+      video_id: start.video_id,
+      description: a.description,
+      ...(a.scheduleAt
+        ? { video_state: 'SCHEDULED', scheduled_publish_time: String(Math.floor(a.scheduleAt.getTime() / 1000)) }
+        : { video_state: 'PUBLISHED' }),
+      access_token: token,
+    });
+  } catch (e) {
+    // Meta may have applied the finish even though the answer was an error: unless the video is plainly in error,
+    // treat it as a Reel Meta may hold, so it is recorded and never uploaded twice.
+    let st: any = null;
+    try {
+      st = (await call(`${GRAPH}/${start.video_id}`, { fields: 'status', access_token: token }, 'GET')).status ?? null;
+    } catch {
+      st = null;
+    }
+    const plainlyFailed = st && (st.video_status === 'error' || [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status].includes('error'));
+    if (plainlyFailed) throw e;
+    throw new UnconfirmedReel(String(start.video_id), `the finish call failed (${(e as Error).message}) but Meta may hold the Reel`);
+  }
   // Wait until Meta has fetched and processed the video, so a caller never removes the post it replaces too early.
   // From here on Meta holds the Reel, so every failure is an UnconfirmedReel carrying its id: it must never be forgotten.
   const id = String(start.video_id);
@@ -230,5 +244,5 @@ export async function postFacebookReel(a: { videoUrl: string; description: strin
 export async function deleteFacebookObject(id: string, env = process.env): Promise<void> {
   const r = await fetch(`${GRAPH}/${id}?access_token=${env.META_PAGE_ACCESS_TOKEN}`, { method: 'DELETE' });
   const j = (await r.json().catch(() => ({}))) as any;
-  if (!r.ok || j.error || j.success === false) throw new Error(`deleting ${id} responded ${r.status}: ${j.error?.message ?? 'unknown error'}`);
+  if (!r.ok || j.error || j.success === false) throw new Error(`deleting ${id} responded ${r.status}: ${j.error?.message ?? 'unknown error'}${j.error?.code ? ` (code ${j.error.code})` : ''}`);
 }

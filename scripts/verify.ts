@@ -116,8 +116,8 @@ if (schedule.reels_from) {
     else if (!credits.includes(t)) errors.push(`music track ${t} has no row in assets/music/CREDITS.md`);
   }
   for (const r of social as { number: number; network: string; leftover?: string }[]) {
-    if (r.leftover) errors.push(`${pad(r.number)}: Facebook post(s) ${r.leftover} may publish beside the scheduled Reel; run "Reels" with action confirm for ${pad(r.number)} (it deletes them once the Reel is confirmed)`);
-    if (/UNCONFIRMED/.test((r as { detail?: string }).detail ?? '')) errors.push(`${pad(r.number)}: Meta did not confirm this Facebook Reel; run "Reels" with action confirm for ${pad(r.number)}`);
+    if (r.leftover) errors.push(`${pad(r.number)}: Facebook post(s) ${r.leftover} may publish beside the scheduled Reel; run "Reels" with action confirm and Dry run unticked for ${pad(r.number)} (it deletes them once the Reel is confirmed)`);
+    if (/UNCONFIRMED/.test((r as { detail?: string }).detail ?? '')) errors.push(`${pad(r.number)}: Meta did not confirm this Facebook Reel; run "Reels" with action confirm and Dry run unticked for ${pad(r.number)}`);
   }
   for (const s of live) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;

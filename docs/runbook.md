@@ -369,3 +369,21 @@ If you want those on a post, post that one by hand in the app.
   of each month and saves the new keys back into the secrets. It needs one secret, `SECRETS_ADMIN_TOKEN`: create a
   fine-grained token at https://github.com/settings/personal-access-tokens/new for this repository only, with
   Repository permissions, Secrets: Read and write. The same run checks the Facebook key and goes red if it stops working.
+
+## 17. Reels (from 25 October 2026)
+
+Every story from 006 posts as a Reel on all three networks (`docs/posting-format.md`): the 7 cards with Beethoven's
+Coriolan Overture, built with the website up to 28 days ahead (`/images/derived/NNN-reel.mp4`). The **Reels** workflow
+(Actions tab) has three actions; leave "Dry run" ticked first to see what it would do:
+
+- **check** (story number): is the Reel online, and do Instagram and Threads accept it? Test only, nothing is published.
+- **switch** (from, to): gives each upcoming Facebook slot a Reel with the current music, replacing a scheduled picture
+  post or an older Reel. The new Reel is scheduled and confirmed by Meta before the old post is deleted. At most 4
+  uploads a run (Meta's anti-spam limit), nearest dates first; it refuses to upload while the website still has other
+  music, and between 06:00 and 10:45 Singapore time.
+- **confirm** (from, to): when `npm run verify` reports a Reel "Meta did not confirm" or a "leftover" post, this asks Meta
+  about the Reel. Confirmed: it deletes the leftover posts. Failed: it puts the earlier post back so the next switch
+  redoes it. Meta could not be asked: it changes nothing; run it again later.
+
+Each Facebook Reel's line in `data/sent.json` names its music, e.g. "(music: coriolan)". To check one by hand, use
+**Check a Facebook post** with `reel:<id>`.

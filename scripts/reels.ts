@@ -53,6 +53,35 @@ async function liveMusicMatches(number: number): Promise<boolean> {
   return musicTag(number) === `(music: ${liveMusic[pad3(number)] ?? 'unknown'})`;
 }
 
+// What Meta says about a Facebook Reel: confirmed only with the same test the upload uses (processing complete, no
+// phase in error, scheduled or published); failed when Meta reports an error; unknown when Meta could not be asked.
+async function reelState(id?: string): Promise<{ kind: 'ok' | 'failed' | 'unknown'; why: string }> {
+  if (!id) return { kind: 'unknown', why: 'no Reel id in the record' };
+  try {
+    const v = await call(`https://graph.facebook.com/v21.0/${id}`, { fields: 'status', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
+    const st = v.status ?? {};
+    const phases = [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status];
+    if (st.video_status === 'error' || phases.includes('error')) return { kind: 'failed', why: JSON.stringify(st).slice(0, 200) };
+    const pub = st.publishing_phase?.publish_status;
+    if (st.processing_phase?.status === 'complete' && (pub === 'scheduled' || pub === 'published')) return { kind: 'ok', why: pub };
+    return { kind: 'unknown', why: `still processing: ${JSON.stringify(st).slice(0, 200)}` };
+  } catch (e) {
+    return { kind: 'unknown', why: (e as Error).message };
+  }
+}
+let pageCheck: boolean | null = null;
+async function pageReadable(): Promise<boolean> {
+  if (pageCheck === null) {
+    try {
+      await call(`https://graph.facebook.com/v21.0/${process.env.META_PAGE_ID}`, { fields: 'id', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
+      pageCheck = true;
+    } catch {
+      pageCheck = false;
+    }
+  }
+  return pageCheck;
+}
+
 async function call(url: string, params: Record<string, string>, method = 'POST'): Promise<any> {
   const q = new URLSearchParams(params);
   const r = await fetch(method === 'GET' ? `${url}?${q}` : url, method === 'GET' ? undefined : { method, body: q });
@@ -114,50 +143,72 @@ for (const story of stories) {
 
   if (action === 'confirm') {
     const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
-    const rec = (file.social ?? []).find((r: FbRecord) => r.number === story.data.number && r.network === 'facebook') as FbRecord | undefined;
-    if (!rec || (!rec.detail.includes('UNCONFIRMED') && !rec.leftover)) continue;
-    const reel = rec.detail.match(/ reel (\d+)/)?.[1];
-    if (rec.detail.includes('UNCONFIRMED')) {
-      let state = 'unknown';
-      try {
-        const v = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'status', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
-        state = v.status?.publishing_phase?.publish_status ?? v.status?.video_status ?? 'unknown';
-      } catch (e) {
-        state = `error: ${(e as Error).message}`;
-      }
-      if (state !== 'scheduled' && state !== 'published') {
-        console.log(`${n}: ERROR Facebook Reel ${reel} is "${state}" at Meta, not scheduled; ${rec.leftover ? `the earlier post ${rec.leftover} is kept` : 'nothing else is scheduled'}. Needs a person: re-run switch for ${n} after removing this record, or schedule by hand.`);
-        failed++;
-        continue;
-      }
-      if (!dryRun) rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
-      console.log(`${n}: Facebook Reel ${reel} is ${state} at Meta; ${dryRun ? 'would mark' : 'marked'} confirmed`);
-    }
-    // The Reel is confirmed, so the posts it replaced must go. A post Meta no longer has counts as gone.
-    const keep: string[] = [];
-    for (const id of (rec.leftover ?? '').split(' ').filter(Boolean)) {
-      if (dryRun) {
-        console.log(`${n}: would delete leftover ${id}`);
-        keep.push(id);
-        continue;
-      }
-      try {
-        await deleteFacebookObject(id);
-        console.log(`${n}: deleted leftover ${id}`);
-      } catch (e) {
-        const msg = (e as Error).message;
-        if (/does not exist|code 100/.test(msg)) console.log(`${n}: leftover ${id} is already gone`);
-        else {
-          console.log(`${n}: ERROR could not delete leftover ${id}: ${msg}`);
-          keep.push(id);
+    const mine = ((file.social ?? []) as FbRecord[]).filter((r) => r.number === story.data.number && r.network === 'facebook');
+    for (const rec of mine) {
+      if (!rec.detail.includes('UNCONFIRMED') && !rec.leftover) continue;
+      const reel = rec.detail.match(/ reel (\d+)/)?.[1];
+      if (rec.detail.includes('UNCONFIRMED')) {
+        const state = await reelState(reel);
+        if (state.kind === 'unknown') {
+          // Meta could not be asked: the Reel may well be scheduled. Change nothing; try again later.
+          console.log(`${n}: ERROR could not check Facebook Reel ${reel} (${state.why}); nothing changed. Run "Reels" confirm again later.`);
           failed++;
+          continue;
+        }
+        if (state.kind === 'failed') {
+          // The Reel will not publish: give the story back its earlier post, so the next switch replaces it properly.
+          const ids = (rec.leftover ?? '').split(' ').filter(Boolean);
+          if (!dryRun) {
+            try {
+              await deleteFacebookObject(reel!);
+            } catch {
+              /* a failed Reel may already be gone */
+            }
+            if (ids.length) {
+              const back = ids[0];
+              rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back}`} (restored: Reel ${reel} failed at Meta)`;
+              if (ids.length > 1) rec.leftover = ids.slice(1).join(' ');
+              else delete rec.leftover;
+            } else file.social = (file.social as FbRecord[]).filter((r) => r !== rec);
+            fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+          }
+          console.log(`${n}: ERROR Facebook Reel ${reel} failed at Meta (${state.why}); ${ids.length ? `the earlier post ${ids[0]} is back as the story's Facebook post` : 'the record is removed so the story is scheduled again'}. The next switch run replaces it.`);
+          failed++;
+          continue;
+        }
+        if (!dryRun) rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
+        console.log(`${n}: Facebook Reel ${reel} is processed and ${state.why} at Meta; ${dryRun ? 'would mark' : 'marked'} confirmed`);
+      }
+      // The Reel is confirmed, so the posts it replaced must go.
+      const keep: string[] = [];
+      for (const id of (rec.leftover ?? '').split(' ').filter(Boolean)) {
+        if (dryRun) {
+          console.log(`${n}: would delete leftover ${id}`);
+          keep.push(id);
+          continue;
+        }
+        try {
+          await deleteFacebookObject(id);
+          console.log(`${n}: deleted leftover ${id}`);
+        } catch (e) {
+          const msg = (e as Error).message;
+          // Meta answers "does not exist" for a post that is gone AND for one this key cannot see. Only trust it when
+          // the key can still read the Page and the id belongs to this Page (Page_post ids start with the Page id).
+          const pageOk = await pageReadable();
+          const ours = id.includes('_') ? id.startsWith(`${process.env.META_PAGE_ID}_`) : true;
+          if (/does not exist/.test(msg) && pageOk && ours) console.log(`${n}: leftover ${id} is already gone`);
+          else {
+            console.log(`${n}: ERROR could not delete leftover ${id}: ${msg}`);
+            keep.push(id);
+            failed++;
+          }
         }
       }
-    }
-    if (!dryRun) {
-      if (keep.length) rec.leftover = keep.join(' ');
-      else delete rec.leftover;
-      fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+      if (!dryRun) {
+        if (keep.length) rec.leftover = keep.join(' ');
+        else delete rec.leftover;
+        fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+      }
     }
     continue;
   }
