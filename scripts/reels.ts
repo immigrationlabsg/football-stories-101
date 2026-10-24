@@ -66,7 +66,7 @@ async function reelState(id?: string, since?: string): Promise<{ kind: 'ok' | 'f
     if (st.video_status === 'error' || st.video_status === 'expired' || phases.includes('error')) return { kind: 'failed', why: JSON.stringify(st).slice(0, 200) };
     const pub = st.publishing_phase?.publish_status;
     if (st.processing_phase?.status === 'complete' && (pub === 'scheduled' || pub === 'published')) return { kind: 'ok', why: pub };
-    if (stale && (st.processing_phase?.status === 'not_started' || st.publishing_phase?.status === 'not_started' || (st.processing_phase?.status === 'complete' && pub && pub !== 'scheduled' && pub !== 'published'))) {
+    if (stale && (st.processing_phase?.status === 'not_started' || (st.processing_phase?.status === 'complete' && pub && pub !== 'scheduled' && pub !== 'published'))) {
       return { kind: 'failed', why: `never scheduled: ${JSON.stringify(st).slice(0, 200)}` };
     }
     return { kind: 'unknown', why: `still processing: ${JSON.stringify(st).slice(0, 200)}` };
@@ -179,14 +179,22 @@ for (const story of stories) {
           // The Reel will not publish: give the story back its earlier post, so the next switch replaces it properly.
           const ids = (rec.leftover ?? '').split(' ').filter(Boolean);
           if (!dryRun) {
+            // Only once the failed Reel is provably gone may the record forget it; otherwise it could still publish.
+            let gone = false;
             try {
               await deleteFacebookObject(reel!);
-            } catch {
-              /* a failed Reel may already be gone */
+              gone = true;
+            } catch (e) {
+              gone = /does not exist/.test((e as Error).message) && (await pageReadable());
+            }
+            if (!gone) {
+              console.log(`${n}: ERROR Facebook Reel ${reel} looks failed (${state.why}) but could not be deleted; nothing changed. Run confirm again later.`);
+              failed++;
+              continue;
             }
             if (ids.length) {
               const back = ids.at(-1)!;
-              rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back} (music: unknown)`} (restored: Reel ${reel} failed at Meta)`;
+              rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back} (music: unknown) UNCONFIRMED: restored after Reel ${reel} failed at Meta`}${back.includes('_') ? ` (restored: Reel ${reel} failed at Meta)` : ''}`;
               if (ids.length > 1) rec.leftover = ids.slice(0, -1).join(' ');
               else delete rec.leftover;
             } else file.social = (file.social as FbRecord[]).filter((r) => r !== rec);
@@ -196,9 +204,13 @@ for (const story of stories) {
           failed++;
           continue;
         }
-        if (!dryRun) rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
+        if (!dryRun) {
+          rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
+          fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+        }
         console.log(`${n}: Facebook Reel ${reel} is processed and ${state.why} at Meta; ${dryRun ? 'would mark' : 'marked'} confirmed`);
       }
+      if (!rec.leftover) continue;
       // Delete the posts this one replaced only when this one is confirmed to be scheduled at Meta.
       if (!(await mainPostScheduled(rec.detail))) {
         console.log(`${n}: ERROR the story's own Facebook post is not confirmed at Meta, so leftover ${rec.leftover} is kept; run confirm again later`);
