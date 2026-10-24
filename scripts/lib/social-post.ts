@@ -1,7 +1,7 @@
 import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
 import { metaConfigured, postFacebookPhoto, postFacebookReel, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
-import { usesReel } from './reel';
+import { musicTag, usesReel } from './reel';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
 import fs from 'node:fs';
@@ -83,7 +83,7 @@ export async function postStoryToSocials(
         await waitForUrl(reelUrl);
         if (network === 'facebook') {
           const id = await postFacebookReel({ videoUrl: reelUrl, description: posts.facebook, scheduleAt: opts.scheduleAt });
-          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id}` });
+          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}` });
         } else if (network === 'instagram') {
           if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
           out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });

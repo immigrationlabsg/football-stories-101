@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadStories, PUBLIC_DIR, ROOT } from './lib/stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './lib/social';
-import { MUSIC_DIR, TRACKS, usesReel } from './lib/reel';
+import { MUSIC_DIR, TRACKS, legacyMusicTag, musicTag, usesReel } from './lib/reel';
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -122,6 +122,9 @@ if (schedule.reels_from) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;
     if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && !r.detail?.includes(' reel ')) {
       warnings.push(`${pad(s.data.number)} is a Reel story but Facebook still has its picture post scheduled; run "Reels" with action switch`);
+    } else if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && r.detail && !r.detail.includes(musicTag(s.data.number))
+      && !(!r.detail.includes('(music:') && legacyMusicTag(s.data.number) === musicTag(s.data.number))) {
+      warnings.push(`${pad(s.data.number)}'s Facebook Reel has other music than ${musicTag(s.data.number)}; run "Reels" with action switch`);
     }
   }
 }

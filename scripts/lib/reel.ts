@@ -12,9 +12,14 @@ import { ROOT } from './stories';
 
 const run = promisify(execFile);
 export const MUSIC_DIR = path.join(ROOT, 'assets/music');
-/** Public-domain tracks (assets/music/CREDITS.md); a story uses TRACKS[number % length], so they rotate daily. */
-export const TRACKS = ['egmont.m4a', 'coriolan.m4a', 'mozart40.m4a', 'hebrides.m4a'];
+/** Public-domain tracks (assets/music/CREDITS.md); a story uses TRACKS[number % length]. Owner's choice on 24 Oct 2026:
+ * Beethoven's Coriolan Overture on every Reel for now (the other clips stay in assets/music, unused). */
+export const TRACKS = ['coriolan.m4a'];
 export const trackFor = (number: number) => path.join(MUSIC_DIR, TRACKS[number % TRACKS.length]);
+/** The short music name written into each Facebook Reel record, e.g. "(music: coriolan)". */
+export const musicTag = (number: number) => `(music: ${path.basename(trackFor(number), '.m4a')})`;
+/** What the Reels scheduled on 24 Oct 2026 carried before that choice (a 4-track rotation, no tag in the record). */
+export const legacyMusicTag = (number: number) => `(music: ${['egmont', 'coriolan', 'mozart40', 'hebrides'][number % 4]})`;
 
 /** Stories dated on or after this get a Reel instead of the picture posts (data/schedule.json reels_from). */
 export function reelsFrom(): Date | null {

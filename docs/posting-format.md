@@ -13,8 +13,8 @@ change it only when the owner decides to.
 - The Reel is "style B": the same 7 cards, each slowly zooming in and fading into the next, on a blurred copy of the
   card, 1080x1920, about 23 seconds (`scripts/lib/reel.ts`). Built with the website, up to 28 days ahead, at
   `/images/derived/NNN-reel.mp4`.
-- **Music: royalty-free only**, public-domain orchestral recordings in `assets/music/` (credits in its CREDITS.md),
-  rotating by story number. Trending or commercial songs cannot be added through Meta's API, and a song put into the
+- **Music: Beethoven's Coriolan Overture on every Reel** (owner's choice, 24 Oct 2026), a public-domain recording in
+  `assets/music/` (credits in its CREDITS.md). Each Facebook Reel's record names its music, e.g. "(music: coriolan)". Trending or commercial songs cannot be added through Meta's API, and a song put into the
   file gets the Reel muted or removed.
 - Text is unchanged: Facebook and Instagram carry the full story text; Threads the teaser with "More on Instagram".
 - Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram and Threads Reels are posted

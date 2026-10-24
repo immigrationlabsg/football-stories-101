@@ -4,8 +4,10 @@
  *   npm run reels -- check 6         Is story 006's Reel online? Instagram and Threads process it as a test
  *                                     container that is never published (it expires by itself within 24 hours).
  *   npm run reels -- switch 6 30     For stories 006-030: schedule the Facebook Reel at the story's slot, and only
- *                                     once that worked, delete the scheduled picture post it replaces and update
- *                                     data/sent.json. Stories already posted are never touched.
+ *                                     once that worked, delete the scheduled picture post (or the older Reel with
+ *                                     different music) it replaces and update data/sent.json. Stories already posted
+ *                                     are never touched. At most MAX_UPLOADS (default 4) uploads a run, nearest first:
+ *                                     Meta's anti-spam limit stopped a bulk run on 24 Oct 2026.
  *   DRY_RUN=1 ...                    show what would happen, change nothing
  */
 import fs from 'node:fs';
@@ -13,7 +15,7 @@ import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
 import { postStoryToSocials } from './lib/social-post';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
-import { usesReel } from './lib/reel';
+import { legacyMusicTag, musicTag, usesReel } from './lib/reel';
 import { absoluteUrl } from '../src/lib/url';
 import { pad3 } from '../src/schema/story';
 
@@ -29,6 +31,8 @@ if (action === 'switch' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new E
 const stories = loadStories().stories.filter((s) => !s.data.draft && s.data.number >= from && s.data.number <= to);
 let failed = 0;
 let uploads = 0;
+let pending = 0;
+const MAX_UPLOADS = Number(process.env.MAX_UPLOADS || 4);
 
 async function call(url: string, params: Record<string, string>, method = 'POST'): Promise<any> {
   const q = new URLSearchParams(params);
@@ -97,9 +101,22 @@ for (const story of stories) {
     console.log(`${n}: already posted on Facebook; left as it is`);
     continue;
   }
+  const tag = musicTag(story.data.number);
   if (old?.detail.includes(' reel ')) {
-    console.log(`${n}: Facebook Reel already scheduled`);
-    continue;
+    // A Reel with today's music needs nothing. One scheduled before the music tag existed may already carry it.
+    if (old.detail.includes(tag)) {
+      console.log(`${n}: Facebook Reel already scheduled ${tag}`);
+      continue;
+    }
+    if (!old.detail.includes('(music:') && legacyMusicTag(story.data.number) === tag) {
+      if (!dryRun) {
+        const f = JSON.parse(fs.readFileSync(SENT, 'utf8'));
+        for (const r of f.social ?? []) if (r.number === story.data.number && r.network === 'facebook') r.detail = `${r.detail} ${tag}`;
+        fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
+      }
+      console.log(`${n}: Facebook Reel already has this music; record ${dryRun ? 'would be' : ''} marked ${tag}`.replace('  ', ' '));
+      continue;
+    }
   }
   if (story.data.date.getTime() < Date.now() + 15 * 60e3) {
     console.log(`${n}: too close to its slot to reschedule safely; left as it is`);
@@ -109,9 +126,17 @@ for (const story of stories) {
     console.log(`${n}: beyond Meta's 27-day window; the daily run schedules its Reel later`);
     continue;
   }
-  const oldId = old?.detail.match(/(\d+_\d+)/)?.[1];
+  // The post it replaces: a scheduled picture post (Page_post id) or a Reel with other music (video id).
+  const oldId = old?.detail.match(/ reel (\d+)/)?.[1] ?? old?.detail.match(/(\d+_\d+)/)?.[1];
+  const what = old?.detail.includes(' reel ') ? 'older Reel' : 'picture post';
+  if (uploads >= MAX_UPLOADS) {
+    console.log(`${n}: left for the next run (at most ${MAX_UPLOADS} uploads a run)`);
+    pending++;
+    continue;
+  }
   if (dryRun) {
-    console.log(`${n}: would schedule the Facebook Reel for ${story.data.date.toISOString()}${oldId ? ` and then delete picture post ${oldId}` : ''}`);
+    uploads++;
+    console.log(`${n}: would schedule the Facebook Reel ${tag} for ${story.data.date.toISOString()}${oldId ? ` and then delete ${what} ${oldId}` : ''}`);
     continue;
   }
   // Meta's anti-spam limit stopped uploads after 20 Reels in 10 minutes (24 Oct 2026, code 368): pace them.
@@ -137,11 +162,12 @@ for (const story of stories) {
     try {
       await deleteFacebookObject(oldId);
       save();
-      console.log(`${n}: ${o.detail}; deleted picture post ${oldId}`);
+      console.log(`${n}: ${o.detail}; deleted ${what} ${oldId}`);
     } catch (e) {
-      console.log(`${n}: ERROR ${o.detail}, but the picture post ${oldId} could not be deleted (${(e as Error).message}); both would publish`);
+      console.log(`${n}: ERROR ${o.detail}, but the ${what} ${oldId} could not be deleted (${(e as Error).message}); both would publish`);
       failed++;
     }
   } else console.log(`${n}: ${o.detail}`);
 }
+if (pending) console.log(`${pending} story(ies) still to switch: run again later.`);
 if (failed) process.exitCode = 1;
