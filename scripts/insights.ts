@@ -68,8 +68,8 @@ async function metric(base: string, path: string, token: string | undefined, nam
 {
   const t = env.INSTAGRAM_ACCESS_TOKEN;
   say('## Instagram');
-  const me = await get(IG, 'me', t, { fields: 'username,followers_count,follows_count,media_count' });
-  say(me.error ? `Account: ${me.error}` : `@${me.username}: ${me.followers_count} followers, follows ${me.follows_count}, ${me.media_count} posts`);
+  const me = await get(IG, 'me', t, { fields: 'username,account_type,followers_count,follows_count,media_count' });
+  say(me.error ? `Account: ${me.error}` : `@${me.username} (${me.account_type ?? 'type unknown'}): ${me.followers_count} followers, follows ${me.follows_count}, ${me.media_count} posts`);
   for (const m of ['reach', 'views', 'accounts_engaged', 'total_interactions', 'profile_views', 'follows_and_unfollows']) {
     say(`last 28 days ${m}: ${await metric(IG, 'me/insights', t, m, { period: 'day', metric_type: 'total_value', since, until })}`);
   }
