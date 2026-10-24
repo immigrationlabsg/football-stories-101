@@ -26,6 +26,7 @@
     "social-length": "tsx scripts/social-length.ts",
     "verify": "tsx scripts/verify.ts",
     "check-delivery": "tsx scripts/check-delivery.ts",
+    "insights": "tsx scripts/insights.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },
