@@ -8,6 +8,9 @@
  *                                     different music) it replaces and update data/sent.json. Stories already posted
  *                                     are never touched. At most MAX_UPLOADS (default 4) uploads a run, nearest first:
  *                                     Meta's anti-spam limit stopped a bulk run on 24 Oct 2026.
+ *   npm run reels -- confirm 6 30    Tidy up after a switch: a Facebook Reel marked UNCONFIRMED is checked with Meta
+ *                                     (scheduled or published = confirmed), and the "leftover" ids each record names
+ *                                     (posts the switch meant to delete) are deleted once their Reel is confirmed.
  *   DRY_RUN=1 ...                    show what would happen, change nothing
  */
 import fs from 'node:fs';
@@ -15,6 +18,8 @@ import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
 import { postStoryToSocials } from './lib/social-post';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
+
+type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string };
 import { legacyMusicTag, musicTag, usesReel } from './lib/reel';
 import { absoluteUrl } from '../src/lib/url';
 import { pad3 } from '../src/schema/story';
@@ -22,12 +27,12 @@ import { pad3 } from '../src/schema/story';
 const [action, a, b] = process.argv.slice(2);
 const from = Number(a);
 const to = Number(b || a);
-if (!['check', 'switch'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch <first> [last]');
+if (!['check', 'switch', 'confirm'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch <first> [last] | confirm <first> [last]');
 const dryRun = process.env.DRY_RUN === '1';
 const SENT = path.join(ROOT, 'data/sent.json');
 // Never during the morning posting window (06:00-10:45 Singapore): the daily run saves data/sent.json then too.
 const sgHour = (new Date().getUTCHours() + 8) % 24 + new Date().getUTCMinutes() / 60;
-if (action === 'switch' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new Error('Not between 06:00 and 10:45 Singapore time: the daily run may be posting. Run it later.');
+if (action !== 'check' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new Error('Not between 06:00 and 10:45 Singapore time: the daily run may be posting. Run it later.');
 const stories = loadStories().stories.filter((s) => !s.data.draft && s.data.number >= from && s.data.number <= to);
 let failed = 0;
 let uploads = 0;
@@ -107,6 +112,56 @@ for (const story of stories) {
     continue;
   }
 
+  if (action === 'confirm') {
+    const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
+    const rec = (file.social ?? []).find((r: FbRecord) => r.number === story.data.number && r.network === 'facebook') as FbRecord | undefined;
+    if (!rec || (!rec.detail.includes('UNCONFIRMED') && !rec.leftover)) continue;
+    const reel = rec.detail.match(/ reel (\d+)/)?.[1];
+    if (rec.detail.includes('UNCONFIRMED')) {
+      let state = 'unknown';
+      try {
+        const v = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'status', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
+        state = v.status?.publishing_phase?.publish_status ?? v.status?.video_status ?? 'unknown';
+      } catch (e) {
+        state = `error: ${(e as Error).message}`;
+      }
+      if (state !== 'scheduled' && state !== 'published') {
+        console.log(`${n}: ERROR Facebook Reel ${reel} is "${state}" at Meta, not scheduled; ${rec.leftover ? `the earlier post ${rec.leftover} is kept` : 'nothing else is scheduled'}. Needs a person: re-run switch for ${n} after removing this record, or schedule by hand.`);
+        failed++;
+        continue;
+      }
+      if (!dryRun) rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
+      console.log(`${n}: Facebook Reel ${reel} is ${state} at Meta; ${dryRun ? 'would mark' : 'marked'} confirmed`);
+    }
+    // The Reel is confirmed, so the posts it replaced must go. A post Meta no longer has counts as gone.
+    const keep: string[] = [];
+    for (const id of (rec.leftover ?? '').split(' ').filter(Boolean)) {
+      if (dryRun) {
+        console.log(`${n}: would delete leftover ${id}`);
+        keep.push(id);
+        continue;
+      }
+      try {
+        await deleteFacebookObject(id);
+        console.log(`${n}: deleted leftover ${id}`);
+      } catch (e) {
+        const msg = (e as Error).message;
+        if (/does not exist|code 100/.test(msg)) console.log(`${n}: leftover ${id} is already gone`);
+        else {
+          console.log(`${n}: ERROR could not delete leftover ${id}: ${msg}`);
+          keep.push(id);
+          failed++;
+        }
+      }
+    }
+    if (!dryRun) {
+      if (keep.length) rec.leftover = keep.join(' ');
+      else delete rec.leftover;
+      fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
+    }
+    continue;
+  }
+
   // switch
   const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
   const records = (file.social ?? []) as { number: number; network: string; status?: string; detail: string }[];
@@ -175,11 +230,16 @@ for (const story of stories) {
     fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
   };
   if (o.status !== 'drafted') {
-    // A Reel uploaded but not confirmed by Meta may still publish: keep its id so it is never forgotten.
-    const unconfirmed = o.detail.match(/Reel (\d+) was not confirmed|video (\d+)\)/);
-    const stray = unconfirmed?.[1] ?? unconfirmed?.[2];
-    if (stray && old) save(old.detail, stray);
-    console.log(`${n}: ERROR the Reel could not be scheduled (${o.detail}); the ${what} stays scheduled${stray ? `, and unconfirmed Reel ${stray} is recorded as leftover` : ''}`);
+    // Meta never accepted a Reel (an unconfirmed one comes back as scheduled, marked UNCONFIRMED): nothing new exists.
+    console.log(`${n}: ERROR the Reel could not be scheduled (${o.detail}); ${old ? `the ${what} stays scheduled` : 'nothing is scheduled for it'}`);
+    failed++;
+    continue;
+  }
+  if (o.detail.includes('UNCONFIRMED')) {
+    // Meta holds a new Reel it did not confirm: record it, keep the old post (one of them must publish) as leftover,
+    // and leave the tidy-up to "Reels confirm" (npm run verify reports it as an error until then).
+    save(o.detail, oldId);
+    console.log(`${n}: ERROR ${o.detail}; ${oldId ? `the ${what} ${oldId} is kept as leftover` : 'recorded'}; run "Reels" with action confirm`);
     failed++;
     continue;
   }

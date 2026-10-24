@@ -173,6 +173,13 @@ export async function postInstagramReel(a: { videoUrl: string; caption: string }
   return String(published.id);
 }
 
+/** Meta accepted a Facebook Reel (it may still publish) but never confirmed it was processed and scheduled. */
+export class UnconfirmedReel extends Error {
+  constructor(public videoId: string, message: string) {
+    super(message);
+  }
+}
+
 /**
  * A Facebook Reel on the Page, published now or scheduled (it then shows in Business Suite's Planner).
  * Meta fetches the video from its public URL. Returns the video id.
@@ -197,21 +204,26 @@ export async function postFacebookReel(a: { videoUrl: string; description: strin
     access_token: token,
   });
   // Wait until Meta has fetched and processed the video, so a caller never removes the post it replaces too early.
+  // From here on Meta holds the Reel, so every failure is an UnconfirmedReel carrying its id: it must never be forgotten.
+  const id = String(start.video_id);
   let last = '';
-  for (let i = 0; i < 100; i++) {
-    const v = await call(`${GRAPH}/${start.video_id}`, { fields: 'status', access_token: token }, 'GET');
-    const st = v.status ?? {};
-    last = JSON.stringify(st).slice(0, 300);
-    const phases = [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status];
-    if (st.video_status === 'error' || phases.includes('error')) {
-      throw new Error(`Facebook could not process the Reel (video ${start.video_id}): ${JSON.stringify(st).slice(0, 300)}`);
+  try {
+    for (let i = 0; i < 100; i++) {
+      const v = await call(`${GRAPH}/${id}`, { fields: 'status', access_token: token }, 'GET');
+      const st = v.status ?? {};
+      last = JSON.stringify(st).slice(0, 300);
+      const phases = [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status];
+      if (st.video_status === 'error' || phases.includes('error')) throw new UnconfirmedReel(id, `Facebook could not process the Reel (video ${id}): ${last}`);
+      if (st.processing_phase?.status === 'complete' && (a.scheduleAt ? st.publishing_phase?.publish_status === 'scheduled' || st.publishing_phase?.status === 'complete' : true)) {
+        return id;
+      }
+      await sleep(3000);
     }
-    if (st.processing_phase?.status === 'complete' && (a.scheduleAt ? st.publishing_phase?.publish_status === 'scheduled' || st.publishing_phase?.status === 'complete' : true)) {
-      return String(start.video_id);
-    }
-    await sleep(3000);
+  } catch (e) {
+    if (e instanceof UnconfirmedReel) throw e;
+    throw new UnconfirmedReel(id, `checking Facebook Reel ${id} failed: ${(e as Error).message}`);
   }
-  throw new Error(`Facebook Reel ${start.video_id} was not confirmed after 5 minutes (last status ${last})`);
+  throw new UnconfirmedReel(id, `Facebook Reel ${id} was not confirmed after 5 minutes (last status ${last})`);
 }
 
 /** Deletes a Facebook post or video on the Page (used when a scheduled picture post is replaced by a Reel). */
