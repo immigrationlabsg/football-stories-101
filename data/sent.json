@@ -142,39 +142,11 @@
       "detail": "thread 18109650416227984"
     },
     {
-      "number": 6,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:19:31.931Z",
-      "detail": "scheduled for 2026-10-25T02:00:00.000Z reel 2721169571674729"
-    },
-    {
-      "number": 7,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:22:35.659Z",
-      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 4709915995904461"
-    },
-    {
-      "number": 8,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:23:04.345Z",
-      "detail": "scheduled for 2026-10-27T00:00:00.000Z reel 1080080861517151"
-    },
-    {
       "number": 9,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:23:31.325Z",
-      "detail": "scheduled for 2026-10-28T00:00:00.000Z reel 2602104370297714"
-    },
-    {
-      "number": 10,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:24:01.596Z",
-      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1787354725721614"
+      "detail": "scheduled for 2026-10-28T00:00:00.000Z reel 2602104370297714 (music: coriolan)"
     },
     {
       "number": 11,
@@ -195,7 +167,7 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:25:35.037Z",
-      "detail": "scheduled for 2026-11-01T02:00:00.000Z reel 1675621620660358"
+      "detail": "scheduled for 2026-11-01T02:00:00.000Z reel 1675621620660358 (music: coriolan)"
     },
     {
       "number": 14,
@@ -223,7 +195,7 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:27:39.062Z",
-      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1363257333546275"
+      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1363257333546275 (music: coriolan)"
     },
     {
       "number": 18,
@@ -251,7 +223,7 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:29:48.958Z",
-      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 1117315264352229"
+      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 1117315264352229 (music: coriolan)"
     },
     {
       "number": 22,
@@ -279,7 +251,35 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:31:53.633Z",
-      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 4625014274444638"
+      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 4625014274444638 (music: coriolan)"
+    },
+    {
+      "number": 6,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-24T16:58:32.419Z",
+      "detail": "scheduled for 2026-10-25T02:00:00.000Z reel 1164094582746802 (music: coriolan)"
+    },
+    {
+      "number": 7,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-24T17:00:00.778Z",
+      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 1085775627791452 (music: coriolan)"
+    },
+    {
+      "number": 8,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-24T17:01:32.170Z",
+      "detail": "scheduled for 2026-10-27T00:00:00.000Z reel 1092817180214573 (music: coriolan)"
+    },
+    {
+      "number": 10,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-24T17:03:01.354Z",
+      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1148233334337219 (music: coriolan)"
     }
   ]
 }
