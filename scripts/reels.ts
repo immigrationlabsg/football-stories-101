@@ -34,6 +34,20 @@ let uploads = 0;
 let pending = 0;
 const MAX_UPLOADS = Number(process.env.MAX_UPLOADS || 4);
 
+// The music each Reel online was made with (public/images/derived/reel-music.json, written by scripts/images.ts).
+let liveMusic: Record<string, string> | null = null;
+async function liveMusicMatches(number: number): Promise<boolean> {
+  if (!liveMusic) {
+    try {
+      const r = await fetch(absoluteUrl('/images/derived/reel-music.json'));
+      liveMusic = r.ok ? ((await r.json()) as Record<string, string>) : {};
+    } catch {
+      liveMusic = {};
+    }
+  }
+  return musicTag(number) === `(music: ${liveMusic[pad3(number)] ?? 'unknown'})`;
+}
+
 async function call(url: string, params: Record<string, string>, method = 'POST'): Promise<any> {
   const q = new URLSearchParams(params);
   const r = await fetch(method === 'GET' ? `${url}?${q}` : url, method === 'GET' ? undefined : { method, body: q });
@@ -134,6 +148,11 @@ for (const story of stories) {
     pending++;
     continue;
   }
+  if (!(await liveMusicMatches(story.data.number))) {
+    console.log(`${n}: ERROR the Reel online does not carry ${tag} yet (is the site still deploying?); nothing changed`);
+    failed++;
+    continue;
+  }
   if (dryRun) {
     uploads++;
     console.log(`${n}: would schedule the Facebook Reel ${tag} for ${story.data.date.toISOString()}${oldId ? ` and then delete ${what} ${oldId}` : ''}`);
@@ -142,26 +161,33 @@ for (const story of stories) {
   // Meta's anti-spam limit stopped uploads after 20 Reels in 10 minutes (24 Oct 2026, code 368): pace them.
   if (uploads++) await new Promise((r) => setTimeout(r, 60_000));
   const [o] = await postStoryToSocials(story, { kind: 'scheduled', webLive: false, dryRun: false, networks: ['facebook'], scheduleAt: story.data.date });
-  if (o.status !== 'drafted') {
-    console.log(`${n}: ERROR the Reel could not be scheduled (${o.detail}); the picture post stays scheduled`);
-    failed++;
-    continue;
-  }
-  // Save the Reel at once (a re-run must never schedule a second one). Until the picture post is deleted, the record
-  // keeps its id under "leftover", and npm run verify reports it as an error every evening.
-  const save = (leftover?: string) => {
+  // Save at once (a re-run must never schedule a second one). Ids that may still publish beside the record's own post
+  // (a post that could not be deleted, a Reel Meta did not confirm) stay under "leftover", earlier ones included, and
+  // npm run verify reports them as an error every evening until they are deleted.
+  const prior = (old as { leftover?: string } | undefined)?.leftover;
+  const save = (detail: string, ...extra: (string | undefined)[]) => {
+    const leftover = [prior, ...extra].filter(Boolean).join(' ');
     const f = JSON.parse(fs.readFileSync(SENT, 'utf8'));
     f.social = [
       ...(f.social ?? []).filter((r: { number: number; network: string }) => !(r.number === story.data.number && r.network === 'facebook')),
-      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail: o.detail, ...(leftover ? { leftover } : {}) },
+      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail, ...(leftover ? { leftover } : {}) },
     ];
     fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
   };
-  save(oldId);
+  if (o.status !== 'drafted') {
+    // A Reel uploaded but not confirmed by Meta may still publish: keep its id so it is never forgotten.
+    const unconfirmed = o.detail.match(/Reel (\d+) was not confirmed|video (\d+)\)/);
+    const stray = unconfirmed?.[1] ?? unconfirmed?.[2];
+    if (stray && old) save(old.detail, stray);
+    console.log(`${n}: ERROR the Reel could not be scheduled (${o.detail}); the ${what} stays scheduled${stray ? `, and unconfirmed Reel ${stray} is recorded as leftover` : ''}`);
+    failed++;
+    continue;
+  }
+  save(o.detail, oldId);
   if (oldId) {
     try {
       await deleteFacebookObject(oldId);
-      save();
+      save(o.detail);
       console.log(`${n}: ${o.detail}; deleted ${what} ${oldId}`);
     } catch (e) {
       console.log(`${n}: ERROR ${o.detail}, but the ${what} ${oldId} could not be deleted (${(e as Error).message}); both would publish`);

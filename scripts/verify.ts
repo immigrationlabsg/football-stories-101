@@ -116,7 +116,7 @@ if (schedule.reels_from) {
     else if (!credits.includes(t)) errors.push(`music track ${t} has no row in assets/music/CREDITS.md`);
   }
   for (const r of social as { number: number; network: string; leftover?: string }[]) {
-    if (r.leftover) errors.push(`${pad(r.number)}: Facebook picture post ${r.leftover} was replaced by a Reel but could not be deleted; both would publish (delete it with "Check a Facebook post")`);
+    if (r.leftover) errors.push(`${pad(r.number)}: Facebook post or Reel ${r.leftover} may publish beside the scheduled Reel (not deleted, or not confirmed by Meta); delete it with "Check a Facebook post" (Delete ticked)`);
   }
   for (const s of live) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;
