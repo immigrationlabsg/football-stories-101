@@ -1,7 +1,7 @@
 /**
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
- * An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key; threads:<id> reads (or with --delete deletes) a Threads post.
+ * A Facebook Reel: reel:<video id>. An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key; threads:<id> reads (or with --delete deletes) a Threads post.
  */
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
@@ -53,6 +53,19 @@ if (id?.startsWith('ig:')) {
     process.exit(1);
   }
   console.log(del ? `DELETED Instagram post ${media}` : JSON.stringify({ ...d, caption: d.caption ? `${String(d.caption).slice(0, 80)}…` : undefined }, null, 2));
+  process.exit(0);
+}
+if (id?.startsWith('reel:')) {
+  // A Facebook Reel, by its video id: its processing and publishing status (or delete it with --delete).
+  const vid = id.slice(5);
+  const url = `https://graph.facebook.com/v21.0/${vid}?access_token=${token}`;
+  const r = del ? await fetch(url, { method: 'DELETE' }) : await fetch(`${url}&fields=id,published,status,post_id,created_time,description`);
+  const d = (await r.json()) as any;
+  if (!r.ok || d.error) {
+    console.log(`Meta says: ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'})`);
+    process.exit(1);
+  }
+  console.log(del ? `DELETED Facebook Reel ${vid}` : JSON.stringify({ ...d, description: d.description ? `${String(d.description).slice(0, 80)}…` : undefined }, null, 2));
   process.exit(0);
 }
 if (!id || !token) throw new Error('Usage: npm run check-facebook -- <post id>, with META_PAGE_ACCESS_TOKEN set');

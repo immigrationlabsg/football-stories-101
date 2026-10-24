@@ -2,6 +2,7 @@
  * Runs before every build (npm run prebuild):
  *  - responsive AVIF/WebP sizes of each story hero
  *  - the 1200x630 Open Graph image and the 1080x1350 Instagram carousel
+ *  - the daily Reel (NNN-reel.mp4) for stories from data/schedule.json reels_from, up to 28 days ahead
  *  - the default share image
  *  - public/images/derived/manifest.json, read by the HeroImage component
  *
@@ -17,6 +18,7 @@ import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, ren
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
+import { renderReel, trackFor, usesReel } from './lib/reel';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
 const WIDTHS = [480, 800, 1200];
@@ -54,6 +56,17 @@ if (errors.length) {
 }
 
 const manifest: Manifest = {};
+// Reels are tracked in their own file: reels.json maps a story number to the hash its Reel was made from.
+const REELS = path.join(OUT, 'reels.json');
+let reelsPrev: Record<string, string> = {};
+try {
+  reelsPrev = JSON.parse(fs.readFileSync(REELS, 'utf8'));
+} catch {
+  reelsPrev = {};
+}
+const reels: Record<string, string> = {};
+const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/reel.ts'));
+const DAY = 86_400_000;
 const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/cards.ts');
 const cardsSource = fs.readFileSync(cardsScript);
 const widthsKey = WIDTHS.join(',');
@@ -101,6 +114,20 @@ for (const story of stories) {
     for (let i = 0; i < slides.length; i++) fs.writeFileSync(cardFiles[i], await slides[i]());
     console.log(`${n} ${story.data.slug}: ${widths.length} sizes, og, ${cards.length} carousel cards`);
   }
+  // The Reel: only for stories that post as Reels, from two days ago to 28 days ahead (Facebook schedules 27 days out).
+  const reel = path.join(OUT, `${n}-reel.mp4`);
+  const t = story.data.date.getTime();
+  if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
+    const track = trackFor(story.data.number);
+    const reelHash = hashOf(hash, fs.readFileSync(track), reelSource);
+    if (!force && reelsPrev[n] === reelHash && fs.existsSync(reel)) console.log(`${n} reel: up to date`);
+    else {
+      const started = Date.now();
+      await renderReel(cardFiles, track, reel);
+      console.log(`${n} reel: made with ${path.basename(track)} in ${Math.round((Date.now() - started) / 1000)}s`);
+    }
+    reels[n] = reelHash;
+  } else if (fs.existsSync(reel)) fs.unlinkSync(reel);
   // Remove stale slides from a previous, longer facts list
   for (const f of fs.readdirSync(OUT)) {
     if (f.startsWith(`${n}-ig-`) && !cards.includes(`/images/derived/${f}`)) fs.unlinkSync(path.join(OUT, f));
@@ -113,4 +140,5 @@ const def = path.join(PUBLIC_DIR, 'images/default-share.png');
 if (force || !fs.existsSync(def)) fs.writeFileSync(def, await renderDefault(site.tagline));
 
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
+fs.writeFileSync(REELS, JSON.stringify(reels, null, 2));
 console.log(`manifest written for ${Object.keys(manifest).length} stories`);

@@ -23,6 +23,23 @@ if (!fb) {
   console.log(`ERROR: story ${n} has no Facebook record at all`);
   process.exit(1);
 }
+const reel = fb.detail.match(/ reel (\d+)/)?.[1];
+if (reel) {
+  // A Facebook Reel (from 25 Oct 2026): ask for the video's publishing status.
+  const r = await fetch(`https://graph.facebook.com/v21.0/${reel}?fields=published,status,post_id,created_time&access_token=${process.env.META_PAGE_ACCESS_TOKEN}`);
+  const j = (await r.json()) as any;
+  if (!r.ok || j.error) {
+    console.log(`ERROR: story ${n}: Meta says ${j.error?.message ?? r.status}`);
+    process.exit(1);
+  }
+  const phase = j.status?.publishing_phase?.publish_status;
+  if (j.published !== true && phase !== 'published') {
+    console.log(`ERROR: story ${n}'s Facebook Reel is not published (video status ${j.status?.video_status ?? '?'}, publishing ${phase ?? '?'})`);
+    process.exit(1);
+  }
+  console.log(`Story ${n}'s Facebook Reel is published (post ${j.post_id ?? '?'}).`);
+  process.exit(0);
+}
 const full = fb.detail.match(/(\d+_\d+)/)?.[1] ?? `${process.env.META_PAGE_ID}_${fb.detail.match(/post (\d+)/)?.[1]}`;
 const r = await fetch(`https://graph.facebook.com/v21.0/${full}?fields=is_published,created_time&access_token=${process.env.META_PAGE_ACCESS_TOKEN}`);
 const j = (await r.json()) as any;

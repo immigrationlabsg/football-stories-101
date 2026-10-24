@@ -2,5 +2,7 @@
   "_help": "Set launch_date (YYYY-MM-DD, Singapore date of Story No. 001's email) to start scheduling. While it is null, new stories stay as drafts. Weekdays send 8:00 am Singapore (00:00Z), weekends 10:00 am (02:00Z).",
   "launch_date": "2026-10-20",
   "stories_per_week": 7,
-  "min_buffer_days": 14
+  "min_buffer_days": 14,
+  "reels_from": "2026-10-25",
+  "_reels_help": "Stories dated on or after reels_from (Singapore date) post as a Reel (7 cards + music) on Facebook, Instagram and Threads instead of the picture posts. Owner decision 24 Oct 2026."
 }

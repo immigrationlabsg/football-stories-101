@@ -1,4 +1,4 @@
-# Posting format: final decisions (20 October 2026)
+# Posting format: final decisions (20 October 2026, Reels from 24 October 2026)
 
 This is the standing format for every post. `npm run verify` checks it every evening and after every change;
 change it only when the owner decides to.
@@ -6,6 +6,21 @@ change it only when the owner decides to.
 ## Schedule
 - One story a day: **08:00 Singapore time Monday to Friday, 10:00 on Saturday and Sunday**.
 - Stories 001 to 030 run from 20 October to 18 November 2026; the Saturday drafting run adds seven more each week.
+
+## Reels, from 25 October 2026 (owner's decision, 24 Oct)
+- **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the
+  picture posts below. Stories up to 005 (24 Oct) stay exactly as they were posted.
+- The Reel is "style B": the same 7 cards, each slowly zooming in and fading into the next, on a blurred copy of the
+  card, 1080x1920, about 23 seconds (`scripts/lib/reel.ts`). Built with the website, up to 28 days ahead, at
+  `/images/derived/NNN-reel.mp4`.
+- **Music: royalty-free only**, public-domain orchestral recordings in `assets/music/` (credits in its CREDITS.md),
+  rotating by story number. Trending or commercial songs cannot be added through Meta's API, and a song put into the
+  file gets the Reel muted or removed.
+- Text is unchanged: Facebook and Instagram carry the full story text; Threads the teaser with "More on Instagram".
+- Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram and Threads Reels are posted
+  by the daily run at the slot. `data/schedule.json` `reels_from` sets the start date.
+
+The sections below describe the picture posts (stories 001 to 005) and the text, which Reels keep.
 
 ## Facebook
 - The square banner card (`NNN-fb.png`): the painting with the `hook` line on a dark banner.

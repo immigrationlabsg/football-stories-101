@@ -1,6 +1,7 @@
 import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
-import { metaConfigured, postFacebookPhoto, postInstagramCarousel, postThreads, waitForUrl } from './meta';
+import { metaConfigured, postFacebookPhoto, postFacebookReel, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
+import { usesReel } from './reel';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
 import fs from 'node:fs';
@@ -48,6 +49,9 @@ export async function postStoryToSocials(
   const heroUrl = absoluteUrl(`/images/derived/${n}-fb.png`); // the headline card for Facebook
   // The Instagram carousel: the cover, one card per fact, and the closing card.
   const cardUrls = Array.from({ length: story.data.facts.length + 2 }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
+  // From reels_from (data/schedule.json) every network gets the Reel: the same cards with music, the same text.
+  const reel = usesReel(story.data.date);
+  const reelUrl = absoluteUrl(`/images/derived/${n}-reel.mp4`);
   const out: Outcome[] = [];
 
   const done = opts.skipDone ? socialDone(story.data.number) : new Set<Network>();
@@ -58,7 +62,7 @@ export async function postStoryToSocials(
     }
     try {
       if (opts.dryRun) {
-        const urls = network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
+        const urls = reel ? [reelUrl] : network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         const over = network === 'instagram' && text.length > INSTAGRAM_LIMIT ? `; TOO LONG for Instagram by ${text.length - INSTAGRAM_LIMIT}` : '';
@@ -74,7 +78,18 @@ export async function postStoryToSocials(
         out.push({ network, status: 'skipped', detail: 'Instagram and Threads have no draft feature in their APIs; only Facebook can be saved as a draft or scheduled' });
         continue;
       }
-      if (network === 'facebook') {
+      if (reel) {
+        await waitForUrl(reelUrl);
+        if (network === 'facebook') {
+          const id = await postFacebookReel({ videoUrl: reelUrl, description: posts.facebook, scheduleAt: opts.scheduleAt });
+          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id}` });
+        } else if (network === 'instagram') {
+          if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
+          out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });
+        } else {
+          out.push({ network, status: 'posted', detail: `reel thread ${await postThreads({ text: posts.threads, videoUrl: reelUrl })}` });
+        }
+      } else if (network === 'facebook') {
         await waitForUrl(heroUrl);
         const id = await postFacebookPhoto({ imageUrl: heroUrl, message: posts.facebook, draft: opts.draft, scheduleAt: opts.scheduleAt });
         out.push({ network, status: opts.scheduleAt ? 'drafted' : opts.draft ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : opts.draft ? 'draft' : 'post'} ${id} (short id ${id.split('_')[1] ?? id})` });

@@ -28,6 +28,7 @@
     "check-delivery": "tsx scripts/check-delivery.ts",
     "insights": "tsx scripts/insights.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
+    "reels": "tsx scripts/reels.ts",
     "publish-painting": "tsx scripts/publish-painting.ts"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.4.0",
+    "ffmpeg-static": "5.2.0",
     "gray-matter": "^4.0.3",
     "pagefind": "^1.5.2",
     "satori": "^0.62.0",

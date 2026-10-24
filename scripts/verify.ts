@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadStories, PUBLIC_DIR, ROOT } from './lib/stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './lib/social';
+import { MUSIC_DIR, TRACKS, usesReel } from './lib/reel';
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -103,6 +104,22 @@ for (const s of live) {
   const grace = Number(process.env.DELIVERY_GRACE_MIN ?? 120) * 60e3;
   if (t < now.getTime() - grace && t > now.getTime() - 7 * DAY) {
     for (const net of ['facebook', 'instagram', 'threads']) if (!has(s.data.number, net)) errors.push(`${pad(s.data.number)} was due ${s.data.date.toISOString().slice(0, 16)}Z but has no ${net} record in data/sent.json`);
+  }
+}
+
+// Reels (from data/schedule.json reels_from): every music track is present and credited, and no upcoming Reel story
+// still has a scheduled Facebook picture post (workflow "Reels", action switch, replaces them).
+if (schedule.reels_from) {
+  const credits = fs.existsSync(path.join(MUSIC_DIR, 'CREDITS.md')) ? fs.readFileSync(path.join(MUSIC_DIR, 'CREDITS.md'), 'utf8') : '';
+  for (const t of TRACKS) {
+    if (!fs.existsSync(path.join(MUSIC_DIR, t))) errors.push(`music track assets/music/${t} is missing (the Reels need it)`);
+    else if (!credits.includes(t)) errors.push(`music track ${t} has no row in assets/music/CREDITS.md`);
+  }
+  for (const s of live) {
+    const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;
+    if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && !r.detail?.includes(' reel ')) {
+      warnings.push(`${pad(s.data.number)} is a Reel story but Facebook still has its picture post scheduled; run "Reels" with action switch`);
+    }
   }
 }
 

@@ -3,7 +3,7 @@
 One true football story a day: an Astro site plus automatic Facebook, Instagram and Threads posting from GitHub.
 The owner is not a developer: explain in concrete steps, and do the work directly whenever a tool path exists.
 Start with `docs/runbook.md`; the house style is `docs/editorial-standards.md`; the posting format the owner signed off
-on 20 Oct 2026 is `docs/posting-format.md` (do not change it without the owner). Past incidents: `docs/incidents/`.
+on 20 Oct 2026 (Reels from 25 Oct, decided 24 Oct) is `docs/posting-format.md` (do not change it without the owner). Past incidents: `docs/incidents/`.
 
 ## Definition of done (every piece of work, however small)
 1. Run `npm run verify`. Zero errors. Read the warnings and act on any that touch the request.

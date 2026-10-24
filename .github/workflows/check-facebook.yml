@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       post_id:
-        description: "Post ID, or the word list to list what is on the Page, or ig:<media id> for an Instagram post, or threads to check the Threads key"
+        description: "Post ID, or the word list to list what is on the Page, or reel:<video id> for a Facebook Reel, or ig:<media id> for an Instagram post, or threads to check the Threads key"
         required: true
       delete:
         description: "Delete this post or draft"

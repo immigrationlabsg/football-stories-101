@@ -115,27 +115,29 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
 }
 
 /** A Threads post: the carousel cards with the teaser text (or text only), and an optional reply. */
-export async function postThreads(a: { text: string; reply?: string; imageUrls?: string[] }, env = process.env): Promise<string> {
+export async function postThreads(a: { text: string; reply?: string; imageUrls?: string[]; videoUrl?: string }, env = process.env): Promise<string> {
   const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
-  const ready = async (id: string) => {
-    for (let i = 0; i < 20; i++) {
+  const ready = async (id: string, tries = 20) => {
+    for (let i = 0; i < tries; i++) {
       const s = await call(`${THREADS}/${id}`, { fields: 'status', access_token: token }, 'GET');
       if (s.status === 'FINISHED') return;
       if (s.status === 'ERROR' || s.status === 'EXPIRED') throw new Error(`Threads container ${s.status}`);
       await sleep(3000);
     }
-    throw new Error(`Threads container ${id} was not ready after 60 seconds`);
+    throw new Error(`Threads container ${id} was not ready after ${tries * 3} seconds`);
   };
   const publish = async (params: Record<string, string>) => {
     const c = await call(`${THREADS}/${user}/threads`, { ...params, access_token: token });
     await sleep(5000); // Threads asks for a short wait between creating and publishing
-    await ready(c.id);
+    await ready(c.id, params.media_type === 'VIDEO' ? 100 : 20); // a video takes a few minutes to process
     const p = await call(`${THREADS}/${user}/threads_publish`, { creation_id: c.id, access_token: token });
     return String(p.id);
   };
   let id: string;
-  if (a.imageUrls && a.imageUrls.length >= 2) {
+  if (a.videoUrl) {
+    id = await publish({ media_type: 'VIDEO', video_url: a.videoUrl, text: a.text });
+  } else if (a.imageUrls && a.imageUrls.length >= 2) {
     // The same cards as the Instagram carousel, with the post text above them.
     const children: string[] = [];
     for (const image_url of a.imageUrls) {
@@ -149,4 +151,57 @@ export async function postThreads(a: { text: string; reply?: string; imageUrls?:
   }
   if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
   return id;
+}
+
+/** An Instagram Reel (also shown in the profile grid). Returns the published media id. */
+export async function postInstagramReel(a: { videoUrl: string; caption: string }, env = process.env): Promise<string> {
+  const ig = env.META_IG_USER_ID;
+  const direct = Boolean(env.INSTAGRAM_ACCESS_TOKEN?.trim());
+  const base = direct ? INSTAGRAM : GRAPH;
+  const token = (direct ? env.INSTAGRAM_ACCESS_TOKEN : env.META_PAGE_ACCESS_TOKEN)!;
+  const c = await call(`${base}/${ig}/media`, { media_type: 'REELS', video_url: a.videoUrl, caption: a.caption, share_to_feed: true, access_token: token });
+  let finished = false;
+  for (let i = 0; i < 100 && !finished; i++) {
+    // Instagram downloads and processes the video first; this usually takes under a minute.
+    await sleep(3000);
+    const s = await call(`${base}/${c.id}`, { fields: 'status_code,status', access_token: token }, 'GET');
+    if (s.status_code === 'FINISHED') finished = true;
+    else if (s.status_code === 'ERROR' || s.status_code === 'EXPIRED') throw new Error(`Instagram Reel container ${s.status_code}: ${s.status ?? ''}`);
+  }
+  if (!finished) throw new Error('Instagram Reel was not processed after 5 minutes; nothing was published');
+  const published = await call(`${base}/${ig}/media_publish`, { creation_id: c.id, access_token: token });
+  return String(published.id);
+}
+
+/**
+ * A Facebook Reel on the Page, published now or scheduled (it then shows in Business Suite's Planner).
+ * Meta fetches the video from its public URL. Returns the video id.
+ */
+export async function postFacebookReel(a: { videoUrl: string; description: string; scheduleAt?: Date }, env = process.env): Promise<string> {
+  const token = env.META_PAGE_ACCESS_TOKEN!;
+  const page = env.META_PAGE_ID;
+  const start = await call(`${GRAPH}/${page}/video_reels`, { upload_phase: 'start', access_token: token });
+  const up = await fetch(`https://rupload.facebook.com/video-upload/v21.0/${start.video_id}`, {
+    method: 'POST',
+    headers: { Authorization: `OAuth ${token}`, file_url: a.videoUrl },
+  });
+  const uj = (await up.json().catch(() => ({}))) as any;
+  if (!up.ok || !uj.success) throw new Error(`Facebook Reel upload responded ${up.status}: ${uj.error?.message ?? uj.debug_info?.message ?? 'unknown error'}`);
+  await call(`${GRAPH}/${page}/video_reels`, {
+    upload_phase: 'finish',
+    video_id: start.video_id,
+    description: a.description,
+    ...(a.scheduleAt
+      ? { video_state: 'SCHEDULED', scheduled_publish_time: String(Math.floor(a.scheduleAt.getTime() / 1000)) }
+      : { video_state: 'PUBLISHED' }),
+    access_token: token,
+  });
+  return String(start.video_id);
+}
+
+/** Deletes a Facebook post or video on the Page (used when a scheduled picture post is replaced by a Reel). */
+export async function deleteFacebookObject(id: string, env = process.env): Promise<void> {
+  const r = await fetch(`${GRAPH}/${id}?access_token=${env.META_PAGE_ACCESS_TOKEN}`, { method: 'DELETE' });
+  const j = (await r.json().catch(() => ({}))) as any;
+  if (!r.ok || j.error || j.success === false) throw new Error(`deleting ${id} responded ${r.status}: ${j.error?.message ?? 'unknown error'}`);
 }
