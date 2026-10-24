@@ -34,6 +34,6 @@ for (const story of loadStories().stories.filter((s) => s.data.number >= from &&
     skipDone: true,
   });
   if (!dryRun) recordSocial(story.data.number, [o]);
-  if (o.status === 'failed') failed++;
+  if (o.status === 'failed' || o.detail.includes('UNCONFIRMED')) failed++;
 }
 if (failed) process.exitCode = 1;

@@ -254,7 +254,7 @@ async function main() {
     console.log(`[record] ${key} added to data/sent.json`);
   }
 
-  if (socialOutcomes.some((o) => o.status === 'failed')) process.exitCode = 1;
+  if (socialOutcomes.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1;
   if (telegramError) {
     // The email went out and is recorded; surface the Telegram failure as a red run.
     process.exitCode = 1;

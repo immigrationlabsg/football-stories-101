@@ -55,18 +55,38 @@ async function liveMusicMatches(number: number): Promise<boolean> {
 
 // What Meta says about a Facebook Reel: confirmed only with the same test the upload uses (processing complete, no
 // phase in error, scheduled or published); failed when Meta reports an error; unknown when Meta could not be asked.
-async function reelState(id?: string): Promise<{ kind: 'ok' | 'failed' | 'unknown'; why: string }> {
+async function reelState(id?: string, since?: string): Promise<{ kind: 'ok' | 'failed' | 'unknown'; why: string }> {
   if (!id) return { kind: 'unknown', why: 'no Reel id in the record' };
+  // Half an hour after the upload, a Reel that has not started processing or publishing never will.
+  const stale = since ? Date.now() - Date.parse(since) > 30 * 60e3 : false;
   try {
     const v = await call(`https://graph.facebook.com/v21.0/${id}`, { fields: 'status', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
     const st = v.status ?? {};
     const phases = [st.uploading_phase?.status, st.processing_phase?.status, st.publishing_phase?.status];
-    if (st.video_status === 'error' || phases.includes('error')) return { kind: 'failed', why: JSON.stringify(st).slice(0, 200) };
+    if (st.video_status === 'error' || st.video_status === 'expired' || phases.includes('error')) return { kind: 'failed', why: JSON.stringify(st).slice(0, 200) };
     const pub = st.publishing_phase?.publish_status;
     if (st.processing_phase?.status === 'complete' && (pub === 'scheduled' || pub === 'published')) return { kind: 'ok', why: pub };
+    if (stale && (st.processing_phase?.status === 'not_started' || st.publishing_phase?.status === 'not_started' || (st.processing_phase?.status === 'complete' && pub && pub !== 'scheduled' && pub !== 'published'))) {
+      return { kind: 'failed', why: `never scheduled: ${JSON.stringify(st).slice(0, 200)}` };
+    }
     return { kind: 'unknown', why: `still processing: ${JSON.stringify(st).slice(0, 200)}` };
   } catch (e) {
-    return { kind: 'unknown', why: (e as Error).message };
+    const msg = (e as Error).message;
+    if (/does not exist/.test(msg) && (await pageReadable())) return { kind: 'failed', why: 'Meta no longer has it' };
+    return { kind: 'unknown', why: msg };
+  }
+}
+// The record's own post: a Reel must pass reelState; a picture post must exist and still be unpublished-scheduled or published.
+async function mainPostScheduled(detail: string): Promise<boolean> {
+  const reel = detail.match(/ reel (\d+)/)?.[1];
+  if (reel) return (await reelState(reel)).kind === 'ok';
+  const post = detail.match(/(\d+_\d+)/)?.[1];
+  if (!post) return false;
+  try {
+    await call(`https://graph.facebook.com/v21.0/${post}`, { fields: 'id,is_published', access_token: process.env.META_PAGE_ACCESS_TOKEN! }, 'GET');
+    return true;
+  } catch {
+    return false;
   }
 }
 let pageCheck: boolean | null = null;
@@ -148,7 +168,7 @@ for (const story of stories) {
       if (!rec.detail.includes('UNCONFIRMED') && !rec.leftover) continue;
       const reel = rec.detail.match(/ reel (\d+)/)?.[1];
       if (rec.detail.includes('UNCONFIRMED')) {
-        const state = await reelState(reel);
+        const state = await reelState(reel, rec.at);
         if (state.kind === 'unknown') {
           // Meta could not be asked: the Reel may well be scheduled. Change nothing; try again later.
           console.log(`${n}: ERROR could not check Facebook Reel ${reel} (${state.why}); nothing changed. Run "Reels" confirm again later.`);
@@ -165,21 +185,26 @@ for (const story of stories) {
               /* a failed Reel may already be gone */
             }
             if (ids.length) {
-              const back = ids[0];
-              rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back}`} (restored: Reel ${reel} failed at Meta)`;
-              if (ids.length > 1) rec.leftover = ids.slice(1).join(' ');
+              const back = ids.at(-1)!;
+              rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back} (music: unknown)`} (restored: Reel ${reel} failed at Meta)`;
+              if (ids.length > 1) rec.leftover = ids.slice(0, -1).join(' ');
               else delete rec.leftover;
             } else file.social = (file.social as FbRecord[]).filter((r) => r !== rec);
             fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
           }
-          console.log(`${n}: ERROR Facebook Reel ${reel} failed at Meta (${state.why}); ${ids.length ? `the earlier post ${ids[0]} is back as the story's Facebook post` : 'the record is removed so the story is scheduled again'}. The next switch run replaces it.`);
+          console.log(`${n}: ERROR Facebook Reel ${reel} failed at Meta (${state.why}); ${ids.length ? `the earlier post ${ids.at(-1)} ${dryRun ? 'would be put' : 'is'} back as the story's Facebook post` : `the record ${dryRun ? 'would be' : 'is'} removed so the story is scheduled again`}. The next switch run replaces it.`);
           failed++;
           continue;
         }
         if (!dryRun) rec.detail = rec.detail.replace(/ UNCONFIRMED:.*$/, '');
         console.log(`${n}: Facebook Reel ${reel} is processed and ${state.why} at Meta; ${dryRun ? 'would mark' : 'marked'} confirmed`);
       }
-      // The Reel is confirmed, so the posts it replaced must go.
+      // Delete the posts this one replaced only when this one is confirmed to be scheduled at Meta.
+      if (!(await mainPostScheduled(rec.detail))) {
+        console.log(`${n}: ERROR the story's own Facebook post is not confirmed at Meta, so leftover ${rec.leftover} is kept; run confirm again later`);
+        failed++;
+        continue;
+      }
       const keep: string[] = [];
       for (const id of (rec.leftover ?? '').split(' ').filter(Boolean)) {
         if (dryRun) {
