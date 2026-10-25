@@ -5,7 +5,7 @@ change it only when the owner decides to.
 
 ## Schedule
 - One story a day: **08:00 Singapore time Monday to Friday, 10:00 on Saturday and Sunday**.
-- Stories 001 to 030 run from 20 October to 18 November 2026; the Saturday drafting run adds seven more each week.
+- Stories 001 to 031 run from 20 October to 19 November 2026; the Saturday drafting run adds seven more each week.
 - **"On this day" comparison every third day from 26 October 2026** (owner's decision, 25 Oct): 26 Oct, 29 Oct, 1 Nov,
   4 Nov and so on (`on_this_day_from` and `on_this_day_every` in `data/schedule.json`). Two stars' moments that both
   happened on that calendar date, compared, ending with a sharp either/or question (the first: 007, Le Tissier's chip
