@@ -8,7 +8,8 @@ what the weekly run does.
    `data/schedule.json` and the newest note in `docs/research/`.
 2. Take the next 7 angles marked `reserved` in the story bank, by number. If fewer than 7 remain, first add new
    angles to the bank: keep the player, club, era, moment rotation, mix eras and continents, include women's football
-   and on-this-day anniversaries in the coming two months, build at least half around globally famous players or teams,
+   and on-this-day anniversaries in the coming two months (only matches that were played or moments that happened
+   to football stars, never foundings, meetings or rule changes), build at least half around globally famous players or teams,
    tell African, Asian and North American stories only through players with a European or world profile,
    stick to documented events, and never repeat a story (a subject returns only with a new angle, marked as a follow-up).
    Keep at least 20 reserved angles ahead.
