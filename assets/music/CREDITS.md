@@ -4,7 +4,7 @@ Every track is a **public-domain** recording (no licence fee, no credit needed, 
 and loudness-matched at -14 LUFS. Source: Wikimedia Commons, recordings by the Musopen project.
 
 **In use:** all four, rotating day by day by story number (owner's choice, 25 Oct 2026; on 24-25 Oct every Reel used
-Coriolan). `TRACKS` in `scripts/lib/reel.ts` sets what is used and in which order.
+Coriolan on the website; Reels already scheduled at Meta mostly kept this rotation). `TRACKS` in `scripts/lib/reel.ts` sets what is used and in which order.
 
 | file | piece | section used | source |
 |---|---|---|---|

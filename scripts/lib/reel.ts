@@ -13,7 +13,8 @@ import { ROOT } from './stories';
 const run = promisify(execFile);
 export const MUSIC_DIR = path.join(ROOT, 'assets/music');
 /** Public-domain tracks (assets/music/CREDITS.md); a story uses TRACKS[number % length], so the four rotate day by
- * day (owner's choice on 25 Oct 2026; 24 Oct to 25 Oct every Reel used Coriolan). */
+ * day (owner's choice on 25 Oct 2026; on 24-25 Oct the website's Reels used Coriolan only, while Reels already
+ * scheduled at Meta mostly kept this rotation). */
 export const TRACKS = ['egmont.m4a', 'coriolan.m4a', 'mozart40.m4a', 'hebrides.m4a'];
 export const trackFor = (number: number) => path.join(MUSIC_DIR, TRACKS[number % TRACKS.length]);
 /** The short music name written into each Facebook Reel record, e.g. "(music: coriolan)". */
