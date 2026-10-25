@@ -1,7 +1,7 @@
 /**
  * Asks Meta about one Facebook post or draft by its ID, so we can see whether it exists and whether it is published.
  *   npm run check-facebook -- 1419297047928388_122094755013522790
- * A Facebook Reel: reel:<video id>. An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key; threads:<id> reads (or with --delete deletes) a Threads post.
+ * The word link: is an Instagram account connected to the Page? A Facebook Reel: reel:<video id>. An Instagram post: prefix its media id with ig:, e.g. ig:17939791962391542. The word threads checks the Threads key; threads:<id> reads (or with --delete deletes) a Threads post.
  */
 const token = process.env.META_PAGE_ACCESS_TOKEN;
 const id = process.argv[2];
@@ -53,6 +53,18 @@ if (id?.startsWith('ig:')) {
     process.exit(1);
   }
   console.log(del ? `DELETED Instagram post ${media}` : JSON.stringify({ ...d, caption: d.caption ? `${String(d.caption).slice(0, 80)}…` : undefined }, null, 2));
+  process.exit(0);
+}
+if (id === 'link') {
+  // Is an Instagram account connected to the Page? (Needed for "Share to Facebook" and Meta's licensed music.)
+  const r = await fetch(`https://graph.facebook.com/v21.0/${process.env.META_PAGE_ID}?fields=name,instagram_business_account{id,username},connected_instagram_account{id,username}&access_token=${token}`);
+  const d = (await r.json()) as any;
+  if (!r.ok || d.error) {
+    console.log(`Meta says: ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'})`);
+    process.exit(1);
+  }
+  const ig = d.instagram_business_account ?? d.connected_instagram_account;
+  console.log(ig ? `RESULT: LINKED. Page "${d.name}" is connected to Instagram @${ig.username ?? '?'} (${ig.id}).` : `RESULT: NOT LINKED. Page "${d.name}" has no Instagram account connected.`);
   process.exit(0);
 }
 if (id?.startsWith('reel:')) {

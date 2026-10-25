@@ -12,9 +12,9 @@ import { ROOT } from './stories';
 
 const run = promisify(execFile);
 export const MUSIC_DIR = path.join(ROOT, 'assets/music');
-/** Public-domain tracks (assets/music/CREDITS.md); a story uses TRACKS[number % length]. Owner's choice on 24 Oct 2026:
- * Beethoven's Coriolan Overture on every Reel for now (the other clips stay in assets/music, unused). */
-export const TRACKS = ['coriolan.m4a'];
+/** Public-domain tracks (assets/music/CREDITS.md); a story uses TRACKS[number % length], so the four rotate day by
+ * day (owner's choice on 25 Oct 2026; 24 Oct to 25 Oct every Reel used Coriolan). */
+export const TRACKS = ['egmont.m4a', 'coriolan.m4a', 'mozart40.m4a', 'hebrides.m4a'];
 export const trackFor = (number: number) => path.join(MUSIC_DIR, TRACKS[number % TRACKS.length]);
 /** The short music name written into each Facebook Reel record, e.g. "(music: coriolan)". */
 export const musicTag = (number: number) => `(music: ${path.basename(trackFor(number), '.m4a')})`;

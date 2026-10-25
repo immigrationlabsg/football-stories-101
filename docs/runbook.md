@@ -372,8 +372,8 @@ If you want those on a post, post that one by hand in the app.
 
 ## 17. Reels (from 25 October 2026)
 
-Every story from 006 posts as a Reel on all three networks (`docs/posting-format.md`): the 7 cards with Beethoven's
-Coriolan Overture, built with the website up to 28 days ahead (`/images/derived/NNN-reel.mp4`). The **Reels** workflow
+Every story from 006 posts as a Reel on all three networks (`docs/posting-format.md`): the 7 cards with one of four
+public-domain music clips, rotating day by day, built with the website up to 28 days ahead (`/images/derived/NNN-reel.mp4`). The **Reels** workflow
 (Actions tab) has three actions; leave "Dry run" ticked first to see what it would do:
 
 - **check** (story number): is the Reel online, and do Instagram and Threads accept it? Test only, nothing is published.
