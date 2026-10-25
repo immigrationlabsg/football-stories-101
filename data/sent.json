@@ -280,6 +280,20 @@
       "status": "scheduled",
       "at": "2026-10-24T17:03:01.354Z",
       "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1148233334337219 (music: coriolan)"
+    },
+    {
+      "number": 6,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-10-25T02:01:06.438Z",
+      "detail": "reel media 17911592289555755"
+    },
+    {
+      "number": 6,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-10-25T02:01:06.438Z",
+      "detail": "reel thread 18487472047106803"
     }
   ]
 }
