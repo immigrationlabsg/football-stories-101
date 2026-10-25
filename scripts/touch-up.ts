@@ -23,11 +23,12 @@ const prompt =
   'brushwork, paper texture and background, as a loose hand-made watercolour. Do not add text.';
 
 const form = new FormData();
-form.append('model', process.env.MODEL || 'gpt-image-1');
+const MODEL = process.env.MODEL?.trim() || 'gpt-image-2.5-sunburst'; // gpt-image-1 was shut down on 23 Oct 2026
+form.append('model', MODEL);
 form.append('prompt', prompt);
 form.append('size', '1024x1024');
 form.append('quality', process.env.QUALITY || 'high');
-form.append('input_fidelity', 'high');
+if (MODEL.startsWith('gpt-image-1')) form.append('input_fidelity', 'high');
 form.append('image[]', new Blob([fs.readFileSync(path.join(dir, `${n}-base.png`))], { type: 'image/png' }), `${n}.png`);
 const res = await fetch('https://api.openai.com/v1/images/edits', { method: 'POST', headers: { Authorization: `Bearer ${KEY}` }, body: form });
 const json = (await res.json()) as any;

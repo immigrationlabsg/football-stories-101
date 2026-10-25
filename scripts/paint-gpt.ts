@@ -20,7 +20,8 @@ import { ROOT } from './lib/stories';
 type Ref = { commons: string | null; why: string; kit?: string; crop?: string };
 const refs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const KEY = process.env.OPENAI_API_KEY;
-const MODEL = process.env.MODEL || 'gpt-image-1';
+// gpt-image-1 was shut down by OpenAI on 23 Oct 2026; its listed replacement is the GPT Image 2.5 pair (Sunburst: precise).
+const MODEL = process.env.MODEL?.trim() || 'gpt-image-2.5-sunburst';
 const QUALITY = process.env.QUALITY || 'high';
 const OUT = path.join(ROOT, 'design/paintings');
 // The editor's approved Ronaldo painting: the look every story is matched to.
@@ -49,7 +50,8 @@ for (const n of stories) {
   form.append('model', MODEL);
   form.append('size', '1024x1024');
   form.append('quality', QUALITY);
-  form.append('input_fidelity', 'high');
+  // Only the gpt-image-1 family took this setting; the 2.5 models edit at high fidelity by default.
+  if (MODEL.startsWith('gpt-image-1')) form.append('input_fidelity', 'high');
   const style = new Blob([fs.readFileSync(STYLE_REF)], { type: 'image/jpeg' });
   let prompt: string;
   if (ref.commons) {

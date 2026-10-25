@@ -13,6 +13,10 @@ on:
         description: "low, medium or high (higher costs more)"
         required: false
         default: "high"
+      model:
+        description: "OpenAI image model (empty = gpt-image-2.5-sunburst; gpt-image-2.5-flare is faster)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -33,6 +37,7 @@ jobs:
         env:
           STORIES: ${{ inputs.stories }}
           QUALITY: ${{ inputs.quality }}
+          MODEL: ${{ inputs.model }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: Commit
         if: always()
