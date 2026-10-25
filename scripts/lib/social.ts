@@ -5,6 +5,7 @@ import { site } from '../../src/site.config';
 import { absoluteUrl, paths } from '../../src/lib/url';
 import { formatDate } from '../../src/lib/format';
 import { escapeHtml } from './telegram';
+import { usesReel } from './reel';
 
 export interface SocialContext {
   kind: 'scheduled' | 'archive';
@@ -39,6 +40,8 @@ export interface SocialPosts {
 
 const THREADS_LIMIT = 500;
 export const INSTAGRAM_LIMIT = 2200;
+/** AI disclosure on every post from the Reels on (owner's decision, 25 Oct 2026): the paintings are made with AI. */
+export const AI_NOTE = 'Illustrations made with AI.';
 
 /** The text for each network. Shared by the social/NNN.md file and by the automatic posting. */
 export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'archive'; webLive: boolean }): SocialPosts {
@@ -97,6 +100,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     `_____`,
     ``,
     `Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.`,
+    ...(usesReel(story.data.date) ? [``, AI_NOTE] : []),
   ]
     .join('\n')
     .replace(/\n{3,}/g, '\n\n')
@@ -109,7 +113,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff,
   // ending with the Instagram link (in the post itself, not as a separate reply).
   const igLink = (process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram).replace(/^https?:\/\/(www\.)?/, '');
-  const threadsFooter = `\n\nMore on Instagram: ${igLink}`;
+  const threadsFooter = `\n\nMore on Instagram: ${igLink}${usesReel(story.data.date) ? `\n${AI_NOTE}` : ''}`;
   const threadsTries = m
     ? [
         [head, REVEAL, tailOfOpening, payoff],

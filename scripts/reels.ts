@@ -11,12 +11,15 @@
  *   npm run reels -- confirm 6 30    Tidy up after a switch: a Facebook Reel marked UNCONFIRMED is checked with Meta
  *                                     (scheduled or published = confirmed), and the "leftover" ids each record names
  *                                     (posts the switch meant to delete) are deleted once their Reel is confirmed.
+ *   npm run reels -- caption 6 30    Bring the text of Facebook Reels already scheduled up to date (e.g. the AI disclosure
+ *                                     added on 25 Oct 2026) by editing them at Meta; nothing is re-uploaded.
  *   DRY_RUN=1 ...                    show what would happen, change nothing
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
 import { postStoryToSocials } from './lib/social-post';
+import { socialPosts } from './lib/social';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
 
 type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string };
@@ -27,7 +30,7 @@ import { pad3 } from '../src/schema/story';
 const [action, a, b] = process.argv.slice(2);
 const from = Number(a);
 const to = Number(b || a);
-if (!['check', 'switch', 'confirm'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch <first> [last] | confirm <first> [last]');
+if (!['check', 'switch', 'confirm', 'caption'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch|confirm|caption <first> [last]');
 const dryRun = process.env.DRY_RUN === '1';
 const SENT = path.join(ROOT, 'data/sent.json');
 // Never during the morning posting window (06:00-10:45 Singapore): the daily run saves data/sent.json then too.
@@ -156,6 +159,36 @@ for (const story of stories) {
       if (s.status !== 'FINISHED') failed++;
     } catch (e) {
       console.log(`${n}: ERROR Threads: ${(e as Error).message}`);
+      failed++;
+    }
+    continue;
+  }
+
+  if (action === 'caption') {
+    const rec = ((JSON.parse(fs.readFileSync(SENT, 'utf8')).social ?? []) as FbRecord[]).find(
+      (r) => r.number === story.data.number && r.network === 'facebook' && r.detail.includes(' reel ') && !r.detail.includes('UNCONFIRMED'),
+    );
+    if (!rec || story.data.date.getTime() < Date.now() + 15 * 60e3) continue; // only Reels still waiting to publish
+    const reel = rec.detail.match(/ reel (\d+)/)![1];
+    const want = socialPosts(story, { kind: 'scheduled', webLive: false }).facebook;
+    const token = process.env.META_PAGE_ACCESS_TOKEN!;
+    try {
+      const v = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'description', access_token: token }, 'GET');
+      if ((v.description ?? '').trim() === want.trim()) {
+        console.log(`${n}: Facebook Reel ${reel} text is already up to date`);
+        continue;
+      }
+      if (dryRun) {
+        console.log(`${n}: would update the text of Facebook Reel ${reel}`);
+        continue;
+      }
+      await call(`https://graph.facebook.com/v21.0/${reel}`, { description: want, access_token: token });
+      const after = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'description', access_token: token }, 'GET');
+      if ((after.description ?? '').trim() !== want.trim()) throw new Error('Meta did not keep the new text');
+      console.log(`${n}: Facebook Reel ${reel} text updated`);
+      await new Promise((r) => setTimeout(r, 5000));
+    } catch (e) {
+      console.log(`${n}: ERROR could not update the text of Facebook Reel ${reel}: ${(e as Error).message}`);
       failed++;
     }
     continue;

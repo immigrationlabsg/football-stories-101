@@ -18,6 +18,10 @@ change it only when the owner decides to.
   Each Facebook Reel's record names its music, e.g. "(music: coriolan)". Trending or commercial songs cannot be added through Meta's API, and a song put into the
   file gets the Reel muted or removed.
 - Text is unchanged: Facebook and Instagram carry the full story text; Threads the teaser with "More on Instagram".
+- **AI disclosure** (owner's decision, 25 Oct 2026): every post from story 006 ends with the line "Illustrations made with
+  AI." (Facebook, Instagram and Threads), and every Reel file carries the IPTC tag DigitalSourceType =
+  trainedAlgorithmicMedia, which Meta reads for its "AI info" label. Meta only requires a label for photorealistic video
+  or audio; ours are paintings, so this is for trust, not a legal must.
 - Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram and Threads Reels are posted
   by the daily run at the slot. `data/schedule.json` `reels_from` sets the start date.
 

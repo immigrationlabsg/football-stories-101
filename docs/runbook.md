@@ -385,5 +385,8 @@ public-domain music clips, rotating day by day, built with the website up to 28 
   about the Reel. Confirmed: it deletes the leftover posts. Failed: it puts the earlier post back so the next switch
   redoes it. Meta could not be asked: it changes nothing; run it again later.
 
+- **caption** (from, to): brings the text of Facebook Reels already scheduled up to date (used when the AI disclosure
+  line was added on 25 Oct 2026). It edits the text at Meta; nothing is re-uploaded.
+
 Each Facebook Reel's line in `data/sent.json` names its music, e.g. "(music: coriolan)". To check one by hand, use
 **Check a Facebook post** with `reel:<id>`.

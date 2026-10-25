@@ -18,7 +18,7 @@ import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, ren
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
-import { renderReel, trackFor, usesReel } from './lib/reel';
+import { endReelTools, renderReel, trackFor, usesReel } from './lib/reel';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
 const WIDTHS = [480, 800, 1200];
@@ -155,6 +155,7 @@ if (force || !fs.existsSync(def)) fs.writeFileSync(def, await renderDefault(site
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(REELS, JSON.stringify(reels, null, 2));
 fs.writeFileSync(path.join(OUT, 'reel-music.json'), JSON.stringify(reelMusic, null, 2));
+await endReelTools();
 if (reelFailures.length) {
   // Fail the build so GitHub emails the owner; everything else above is already written and cached.
   for (const f of reelFailures) console.error(`error: Reel ${f}`);

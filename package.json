@@ -38,6 +38,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.4.0",
+    "exiftool-vendored": "29.1.0",
     "ffmpeg-static": "5.2.0",
     "gray-matter": "^4.0.3",
     "pagefind": "^1.5.2",

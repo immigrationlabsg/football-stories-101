@@ -8,6 +8,7 @@ import { promisify } from 'node:util';
 import fs from 'node:fs';
 import path from 'node:path';
 import ffmpegPath from 'ffmpeg-static';
+import { exiftool } from 'exiftool-vendored';
 import { ROOT } from './stories';
 
 const run = promisify(execFile);
@@ -69,5 +70,11 @@ export async function renderReel(cardFiles: string[], track: string, out: string
       '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-t', total.toFixed(2), '-movflags', '+faststart', tmp],
     { maxBuffer: 1 << 24 },
   );
+  // Mark the video as AI-made with the IPTC standard tag Meta reads for its "AI info" label (owner, 25 Oct 2026).
+  await exiftool.write(tmp, { 'XMP-iptcExt:DigitalSourceType': AI_SOURCE_TYPE } as never, ['-overwrite_original']);
   fs.renameSync(tmp, out);
 }
+
+export const AI_SOURCE_TYPE = 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
+/** Stops the background exiftool process; call once when all Reels are made, or the build never exits. */
+export const endReelTools = () => exiftool.end();
