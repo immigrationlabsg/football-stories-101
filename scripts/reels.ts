@@ -168,13 +168,23 @@ for (const story of stories) {
     const rec = ((JSON.parse(fs.readFileSync(SENT, 'utf8')).social ?? []) as FbRecord[]).find(
       (r) => r.number === story.data.number && r.network === 'facebook' && r.detail.includes(' reel ') && !r.detail.includes('UNCONFIRMED'),
     );
-    if (!rec || story.data.date.getTime() < Date.now() + 15 * 60e3) continue; // only Reels still waiting to publish
+    if (!rec || story.data.date.getTime() < Date.now() + 15 * 60e3) {
+      console.log(`${n}: no Facebook Reel waiting to publish; skipped`);
+      continue;
+    }
     const reel = rec.detail.match(/ reel (\d+)/)![1];
+    const state = await reelState(reel, rec.at);
+    if (state.kind !== 'ok') {
+      console.log(`${n}: Facebook Reel ${reel} is not confirmed at Meta (${state.why}); text left as it is`);
+      failed++;
+      continue;
+    }
+    const same = (a: string, b: string) => a.replace(/\s+/g, ' ').trim() === b.replace(/\s+/g, ' ').trim();
     const want = socialPosts(story, { kind: 'scheduled', webLive: false }).facebook;
     const token = process.env.META_PAGE_ACCESS_TOKEN!;
     try {
       const v = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'description', access_token: token }, 'GET');
-      if ((v.description ?? '').trim() === want.trim()) {
+      if (same(v.description ?? '', want)) {
         console.log(`${n}: Facebook Reel ${reel} text is already up to date`);
         continue;
       }
@@ -184,7 +194,7 @@ for (const story of stories) {
       }
       await call(`https://graph.facebook.com/v21.0/${reel}`, { description: want, access_token: token });
       const after = await call(`https://graph.facebook.com/v21.0/${reel}`, { fields: 'description', access_token: token }, 'GET');
-      if ((after.description ?? '').trim() !== want.trim()) throw new Error('Meta did not keep the new text');
+      if (!same(after.description ?? '', want)) throw new Error('Meta did not keep the new text');
       console.log(`${n}: Facebook Reel ${reel} text updated`);
       await new Promise((r) => setTimeout(r, 5000));
     } catch (e) {

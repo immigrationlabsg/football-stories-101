@@ -113,7 +113,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff,
   // ending with the Instagram link (in the post itself, not as a separate reply).
   const igLink = (process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram).replace(/^https?:\/\/(www\.)?/, '');
-  const threadsFooter = `\n\nMore on Instagram: ${igLink}${usesReel(story.data.date) ? `\n${AI_NOTE}` : ''}`;
+  const threadsFooter = `\n\nMore on Instagram: ${igLink}`;
   const threadsTries = m
     ? [
         [head, REVEAL, tailOfOpening, payoff],
@@ -126,7 +126,9 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   const room = THREADS_LIMIT - bytes(threadsFooter);
   let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
-  const threads = threadsBody + threadsFooter;
+  // The AI line goes on Threads only when it fits without shortening the teaser; the Reel file carries the AI tag anyway.
+  const aiLine = usesReel(story.data.date) ? `\n${AI_NOTE}` : '';
+  const threads = threadsBody + threadsFooter + (bytes(threadsBody + threadsFooter + aiLine) <= THREADS_LIMIT ? aiLine : '');
   const threadsReply = ''; // no separate reply any more: the link is in the post
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }

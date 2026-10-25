@@ -36,7 +36,7 @@ for (const s of stories) {
   if (Buffer.byteLength(posts.threads, 'utf8') > 500) errors.push(`${n}: Threads text is over 500 bytes`);
   if (!/More on Instagram: instagram\.com\//.test(posts.threads)) errors.push(`${n}: Threads text has no Instagram link`);
   if (/github\.io|football-stories-101\//i.test(posts.facebook + posts.threads)) errors.push(`${n}: a social post links the website`);
-  if (usesReel(s.data.date) && !posts.facebook.trimEnd().endsWith(AI_NOTE) || (usesReel(s.data.date) && !posts.threads.trimEnd().endsWith(AI_NOTE))) errors.push(`${n}: a post is missing the AI disclosure "${AI_NOTE}"`);
+  if (usesReel(s.data.date) && !posts.facebook.trimEnd().endsWith(AI_NOTE)) errors.push(`${n}: a post is missing the AI disclosure "${AI_NOTE}"`);
   if (posts.threadsReply) errors.push(`${n}: Threads has a separate reply; the link belongs in the post`);
   const len = posts.facebook.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
