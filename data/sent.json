@@ -37,13 +37,6 @@
       "detail": "scheduled for 2026-10-24T02:00:00.000Z 1419297047928388_122094880707522790 (short id 122094880707522790)"
     },
     {
-      "number": 26,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-19T16:52:44.772Z",
-      "detail": "scheduled for 2026-11-14T02:00:00.000Z 1419297047928388_122094887721522790 (short id 122094887721522790)"
-    },
-    {
       "number": 27,
       "network": "facebook",
       "status": "scheduled",
@@ -153,14 +146,14 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:24:35.720Z",
-      "detail": "scheduled for 2026-10-30T00:00:00.000Z reel 1820303365977215"
+      "detail": "scheduled for 2026-10-30T00:00:00.000Z reel 1820303365977215 (music: hebrides)"
     },
     {
       "number": 12,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:25:05.024Z",
-      "detail": "scheduled for 2026-10-31T02:00:00.000Z reel 1844412369885602"
+      "detail": "scheduled for 2026-10-31T02:00:00.000Z reel 1844412369885602 (music: egmont)"
     },
     {
       "number": 13,
@@ -174,21 +167,21 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:26:11.678Z",
-      "detail": "scheduled for 2026-11-02T00:00:00.000Z reel 1016797294768309"
+      "detail": "scheduled for 2026-11-02T00:00:00.000Z reel 1016797294768309 (music: mozart40)"
     },
     {
       "number": 15,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:26:42.268Z",
-      "detail": "scheduled for 2026-11-03T00:00:00.000Z reel 1840174490770649"
+      "detail": "scheduled for 2026-11-03T00:00:00.000Z reel 1840174490770649 (music: hebrides)"
     },
     {
       "number": 16,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:27:12.399Z",
-      "detail": "scheduled for 2026-11-04T00:00:00.000Z reel 1659169612244080"
+      "detail": "scheduled for 2026-11-04T00:00:00.000Z reel 1659169612244080 (music: egmont)"
     },
     {
       "number": 17,
@@ -202,21 +195,21 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:28:13.171Z",
-      "detail": "scheduled for 2026-11-06T00:00:00.000Z reel 1414223264112709"
+      "detail": "scheduled for 2026-11-06T00:00:00.000Z reel 1414223264112709 (music: mozart40)"
     },
     {
       "number": 19,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:28:41.918Z",
-      "detail": "scheduled for 2026-11-07T02:00:00.000Z reel 1374236391201750"
+      "detail": "scheduled for 2026-11-07T02:00:00.000Z reel 1374236391201750 (music: hebrides)"
     },
     {
       "number": 20,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:29:18.279Z",
-      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 1099143039665275"
+      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 1099143039665275 (music: egmont)"
     },
     {
       "number": 21,
@@ -230,21 +223,21 @@
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:30:17.599Z",
-      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1165547665994059"
+      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1165547665994059 (music: mozart40)"
     },
     {
       "number": 23,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:30:48.503Z",
-      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 28738238659173738"
+      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 28738238659173738 (music: hebrides)"
     },
     {
       "number": 24,
       "network": "facebook",
       "status": "scheduled",
       "at": "2026-10-24T08:31:18.181Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 2143990016487351"
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 2143990016487351 (music: egmont)"
     },
     {
       "number": 25,
@@ -261,27 +254,6 @@
       "detail": "scheduled for 2026-10-25T02:00:00.000Z reel 1164094582746802 (music: coriolan)"
     },
     {
-      "number": 7,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T17:00:00.778Z",
-      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 1085775627791452 (music: coriolan)"
-    },
-    {
-      "number": 8,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T17:01:32.170Z",
-      "detail": "scheduled for 2026-10-27T00:00:00.000Z reel 1092817180214573 (music: coriolan)"
-    },
-    {
-      "number": 10,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T17:03:01.354Z",
-      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1148233334337219 (music: coriolan)"
-    },
-    {
       "number": 6,
       "network": "instagram",
       "status": "posted",
@@ -294,6 +266,34 @@
       "status": "posted",
       "at": "2026-10-25T02:01:06.438Z",
       "detail": "reel thread 18487472047106803"
+    },
+    {
+      "number": 7,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-25T13:01:38.318Z",
+      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 881734861695129 (music: hebrides)"
+    },
+    {
+      "number": 8,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-25T13:03:08.340Z",
+      "detail": "scheduled for 2026-10-27T00:00:00.000Z reel 2042189023141152 (music: egmont)"
+    },
+    {
+      "number": 10,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-25T13:04:44.558Z",
+      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1429653262704657 (music: mozart40)"
+    },
+    {
+      "number": 26,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-25T13:06:19.494Z",
+      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1759465226193256 (music: mozart40)"
     }
   ]
 }
