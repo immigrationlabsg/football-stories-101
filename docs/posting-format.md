@@ -14,7 +14,13 @@ change it only when the owner decides to.
   line starts "On this day". The music is the slot's own track (the rotation below). The story already in that slot
   moves to the end of the queue (Leicester City went from 007 to 031), and the Reels switch replaces its Facebook Reel.
   `npm run verify` warns about any upcoming third-day slot that is not yet an "on this day" story.
-- The other two days keep the regular "story nobody told you" format until the owner decides otherwise.
+- **"Guess the legend" every 9 days** (owner's decision, 25 Oct; first on 5 Nov 2026, then 14 Nov, 23 Nov, 2 Dec and so
+  on): a 7-card Reel with the shared mystery cover (no hint), four clues from obscure to famous, the reveal (the
+  player's name over a painting made from a real photo of him) and a "send this to a friend" card. The caption hides
+  the answer below the "See more" cut. Nine days keeps it on the day after a comparison, so the two never clash; if a
+  date ever does fall on a comparison day, the comparison runs that day, the quiz the next day, and the rotation
+  carries on as before. (Format being built; the owner reviews samples first.)
+- Every other day is the regular "story nobody told you".
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the

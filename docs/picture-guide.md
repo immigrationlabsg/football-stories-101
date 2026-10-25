@@ -59,6 +59,20 @@ Every pick shows the moment the story is about: the goal, the final, the trophy,
 - 017, 021 and 023: there is no free photo of the match. The first entry in `data/reference-photos.json` describes the scene to ask for.
 - 001: Ronaldo already has its painting.
 
+## Real players always come from a real photo (owner, 25 October 2026)
+
+- **Any painting that shows a named player is painted from a free Commons photo of that player**, never from a written
+  description. A text-only "Drogba" for a sample came out as a white man who looked nothing like him; that must never happen again.
+- The painting keeps the person exactly as photographed: **face, skin tone, hair and build**, so fans recognise him at a glance.
+- Real kits are welcome: the club or national shirt, **the player's own shirt number**, the crest and the kit maker's logo,
+  exactly as in the photo. Prefer a photo in the shirt and number fans remember (Pirlo's 21, Drogba's 11 at Chelsea,
+  Modrić's 10 for Croatia).
+- A scene painted without a photo may show only anonymous people (a crowd, a stadium, a figure seen from behind in a
+  plain kit, like the "Guess the legend" mystery cover). Never name such a figure as a real player.
+- When a picture shows a moment (a penalty, a save), the people in it must face the right way: the goalkeeper faces
+  the penalty taker. Check every painting for this before it is used.
+- `npm run paint` downloads the Commons photo itself when it is not in `design/references/` yet, and checks its licence.
+
 ## How to pick a good reference photo
 
 1. **The story's moment, not just the person.** Pick the goal, the final, the trophy lift or the celebration that the story is about, in the kit of that club and year. If the story is about a team (Forest, Ajax, Leicester), a team celebration beats a portrait of the manager. Use a portrait only when the story is about that one person and no match photo exists.
