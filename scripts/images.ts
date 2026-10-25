@@ -66,6 +66,7 @@ try {
 }
 const reels: Record<string, string> = {};
 const reelMusic: Record<string, string> = {}; // published as reel-music.json: which track each Reel online carries
+const reelStories: Record<string, string> = {}; // published as reel-stories.json: which story (slug) each Reel online shows
 const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/reel.ts'));
 const DAY = 86_400_000;
 const reelFailures: string[] = [];
@@ -131,6 +132,7 @@ for (const story of stories) {
         console.log(`${n} reel: made with ${path.basename(track)} in ${Math.round((Date.now() - started) / 1000)}s`);
         reels[n] = reelHash;
         reelMusic[n] = path.basename(track, '.m4a');
+        reelStories[n] = story.data.slug;
       } catch (e) {
         reelFailures.push(`${n}: ${(e as Error).message.slice(0, 300)}`);
         fs.rmSync(`${reel}.tmp.mp4`, { force: true });
@@ -139,6 +141,7 @@ for (const story of stories) {
     if (reelsPrev[n] === reelHash && fs.existsSync(reel)) {
       reels[n] = reelHash;
       reelMusic[n] = path.basename(track, '.m4a');
+      reelStories[n] = story.data.slug;
     }
   } else if (fs.existsSync(reel)) fs.unlinkSync(reel);
   // Remove stale slides from a previous, longer facts list
@@ -155,6 +158,7 @@ if (force || !fs.existsSync(def)) fs.writeFileSync(def, await renderDefault(site
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(REELS, JSON.stringify(reels, null, 2));
 fs.writeFileSync(path.join(OUT, 'reel-music.json'), JSON.stringify(reelMusic, null, 2));
+fs.writeFileSync(path.join(OUT, 'reel-stories.json'), JSON.stringify(reelStories, null, 2));
 await endReelTools();
 if (reelFailures.length) {
   // Fail the build so GitHub emails the owner; everything else above is already written and cached.

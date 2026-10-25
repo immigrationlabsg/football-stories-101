@@ -57,15 +57,6 @@
       "Garrincha dribbling"
     ]
   },
-  "007": {
-    "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring",
-    "queries": [
-      "Leicester City Premier League trophy 2016",
-      "Jamie Vardy celebrating",
-      "Leicester City champions 2016",
-      "Leicester City celebration King Power"
-    ]
-  },
   "008": {
     "want": "Sacchi's Milan 1988-90: Gullit, Van Basten, Rijkaard in action or with the European Cup",
     "queries": [
@@ -296,6 +287,15 @@
       "Lily Parr",
       "women's football 1920",
       "Dick Kerr Ladies 1921"
+    ]
+  },
+  "031": {
+    "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring",
+    "queries": [
+      "Leicester City Premier League trophy 2016",
+      "Jamie Vardy celebrating",
+      "Leicester City champions 2016",
+      "Leicester City celebration King Power"
     ]
   }
 }

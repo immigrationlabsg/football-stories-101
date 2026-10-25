@@ -121,8 +121,11 @@ if (schedule.reels_from) {
     if (/UNCONFIRMED/.test((r as { detail?: string }).detail ?? '')) errors.push(`${pad(r.number)}: Meta did not confirm this Facebook Reel; run "Reels" with action confirm and Dry run unticked for ${pad(r.number)}`);
   }
   for (const s of live) {
-    const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string } | undefined;
-    if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && !r.detail?.includes(' reel ')) {
+    const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string; story?: string } | undefined;
+    // The slot was given to another story (e.g. an "on this day" comparison) but Facebook still holds the old story's post.
+    if (r?.story && r.story !== s.data.slug && r.status !== 'posted' && s.data.date.getTime() > now.getTime()) {
+      errors.push(`${pad(s.data.number)}: Facebook has "${r.story}" scheduled in the slot of "${s.data.slug}"; run "Reels" with action switch and Dry run unticked for ${pad(s.data.number)}`);
+    } else if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && !r.detail?.includes(' reel ')) {
       warnings.push(`${pad(s.data.number)} is a Reel story but Facebook still has its picture post scheduled; run "Reels" with action switch`);
     } else if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && r.detail && !r.detail.includes(musicTag(s.data.number))
       && !(!r.detail.includes('(music:') && legacyMusicTag(s.data.number) === musicTag(s.data.number))) {

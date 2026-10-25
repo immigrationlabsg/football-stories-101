@@ -75,14 +75,10 @@
   ],
   "007": [
     {
-      "commons": "File:LCFC lift the Premier League Trophy (26943755296) (cropped).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Leicester City lifting the Premier League trophy, 7 May 2016."
-    },
-    {
-      "commons": "File:LCFC players celebrate after victory vs Everton (27859481336).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
+      "commons": null,
+      "licence": "n/a",
+      "why": "Story 007, the 26 Oct 'on this day' comparison: Le Tissier (Southampton, 1996) v Totti (Roma, 2005), two famous chips over a goalkeeper on the same date. Paint without a reference: a split composition divided down the middle by a soft vertical watercolour bleed. Left half: an English footballer in a red-and-white vertically striped shirt and black shorts, seen from behind and slightly to the side, right foot just after scooping the ball, at a small, tightly packed 1990s English ground on an autumn afternoon. Right half: an Italian footballer in a deep crimson shirt with orange-yellow trim and white shorts, seen from behind and slightly to the side in the same pose, under the floodlights of a huge three-tiered stadium at night. In each half the ball loops high over a goalkeeper stranded off his line. Shirts with no numbers, no names, no badges, no sponsor and no lettering. Natural heads with short hair seen from behind, faces turned away.",
+      "alt": "Watercolour painting split in two: a player in red-and-white stripes and a player in crimson, each chipping the ball over a stranded goalkeeper"
     }
   ],
   "008": [
@@ -385,12 +381,16 @@
       "why": "The Dick, Kerr Ladies team photo."
     }
   ],
-  "901": [
+  "031": [
     {
-      "commons": null,
-      "licence": "n/a",
-      "why": "Sample for the 26 Oct 'on this day' comparison: Le Tissier (Southampton, 1996) v Totti (Roma, 2005), two famous chips over a goalkeeper on the same date. Paint without a reference: a split composition divided down the middle by a soft vertical watercolour bleed. Left half: an English footballer in a red-and-white vertically striped shirt and black shorts, seen from behind and slightly to the side, right foot just after scooping the ball, at a small, tightly packed 1990s English ground on an autumn afternoon. Right half: an Italian footballer in a deep crimson shirt with orange-yellow trim and white shorts, seen from behind and slightly to the side in the same pose, under the floodlights of a huge three-tiered stadium at night. In each half the ball loops high over a goalkeeper stranded off his line. Shirts with no numbers, no names, no badges, no sponsor and no lettering. Natural heads with short hair seen from behind, faces turned away.",
-      "alt": "Watercolour painting split in two: a player in red-and-white stripes and a player in crimson, each chipping the ball over a stranded goalkeeper"
+      "commons": "File:LCFC lift the Premier League Trophy (26943755296) (cropped).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Leicester City lifting the Premier League trophy, 7 May 2016."
+    },
+    {
+      "commons": "File:LCFC players celebrate after victory vs Everton (27859481336).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
     }
   ],
   "902": [

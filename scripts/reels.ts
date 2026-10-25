@@ -56,6 +56,22 @@ async function liveMusicMatches(number: number): Promise<boolean> {
   return musicTag(number) === `(music: ${liveMusic[pad3(number)] ?? 'unknown'})`;
 }
 
+// Which story each Reel online shows (reel-stories.json, written by scripts/images.ts). A slot can be given to another
+// story (owner, 25 Oct 2026: "on this day" comparisons every third day), and the Reel keeps the slot's file name, so
+// Facebook must only be sent the file once the site shows the new story's Reel.
+let liveStories: Record<string, string> | null = null;
+async function liveStoryMatches(number: number, slug: string): Promise<boolean> {
+  if (!liveStories) {
+    try {
+      const r = await fetch(absoluteUrl('/images/derived/reel-stories.json'));
+      liveStories = r.ok ? ((await r.json()) as Record<string, string>) : {};
+    } catch {
+      liveStories = {};
+    }
+  }
+  return liveStories[pad3(number)] === slug;
+}
+
 // What Meta says about a Facebook Reel: confirmed only with the same test the upload uses (processing complete, no
 // phase in error, scheduled or published); failed when Meta reports an error; unknown when Meta could not be asked.
 async function reelState(id?: string, since?: string): Promise<{ kind: 'ok' | 'failed' | 'unknown'; why: string }> {
@@ -295,14 +311,16 @@ for (const story of stories) {
 
   // switch
   const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
-  const records = (file.social ?? []) as { number: number; network: string; status?: string; detail: string }[];
+  const records = (file.social ?? []) as { number: number; network: string; status?: string; detail: string; story?: string }[];
   const old = records.find((r) => r.number === story.data.number && r.network === 'facebook');
   if (old?.status === 'posted') {
     console.log(`${n}: already posted on Facebook; left as it is`);
     continue;
   }
   const tag = musicTag(story.data.number);
-  if (old?.detail.includes(' reel ')) {
+  // A record that names another story belongs to the story this slot had before: its Reel is replaced whatever its music.
+  const replaced = Boolean(old?.story && old.story !== story.data.slug);
+  if (old?.detail.includes(' reel ') && !replaced) {
     // A Reel with today's music needs nothing. One scheduled before the music tag existed may already carry it.
     if (old.detail.includes(tag)) {
       console.log(`${n}: Facebook Reel already scheduled ${tag}`);
@@ -328,7 +346,7 @@ for (const story of stories) {
   }
   // The post it replaces: a scheduled picture post (Page_post id) or a Reel with other music (video id).
   const oldId = old?.detail.match(/ reel (\d+)/)?.[1] ?? old?.detail.match(/(\d+_\d+)/)?.[1];
-  const what = old?.detail.includes(' reel ') ? 'older Reel' : 'picture post';
+  const what = replaced ? `Reel of the story this slot had before (${old?.story})` : old?.detail.includes(' reel ') ? 'older Reel' : 'picture post';
   if (uploads >= MAX_UPLOADS) {
     console.log(`${n}: left for the next run (at most ${MAX_UPLOADS} uploads a run)`);
     pending++;
@@ -336,6 +354,11 @@ for (const story of stories) {
   }
   if (!(await liveMusicMatches(story.data.number))) {
     console.log(`${n}: ERROR the Reel online does not carry ${tag} yet (is the site still deploying?); nothing changed`);
+    failed++;
+    continue;
+  }
+  if (!(await liveStoryMatches(story.data.number, story.data.slug))) {
+    console.log(`${n}: ERROR the Reel online is not yet the one for "${story.data.slug}" (is the site still deploying?); nothing changed`);
     failed++;
     continue;
   }
@@ -356,7 +379,7 @@ for (const story of stories) {
     const f = JSON.parse(fs.readFileSync(SENT, 'utf8'));
     f.social = [
       ...(f.social ?? []).filter((r: { number: number; network: string }) => !(r.number === story.data.number && r.network === 'facebook')),
-      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail, ...(leftover ? { leftover } : {}) },
+      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail, story: story.data.slug, ...(leftover ? { leftover } : {}) },
     ];
     fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
   };
