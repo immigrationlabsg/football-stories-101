@@ -6,6 +6,15 @@ change it only when the owner decides to.
 ## Schedule
 - One story a day: **08:00 Singapore time Monday to Friday, 10:00 on Saturday and Sunday**.
 - Stories 001 to 030 run from 20 October to 18 November 2026; the Saturday drafting run adds seven more each week.
+- **"On this day" comparison every third day from 26 October 2026** (owner's decision, 25 Oct): 26 Oct, 29 Oct, 1 Nov,
+  4 Nov and so on (`on_this_day_from` and `on_this_day_every` in `data/schedule.json`). Two stars' moments that both
+  happened on that calendar date, compared, ending with a sharp either/or question (the first: 007, Le Tissier's chip
+  over Schmeichel, 1996, v Totti's at San Siro, 2005: "Le Tissier or Totti: who was the greater one-club legend?").
+  Only matches that were played or moments that happened to stars; never foundings, meetings or rule changes. The cover
+  line starts "On this day". The music is the slot's own track (the rotation below). The story already in that slot
+  moves to the end of the queue (Leicester City went from 007 to 031), and the Reels switch replaces its Facebook Reel.
+  `npm run verify` warns about any upcoming third-day slot that is not yet an "on this day" story.
+- The other two days keep the regular "story nobody told you" format until the owner decides otherwise.
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the

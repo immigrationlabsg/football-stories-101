@@ -87,6 +87,18 @@ for (let i = 0; i < live.length; i++) {
     if (c(s) === c(live[i - 1]) && c(s) === c(live[i - 2])) warnings.push(`three ${c(s)} stories in a row ending at ${pad(s.data.number)}`);
   }
 }
+// "On this day" comparisons every third day from data/schedule.json on_this_day_from (owner, 25 Oct 2026).
+if (schedule.on_this_day_from) {
+  const start = Date.parse(`${schedule.on_this_day_from}T00:00:00+08:00`);
+  const every = schedule.on_this_day_every ?? 3;
+  for (const s of live) {
+    const sgDay = Math.floor((s.data.date.getTime() + 8 * 3600e3 - (start + 8 * 3600e3)) / DAY);
+    if (sgDay < 0 || s.data.date.getTime() < now.getTime()) continue;
+    const due = sgDay % every === 0;
+    if (due && s.data.series !== 'On this day') warnings.push(`${pad(s.data.number)} (${new Date(s.data.date.getTime() + 8 * 3600e3).toISOString().slice(0, 10)}) is an "on this day" day; give the slot an "on this day" comparison and move this story to the end`);
+    if (!due && s.data.series === 'On this day') warnings.push(`${pad(s.data.number)} is an "on this day" story outside the every-${every}-days rhythm`);
+  }
+}
 const last = live.at(-1);
 const buffer = (schedule.min_buffer_days ?? 14) * DAY;
 if (schedule.launch_date && (!last || last.data.date.getTime() < now.getTime() + buffer)) {

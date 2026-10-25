@@ -76,5 +76,6 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 - **"On this day" means a game or a star (owner, 25 Oct 2026).** An anniversary story is always a match that was played,
   or something that happened to a football star on that date. Never a founding, a meeting, a governing body or a rule
   change (no "the FA was founded" stories). If no star or famous match fits a date, skip the anniversary that day.
-- **Keep the rotation:** player, club, era, moment, in that order, with no more than two stories in a row from one country.
+- **Keep the rotation:** player, club, era, moment, in that order, with no more than two stories in a row from one country. The "on this day"
+  slots (every third day) sit outside the rotation; the other stories keep it around them.
 - **Use the research notes** in `docs/research/` for ideas and timing, but only as inspiration; never copy another account's post.

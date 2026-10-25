@@ -4,5 +4,8 @@
   "stories_per_week": 7,
   "min_buffer_days": 14,
   "reels_from": "2026-10-25",
-  "_reels_help": "Stories dated on or after reels_from (Singapore date) post as a Reel (7 cards + music) on Facebook, Instagram and Threads instead of the picture posts. Owner decision 24 Oct 2026."
+  "_reels_help": "Stories dated on or after reels_from (Singapore date) post as a Reel (7 cards + music) on Facebook, Instagram and Threads instead of the picture posts. Owner decision 24 Oct 2026.",
+  "on_this_day_from": "2026-10-26",
+  "on_this_day_every": 3,
+  "_on_this_day_help": "From on_this_day_from (Singapore date), every on_this_day_every-th day is an \"on this day\" comparison (series: \"On this day\"): two stars' moments from that calendar date, ending with a debate question. Owner decision 25 Oct 2026."
 }
