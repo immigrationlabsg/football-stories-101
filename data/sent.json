@@ -268,14 +268,6 @@
       "detail": "reel thread 18487472047106803"
     },
     {
-      "number": 7,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-25T13:01:38.318Z",
-      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 881734861695129 (music: hebrides)",
-      "story": "leicester-city-5000-to-1"
-    },
-    {
       "number": 8,
       "network": "facebook",
       "status": "scheduled",
@@ -295,6 +287,14 @@
       "status": "scheduled",
       "at": "2026-10-25T13:06:19.494Z",
       "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1759465226193256 (music: mozart40)"
+    },
+    {
+      "number": 7,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-25T16:53:03.615Z",
+      "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 2338299390322271 (music: hebrides)",
+      "story": "le-tissier-v-totti-26-october"
     }
   ]
 }
