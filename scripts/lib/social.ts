@@ -51,6 +51,18 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   const webUrl = absoluteUrl(paths.story(story.data.slug));
   const num = storyNumber(story.data.number);
 
+  // "Guess the legend" (owner, 25 Oct 2026): the challenge first, the answer only below the "See more" cut, then the short
+  // story, the question and the usual sign-off. Threads gets the challenge alone, never the answer.
+  if (story.data.format === 'quiz') {
+    const igLinkQuiz = (process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram).replace(/^https?:\/\/(www\.)?/, '');
+    const challenge = `Guess the legend: ${story.data.clues.length} clues, one name. Watch to the end, and no peeking at the comments.`;
+    const facebook = [challenge, '', '.', '.', '.', '', `It was ${story.data.answer}.`, '', markdownToText(md), '', story.data.question ?? '', '', '_____', '',
+      'Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.', '', AI_NOTE]
+      .join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    const threads = `Guess the legend: ${story.data.clues.length} clues, one name. How many did you need? The answer is at the end of the Reel.\n\nMore on Instagram: ${igLinkQuiz}\n${AI_NOTE}`;
+    return { facebook, instagram: facebook, threads, threadsReply: '', webUrl, link };
+  }
+
   // The Morning Founder posts the whole story natively, ending with the question,
   // a rule, and a one-line signature with the link.
   const plain = markdownToText(md);

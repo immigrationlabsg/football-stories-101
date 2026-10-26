@@ -22,7 +22,7 @@ import { postStoryToSocials } from './lib/social-post';
 import { socialPosts } from './lib/social';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
 
-type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string };
+type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string; story?: string };
 import { legacyMusicTag, musicTag, usesReel } from './lib/reel';
 import { absoluteUrl } from '../src/lib/url';
 import { pad3 } from '../src/schema/story';
@@ -186,6 +186,12 @@ for (const story of stories) {
     );
     if (!rec || story.data.date.getTime() < Date.now() + 15 * 60e3) {
       console.log(`${n}: no Facebook Reel waiting to publish; skipped`);
+      continue;
+    }
+    if (rec.story && rec.story !== story.data.slug) {
+      // The slot was handed to another story: this Reel shows the old one. Replace it with "switch", never relabel it.
+      console.log(`${n}: ERROR Facebook Reel belongs to "${rec.story}", not "${story.data.slug}"; run the switch first`);
+      failed++;
       continue;
     }
     const reel = rec.detail.match(/ reel (\d+)/)![1];

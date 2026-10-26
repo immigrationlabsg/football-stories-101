@@ -7,5 +7,8 @@
   "_reels_help": "Stories dated on or after reels_from (Singapore date) post as a Reel (7 cards + music) on Facebook, Instagram and Threads instead of the picture posts. Owner decision 24 Oct 2026.",
   "on_this_day_from": "2026-10-26",
   "on_this_day_every": 3,
-  "_on_this_day_help": "From on_this_day_from (Singapore date), every on_this_day_every-th day is an \"on this day\" comparison (series: \"On this day\"): two stars' moments from that calendar date, ending with a debate question. Owner decision 25 Oct 2026."
+  "_on_this_day_help": "From on_this_day_from (Singapore date), every on_this_day_every-th day is an \"on this day\" comparison (series: \"On this day\"): two stars' moments from that calendar date, ending with a debate question. Owner decision 25 Oct 2026.",
+  "guess_the_legend_from": "2026-11-05",
+  "guess_the_legend_every": 9,
+  "_guess_the_legend_help": "From guess_the_legend_from (Singapore date), every guess_the_legend_every-th day is a 'Guess the legend' quiz (format: quiz). If a quiz date falls on an 'on this day' date, the comparison runs that day and the quiz the next day; the rotation carries on from the original date. Owner decision 25 Oct 2026."
 }

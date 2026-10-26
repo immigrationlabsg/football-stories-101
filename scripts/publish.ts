@@ -208,11 +208,11 @@ async function main() {
     // Social posting does not depend on the email service: it is a dry run only when DRY_RUN=1 is asked for.
     const socialDry = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
     socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun: socialDry, skipDone: true });
-    if (!socialDry) recordSocial(story.data.number, socialOutcomes);
+    if (!socialDry) recordSocial(story.data.number, socialOutcomes, story.data.slug);
     // Keep Facebook's Planner filled: schedule each upcoming story once it is inside Meta's scheduling window.
     for (const next of stories.filter((s) => !s.data.draft && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
       const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
-      if (!socialDry) recordSocial(next.data.number, ahead);
+      if (!socialDry) recordSocial(next.data.number, ahead, next.data.slug);
       if (ahead.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1; // a refused or unconfirmed schedule turns the run red too
     }
   } else {

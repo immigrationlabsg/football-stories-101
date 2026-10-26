@@ -15,6 +15,7 @@ import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
 import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
+import { MYSTERY_COVER, renderQuizCover, renderQuizClue, renderQuizReveal, renderQuizClose } from './lib/quiz-cards';
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
@@ -73,6 +74,7 @@ const reelFailures: string[] = [];
 for (const f of fs.readdirSync(OUT)) if (f.endsWith('.tmp.mp4')) fs.rmSync(path.join(OUT, f), { force: true }); // left by an interrupted render
 const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/cards.ts');
 const cardsSource = fs.readFileSync(cardsScript);
+const quizCardsSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'quiz-cards.ts'));
 const widthsKey = WIDTHS.join(',');
 
 for (const story of stories) {
@@ -88,11 +90,21 @@ for (const story of stories) {
   if (widths.length === 0) widths.push(width);
   const sizeFiles = widths.flatMap((w) => [path.join(OUT, `${n}-${w}.avif`), path.join(OUT, `${n}-${w}.webp`)]);
 
-  const slides: Array<() => Promise<Buffer>> = [
-    () => renderIgCover(story.data, hero),
-    ...story.data.facts.map((fact, i) => () => renderIgFact(story.data, fact, i + 1, story.data.facts.length)),
-    () => renderIgClose(story.data),
-  ];
+  // A "Guess the legend" quiz: mystery cover, the clues, the reveal and the share card (scripts/lib/quiz-cards.ts).
+  const quiz = story.data.format === 'quiz';
+  const mystery = quiz ? fs.readFileSync(MYSTERY_COVER) : null;
+  const slides: Array<() => Promise<Buffer>> = quiz
+    ? [
+        () => renderQuizCover(story.data, mystery!),
+        ...story.data.clues.map((_, i) => () => renderQuizClue(story.data, i + 1)),
+        () => renderQuizReveal(story.data, hero),
+        () => renderQuizClose(),
+      ]
+    : [
+        () => renderIgCover(story.data, hero),
+        ...story.data.facts.map((fact, i) => () => renderIgFact(story.data, fact, i + 1, story.data.facts.length)),
+        () => renderIgClose(story.data),
+      ];
   const og = path.join(OUT, `${n}-og.png`);
   const fb = path.join(OUT, `${n}-fb.png`);
   const cardFiles = slides.map((_, i) => path.join(OUT, `${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
@@ -101,8 +113,10 @@ for (const story of stories) {
   // What the outputs depend on: the hero bytes, the fields that appear on cards, the renderer, the sizes.
   const hash = hashOf(
     hero,
-    JSON.stringify({ number: story.data.number, title: story.data.title, dek: story.data.dek, hook: story.data.hook, question: story.data.question, facts: story.data.facts, site: SITE_LABEL }),
+    JSON.stringify({ number: story.data.number, title: story.data.title, dek: story.data.dek, hook: story.data.hook, question: story.data.question, facts: story.data.facts, site: SITE_LABEL,
+      ...(quiz ? { clues: story.data.clues, answer: story.data.answer } : {}) }),
     cardsSource,
+    ...(quiz ? [quizCardsSource, mystery!] : []),
     widthsKey,
   );
 

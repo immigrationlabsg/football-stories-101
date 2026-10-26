@@ -13,7 +13,7 @@ export type Outcome = { network: Network; status: 'posted' | 'drafted' | 'dry-ru
 
 
 const SENT = path.join(ROOT, 'data/sent.json');
-type SocialRecord = { number: number; network: Network; status?: 'posted' | 'scheduled'; at: string; detail: string };
+type SocialRecord = { number: number; network: Network; status?: 'posted' | 'scheduled'; at: string; detail: string; story?: string };
 
 /** Networks this story has already been posted or scheduled to (from data/sent.json). */
 export function socialDone(number: number): Set<Network> {
@@ -25,14 +25,17 @@ export function socialDone(number: number): Set<Network> {
   }
 }
 
-/** Adds real posts and scheduled Facebook posts to data/sent.json, keeping everything else in the file. */
-export function recordSocial(number: number, outcomes: Outcome[]): void {
+/**
+ * Adds real posts and scheduled Facebook posts to data/sent.json, keeping everything else in the file. Each record names
+ * its story (slug), so a slot handed to another story is caught by the Reels switch and by npm run verify.
+ */
+export function recordSocial(number: number, outcomes: Outcome[], story: string): void {
   const keep = outcomes.filter((o) => o.status === 'posted' || (o.status === 'drafted' && o.detail.startsWith('scheduled')));
   if (!keep.length) return;
   const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
   file.social = [
     ...(file.social ?? []),
-    ...keep.map((o): SocialRecord => ({ number, network: o.network, status: o.status === 'posted' ? 'posted' : 'scheduled', at: new Date().toISOString(), detail: o.detail })),
+    ...keep.map((o): SocialRecord => ({ number, network: o.network, status: o.status === 'posted' ? 'posted' : 'scheduled', at: new Date().toISOString(), detail: o.detail, story })),
   ];
   fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
 }
@@ -48,7 +51,8 @@ export async function postStoryToSocials(
   const n = pad3(story.data.number);
   const heroUrl = absoluteUrl(`/images/derived/${n}-fb.png`); // the headline card for Facebook
   // The Instagram carousel: the cover, one card per fact, and the closing card.
-  const cardUrls = Array.from({ length: story.data.facts.length + 2 }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
+  const cardCount = story.data.format === 'quiz' ? story.data.clues.length + 3 : story.data.facts.length + 2;
+  const cardUrls = Array.from({ length: cardCount }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   // From reels_from (data/schedule.json) every network gets the Reel: the same cards with music, the same text.
   const reel = usesReel(story.data.date);
   const reelUrl = absoluteUrl(`/images/derived/${n}-reel.mp4`);

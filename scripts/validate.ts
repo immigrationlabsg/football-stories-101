@@ -9,6 +9,16 @@ import { INSTAGRAM_LIMIT, socialPosts } from './lib/social';
 const { stories, errors, warnings } = loadStories();
 
 for (const s of stories) {
+  // "Guess the legend" (owner, 25 Oct 2026): four clues and an answer instead of facts; the body is the short story told
+  // after the answer, so the story-shape checks below do not apply.
+  if (s.data.format === 'quiz') {
+    if (s.data.clues.length !== 4) errors.push(`${s.file}: a Guess the legend quiz needs exactly 4 clues (it has ${s.data.clues.length})`);
+    if (!s.data.answer) errors.push(`${s.file}: a Guess the legend quiz needs its answer (the player's name)`);
+    if (s.data.facts.length) warnings.push(`${s.file}: a quiz shows clues, not facts; the facts are ignored`);
+    if (s.words < 120 || s.words > 300) warnings.push(`${s.file}: the story after the answer is ${s.words} words; aim for 150 to 250`);
+    if (!s.data.question) warnings.push(`${s.file}: no reader question; the caption will end without one`);
+    continue;
+  }
   if (s.words < WORDS_MIN || s.words > WORDS_MAX) {
     warnings.push(`${s.file}: body is ${s.words} words; the target is about 400 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
   }

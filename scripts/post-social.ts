@@ -27,5 +27,5 @@ const outcomes = await postStoryToSocials(story, {
   scheduleAt: process.env.SCHEDULE_AT ? new Date(process.env.SCHEDULE_AT) : undefined,
   skipDone: process.env.FORCE !== '1', // never post or schedule a story twice on the same network
 });
-if (!dryRun) recordSocial(story.data.number, outcomes);
+if (!dryRun) recordSocial(story.data.number, outcomes, story.data.slug);
 if (outcomes.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1;

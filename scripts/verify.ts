@@ -27,7 +27,9 @@ const live = stories.filter((s) => !s.data.draft).sort((a, b) => a.data.date.get
 for (const s of stories) {
   const n = pad(s.data.number);
   if (!s.file.startsWith(`${n}-`)) errors.push(`${s.file}: file name does not start with its number ${n}`);
-  if (s.data.facts.length !== 5) errors.push(`${n}: ${s.data.facts.length} facts; the 7-card carousel needs 5`);
+  if (s.data.format === 'quiz') {
+    if (s.data.clues.length !== 4 || !s.data.answer) errors.push(`${n}: a Guess the legend quiz needs 4 clues and an answer`);
+  } else if (s.data.facts.length !== 5) errors.push(`${n}: ${s.data.facts.length} facts; the 7-card carousel needs 5`);
   if (!s.data.hook) errors.push(`${n}: no hook (the banner line on the pictures)`);
   if (!s.data.question) errors.push(`${n}: no reader question`);
   if (!fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src))) errors.push(`${n}: hero picture ${s.data.hero.src} is missing`);
@@ -95,8 +97,27 @@ if (schedule.on_this_day_from) {
     const sgDay = Math.floor((s.data.date.getTime() + 8 * 3600e3 - (start + 8 * 3600e3)) / DAY);
     if (sgDay < 0 || s.data.date.getTime() < now.getTime()) continue;
     const due = sgDay % every === 0;
+    if (s.data.format === 'quiz') continue; // checked below
     if (due && s.data.series !== 'On this day') warnings.push(`${pad(s.data.number)} (${new Date(s.data.date.getTime() + 8 * 3600e3).toISOString().slice(0, 10)}) is an "on this day" day; give the slot an "on this day" comparison and move this story to the end`);
     if (!due && s.data.series === 'On this day') warnings.push(`${pad(s.data.number)} is an "on this day" story outside the every-${every}-days rhythm`);
+  }
+}
+// "Guess the legend" every 9 days from guess_the_legend_from (owner, 25 Oct 2026); on a comparison day it moves to the next day.
+if (schedule.guess_the_legend_from) {
+  const sgDate = (t: number) => new Date(t + 8 * 3600e3).toISOString().slice(0, 10);
+  const otdStart = schedule.on_this_day_from ? Date.parse(`${schedule.on_this_day_from}T00:00:00+08:00`) : null;
+  const isOtd = (day: string) => otdStart !== null && Math.round((Date.parse(`${day}T00:00:00+08:00`) - otdStart) / DAY) % (schedule.on_this_day_every ?? 3) === 0 && Date.parse(`${day}T00:00:00+08:00`) >= otdStart;
+  const quizDays = new Set<string>();
+  const qStart = Date.parse(`${schedule.guess_the_legend_from}T00:00:00+08:00`);
+  for (let k = 0; k < 60; k++) {
+    const day = sgDate(qStart + k * (schedule.guess_the_legend_every ?? 9) * DAY);
+    quizDays.add(isOtd(day) ? sgDate(Date.parse(`${day}T00:00:00+08:00`) + DAY) : day);
+  }
+  for (const s of live) {
+    if (s.data.date.getTime() < now.getTime()) continue;
+    const day = sgDate(s.data.date.getTime());
+    if (quizDays.has(day) && s.data.format !== 'quiz') warnings.push(`${pad(s.data.number)} (${day}) is a "Guess the legend" day; give the slot a quiz and move this story to the end`);
+    if (!quizDays.has(day) && s.data.format === 'quiz') warnings.push(`${pad(s.data.number)} is a "Guess the legend" quiz outside the every-9-days rhythm`);
   }
 }
 const last = live.at(-1);
@@ -134,6 +155,9 @@ if (schedule.reels_from) {
   }
   for (const s of live) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string; story?: string } | undefined;
+    if (r && r.status === 'scheduled' && !r.story && s.data.date.getTime() > now.getTime()) {
+      errors.push(`${pad(s.data.number)}: its Facebook record does not say which story it belongs to (add "story": "${s.data.slug}" if it is this story's post)`);
+    }
     // The slot was given to another story (e.g. an "on this day" comparison) but Facebook still holds the old story's post.
     if (r?.story && r.story !== s.data.slug && r.status !== 'posted' && s.data.date.getTime() > now.getTime()) {
       errors.push(`${pad(s.data.number)}: Facebook has "${r.story}" scheduled in the slot of "${s.data.slug}"; run "Reels" with action switch and Dry run unticked for ${pad(s.data.number)}`);

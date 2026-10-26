@@ -29,7 +29,8 @@
     "insights": "tsx scripts/insights.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "reels": "tsx scripts/reels.ts",
-    "publish-painting": "tsx scripts/publish-painting.ts"
+    "publish-painting": "tsx scripts/publish-painting.ts",
+    "hand-over": "tsx scripts/hand-over.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.3",

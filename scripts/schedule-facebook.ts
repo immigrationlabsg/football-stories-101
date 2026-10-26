@@ -33,7 +33,7 @@ for (const story of loadStories().stories.filter((s) => s.data.number >= from &&
     scheduleAt: story.data.date,
     skipDone: true,
   });
-  if (!dryRun) recordSocial(story.data.number, [o]);
+  if (!dryRun) recordSocial(story.data.number, [o], story.data.slug);
   if (o.status === 'failed' || o.detail.includes('UNCONFIRMED')) failed++;
 }
 if (failed) process.exitCode = 1;

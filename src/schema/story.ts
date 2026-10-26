@@ -71,6 +71,13 @@ export const storySchema = z.object({
   question: z.string().trim().min(1).optional(),
   /** Five short facts, one per Instagram carousel card, each restating something the body says. */
   facts: z.array(z.string().trim().min(1)).max(6).default([]),
+  /**
+   * "story" (default) or "quiz": Guess the legend (owner, 25 Oct 2026). A quiz has four clues (hardest first) instead of
+   * facts, the answer on the reveal card, and its body is the short story told after the answer.
+   */
+  format: z.enum(['story', 'quiz']).default('story'),
+  clues: z.array(z.string().trim().min(1).max(160, 'a clue must be 160 characters or fewer')).max(4).default([]),
+  answer: z.string().trim().min(1).optional(),
   draft: z.boolean().default(false),
 });
 
