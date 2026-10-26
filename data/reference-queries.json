@@ -1,31 +1,4 @@
 {
-  "903": {
-    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
-    "queries": [
-      "Andrea Pirlo Juventus",
-      "Andrea Pirlo Italy",
-      "Andrea Pirlo 2014",
-      "Andrea Pirlo Euro 2012"
-    ]
-  },
-  "904": {
-    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
-    "queries": [
-      "Didier Drogba Chelsea",
-      "Didier Drogba Champions League Winner",
-      "Didier Drogba 11",
-      "Didier Drogba Ivory Coast"
-    ]
-  },
-  "905": {
-    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
-    "queries": [
-      "Luka Modric Croatia 2018",
-      "Luka Modrić Golden Ball 2018",
-      "Luka Modrić World Cup 2018",
-      "Luka Modrić Real Madrid"
-    ]
-  },
   "001": {
     "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt",
     "queries": [
@@ -323,6 +296,87 @@
       "Trautmann Manchester City",
       "Trautmann goalkeeper",
       "1956 FA Cup Final"
+    ]
+  },
+  "903": {
+    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
+    "queries": [
+      "Andrea Pirlo Juventus",
+      "Andrea Pirlo Italy",
+      "Andrea Pirlo 2014",
+      "Andrea Pirlo Euro 2012"
+    ]
+  },
+  "904": {
+    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
+    "queries": [
+      "Didier Drogba Chelsea",
+      "Didier Drogba Champions League Winner",
+      "Didier Drogba 11",
+      "Didier Drogba Ivory Coast"
+    ]
+  },
+  "905": {
+    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
+    "queries": [
+      "Luka Modric Croatia 2018",
+      "Luka Modrić Golden Ball 2018",
+      "Luka Modrić World Cup 2018",
+      "Luka Modrić Real Madrid"
+    ]
+  },
+  "p1029a": {
+    "want": "Messi in Barcelona's blue-and-claret shirt, number 10, around 2011-12 (the Mallorca hat-trick season), face clearly visible",
+    "queries": [
+      "Lionel Messi Barcelona 2011",
+      "Lionel Messi FC Barcelona 2012",
+      "Messi 10 Barcelona",
+      "Lionel Messi Camp Nou"
+    ]
+  },
+  "p1029b": {
+    "want": "Ronaldo in Real Madrid's white shirt, number 7, around 2016-17 (the Alavés hat-trick season), face clearly visible",
+    "queries": [
+      "Cristiano Ronaldo Real Madrid 2016",
+      "Cristiano Ronaldo Real Madrid 2017",
+      "Cristiano Ronaldo 7 Real Madrid",
+      "Cristiano Ronaldo Real Madrid celebration"
+    ]
+  },
+  "p1125a": {
+    "want": "George Best in Manchester United red, late 1960s or early 1970s (his famous number 7 if visible), face clearly visible; a Northern Ireland green shirt is the fallback",
+    "queries": [
+      "George Best Manchester United",
+      "George Best 1968",
+      "George Best 1970 Manchester United",
+      "George Best Northern Ireland"
+    ]
+  },
+  "p1125b": {
+    "want": "Diego Maradona in Napoli sky blue with the number 10, mid to late 1980s, face clearly visible; Argentina's blue-and-white 10 is the fallback",
+    "queries": [
+      "Diego Maradona Napoli",
+      "Maradona Napoli 1987",
+      "Maradona Argentina 1986",
+      "Diego Maradona 10 Argentina"
+    ]
+  },
+  "p1128a": {
+    "want": "Juan Román Riquelme in Boca Juniors blue and gold with the number 10, around 2000 to 2007, face clearly visible; Villarreal yellow or Argentina's 10 are the fallbacks",
+    "queries": [
+      "Juan Román Riquelme Boca Juniors",
+      "Riquelme Boca 2007",
+      "Riquelme Villarreal",
+      "Riquelme Argentina 2006"
+    ]
+  },
+  "p1128b": {
+    "want": "Ronaldinho in Barcelona's blaugrana number 10 shirt, 2004 to 2006, face clearly visible",
+    "queries": [
+      "Ronaldinho Barcelona",
+      "Ronaldinho FC Barcelona 2005",
+      "Ronaldinho Barcelona 10",
+      "Ronaldinho 2006 Barcelona Camp Nou"
     ]
   }
 }
