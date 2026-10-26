@@ -363,15 +363,6 @@
       "reel": "75966a425a8216dc6c8d71f4e992b3408a467b67"
     },
     {
-      "number": 28,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T05:40:33.854Z",
-      "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1847418196269332 (music: egmont)",
-      "story": "baggio-v-messi-16-november",
-      "reel": "bfdc5c3c4cfb3fc90770308c6258038aac5436a1"
-    },
-    {
       "number": 32,
       "network": "facebook",
       "status": "scheduled",
@@ -388,6 +379,15 @@
       "detail": "scheduled for 2026-11-21T02:00:00.000Z reel 1664450815342523 (music: coriolan)",
       "story": "bert-trautmann-broken-neck-final",
       "reel": "95854345c1a2e3a1a54fb9486e943cb5c9633296"
+    },
+    {
+      "number": 28,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T06:08:50.098Z",
+      "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1451291953626092 (music: egmont)",
+      "story": "baggio-v-messi-16-november",
+      "reel": "97ca68653ef159527d48043b16f1850a32e66ca7"
     }
   ]
 }
