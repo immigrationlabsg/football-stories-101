@@ -287,16 +287,6 @@
       "Celtic Ajax 1971"
     ]
   },
-  "040": {
-    "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley",
-    "queries": [
-      "Manchester United 1968 European Cup",
-      "Bobby Charlton 1968",
-      "George Best Manchester United",
-      "Manchester United Benfica 1968",
-      "Busby Babes"
-    ]
-  },
   "041": {
     "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
     "queries": [
@@ -323,6 +313,16 @@
       "Jamie Vardy celebrating",
       "Leicester City champions 2016",
       "Leicester City celebration King Power"
+    ]
+  },
+  "044": {
+    "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley",
+    "queries": [
+      "Manchester United 1968 European Cup",
+      "Bobby Charlton 1968",
+      "George Best Manchester United",
+      "Manchester United Benfica 1968",
+      "Busby Babes"
     ]
   },
   "p1029a": {
