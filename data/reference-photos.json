@@ -1,4 +1,50 @@
 {
+  "901": [
+    {
+      "commons": null,
+      "licence": "n/a",
+      "why": "Sample for the owner: 'Guess the legend' (Zlatan Ibrahimović's overhead kick v England, November 2012). Paint without a reference: a very tall striker in a yellow shirt with blue trim and blue shorts, seen from behind and slightly to the side, horizontal in mid-air performing an overhead bicycle kick, long dark hair tied back in a bun, at night in a modern enclosed stadium under bright floodlights. The ball loops high towards an empty goal far away while a goalkeeper in a dark kit is stranded well outside his area. Shirt with no number, no name, no badge, no sponsor and no lettering. His face turned away from us, not visible.",
+      "alt": "Watercolour painting of a tall striker in yellow, seen from behind, performing an overhead kick under floodlights as the ball loops towards an empty goal"
+    }
+  ],
+  "902": [
+    {
+      "commons": null,
+      "licence": "n/a",
+      "why": "Sample for the owner: the shared 'Guess the legend' mystery cover, the same for every quiz, giving no hint. Paint without a reference: a lone footballer seen from directly behind as a dark silhouette, walking up a stadium tunnel towards a blinding bright opening onto a floodlit pitch and a blurred crowd. Plain dark kit with no colours that suggest a club or country, short hair, average build. Shirts with no number, no name, no badge, no sponsor and no lettering. No face visible.",
+      "alt": "Watercolour painting of a footballer seen from behind as a silhouette, walking up a tunnel towards a floodlit pitch"
+    }
+  ],
+  "903": [
+    {
+      "commons": "File:Andrea Pirlo BGR-ITA 2012.jpg",
+      "licence": "CC BY 3.0",
+      "why": "Sample for the owner: 'Guess the legend' reveal. Andrea Pirlo before Bulgaria v Italy, September 2012, in Italy's blue shirt with the number 21: head and shoulders, his face, long hair and beard clearly visible.",
+      "kit": "Italy's blue 2012 Puma shirt with the white number 21 and the Italy crest",
+      "crop": "attention",
+      "alt": "Watercolour painting of Andrea Pirlo in Italy's blue number 21 shirt"
+    }
+  ],
+  "904": [
+    {
+      "commons": "File:Didier Drogba Champions League Winner medal.jpg",
+      "licence": "CC BY 2.0",
+      "why": "Sample for the owner: 'Guess the legend' reveal. Didier Drogba on the pitch after Chelsea won the 2012 Champions League final in Munich, wearing his winner's medal, smiling, in Chelsea's blue shirt.",
+      "kit": "Chelsea's royal blue 2011-12 adidas shirt with the Samsung sponsor",
+      "crop": "attention",
+      "alt": "Watercolour painting of Didier Drogba in Chelsea blue, smiling, with his Champions League winner's medal"
+    }
+  ],
+  "905": [
+    {
+      "commons": "File:Luka Modrić in 2018.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Sample for the owner: 'Guess the legend' reveal. Luka Modrić playing for Croatia at the 2018 World Cup, number 10, captain's armband, his face and shoulder-length hair clearly visible.",
+      "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
+      "crop": "attention",
+      "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
+    }
+  ],
   "001": [
     {
       "commons": "File:Ronaldo 2002 cropped.jpg",
@@ -194,19 +240,6 @@
       "why": "Jimmy Johnstone, one of the Lisbon Lions, 1971."
     }
   ],
-  "017": [
-    {
-      "commons": null,
-      "licence": "n/a",
-      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette.",
-      "alt": "Watercolour painting of a Cameroon striker in a green shirt and red shorts, seen from behind, leaping to head the ball under floodlights"
-    },
-    {
-      "commons": "File:Milla2008cropped.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Roger Milla in Cameroon red (2008), for his likeness only; the 1990 opening match has no free photo."
-    }
-  ],
   "018": [
     {
       "commons": "File:Ajax tegen Benfica 2-1, Schrijvers in duel met Eusebio, Bestanddeelnr 917-7453.jpg",
@@ -314,19 +347,6 @@
       "why": "The Treble parade, the three trophies on the open-top bus."
     }
   ],
-  "026": [
-    {
-      "commons": "File:Bert Trautmann's Neck Brace.jpg",
-      "licence": "CC BY 2.0",
-      "why": "The neck brace Trautmann wore after the 1956 final: the object the story turns on.",
-      "alt": "Watercolour painting of the leather neck brace worn by Bert Trautmann, beside the 1956 FA Cup final programme"
-    },
-    {
-      "commons": "File:Sculpture of Bert Trautmann.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "The sculpture of Bert Trautmann in goal."
-    }
-  ],
   "027": [
     {
       "commons": "File:Grande Torino 1948 49.jpg",
@@ -393,50 +413,30 @@
       "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
     }
   ],
-  "901": [
+  "032": [
     {
       "commons": null,
       "licence": "n/a",
-      "why": "Sample for the owner: 'Guess the legend' (Zlatan Ibrahimović's overhead kick v England, November 2012). Paint without a reference: a very tall striker in a yellow shirt with blue trim and blue shorts, seen from behind and slightly to the side, horizontal in mid-air performing an overhead bicycle kick, long dark hair tied back in a bun, at night in a modern enclosed stadium under bright floodlights. The ball loops high towards an empty goal far away while a goalkeeper in a dark kit is stranded well outside his area. Shirt with no number, no name, no badge, no sponsor and no lettering. His face turned away from us, not visible.",
-      "alt": "Watercolour painting of a tall striker in yellow, seen from behind, performing an overhead kick under floodlights as the ball loops towards an empty goal"
-    }
-  ],
-  "902": [
+      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette.",
+      "alt": "Watercolour painting of a Cameroon striker in a green shirt and red shorts, seen from behind, leaping to head the ball under floodlights"
+    },
     {
-      "commons": null,
-      "licence": "n/a",
-      "why": "Sample for the owner: the shared 'Guess the legend' mystery cover, the same for every quiz, giving no hint. Paint without a reference: a lone footballer seen from directly behind as a dark silhouette, walking up a stadium tunnel towards a blinding bright opening onto a floodlit pitch and a blurred crowd. Plain dark kit with no colours that suggest a club or country, short hair, average build. Shirts with no number, no name, no badge, no sponsor and no lettering. No face visible.",
-      "alt": "Watercolour painting of a footballer seen from behind as a silhouette, walking up a tunnel towards a floodlit pitch"
-    }
-  ],
-  "903": [
-    {
-      "commons": "File:Andrea Pirlo BGR-ITA 2012.jpg",
-      "licence": "CC BY 3.0",
-      "why": "Sample for the owner: 'Guess the legend' reveal. Andrea Pirlo before Bulgaria v Italy, September 2012, in Italy's blue shirt with the number 21: head and shoulders, his face, long hair and beard clearly visible.",
-      "kit": "Italy's blue 2012 Puma shirt with the white number 21 and the Italy crest",
-      "crop": "attention",
-      "alt": "Watercolour painting of Andrea Pirlo in Italy's blue number 21 shirt"
-    }
-  ],
-  "904": [
-    {
-      "commons": "File:Didier Drogba Champions League Winner medal.jpg",
-      "licence": "CC BY 2.0",
-      "why": "Sample for the owner: 'Guess the legend' reveal. Didier Drogba on the pitch after Chelsea won the 2012 Champions League final in Munich, wearing his winner's medal, smiling, in Chelsea's blue shirt.",
-      "kit": "Chelsea's royal blue 2011-12 adidas shirt with the Samsung sponsor",
-      "crop": "attention",
-      "alt": "Watercolour painting of Didier Drogba in Chelsea blue, smiling, with his Champions League winner's medal"
-    }
-  ],
-  "905": [
-    {
-      "commons": "File:Luka Modrić in 2018.jpg",
+      "commons": "File:Milla2008cropped.jpg",
       "licence": "CC BY-SA 3.0",
-      "why": "Sample for the owner: 'Guess the legend' reveal. Luka Modrić playing for Croatia at the 2018 World Cup, number 10, captain's armband, his face and shoulder-length hair clearly visible.",
-      "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
-      "crop": "attention",
-      "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
+      "why": "Roger Milla in Cameroon red (2008), for his likeness only; the 1990 opening match has no free photo."
+    }
+  ],
+  "033": [
+    {
+      "commons": "File:Bert Trautmann's Neck Brace.jpg",
+      "licence": "CC BY 2.0",
+      "why": "The neck brace Trautmann wore after the 1956 final: the object the story turns on.",
+      "alt": "Watercolour painting of the leather neck brace worn by Bert Trautmann, beside the 1956 FA Cup final programme"
+    },
+    {
+      "commons": "File:Sculpture of Bert Trautmann.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "The sculpture of Bert Trautmann in goal."
     }
   ]
 }

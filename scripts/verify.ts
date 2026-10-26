@@ -46,7 +46,8 @@ for (const s of stories) {
 // No story twice: a subject may return only as a marked follow-up with a different angle.
 const seen = new Map<string, number>();
 for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
-  const [subject, angle = ''] = s.data.title.split(' / ');
+  // A "Guess the legend" title starts with the series name; its subject is the player (the answer).
+  const subject = s.data.format === 'quiz' && s.data.answer ? s.data.answer : s.data.title.split(' / ')[0];
   const key = subject.replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase();
   const titleKey = s.data.title.trim().toLowerCase();
   if (stories.some((o) => o !== s && o.data.title.trim().toLowerCase() === titleKey)) errors.push(`${pad(s.data.number)}: the same title as another story`);
@@ -58,7 +59,7 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
 }
 // Reserved angles in the story bank: a returning subject must say "(follow-up of NNN)".
 const bank = fs.readFileSync(path.join(ROOT, 'docs/story-bank.md'), 'utf8');
-const subjects = new Map(stories.map((s) => [s.data.title.split(' / ')[0].replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase(), s.data.number]));
+const subjects = new Map(stories.map((s) => [(s.data.format === 'quiz' && s.data.answer ? s.data.answer : s.data.title.split(' / ')[0]).replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase(), s.data.number]));
 for (const m of bank.matchAll(/^\| (\d{3}) \| \w+ \| (.+?) \| reserved \|$/gm)) {
   const subject = m[2].split(/[:/]/)[0].replace(/\s*\(.*?\)\s*/g, '').replace(/'s .*$/, '').trim().toLowerCase();
   const hit = [...subjects.entries()].find(([k]) => k === subject || k.startsWith(subject + ' ') || subject.startsWith(k + ' '));
