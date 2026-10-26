@@ -1,8 +1,12 @@
-# 16 November: runner-up pairs
+# 16 November: runner-up pairs and parked material
 
-Clash check (26 Oct): 1 Nov is already Henry v Kaká, so option 2 (no Henry) is the better fallback; it uses Messi, who also appears on 29 Oct.
+Chosen (26 Oct): **Baggio v Messi** (Baggio's first Italy cap, 16 Nov 1988, v Messi's first Barcelona game, 16 Nov 2003). It replaces Henry v Baggio because Henry is already on 1 November (Henry v Kaká). Clash note: Messi is also one half of the 29 October story (Messi v Ronaldo); the Pirlo quiz (5 Nov) names Baggio as Pirlo's idol in one line, which does not repeat this angle.
 
-1. **Henry v Messi, "the run and the debut, a year and a day apart"**: Henry's solo goal against Spurs (16 Nov 2002; Premier League news 4114942, The Football Faithful) v Lionel Messi's Barcelona first-team debut, aged 16, in a friendly at Porto (16 Nov 2003). The Messi debut was **not checked** (search budget ran out). Link: they were later team-mates, and both scored in Real Madrid 2–6 Barcelona on 2 May 2009 (already confirmed in docs/fact-checks/020.md: ESPN match page, players.fcbarcelona.com, FourFourTwo). Uses Messi, so only if 29 Oct's Messi v Ronaldo does not crowd it.
-2. **Baggio v Messi, "two debuts on 16 November"**: Baggio's first Italy cap, 1–0 v the Netherlands (16 Nov 1988; 11v11, FIFA, TuttoMercatoWeb) v Messi's Barcelona debut at Porto (16 Nov 2003, not yet checked).
+## Parked (do not delete)
 
-Not researched (search budget ran out): the first FIFA Women's World Cup opened on 16 Nov 1991 (China v Norway in Guangzhou), a possible women's-football angle if a star moment from that match can be sourced.
+**Henry's solo goal against Spurs, 16 Nov 2002** (Arsenal 3–0 Tottenham at Highbury). Confirmed in the earlier version of this log: Henry picked up the ball in his own half, ran at the defence and finished with his left foot past Kasey Keller (Premier League news 4114942; The Football Faithful), then sprinted the length of the pitch and slid on his knees in front of the Tottenham fans (Premier League; Planet Football; HITC). Usable once Henry has not appeared for a few weeks; the old draft's backstory (Juventus 1999, the £11m fee, 228 goals, the 1998 shoot-out, the statue) was never confirmed and needs two sources per claim.
+
+## Runner-ups for this date
+
+1. **Henry v Messi, "the run and the debut, a year and a day apart"**: Henry's goal against Spurs (16 Nov 2002) v Messi's debut at Porto (16 Nov 2003, now confirmed, see fact-check.md). Henry clash with 1 Nov.
+2. **The first FIFA Women's World Cup opened on 16 Nov 1991** (China v Norway in Guangzhou): a possible women's-football angle if a star moment from that match can be sourced. Not researched.

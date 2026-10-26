@@ -493,6 +493,42 @@
       "Gianluigi Buffon Juventus"
     ]
   },
+  "p1116a": {
+    "want": "Roberto Baggio in Italy's blue shirt (ideally the number 10, 1990 to 1998, with his ponytail), face clearly visible; second choice Juventus black and white stripes (1990 to 1995). Avoid photos from after his playing career.",
+    "queries": [
+      "Roberto Baggio Italy",
+      "Roberto Baggio Nazionale",
+      "Roberto Baggio Juventus",
+      "Roberto Baggio 1994"
+    ]
+  },
+  "p1116b": {
+    "want": "A young Lionel Messi in Barcelona's blue and claret shirt, 2004 to 2006 if possible (he wore 30, then 19), face clearly visible; second choice Barcelona around 2007 to 2009. Not Argentina, PSG or Inter Miami: the story is his Barcelona debut. Check the 29 Oct story's photo (Jeroen Bennink, 2011) and choose a different frame if possible.",
+    "queries": [
+      "Lionel Messi Barcelona 2005",
+      "Lionel Messi 2006 Barcelona",
+      "Messi FC Barcelona 2004",
+      "Lionel Messi Barça young"
+    ]
+  },
+  "p1119a": {
+    "want": "Pelé in Santos's white shirt with the number 10, ideally around 1969, face clearly visible; second choice Brazil's yellow number 10 (1970). The Dutch National Archive (Nationaal Archief, Anefo) and Agência Brasil hold free photos of Pelé.",
+    "queries": [
+      "Pelé Santos",
+      "Pele Santos 1969",
+      "Pelé Nationaal Archief",
+      "Pele Brazil 1970"
+    ]
+  },
+  "p1119b": {
+    "want": "Cristiano Ronaldo in Portugal's red shirt with the number 7, 2013 to 2014, face clearly visible; second choice any Portugal red number 7 from 2012 to 2016. Not Real Madrid white: the story is about Portugal.",
+    "queries": [
+      "Cristiano Ronaldo Portugal 2014",
+      "Cristiano Ronaldo Portugal 2013",
+      "Ronaldo Portugal national team",
+      "Cristiano Ronaldo Euro 2012 Portugal"
+    ]
+  },
   "p1122a": {
     "want": "Jermain Defoe in Tottenham's white home shirt, ideally 2009 to 2010, face clearly visible; second choice England white. Check the shirt number on the photo against his Spurs number that season before painting.",
     "queries": [
