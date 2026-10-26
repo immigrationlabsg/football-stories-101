@@ -2,6 +2,16 @@
 
 Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles at the bottom.
 
+**For the next weekly run (noted 26 Oct 2026; delete this note once done):**
+- 042 (Maradona's four minutes against England, 1986) sits on 30 Nov, five days after 037 (Best v Maradona, which shows
+  Maradona with the 1986 World Cup). 044 (Munich to Wembley 1968) tells Best's 1968 final goal, also told in 037.
+  Give 30 Nov a new regular story with `npm run hand-over -- 42 ...` and the 1 Dec comparison and 2 Dec quiz to 043 and
+  044, so both move to 3 Dec or later.
+- 16 Nov (028) still needs its comparison: the Baggio v Messi draft in `design/drafts/otd-1116` is checked, but OpenAI
+  refused the painting twice. Use another 16 November pair, or paint the two players from other photos.
+- "Until 1995 only Europeans could win the Ballon d'Or" is told in 031 (19 Nov), 037 (25 Nov) and 038 (26 Nov). Avoid it
+  in new pieces before mid-December.
+
 | No. | Pillar | Story | Status |
 |---|---|---|---|
 | 001 | Players | Ronaldo (R9) / The World Cup he won on two rebuilt knees | scheduled |
@@ -41,13 +51,13 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 035 | Players | Guess the legend / Luka Modrić: a refugee hotel, a loan in Mostar and the end of Messi and Ronaldo's run | scheduled |
 | 036 | Moments | 93:20, 13 May 2012: Agüero and Manchester City's first title in 44 years (moved from 013) | scheduled |
 | 037 | Moments | On this day: Best v Maradona / Two farewells on 25 November, 15 years apart | scheduled |
-| 038 | Players | George Weah: from Monrovia to the Ballon d'Or (moved from 010) (moved from 034) (moved from 037) | scheduled |
+| 038 | Players | George Weah: from Monrovia to the Ballon d'Or (moved from 037) | scheduled |
 | 039 | Eras | Celtic's Lisbon Lions 1967: eleven men born within 30 miles of Parkhead (moved from 016) | scheduled |
 | 040 | Moments | On this day: Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt | scheduled |
-| 041 | Moments | Camp Nou, 26 May 1999: Manchester United's two goals in stoppage time (moved from 025) (moved from 035) | scheduled |
+| 041 | Moments | Camp Nou, 26 May 1999: Manchester United's two goals in stoppage time (moved from 035) | scheduled |
 | 042 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 022) | scheduled |
 | 043 | Clubs | Leicester City 2015–16: champions at 5,000 to 1 (moved from 007 on 25 Oct for the first "on this day" comparison) (moved from 031) | scheduled |
-| 044 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 019) (moved from 040) | scheduled |
+| 044 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 040) | scheduled |
 | 045 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming (follow-up of 012) | reserved |
 | 046 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
 | 047 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
@@ -56,7 +66,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 050 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
 | 051 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
 | 052 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
-| 053 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 019) | reserved |
+| 053 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 044) | reserved |
 | 054 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
 | 055 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
 | 056 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
@@ -76,7 +86,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 ## Rules for new angles
 - **Never repeat a story.** A subject may come back only with a new angle the earlier story did not cover, marked
   "(follow-up of NNN)" here and `followUpOf: NNN` in the story's front matter, and it may repeat at most a one-line
-  recap of the earlier story. Example: 042, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
+  recap of the earlier story. Example: 055, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
   People may appear in more than one story (Beckham in the Class of 92 and in his own story) as long as each story
   tells a different event; never two stories about the same match or tournament within a week.
 - **Spread the world through stars fans know:** African, Asian and North American stories are told through players

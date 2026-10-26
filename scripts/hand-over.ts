@@ -95,7 +95,9 @@ const oldRow = row(from3);
 // The title already starts with the series for quizzes ("Guess the legend / ..."); say the kind only when it does not.
 const kind = parsed.data.format === 'quiz' ? 'Guess the legend' : 'On this day';
 const label = parsed.data.title.toLowerCase().startsWith(kind.toLowerCase()) ? parsed.data.title : `${kind}: ${parsed.data.title}`;
-const movedRow = oldRow >= 0 ? lines[oldRow].replace(`| ${from3} |`, `| ${to3} |`).replace(/ \| (scheduled|drafted) \|$/, ` (moved from ${from3}) | scheduled |`) : null;
+const movedRow = oldRow >= 0 ? lines[oldRow].replace(`| ${from3} |`, `| ${to3} |`).replace(/ \(moved from \d{3}\)/g, '').replace(/ \| (scheduled|drafted) \|$/, ` (moved from ${from3}) | scheduled |`) : null;
+// Follow-ups that pointed at the old story's number now point at its new one.
+for (let i = 0; i < lines.length; i++) lines[i] = lines[i].replace(`(follow-up of ${from3})`, `(follow-up of ${to3})`);
 if (oldRow >= 0) lines[oldRow] = `| ${from3} | ${parsed.data.pillar[0].toUpperCase()}${parsed.data.pillar.slice(1)} | ${label} | scheduled |`;
 for (let i = 0; i < lines.length; i++) {
   const m = /^\| (\d{3}) \|(.*\| reserved \|)$/.exec(lines[i]);

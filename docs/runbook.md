@@ -387,8 +387,9 @@ public-domain music clips, rotating day by day, built with the website up to 28 
 
 - **replace** (one story): like switch, and also re-uploads a scheduled Reel whose video changed after it was scheduled
   (a repainted picture, corrected cards) or a "Guess the legend" Reel without its mystery-card cover. Each Facebook record
-  keeps the fingerprint of the video it sent; replace compares it with the website's. `npm run verify` names the story
-  when one needs it.
+  keeps the fingerprint of the video it sent; replace compares it with the website's. `npm run verify` names a quiz
+  Reel that lacks its cover; after repainting a picture or changing a card of a story Facebook already has, run
+  replace for that story yourself (verify cannot see the website's videos).
 - **caption** (from, to): brings the text of Facebook Reels already scheduled up to date (used when the AI disclosure
   line was added on 25 Oct 2026). It edits the text at Meta; nothing is re-uploaded. It refuses a Reel whose record
   names another story (or none): run switch or replace for that slot instead.
