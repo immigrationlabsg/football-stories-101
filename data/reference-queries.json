@@ -274,16 +274,6 @@
       "1956 FA Cup Final"
     ]
   },
-  "035": {
-    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
-    "queries": [
-      "1999 UEFA Champions League Final",
-      "Manchester United 1999 Champions League",
-      "Solskjaer 1999",
-      "Manchester United treble 1999",
-      "Teddy Sheringham 1999"
-    ]
-  },
   "036": {
     "want": "Agüero's 93:20 goal against QPR, City celebrating the 2012 title",
     "queries": [
@@ -323,6 +313,16 @@
       "George Best Manchester United",
       "Manchester United Benfica 1968",
       "Busby Babes"
+    ]
+  },
+  "041": {
+    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
+    "queries": [
+      "1999 UEFA Champions League Final",
+      "Manchester United 1999 Champions League",
+      "Solskjaer 1999",
+      "Manchester United treble 1999",
+      "Teddy Sheringham 1999"
     ]
   },
   "p1029a": {

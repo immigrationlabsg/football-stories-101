@@ -449,15 +449,12 @@
   ],
   "035": [
     {
-      "commons": "File:1999 UEFA Champions League celebration (edited).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999.",
-      "alt": "Watercolour painting of Manchester United's players in red celebrating behind the Champions League winners banner at Camp Nou in 1999"
-    },
-    {
-      "commons": "File:Manchester United Treble celebration.jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "The Treble parade, the three trophies on the open-top bus."
+      "commons": "File:Luka Modrić in 2018.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "'Guess the legend' reveal. Luka Modrić playing for Croatia at the 2018 World Cup, number 10, captain's armband, his face and shoulder-length hair clearly visible.",
+      "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
+      "crop": "attention",
+      "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
     }
   ],
   "036": [
@@ -523,6 +520,19 @@
       "commons": "File:Bobby charlton elgrafico.JPG",
       "licence": "",
       "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+    }
+  ],
+  "041": [
+    {
+      "commons": "File:1999 UEFA Champions League celebration (edited).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999.",
+      "alt": "Watercolour painting of Manchester United's players in red celebrating behind the Champions League winners banner at Camp Nou in 1999"
+    },
+    {
+      "commons": "File:Manchester United Treble celebration.jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "The Treble parade, the three trophies on the open-top bus."
     }
   ],
   "901": [
