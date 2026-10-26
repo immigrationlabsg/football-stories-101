@@ -210,14 +210,6 @@
       "story": "celtic-lisbon-lions-1967"
     },
     {
-      "number": 17,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:27:39.062Z",
-      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1363257333546275 (music: coriolan)",
-      "story": "cameroon-argentina-italia-90"
-    },
-    {
       "number": 18,
       "network": "facebook",
       "status": "scheduled",
@@ -322,14 +314,6 @@
       "story": "george-weah-monrovia-ballon-dor"
     },
     {
-      "number": 26,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-25T13:06:19.494Z",
-      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1759465226193256 (music: mozart40)",
-      "story": "bert-trautmann-broken-neck-final"
-    },
-    {
       "number": 7,
       "network": "facebook",
       "status": "scheduled",
@@ -360,6 +344,22 @@
       "at": "2026-10-26T00:01:30.100Z",
       "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1797487782376813 (music: hebrides)",
       "story": "leicester-city-5000-to-1"
+    },
+    {
+      "number": 17,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T03:06:40.055Z",
+      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1150638750634882 (music: coriolan)",
+      "story": "guess-the-legend-andrea-pirlo"
+    },
+    {
+      "number": 26,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T03:08:08.955Z",
+      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1112252088455326 (music: mozart40)",
+      "story": "guess-the-legend-didier-drogba"
     }
   ]
 }
