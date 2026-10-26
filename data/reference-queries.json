@@ -180,16 +180,6 @@
       "Torino calcio 1948"
     ]
   },
-  "028": {
-    "want": "Arsenal Invincibles 2003-04: Henry scoring or celebrating, team with the trophy",
-    "queries": [
-      "Arsenal 2004 Premier League trophy",
-      "Thierry Henry Arsenal celebrating",
-      "Arsenal Invincibles",
-      "Thierry Henry goal Arsenal",
-      "Arsenal Highbury 2004"
-    ]
-  },
   "029": {
     "want": "Greece Euro 2004: Charisteas header, team celebrating with trophy",
     "queries": [
@@ -296,6 +286,16 @@
       "Maradona 1986",
       "Maradona Azteca",
       "Maradona goal of the century"
+    ]
+  },
+  "045": {
+    "want": "Arsenal Invincibles 2003-04: Henry scoring or celebrating, team with the trophy",
+    "queries": [
+      "Arsenal 2004 Premier League trophy",
+      "Thierry Henry Arsenal celebrating",
+      "Arsenal Invincibles",
+      "Thierry Henry goal Arsenal",
+      "Arsenal Highbury 2004"
     ]
   },
   "903": {
@@ -491,36 +491,6 @@
       "Gianluigi Buffon Italy 2017",
       "Gianluigi Buffon Italy 2016",
       "Gianluigi Buffon Juventus"
-    ]
-  },
-  "p1116a": {
-    "want": "Roberto Baggio in Italy's blue shirt (ideally the number 10, 1990 to 1998, with his ponytail), face clearly visible; second choice Juventus black and white stripes (1990 to 1995). Avoid photos from after his playing career.",
-    "queries": [
-      "Roberto Baggio Italy",
-      "Roberto Baggio Nazionale",
-      "Roberto Baggio Juventus",
-      "Roberto Baggio 1994"
-    ]
-  },
-  "p1116b": {
-    "want": "A young Lionel Messi in Barcelona's blue and claret shirt, 2004 to 2006 if possible (he wore 30, then 19), face clearly visible; second choice Barcelona around 2007 to 2009. Not Argentina, PSG or Inter Miami: the story is his Barcelona debut. Check the 29 Oct story's photo (Jeroen Bennink, 2011) and choose a different frame if possible.",
-    "queries": [
-      "Lionel Messi Barcelona 2005",
-      "Lionel Messi 2006 Barcelona",
-      "Messi FC Barcelona 2004",
-      "Lionel Messi Barça young"
-    ]
-  },
-  "p1116c": {
-    "want": "Roberto Baggio as a player (1988 to 2004), face clearly visible: Italy, Juventus, Milan, Bologna, Inter or Brescia",
-    "queries": [
-      "Roberto Baggio Brescia",
-      "Roberto Baggio Bologna",
-      "Roberto Baggio Milan 1995",
-      "Roberto Baggio Inter",
-      "Roberto Baggio 1998",
-      "Roberto Baggio Juventus 1993",
-      "Roberto Baggio World Cup"
     ]
   },
   "p1119a": {

@@ -6,6 +6,5 @@ written but not yet handed a slot. Each folder has `story.mdx` (number 0 until `
 
 | Folder | Date | Piece | State |
 |---|---|---|---|
-| otd-1116 | 16 Nov | Baggio v Messi | Text checked; the painting was refused twice by OpenAI's safety filter: needs another picture approach |
 
 Delete a folder once its piece is handed over.

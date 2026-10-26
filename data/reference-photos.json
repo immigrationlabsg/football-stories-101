@@ -358,15 +358,18 @@
   ],
   "028": [
     {
-      "commons": "File:Trophy presentation Highbury 2004.JPG",
-      "licence": "CC BY-SA 2.5",
-      "why": "The trophy presentation at Highbury, 15 May 2004, the day the Invincibles finished unbeaten. Arsenal's players in red and white celebrate holding up the gold Premier League trophy: a gold cup with a crown on top and ribbons, never a silver European Cup. The sponsor O2 on the shirts is kept as in the photo. No other trophy.",
-      "alt": "Watercolour painting of Arsenal's players in red and white celebrating with the gold Premier League trophy at Highbury in 2004"
+      "commons": "File:Roberto Baggio - Italia '90.jpg",
+      "licence": "Public domain",
+      "pair": true,
+      "why": "16 Nov comparison, Baggio v Messi. Composite approved by the owner on 26 Oct 2026: Baggio painted from this photo (design key t1116a); Messi taken from the 29 Oct painting (key 010, photo below), sponsor removed.",
+      "kit": "Italy's blue Diadora shirt of 1990 with the Italy crest",
+      "alt": "Watercolour painting split in two: Roberto Baggio in Italy blue and Lionel Messi in Barcelona's blue and claret, running with the ball"
     },
     {
-      "commons": "File:Thierry Henry’s iconic knee slide.jpg",
-      "licence": "CC0",
-      "why": "Thierry Henry's knee-slide celebration in Arsenal red and white."
+      "commons": "File:Lionel Messi, 2011.jpg",
+      "licence": "CC BY 2.0",
+      "why": "Lionel Messi, Barcelona v Santos, 2011",
+      "kit": "Barcelona's blue-and-claret 2003-04 Nike home shirt with no shirt sponsor (in place of the photo's 2011-12 shirt)"
     }
   ],
   "029": [
@@ -583,6 +586,19 @@
       "why": "Maradona sliding the Goal of the Century past Shilton."
     }
   ],
+  "045": [
+    {
+      "commons": "File:Trophy presentation Highbury 2004.JPG",
+      "licence": "CC BY-SA 2.5",
+      "why": "The trophy presentation at Highbury, 15 May 2004, the day the Invincibles finished unbeaten. Arsenal's players in red and white celebrate holding up the gold Premier League trophy: a gold cup with a crown on top and ribbons, never a silver European Cup. The sponsor O2 on the shirts is kept as in the photo. No other trophy.",
+      "alt": "Watercolour painting of Arsenal's players in red and white celebrating with the gold Premier League trophy at Highbury in 2004"
+    },
+    {
+      "commons": "File:Thierry Henry’s iconic knee slide.jpg",
+      "licence": "CC0",
+      "why": "Thierry Henry's knee-slide celebration in Arsenal red and white."
+    }
+  ],
   "901": [
     {
       "commons": null,
@@ -627,31 +643,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "c1116": [
-    {
-      "commons": "File:Roberto Baggio - Italia '90.jpg",
-      "licence": "Public domain",
-      "pair": true,
-      "why": "16 Nov comparison, Baggio v Messi: left, Roberto Baggio, head and shoulders, in Italy's blue shirt with the Italy crest, curly dark hair, as in his photo; right, Lionel Messi running with the ball as in his photo, in Barcelona's blue-and-claret 2003-04 Nike home shirt with NO shirt sponsor on the front (his photo shows the 2011-12 shirt with Qatar Foundation: leave the front plain apart from the Nike logo and the Barcelona crest), no shirt number. Everything else about each player (face, hair, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
-      "kit": "Italy's blue Diadora shirt of 1990 with the Italy crest",
-      "alt": "Watercolour painting split in two: Roberto Baggio in Italy blue and Lionel Messi in Barcelona's blue and claret"
-    },
-    {
-      "commons": "File:Lionel Messi, 2011.jpg",
-      "licence": "CC BY 2.0",
-      "why": "Lionel Messi, Barcelona v Santos, 2011",
-      "kit": "Barcelona's blue-and-claret 2003-04 Nike home shirt with no shirt sponsor (in place of the photo's 2011-12 shirt)"
-    }
-  ],
-  "t1116a": [
-    {
-      "commons": "File:Roberto Baggio - Italia '90.jpg",
-      "licence": "Public domain",
-      "why": "Roberto Baggio, head and shoulders, in Italy's blue shirt with the Italy crest, curly dark hair, as in his photo. Background: a blurred stadium crowd.",
-      "kit": "Italy's blue Diadora shirt of 1990 with the Italy crest",
-      "alt": "Watercolour painting of Roberto Baggio in Italy blue"
     }
   ]
 }
