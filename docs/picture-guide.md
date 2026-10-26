@@ -71,7 +71,12 @@ point in its report. The verifier repeats the check.
    every card. No face, hand holding a trophy, shirt number or crest is cut by an edge. (`npm run paint` places the whole
    photo lower in the square to leave headroom; quiz reveals crop from the bottom, never the top.)
 3. **Real kit.** The club or national shirt of the moment, his own number, crest, kit maker's logo and sponsor as in
-   the photo. Period-correct: no modern kit on a 1990s moment, no Champions League ball in a friendly.
+   the photo. Period-correct: the shirt of the moment's season (sponsor, maker, crest), no modern kit on a 1990s
+   moment, no Champions League ball in a friendly. When no free photo from that season shows his face clearly, paint
+   from the clearest photo of him in the same club's (or nation's) shirt and name the season's kit in the reference
+   entry's `kit` and `why` (e.g. "the sponsor reads Fly Emirates, not bwin"); then check the painted sponsor and
+   number letter by letter (29 Oct 2026: Ronaldo's 2010 photo repainted in the 2016-17 shirt). Never trade likeness
+   for the kit: a small or turned-away face is worse than an older photo repainted in the right season's shirt.
 4. **Moments make sense.** People face the right way (a goalkeeper faces the penalty taker), the ball and goal are where
    they should be, the crowd matches the occasion. If a moment cannot be painted correctly from a photo, show the
    player instead of inventing the scene.
