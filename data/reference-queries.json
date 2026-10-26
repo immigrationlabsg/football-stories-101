@@ -344,12 +344,15 @@
     ]
   },
   "p1125a": {
-    "want": "George Best in Manchester United red, late 1960s or early 1970s (his famous number 7 if visible), face clearly visible; a Northern Ireland green shirt is the fallback",
+    "want": "George Best playing or posing in a football kit (Manchester United red, Northern Ireland green, or a club he played for later), face clearly visible; photos from the Dutch Nationaal Archief / Anefo are free",
     "queries": [
-      "George Best Manchester United",
-      "George Best 1968",
-      "George Best 1970 Manchester United",
-      "George Best Northern Ireland"
+      "George Best Anefo",
+      "George Best Nationaal Archief",
+      "George Best 1966",
+      "George Best 1969",
+      "George Best footballer",
+      "George Best Fulham",
+      "George Best 1976"
     ]
   },
   "p1125b": {
