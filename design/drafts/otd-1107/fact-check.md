@@ -42,3 +42,5 @@ Cut and changed (second pass, 26 Oct):
 - Already cut in the first pass: Celtic's 125th anniversary the day before (and close to a founding story); the size of the upset; Liverpool's run of three league wins before the game.
 
 Clash check: Messi appears in one sentence only (he is half of the 29 October comparison, but this story tells a different match). No existing story covers either match.
+
+Picture (26 Oct): Torres from Kevin Walsh's photo of Liverpool v Blackpool, 3 October 2010 (CC BY 2.0), in the season's home shirt; Tony Watt from a photo at Celtic Park, 21 April 2013 (CC BY 2.0, Graham), in which he wears a green top, repainted in Celtic's 2012-13 hooped home shirt with Tennent's per the picture guide's period rule.
