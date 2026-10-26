@@ -17,6 +17,8 @@ A Stop hook (`.claude/settings.json`) runs `npm run verify` at the end of every 
 GitHub runs the same check every evening (workflow **Verify**) and emails the owner if it fails.
 
 ## Never
+- Publish a painting of a named player that was not painted from a real photo of him, or any picture that fails the
+  "Picture standard" in `docs/picture-guide.md` (look at the painting and the cards at full size before scheduling).
 - Put a key or token in chat, a file or a commit; secrets live only in GitHub repository secrets.
 - Turn the Meta apps to Live, or link the website on social posts.
 - Shorten a story by cutting facts silently, or add a fact without a fact-check entry.

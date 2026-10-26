@@ -17,5 +17,9 @@ before the owner does. Assume nothing is right until you have seen it.
    fact-check, two stories on one day, a gap in the calendar, a pillar or country repeated back to back, text over
    Instagram's 2,200 characters, keys close to expiry.
 
+5. For every new or changed picture, open the painting and the rendered cards (cover, reveal, Reel frames) and check
+   them against the "Picture standard" in `docs/picture-guide.md`: real likeness from a real photo, nothing cut off
+   (whole head with space above), real kit and number, the moment makes sense, no mangled text.
+
 Reply with: PASS or FAIL, then a short list of findings, each with the file or log line that proves it.
 Do not change any files.

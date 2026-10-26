@@ -59,6 +59,27 @@ Every pick shows the moment the story is about: the goal, the final, the trophy,
 - 017, 021 and 023: there is no free photo of the match. The first entry in `data/reference-photos.json` describes the scene to ask for.
 - 001: Ronaldo already has its painting.
 
+## Picture standard: check every painting and card against this before anything is scheduled
+
+The owner checks every picture on a phone. A picture is acceptable only if all of these are true; an agent must open
+the painting AND the rendered cards (cover, reveal, every Reel card that shows the picture) at full size and tick each
+point in its report. The verifier repeats the check.
+
+1. **Real likeness.** Every named player is painted from a real, free Commons photo of him (rule below). Face, skin tone,
+   hair and build match the photo. If he does not look like himself at first glance, repaint or pick another photo.
+2. **Nothing cut off.** The whole head and hair are inside the frame with clear space above, in the painting and on
+   every card. No face, hand holding a trophy, shirt number or crest is cut by an edge. (`npm run paint` places the whole
+   photo lower in the square to leave headroom; quiz reveals crop from the bottom, never the top.)
+3. **Real kit.** The club or national shirt of the moment, his own number, crest, kit maker's logo and sponsor as in
+   the photo. Period-correct: no modern kit on a 1990s moment, no Champions League ball in a friendly.
+4. **Moments make sense.** People face the right way (a goalkeeper faces the penalty taker), the ball and goal are where
+   they should be, the crowd matches the occasion. If a moment cannot be painted correctly from a photo, show the
+   player instead of inventing the scene.
+5. **No mangled text.** Numbers, crests and sponsor names are legible and correct; no invented letters.
+6. **Comparisons:** both players come from real photos and both are recognisable.
+7. **Anonymous scenes only without a photo.** A painting made without a photo may show only anonymous figures (a
+   tunnel, a crowd, a player from behind in a plain kit) and must never be presented as a named player.
+
 ## Real players always come from a real photo (owner, 25 October 2026)
 
 - **Any painting that shows a named player is painted from a free Commons photo of that player**, never from a written

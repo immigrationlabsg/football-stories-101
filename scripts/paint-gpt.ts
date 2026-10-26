@@ -18,7 +18,7 @@ import sharp from 'sharp';
 import { ROOT } from './lib/stories';
 import { api, free, image, strip } from './lib/commons';
 
-type Ref = { commons: string | null; why: string; kit?: string; crop?: string };
+type Ref = { commons: string | null; why: string; kit?: string; crop?: string; fit?: 'pad' | 'cover' };
 const refs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const KEY = process.env.OPENAI_API_KEY;
 // gpt-image-1 was shut down by OpenAI on 23 Oct 2026; its listed replacement is the GPT Image 2.5 pair (Sunburst: precise).
@@ -40,7 +40,20 @@ const wording = (kit?: string) =>
   (kit ? ` (${kit})` : '') +
   ', and keep every crest, logo, stripe, shirt number and lettering exactly as in the photo. ' +
   'Keep the composition, pose, faces and likenesses exactly as photographed: each person\'s face, skin tone, hair and build must stay ' +
-  'true to the photo, so the player is instantly recognisable. Do not add text, a signature or a frame.';
+  'true to the photo, so the player is instantly recognisable. Show the whole head and hair inside the frame with clear space ' +
+  'above it; never crop the top of a head. Do not add text, a signature or a frame.';
+
+async function padded(source: string): Promise<Buffer> {
+  const S = 1024;
+  const TOP = 130; // headroom above the photo
+  const back = await sharp(source).rotate().resize(S, S, { fit: 'cover' }).blur(40).modulate({ brightness: 0.85 }).toBuffer();
+  const front = await sharp(source).rotate().resize(S, S - TOP, { fit: 'inside' }).toBuffer();
+  const m = await sharp(front).metadata();
+  return sharp(back)
+    .composite([{ input: front, left: Math.round((S - (m.width ?? S)) / 2), top: S - (m.height ?? S - TOP) }])
+    .jpeg({ quality: 92 })
+    .toBuffer();
+}
 
 for (const n of stories) {
   const ref = refs[n]?.[0];
@@ -72,8 +85,13 @@ for (const n of stories) {
       await sharp(await image(ii.thumburl ?? ii.url)).rotate().resize(1600, 1600, { fit: 'inside' }).jpeg({ quality: 88 }).toFile(source);
       console.log(`${n}: reference ${ref.commons} (${lic}) downloaded`);
     }
-    const cropped = await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: ref.crop ?? sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer();
-    form.append('image[]', new Blob([cropped], { type: 'image/jpeg' }), `${n}.jpg`);
+    // The whole photo goes in, lower in the square, over a blurred copy of itself, so the head always has room above it
+    // (owner, 26 Oct 2026: Pirlo's head was cut off). "fit": "cover" in data/reference-photos.json crops to fill instead.
+    const cropped =
+      ref.fit === 'cover'
+        ? await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: ref.crop ?? sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer()
+        : await padded(source);
+    form.append('image[]', new Blob([new Uint8Array(cropped)], { type: 'image/jpeg' }), `${n}.jpg`);
     form.append('image[]', style, 'style.jpg');
     prompt =
       `Repaint the first image as ${wording(ref.kit)} The second image is the style reference: match its colour saturation, level of detail, ` +
