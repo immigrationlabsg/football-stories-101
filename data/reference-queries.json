@@ -419,6 +419,16 @@
       "David Beckham England"
     ]
   },
+  "p1104z": {
+    "want": "Michael Owen as a player, face clearly visible: Liverpool red around 2001, England white, Real Madrid, Newcastle or Manchester United",
+    "queries": [
+      "Michael Owen footballer",
+      "Michael Owen Real Madrid",
+      "Michael Owen Newcastle United",
+      "Michael Owen Manchester United 2010",
+      "Michael Owen England 2004"
+    ]
+  },
   "p1107a": {
     "want": "Torres in Liverpool red with his No 9, 2008 to 2010, face clearly visible; failing that, Spain red",
     "queries": [
@@ -453,6 +463,16 @@
       "Mohamed Salah Liverpool 2019",
       "Salah 11 Liverpool",
       "Mohamed Salah 2018"
+    ]
+  },
+  "p1110c": {
+    "want": "Robin van Persie with Manchester United (number 20, 2012-15) or the Netherlands around 2013-14, face clearly visible",
+    "queries": [
+      "Robin van Persie Netherlands 2014",
+      "Van Persie World Cup 2014",
+      "Robin van Persie 2014",
+      "Van Persie Manchester United 2013",
+      "Robin van Persie Old Trafford"
     ]
   },
   "p1113a": {
