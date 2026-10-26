@@ -148,7 +148,7 @@ for (const story of stories) {
     console.log(`${n} ${story.data.slug}: ${widths.length} sizes, ${cards.length} carousel cards`);
   }
   // The share card (og) and the Facebook picture have their own key: framing them differently re-renders only these two.
-  const pair = / v /.test(story.data.title.split(' / ')[0]);
+  const pair = story.data.series === 'On this day' && / v /.test(story.data.title.split(' / ')[0]);
   const share = hashOf(hash, pair ? SHARE_FRAMING : '');
   if (force || previous[n]?.share !== share || !fs.existsSync(og) || !fs.existsSync(fb)) {
     fs.writeFileSync(og, await renderOg(story.data, pair ? await wholeFor(hero, 500, 630) : hero));

@@ -63,14 +63,17 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
 {
   const plain = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\(.*?\)/g, '').trim().toLowerCase()
-      .replace(/\u00e6/g, 'ae').replace(/\u00f8/g, 'o').replace(/\u00df/g, 'ss').replace(/\u0111/g, 'd').replace(/\u0142/g, 'l');
+      .replace(/\u00e6/g, 'ae').replace(/\u00f8/g, 'o').replace(/\u00df/g, 'ss').replace(/[\u0111\u00f0]/g, 'd').replace(/\u00fe/g, 'th').replace(/\u0142/g, 'l');
+  // A name as the players list spells it: an exact name first ("Ronaldo (R9)" for "Ronaldo"), then a surname
+  // ("Cristiano Ronaldo" for "Ronaldo").
+  const player = (s: (typeof live)[number], n: string) =>
+    s.data.players.find((x) => plain(x) === plain(n)) ?? s.data.players.find((x) => plain(x).endsWith(` ${plain(n)}`));
   const featured = (s: (typeof live)[number]): string[] => {
-    if (s.data.format === 'quiz' && s.data.answer) return [plain(s.data.answer)];
+    if (s.data.format === 'quiz' && s.data.answer) return [plain(player(s, s.data.answer) ?? s.data.answer)];
     const subject = s.data.title.split(' / ')[0];
-    if (/ v /.test(subject)) {
-      // An exact name first ("Ronaldo (R9)" for "Ronaldo"), then a surname ("Cristiano Ronaldo" for "Ronaldo").
+    if (s.data.series === 'On this day' && / v /.test(subject)) {
       return subject.split(' v ').map((n) => {
-        const p = s.data.players.find((x) => plain(x) === plain(n)) ?? s.data.players.find((x) => plain(x).endsWith(` ${plain(n)}`));
+        const p = player(s, n);
         if (!p) errors.push(`${pad(s.data.number)} names "${n.trim()}" in its title but no player in its players list matches; add his full name to players`);
         return plain(p ?? n);
       });

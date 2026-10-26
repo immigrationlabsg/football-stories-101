@@ -12,8 +12,8 @@ what the weekly run does.
    to football stars, never foundings, meetings or rule changes), build at least half around globally famous players or teams,
    tell African, Asian and North American stories only through players with a European or world profile,
    stick to documented events, and never repeat a story (a subject returns only with a new angle, marked as a follow-up); never feature
-   the same legend in two pieces less than seven days apart (seven days apart is fine) unless data/schedule.json lists a
-   special week for him (owner, 26 Oct 2026).
+   the same legend in two pieces less than seven days apart (seven days apart is fine; a passing mention is not featuring) unless
+   data/schedule.json lists a special week for him (owner, 26 Oct 2026).
    Keep at least 20 reserved angles ahead.
 3. Draft and fact-check each story exactly as the brief says, with web research, two sources per claim,
    verified quotes only, the living-persons rule, and a fact-check log in `docs/fact-checks/NNN.md`.

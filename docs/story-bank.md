@@ -2,7 +2,8 @@
 
 Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles at the bottom.
 
-**For the next weekly run (noted 26 Oct 2026; delete this note once done):**
+**For the next weekly run (noted 26 Oct 2026; delete this note once done). Do both before 4 Nov: 043 enters Facebook's
+27-day window on 4 Nov and 044 on 5 Nov, and after that each hand-over also needs a Reels switch.**
 - 043 (Munich to Wembley, 1 Dec) tells Best's 1968 final goal, also told in 037 (25 Nov). 1 Dec is an "on this day" day:
   give it the comparison with `npm run hand-over -- 43 ...`, so 043 moves to the end of the queue.
 - 044 (Maradona, Mexico 1986, 2 Dec) sits on a "Guess the legend" day: give the slot a quiz with `npm run hand-over -- 44 ...`
@@ -89,7 +90,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
   `data/schedule.json` "special_weeks" (by full name or surname). `npm run verify` reports a clash as an error.
 - **Never repeat a story.** A subject may come back only with a new angle the earlier story did not cover, marked
   "(follow-up of NNN)" here and `followUpOf: NNN` in the story's front matter, and it may repeat at most a one-line
-  recap of the earlier story. Example: 056, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
+  recap of the earlier story. Example: the reserved angle on Ronaldo's second career follows 001 (the knees and the 2002 World Cup).
   People may appear in more than one story (Beckham in the Class of 92 and in his own story) as long as each story
   tells a different event; never two stories about the same match or tournament within a week.
 - **Spread the world through stars fans know:** African, Asian and North American stories are told through players

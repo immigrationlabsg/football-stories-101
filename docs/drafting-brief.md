@@ -24,7 +24,7 @@ three digits). Copy the front matter shape from
 - `draft: true` for every new draft (never sent, never published until switched)
 - tags: `players`, `clubs`, `countries`, `competitions`, `decades` ("1950s"), `themes`. List the story's main subject first in
   `players`: `npm run verify` treats him as featured for the one-legend-per-week rule (no featured player in two pieces less
-  than seven days apart; see docs/story-bank.md).
+  than seven days apart; seven days apart is fine; a passing mention is not featuring; see docs/story-bank.md).
 - `hero.src`: `/images/stories/NNN-short-name.jpg` (the file does not exist yet; it is painted automatically)
 - `hero.alt`: describes the illustration as it will look (a scene, not a named person's face)
 - `hero.credit`: `Illustration: Football Stories 101`

@@ -41,6 +41,9 @@ parsed.data.date = old.data.date;
 const checked = storySchema.safeParse(parsed.data);
 if (!checked.success) throw new Error(`${newFile}: ${checked.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
 if (stories.some((s) => s.data.slug === parsed.data.slug)) throw new Error(`a story with the slug ${parsed.data.slug} already exists`);
+// A follow-up must air after the story it follows; moving that story to the end of the queue would reverse them.
+const follower = stories.find((s) => s.data.followUpOf === slot);
+if (follower) throw new Error(`${pad3(follower.data.number)} follows up ${pad3(slot)}, so ${pad3(slot)} cannot move to the end of the queue; hand over another slot`);
 
 // Where the old story goes: the next free number, the day after the last scheduled story, at that day's slot time.
 const live = stories.filter((s) => !s.data.draft).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
@@ -77,13 +80,6 @@ for (const f of DATA_FILES) {
     delete data[from3];
   }
   fs.writeFileSync(file, JSON.stringify(Object.fromEntries(Object.entries(data).sort(([a], [b]) => a.localeCompare(b))), null, 2) + '\n');
-}
-// Stories that follow up the moved one now point at its new number (the new story in the slot is a different subject).
-for (const f of fs.readdirSync(STORIES_DIR).filter((f) => f.endsWith('.mdx'))) {
-  const p = path.join(STORIES_DIR, f);
-  const t = fs.readFileSync(p, 'utf8');
-  const u = t.replace(new RegExp(`^followUpOf: 0*${slot}$`, 'm'), `followUpOf: ${to}`);
-  if (u !== t) fs.writeFileSync(p, u);
 }
 
 // 2. Install the new story in the slot (number and date are the slot's, whatever the file says; checked before step 1).
