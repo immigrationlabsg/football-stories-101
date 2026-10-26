@@ -1,6 +1,0 @@
-# 1 November: runner-up pairs
-
-1. **Henry v Cristiano Ronaldo, the same Saturday, 1 November 2003** (the brief's fallback if Henry v Kaká cannot be finished): Henry's two goals in Leeds 1–4 Arsenal are checked (arsenal.com "Invincibles week: lead maintained at Leeds"; Dawn, dawn.com/news/122875; The Daily Star, 3 Nov 2003). Ronaldo's first Manchester United goal, a free kick against Portsmouth, **was not re-checked here** (the caller's leads: manutd.com; ESPN's Shaka Hislop piece). It would put Ronaldo in two comparisons running (29 Oct is Messi v Ronaldo).
-2. **Henry or Kaká v Messi's 200th Barcelona goal, 1 November 2011** (a hat-trick in Viktoria Plzeň 0–4 Barcelona; the penalty was his 200th for the club): checked (UEFA.com "Messi and Barcelona march past Plzeň"; Fox News (AP) "Messi Breaks 200 Goals for Barcelona With 2nd Straight Hat Trick"; Al Jazeera, 1 Nov 2011; Ahram (Reuters) 25764; Sky Sports). Two drawbacks: Messi would appear two slots running, and the 29 October story already mentions this hat-trick in one line (cut it there if this is used).
-
-Leads from memory, **unverified**, not researched for want of search budget: Manchester City 3–1 Barcelona (1 Nov 2016, Guardiola against his old club); Tottenham 3–1 Real Madrid at Wembley (1 Nov 2017).

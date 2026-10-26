@@ -6,7 +6,6 @@ written but not yet handed a slot. Each folder has `story.mdx` (number 0 until `
 
 | Folder | Date | Piece | State |
 |---|---|---|---|
-| otd-1101 | 1 Nov | Henry v Kaká | 5 claims still need a second source (see the log); a cut version is described at its end |
 | otd-1104 | 4 Nov | Cantona v Owen | No free photo of Cantona as a player on Commons: use an alternative pair (alternatives.md) |
 | otd-1107 | 7 Nov | Torres v Watt | draft: true; several claims need a second source |
 | otd-1110 | 10 Nov | Van Persie v Salah | draft: true; the Salah half is unchecked |
