@@ -42,3 +42,5 @@ Cut, for want of a second named source or because sources conflict:
 - Attendance (44,361) and the minutes of each goal: not needed.
 
 Clash check: Beckham's Greece free kick (6 Oct 2001, reserved in docs/story-bank.md, number 040 as of 26 Oct) is not mentioned. The Galácticos era (reserved, number 039 as of 26 Oct) gets one sentence only, as a fact about Owen's move, not its story. No existing story covers this match or these award votes. Owen's 2009 move to United was also in the discarded Cantona v Owen draft, which will not be used.
+
+Picture (26 Oct): Owen from a 2005 photo at Real Madrid's training camp (CC BY 2.0, emphasis) and Beckham from a 2006 England photo (public domain, ger1axg); no free photo shows either face clearly in his 2001-02 club shirt, so both were repainted in those shirts (Liverpool's Reebok/Carlsberg, United's Umbro/Vodafone) per the picture guide's period rule.
