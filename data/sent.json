@@ -290,14 +290,6 @@
       "story": "le-tissier-v-totti-26-october"
     },
     {
-      "number": 31,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T00:01:30.100Z",
-      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1797487782376813 (music: hebrides)",
-      "story": "leicester-city-5000-to-1"
-    },
-    {
       "number": 26,
       "network": "facebook",
       "status": "scheduled",
@@ -368,6 +360,15 @@
       "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1689637866029460 (music: mozart40)",
       "story": "van-persie-v-salah-10-november",
       "reel": "6571c03d4e8ef6b533bcd8e1581c6587e50795af"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T04:54:19.283Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1747857826915767 (music: hebrides)",
+      "story": "pele-v-cristiano-ronaldo-19-november",
+      "reel": "75966a425a8216dc6c8d71f4e992b3408a467b67"
     }
   ]
 }
