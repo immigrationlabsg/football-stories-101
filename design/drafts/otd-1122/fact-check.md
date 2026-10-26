@@ -1,0 +1,31 @@
+# Fact-check log: NNN Defoe v Giroud / Two records matched on 22 November, 13 years apart
+
+Slot: Sunday 22 November 2026 ("On this day" comparison). Not a story-bank angle.
+
+Why this pair: 22 November has no legend-level moment that could be confirmed in this run apart from Lionel Messi's La Liga record (22 Nov 2014), and the brief asks to keep Messi for dates with nothing else strong because 29 Oct is Messi v Ronaldo. Defoe and Giroud are both well known, each equalled a record that day, and the question is a genuine argument. Messi v Giroud is the first runner-up (see alternatives.md) if the owner wants a bigger name.
+
+Checked 26 October 2026. Method note: page fetching was blocked (WebFetch fails with "ENOTFOUND"), so every claim was checked against web-search result excerpts and the search tool's summaries of the pages named below, not by opening the full pages. Where the search tool summarised several results in one sentence without naming which page said what, the row says "per search summary". Several Giroud reports are the same AFP copy (The Citizen, ECR, Monitor); they are counted as one source and paired with PA (Express & Star), CBC, FotMob or Flashscore. The shared web-search budget ran out part-way through the research, so no further cross-checks were possible. Before scheduling, an editor should open the Sky Sports Spurs v Wigan report and one full Giroud match report (Express & Star or CBC).
+
+Living-persons rule: Defoe, Giroud, Henry, Crouch, Cole, Shearer, Mbappé, Benzema, Goodwin and Rabiot appear only in documented match facts and records. Benzema's injury is stated as reported (ruled out before the tournament), with no comment on it. Wigan's players are mentioned only for their documented collective offer to refund tickets.
+
+| Claim | Source 1 | Source 2 | Result |
+|---|---|---|---|
+| 22 Nov 2009, White Hart Lane: Tottenham 9–1 Wigan; Defoe scored five | Sky Sports "Super Spurs smash Wigan" | Mail & Guardian "Defoe grabs five as Spurs put nine past Wigan" (23 Nov 2009); Arab News; RNZ live sport, 23 Nov 2009 | Confirmed. Played on a Sunday. |
+| Spurs led only 1–0 at half-time, through a Peter Crouch header (9') | Sky Sports | Mail & Guardian, per search summary | Confirmed per search summary. Minute not used. |
+| Defoe scored three times in seven minutes (51', 54', 58'), then two more (69', 87') | Mail & Guardian | Sky Sports; Arab News, per search summary ("a seven-minute hat-trick") | Confirmed. |
+| Five goals equalled the Premier League record for one player in a match, held by Andy Cole (v Ipswich) and Alan Shearer (v Sheffield Wednesday, 1999); nobody had scored six | Mail & Guardian | Arab News / Sky Sports, per search summary | Confirmed. "Nobody had ever scored six" follows from five being the record. The team record (nine goals) is not claimed because the summary's wording was ambiguous. |
+| Wigan's players offered to refund their supporters' tickets | Jamaica Observer "Wigan players offer ticket refund after 9-1 loss" (23 Nov 2009) | Otago Daily Times "Wigan players offer refund after 9-1 loss" | Confirmed (two outlets; both may carry the same agency copy). |
+| 22 Nov 2022, World Cup: France 4–1 Australia; Giroud scored twice | Express & Star (PA) "Olivier Giroud equals Thierry Henry record as France power past Australia" | The Citizen (AFP); CBC; TBS News; Ahram; FotMob | Confirmed. |
+| His second was his 51st for France, level with Thierry Henry's national record | Express & Star (PA) | CBC; Flashscore "Player of the day, Nov 22"; AFP via The Citizen | Confirmed. |
+| France arrived as world champions (holders) | The Citizen / ECR / Monitor (AFP headline "World Cup holders France sink Australia") | FotMob ("holders make winning start") | Confirmed. |
+| Craig Goodwin gave Australia the lead; Adrien Rabiot equalised; Giroud tapped in for 2–1 (32') | AFP via The Citizen | Express & Star; FotMob, per search summary | Confirmed. Minute of the tap-in not used. |
+| His second, a header from a Kylian Mbappé cross, came in the 71st minute ("19 minutes from time") | AFP via The Citizen | Express & Star / CBC, per search summary | Confirmed. 90 minus 71 = 19. |
+| Henry scored his 51 in 123 games for France, 1997 to 2010 | Express & Star | AFP via The Citizen, per search summary | Confirmed. |
+| Giroud started because Karim Benzema had been ruled out injured before the tournament | AFP via The Citizen ("Karim Benzema's injury before the tournament opened the door for Giroud to start") | Flashscore (Benzema and Christopher Nkunku ruled out by injury) | Confirmed. "Might not have started at all" is the story's inference from "opened the door". |
+| Giroud was 36 and became the oldest player to score for France at a World Cup | Express & Star | AFP via The Citizen; CBC, per search summary ("reports note") | Confirmed. |
+
+Cover line and question: "catching Henry" restates the record; the question is the editor's framing. Reflection lines are opinion and contain no superlative about either player.
+
+Wording: the body says "On 22 November 2009/2022" (not "On this day") because the web page goes live a week later; only the cover line says "On this day".
+
+Cut for want of a second source, because sources were ambiguous, or to keep the story tight: Spurs' nine goals as a team record; Paul Scharner's Wigan goal and the handball claim; the other Spurs scorers (Lennon, Kranjcar, Kirkland own goal); the Sunday kick-off agreement; Giroud breaking Henry's record outright later in the tournament (not checked in this run); the earlier holders (Italy, Spain, Germany) failing to win their openers (one agency copy only); the venue of France v Australia.

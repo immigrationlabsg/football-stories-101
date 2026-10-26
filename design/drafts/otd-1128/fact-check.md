@@ -1,0 +1,47 @@
+# Fact-check log: NNN Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt
+
+Slot: Saturday 28 November 2026 ("On this day"). Checked 26 October 2026.
+
+Method note: page fetching was blocked (WebFetch could not resolve hosts from this session), so every claim was checked against WebSearch result excerpts from the pages named below, not by opening the full pages. Several key sources are Spanish-language Argentine outlets (El Gráfico, Cadena 3, 442 Perfil, Goal Argentina, Diario de Cuyo). Where the search summary did not say which of two pages carried a line, both are named and the row is marked "(search summary)". The session's web-search budget ran out at the end of research; nothing in the story depends on a search that was not completed. Before scheduling, an editor should open the Wikipedia pages for the 2000 Intercontinental Cup and the 2005 Ballon d'Or, UEFA's "Riquelme takes Villarreal option" and 442 Perfil's Figo shirt article.
+
+Living-persons rule: Riquelme, Ronaldinho, Palermo, Roberto Carlos, Makélélé, Lampard, Gerrard, Van Gaal, Lehmann and Figo are all alive and appear only in documented football facts. Left out on purpose: Ronaldinho's 2020 detention in Paraguay, Riquelme's role and disputes as Boca Juniors president, and the remark sometimes attributed to Van Gaal that Riquelme was a "political signing" (the wording is attributed differently across sources).
+
+Story bank: 034 (Ronaldinho, the Bernabéu ovation, November 2005) is reserved for another date (19 Nov 2005) and is not used or mentioned here. Clash risk: if the 19 November "On this day" slot uses that night, two Ronaldinho stories would run nine days apart; runner-ups are in alternatives.md.
+
+| Claim | Source 1 | Source 2 | Result |
+|---|---|---|---|
+| 28 Nov 2000, Tokyo: Boca Juniors met Real Madrid, the champions of Europe (Intercontinental Cup) | Wikipedia, "2000 Intercontinental Cup" (28 Nov 2000, National Stadium, Tokyo; Champions League winners v Copa Libertadores winners; Real Madrid won the 1999–2000 Champions League) | RSSSF, "Intercontinental Club Cup 2000"; These Football Times, "Boca Juniors and the unforgettable Intercontinental Cup win of 2000" | Confirmed. |
+| Palermo scored twice in the first 6 minutes | RSSSF (2', 5') | El Gráfico, "2000. Boca 2-1 Real Madrid. El resumen" and Cadena 3 (3', 6') (search summary); Trivela (second goal about the sixth minute) | Confirmed. Minutes differ by one between sources; "in the first 6 minutes" is true on every count. |
+| One of the goals came from a pass of about 50 metres by Riquelme | Goal (es), "Diez mejores momentos de Juan Román Riquelme" (pass of almost 50 metres from behind halfway, for the 1–0) | Futdados (50-metre pass, for the 2–0); La Voz de San Justo, "La gran hazaña xeneize" (pitch-length pass, for the 2–0) | Confirmed that his long pass set up one of the goals. Sources conflict on which one, so the body says "one of them". |
+| Roberto Carlos pulled one back; Boca won 2–1 | Wikipedia | RSSSF; El Gráfico; Cadena 3 | Confirmed. 90min (es) says 2–0: an outlier, rejected. |
+| Riquelme ran the game; Makélélé spent the night chasing him | Goal (es-ar), "El partido más riquelmeano de Román" (Makélélé chasing him without winning the ball back) | 90min (es) (Riquelme controlled the match and frustrated players such as Makélélé); Planet Football calls the display his "magnum opus" | Confirmed; the phrasing is the editor's summary of a documented performance. |
+| 28 Nov 2005, Paris: Ronaldinho won the Ballon d'Or; Lampard second, Gerrard third | Wikipedia, "2005 Ballon d'Or" (28 Nov 2005, Paris; 225, 148 and 142 points) | RSSSF, "European Footballer of the Year 2005"; Reuters (Screenocean), Himalayan Times, Mail & Guardian | Confirmed. Points confirmed but cut for length. |
+| In 2002 Barcelona signed Riquelme from Boca | Wikipedia (Juan Román Riquelme) | UEFA, "Barça take up Riquelme option"; footballhistory.org | Confirmed. Month and fee differ (July or November 2002; €11m or £10m); neither is used. |
+| Barcelona gave him the number 10 shirt | Planet Football, "Ranking every player to wear No.10 for Barcelona since 1995" (Riquelme listed) | The Football Faithful, "The last five players to wear Barcelona's number 10 shirt"; Goal Brasil (Rivaldo passed the 10 to Riquelme in 2002–03) | Confirmed. |
+| The coach, Louis van Gaal, often played him on the wing | Planet Football, "Remembering Barcelona's terrible 2002–03 season under Louis van Gaal" | Fantasista10, "5 fantasisti who failed at Barcelona"; Three Match Ban, "It's not you, it's me" | Confirmed. |
+| In summer 2003 Barcelona signed Ronaldinho from Paris Saint-Germain | FC Barcelona, "19 July 2003: Ronaldinho arrives" | The Daily Star (20 July 2003); Wikipedia | Confirmed. Fee varies by source; not used. |
+| Ronaldinho took the 10 | El Gráfico, "El increíble dato que une a Riquelme con Ansu Fati" | Goal Brasil; Sportskeeda and notjustok (he inherited the 10 from Riquelme and wore it until 2008) (search summary) | Confirmed. |
+| Spanish rules let a club register only four players from outside the European Union | UEFA, 2003 report (four non-EU players, "the maximum allowed under Spanish federation rules") | Página/12, 3 July 2002 (Carles Rexach: "la reglamentación española admite cuatro jugadores extracomunitarios") | Confirmed. |
+| Ronaldinho's arrival left Barcelona with one too many; Riquelme was sent on loan to Villarreal | EcuRed, "Juan Román Riquelme" ("El fichaje de Ronaldinho causó un excedente de jugadores extracomunitarios … ceder a Riquelme al Villarreal") | UEFA, "Riquelme takes Villarreal option" (Rijkaard filled the non-EU places with Saviola, Rüştü, Márquez and Ronaldinho); footballhistory.org | Confirmed. The other three names come from UEFA only; not used. |
+| In 2006 Villarreal, with Riquelme, reached the Champions League semi-finals | Wikipedia, "2005–06 Villarreal CF season" | Arsenal.com, "20 years on: an iconic UCL semi-final in Spain" | Confirmed. |
+| In the last minutes of the second leg against Arsenal, Riquelme took a penalty that would have forced extra time; Lehmann saved it | Arsenal.com (awarded two minutes from time; would have taken the tie to extra time) | Los Andes (88th minute); Wikipedia, 2005–06 Villarreal season | Confirmed (25 April 2006; Arsenal through 1–0 on aggregate). |
+| Arsenal reached the final in Paris; Barcelona won 2–1; Ronaldinho won the Champions League | Wikipedia, "2006 UEFA Champions League final" (17 May 2006, Stade de France; Ronaldinho in the starting XI) | Mail & Guardian, "Late Barça rally floors Gunners"; FC Barcelona, "20 years ago" | Confirmed. |
+| In 2007 Riquelme went back to Boca on loan | Wikipedia (loaned back to Boca for five months) | Mail & Guardian, "Boca win Libertadores with Riquelme double" (his last game on loan from Villarreal) | Confirmed. |
+| He scored three goals in the final against Grêmio | Diario de Cuyo (3 of Boca's 5 goals in the final) | Mail & Guardian (two in the second leg) with Wikipedia, "2007 Copa Libertadores finals" (one in the first leg) | Confirmed (5–0 on aggregate). |
+| It was his third Copa Libertadores | Goal (es), "¿Cuántos títulos tiene Juan Román Riquelme?" (2000, 2001, 2007) | 442 Perfil, "A diez años de la última Libertadores de Boca" (2000, 2001, 2007); Wikipedia | Confirmed. |
+| Ronaldinho won the Copa Libertadores in 2013 with Atlético Mineiro | Ahram Online (AFP), "Brazilian Ronaldinho shines at Atletico Mineiro win" | These Football Times, "How Ronaldinho inspired Atlético Mineiro to Copa Libertadores glory in 2013"; FIFA, "Video vault" | Confirmed. |
+| Figo swapped shirts with Riquelme that night, kept it for 23 years, then pledged it to a football museum in Madrid | 442 Perfil, "Luis Figo donó la camiseta … al museo Legends" (Figo: "la camiseta que cambié en la final de la Intercontinental con Juan Román Riquelme en el año 2000"; 23 years later; Legends museum, Madrid) | El Gráfico, "Qué pasará con la camiseta que usó Riquelme ante Real Madrid"; LM Neuquén | Confirmed. Body says "pledged", which all three support; only 442 Perfil reports the handover as done. One source misdates the final to 20 November; Wikipedia and RSSSF give 28 November. |
+
+Cover line, dek and question: "Barcelona had room for only one" restates the non-EU and loan rows. "outplayed Real Madrid" restates "ran the game" and the 2–1 win. The question is opinion; both men wore the 10 (rows above). The facts cards restate body lines in story order.
+
+Wording: the body says "On 28 November 2000/2005", not "On this day", because the web page goes live a week later; only the hook says "On this day". The reflection makes no new factual claim ("won the Champions League" is in the body).
+
+Cut for want of a second source, because sources conflict, or for length:
+- Transfer fees for Riquelme and Ronaldinho (figures vary).
+- Van Gaal's "political signing" remark (attribution varies; living person).
+- Lehmann's explanation that he had studied where Riquelme put his last penalty (Arsenal.com only).
+- Which of Palermo's goals came from Riquelme's long pass (sources conflict).
+- The 50th-anniversary ceremony and the vote totals for the 2005 Ballon d'Or (confirmed; cut for length).
+- Riquelme being named best player of the 2001 and 2007 Copas; Ronaldinho joint top scorer in 2013 (FIFA only).
+- Riquelme's later permanent return to Boca and its fee (one source).
+- Riquelme's account of Bianchi hugging him during the shirt swap, and his father wanting Figo's shirt (one source).

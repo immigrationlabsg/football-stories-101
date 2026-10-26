@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Thierry Henry",
+    "want": "Thierry Henry in Arsenal's red shirt with white sleeves and the number 14, 2002 to 2004, face clearly visible. The repo's picture guide already uses 'Thierry Henry's iconic knee slide.jpg' for story 028; choose a different frame if possible, or confirm reuse is acceptable.",
+    "queries": ["Thierry Henry Arsenal", "Henry 14 Arsenal", "Thierry Henry Arsenal 2004", "Thierry Henry knee slide"]
+  },
+  "B": {
+    "player": "Roberto Baggio",
+    "want": "Roberto Baggio in Italy's blue shirt with the number 10 (1990 to 1998) and his ponytail, face clearly visible; second choice Juventus black and white.",
+    "queries": ["Roberto Baggio Italy", "Roberto Baggio 1994", "Roberto Baggio Juventus", "Roberto Baggio Nazionale"]
+  }
+}

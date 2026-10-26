@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Pelé",
+    "want": "Pelé in Santos's white shirt with the number 10, ideally late 1960s, face clearly visible; second choice Brazil's yellow 10 (1970). The Dutch National Archive (Nationaal Archief) holds several free photos of Santos and Pelé on tour.",
+    "queries": ["Pelé Santos", "Pele Santos 1960s", "Pelé Nationaal Archief", "Pele Brazil 1970"]
+  },
+  "B": {
+    "player": "Ronaldinho",
+    "want": "Ronaldinho in Barcelona's blue and claret (blaugrana) shirt with the number 10, 2004 to 2006, face clearly visible, ideally smiling.",
+    "queries": ["Ronaldinho Barcelona", "Ronaldinho FC Barcelona 2005", "Ronaldinho Barça 10", "Ronaldinho 2006"]
+  }
+}

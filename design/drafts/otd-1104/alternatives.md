@@ -1,0 +1,6 @@
+# 4 November: runner-up pairs
+
+1. **Owen v Viduka, two Liverpool afternoons a year apart.** Mark Viduka scored all four goals in Leeds 4–3 Liverpool at Elland Road on 4 November 2000 (OzWhite LUFC match record "04-11-2000 LUFC v Liverpool"; Planet Football "A forensic analysis of Mark Viduka smashing four goals past Liverpool"; These Football Times, 26 Nov 2018; SBS). A year later to the day, Owen scored twice in Liverpool 3–1 Manchester United (Premier League "OTD - 4 November"; liverpoolfc.com "Most exciting PL games No.21"). Checked to two sources for the matches only; Viduka's profile is lower than the owner's usual names.
+2. **Owen v Beckham, the same afternoon at Anfield, 4 November 2001.** Owen scored twice and Beckham scored United's goal in Liverpool 3–1 Manchester United (same two sources as above). Avoid Beckham's Greece free kick (6 Oct 2001), which is reserved as story 033. Backstory (both later at Real Madrid; the 2001 awards) not yet checked.
+
+Also seen, not usable as a pair on its own: Thierry Henry scored twice, one a penalty, in Charlton's 4–2 win at Highbury on 4 November 2001 (Premier League "OTD - 4 November" only, one source). Henry is already in the 1 November comparison.

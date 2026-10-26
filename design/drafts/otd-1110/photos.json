@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Robin van Persie",
+    "want": "Van Persie in Manchester United red with his No 20, 2012 to 2014, face clearly visible; failing that, Arsenal red-and-white with No 10",
+    "queries": ["Robin van Persie Manchester United", "Van Persie 20 Manchester United", "Robin van Persie 2013", "Robin van Persie Arsenal"]
+  },
+  "B": {
+    "player": "Mohamed Salah",
+    "want": "Salah in Liverpool red with his No 11, ideally 2019, face clearly visible",
+    "queries": ["Mohamed Salah Liverpool", "Mohamed Salah Liverpool 2019", "Salah 11 Liverpool", "Mohamed Salah 2018"]
+  }
+}

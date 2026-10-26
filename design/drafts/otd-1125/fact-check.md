@@ -1,0 +1,46 @@
+# Fact-check log: NNN Best v Maradona / Two farewells on 25 November, 15 years apart
+
+Slot: Wednesday 25 November 2026 ("On this day"). Checked 26 October 2026.
+
+Method note: page fetching was blocked (WebFetch could not resolve hosts from this session), so every claim was checked against WebSearch result excerpts from the pages named below, not by opening the full pages. The search tool returns a summary of several pages at once, so where it did not say which page carried a line, both pages it drew on are named and the row is marked "(search summary)". The session's web-search budget ran out at the very end, so two details I wanted (Best going round the goalkeeper for his 1968 goal, and the crowds at his funeral) were not checked and are not in the story. Before scheduling, an editor should open the Wikipedia George Best page, UEFA's Naples piece, the ANSA report and the Top End Sports honorary-awards page.
+
+Living-persons rule: Best and Maradona are both dead, and no living person is the subject of any claim. The cause of Maradona's death and the circumstances of his medical care are deliberately left out: they have been the subject of legal proceedings in Argentina that involve living people. Best's drinking, illness and liver transplant are left out; the story does not need them. Maradona's 1994 failed drug test is not used.
+
+Angle and clashes: story 022 (Maradona's two goals against England, 1986, posts 10 Nov) is not repeated; this story mentions 1986 only as "captained Argentina to the title". Story 002 (Puskás) is untouched. No reserved story-bank angle is used.
+
+| Claim | Source 1 | Source 2 | Result |
+|---|---|---|---|
+| Best died on 25 November 2005 in a London hospital, aged 59 | In Your Pocket Belfast, "George Best 1946–2005" (died aged 59 on 25 Nov 2005, Cromwell Hospital, London) | Hello!, "Farewell to football legend George Best"; AP obituary on Legacy.com (aged 59); Wikipedia infobox | Confirmed. Body says "a London hospital"; hospital name not needed. |
+| Maradona died on 25 November 2020 at his home on the outskirts of Buenos Aires, aged 60 | Ahram Online (Reuters), "Argentina's Maradona, one of soccer's greatest, dies aged 60" ("at his home on the outskirts of Buenos Aires") | The Jakarta Post (family summoned to "Maradona's home north of Buenos Aires"); TimesLive and Hola (aged 60, 25 Nov 2020) | Confirmed. One outlet names Tigre; single source, not used. Cause of death not used (see living-persons note). |
+| Argentina declared three days of national mourning | The Jakarta Post / Dhaka Tribune (President Alberto Fernández confirmed three days of national mourning) (search summary) | Daily Dispatch / Ahram Online (government declared three days of mourning) (search summary) | Confirmed. |
+| Best was 22 when Manchester United won the 1968 European Cup | Yahoo Sports, "Born May 22, 1946: George Best" ("still only 22" that year) | Wikipedia, 1967–68 Manchester United season (final 29 May 1968), with Wikipedia's birth date of 22 May 1946 | Confirmed: he turned 22 a week before the final. |
+| He scored in extra time of the final, a 4–1 win over Benfica at Wembley | Wikipedia, 1967–68 Manchester United season | The Sunday Post, "The story of George Best, part two"; Macau Daily Times, "This Day in History: 1968" | Confirmed. Minute differs (two or three minutes into extra time); not used. |
+| That year he won the Ballon d'Or | Universalis, "BEST George (1946–2005)" | Yahoo Sports; Wikipedia | Confirmed (1968). |
+| Best never played at a World Cup | Wikipedia (George Best) | New World Encyclopedia; Sportskeeda, "5 great players who never played at the World Cup" | Confirmed. |
+| 37 caps for Northern Ireland between 1964 and 1977, 9 goals | Wikipedia | New World Encyclopedia ("capped 37 times … between 1964 and 1977, scoring nine goals") | Confirmed. An Irish FA article's "32 caps" counts only his Manchester United years; no conflict. |
+| Maradona played at four World Cups, 1982 to 1994 | Britannica (1982, 1986, 1990, 1994) | beIN Sports, "Maradona's mind-blowing World Cup stats"; Fotmob | Confirmed. |
+| In 1986, as Argentina's captain, he won the World Cup in Mexico | Britannica | beIN Sports; Fotmob | Confirmed. |
+| Maradona never won the Ballon d'Or; until 1995 only European players could | Top End Sports, "Ballon d'Or Honorary Awards" (only Europeans eligible 1956–1994) | Goal, "How many Ballons d'Or would Maradona have won?"; Canal 26 | Confirmed. From 1995 non-Europeans at European clubs became eligible. |
+| In 1995 France Football gave him an honorary Ballon d'Or | Top End Sports (presented 3 January 1995) | chaseyoursport, "Ballon d'Or d'Honneur winners" | Confirmed. Exact day is single-sourced; only the year is used. |
+| Much later the magazine concluded he would have won it in 1986 and 1990 | Top End Sports, "Ballon d'Or – New List" (Le Nouveau Palmarès: 1986 and 1990) | chaseyoursport, "Le Nouveau Palmarès winners" | Confirmed. Top End Sports dates the review to 2016 (60th anniversary); the year is not used, hence "much later". It did not change the official list. |
+| He never won the European Cup; his only European trophy was the UEFA Cup with Napoli in 1989 | UEFA, "Naples remembers Maradona's greatest European performances" ("the only continental club trophy that Maradona won in his career: the 1988/89 UEFA Cup") | 90min, "Every trophy Diego Maradona won for club and country" | Confirmed. |
+| He led Napoli to their first Serie A title in 1987 and a second in 1990 | Wikipedia, 1986–87 SSC Napoli season ("first Serie A title") | Eurosport, "Maradona charms Naples on anniversary of first Serie A title"; 90min, Napoli 1989–90 | Confirmed. |
+| Best was born in Belfast | Wikipedia (George Best) | In Your Pocket Belfast; "Belfast-born" in the 1968 Ballon d'Or excerpts (Universalis / The Sunday Post) (search summary) | Confirmed. |
+| In 2006 Belfast's city airport was renamed George Best Belfast City Airport | Wikipedia, "Belfast City Airport" (announced March 2006; renaming ceremony 22 May 2006) | h2g2, "George Best – The Tributes"; In Your Pocket airport page (search summary) | Confirmed. Ceremony date conflicts (22 March or 22 May 2006); only the year is used. A recent airport branding campaign dropped his name from the logo but not from the official name; the story says only that it was renamed. |
+| Italian rules normally make a city wait ten years after a death before naming a place after someone; Naples made an exception | ANSA, "Naples renames stadium after Maradona" (4 Dec 2020) | Sports Illustrated, "Napoli renames stadium for Diego Maradona"; Wikipedia, "Stadio Diego Armando Maradona" | Confirmed: the council waived the ten-year rule. |
+| In December 2020 the stadium became the Stadio Diego Armando Maradona | ANSA (council vote, 4 December 2020) | Sports Illustrated; Wikipedia | Confirmed. |
+
+Cover line, dek and question: "Each won a prize the other never did" restates the body (Best: European Cup and Ballon d'Or; Maradona: World Cup). "15 years apart" is 2005 to 2020. The question is opinion. The facts cards restate body lines in story order; card 4 is worded so it does not contradict the honorary award.
+
+Wording: the body says "On 25 November 2005/2020", not "On this day", because the web page goes live a week later; only the hook says "On this day". The reflection makes no factual claim and uses no superlative.
+
+Cut for want of a second source, because sources conflict, or for length:
+- The Belfast saying "Maradona good, Pelé better, George Best": the wording and order vary between sources, and one compilation dates it to an Old Trafford banner from Best's heyday, when Maradona was a child. Not used.
+- Tony Blair calling Best "probably the most naturally gifted footballer of his generation" (one source).
+- Pelé calling Best the best he had seen (one source).
+- Best's 1968 Footballer of the Year award (one source); his 361 games and 137 goals for United (not needed).
+- Maradona's 115 goals for Napoli (one source); Napoli's 1987–88 European Cup exit to Real Madrid (one source).
+- Maradona captaining Argentina in the 1990 final (one source).
+- Tigre as the place of death (one source); the cause of death (see living-persons note).
+- The airport signage matching Best's handwriting (one source); the exact ceremony date (conflict).
+- Maradona's coffin at the Casa Rosada (in one search summary only; not needed).

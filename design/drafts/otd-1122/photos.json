@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Jermain Defoe",
+    "want": "Jermain Defoe in Tottenham's white home shirt, ideally 2009 to 2010, face clearly visible; second choice England white. Check the shirt number on the photo against his Spurs number that season before painting.",
+    "queries": ["Jermain Defoe Tottenham", "Jermain Defoe Tottenham Hotspur 2009", "Jermain Defoe Spurs", "Jermain Defoe England"]
+  },
+  "B": {
+    "player": "Olivier Giroud",
+    "want": "Olivier Giroud in France's blue shirt with the number 9, ideally 2018 to 2022, face clearly visible.",
+    "queries": ["Olivier Giroud France", "Olivier Giroud 2022", "Olivier Giroud équipe de France", "Giroud France 2018"]
+  }
+}

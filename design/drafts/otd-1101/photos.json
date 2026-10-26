@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Thierry Henry",
+    "want": "Henry in Arsenal's red shirt with white sleeves, number 14, around 2003-04, face clearly visible",
+    "queries": ["Thierry Henry Arsenal", "Thierry Henry Arsenal 2004", "Henry 14 Arsenal", "Thierry Henry Highbury"]
+  },
+  "B": {
+    "player": "Kaká",
+    "want": "Kaká in Milan's red-and-black stripes, number 22, around 2006-07, face clearly visible",
+    "queries": ["Kaká AC Milan", "Kaka Milan 2007", "Kaká 22 Milan", "Kaka AC Milan 2006"]
+  }
+}

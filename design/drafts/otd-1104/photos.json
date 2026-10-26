@@ -1,0 +1,12 @@
+{
+  "A": {
+    "player": "Eric Cantona",
+    "want": "Cantona as a player, face clearly visible; ideally Leeds United white (1992), otherwise his famous Manchester United red number 7 with the collar up. Commons player-era photos of Cantona are scarce: reject later photos of him as a beach-soccer coach or actor if the kit is wrong",
+    "queries": ["Eric Cantona Leeds United", "Eric Cantona Manchester United", "Eric Cantona 7 Manchester United", "Eric Cantona 1990s"]
+  },
+  "B": {
+    "player": "Michael Owen",
+    "want": "Owen in Liverpool's red shirt, number 10, around 2001, face clearly visible (England white number 10 is the fallback)",
+    "queries": ["Michael Owen Liverpool", "Michael Owen Liverpool 2001", "Michael Owen 10 Liverpool", "Michael Owen England 2002"]
+  }
+}

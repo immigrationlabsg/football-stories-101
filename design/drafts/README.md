@@ -1,0 +1,20 @@
+# Drafts waiting for a slot (26 Oct 2026)
+
+Pieces for the owner's rhythm (an "on this day" comparison every third day, "Guess the legend" every ninth) that are
+written but not yet handed a slot. Each folder has `story.mdx` (number 0 until `npm run hand-over` gives it one),
+`fact-check.md`, `photos.json` (what photo to look for) and, for comparisons, `alternatives.md`.
+
+| Folder | Date | Piece | State |
+|---|---|---|---|
+| otd-1101 | 1 Nov | Henry v Kaká | 5 claims still need a second source (see the log); a cut version is described at its end |
+| otd-1104 | 4 Nov | Cantona v Owen | No free photo of Cantona as a player on Commons: use an alternative pair (alternatives.md) |
+| otd-1107 | 7 Nov | Torres v Watt | draft: true; several claims need a second source |
+| otd-1110 | 10 Nov | Van Persie v Salah | draft: true; the Salah half is unchecked |
+| otd-1116 | 16 Nov | Henry v Baggio | Not ready; Henry is already on 1 Nov, so use Baggio v Messi's debut instead |
+| otd-1119 | 19 Nov | Pelé v Ronaldinho | Checked, but Ronaldinho is also on 28 Nov with the same Ballon d'Or: change one half |
+| otd-1122 | 22 Nov | Defoe v Giroud | Ready; painted (public/images/stories/otd-defoe-v-giroud.jpg) |
+| otd-1125 | 25 Nov | Best v Maradona | Ready; painted (otd-best-v-maradona.jpg) |
+| otd-1128 | 28 Nov | Riquelme v Ronaldinho | Ready; painted (otd-riquelme-v-ronaldinho.jpg) |
+| quiz-modric | 23 Nov | Guess the legend: Luka Modrić | Two clues lean on Wikipedia: needs a second independent source |
+
+Delete a folder once its piece is handed over.
