@@ -281,6 +281,10 @@ for (const story of stories) {
               rec.detail = `scheduled for ${story.data.date.toISOString()} ${back.includes('_') ? back : `reel ${back} (music: unknown) UNCONFIRMED: restored after Reel ${reel} failed at Meta`}${back.includes('_') ? ` (restored: Reel ${reel} failed at Meta)` : ''}`;
               if (ids.length > 1) rec.leftover = ids.slice(0, -1).join(' ');
               else delete rec.leftover;
+              // The restored post may be the one of the story this slot had before a hand-over: which story it shows is
+              // no longer known, so verify asks for it and the next switch replaces it whatever it is.
+              delete rec.story;
+              delete rec.reel;
             } else file.social = (file.social as FbRecord[]).filter((r) => r !== rec);
             fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
           }
