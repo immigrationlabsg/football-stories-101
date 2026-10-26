@@ -398,14 +398,18 @@
   ],
   "031": [
     {
-      "commons": "File:LCFC lift the Premier League Trophy (26943755296) (cropped).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Leicester City lifting the Premier League trophy, 7 May 2016."
+      "commons": "File:Pele, 1965 (closeup).jpg",
+      "licence": "CC0",
+      "pair": true,
+      "why": "19 Nov comparison, Pelé v Cristiano Ronaldo: left, Pelé smiling, head and shoulders, in Santos's white shirt with the Santos crest; the photo is black and white, paint it in natural colour (white shirt, black hair, his skin tone as it is); right, Cristiano Ronaldo, head and shoulders, in Portugal's red 2013 Nike home shirt with the Portugal crest (his photo shows a red Portugal track jacket: paint the shirt instead), looking up as in his photo. No shirt numbers on the front. Everything else about each player (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
+      "kit": "Santos's white shirt with the Santos crest",
+      "alt": "Watercolour painting split in two: a smiling Pelé in Santos white and Cristiano Ronaldo in Portugal red"
     },
     {
-      "commons": "File:LCFC players celebrate after victory vs Everton (27859481336).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
+      "commons": "File:Cristiano Ronaldo - Croatia vs. Portugal, 10th June 2013 cropped.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Cristiano Ronaldo, Croatia v Portugal, 10 June 2013",
+      "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
     }
   ],
   "032": [
@@ -551,6 +555,18 @@
       "why": "Maradona sliding the Goal of the Century past Shilton."
     }
   ],
+  "043": [
+    {
+      "commons": "File:LCFC lift the Premier League Trophy (26943755296) (cropped).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Leicester City lifting the Premier League trophy, 7 May 2016."
+    },
+    {
+      "commons": "File:LCFC players celebrate after victory vs Everton (27859481336).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
+    }
+  ],
   "901": [
     {
       "commons": null,
@@ -611,22 +627,6 @@
       "licence": "CC BY-SA 4.0",
       "why": "Lionel Messi, Barcelona v Málaga, 2005-06",
       "kit": "Barcelona's blue-and-claret 2005-06 Nike home shirt, no shirt sponsor"
-    }
-  ],
-  "c1119": [
-    {
-      "commons": "File:Pele, 1965 (closeup).jpg",
-      "licence": "CC0",
-      "pair": true,
-      "why": "19 Nov comparison, Pelé v Cristiano Ronaldo: left, Pelé smiling, head and shoulders, in Santos's white shirt with the Santos crest; the photo is black and white, paint it in natural colour (white shirt, black hair, his skin tone as it is); right, Cristiano Ronaldo, head and shoulders, in Portugal's red 2013 Nike home shirt with the Portugal crest (his photo shows a red Portugal track jacket: paint the shirt instead), looking up as in his photo. No shirt numbers on the front. Everything else about each player (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
-      "kit": "Santos's white shirt with the Santos crest",
-      "alt": "Watercolour painting split in two: a smiling Pelé in Santos white and Cristiano Ronaldo in Portugal red"
-    },
-    {
-      "commons": "File:Cristiano Ronaldo - Croatia vs. Portugal, 10th June 2013 cropped.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Cristiano Ronaldo, Croatia v Portugal, 10 June 2013",
-      "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
     }
   ],
   "c1128": [

@@ -236,15 +236,6 @@
       "Dick Kerr Ladies 1921"
     ]
   },
-  "031": {
-    "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring",
-    "queries": [
-      "Leicester City Premier League trophy 2016",
-      "Jamie Vardy celebrating",
-      "Leicester City champions 2016",
-      "Leicester City celebration King Power"
-    ]
-  },
   "032": {
     "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing",
     "queries": [
@@ -323,6 +314,15 @@
       "Maradona 1986",
       "Maradona Azteca",
       "Maradona goal of the century"
+    ]
+  },
+  "043": {
+    "want": "Leicester City 2016 title: players celebrating, trophy lift, Vardy scoring",
+    "queries": [
+      "Leicester City Premier League trophy 2016",
+      "Jamie Vardy celebrating",
+      "Leicester City champions 2016",
+      "Leicester City celebration King Power"
     ]
   },
   "p1029a": {
