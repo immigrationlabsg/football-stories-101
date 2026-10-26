@@ -546,19 +546,6 @@
   ],
   "042": [
     {
-      "commons": "File:Maradona vs england.jpg",
-      "licence": "Public domain",
-      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
-      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
-    },
-    {
-      "commons": "File:Maradona pateando v inglaterra.jpg",
-      "licence": "Public domain",
-      "why": "Maradona sliding the Goal of the Century past Shilton."
-    }
-  ],
-  "043": [
-    {
       "commons": "File:LCFC lift the Premier League Trophy (26943755296) (cropped).jpg",
       "licence": "CC BY-SA 2.0",
       "why": "Leicester City lifting the Premier League trophy, 7 May 2016."
@@ -569,7 +556,7 @@
       "why": "Leicester players celebrating on the pitch after the Everton match, 7 May 2016."
     }
   ],
-  "044": [
+  "043": [
     {
       "commons": "File:Busby babes last match.jpg",
       "licence": "Public domain",
@@ -581,6 +568,19 @@
       "commons": "File:Bobby charlton elgrafico.JPG",
       "licence": "",
       "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+    }
+  ],
+  "044": [
+    {
+      "commons": "File:Maradona vs england.jpg",
+      "licence": "Public domain",
+      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
+      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
+    },
+    {
+      "commons": "File:Maradona pateando v inglaterra.jpg",
+      "licence": "Public domain",
+      "why": "Maradona sliding the Goal of the Century past Shilton."
     }
   ],
   "901": [

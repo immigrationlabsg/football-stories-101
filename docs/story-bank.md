@@ -3,12 +3,8 @@
 Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles at the bottom.
 
 **For the next weekly run (noted 26 Oct 2026; delete this note once done):**
-- 042 (Maradona's four minutes against England, 1986) sits on 30 Nov, five days after 037 (Best v Maradona, which shows
-  Maradona with the 1986 World Cup). 044 (Munich to Wembley 1968) tells Best's 1968 final goal, also told in 037.
-  Give 30 Nov a new regular story with `npm run hand-over -- 42 ...` and the 1 Dec comparison and 2 Dec quiz to 043 and
-  044, so both move to 3 Dec or later.
-- 16 Nov (028) still needs its comparison: the Baggio v Messi draft in `design/drafts/otd-1116` is checked, but OpenAI
-  refused the painting twice. Use another 16 November pair, or paint the two players from other photos.
+- 043 (Munich to Wembley, 1 Dec) tells Best's 1968 final goal, also told in 037 (25 Nov). 1 Dec is an "on this day" day:
+  give it the comparison with `npm run hand-over -- 43 ...`, so 043 moves to the end of the queue.
 - "Until 1995 only Europeans could win the Ballon d'Or" is told in 031 (19 Nov), 037 (25 Nov) and 038 (26 Nov). Avoid it
   in new pieces before mid-December.
 
@@ -55,9 +51,9 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 039 | Eras | Celtic's Lisbon Lions 1967: eleven men born within 30 miles of Parkhead (moved from 016) | scheduled |
 | 040 | Moments | On this day: Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt | scheduled |
 | 041 | Moments | Camp Nou, 26 May 1999: Manchester United's two goals in stoppage time (moved from 035) | scheduled |
-| 042 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 022) | scheduled |
-| 043 | Clubs | Leicester City 2015–16: champions at 5,000 to 1 (moved from 007 on 25 Oct for the first "on this day" comparison) (moved from 031) | scheduled |
-| 044 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 040) | scheduled |
+| 042 | Clubs | Leicester City 2015–16: champions at 5,000 to 1 (moved from 043) | scheduled |
+| 043 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 044) | scheduled |
+| 044 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 042) | scheduled |
 | 045 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming (follow-up of 012) | reserved |
 | 046 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
 | 047 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
@@ -84,6 +80,9 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 068 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
 
 ## Rules for new angles
+- **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
+  apart (featured: either name of a comparison, a quiz's answer, a story's main subject), unless it is a special week
+  for him, listed in `data/schedule.json` "special_weeks". `npm run verify` reports a clash as an error.
 - **Never repeat a story.** A subject may come back only with a new angle the earlier story did not cover, marked
   "(follow-up of NNN)" here and `followUpOf: NNN` in the story's front matter, and it may repeat at most a one-line
   recap of the earlier story. Example: 055, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).

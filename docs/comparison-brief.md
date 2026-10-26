@@ -12,6 +12,8 @@ Hard rules (owner):
 - Favour popular legends (Messi, Ronaldo, Maradona, Pelé, Zidane, Henry, Ronaldinho, Beckham, Cantona, Gerrard, Rooney,
   Shearer, Ibrahimović, Kaká, Buffon, Maldini, Iniesta, Xavi, Raúl, Bergkamp, Van Basten and the like; famous women's
   players welcome). African/Asian/North American players only if they have a European or world profile.
+- One legend per week: neither player may be featured in another piece within seven days either side (`npm run verify`
+  checks it).
 - Never repeat a story: avoid the events of existing stories (titles: `grep -h "^title:" src/content/stories/*.mdx`). The
   story bank (docs/story-bank.md) has reserved angles; you MAY use a reserved angle if its date matches (say so).
 - Every factual claim (body, facts cards, dek, hook) needs two independent sources, logged like docs/fact-checks/007.md.

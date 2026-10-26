@@ -22,6 +22,8 @@ change it only when the owner decides to.
   carries on as before. The owner approved the samples and the rhythm on 26 Oct 2026. On Facebook the quiz Reel's
   cover is the mystery card, so the answer never shows before the Reel is played.
 - Every other day is the regular "story nobody told you".
+- **One legend per week** (owner's decision, 26 Oct 2026): the same player is never featured in two pieces less than
+  seven days apart, unless it is a special week for that legend (listed in `data/schedule.json` "special_weeks").
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the
