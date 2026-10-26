@@ -370,6 +370,22 @@
       "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1847418196269332 (music: egmont)",
       "story": "baggio-v-messi-16-november",
       "reel": "bfdc5c3c4cfb3fc90770308c6258038aac5436a1"
+    },
+    {
+      "number": 32,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T05:44:54.690Z",
+      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1470487735041414 (music: egmont)",
+      "story": "cameroon-argentina-italia-90"
+    },
+    {
+      "number": 33,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T05:45:19.234Z",
+      "detail": "scheduled for 2026-11-21T02:00:00.000Z reel 1664450815342523 (music: coriolan)",
+      "story": "bert-trautmann-broken-neck-final"
     }
   ]
 }
