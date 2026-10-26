@@ -36,3 +36,5 @@ Wording: the body says "On 19 November 1969/2013" (not "On this day") because th
 Cut or not used, for want of a second source or because sources conflict: Pelé stuck on 999 after a match in Salvador three days earlier; the penalty being in the second half and its minute (33' or 34' differ); the foul (Renê or Fernando); the exact Maracanã crowd; Vasco's goalkeeper Andrada (one summary); Pelé's eight goals against Botafogo in 1964 (confirmed earlier but no longer used); the Solna attendance; Ronaldo's diving header in the first leg; FIFA's stated reason for the deadline change; Ronaldo collecting the award from Pelé (UEFA only); Ronaldo's tears; "first" Prix d'Honneur.
 
 Not attempted: Ronaldo's current career goal total and any 1,000-goal comparison (the figure changes and was not checked).
+
+Picture (26 Oct): Pelé from Anefo's 1965 close-up (CC0, Nationaal Archief), painted in colour in Santos white; Ronaldo from Fanny Schertzer's photo at Croatia v Portugal, 10 June 2013 (CC BY-SA 3.0), in which he wears a Portugal track jacket, repainted in Portugal's 2013 home shirt per the picture guide's period rule.
