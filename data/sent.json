@@ -330,14 +330,6 @@
       "story": "leicester-city-5000-to-1"
     },
     {
-      "number": 17,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T03:06:40.055Z",
-      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1150638750634882 (music: coriolan)",
-      "story": "guess-the-legend-andrea-pirlo"
-    },
-    {
       "number": 26,
       "network": "facebook",
       "status": "scheduled",
@@ -362,6 +354,15 @@
       "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 1443022411230998 (music: coriolan)",
       "story": "scholes-v-buffon-13-november",
       "reel": "f44c18243a9d71901ab118ee23933c391c87b076"
+    },
+    {
+      "number": 17,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T03:38:56.045Z",
+      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1834632164230276 (music: coriolan) (cover: mystery card)",
+      "story": "guess-the-legend-andrea-pirlo",
+      "reel": "725f199e41c1068f470de739f5ed421a0889c931"
     }
   ]
 }
