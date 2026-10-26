@@ -1,35 +1,41 @@
 # Fact-check log: NNN Van Persie v Salah / Two headers in two title races on 10 November
 
-**Status: NOT READY TO SCHEDULE. `draft: true` on purpose.** The session's web-search budget (shared by all researchers) ran out after the Van Persie match had been checked and before Liverpool v Manchester City could be searched at all. The Salah half and the season context are written from the researcher's knowledge and are **unverified**; every such row is marked. Set `draft: false` only when every row reads "Confirmed".
+**Status: ready (`draft: false`, set 26 Oct after the second pass).** The Salah half and the season context, unchecked in the first pass, now each rest on two named, independent sources. Claims that could not be confirmed were cut or reworded (see "Cut and changed" below).
 
-Checked 26 October 2026. Method note: page fetching was blocked (WebFetch could not resolve any host from this session), so claims were checked against web-search excerpts and the search tool's summaries of the pages named below, not by opening the pages.
+Checked 26 October 2026 in two passes. Method note: page fetching was blocked (WebFetch could not reach any host from this session), so claims were checked against web-search excerpts and the search tool's summaries of the pages named below, not by opening the pages. In the second pass, searches were restricted to named outlets (premierleague.com, espn.com, skysports.com, cnn.com, si.com, liverpoolfc.com, arsenal.com and others) so each excerpt can be attributed. Club sites (arsenal.com, liverpoolfc.com) are counted as independent of the news outlets, but never as the only source for a claim that flatters their club. Reuters copy carried by Ahram Online and The Peninsula counts once. Before scheduling, an editor should open arsenal.com's match report of 10 Nov 2013 and CNN's report of 10 Nov 2019.
 
-Overlap to note: otd-1104 ("Cantona v Owen", 4 Nov) asks whose move to Manchester United was the bigger shock. This story mentions Van Persie's move from Arsenal to United in one sentence only; the angle and question are about the two title races, not transfers.
+Overlap to note: the 4 November story (now Owen v Beckham) mentions Owen joining Manchester United in 2009. This story mentions Van Persie's move from Arsenal to United in one sentence only; its angle and question are about two title races, not transfers.
 
 Living-persons rule: Van Persie, Salah, Rooney, Robertson, Fabinho, Mané and Bernardo Silva appear only in documented football facts.
 
 | Claim | Source 1 | Source 2 | Result |
 |---|---|---|---|
-| 10 Nov 2013, Old Trafford: Manchester United 1–0 Arsenal, Van Persie scored the only goal | Camden New Journal, "Arsenal cling to top spot despite lacklustre defeat to Man United at Old Trafford" | Newstalk, "Van Persie puts United back in the mix"; The New Daily (11 Nov 2013); BioBioChile and DH (10 Nov 2013) | Confirmed. |
-| Arsenal were his old club | Newstalk/The New Daily excerpts ("turned on his old club") | Search summary across the same results | Confirmed. |
-| Arsenal arrived top of the table and were still top that night | Reuters report carried by Ahram Online and The Peninsula ("Premier League leaders Arsenal") | Camden New Journal headline ("Arsenal cling to top spot") | Confirmed. |
-| The goal was a header from a Wayne Rooney corner after 27 minutes | Reuters report (via Ahram Online and The Peninsula) | — | **One independent source** (the same wire in two outlets). Needs a second, e.g. BBC or Guardian report. |
-| United were the champions; the win left them five points behind Arsenal | Reuters report ("Champions Manchester United"; "move to within five points") | Search summary, same results | **One independent source.** Needs a second. |
-| Van Persie left Arsenal for United in August 2012; in his first season United won the league and he was the Premier League's top scorer | Not searched | — | **Unverified.** |
-| United finished 2013–14 seventh; Manchester City won that title | Not searched | — | **Unverified.** |
-| 10 Nov 2019, Anfield: Liverpool 3–1 Manchester City; Fabinho, Salah, Mané for Liverpool, Bernardo Silva late for City | Not searched | — | **Unverified.** |
-| Salah's goal was a header from an Andy Robertson cross | Not searched | — | **Unverified.** |
-| City were champions for the second year running; Liverpool were top before the game | Not searched | — | **Unverified.** |
-| Liverpool left the game nine points clear of City | Not searched | — | **Unverified.** |
-| Liverpool won the 2019–20 league, their first title in 30 years | Not searched | — | **Unverified.** |
-| Both men are better known for their left foot | Not searched | — | **Unverified** (widely described so; needs two sources or cut the line and the hook). |
+| 10 Nov 2013, Old Trafford: Manchester United 1–0 Arsenal, Van Persie scored the only goal | Camden New Journal, "Arsenal cling to top spot despite lacklustre defeat to Man United at Old Trafford" | Sky Sports match page (295739: Van Persie "scored against his former club Arsenal, again"); Newstalk; ESPN match page (gameId 367381) | Confirmed. |
+| Arsenal were his old club | Sky Sports ("his former club") | Newstalk / The New Daily ("turned on his old club") | Confirmed. |
+| The goal was a header from a Wayne Rooney corner after 27 minutes | Reuters (via Ahram Online and The Peninsula) | arsenal.com match report ("Robin van Persie headed home Wayne Rooney's corner"); ESPN match page (27') | Confirmed (second pass). |
+| Arsenal arrived top of the table, and were still top that night | Reuters (via Ahram Online: "Premier League leaders Arsenal") | Camden New Journal ("cling to top spot"); arsenal.com ("still top by two clear points") | Confirmed. |
+| United were the champions in November 2013 (they won 2012–13) | Reuters ("Champions Manchester United") | Premier League, "2012/13 Season Review" (United's 13th title, by 11 points) | Confirmed (second pass). |
+| He had left Arsenal for United in 2012; in his first season United won the league and he was the Premier League's top scorer (26 goals) | ESPN, "Ranking every Premier League Golden Boot-winning season" (signed from Arsenal for the 2012–13 season; 26 goals) | Premier League, "Golden Boot winners and top scorers" (2012–13: Van Persie, Manchester United); Sky Sports, "Robin van Persie: seven years on from Man Utd's last Premier League hat-trick and title" | Confirmed (second pass). The fee (£24m, ESPN only) and the month (August) are **not given**. |
+| He had been top scorer at Arsenal the season before that, too (2011–12, 30 goals) | Premier League Golden Boot list (2011–12: Van Persie, Arsenal) | ESPN Golden Boot ranking (he "retained the Golden Boot he had won at Arsenal the previous season") | Confirmed (second pass). Both pages list every Golden Boot season; the excerpt quoted is from one of the two. |
+| United finished 2013–14 seventh | Sky Sports, "Did Manchester United progress under Louis van Gaal?" (2013/14: 64 points, seventh) | ESPN, "Man United wrap up worst ever Premier League finish" (seventh under Moyes in 2013–14) | Confirmed (second pass). |
+| 10 Nov 2019, Anfield: Liverpool 3–1 Manchester City; Fabinho, Salah, Mané for Liverpool, Bernardo Silva late for City | ESPN report and match page (gameId 541731: Fabinho 6', Salah 13', Mané 51', Bernardo Silva 78') | CNN, 10 Nov 2019, "Liverpool beats title rival Manchester City in Premier League showdown"; Goal.com, "10 defining moments in Liverpool's record-setting season" | Confirmed (second pass). |
+| Fabinho scored first, with a long-range shot after six minutes | ESPN (6'; "struck from outside the area") | Goal.com / CNN search summary ("a long-range strike") | Confirmed. |
+| Seven minutes later, Salah headed in an Andy Robertson cross | Premier League match page (46718: "Salah 13', Andy Robertson (Assist)") | Sports Illustrated match report and liverpoolfc.com, "Three perfect touches: Was this Andy Robertson's best assist for Mo Salah?"; ESPN (Salah headed Robertson's cross back across Claudio Bravo) | Confirmed (second pass). 13' minus 6' = 7 minutes. |
+| Mané added a third after half-time | ESPN (51') | CNN / Goal.com summary ("added a header early in the second half") | Confirmed. |
+| Bernardo Silva's late goal for City | ESPN (78') | Goal.com ("Bernardo Silva's late strike offered nought but consolation") | Confirmed. |
+| City were the champions in November 2019 | Goal.com ("the title holders") | CNN, 25 Jun 2020, and ESPN, "Liverpool become Premier League champions after 30-year wait" (City as the defending champions that season) | Confirmed (second pass). "For the second year running" is **cut** (see below). |
+| Liverpool were top, and left the pitch nine points clear of City | CNN ("nine points clear of City") | Sports Illustrated, "Liverpool Dominates Man City to Move Nine Points Clear Atop Premier League"; liverpoolfc.com match report (an eight-point lead at the top, over the second-placed team) | Confirmed (second pass). After the win Liverpool were eight clear of second place and nine clear of City (fourth), so they were top before kick-off as well; the body says only "nine points clear of City". |
+| Liverpool won the 2019–20 league, their first title in 30 years | ESPN, "Liverpool become Premier League champions after 30-year wait" | CNN, 25 Jun 2020; Al Jazeera, "Liverpool win first Premier League title since 1990" | Confirmed (second pass). |
 
-Cover line and question are the editor's framing. The closing lines are reflection, not claims.
+Cover line, title and question are the editor's framing ("two title races"; "whose Premier League peak was higher?"). "Mirror images" and "one man beat the leaders for the champions, the other beat the champions for the leaders" restate the standings rows. The closing lines are reflection, not claims.
 
 Wording: the body says "On 10 November 2013/2019", not "On this day"; only the cover line says "On this day".
 
-Cut already: Van Persie scoring against Arsenal for the third match in a row (one excerpt only).
-
-To finish (about 8 searches): BBC/Guardian reports of Man Utd v Arsenal 10 Nov 2013 and Liverpool v Man City 10 Nov 2019; Van Persie transfer August 2012 and 2012–13 Golden Boot; 2013–14 final table; 2018–19 champions; Liverpool's 2019–20 title "first in 30 years".
-
-If the Salah half cannot be confirmed, the fully sourced fallback for this date is weak (see alternatives.md).
+Cut and changed (second pass, 26 Oct):
+- **Cut:** "Two forwards famous for their left foot" (body) and "two left-footers" (cover line): no sources searched; the line was not needed. The cover line now reads "two headers in two title races, six years apart".
+- **Cut:** "United were five points behind Arsenal" (body and fact card 4): Reuters only; no second outlet found. Fact card 4 now says "That night Arsenal were still top. United finished the season seventh."
+- **Cut:** "The title that year went to Manchester City" (2013–14): no source came up in the searches made.
+- **Cut:** City champions "for the second year running": sources call City the defending champions, but none in the excerpts says back-to-back.
+- **Cut:** "August 2012" for the transfer, now "2012" (the month was not in the excerpts); the fee (£24m, ESPN only).
+- **Not used:** United's seventh place as their lowest Premier League finish at the time (ESPN only); Arsenal's second league defeat of the season (arsenal.com only); Liverpool's VAR handball dispute over the first goal; Claudio Bravo standing in for the injured Ederson; Liverpool's 99 points and 18-point final margin.
+- Already cut in the first pass: Van Persie scoring against Arsenal for the third match in a row (one excerpt only).

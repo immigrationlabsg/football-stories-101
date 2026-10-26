@@ -1,12 +1,12 @@
 {
   "A": {
     "player": "Pelé",
-    "want": "Pelé in Santos's white shirt with the number 10, ideally late 1960s, face clearly visible; second choice Brazil's yellow 10 (1970). The Dutch National Archive (Nationaal Archief) holds several free photos of Santos and Pelé on tour.",
-    "queries": ["Pelé Santos", "Pele Santos 1960s", "Pelé Nationaal Archief", "Pele Brazil 1970"]
+    "want": "Pelé in Santos's white shirt with the number 10, ideally around 1969, face clearly visible; second choice Brazil's yellow number 10 (1970). The Dutch National Archive (Nationaal Archief, Anefo) and Agência Brasil hold free photos of Pelé.",
+    "queries": ["Pelé Santos", "Pele Santos 1969", "Pelé Nationaal Archief", "Pele Brazil 1970"]
   },
   "B": {
-    "player": "Ronaldinho",
-    "want": "Ronaldinho in Barcelona's blue and claret (blaugrana) shirt with the number 10, 2004 to 2006, face clearly visible, ideally smiling.",
-    "queries": ["Ronaldinho Barcelona", "Ronaldinho FC Barcelona 2005", "Ronaldinho Barça 10", "Ronaldinho 2006"]
+    "player": "Cristiano Ronaldo",
+    "want": "Cristiano Ronaldo in Portugal's red shirt with the number 7, 2013 to 2014, face clearly visible; second choice any Portugal red number 7 from 2012 to 2016. Not Real Madrid white: the story is about Portugal.",
+    "queries": ["Cristiano Ronaldo Portugal 2014", "Cristiano Ronaldo Portugal 2013", "Ronaldo Portugal national team", "Cristiano Ronaldo Euro 2012 Portugal"]
   }
 }

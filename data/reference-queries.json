@@ -1,31 +1,4 @@
 {
-  "903": {
-    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
-    "queries": [
-      "Andrea Pirlo Juventus",
-      "Andrea Pirlo Italy",
-      "Andrea Pirlo 2014",
-      "Andrea Pirlo Euro 2012"
-    ]
-  },
-  "904": {
-    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
-    "queries": [
-      "Didier Drogba Chelsea",
-      "Didier Drogba Champions League Winner",
-      "Didier Drogba 11",
-      "Didier Drogba Ivory Coast"
-    ]
-  },
-  "905": {
-    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
-    "queries": [
-      "Luka Modric Croatia 2018",
-      "Luka Modrić Golden Ball 2018",
-      "Luka Modrić World Cup 2018",
-      "Luka Modrić Real Madrid"
-    ]
-  },
   "001": {
     "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt",
     "queries": [
@@ -325,6 +298,33 @@
       "Weah Milan goal"
     ]
   },
+  "903": {
+    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
+    "queries": [
+      "Andrea Pirlo Juventus",
+      "Andrea Pirlo Italy",
+      "Andrea Pirlo 2014",
+      "Andrea Pirlo Euro 2012"
+    ]
+  },
+  "904": {
+    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
+    "queries": [
+      "Didier Drogba Chelsea",
+      "Didier Drogba Champions League Winner",
+      "Didier Drogba 11",
+      "Didier Drogba Ivory Coast"
+    ]
+  },
+  "905": {
+    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
+    "queries": [
+      "Luka Modric Croatia 2018",
+      "Luka Modrić Golden Ball 2018",
+      "Luka Modrić World Cup 2018",
+      "Luka Modrić Real Madrid"
+    ]
+  },
   "p1029a": {
     "want": "Messi in Barcelona's blue-and-claret shirt, number 10, around 2011-12 (the Mallorca hat-trick season), face clearly visible",
     "queries": [
@@ -397,6 +397,62 @@
       "Michael Owen Liverpool 2001",
       "Michael Owen 10 Liverpool",
       "Michael Owen England 2002"
+    ]
+  },
+  "p1104x": {
+    "want": "Owen in Liverpool's red shirt (number 10) around 2001, face clearly visible; England white (number 10) around 2001-2002 is the fallback. Reject his later Real Madrid, Newcastle, Manchester United or Stoke photos unless nothing else shows his face clearly",
+    "queries": [
+      "Michael Owen Liverpool",
+      "Michael Owen Liverpool 2001",
+      "Michael Owen 10 Liverpool",
+      "Michael Owen England 2002",
+      "Michael Owen England"
+    ]
+  },
+  "p1104y": {
+    "want": "Beckham in Manchester United's red number 7 around 2000 to 2003, face clearly visible (check the sponsor and badge match the season of the photo); England white or red around 2001-2002 is the fallback. Reject Real Madrid, LA Galaxy, Milan and PSG photos, and his later off-field photos",
+    "queries": [
+      "David Beckham Manchester United",
+      "David Beckham Manchester United 2001",
+      "Beckham 7 Manchester United",
+      "David Beckham England 2002",
+      "David Beckham England"
+    ]
+  },
+  "p1107a": {
+    "want": "Torres in Liverpool red with his No 9, 2008 to 2010, face clearly visible; failing that, Spain red",
+    "queries": [
+      "Fernando Torres Liverpool",
+      "Fernando Torres Liverpool 2009",
+      "Torres 9 Liverpool",
+      "Fernando Torres Spain 2010"
+    ]
+  },
+  "p1107b": {
+    "want": "Watt with his face clearly visible, ideally in Celtic's green-and-white hoops (2012 to 2013); Commons may only have him at later clubs, in which case a clear face photo for likeness and the Celtic hoops painted from the kit",
+    "queries": [
+      "Tony Watt Celtic",
+      "Tony Watt footballer",
+      "Tony Watt Celtic 2012",
+      "Tony Watt"
+    ]
+  },
+  "p1110a": {
+    "want": "Van Persie in Manchester United red with his No 20, 2012 to 2014, face clearly visible; failing that, Arsenal red-and-white with No 10",
+    "queries": [
+      "Robin van Persie Manchester United",
+      "Van Persie 20 Manchester United",
+      "Robin van Persie 2013",
+      "Robin van Persie Arsenal"
+    ]
+  },
+  "p1110b": {
+    "want": "Salah in Liverpool red with his No 11, ideally 2019, face clearly visible",
+    "queries": [
+      "Mohamed Salah Liverpool",
+      "Mohamed Salah Liverpool 2019",
+      "Salah 11 Liverpool",
+      "Mohamed Salah 2018"
     ]
   },
   "p1113a": {
