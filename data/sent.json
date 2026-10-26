@@ -339,15 +339,6 @@
       "reel": "641f32e1f8cbd7d2ad3d53cbc8df2a18ca65df8c"
     },
     {
-      "number": 25,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T03:37:39.384Z",
-      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 1443022411230998 (music: coriolan)",
-      "story": "scholes-v-buffon-13-november",
-      "reel": "f44c18243a9d71901ab118ee23933c391c87b076"
-    },
-    {
       "number": 26,
       "network": "facebook",
       "status": "scheduled",
@@ -364,6 +355,15 @@
       "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 2058740564843348 (music: coriolan) (cover: mystery card)",
       "story": "guess-the-legend-andrea-pirlo",
       "reel": "dde816f6d721872e33cea86caf8e5a277d230c5d"
+    },
+    {
+      "number": 25,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T03:59:12.559Z",
+      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 1507353088083849 (music: coriolan)",
+      "story": "scholes-v-buffon-13-november",
+      "reel": "c937aab8f92afa7112d0c97a548c78c2d8abf4e9"
     }
   ]
 }
