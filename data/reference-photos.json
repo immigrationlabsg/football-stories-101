@@ -193,16 +193,18 @@
   ],
   "016": [
     {
-      "commons": "File:Celtic tegen Feijenoord 1-2 finale Europacup-I in Milaan spelmoment, Bestanddeelnr 923-5041.jpg",
-      "licence": "CC0",
-      "why": "Celtic in their green-and-white hoops in a European Cup final (1970, Milan). No free photo of Lisbon 1967 exists: ask for bright sunshine and Inter in blue and black.",
-      "kit": "Celtic green-and-white hooped shirts, white shorts, 1970",
-      "alt": "Watercolour painting of a Celtic defender in green-and-white hoops, seen from behind, leaping to head the ball in a European Cup final"
+      "commons": "File:Michaelowenfull.jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "4 Nov comparison, Owen v Beckham, Anfield 2001: left, Michael Owen in Liverpool's red 2001-02 home shirt; right, David Beckham in Manchester United's red 2001-02 home shirt. Owen's photo shows him in a white Real Madrid training top: paint his shirt as Liverpool's 2001-02 Reebok home shirt, all red, with the Carlsberg sponsor and the Liverpool crest. Beckham's photo shows him in England white: paint his shirt as Manchester United's 2001-02 Umbro home shirt, red with a white collar, the Vodafone sponsor and the United crest. No shirt numbers on the front. Everything else about each player (face, hair, build, pose) exactly as in his photo. Only these two players: no other figures, no captain's armband, the background is a blurred Anfield crowd.",
+      "kit": "Liverpool's red 2001-02 Reebok home shirt with Carlsberg (in place of the photo's Real Madrid training top)",
+      "alt": "Watercolour painting split in two: Michael Owen in Liverpool red and David Beckham in Manchester United red"
     },
     {
-      "commons": "File:Jimmy Johnstone (cropped).jpg",
-      "licence": "CC0",
-      "why": "Jimmy Johnstone, one of the Lisbon Lions, 1971."
+      "commons": "File:David Beckham.jpg",
+      "licence": "Public domain",
+      "why": "David Beckham, England, 6 June 2006",
+      "kit": "Manchester United's red 2001-02 Umbro home shirt with Vodafone (in place of the photo's England shirt)"
     }
   ],
   "017": [
@@ -231,16 +233,18 @@
   ],
   "019": [
     {
-      "commons": "File:Busby babes last match.jpg",
-      "licence": "Public domain",
-      "why": "The Busby Babes lined up in Belgrade on 5 February 1958, their last match before Munich.",
-      "kit": "Manchester United red shirts, white shorts, 1958",
-      "alt": "Watercolour painting of Manchester United players in red shirts and white shorts lined up before a match in 1958, one in the foreground"
+      "commons": "File:Fernando Torres v Blackpool 2010.jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "7 Nov comparison, Torres v Watt: left, Fernando Torres running in Liverpool's red 2010-11 home shirt (Standard Chartered, adidas); right, Tony Watt, aged 18, in Celtic's green-and-white hooped 2012-13 home shirt. Watt's photo shows him in a green top: paint his shirt as Celtic's 2012-13 Nike home shirt with green and white hoops and the Tennent's sponsor, with no shirt number on the front; everything else about him (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
+      "kit": "Liverpool's red 2010-11 adidas home shirt with Standard Chartered",
+      "alt": "Watercolour painting split in two: Fernando Torres in Liverpool red and Tony Watt in Celtic's green-and-white hoops"
     },
     {
-      "commons": "File:Bobby charlton elgrafico.JPG",
-      "licence": "",
-      "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+      "commons": "File:Tony Watt 20130421.jpg",
+      "licence": "CC BY 2.0",
+      "why": "Tony Watt at Celtic Park, 21 April 2013",
+      "kit": "Celtic's green-and-white hooped 2012-13 Nike home shirt with the Tennent's sponsor (in place of the photo's green top)"
     }
   ],
   "020": [
@@ -493,6 +497,34 @@
       "alt": "Watercolour painting of George Weah in Paris Saint-Germain's blue, white and red shirt, running with clenched fists"
     }
   ],
+  "039": [
+    {
+      "commons": "File:Celtic tegen Feijenoord 1-2 finale Europacup-I in Milaan spelmoment, Bestanddeelnr 923-5041.jpg",
+      "licence": "CC0",
+      "why": "Celtic in their green-and-white hoops in a European Cup final (1970, Milan). No free photo of Lisbon 1967 exists: ask for bright sunshine and Inter in blue and black.",
+      "kit": "Celtic green-and-white hooped shirts, white shorts, 1970",
+      "alt": "Watercolour painting of a Celtic defender in green-and-white hoops, seen from behind, leaping to head the ball in a European Cup final"
+    },
+    {
+      "commons": "File:Jimmy Johnstone (cropped).jpg",
+      "licence": "CC0",
+      "why": "Jimmy Johnstone, one of the Lisbon Lions, 1971."
+    }
+  ],
+  "040": [
+    {
+      "commons": "File:Busby babes last match.jpg",
+      "licence": "Public domain",
+      "why": "The Busby Babes lined up in Belgrade on 5 February 1958, their last match before Munich.",
+      "kit": "Manchester United red shirts, white shorts, 1958",
+      "alt": "Watercolour painting of Manchester United players in red shirts and white shorts lined up before a match in 1958, one in the foreground"
+    },
+    {
+      "commons": "File:Bobby charlton elgrafico.JPG",
+      "licence": "",
+      "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+    }
+  ],
   "901": [
     {
       "commons": null,
@@ -537,38 +569,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "c1104": [
-    {
-      "commons": "File:Michaelowenfull.jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "4 Nov comparison, Owen v Beckham, Anfield 2001: left, Michael Owen in Liverpool's red 2001-02 home shirt; right, David Beckham in Manchester United's red 2001-02 home shirt. Owen's photo shows him in a white Real Madrid training top: paint his shirt as Liverpool's 2001-02 Reebok home shirt, all red, with the Carlsberg sponsor and the Liverpool crest. Beckham's photo shows him in England white: paint his shirt as Manchester United's 2001-02 Umbro home shirt, red with a white collar, the Vodafone sponsor and the United crest. No shirt numbers on the front. Everything else about each player (face, hair, build, pose) exactly as in his photo. Only these two players: no other figures, no captain's armband, the background is a blurred Anfield crowd.",
-      "kit": "Liverpool's red 2001-02 Reebok home shirt with Carlsberg (in place of the photo's Real Madrid training top)",
-      "alt": "Watercolour painting split in two: Michael Owen in Liverpool red and David Beckham in Manchester United red"
-    },
-    {
-      "commons": "File:David Beckham.jpg",
-      "licence": "Public domain",
-      "why": "David Beckham, England, 6 June 2006",
-      "kit": "Manchester United's red 2001-02 Umbro home shirt with Vodafone (in place of the photo's England shirt)"
-    }
-  ],
-  "c1107": [
-    {
-      "commons": "File:Fernando Torres v Blackpool 2010.jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "7 Nov comparison, Torres v Watt: left, Fernando Torres running in Liverpool's red 2010-11 home shirt (Standard Chartered, adidas); right, Tony Watt, aged 18, in Celtic's green-and-white hooped 2012-13 home shirt. Watt's photo shows him in a green top: paint his shirt as Celtic's 2012-13 Nike home shirt with green and white hoops and the Tennent's sponsor, with no shirt number on the front; everything else about him (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
-      "kit": "Liverpool's red 2010-11 adidas home shirt with Standard Chartered",
-      "alt": "Watercolour painting split in two: Fernando Torres in Liverpool red and Tony Watt in Celtic's green-and-white hoops"
-    },
-    {
-      "commons": "File:Tony Watt 20130421.jpg",
-      "licence": "CC BY 2.0",
-      "why": "Tony Watt at Celtic Park, 21 April 2013",
-      "kit": "Celtic's green-and-white hooped 2012-13 Nike home shirt with the Tennent's sponsor (in place of the photo's green top)"
     }
   ],
   "c1110": [

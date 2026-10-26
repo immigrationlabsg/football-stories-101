@@ -6,8 +6,6 @@ written but not yet handed a slot. Each folder has `story.mdx` (number 0 until `
 
 | Folder | Date | Piece | State |
 |---|---|---|---|
-| otd-1104 | 4 Nov | Cantona v Owen | No free photo of Cantona as a player on Commons: use an alternative pair (alternatives.md) |
-| otd-1107 | 7 Nov | Torres v Watt | draft: true; several claims need a second source |
 | otd-1110 | 10 Nov | Van Persie v Salah | draft: true; the Salah half is unchecked |
 | otd-1116 | 16 Nov | Henry v Baggio | Not ready; Henry is already on 1 Nov, so use Baggio v Messi's debut instead |
 | otd-1119 | 19 Nov | Pelé v Ronaldinho | Checked, but Ronaldinho is also on 28 Nov with the same Ballon d'Or: change one half |
