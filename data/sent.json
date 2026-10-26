@@ -348,15 +348,6 @@
       "reel": "f44c18243a9d71901ab118ee23933c391c87b076"
     },
     {
-      "number": 17,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T03:38:56.045Z",
-      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 1834632164230276 (music: coriolan) (cover: mystery card)",
-      "story": "guess-the-legend-andrea-pirlo",
-      "reel": "725f199e41c1068f470de739f5ed421a0889c931"
-    },
-    {
       "number": 26,
       "network": "facebook",
       "status": "scheduled",
@@ -364,6 +355,15 @@
       "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1630747338530479 (music: mozart40) (cover: mystery card)",
       "story": "guess-the-legend-didier-drogba",
       "reel": "982dfe1a4abd221c709c829049c26e0af0fdbcdc"
+    },
+    {
+      "number": 17,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T03:58:04.599Z",
+      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 2058740564843348 (music: coriolan) (cover: mystery card)",
+      "story": "guess-the-legend-andrea-pirlo",
+      "reel": "dde816f6d721872e33cea86caf8e5a277d230c5d"
     }
   ]
 }
