@@ -361,6 +361,24 @@
       "Michael Owen England 2002"
     ]
   },
+  "p1113a": {
+    "want": "Scholes with his face clearly visible, ideally in England white (the 1999 Hampden kit) or in Manchester United red with his No 18; a close or half-length shot, not a distant action photo",
+    "queries": [
+      "Paul Scholes England",
+      "Paul Scholes Manchester United",
+      "Paul Scholes 18 Manchester United",
+      "Scholes Manchester United 2008"
+    ]
+  },
+  "p1113b": {
+    "want": "Buffon in an Italy goalkeeper kit, face clearly visible, ideally 2016 to 2017; failing that, Juventus with his No 1",
+    "queries": [
+      "Gianluigi Buffon Italy",
+      "Gianluigi Buffon Italy 2017",
+      "Gianluigi Buffon Italy 2016",
+      "Gianluigi Buffon Juventus"
+    ]
+  },
   "p1125a": {
     "want": "George Best playing or posing in a football kit (Manchester United red, Northern Ireland green, or a club he played for later), face clearly visible; photos from the Dutch Nationaal Archief / Anefo are free",
     "queries": [
