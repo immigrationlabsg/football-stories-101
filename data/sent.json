@@ -42,22 +42,6 @@
       "story": "istanbul-2005-liverpool-comeback"
     },
     {
-      "number": 27,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-19T16:52:48.448Z",
-      "detail": "scheduled for 2026-11-15T02:00:00.000Z 1419297047928388_122094888063522790 (short id 122094888063522790)",
-      "story": "grande-torino-superga"
-    },
-    {
-      "number": 29,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-19T16:53:08.890Z",
-      "detail": "scheduled for 2026-11-17T00:00:00.000Z 1419297047928388_122094889275522790 (short id 122094889275522790)",
-      "story": "greece-euro-2004"
-    },
-    {
       "number": 1,
       "network": "instagram",
       "status": "posted",
@@ -104,14 +88,6 @@
       "at": "2026-10-22T00:01:24.993Z",
       "detail": "thread 18576443692077598",
       "story": "nottingham-forest-two-european-cups"
-    },
-    {
-      "number": 30,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-22T00:01:29.678Z",
-      "detail": "scheduled for 2026-11-18T00:00:00.000Z 1419297047928388_122096804241522790 (short id 122096804241522790)",
-      "story": "lily-parr-dick-kerr-ladies"
     },
     {
       "number": 4,
@@ -388,6 +364,33 @@
       "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1451291953626092 (music: egmont)",
       "story": "baggio-v-messi-16-november",
       "reel": "97ca68653ef159527d48043b16f1850a32e66ca7"
+    },
+    {
+      "number": 27,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T13:10:18.873Z",
+      "detail": "scheduled for 2026-11-15T02:00:00.000Z reel 1700673451472494 (music: hebrides)",
+      "story": "grande-torino-superga",
+      "reel": "bbb1d1a0a77c4075eb074a44e3c9fdbe8eee6845"
+    },
+    {
+      "number": 29,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T13:11:52.819Z",
+      "detail": "scheduled for 2026-11-17T00:00:00.000Z reel 1730530014680684 (music: coriolan)",
+      "story": "greece-euro-2004",
+      "reel": "a3d8f6fbe19d10dc2d260e17fd2d7660447eb35b"
+    },
+    {
+      "number": 30,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T13:13:37.153Z",
+      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1153102200561262 (music: mozart40)",
+      "story": "lily-parr-dick-kerr-ladies",
+      "reel": "351107eb355b28f35fa5f9e0faffacc3ea08ea7f"
     }
   ]
 }
