@@ -295,6 +295,27 @@
       "at": "2026-10-25T16:53:03.615Z",
       "detail": "scheduled for 2026-10-26T00:00:00.000Z reel 2338299390322271 (music: hebrides)",
       "story": "le-tissier-v-totti-26-october"
+    },
+    {
+      "number": 7,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-10-26T00:01:07.811Z",
+      "detail": "reel media 18141306502623385"
+    },
+    {
+      "number": 7,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-10-26T00:01:07.811Z",
+      "detail": "reel thread 18444425185178021"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T00:01:30.100Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1797487782376813 (music: hebrides)"
     }
   ]
 }
