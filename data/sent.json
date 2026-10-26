@@ -50,14 +50,6 @@
       "story": "grande-torino-superga"
     },
     {
-      "number": 28,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-19T16:53:04.952Z",
-      "detail": "scheduled for 2026-11-16T00:00:00.000Z 1419297047928388_122094889155522790 (short id 122094889155522790)",
-      "story": "arsenal-invincibles-2003-04"
-    },
-    {
       "number": 29,
       "network": "facebook",
       "status": "scheduled",
@@ -369,6 +361,15 @@
       "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1747857826915767 (music: hebrides)",
       "story": "pele-v-cristiano-ronaldo-19-november",
       "reel": "75966a425a8216dc6c8d71f4e992b3408a467b67"
+    },
+    {
+      "number": 28,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-26T05:40:33.854Z",
+      "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1847418196269332 (music: egmont)",
+      "story": "baggio-v-messi-16-november",
+      "reel": "bfdc5c3c4cfb3fc90770308c6258038aac5436a1"
     }
   ]
 }
