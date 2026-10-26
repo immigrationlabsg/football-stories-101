@@ -1,31 +1,4 @@
 {
-  "903": {
-    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
-    "queries": [
-      "Andrea Pirlo Juventus",
-      "Andrea Pirlo Italy",
-      "Andrea Pirlo 2014",
-      "Andrea Pirlo Euro 2012"
-    ]
-  },
-  "904": {
-    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
-    "queries": [
-      "Didier Drogba Chelsea",
-      "Didier Drogba Champions League Winner",
-      "Didier Drogba 11",
-      "Didier Drogba Ivory Coast"
-    ]
-  },
-  "905": {
-    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
-    "queries": [
-      "Luka Modric Croatia 2018",
-      "Luka Modrić Golden Ball 2018",
-      "Luka Modrić World Cup 2018",
-      "Luka Modrić Real Madrid"
-    ]
-  },
   "001": {
     "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt",
     "queries": [
@@ -325,6 +298,33 @@
       "Teddy Sheringham 1999"
     ]
   },
+  "903": {
+    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
+    "queries": [
+      "Andrea Pirlo Juventus",
+      "Andrea Pirlo Italy",
+      "Andrea Pirlo 2014",
+      "Andrea Pirlo Euro 2012"
+    ]
+  },
+  "904": {
+    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
+    "queries": [
+      "Didier Drogba Chelsea",
+      "Didier Drogba Champions League Winner",
+      "Didier Drogba 11",
+      "Didier Drogba Ivory Coast"
+    ]
+  },
+  "905": {
+    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
+    "queries": [
+      "Luka Modric Croatia 2018",
+      "Luka Modrić Golden Ball 2018",
+      "Luka Modrić World Cup 2018",
+      "Luka Modrić Real Madrid"
+    ]
+  },
   "p1029a": {
     "want": "Messi in Barcelona's blue-and-claret shirt, number 10, around 2011-12 (the Mallorca hat-trick season), face clearly visible",
     "queries": [
@@ -341,6 +341,16 @@
       "Cristiano Ronaldo Real Madrid 2017",
       "Cristiano Ronaldo 7 Real Madrid",
       "Cristiano Ronaldo Real Madrid celebration"
+    ]
+  },
+  "p1029c": {
+    "want": "Cristiano Ronaldo in Real Madrid's 2016-17 kit (Fly Emirates sponsor), face clearly visible, ideally a 2016 or early 2017 match",
+    "queries": [
+      "Cristiano Ronaldo 2016",
+      "Cristiano Ronaldo 2017",
+      "Cristiano Ronaldo Real Madrid 2016",
+      "Cristiano Ronaldo Real Madrid 2017",
+      "Ronaldo Real Madrid Fly Emirates"
     ]
   },
   "p1104a": {
@@ -442,6 +452,26 @@
       "Ronaldinho FC Barcelona 2005",
       "Ronaldinho Barcelona 10",
       "Ronaldinho 2006 Barcelona Camp Nou"
+    ]
+  },
+  "p1128c": {
+    "want": "Ronaldinho in Barcelona's 2004-05 or 2005-06 shirt (no shirt sponsor, Nike, number 10), face clearly visible",
+    "queries": [
+      "Ronaldinho 2005",
+      "Ronaldinho Barcelona 2005",
+      "Ronaldinho 2004",
+      "Ronaldinho Barcelona 2006",
+      "Ronaldinho Ballon d'Or 2005"
+    ]
+  },
+  "p1128d": {
+    "want": "Juan Román Riquelme in Boca Juniors' blue and gold around 2000-2002 (or Argentina's shirt then), face clearly visible",
+    "queries": [
+      "Riquelme Boca Juniors 2000",
+      "Juan Román Riquelme 2001",
+      "Riquelme Boca 2001",
+      "Juan Roman Riquelme Boca Juniors",
+      "Riquelme Argentina 2002"
     ]
   }
 }
