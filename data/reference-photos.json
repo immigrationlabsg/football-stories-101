@@ -436,15 +436,15 @@
       "commons": "File:Jermain Defoe Brighton v Spurs Amex Opening 30711 2 (cropped).jpg",
       "licence": "CC BY 2.0",
       "pair": true,
-      "why": "22 Nov comparison, Defoe v Giroud: left, Jermain Defoe in Tottenham's black 2011-12 away shirt, standing on the pitch, looking ahead; right, Olivier Giroud in France's dark blue 2018 shirt with the number 9, one finger raised. Only these two players: no other figures, the background is a blurred stadium crowd.",
-      "kit": "Tottenham Hotspur's black 2011-12 Puma away shirt with yellow trim and the Aurasma sponsor",
+      "why": "22 Nov comparison, Defoe v Giroud: left, Jermain Defoe standing on the pitch, looking ahead, in Tottenham's white 2009-10 Puma home shirt with navy trim, the Tottenham cockerel crest and the Mansion sponsor (his photo shows the black 2011-12 away shirt: paint the 2009-10 white home shirt instead), navy shorts; right, Olivier Giroud in France's dark blue 2022 World Cup Nike home shirt with two gold stars above the cockerel crest, no match embroidery under the crest and no sleeve badge, one finger raised (his photo shows the 2018 shirt with one star: paint the 2022 shirt instead). No shirt numbers on the front. Everything else about each player (face, head, hair, beard, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
+      "kit": "Tottenham's white 2009-10 Puma home shirt with Mansion (in place of the photo's 2011-12 black away shirt)",
       "alt": "Watercolour painting split in two: Jermain Defoe in Tottenham's black away shirt and Olivier Giroud in France's number 9 shirt"
     },
     {
       "commons": "File:Olivier Giroud 2018.jpg",
       "licence": "CC BY-SA 3.0",
       "why": "Olivier Giroud, France v Argentina, 2018 World Cup",
-      "kit": "France's dark blue 2018 Nike shirt with the number 9 and the cockerel crest"
+      "kit": "France's dark blue 2022 World Cup Nike home shirt with two stars (in place of the photo's 2018 one-star shirt)"
     }
   ],
   "035": [
@@ -576,15 +576,15 @@
       "commons": "File:Manchester United (8400990621) (cropped).jpg",
       "licence": "CC BY 2.0",
       "pair": true,
-      "why": "10 Nov comparison, Van Persie v Salah: left, Robin van Persie, head and shoulders, in Manchester United's red 2013-14 Nike home shirt with the AON sponsor and the United crest (his photo shows him in a club suit and tie: paint the shirt instead); right, Mohamed Salah in Liverpool's red 2019-20 home shirt with Standard Chartered, holding the UEFA Super Cup as in his photo, but smaller in his half: the whole trophy, both his hands and his whole head must be inside the frame with clear space between the trophy and the right edge. No shirt numbers on the front. Everything else about each player (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
+      "why": "10 Nov comparison, Van Persie v Salah: left, Robin van Persie, head and shoulders, in Manchester United's red 2013-14 Nike home shirt with the AON sponsor and the United crest (his photo shows him in a club suit and tie: paint the shirt instead); right, Mohamed Salah, standing, in Liverpool's red 2019-20 New Balance home shirt with Standard Chartered and the Liver bird crest (his photo shows the 2021-22 Nike shirt: paint the 2019-20 New Balance shirt instead). No shirt numbers on the front. Everything else about each player (face, hair, beard, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
       "kit": "Manchester United's red 2013-14 Nike home shirt with AON and the black-trimmed collar (in place of the photo's club suit)",
-      "alt": "Watercolour painting split in two: Robin van Persie in Manchester United red and Mohamed Salah in Liverpool red with the Super Cup"
+      "alt": "Watercolour painting split in two: Robin van Persie in Manchester United red and Mohamed Salah in Liverpool red"
     },
     {
-      "commons": "File:Mohamed Salah with UEFA Super Cup.jpg",
-      "licence": "CC BY 4.0",
-      "why": "Mohamed Salah, Liverpool v Chelsea, UEFA Super Cup, 14 August 2019",
-      "kit": "Liverpool's red 2019-20 New Balance home shirt with Standard Chartered"
+      "commons": "File:Mohamed Salah, Liverpool FC gegen 1. FSV Mainz 05 (Testspiel 23. Juli 2021) 26.jpg",
+      "licence": "CC BY-SA 4.0",
+      "why": "Mohamed Salah, Liverpool v Mainz, friendly, 23 July 2021",
+      "kit": "Liverpool's red 2019-20 New Balance home shirt with Standard Chartered (in place of the photo's 2021-22 Nike shirt)"
     }
   ],
   "c1116": [
@@ -617,22 +617,6 @@
       "licence": "CC BY-SA 3.0",
       "why": "Cristiano Ronaldo, Croatia v Portugal, 10 June 2013",
       "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
-    }
-  ],
-  "c1122b": [
-    {
-      "commons": "File:Jermain Defoe Brighton v Spurs Amex Opening 30711 2 (cropped).jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "22 Nov comparison, Defoe v Giroud: left, Jermain Defoe standing on the pitch, looking ahead, in Tottenham's white 2009-10 Puma home shirt with navy trim, the Tottenham cockerel crest and the Mansion sponsor (his photo shows the black 2011-12 away shirt: paint the 2009-10 white home shirt instead), navy shorts; right, Olivier Giroud in France's dark blue 2022 World Cup Nike home shirt with two gold stars above the cockerel crest, no match embroidery under the crest and no sleeve badge, one finger raised (his photo shows the 2018 shirt with one star: paint the 2022 shirt instead). No shirt numbers on the front. Everything else about each player (face, head, hair, beard, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
-      "kit": "Tottenham's white 2009-10 Puma home shirt with Mansion (in place of the photo's 2011-12 black away shirt)",
-      "alt": "Watercolour painting split in two: Jermain Defoe in Tottenham's black away shirt and Olivier Giroud in France's number 9 shirt"
-    },
-    {
-      "commons": "File:Olivier Giroud 2018.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Olivier Giroud, France v Argentina, 2018 World Cup",
-      "kit": "France's dark blue 2022 World Cup Nike home shirt with two stars (in place of the photo's 2018 one-star shirt)"
     }
   ],
   "c1128": [
