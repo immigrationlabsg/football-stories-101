@@ -46,8 +46,28 @@ const brand = (color: string) =>
     h('div', { style: { fontFamily: 'Inter', fontWeight: 600, fontSize: 24, letterSpacing: 2, textTransform: 'uppercase', color } }, 'Football Stories 101'),
   );
 const abs = (top: number, extra: Record<string, unknown> = {}) => ({ position: 'absolute', left: 80, top, width: 920, display: 'flex', ...extra });
-// Paintings are square; the card shows 1080 x IMG_H of it. Cut from the bottom only, so a head is never cropped.
+// The mystery cover: the square painting fills 1080 x IMG_H, cut from the bottom only.
 const picture = (img: Buffer) => sharp(img).resize(W, IMG_H, { fit: 'cover', position: 'north' }).jpeg({ quality: 85 }).toBuffer();
+// The reveal shows the whole painting, nothing cut (picture standard, 26 Oct 2026: Pirlo's hair touched the top and his
+// "21" was cut at the bottom). It sits on its own paper colour with room above the head and enough below that the Reel's
+// slow zoom (up to 6%, about 40 px off each edge of the card) never reaches the shirt number.
+const REVEAL = { size: 930, top: 40 };
+async function whole(img: Buffer): Promise<Buffer> {
+  // The background is the painting's own paper: its lightest corner (a splash of paint can reach the others).
+  const { width = 1024, height = 1024 } = await sharp(img).metadata();
+  const corners = await Promise.all(
+    [[0, 0], [width - 16, 0], [0, height - 16], [width - 16, height - 16]].map(async ([left, top]) =>
+      // stats() reads the whole input, so cut the corner out first.
+      (await sharp(await sharp(img).extract({ left, top, width: 16, height: 16 }).toBuffer()).stats()).channels.slice(0, 3).map((c) => c.mean),
+    ),
+  );
+  const [r, g, b] = corners.reduce((best, c) => (c[0] + c[1] + c[2] > best[0] + best[1] + best[2] ? c : best)).map(Math.round);
+  const painting = await sharp(img).resize(REVEAL.size, REVEAL.size).toBuffer();
+  return sharp({ create: { width: W, height: IMG_H, channels: 3, background: { r, g, b } } })
+    .composite([{ input: painting, left: Math.round((W - REVEAL.size) / 2), top: REVEAL.top }])
+    .jpeg({ quality: 85 })
+    .toBuffer();
+}
 const banner = (...children: Node[]) =>
   h('div', { style: { width: W, height: BANNER, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20 } }, ...children);
 const rule = () => h('div', { style: { width: W, height: 6, background: C.gold, display: 'flex' } });
@@ -93,7 +113,7 @@ export function renderQuizClue(story: StoryFrontmatter, i: number): Promise<Buff
 }
 
 export async function renderQuizReveal(story: StoryFrontmatter, hero: Buffer): Promise<Buffer> {
-  const img = await picture(hero);
+  const img = await whole(hero);
   return toPng(
     h(
       'div',

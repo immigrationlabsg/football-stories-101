@@ -108,10 +108,18 @@
   ],
   "010": [
     {
-      "commons": "File:Coppa UEFA 1992-93 - Napoli vs PSG - George Weah.jpg",
-      "licence": "",
-      "why": "Weah celebrating a goal for PSG at Napoli, 1992, on the way to his Ballon d'Or. No free photo of him in Milan's shirt: ask for red-and-black stripes, 1995, if you want the Ballon d'Or season.",
-      "alt": "Watercolour painting of George Weah in Paris Saint-Germain's blue, white and red shirt, running with clenched fists"
+      "commons": "File:Lionel Messi, 2011.jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "29 Oct comparison, Messi v Ronaldo: left, Lionel Messi in Barcelona's 2011-12 shirt with the number 10, running with the ball; right, Cristiano Ronaldo in Real Madrid's white shirt, running with the ball. Only these two players: no other players or figures anywhere in the picture, the background is a blurred stadium crowd. One ball at each player's feet, both plain white match balls.",
+      "kit": "Barcelona's blue-and-claret 2011-12 Nike shirt with Qatar Foundation and the number 10",
+      "alt": "Watercolour painting split in two: Lionel Messi in Barcelona's number 10 and Cristiano Ronaldo in Real Madrid white"
+    },
+    {
+      "commons": "File:Cristiano Ronaldo (5097628957).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Cristiano Ronaldo, Real Madrid, 2010",
+      "kit": "Real Madrid's white adidas shirt with bwin"
     }
   ],
   "011": [
@@ -192,6 +200,16 @@
       "commons": "File:Jimmy Johnstone (cropped).jpg",
       "licence": "CC0",
       "why": "Jimmy Johnstone, one of the Lisbon Lions, 1971."
+    }
+  ],
+  "017": [
+    {
+      "commons": "File:Andrea Pirlo BGR-ITA 2012.jpg",
+      "licence": "CC BY 3.0",
+      "why": "'Guess the legend' reveal. Andrea Pirlo before Bulgaria v Italy, September 2012, in Italy's blue shirt with the number 21: head and shoulders, his face, long hair and beard clearly visible.",
+      "kit": "Italy's blue 2012 Puma shirt with the white number 21 and the Italy crest",
+      "crop": "attention",
+      "alt": "Watercolour painting of Andrea Pirlo in Italy's blue number 21 shirt"
     }
   ],
   "018": [
@@ -290,15 +308,28 @@
   ],
   "025": [
     {
-      "commons": "File:1999 UEFA Champions League celebration (edited).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999.",
-      "alt": "Watercolour painting of Manchester United's players in red celebrating behind the Champions League winners banner at Camp Nou in 1999"
+      "commons": "File:P Scholes.jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "13 Nov comparison, Scholes v Buffon: left, Paul Scholes in Manchester United's red shirt, red hair, standing on the pitch; right, Gianluigi Buffon in Italy's dark red goalkeeper shirt with the number 1 and the Italy crest, looking serious. Only these two players: no other figures, the background is a blurred stadium at night.",
+      "kit": "Manchester United's red 2008 Nike home shirt with the AIG sponsor",
+      "alt": "Watercolour painting split in two: Paul Scholes in Manchester United red and Gianluigi Buffon in Italy's number 1 goalkeeper shirt"
     },
     {
-      "commons": "File:Manchester United Treble celebration.jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "The Treble parade, the three trophies on the open-top bus."
+      "commons": "File:Gianluigi Buffon (2014).jpg",
+      "licence": "CC BY 3.0",
+      "why": "Gianluigi Buffon, Italy, 2014",
+      "kit": "Italy's dark red Puma goalkeeper shirt with the number 1 and the Italy crest"
+    }
+  ],
+  "026": [
+    {
+      "commons": "File:Didier Drogba Champions League Winner medal.jpg",
+      "licence": "CC BY 2.0",
+      "why": "'Guess the legend' reveal. Didier Drogba on the pitch after Chelsea won the 2012 Champions League final in Munich, wearing his winner's medal, smiling, in Chelsea's blue shirt.",
+      "kit": "Chelsea's royal blue 2011-12 adidas shirt with the Samsung sponsor",
+      "crop": "attention",
+      "alt": "Watercolour painting of Didier Drogba in Chelsea blue, smiling, with his Champions League winner's medal"
     }
   ],
   "027": [
@@ -393,6 +424,27 @@
       "why": "The sculpture of Bert Trautmann in goal."
     }
   ],
+  "034": [
+    {
+      "commons": "File:Coppa UEFA 1992-93 - Napoli vs PSG - George Weah.jpg",
+      "licence": "",
+      "why": "Weah celebrating a goal for PSG at Napoli, 1992, on the way to his Ballon d'Or. No free photo of him in Milan's shirt: ask for red-and-black stripes, 1995, if you want the Ballon d'Or season.",
+      "alt": "Watercolour painting of George Weah in Paris Saint-Germain's blue, white and red shirt, running with clenched fists"
+    }
+  ],
+  "035": [
+    {
+      "commons": "File:1999 UEFA Champions League celebration (edited).jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Manchester United behind the WINNERS banner at Camp Nou, 26 May 1999.",
+      "alt": "Watercolour painting of Manchester United's players in red celebrating behind the Champions League winners banner at Camp Nou in 1999"
+    },
+    {
+      "commons": "File:Manchester United Treble celebration.jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "The Treble parade, the three trophies on the open-top bus."
+    }
+  ],
   "901": [
     {
       "commons": null,
@@ -437,38 +489,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "c1029": [
-    {
-      "commons": "File:Lionel Messi, 2011.jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "29 Oct comparison, Messi v Ronaldo: left, Lionel Messi in Barcelona's 2011-12 shirt with the number 10, running with the ball; right, Cristiano Ronaldo in Real Madrid's white shirt, running with the ball. Only these two players: no other players or figures anywhere in the picture, the background is a blurred stadium crowd. One ball at each player's feet, both plain white match balls.",
-      "kit": "Barcelona's blue-and-claret 2011-12 Nike shirt with Qatar Foundation and the number 10",
-      "alt": "Watercolour painting split in two: Lionel Messi in Barcelona's number 10 and Cristiano Ronaldo in Real Madrid white"
-    },
-    {
-      "commons": "File:Cristiano Ronaldo (5097628957).jpg",
-      "licence": "CC BY-SA 2.0",
-      "why": "Cristiano Ronaldo, Real Madrid, 2010",
-      "kit": "Real Madrid's white adidas shirt with bwin"
-    }
-  ],
-  "c1113": [
-    {
-      "commons": "File:P Scholes.jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "13 Nov comparison, Scholes v Buffon: left, Paul Scholes in Manchester United's red shirt, red hair, standing on the pitch; right, Gianluigi Buffon in Italy's dark red goalkeeper shirt with the number 1 and the Italy crest, looking serious. Only these two players: no other figures, the background is a blurred stadium at night.",
-      "kit": "Manchester United's red 2008 Nike home shirt with the AIG sponsor",
-      "alt": "Watercolour painting split in two: Paul Scholes in Manchester United red and Gianluigi Buffon in Italy's number 1 goalkeeper shirt"
-    },
-    {
-      "commons": "File:Gianluigi Buffon (2014).jpg",
-      "licence": "CC BY 3.0",
-      "why": "Gianluigi Buffon, Italy, 2014",
-      "kit": "Italy's dark red Puma goalkeeper shirt with the number 1 and the Italy crest"
     }
   ],
   "c1125": [

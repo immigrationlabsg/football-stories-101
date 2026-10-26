@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: "check, switch, confirm or caption"
+        description: "check, switch, replace, confirm or caption"
         required: true
         default: check
       from:

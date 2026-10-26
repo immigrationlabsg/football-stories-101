@@ -1,4 +1,31 @@
 {
+  "903": {
+    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
+    "queries": [
+      "Andrea Pirlo Juventus",
+      "Andrea Pirlo Italy",
+      "Andrea Pirlo 2014",
+      "Andrea Pirlo Euro 2012"
+    ]
+  },
+  "904": {
+    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
+    "queries": [
+      "Didier Drogba Chelsea",
+      "Didier Drogba Champions League Winner",
+      "Didier Drogba 11",
+      "Didier Drogba Ivory Coast"
+    ]
+  },
+  "905": {
+    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
+    "queries": [
+      "Luka Modric Croatia 2018",
+      "Luka Modrić Golden Ball 2018",
+      "Luka Modrić World Cup 2018",
+      "Luka Modrić Real Madrid"
+    ]
+  },
   "001": {
     "want": "Ronaldo (R9) for Brazil at the 2002 World Cup, scoring or celebrating, yellow shirt",
     "queries": [
@@ -77,16 +104,6 @@
       "Uruguay Brasil 1950 final",
       "Maracanã 1950 World Cup",
       "Obdulio Varela 1950"
-    ]
-  },
-  "010": {
-    "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG",
-    "queries": [
-      "George Weah AC Milan",
-      "Weah Milan 1996",
-      "George Weah Monaco",
-      "George Weah Ballon d'Or",
-      "Weah Milan goal"
     ]
   },
   "011": {
@@ -221,16 +238,6 @@
       "OL Gerland 2006"
     ]
   },
-  "025": {
-    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
-    "queries": [
-      "1999 UEFA Champions League Final",
-      "Manchester United 1999 Champions League",
-      "Solskjaer 1999",
-      "Manchester United treble 1999",
-      "Teddy Sheringham 1999"
-    ]
-  },
   "027": {
     "want": "Grande Torino in action or team photo, Valentino Mazzola",
     "queries": [
@@ -298,31 +305,24 @@
       "1956 FA Cup Final"
     ]
   },
-  "903": {
-    "want": "Andrea Pirlo clearly visible, face and shirt number, in the Juventus or Italy kit",
+  "034": {
+    "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG",
     "queries": [
-      "Andrea Pirlo Juventus",
-      "Andrea Pirlo Italy",
-      "Andrea Pirlo 2014",
-      "Andrea Pirlo Euro 2012"
+      "George Weah AC Milan",
+      "Weah Milan 1996",
+      "George Weah Monaco",
+      "George Weah Ballon d'Or",
+      "Weah Milan goal"
     ]
   },
-  "904": {
-    "want": "Didier Drogba clearly visible, face and shirt number 11, in the Chelsea or Ivory Coast kit",
+  "035": {
+    "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
     "queries": [
-      "Didier Drogba Chelsea",
-      "Didier Drogba Champions League Winner",
-      "Didier Drogba 11",
-      "Didier Drogba Ivory Coast"
-    ]
-  },
-  "905": {
-    "want": "Luka Modrić clearly visible, face and shirt number 10, in the Croatia kit at the 2018 World Cup (Golden Ball) or Real Madrid",
-    "queries": [
-      "Luka Modric Croatia 2018",
-      "Luka Modrić Golden Ball 2018",
-      "Luka Modrić World Cup 2018",
-      "Luka Modrić Real Madrid"
+      "1999 UEFA Champions League Final",
+      "Manchester United 1999 Champions League",
+      "Solskjaer 1999",
+      "Manchester United treble 1999",
+      "Teddy Sheringham 1999"
     ]
   },
   "p1029a": {

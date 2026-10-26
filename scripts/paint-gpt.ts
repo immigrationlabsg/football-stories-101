@@ -36,7 +36,7 @@ const wording = (kit?: string) =>
   'a detailed, semi-realistic watercolour illustration, like a sports-magazine cover. ' +
   'Vivid, saturated colours with strong contrast, crisp detail, confident brush edges, ' +
   'paper texture and loose splashes only around the borders, and a dark, detailed background with any crowd as blurred colour. ' +
-  'Square (1:1) frame, the main subject large in the frame. Keep the colours true to the period' +
+  'Square (1:1) frame, the main subject clearly in view with clear space between the top of the head and the top edge. Keep the colours true to the period' +
   (kit ? ` (${kit})` : '') +
   ', and keep every crest, logo, stripe, shirt number and lettering exactly as in the photo. ' +
   'Keep the composition, pose, faces and likenesses exactly as photographed: each person\'s face, skin tone, hair and build must stay ' +
@@ -86,9 +86,15 @@ for (const n of stories) {
   const style = new Blob([fs.readFileSync(STYLE_REF)], { type: 'image/jpeg' });
   let prompt: string;
   const second = refs[n]?.[1];
-  if (ref.pair && ref.commons && second?.commons) {
+  // A comparison paints both players from their photos or not at all: never one from a photo and one from a description.
+  if (ref.pair && !(ref.commons && second?.commons)) {
+    console.error(`${n}: "pair" needs a Commons photo in both entries; nothing painted`);
+    process.exitCode = 1;
+    continue;
+  }
+  if (ref.pair) {
     // An "on this day" comparison: one real photo per player, side by side, each with headroom (picture standard).
-    const [a, b] = [await photo(n, 1, ref.commons), await photo(n, 2, second.commons)];
+    const [a, b] = [await photo(n, 1, ref.commons!), await photo(n, 2, second!.commons!)];
     if (!a || !b) {
       process.exitCode = 1;
       continue;
@@ -103,7 +109,7 @@ for (const n of stories) {
       `Repaint the first image as ${wording()} It shows two different players side by side: keep it as a split composition, the left ` +
       `player in the left half and the right player in the right half, joined by a soft vertical watercolour bleed down the middle. ` +
       `Each player's face, skin tone, hair, build, kit, shirt number, crest and logos must stay exactly as in his half of the photo ` +
-      `(left: ${ref.kit ?? 'as photographed'}; right: ${second.kit ?? 'as photographed'}). The second image is the style reference: match ` +
+      `(left: ${ref.kit ?? 'as photographed'}; right: ${second!.kit ?? 'as photographed'}). The second image is the style reference: match ` +
       `its colour saturation, level of detail, contrast and brushwork, but not its subject, pose or composition. Scene: ${ref.why}`;
   } else if (ref.commons) {
     const source = await photo(n, 1, ref.commons);

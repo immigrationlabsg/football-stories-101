@@ -19,7 +19,8 @@ change it only when the owner decides to.
   player's name over a painting made from a real photo of him) and a "send this to a friend" card. The caption hides
   the answer below the "See more" cut. Nine days keeps it on the day after a comparison, so the two never clash; if a
   date ever does fall on a comparison day, the comparison runs that day, the quiz the next day, and the rotation
-  carries on as before. (Format being built; the owner reviews samples first.)
+  carries on as before. The owner approved the samples and the rhythm on 26 Oct 2026. On Facebook the quiz Reel's
+  cover is the mystery card, so the answer never shows before the Reel is played.
 - Every other day is the regular "story nobody told you".
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)

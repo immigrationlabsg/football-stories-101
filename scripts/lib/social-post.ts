@@ -1,6 +1,6 @@
 import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
-import { UnconfirmedReel, metaConfigured, postFacebookPhoto, postFacebookReel, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
+import { UnconfirmedReel, metaConfigured, postFacebookPhoto, postFacebookReel, setFacebookReelCover, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
 import { musicTag, usesReel } from './reel';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
@@ -96,6 +96,15 @@ export async function postStoryToSocials(
             if (!(e instanceof UnconfirmedReel)) throw e;
             id = e.videoId;
             note = ` UNCONFIRMED: ${e.message.slice(0, 160)}`;
+          }
+          // A quiz Reel must not open on the answer: its Facebook cover is the mystery card (Instagram uses the first frame).
+          if (story.data.format === 'quiz') {
+            try {
+              await setFacebookReelCover(id, cardUrls[0]);
+              note += ' (cover: mystery card)';
+            } catch (e) {
+              note += ` COVER NOT SET: ${(e as Error).message.slice(0, 120)}`;
+            }
           }
           out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${note}` });
         } else if (network === 'instagram') {

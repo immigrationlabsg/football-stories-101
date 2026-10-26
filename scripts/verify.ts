@@ -168,6 +168,10 @@ if (schedule.reels_from) {
       && !(!r.detail.includes('(music:') && legacyMusicTag(s.data.number) === musicTag(s.data.number))) {
       warnings.push(`${pad(s.data.number)}'s Facebook Reel has other music than ${musicTag(s.data.number)}; run "Reels" with action switch`);
     }
+    // A quiz Reel must open on the mystery card on Facebook, never on a frame of the answer.
+    if (s.data.format === 'quiz' && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && r.detail?.includes(' reel ') && !r.detail.includes('(cover: mystery card)')) {
+      errors.push(`${pad(s.data.number)}: this quiz's Facebook Reel has no mystery-card cover, so Facebook may show the answer; run "Reels" with action replace and Dry run unticked for ${pad(s.data.number)}`);
+    }
   }
 }
 

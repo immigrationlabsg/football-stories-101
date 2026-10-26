@@ -240,6 +240,24 @@ export async function postFacebookReel(a: { videoUrl: string; description: strin
   throw new UnconfirmedReel(id, `Facebook Reel ${id} was not confirmed after 5 minutes (last status ${last})`);
 }
 
+/**
+ * Makes a picture the cover of a Facebook Reel (a "Guess the legend" Reel must open on the mystery card, never on a frame
+ * of the answer). The picture is placed on a dark 9:16 frame like the Reel's own first frame.
+ */
+export async function setFacebookReelCover(id: string, imageUrl: string, env = process.env): Promise<void> {
+  const img = await fetch(imageUrl);
+  if (!img.ok) throw new Error(`the cover ${imageUrl} responded ${img.status}`);
+  const sharp = (await import('sharp')).default;
+  const cover = await sharp(Buffer.from(await img.arrayBuffer())).resize(1080, 1920, { fit: 'contain', background: '#141414' }).jpeg({ quality: 88 }).toBuffer();
+  const form = new FormData();
+  form.append('source', new Blob([new Uint8Array(cover)], { type: 'image/jpeg' }), 'cover.jpg');
+  form.append('is_preferred', 'true');
+  form.append('access_token', env.META_PAGE_ACCESS_TOKEN!);
+  const r = await fetch(`${GRAPH}/${id}/thumbnails`, { method: 'POST', body: form });
+  const j = (await r.json().catch(() => ({}))) as any;
+  if (!r.ok || j.error || j.success === false) throw new Error(`setting the cover of ${id} responded ${r.status}: ${j.error?.message ?? 'unknown error'}`);
+}
+
 /** Deletes a Facebook post or video on the Page (used when a scheduled picture post is replaced by a Reel). */
 export async function deleteFacebookObject(id: string, env = process.env): Promise<void> {
   const r = await fetch(`${GRAPH}/${id}?access_token=${env.META_PAGE_ACCESS_TOKEN}`, { method: 'DELETE' });

@@ -19,6 +19,10 @@ const [slotArg, newFile, newLog] = process.argv.slice(2);
 const slot = Number(slotArg);
 if (!slot || !newFile || !newLog) throw new Error('Usage: npm run hand-over -- <slot number> <new story .mdx> <its fact-check .md>');
 const DAY = 86_400_000;
+// Log headers come as "# Fact-check log: 005 ", "# Fact-check: 023 " and "# Fact-check 001: "; all become "Fact-check log: NNN".
+const LOG_HEADER = /^# Fact-check(?: log)?:? (?:\d{3}|NNN):? /m;
+for (const f of [newFile, newLog]) if (!fs.existsSync(f)) throw new Error(`${f} does not exist`);
+if (!LOG_HEADER.test(fs.readFileSync(newLog, 'utf8'))) throw new Error(`${newLog} has no "# Fact-check log: NNN" header`);
 
 const { stories, errors } = loadStories();
 if (errors.length) throw new Error(`Fix the stories first:\n${errors.join('\n')}`);
@@ -30,6 +34,14 @@ if ((sent.social ?? []).some((r: { number: number; status?: string }) => r.numbe
   throw new Error(`${pad3(slot)} has already been posted somewhere; it cannot be handed over`);
 }
 
+// The new story must be valid before anything moves, or the calendar would be left with a hole.
+const parsed = matter(fs.readFileSync(newFile, 'utf8'));
+parsed.data.number = slot;
+parsed.data.date = old.data.date;
+const checked = storySchema.safeParse(parsed.data);
+if (!checked.success) throw new Error(`${newFile}: ${checked.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
+if (stories.some((s) => s.data.slug === parsed.data.slug)) throw new Error(`a story with the slug ${parsed.data.slug} already exists`);
+
 // Where the old story goes: the next free number, the day after the last scheduled story, at that day's slot time.
 const live = stories.filter((s) => !s.data.draft).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 const lastDay = live.at(-1)!.data.date;
@@ -38,6 +50,12 @@ const weekend = [0, 6].includes(new Date(sgMidnight + 8 * 3600e3).getUTCDay());
 const newDate = new Date(sgMidnight + (weekend ? 10 : 8) * 3600e3).toISOString().replace('.000Z', 'Z');
 const to = Math.max(...stories.map((s) => s.data.number)) + 1;
 const [from3, to3] = [pad3(slot), pad3(to)];
+
+const DATA_FILES = ['data/reference-photos.json', 'data/reference-queries.json'];
+for (const f of DATA_FILES) {
+  if (JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'))[to3]) throw new Error(`${f} already has an entry ${to3}; move or remove it first`);
+}
+if (fs.existsSync(path.join(ROOT, 'docs/fact-checks', `${to3}.md`))) throw new Error(`docs/fact-checks/${to3}.md already exists`);
 
 // 1. Move the old story, its fact-check log and its data entries.
 const oldPath = path.join(STORIES_DIR, old.file);
@@ -48,10 +66,10 @@ fs.writeFileSync(movedPath, text);
 fs.rmSync(oldPath);
 const logFrom = path.join(ROOT, 'docs/fact-checks', `${from3}.md`);
 if (fs.existsSync(logFrom)) {
-  const log = fs.readFileSync(logFrom, 'utf8').replace(new RegExp(`^# Fact-check log: ${from3} `, 'm'), `# Fact-check log: ${to3} `);
+  const log = fs.readFileSync(logFrom, 'utf8').replace(LOG_HEADER, `# Fact-check log: ${to3} `);
   fs.writeFileSync(path.join(ROOT, 'docs/fact-checks', `${to3}.md`), log);
 }
-for (const f of ['data/reference-photos.json', 'data/reference-queries.json']) {
+for (const f of DATA_FILES) {
   const file = path.join(ROOT, f);
   const data = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (data[from3]) {
@@ -61,27 +79,24 @@ for (const f of ['data/reference-photos.json', 'data/reference-queries.json']) {
   fs.writeFileSync(file, JSON.stringify(Object.fromEntries(Object.entries(data).sort(([a], [b]) => a.localeCompare(b))), null, 2) + '\n');
 }
 
-// 2. Install the new story in the slot (number and date are the slot's, whatever the file says).
-const parsed = matter(fs.readFileSync(newFile, 'utf8'));
-parsed.data.number = slot;
-parsed.data.date = old.data.date;
-const checked = storySchema.safeParse(parsed.data);
-if (!checked.success) throw new Error(`${newFile}: ${checked.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
+// 2. Install the new story in the slot (number and date are the slot's, whatever the file says; checked before step 1).
 const newText = fs
   .readFileSync(newFile, 'utf8')
   .replace(/^number: .+$/m, `number: ${slot}`)
   .replace(/^date: .+$/m, `date: ${old.data.date.toISOString().replace('.000Z', 'Z')}`);
 fs.writeFileSync(path.join(STORIES_DIR, `${from3}-${parsed.data.slug}.mdx`), newText);
-fs.writeFileSync(logFrom, fs.readFileSync(newLog, 'utf8').replace(/^# Fact-check log: \S+ /m, `# Fact-check log: ${from3} `));
+fs.writeFileSync(logFrom, fs.readFileSync(newLog, 'utf8').replace(LOG_HEADER, `# Fact-check log: ${from3} `));
 
 // 3. The story bank: the old row moves to its new number, reserved rows from there shift by one, the slot gets the new story.
 const bankFile = path.join(ROOT, 'docs/story-bank.md');
 const lines = fs.readFileSync(bankFile, 'utf8').split('\n');
 const row = (n: string) => lines.findIndex((l) => l.startsWith(`| ${n} |`));
 const oldRow = row(from3);
+// The title already starts with the series for quizzes ("Guess the legend / ..."); say the kind only when it does not.
 const kind = parsed.data.format === 'quiz' ? 'Guess the legend' : 'On this day';
+const label = parsed.data.title.toLowerCase().startsWith(kind.toLowerCase()) ? parsed.data.title : `${kind}: ${parsed.data.title}`;
 const movedRow = oldRow >= 0 ? lines[oldRow].replace(`| ${from3} |`, `| ${to3} |`).replace(/ \| (scheduled|drafted) \|$/, ` (moved from ${from3}) | scheduled |`) : null;
-if (oldRow >= 0) lines[oldRow] = `| ${from3} | ${parsed.data.pillar[0].toUpperCase()}${parsed.data.pillar.slice(1)} | ${kind}: ${parsed.data.title} | scheduled |`;
+if (oldRow >= 0) lines[oldRow] = `| ${from3} | ${parsed.data.pillar[0].toUpperCase()}${parsed.data.pillar.slice(1)} | ${label} | scheduled |`;
 for (let i = 0; i < lines.length; i++) {
   const m = /^\| (\d{3}) \|(.*\| reserved \|)$/.exec(lines[i]);
   if (m && Number(m[1]) >= to) lines[i] = `| ${pad3(Number(m[1]) + 1)} |${m[2]}`;

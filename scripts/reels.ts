@@ -11,6 +11,9 @@
  *   npm run reels -- confirm 6 30    Tidy up after a switch: a Facebook Reel marked UNCONFIRMED is checked with Meta
  *                                     (scheduled or published = confirmed), and the "leftover" ids each record names
  *                                     (posts the switch meant to delete) are deleted once their Reel is confirmed.
+ *   npm run reels -- replace 17      Like switch, for one story, and also re-upload its scheduled Reel if the video changed
+ *                                     since it was scheduled (a repainted picture, new cards): records keep the hash of the
+ *                                     Reel they sent (reels.json on the site); no hash, or another one, means replace.
  *   npm run reels -- caption 6 30    Bring the text of Facebook Reels already scheduled up to date (e.g. the AI disclosure
  *                                     added on 25 Oct 2026) by editing them at Meta; nothing is re-uploaded.
  *   DRY_RUN=1 ...                    show what would happen, change nothing
@@ -22,7 +25,7 @@ import { postStoryToSocials } from './lib/social-post';
 import { socialPosts } from './lib/social';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
 
-type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string; story?: string };
+type FbRecord = { number: number; network: string; status?: string; at?: string; detail: string; leftover?: string; story?: string; reel?: string };
 import { legacyMusicTag, musicTag, usesReel } from './lib/reel';
 import { absoluteUrl } from '../src/lib/url';
 import { pad3 } from '../src/schema/story';
@@ -30,8 +33,10 @@ import { pad3 } from '../src/schema/story';
 const [action, a, b] = process.argv.slice(2);
 const from = Number(a);
 const to = Number(b || a);
-if (!['check', 'switch', 'confirm', 'caption'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch|confirm|caption <first> [last]');
+if (!['check', 'switch', 'replace', 'confirm', 'caption'].includes(action) || !from) throw new Error('Usage: npm run reels -- check <story> | switch|replace|confirm|caption <first> [last]');
 const dryRun = process.env.DRY_RUN === '1';
+// Older records carry no hash, so "replace" would re-upload every Reel in a range: one story at a time.
+if (action === 'replace' && to !== from) throw new Error('replace takes one story at a time (from and to the same number)');
 const SENT = path.join(ROOT, 'data/sent.json');
 // Never during the morning posting window (06:00-10:45 Singapore): the daily run saves data/sent.json then too.
 const sgHour = (new Date().getUTCHours() + 8) % 24 + new Date().getUTCMinutes() / 60;
@@ -54,6 +59,20 @@ async function liveMusicMatches(number: number): Promise<boolean> {
     }
   }
   return musicTag(number) === `(music: ${liveMusic[pad3(number)] ?? 'unknown'})`;
+}
+
+// The hash each Reel online was made from (reels.json, written by scripts/images.ts): it changes whenever the video does.
+let liveHashes: Record<string, string> | null = null;
+async function liveReelHash(number: number): Promise<string | undefined> {
+  if (!liveHashes) {
+    try {
+      const r = await fetch(absoluteUrl('/images/derived/reels.json'));
+      liveHashes = r.ok ? ((await r.json()) as Record<string, string>) : {};
+    } catch {
+      liveHashes = {};
+    }
+  }
+  return liveHashes[pad3(number)];
 }
 
 // Which story each Reel online shows (reel-stories.json, written by scripts/images.ts). A slot can be given to another
@@ -317,7 +336,7 @@ for (const story of stories) {
 
   // switch
   const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
-  const records = (file.social ?? []) as { number: number; network: string; status?: string; detail: string; story?: string }[];
+  const records = (file.social ?? []) as FbRecord[];
   const old = records.find((r) => r.number === story.data.number && r.network === 'facebook');
   if (old?.status === 'posted') {
     console.log(`${n}: already posted on Facebook; left as it is`);
@@ -326,7 +345,15 @@ for (const story of stories) {
   const tag = musicTag(story.data.number);
   // A record that names another story belongs to the story this slot had before: its Reel is replaced whatever its music.
   const replaced = Boolean(old?.story && old.story !== story.data.slug);
-  if (old?.detail.includes(' reel ') && !replaced) {
+  // "replace": a Reel of this story whose video has changed online since it was scheduled (or that predates the hash).
+  const liveHash = await liveReelHash(story.data.number);
+  const changed = action === 'replace' && Boolean(old?.detail.includes(' reel ')) && !replaced && old?.reel !== liveHash;
+  if (action === 'replace' && !liveHash) {
+    console.log(`${n}: ERROR the site has no Reel hash for this story (is it still deploying?); nothing changed`);
+    failed++;
+    continue;
+  }
+  if (old?.detail.includes(' reel ') && !replaced && !changed) {
     // A Reel with today's music needs nothing. One scheduled before the music tag existed may already carry it.
     if (old.detail.includes(tag)) {
       console.log(`${n}: Facebook Reel already scheduled ${tag}`);
@@ -352,7 +379,13 @@ for (const story of stories) {
   }
   // The post it replaces: a scheduled picture post (Page_post id) or a Reel with other music (video id).
   const oldId = old?.detail.match(/ reel (\d+)/)?.[1] ?? old?.detail.match(/(\d+_\d+)/)?.[1];
-  const what = replaced ? `Reel of the story this slot had before (${old?.story})` : old?.detail.includes(' reel ') ? 'older Reel' : 'picture post';
+  const what = replaced
+    ? `Reel of the story this slot had before (${old?.story})`
+    : changed
+      ? 'Reel with the earlier video'
+      : old?.detail.includes(' reel ')
+        ? 'older Reel'
+        : 'picture post';
   if (uploads >= MAX_UPLOADS) {
     console.log(`${n}: left for the next run (at most ${MAX_UPLOADS} uploads a run)`);
     pending++;
@@ -385,7 +418,7 @@ for (const story of stories) {
     const f = JSON.parse(fs.readFileSync(SENT, 'utf8'));
     f.social = [
       ...(f.social ?? []).filter((r: { number: number; network: string }) => !(r.number === story.data.number && r.network === 'facebook')),
-      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail, story: story.data.slug, ...(leftover ? { leftover } : {}) },
+      { number: story.data.number, network: 'facebook', status: 'scheduled', at: new Date().toISOString(), detail, story: story.data.slug, ...(liveHash ? { reel: liveHash } : {}), ...(leftover ? { leftover } : {}) },
     ];
     fs.writeFileSync(SENT, JSON.stringify(f, null, 2) + '\n');
   };
