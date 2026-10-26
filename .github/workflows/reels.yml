@@ -16,7 +16,7 @@ on:
         description: "Last story number (empty = same as first)"
         default: ""
       dry_run:
-        description: "Dry run (switch, confirm, caption): show what would happen, change nothing"
+        description: "Dry run (switch, replace, confirm, caption): show what would happen, change nothing"
         type: boolean
         default: true
 

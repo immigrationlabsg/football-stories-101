@@ -157,7 +157,7 @@ if (schedule.reels_from) {
   for (const s of live) {
     const r = social.find((x) => x.number === s.data.number && x.network === 'facebook') as { status?: string; detail?: string; story?: string } | undefined;
     if (r && r.status === 'scheduled' && !r.story && s.data.date.getTime() > now.getTime()) {
-      errors.push(`${pad(s.data.number)}: its Facebook record does not say which story it belongs to (add "story": "${s.data.slug}" if it is this story's post)`);
+      errors.push(`${pad(s.data.number)}: its Facebook record does not say which story it belongs to (it may still show the story this slot had before); run "Reels" with action replace and Dry run unticked for ${pad(s.data.number)}`);
     }
     // The slot was given to another story (e.g. an "on this day" comparison) but Facebook still holds the old story's post.
     if (r?.story && r.story !== s.data.slug && r.status !== 'posted' && s.data.date.getTime() > now.getTime()) {

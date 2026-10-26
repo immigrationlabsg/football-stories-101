@@ -98,15 +98,17 @@ export async function postStoryToSocials(
             note = ` UNCONFIRMED: ${e.message.slice(0, 160)}`;
           }
           // A quiz Reel must not open on the answer: its Facebook cover is the mystery card (Instagram uses the first frame).
+          // The tag goes before any UNCONFIRMED note, which "Reels confirm" later cuts off with everything after it.
+          let cover = '';
           if (story.data.format === 'quiz') {
             try {
               await setFacebookReelCover(id, cardUrls[0]);
-              note += ' (cover: mystery card)';
+              cover = ' (cover: mystery card)';
             } catch (e) {
-              note += ` COVER NOT SET: ${(e as Error).message.slice(0, 120)}`;
+              cover = ` (cover not set: ${(e as Error).message.slice(0, 120).replace(/[()]/g, '')})`;
             }
           }
-          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${note}` });
+          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${cover}${note}` });
         } else if (network === 'instagram') {
           if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
           out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });

@@ -207,9 +207,10 @@ for (const story of stories) {
       console.log(`${n}: no Facebook Reel waiting to publish; skipped`);
       continue;
     }
-    if (rec.story && rec.story !== story.data.slug) {
-      // The slot was handed to another story: this Reel shows the old one. Replace it with "switch", never relabel it.
-      console.log(`${n}: ERROR Facebook Reel belongs to "${rec.story}", not "${story.data.slug}"; run the switch first`);
+    if (rec.story !== story.data.slug) {
+      // The slot was handed to another story, or the record no longer knows which story its Reel shows (a post put back
+      // by confirm): never relabel it; "switch" or "replace" uploads this story's Reel instead.
+      console.log(`${n}: ERROR Facebook Reel belongs to ${rec.story ? `"${rec.story}"` : 'an unknown story'}, not "${story.data.slug}"; run replace first`);
       failed++;
       continue;
     }
@@ -351,7 +352,9 @@ for (const story of stories) {
   const replaced = Boolean(old?.story && old.story !== story.data.slug);
   // "replace": a Reel of this story whose video has changed online since it was scheduled (or that predates the hash).
   const liveHash = await liveReelHash(story.data.number);
-  const changed = action === 'replace' && Boolean(old?.detail.includes(' reel ')) && !replaced && old?.reel !== liveHash;
+  // A quiz Reel without its mystery-card cover is replaced too: the new upload sets the cover.
+  const noCover = story.data.format === 'quiz' && !old?.detail.includes('(cover: mystery card)');
+  const changed = action === 'replace' && Boolean(old?.detail.includes(' reel ')) && !replaced && (old?.reel !== liveHash || noCover);
   if (action === 'replace' && !liveHash) {
     console.log(`${n}: ERROR the site has no Reel hash for this story (is it still deploying?); nothing changed`);
     failed++;
