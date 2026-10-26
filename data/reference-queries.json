@@ -176,15 +176,6 @@
       "Denmark national football team 1992"
     ]
   },
-  "022": {
-    "want": "Maradona against England 1986, scoring or celebrating",
-    "queries": [
-      "Maradona England 1986",
-      "Maradona 1986",
-      "Maradona Azteca",
-      "Maradona goal of the century"
-    ]
-  },
   "023": {
     "want": "Wimbledon 1988 FA Cup final: Beasant's penalty save, team with trophy",
     "queries": [
@@ -323,6 +314,15 @@
       "Solskjaer 1999",
       "Manchester United treble 1999",
       "Teddy Sheringham 1999"
+    ]
+  },
+  "042": {
+    "want": "Maradona against England 1986, scoring or celebrating",
+    "queries": [
+      "Maradona England 1986",
+      "Maradona 1986",
+      "Maradona Azteca",
+      "Maradona goal of the century"
     ]
   },
   "p1029a": {

@@ -276,15 +276,18 @@
   ],
   "022": [
     {
-      "commons": "File:Maradona vs england.jpg",
-      "licence": "Public domain",
-      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
-      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
+      "commons": "File:Manchester United (8400990621) (cropped).jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "10 Nov comparison, Van Persie v Salah: left, Robin van Persie, head and shoulders, in Manchester United's red 2013-14 Nike home shirt with the AON sponsor and the United crest (his photo shows him in a club suit and tie: paint the shirt instead); right, Mohamed Salah, standing, in Liverpool's red 2019-20 New Balance home shirt with Standard Chartered and the Liver bird crest (his photo shows the 2021-22 Nike shirt: paint the 2019-20 New Balance shirt instead). No shirt numbers on the front. Everything else about each player (face, hair, beard, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
+      "kit": "Manchester United's red 2013-14 Nike home shirt with AON and the black-trimmed collar (in place of the photo's club suit)",
+      "alt": "Watercolour painting split in two: Robin van Persie in Manchester United red and Mohamed Salah in Liverpool red"
     },
     {
-      "commons": "File:Maradona pateando v inglaterra.jpg",
-      "licence": "Public domain",
-      "why": "Maradona sliding the Goal of the Century past Shilton."
+      "commons": "File:Mohamed Salah, Liverpool FC gegen 1. FSV Mainz 05 (Testspiel 23. Juli 2021) 26.jpg",
+      "licence": "CC BY-SA 4.0",
+      "why": "Mohamed Salah, Liverpool v Mainz, friendly, 23 July 2021",
+      "kit": "Liverpool's red 2019-20 New Balance home shirt with Standard Chartered (in place of the photo's 2021-22 Nike shirt)"
     }
   ],
   "023": [
@@ -535,6 +538,19 @@
       "why": "The Treble parade, the three trophies on the open-top bus."
     }
   ],
+  "042": [
+    {
+      "commons": "File:Maradona vs england.jpg",
+      "licence": "Public domain",
+      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
+      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
+    },
+    {
+      "commons": "File:Maradona pateando v inglaterra.jpg",
+      "licence": "Public domain",
+      "why": "Maradona sliding the Goal of the Century past Shilton."
+    }
+  ],
   "901": [
     {
       "commons": null,
@@ -579,22 +595,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "c1110": [
-    {
-      "commons": "File:Manchester United (8400990621) (cropped).jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "10 Nov comparison, Van Persie v Salah: left, Robin van Persie, head and shoulders, in Manchester United's red 2013-14 Nike home shirt with the AON sponsor and the United crest (his photo shows him in a club suit and tie: paint the shirt instead); right, Mohamed Salah, standing, in Liverpool's red 2019-20 New Balance home shirt with Standard Chartered and the Liver bird crest (his photo shows the 2021-22 Nike shirt: paint the 2019-20 New Balance shirt instead). No shirt numbers on the front. Everything else about each player (face, hair, beard, build, pose) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd.",
-      "kit": "Manchester United's red 2013-14 Nike home shirt with AON and the black-trimmed collar (in place of the photo's club suit)",
-      "alt": "Watercolour painting split in two: Robin van Persie in Manchester United red and Mohamed Salah in Liverpool red"
-    },
-    {
-      "commons": "File:Mohamed Salah, Liverpool FC gegen 1. FSV Mainz 05 (Testspiel 23. Juli 2021) 26.jpg",
-      "licence": "CC BY-SA 4.0",
-      "why": "Mohamed Salah, Liverpool v Mainz, friendly, 23 July 2021",
-      "kit": "Liverpool's red 2019-20 New Balance home shirt with Standard Chartered (in place of the photo's 2021-22 Nike shirt)"
     }
   ],
   "c1116": [
