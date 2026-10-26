@@ -55,7 +55,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 049 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
 | 050 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
 | 051 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
-| 052 | Players | Didier Drogba: the 2005 dressing-room appeal for peace in Côte d'Ivoire | reserved |
+| 052 | Players | Didier Drogba: Munich 2012, the late header and the last penalty of the Champions League final (follow-up of 026; the 2005 peace appeal is already told in 026) | reserved |
 | 053 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
 | 054 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
 | 055 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
