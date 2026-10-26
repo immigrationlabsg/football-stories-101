@@ -363,6 +363,24 @@
       "Cristiano Ronaldo Bernabeu 2016"
     ]
   },
+  "p1101a": {
+    "want": "Henry in Arsenal's red shirt with white sleeves, number 14, around 2003-04, face clearly visible",
+    "queries": [
+      "Thierry Henry Arsenal",
+      "Thierry Henry Arsenal 2004",
+      "Henry 14 Arsenal",
+      "Thierry Henry Highbury"
+    ]
+  },
+  "p1101b": {
+    "want": "Kaká in Milan's red-and-black stripes, number 22, around 2006-07, face clearly visible",
+    "queries": [
+      "Kaká AC Milan",
+      "Kaka Milan 2007",
+      "Kaká 22 Milan",
+      "Kaka AC Milan 2006"
+    ]
+  },
   "p1104a": {
     "want": "Cantona as a player, face clearly visible; ideally Leeds United white (1992), otherwise his famous Manchester United red number 7 with the collar up. Commons player-era photos of Cantona are scarce: reject later photos of him as a beach-soccer coach or actor if the kit is wrong",
     "queries": [
