@@ -429,10 +429,18 @@
   ],
   "034": [
     {
-      "commons": "File:Coppa UEFA 1992-93 - Napoli vs PSG - George Weah.jpg",
-      "licence": "",
-      "why": "Weah celebrating a goal for PSG at Napoli, 1992, on the way to his Ballon d'Or. No free photo of him in Milan's shirt: ask for red-and-black stripes, 1995, if you want the Ballon d'Or season.",
-      "alt": "Watercolour painting of George Weah in Paris Saint-Germain's blue, white and red shirt, running with clenched fists"
+      "commons": "File:Jermain Defoe Brighton v Spurs Amex Opening 30711 2 (cropped).jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "22 Nov comparison, Defoe v Giroud: left, Jermain Defoe in Tottenham's black 2011-12 away shirt, standing on the pitch, looking ahead; right, Olivier Giroud in France's dark blue 2018 shirt with the number 9, one finger raised. Only these two players: no other figures, the background is a blurred stadium crowd.",
+      "kit": "Tottenham Hotspur's black 2011-12 Puma away shirt with yellow trim and the Aurasma sponsor",
+      "alt": "Watercolour painting split in two: Jermain Defoe in Tottenham's black away shirt and Olivier Giroud in France's number 9 shirt"
+    },
+    {
+      "commons": "File:Olivier Giroud 2018.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Olivier Giroud, France v Argentina, 2018 World Cup",
+      "kit": "France's dark blue 2018 Nike shirt with the number 9 and the cockerel crest"
     }
   ],
   "035": [
@@ -459,6 +467,30 @@
       "commons": "File:Vincent Kompany holds up the Premier League trophy 2012.jpg",
       "licence": "CC BY 2.0",
       "why": "Kompany holding the 2012 Premier League trophy on the parade bus. For the goal itself, paint without a reference: a striker in sky blue whirling his shirt over his head."
+    }
+  ],
+  "037": [
+    {
+      "commons": "File:George Best (1976).jpg",
+      "licence": "CC0",
+      "pair": true,
+      "why": "25 Nov comparison, Best v Maradona: left, George Best in 1976 in Northern Ireland's green shirt with the white crest under a black adidas track jacket, long dark hair, looking ahead; right, Diego Maradona at the 1986 World Cup in Argentina's sky-blue-and-white striped shirt, lifting the World Cup trophy. The left photo is black and white: paint it in natural colour (Northern Ireland green). Only these two players: no other figures, the background is a blurred stadium. Keep the whole trophy and both of Maradona's hands inside the frame.",
+      "kit": "Northern Ireland's green shirt with the white crest, under a black adidas track jacket with three white stripes",
+      "alt": "Watercolour painting split in two: George Best in Northern Ireland's green shirt in 1976 and Diego Maradona lifting the World Cup in 1986"
+    },
+    {
+      "commons": "File:Maradona-Mundial 86 con la copa.JPG",
+      "licence": "Public domain",
+      "why": "Diego Maradona with the World Cup, Mexico 1986",
+      "kit": "Argentina's sky-blue-and-white striped shirt"
+    }
+  ],
+  "038": [
+    {
+      "commons": "File:Coppa UEFA 1992-93 - Napoli vs PSG - George Weah.jpg",
+      "licence": "",
+      "why": "Weah celebrating a goal for PSG at Napoli, 1992, on the way to his Ballon d'Or. No free photo of him in Milan's shirt: ask for red-and-black stripes, 1995, if you want the Ballon d'Or season.",
+      "alt": "Watercolour painting of George Weah in Paris Saint-Germain's blue, white and red shirt, running with clenched fists"
     }
   ],
   "901": [
@@ -505,38 +537,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "c1122": [
-    {
-      "commons": "File:Jermain Defoe Brighton v Spurs Amex Opening 30711 2 (cropped).jpg",
-      "licence": "CC BY 2.0",
-      "pair": true,
-      "why": "22 Nov comparison, Defoe v Giroud: left, Jermain Defoe in Tottenham's black 2011-12 away shirt, standing on the pitch, looking ahead; right, Olivier Giroud in France's dark blue 2018 shirt with the number 9, one finger raised. Only these two players: no other figures, the background is a blurred stadium crowd.",
-      "kit": "Tottenham Hotspur's black 2011-12 Puma away shirt with yellow trim and the Aurasma sponsor",
-      "alt": "Watercolour painting split in two: Jermain Defoe in Tottenham's black away shirt and Olivier Giroud in France's number 9 shirt"
-    },
-    {
-      "commons": "File:Olivier Giroud 2018.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Olivier Giroud, France v Argentina, 2018 World Cup",
-      "kit": "France's dark blue 2018 Nike shirt with the number 9 and the cockerel crest"
-    }
-  ],
-  "c1125": [
-    {
-      "commons": "File:George Best (1976).jpg",
-      "licence": "CC0",
-      "pair": true,
-      "why": "25 Nov comparison, Best v Maradona: left, George Best in 1976 in Northern Ireland's green shirt with the white crest under a black adidas track jacket, long dark hair, looking ahead; right, Diego Maradona at the 1986 World Cup in Argentina's sky-blue-and-white striped shirt, lifting the World Cup trophy. The left photo is black and white: paint it in natural colour (Northern Ireland green). Only these two players: no other figures, the background is a blurred stadium. Keep the whole trophy and both of Maradona's hands inside the frame.",
-      "kit": "Northern Ireland's green shirt with the white crest, under a black adidas track jacket with three white stripes",
-      "alt": "Watercolour painting split in two: George Best in Northern Ireland's green shirt in 1976 and Diego Maradona lifting the World Cup in 1986"
-    },
-    {
-      "commons": "File:Maradona-Mundial 86 con la copa.JPG",
-      "licence": "Public domain",
-      "why": "Diego Maradona with the World Cup, Mexico 1986",
-      "kit": "Argentina's sky-blue-and-white striped shirt"
     }
   ],
   "c1128": [

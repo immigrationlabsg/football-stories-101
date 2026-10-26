@@ -295,16 +295,6 @@
       "1956 FA Cup Final"
     ]
   },
-  "034": {
-    "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG",
-    "queries": [
-      "George Weah AC Milan",
-      "Weah Milan 1996",
-      "George Weah Monaco",
-      "George Weah Ballon d'Or",
-      "Weah Milan goal"
-    ]
-  },
   "035": {
     "want": "1999 Champions League final: Solskjær or Sheringham scoring, United celebrating",
     "queries": [
@@ -323,6 +313,16 @@
       "Manchester City Premier League trophy 2012",
       "Manchester City parade 2012",
       "Vincent Kompany trophy 2012"
+    ]
+  },
+  "038": {
+    "want": "George Weah as a player, scoring or celebrating, ideally Milan 1995 or PSG",
+    "queries": [
+      "George Weah AC Milan",
+      "Weah Milan 1996",
+      "George Weah Monaco",
+      "George Weah Ballon d'Or",
+      "Weah Milan goal"
     ]
   },
   "p1029a": {
