@@ -9,11 +9,26 @@ import path from 'node:path';
 import { ROOT } from './stories';
 
 export type Network = 'facebook' | 'instagram' | 'threads';
-export type Outcome = { network: Network; status: 'posted' | 'drafted' | 'dry-run' | 'skipped' | 'failed'; detail: string };
+export type Outcome = { network: Network; status: 'posted' | 'drafted' | 'dry-run' | 'skipped' | 'failed'; detail: string; reel?: string };
 
 
 const SENT = path.join(ROOT, 'data/sent.json');
-type SocialRecord = { number: number; network: Network; status?: 'posted' | 'scheduled'; at: string; detail: string; story?: string };
+type SocialRecord = { number: number; network: Network; status?: 'posted' | 'scheduled'; at: string; detail: string; story?: string; reel?: string };
+
+// The hash each Reel online was made from (reels.json, written by scripts/images.ts): it changes whenever the video does.
+// Kept on each Facebook Reel record, so "Reels replace" re-uploads only Reels whose video has really changed.
+let liveHashes: Record<string, string> | null = null;
+export async function liveReelHash(number: number): Promise<string | undefined> {
+  if (!liveHashes) {
+    try {
+      const r = await fetch(absoluteUrl('/images/derived/reels.json'));
+      liveHashes = r.ok ? ((await r.json()) as Record<string, string>) : {};
+    } catch {
+      liveHashes = {};
+    }
+  }
+  return liveHashes[pad3(number)];
+}
 
 /** Networks this story has already been posted or scheduled to (from data/sent.json). */
 export function socialDone(number: number): Set<Network> {
@@ -35,7 +50,7 @@ export function recordSocial(number: number, outcomes: Outcome[], story: string)
   const file = JSON.parse(fs.readFileSync(SENT, 'utf8'));
   file.social = [
     ...(file.social ?? []),
-    ...keep.map((o): SocialRecord => ({ number, network: o.network, status: o.status === 'posted' ? 'posted' : 'scheduled', at: new Date().toISOString(), detail: o.detail, story })),
+    ...keep.map((o): SocialRecord => ({ number, network: o.network, status: o.status === 'posted' ? 'posted' : 'scheduled', at: new Date().toISOString(), detail: o.detail, story, ...(o.reel ? { reel: o.reel } : {}) })),
   ];
   fs.writeFileSync(SENT, JSON.stringify(file, null, 2) + '\n');
 }
@@ -108,7 +123,8 @@ export async function postStoryToSocials(
               cover = ` (cover not set: ${(e as Error).message.slice(0, 120).replace(/[()]/g, '')})`;
             }
           }
-          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${cover}${note}` });
+          const hash = await liveReelHash(story.data.number);
+          out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${cover}${note}`, ...(hash ? { reel: hash } : {}) });
         } else if (network === 'instagram') {
           if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
           out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });

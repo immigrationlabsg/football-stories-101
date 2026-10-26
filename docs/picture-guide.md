@@ -77,6 +77,9 @@ point in its report. The verifier repeats the check.
    entry's `kit` and `why` (e.g. "the sponsor reads Fly Emirates, not bwin"); then check the painted sponsor and
    number letter by letter (29 Oct 2026: Ronaldo's 2010 photo repainted in the 2016-17 shirt). Never trade likeness
    for the kit: a small or turned-away face is worse than an older photo repainted in the right season's shirt.
+   Only the owner can approve a picture that breaks this rule, after seeing it; record the exception in the reference
+   entry's `kit` and in the story's fact-check log (16 Nov 2026: Messi in the 2011-12 shirt, because OpenAI refused every
+   new Messi painting on 26 Oct).
 4. **Moments make sense.** People face the right way (a goalkeeper faces the penalty taker), the ball and goal are where
    they should be, the crowd matches the occasion. If a moment cannot be painted correctly from a photo, show the
    player instead of inventing the scene.

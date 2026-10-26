@@ -59,14 +59,21 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
 }
 // One legend per week (owner, 26 Oct 2026): the same featured player in two pieces less than 7 days apart is an error,
 // unless data/schedule.json lists that week as a special week for him. Featured = the two names of a comparison
-// ("Messi v Ronaldo"), a quiz's answer, or the first name in a story's players.
+// ("Messi v Ronaldo"), a quiz's answer, or the first name in a story's players (its main subject, listed first).
 {
-  const plain = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\(.*?\)/g, '').trim().toLowerCase();
+  const plain = (s: string) =>
+    s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\(.*?\)/g, '').trim().toLowerCase()
+      .replace(/\u00e6/g, 'ae').replace(/\u00f8/g, 'o').replace(/\u00df/g, 'ss').replace(/\u0111/g, 'd').replace(/\u0142/g, 'l');
   const featured = (s: (typeof live)[number]): string[] => {
     if (s.data.format === 'quiz' && s.data.answer) return [plain(s.data.answer)];
     const subject = s.data.title.split(' / ')[0];
     if (/ v /.test(subject)) {
-      return subject.split(' v ').map((n) => plain(s.data.players.find((p) => plain(p) === plain(n) || plain(p).endsWith(` ${plain(n)}`)) ?? n));
+      // An exact name first ("Ronaldo (R9)" for "Ronaldo"), then a surname ("Cristiano Ronaldo" for "Ronaldo").
+      return subject.split(' v ').map((n) => {
+        const p = s.data.players.find((x) => plain(x) === plain(n)) ?? s.data.players.find((x) => plain(x).endsWith(` ${plain(n)}`));
+        if (!p) errors.push(`${pad(s.data.number)} names "${n.trim()}" in its title but no player in its players list matches; add his full name to players`);
+        return plain(p ?? n);
+      });
     }
     return s.data.players.slice(0, 1).map(plain);
   };
@@ -76,13 +83,14 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
     to: Date.parse(`${w.to}T23:59:59+08:00`),
   }));
   const upcoming = live.filter((s) => s.data.date.getTime() > now.getTime() - 7 * 86_400_000);
+  const names = new Map(upcoming.map((s) => [s, featured(s)]));
   for (let i = 0; i < upcoming.length; i++) {
     for (let j = i + 1; j < upcoming.length; j++) {
       const [a, b] = [upcoming[i], upcoming[j]];
       if (b.data.date.getTime() - a.data.date.getTime() >= 7 * 86_400_000) break;
       if (b.data.date.getTime() < now.getTime()) continue;
-      for (const name of featured(a).filter((x) => featured(b).includes(x))) {
-        const ok = special.some((w) => w.legend === name && a.data.date.getTime() >= w.from && b.data.date.getTime() <= w.to);
+      for (const name of names.get(a)!.filter((x) => names.get(b)!.includes(x))) {
+        const ok = special.some((w) => (w.legend === name || name.endsWith(` ${w.legend}`)) && a.data.date.getTime() >= w.from && b.data.date.getTime() <= w.to);
         if (!ok) errors.push(`${pad(a.data.number)} and ${pad(b.data.number)} both feature ${name} within a week; move one (npm run hand-over gives a slot to another piece), or list a special week for him in data/schedule.json "special_weeks"`);
       }
     }

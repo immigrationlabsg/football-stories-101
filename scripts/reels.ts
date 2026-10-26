@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadStories, ROOT } from './lib/stories';
-import { postStoryToSocials } from './lib/social-post';
+import { liveReelHash, postStoryToSocials } from './lib/social-post';
 import { socialPosts } from './lib/social';
 import { deleteFacebookObject, waitForUrl } from './lib/meta';
 
@@ -61,19 +61,6 @@ async function liveMusicMatches(number: number): Promise<boolean> {
   return musicTag(number) === `(music: ${liveMusic[pad3(number)] ?? 'unknown'})`;
 }
 
-// The hash each Reel online was made from (reels.json, written by scripts/images.ts): it changes whenever the video does.
-let liveHashes: Record<string, string> | null = null;
-async function liveReelHash(number: number): Promise<string | undefined> {
-  if (!liveHashes) {
-    try {
-      const r = await fetch(absoluteUrl('/images/derived/reels.json'));
-      liveHashes = r.ok ? ((await r.json()) as Record<string, string>) : {};
-    } catch {
-      liveHashes = {};
-    }
-  }
-  return liveHashes[pad3(number)];
-}
 
 // Which story each Reel online shows (reel-stories.json, written by scripts/images.ts). A slot can be given to another
 // story (owner, 25 Oct 2026: "on this day" comparisons every third day), and the Reel keeps the slot's file name, so

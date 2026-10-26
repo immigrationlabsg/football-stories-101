@@ -78,6 +78,13 @@ for (const f of DATA_FILES) {
   }
   fs.writeFileSync(file, JSON.stringify(Object.fromEntries(Object.entries(data).sort(([a], [b]) => a.localeCompare(b))), null, 2) + '\n');
 }
+// Stories that follow up the moved one now point at its new number (the new story in the slot is a different subject).
+for (const f of fs.readdirSync(STORIES_DIR).filter((f) => f.endsWith('.mdx'))) {
+  const p = path.join(STORIES_DIR, f);
+  const t = fs.readFileSync(p, 'utf8');
+  const u = t.replace(new RegExp(`^followUpOf: 0*${slot}$`, 'm'), `followUpOf: ${to}`);
+  if (u !== t) fs.writeFileSync(p, u);
+}
 
 // 2. Install the new story in the slot (number and date are the slot's, whatever the file says; checked before step 1).
 const newText = fs
@@ -97,7 +104,7 @@ const kind = parsed.data.format === 'quiz' ? 'Guess the legend' : 'On this day';
 const label = parsed.data.title.toLowerCase().startsWith(kind.toLowerCase()) ? parsed.data.title : `${kind}: ${parsed.data.title}`;
 const movedRow = oldRow >= 0 ? lines[oldRow].replace(`| ${from3} |`, `| ${to3} |`).replace(/ \(moved from \d{3}\)/g, '').replace(/ \| (scheduled|drafted) \|$/, ` (moved from ${from3}) | scheduled |`) : null;
 // Follow-ups that pointed at the old story's number now point at its new one.
-for (let i = 0; i < lines.length; i++) lines[i] = lines[i].replace(`(follow-up of ${from3})`, `(follow-up of ${to3})`);
+for (let i = 0; i < lines.length; i++) lines[i] = lines[i].replace(new RegExp(`\\(follow-up of ${from3}([;)])`), `(follow-up of ${to3}$1`);
 if (oldRow >= 0) lines[oldRow] = `| ${from3} | ${parsed.data.pillar[0].toUpperCase()}${parsed.data.pillar.slice(1)} | ${label} | scheduled |`;
 for (let i = 0; i < lines.length; i++) {
   const m = /^\| (\d{3}) \|(.*\| reserved \|)$/.exec(lines[i]);

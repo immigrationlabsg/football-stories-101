@@ -38,7 +38,24 @@ function hashOf(...parts: (string | Buffer)[]): string {
   for (const p of parts) h.update(p);
   return h.digest('hex');
 }
-let previous: Record<string, { hash?: string; cards?: string[] }> = {};
+/**
+ * A two-player painting ("Baggio v Messi") framed whole at the card's shape on its own paper colour (its lightest
+ * corner), so the share card and the Facebook picture never crop it down to one player. The same paper rule as the quiz
+ * reveal in quiz-cards.ts; it lives here because a change to that file (or cards.ts) re-renders every Reel.
+ */
+async function wholeFor(img: Buffer, w: number, h: number): Promise<Buffer> {
+  const { width = 1024, height = 1024 } = await sharp(img).metadata();
+  const corners = await Promise.all(
+    [[0, 0], [width - 16, 0], [0, height - 16], [width - 16, height - 16]].map(async ([left, top]) =>
+      (await sharp(await sharp(img).extract({ left, top, width: 16, height: 16 }).toBuffer()).stats()).channels.slice(0, 3).map((c) => c.mean),
+    ),
+  );
+  const [r, g, b] = corners.reduce((best, c) => (c[0] + c[1] + c[2] > best[0] + best[1] + best[2] ? c : best)).map(Math.round);
+  return sharp(img).resize(w * 2, h * 2, { fit: 'contain', background: { r, g, b } }).jpeg({ quality: 90 }).toBuffer();
+}
+const SHARE_FRAMING = 'pairs whole, 26 Oct 2026';
+
+let previous: Record<string, { hash?: string; cards?: string[]; share?: string }> = {};
 try {
   previous = JSON.parse(fs.readFileSync(path.join(OUT, 'manifest.json'), 'utf8'));
 } catch {
@@ -127,10 +144,16 @@ for (const story of stories) {
       await sharp(hero).resize(w).avif({ quality: 55, effort: 3 }).toFile(path.join(OUT, `${n}-${w}.avif`));
       await sharp(hero).resize(w).webp({ quality: 78 }).toFile(path.join(OUT, `${n}-${w}.webp`));
     }
-    fs.writeFileSync(og, await renderOg(story.data, hero));
-    fs.writeFileSync(fb, await renderFbCard(story.data, hero));
     for (let i = 0; i < slides.length; i++) fs.writeFileSync(cardFiles[i], await slides[i]());
-    console.log(`${n} ${story.data.slug}: ${widths.length} sizes, og, ${cards.length} carousel cards`);
+    console.log(`${n} ${story.data.slug}: ${widths.length} sizes, ${cards.length} carousel cards`);
+  }
+  // The share card (og) and the Facebook picture have their own key: framing them differently re-renders only these two.
+  const pair = / v /.test(story.data.title.split(' / ')[0]);
+  const share = hashOf(hash, pair ? SHARE_FRAMING : '');
+  if (force || previous[n]?.share !== share || !fs.existsSync(og) || !fs.existsSync(fb)) {
+    fs.writeFileSync(og, await renderOg(story.data, pair ? await wholeFor(hero, 500, 630) : hero));
+    fs.writeFileSync(fb, await renderFbCard(story.data, pair ? await wholeFor(hero, 1080, 776) : hero));
+    console.log(`${n} ${story.data.slug}: og and Facebook picture${pair ? ' (both players whole)' : ''}`);
   }
   // The Reel: only for stories that post as Reels, from two days ago to 28 days ahead (Facebook schedules 27 days out).
   const reel = path.join(OUT, `${n}-reel.mp4`);
@@ -163,7 +186,7 @@ for (const story of stories) {
     if (f.startsWith(`${n}-ig-`) && !cards.includes(`/images/derived/${f}`)) fs.unlinkSync(path.join(OUT, f));
   }
 
-  manifest[n] = { src: placeholder ? PLACEHOLDER_HERO : story.data.hero.src, width, height, widths, cards, og: `/images/derived/${n}-og.png`, hash };
+  manifest[n] = { src: placeholder ? PLACEHOLDER_HERO : story.data.hero.src, width, height, widths, cards, og: `/images/derived/${n}-og.png`, hash, share };
 }
 
 const def = path.join(PUBLIC_DIR, 'images/default-share.png');

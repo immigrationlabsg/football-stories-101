@@ -5,6 +5,8 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 **For the next weekly run (noted 26 Oct 2026; delete this note once done):**
 - 043 (Munich to Wembley, 1 Dec) tells Best's 1968 final goal, also told in 037 (25 Nov). 1 Dec is an "on this day" day:
   give it the comparison with `npm run hand-over -- 43 ...`, so 043 moves to the end of the queue.
+- 044 (Maradona, Mexico 1986, 2 Dec) sits on a "Guess the legend" day: give the slot a quiz with `npm run hand-over -- 44 ...`
+  (not about Maradona, Best or anyone featured from 26 Nov to 8 Dec), so 044 moves to the end of the queue.
 - "Until 1995 only Europeans could win the Ballon d'Or" is told in 031 (19 Nov), 037 (25 Nov) and 038 (26 Nov). Avoid it
   in new pieces before mid-December.
 
@@ -63,7 +65,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 051 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
 | 052 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
 | 053 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
-| 054 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 044) | reserved |
+| 054 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 043) | reserved |
 | 055 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
 | 056 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
 | 057 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
@@ -82,11 +84,12 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
-  apart (featured: either name of a comparison, a quiz's answer, a story's main subject), unless it is a special week
-  for him, listed in `data/schedule.json` "special_weeks". `npm run verify` reports a clash as an error.
+  apart; seven days apart is fine (featured: either name of a comparison, a quiz's answer, a story's main subject, listed
+  first in its `players`; a passing mention is not featuring), unless it is a special week for him, listed in
+  `data/schedule.json` "special_weeks" (by full name or surname). `npm run verify` reports a clash as an error.
 - **Never repeat a story.** A subject may come back only with a new angle the earlier story did not cover, marked
   "(follow-up of NNN)" here and `followUpOf: NNN` in the story's front matter, and it may repeat at most a one-line
-  recap of the earlier story. Example: 055, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
+  recap of the earlier story. Example: 056, Ronaldo's second career, follows 001 (the knees and the 2002 World Cup).
   People may appear in more than one story (Beckham in the Class of 92 and in his own story) as long as each story
   tells a different event; never two stories about the same match or tournament within a week.
 - **Spread the world through stars fans know:** African, Asian and North American stories are told through players

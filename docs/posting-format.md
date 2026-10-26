@@ -23,7 +23,9 @@ change it only when the owner decides to.
   cover is the mystery card, so the answer never shows before the Reel is played.
 - Every other day is the regular "story nobody told you".
 - **One legend per week** (owner's decision, 26 Oct 2026): the same player is never featured in two pieces less than
-  seven days apart, unless it is a special week for that legend (listed in `data/schedule.json` "special_weeks").
+  seven days apart (seven days apart is fine), unless it is a special week for that legend (listed in `data/schedule.json`
+  "special_weeks"). Featured means either name of a comparison, a quiz's answer or a story's main subject; a passing
+  mention in another story is not featuring.
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the

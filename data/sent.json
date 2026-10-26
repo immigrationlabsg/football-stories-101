@@ -377,7 +377,8 @@
       "status": "scheduled",
       "at": "2026-10-26T05:44:54.690Z",
       "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1470487735041414 (music: egmont)",
-      "story": "cameroon-argentina-italia-90"
+      "story": "cameroon-argentina-italia-90",
+      "reel": "ee6b5cb9386a2760e3cc685f43ed04c0868ef152"
     },
     {
       "number": 33,
@@ -385,7 +386,8 @@
       "status": "scheduled",
       "at": "2026-10-26T05:45:19.234Z",
       "detail": "scheduled for 2026-11-21T02:00:00.000Z reel 1664450815342523 (music: coriolan)",
-      "story": "bert-trautmann-broken-neck-final"
+      "story": "bert-trautmann-broken-neck-final",
+      "reel": "95854345c1a2e3a1a54fb9486e943cb5c9633296"
     }
   ]
 }

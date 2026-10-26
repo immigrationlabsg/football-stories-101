@@ -10,6 +10,8 @@ export interface ManifestEntry {
   og: string;
   /** Content hash of the inputs, used by scripts/images.ts to skip work. */
   hash?: string;
+  /** Content hash of the og and Facebook picture framing, so they can change without touching the cards or Reels. */
+  share?: string;
 }
 export type Manifest = Record<string, ManifestEntry>;
 
