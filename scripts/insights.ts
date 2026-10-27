@@ -48,8 +48,31 @@ async function metric(base: string, path: string, token: string | undefined, nam
   for (const m of ['page_post_engagements', 'page_views_total', 'page_daily_follows_unique', 'page_media_view']) {
     say(`last 28 days ${m}: ${await metric(FB, `${page}/insights`, t, m, { period: 'day', since, until })}`);
   }
+  // Reels by their own ids from data/sent.json: video insights need only the Page key, not the post-list permission.
+  {
+    const fs = await import('node:fs');
+    const sent = JSON.parse(fs.readFileSync('data/sent.json', 'utf8')).social as { number: number; network: string; detail: string }[];
+    const reels = sent
+      .filter((r) => r.network === 'facebook')
+      .map((r) => ({ n: r.number, id: / reel (\d+)/.exec(r.detail)?.[1], at: /scheduled for (\S+)/.exec(r.detail)?.[1] }))
+      .filter((r) => r.id && (!r.at || Date.parse(r.at) < Date.now()));
+    say('');
+    say('| story | Facebook Reel | people reached | plays | plays incl. replays | avg watch (s) | reactions | comments | shares |');
+    say('|---|---|---|---|---|---|---|---|---|');
+    for (const r of reels) {
+      const v = await get(FB, `${r.id}/video_insights`, t, { metric: 'post_impressions_unique,blue_reels_play_count,fb_reels_total_plays,post_video_avg_time_watched,post_video_social_actions' });
+      const val = (name: string) => {
+        if (v.error) return 'n/a';
+        const d = (v.data ?? []).find((x: any) => x.name === name);
+        return d ? d.values?.[0]?.value ?? '?' : 'n/a';
+      };
+      const social = val('post_video_social_actions') as any;
+      const avg = val('post_video_avg_time_watched');
+      say(`| ${String(r.n).padStart(3, '0')} | ${r.id} | ${val('post_impressions_unique')} | ${val('blue_reels_play_count')} | ${val('fb_reels_total_plays')} | ${typeof avg === 'number' ? (avg / 1000).toFixed(1) : avg} | ${social?.REACTION ?? social?.LIKE ?? (typeof social === 'object' ? 0 : social)} | ${social?.COMMENT ?? (typeof social === 'object' ? 0 : social)} | ${social?.SHARE ?? (typeof social === 'object' ? 0 : social)} |${v.error ? ` ${v.error}` : ''}`);
+    }
+  }
   const posts = await get(FB, `${page}/published_posts`, t, { fields: 'id,created_time,message,shares,reactions.summary(true).limit(0),comments.summary(true).limit(0)', limit: '15' });
-  if (posts.error) say(`Posts: ${posts.error}`);
+  if (posts.error) say(`Older picture posts: ${posts.error}`);
   else {
     say('');
     say('| date | post | reach | views | clicks | reactions | comments | shares |');
