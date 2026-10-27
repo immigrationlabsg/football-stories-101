@@ -276,15 +276,6 @@
       "reel": "c937aab8f92afa7112d0c97a548c78c2d8abf4e9"
     },
     {
-      "number": 19,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T04:31:18.671Z",
-      "detail": "scheduled for 2026-11-07T02:00:00.000Z reel 1013206537705181 (music: hebrides)",
-      "story": "torres-v-watt-7-november",
-      "reel": "643330033897600f36e5405026941c7c30334faf"
-    },
-    {
       "number": 22,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 2624466311309443 (music: coriolan) (cover: mystery card)",
       "story": "guess-the-legend-andrea-pirlo",
       "reel": "c11091d2a3abc48830338db73f842b8e1518ce66"
+    },
+    {
+      "number": 19,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T15:30:36.775Z",
+      "detail": "scheduled for 2026-11-07T02:00:00.000Z reel 1806282877060632 (music: hebrides)",
+      "story": "torres-v-watt-7-november",
+      "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
     }
   ]
 }
