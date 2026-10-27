@@ -339,7 +339,9 @@ Instagram app, then click **Generate token** next to the account. Save that toke
 2. Go to developers.facebook.com, log in, **My Apps → Create app**. Choose the **Business** type, name it "Football Stories 101".
    While the app stays in Development mode you can post to Pages and Instagram accounts you own without app review.
 3. In **Tools → Graph API Explorer**, pick your app, click **Generate access token**, and tick: `pages_show_list`,
-   `pages_manage_posts`, `pages_read_engagement`, `instagram_basic`, `instagram_content_publish`. Approve for the Football Stories 101 Page and its Instagram account.
+   `pages_manage_posts`, `pages_read_engagement`, `read_insights`, `pages_read_user_content`, `instagram_basic`,
+   `instagram_content_publish`. (`read_insights` and `pages_read_user_content` let the **Audience report** read Facebook
+   reach and plays; added 27 Oct 2026. They work in Development mode for the app's own admin: no app review, no Live.) Approve for the Football Stories 101 Page and its Instagram account.
 4. Make the token long-lived: in the **Access Token Debugger** (developers.facebook.com/tools/debug/accesstoken) paste it and click **Extend access token**.
 5. In the Graph API Explorer, with that long-lived token, request `me/accounts`. The entry for Football Stories 101 has its `id` (the Page ID)
    and an `access_token` (the Page token, which does not expire when it comes from a long-lived user token).

@@ -115,7 +115,11 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
 }
 
 /** A Threads post: the carousel cards with the teaser text (or text only), and an optional reply. */
-export async function postThreads(a: { text: string; reply?: string; imageUrls?: string[]; videoUrl?: string }, env = process.env): Promise<string> {
+/**
+ * A Threads post: text with a video, a carousel of cards, or text alone. topicTag files it in that topic's feed;
+ * a reply (text, with a video if replyVideoUrl is given) goes underneath it.
+ */
+export async function postThreads(a: { text: string; reply?: string; replyVideoUrl?: string; imageUrls?: string[]; videoUrl?: string; topicTag?: string }, env = process.env): Promise<string> {
   const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
   const ready = async (id: string, tries = 20) => {
@@ -134,9 +138,10 @@ export async function postThreads(a: { text: string; reply?: string; imageUrls?:
     const p = await call(`${THREADS}/${user}/threads_publish`, { creation_id: c.id, access_token: token });
     return String(p.id);
   };
+  const tag: Record<string, string> = a.topicTag ? { topic_tag: a.topicTag } : {};
   let id: string;
   if (a.videoUrl) {
-    id = await publish({ media_type: 'VIDEO', video_url: a.videoUrl, text: a.text });
+    id = await publish({ media_type: 'VIDEO', video_url: a.videoUrl, text: a.text, ...tag });
   } else if (a.imageUrls && a.imageUrls.length >= 2) {
     // The same cards as the Instagram carousel, with the post text above them.
     const children: string[] = [];
@@ -145,11 +150,12 @@ export async function postThreads(a: { text: string; reply?: string; imageUrls?:
       children.push(c.id);
     }
     for (const c of children) await ready(c);
-    id = await publish({ media_type: 'CAROUSEL', children: children.join(','), text: a.text });
+    id = await publish({ media_type: 'CAROUSEL', children: children.join(','), text: a.text, ...tag });
   } else {
-    id = await publish({ media_type: 'TEXT', text: a.text });
+    id = await publish({ media_type: 'TEXT', text: a.text, ...tag });
   }
-  if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
+  if (a.replyVideoUrl) await publish({ media_type: 'VIDEO', video_url: a.replyVideoUrl, text: a.reply ?? '', reply_to_id: id });
+  else if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
   return id;
 }
 

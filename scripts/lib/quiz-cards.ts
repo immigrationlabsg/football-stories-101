@@ -80,7 +80,8 @@ export async function renderQuizCover(story: StoryFrontmatter, mystery: Buffer):
       { style: { width: W, height: H, display: 'flex', flexDirection: 'column', background: C.dark } },
       banner(
         label('Guess the legend', C.gold, 34),
-        h('div', { style: { fontFamily: 'Libre Baskerville', fontSize: 58, color: '#fff', textAlign: 'center', width: 940 } }, `${story.clues.length} clues. How many do you need?`),
+        // The quiz's own hook when it has one (owner, 27 Oct 2026: open on the surprising line), else the generic challenge.
+        h('div', { style: { fontFamily: 'Libre Baskerville', fontSize: (story.hook ?? '').length > 60 ? 46 : 58, lineHeight: 1.2, color: '#fff', textAlign: 'center', width: 940 } }, story.hook ?? `${story.clues.length} clues. How many do you need?`),
       ),
       rule(),
       h(

@@ -36,10 +36,11 @@ for (const s of stories) {
   if (!fs.existsSync(path.join(ROOT, `docs/fact-checks/${n}.md`))) errors.push(`${n}: no fact-check log docs/fact-checks/${n}.md`);
   const posts = socialPosts(s, { kind: 'scheduled', webLive: false });
   if (Buffer.byteLength(posts.threads, 'utf8') > 500) errors.push(`${n}: Threads text is over 500 bytes`);
-  if (!/More on Instagram: instagram\.com\//.test(posts.threads)) errors.push(`${n}: Threads text has no Instagram link`);
-  if (/github\.io|football-stories-101\//i.test(posts.facebook + posts.threads)) errors.push(`${n}: a social post links the website`);
+  // Threads (owner, 27 Oct 2026): cards and teaser in the post, the Reel and the Instagram link in the reply.
+  if (!/More on Instagram: instagram\.com\//.test(posts.threadsReply)) errors.push(`${n}: the Threads reply has no Instagram link`);
+  if (/instagram\.com\//.test(posts.threads)) errors.push(`${n}: the Threads post itself carries a link; it belongs in the reply`);
+  if (/github\.io|football-stories-101\//i.test(posts.facebook + posts.threads + posts.threadsReply)) errors.push(`${n}: a social post links the website`);
   if (usesReel(s.data.date) && !posts.facebook.trimEnd().endsWith(AI_NOTE)) errors.push(`${n}: a post is missing the AI disclosure "${AI_NOTE}"`);
-  if (posts.threadsReply) errors.push(`${n}: Threads has a separate reply; the link belongs in the post`);
   const len = posts.facebook.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
 }

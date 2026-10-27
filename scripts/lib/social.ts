@@ -59,8 +59,9 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     const facebook = [challenge, '', '.', '.', '.', '', `It was ${story.data.answer}.`, '', markdownToText(md), '', story.data.question ?? '', '', '_____', '',
       'Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.', '', AI_NOTE]
       .join('\n').replace(/\n{3,}/g, '\n\n').trim();
-    const threads = `Guess the legend: ${story.data.clues.length} clues, one name. How many did you need? The answer is at the end of the Reel.\n\nMore on Instagram: ${igLinkQuiz}\n${AI_NOTE}`;
-    return { facebook, instagram: facebook, threads, threadsReply: '', webUrl, link };
+    const threads = `Guess the legend: ${story.data.clues.length} clues, one name. Swipe one card at a time. How many did you need? The answer is on the last card.\n${AI_NOTE}`;
+    const threadsReply = `The same clues as a Reel, answer at the end. More on Instagram: ${igLinkQuiz}`;
+    return { facebook, instagram: facebook, threads, threadsReply, webUrl, link };
   }
 
   // The Morning Founder posts the whole story natively, ending with the question,
@@ -123,9 +124,9 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   const instagram = facebook;
 
   // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff,
-  // ending with the Instagram link (in the post itself, not as a separate reply).
+  // posted with the cards and a topic tag (owner, 27 Oct 2026: Threads did better with cards than with the Reel). The
+  // Reel and the Instagram link go in a reply, so the post itself carries no link.
   const igLink = (process.env.PUBLIC_INSTAGRAM_URL?.trim() || site.social.instagram).replace(/^https?:\/\/(www\.)?/, '');
-  const threadsFooter = `\n\nMore on Instagram: ${igLink}`;
   const threadsTries = m
     ? [
         [head, REVEAL, tailOfOpening, payoff],
@@ -135,13 +136,13 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     : [`${story.data.dek}\n\n${num}: ${subject} / ${angle}.`];
   // Counted in UTF-8 bytes to be safe: Threads counts some characters (emoji) by their byte length.
   const bytes = (t: string) => Buffer.byteLength(t, 'utf8');
-  const room = THREADS_LIMIT - bytes(threadsFooter);
+  const room = THREADS_LIMIT;
   let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
   // The AI line goes on Threads only when it fits without shortening the teaser; the Reel file carries the AI tag anyway.
   const aiLine = usesReel(story.data.date) ? `\n${AI_NOTE}` : '';
-  const threads = threadsBody + threadsFooter + (bytes(threadsBody + threadsFooter + aiLine) <= THREADS_LIMIT ? aiLine : '');
-  const threadsReply = ''; // no separate reply any more: the link is in the post
+  const threads = threadsBody + (bytes(threadsBody + aiLine) <= THREADS_LIMIT ? aiLine : '');
+  const threadsReply = `The whole story as a Reel. More on Instagram: ${igLink}`;
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }
 

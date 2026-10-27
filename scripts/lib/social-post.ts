@@ -30,6 +30,15 @@ export async function liveReelHash(number: number): Promise<string | undefined> 
   return liveHashes[pad3(number)];
 }
 
+/** The Threads topic tag from data/schedule.json threads_topic (empty: none). */
+function threadsTopic(): string {
+  try {
+    return String(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/schedule.json'), 'utf8')).threads_topic ?? '').trim();
+  } catch {
+    return '';
+  }
+}
+
 /** Networks this story has already been posted or scheduled to (from data/sent.json). */
 export function socialDone(number: number): Set<Network> {
   try {
@@ -81,7 +90,7 @@ export async function postStoryToSocials(
     }
     try {
       if (opts.dryRun) {
-        const urls = reel ? [reelUrl] : network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
+        const urls = reel ? (network === 'threads' ? [...cardUrls, reelUrl] : [reelUrl]) : network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         const over = network === 'instagram' && text.length > INSTAGRAM_LIMIT ? `; TOO LONG for Instagram by ${text.length - INSTAGRAM_LIMIT}` : '';
@@ -129,7 +138,10 @@ export async function postStoryToSocials(
           if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
           out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });
         } else {
-          out.push({ network, status: 'posted', detail: `reel thread ${await postThreads({ text: posts.threads, videoUrl: reelUrl })}` });
+          // Threads: the cards with the teaser and a topic tag, the Reel in a reply (owner, 27 Oct 2026).
+          for (const u of cardUrls) await waitForUrl(u);
+          const id = await postThreads({ text: posts.threads, imageUrls: cardUrls, topicTag: threadsTopic(), reply: posts.threadsReply, replyVideoUrl: reelUrl });
+          out.push({ network, status: 'posted', detail: `thread ${id} (cards, Reel in reply${threadsTopic() ? `, topic ${threadsTopic()}` : ''})` });
         }
       } else if (network === 'facebook') {
         await waitForUrl(heroUrl);

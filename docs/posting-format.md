@@ -15,7 +15,7 @@ change it only when the owner decides to.
   moves to the end of the queue (Leicester City went from 007 to 031), and the Reels switch replaces its Facebook Reel.
   `npm run verify` warns about any upcoming third-day slot that is not yet an "on this day" story.
 - **"Guess the legend" every 9 days** (owner's decision, 25 Oct; first on 5 Nov 2026, then 14 Nov, 23 Nov, 2 Dec and so
-  on): a 7-card Reel with the shared mystery cover (no hint), four clues from obscure to famous, the reveal (the
+  on): a 7-card Reel with the shared mystery cover (no picture hint; from 27 Oct its banner carries the quiz's own hook line, e.g. "He grew up in a refugee hotel. Can you name him in 4 clues?"), four clues from obscure to famous, the reveal (the
   player's name over a painting made from a real photo of him) and a "send this to a friend" card. The caption hides
   the answer below the "See more" cut. Nine days keeps it on the day after a comparison, so the two never clash; if a
   date ever does fall on a comparison day, the comparison runs that day, the quiz the next day, and the rotation
@@ -37,7 +37,9 @@ change it only when the owner decides to.
   Symphony No. 40, Mendelssohn's Hebrides; owner's choice, 25 Oct 2026), in `assets/music/` (credits in its CREDITS.md).
   Each Facebook Reel's record names its music, e.g. "(music: coriolan)". Trending or commercial songs cannot be added through Meta's API, and a song put into the
   file gets the Reel muted or removed.
-- Text is unchanged: Facebook and Instagram carry the full story text; Threads the teaser with "More on Instagram".
+- Text is unchanged: Facebook and Instagram carry the full story text; Threads the teaser (see Threads below).
+- **The cover line opens on the surprise** (owner, 27 Oct 2026): the first card's `hook` leads with the most surprising
+  fact, not a scene-setter; for comparisons "on this day" / "to the day" may come later in the line.
 - **AI disclosure** (owner's decision, 25 Oct 2026): every post from story 006 ends with the line "Illustrations made with
   AI." (Facebook and Instagram; on Threads only when it fits within 500 bytes without shortening the teaser), and every Reel file carries the IPTC tag DigitalSourceType =
   trainedAlgorithmicMedia, which Meta reads for its "AI info" label. Meta only requires a label for photorealistic video
@@ -59,10 +61,11 @@ The sections below describe the picture posts (stories 001 to 005) and the text,
 - Caption: **exactly the Facebook text**; must fit 2,200 characters.
 - Posted by the daily run at the slot time (Instagram cannot be scheduled through the API).
 
-## Threads
-- **The same 7 cards as Instagram, in one post.**
-- Text: the short teaser (opening, the reveal line, the first line after it), ending with
-  **"More on Instagram: instagram.com/foot.ballstories101"** in the same post. **No separate reply.**
+## Threads (owner approved 27 Oct 2026)
+- **The 7 cards as a carousel with the teaser text and a topic tag** (`data/schedule.json` `threads_topic`, "Football").
+  Threads drew 19-70 views per post with cards and 0-23 with the Reel in the first week, so the cards lead.
+- **The Reel goes in a reply** under the post, with "The whole story as a Reel. More on Instagram:
+  instagram.com/foot.ballstories101", so the post itself carries no link.
 - Within Threads' 500 limit, counted in bytes.
 - Posted by the daily run at the slot time.
 
