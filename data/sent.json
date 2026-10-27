@@ -276,15 +276,6 @@
       "reel": "c937aab8f92afa7112d0c97a548c78c2d8abf4e9"
     },
     {
-      "number": 22,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T04:50:06.466Z",
-      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1689637866029460 (music: mozart40)",
-      "story": "van-persie-v-salah-10-november",
-      "reel": "6571c03d4e8ef6b533bcd8e1581c6587e50795af"
-    },
-    {
       "number": 31,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-07T02:00:00.000Z reel 1806282877060632 (music: hebrides)",
       "story": "torres-v-watt-7-november",
       "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
+    },
+    {
+      "number": 22,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T15:31:43.954Z",
+      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1140893038432648 (music: mozart40)",
+      "story": "van-persie-v-salah-10-november",
+      "reel": "b128ae8cd42beeb6e5752c3550619ff297248500"
     }
   ]
 }
