@@ -12,6 +12,25 @@ and bring us these amazing stories every day." Growth is our job, not the owner'
 engagement bait; reach comes from stories worth sending to a friend, strong first seconds, and learning from the
 numbers every week. The owner does not want to be reminded about the Facebook password / exposed keys (decided 27 Oct).
 
+## How every decision is made: the four asks (owner, 28 Oct 2026)
+
+Before any growth decision, answer: (1) what a top professional (head of social at a big football account) would do
+here that we are not doing; (2) the rawest material to start from, not what is already digested; (3) the specific
+methods and tools they would use; (4) what, other than us, would show the result is right. Then act on that.
+
+Standing brief that came out of it: grow the page fans send to their mates. Each week start from raw material
+(per-Reel retention curves, fan arguments on big football accounts, this week's fixtures and news, primary sources),
+change ONE thing (hook, Reel length, topical tie-in, the caption's first line, posting time), test it with Instagram
+Trial Reels where possible, and judge it only by strangers' behaviour: shares and sends per 1,000 reached, average watch
+time as a share of Reel length, saves, follows per post, and growth against comparable football-history pages.
+
+Experiments queued (one per week, in this order):
+1. Topical tie-in: the weekly drafting run checks the coming week's big fixtures and news and gives at least one story a
+   link to them ("Arsenal play Liverpool on Saturday: the night in 1989..."). Within the format; no OK needed.
+2. Caption first line names the player and the moment (Instagram search). Within the format.
+3. Shorter Reel (about 20 s, the surprise in the first second) for one week. Changes the signed-off format: owner's OK.
+4. Posting time, once Instagram shows where followers live. Owner's OK.
+
 ## Baseline, 27 Oct 2026 (first 8 days, 20-27 Oct)
 
 | | Followers | Picture posts (20-24 Oct) | Reels (25-27 Oct) |

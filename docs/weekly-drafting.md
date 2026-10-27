@@ -49,3 +49,9 @@ what the weekly run does.
    sharpen the opening and the turn before committing.
 8. Report the headlines, any claim cut during fact-checking, and the editor's preview link
    https://immigrationlabsg.github.io/football-stories-101/preview/editors-desk/
+
+## Topical tie-in (from 28 Oct 2026, growth log experiment 1)
+Before choosing the week's regular stories, look up the coming week's biggest fixtures and football news (web search).
+Where a reserved or new angle has an honest link (the same clubs, a player's anniversary, a record about to be matched),
+pick it for the day before or of the match and say the link in the opening line or the cover hook. Never invent a link;
+the story must stand on its own a year later.
