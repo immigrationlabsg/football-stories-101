@@ -28,7 +28,7 @@ change it only when the owner decides to.
   mention in another story is not featuring.
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
-- **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook, Instagram and Threads**, replacing the
+- **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook and Instagram, and with the Reel in a reply on Threads (from 28 Oct; see Threads)**, replacing the
   picture posts below. Stories up to 005 (24 Oct) stay exactly as they were posted.
 - The Reel is "style B": the same 7 cards, each slowly zooming in and fading into the next, on a blurred copy of the
   card, 1080x1920, about 23 seconds (`scripts/lib/reel.ts`). Built with the website, up to 28 days ahead, at
@@ -44,8 +44,8 @@ change it only when the owner decides to.
   AI." (Facebook and Instagram; on Threads only when it fits within 500 bytes without shortening the teaser), and every Reel file carries the IPTC tag DigitalSourceType =
   trainedAlgorithmicMedia, which Meta reads for its "AI info" label. Meta only requires a label for photorealistic video
   or audio; ours are paintings, so this is for trust, not a legal must.
-- Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram and Threads Reels are posted
-  by the daily run at the slot. `data/schedule.json` `reels_from` sets the start date.
+- Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram Reels and Threads posts go out
+  from the daily run at the slot. `data/schedule.json` `reels_from` sets the start date.
 
 The sections below describe the picture posts (stories 001 to 005) and the text, which Reels keep.
 

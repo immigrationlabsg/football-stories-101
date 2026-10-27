@@ -23,7 +23,7 @@ Hard rules (owner):
 
 ## Format (copy 007's front matter exactly; leave number as 0 and date as the slot date T00:00:00Z on weekdays,
 ## T02:00:00Z on Saturdays/Sundays; draft: false; series: "On this day"; seriesOrder: null)
-- title "A v B / angle"; dek ≤160 chars; hook ≤100 chars that opens on the most surprising fact (owner, 27 Oct 2026), with "on this day" or "to the day" later in the line, e.g. "An 18-year-old sub beat Barcelona. Two years earlier to the day, Torres floored Chelsea."; pillar: moments;
+- title "A v B / angle"; dek ≤160 chars; hook ≤100 chars that opens on the most surprising fact (owner, 27 Oct 2026), where "on this day" or "to the day" may come later in the line, e.g. "An 18-year-old sub beat Barcelona. Two years earlier to the day, Torres floored Chelsea."; pillar: moments;
 - body 320 to 350 words in the house shape: short opening on moment 1 then moment 2 (write "On 26 October 1996," not
   "On this day", because the web page goes live a week later), "Here's what I didn't know until recently." early, the
   backstory comparing the two, "Then came the part that surprised me." mid-way, "Here's what stays with me." then 2-4

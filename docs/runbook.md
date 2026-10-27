@@ -201,7 +201,7 @@ After the morning run (check the Actions tab, or just wait for your own copy of 
 1. Open the repository → `social/` → today's `NNN.md`. GitHub shows it formatted.
 2. **Facebook**: paste the "Facebook" text as a post with the banner picture `social/cards/NNN-fb.png`.
 3. **Instagram**: download the cards listed under "Cards" (`social/cards/NNN-ig-01.png` onwards; click a file, then "Download raw file") and post them as a carousel in order, with the "Instagram" caption. Add the alt text.
-4. **Threads**: post the same cards as a carousel with the "Threads" text (it already ends with the Instagram link).
+4. **Threads**: post the same cards as a carousel with the "Threads" text and the topic tag "Football", then reply to it with the Reel and the reply text shown in the file.
 5. Reply to comments and to email replies.
 
 The same files are attached to the workflow run as a downloadable zip ("social-…") for 14 days, which is handy on a phone.

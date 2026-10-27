@@ -114,12 +114,12 @@ export async function postInstagramCarousel(a: { imageUrls: string[]; caption: s
   return String(published.id);
 }
 
-/** A Threads post: the carousel cards with the teaser text (or text only), and an optional reply. */
 /**
  * A Threads post: text with a video, a carousel of cards, or text alone. topicTag files it in that topic's feed;
- * a reply (text, with a video if replyVideoUrl is given) goes underneath it.
+ * a reply (text, with a video if replyVideoUrl is given) goes underneath it. Returns the post id even when the reply
+ * fails (replyError says why), so a live post is always recorded and never posted twice.
  */
-export async function postThreads(a: { text: string; reply?: string; replyVideoUrl?: string; imageUrls?: string[]; videoUrl?: string; topicTag?: string }, env = process.env): Promise<string> {
+export async function postThreads(a: { text: string; reply?: string; replyVideoUrl?: string; imageUrls?: string[]; videoUrl?: string; topicTag?: string }, env = process.env): Promise<{ id: string; replyError?: string }> {
   const user = env.THREADS_USER_ID?.trim() || 'me';
   const token = env.THREADS_ACCESS_TOKEN!;
   const ready = async (id: string, tries = 20) => {
@@ -154,9 +154,13 @@ export async function postThreads(a: { text: string; reply?: string; replyVideoU
   } else {
     id = await publish({ media_type: 'TEXT', text: a.text, ...tag });
   }
-  if (a.replyVideoUrl) await publish({ media_type: 'VIDEO', video_url: a.replyVideoUrl, text: a.reply ?? '', reply_to_id: id });
-  else if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
-  return id;
+  try {
+    if (a.replyVideoUrl) await publish({ media_type: 'VIDEO', video_url: a.replyVideoUrl, text: a.reply ?? '', reply_to_id: id });
+    else if (a.reply) await publish({ media_type: 'TEXT', text: a.reply, reply_to_id: id });
+  } catch (e) {
+    return { id, replyError: (e as Error).message.slice(0, 160) };
+  }
+  return { id };
 }
 
 /** An Instagram Reel (also shown in the profile grid). Returns the published media id. */

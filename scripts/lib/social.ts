@@ -59,7 +59,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     const facebook = [challenge, '', '.', '.', '.', '', `It was ${story.data.answer}.`, '', markdownToText(md), '', story.data.question ?? '', '', '_____', '',
       'Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.', '', AI_NOTE]
       .join('\n').replace(/\n{3,}/g, '\n\n').trim();
-    const threads = `Guess the legend: ${story.data.clues.length} clues, one name. Swipe one card at a time. How many did you need? The answer is on the last card.\n${AI_NOTE}`;
+    const threads = `Guess the legend: ${story.data.clues.length} clues, one name. Swipe one card at a time. How many did you need? The answer comes after the fourth clue.\n${AI_NOTE}`;
     const threadsReply = `The same clues as a Reel, answer at the end. More on Instagram: ${igLinkQuiz}`;
     return { facebook, instagram: facebook, threads, threadsReply, webUrl, link };
   }
@@ -136,12 +136,12 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     : [`${story.data.dek}\n\n${num}: ${subject} / ${angle}.`];
   // Counted in UTF-8 bytes to be safe: Threads counts some characters (emoji) by their byte length.
   const bytes = (t: string) => Buffer.byteLength(t, 'utf8');
-  const room = THREADS_LIMIT;
+  // Room is kept for the AI line: on Threads the Reel (which carries the AI tag) is only in the reply.
+  const aiLine = usesReel(story.data.date) ? `\n${AI_NOTE}` : '';
+  const room = THREADS_LIMIT - bytes(aiLine);
   let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
-  // The AI line goes on Threads only when it fits without shortening the teaser; the Reel file carries the AI tag anyway.
-  const aiLine = usesReel(story.data.date) ? `\n${AI_NOTE}` : '';
-  const threads = threadsBody + (bytes(threadsBody + aiLine) <= THREADS_LIMIT ? aiLine : '');
+  const threads = threadsBody + aiLine;
   const threadsReply = `The whole story as a Reel. More on Instagram: ${igLink}`;
   return { facebook, instagram, threads, threadsReply, webUrl, link };
 }
@@ -167,9 +167,13 @@ ${instagram}
 
 ${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (the same 7 cards as Instagram with this text)
+## Threads (the same 7 cards as Instagram with this text, topic tag "Football")
 
 ${threads}
+
+Then reply to that post with the Reel (social/cards/NNN-reel.mp4 if present) and this text:
+
+${socialPosts(story, ctx).threadsReply}
 
 ## Cards (1080x1350)
 

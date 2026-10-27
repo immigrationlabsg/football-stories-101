@@ -140,8 +140,9 @@ export async function postStoryToSocials(
         } else {
           // Threads: the cards with the teaser and a topic tag, the Reel in a reply (owner, 27 Oct 2026).
           for (const u of cardUrls) await waitForUrl(u);
-          const id = await postThreads({ text: posts.threads, imageUrls: cardUrls, topicTag: threadsTopic(), reply: posts.threadsReply, replyVideoUrl: reelUrl });
-          out.push({ network, status: 'posted', detail: `thread ${id} (cards, Reel in reply${threadsTopic() ? `, topic ${threadsTopic()}` : ''})` });
+          const t = await postThreads({ text: posts.threads, imageUrls: cardUrls, topicTag: threadsTopic(), reply: posts.threadsReply, replyVideoUrl: reelUrl });
+          // The post is live even if the reply failed: record it (posted), so no later run posts it again.
+          out.push({ network, status: 'posted', detail: `thread ${t.id} (cards, ${t.replyError ? `Reel reply FAILED: ${t.replyError.replace(/[()]/g, '')}` : 'Reel in reply'}${threadsTopic() ? `, topic ${threadsTopic()}` : ''})` });
         }
       } else if (network === 'facebook') {
         await waitForUrl(heroUrl);
@@ -153,7 +154,7 @@ export async function postStoryToSocials(
         out.push({ network, status: 'posted', detail: `media ${await postInstagramCarousel({ imageUrls: cardUrls, caption: posts.instagram })}` });
       } else {
         for (const u of cardUrls) await waitForUrl(u);
-        out.push({ network, status: 'posted', detail: `thread ${await postThreads({ text: posts.threads, reply: posts.threadsReply || undefined, imageUrls: cardUrls })}` });
+        out.push({ network, status: 'posted', detail: `thread ${(await postThreads({ text: posts.threads, imageUrls: cardUrls })).id}` });
       }
     } catch (e) {
       out.push({ network, status: 'failed', detail: (e as Error).message });

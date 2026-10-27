@@ -90,7 +90,9 @@ Example: "He won the World Cup on two rebuilt knees."
 It is the first thing anyone sees in the Reel, and the first 2-3 seconds decide whether Meta shows it to more people:
 open on the most surprising fact, never a scene-setter ("On a cold night in..."). Quizzes too: the hook goes on the mystery
 cover, e.g. "He grew up in a refugee hotel. Can you name him in 4 clues?", using the first clue or two, never the answer.
-No "like/share/tag a friend" asks anywhere: Meta demotes engagement bait (owner briefed 27 Oct 2026).
+No "like/share/tag a friend" asks in hooks or captions: Meta demotes engagement bait (owner briefed 27 Oct 2026). The quiz
+close card ("Send this to the friend who thinks they know football") is the owner's decision of 25 Oct and stays until
+the owner says otherwise.
 
 The Facebook post and the Instagram caption are the whole story; Instagram shows it under the 7-card carousel. The tooling moves "Here's what I didn't know until recently." up so it begins within the first
 230 characters, ahead of Facebook's "See more", and the remaining sentences of the opening follow it. Nothing is cut.
