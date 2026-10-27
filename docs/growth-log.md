@@ -10,12 +10,16 @@ time where possible, so each result can be traced to its cause.
 |---|---|---|---|
 | Instagram | 0 | 0-1 accounts reached per post | 106, 108, 122 accounts reached per post |
 | Threads | 0 | 19-70 views per post (avg 34) | 23, 0, 11 views per post |
-| Facebook | 0 | not readable yet (see below) | not readable yet |
+| Facebook | 0 | 1-9 views per post | 5, 1, 1 plays per Reel (avg watch 5.5 s, 1.8 s, 4.6 s) |
 
 - Instagram, last 28 days: reach 340, views 371, 5 interactions (5 likes; no comments, saves or shares), 6 profile visits.
 - Threads, total: 283 views, no likes, replies or reposts.
-- Facebook: the Page key lacks `read_insights`, so per-Reel reach and plays come back "permission missing". Fix: a new
-  Page key with that permission (runbook, Meta keys step 3). Until then, the Professional dashboard in the app shows them.
+- Facebook: readable since the new Page key of 27 Oct (with `read_insights`). Facebook barely distributes us yet: single-
+  digit plays per Reel against ~110 accounts per Reel on Instagram, and viewers leave within 2-6 seconds of a ~40-second
+  Reel. "People reached" (post_impressions_unique) is no longer offered by Meta for Reels; the weekly review should find
+  its replacement metric.
+- *Biggest lesson so far:* Instagram is where the reach is. On Facebook the first seconds are not holding anyone yet,
+  which is exactly what the new cover lines (from 29 Oct) target: watch the average watch time.
 
 **What went well:** switching Instagram to Reels on 25 Oct took reach per post from about 1 to about 110, all of it from
 non-followers (we have none). **What did not:** nobody has interacted yet beyond 5 likes; Threads fell after the switch.
