@@ -285,15 +285,6 @@
       "reel": "c937aab8f92afa7112d0c97a548c78c2d8abf4e9"
     },
     {
-      "number": 16,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T04:29:50.006Z",
-      "detail": "scheduled for 2026-11-04T00:00:00.000Z reel 1164389825918222 (music: egmont)",
-      "story": "owen-v-beckham-4-november",
-      "reel": "6c02e88ae0e215a731be53586203690d30a85bba"
-    },
-    {
       "number": 19,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-01T02:00:00.000Z reel 2489079501502052 (music: coriolan)",
       "story": "henry-v-kaka-1-november",
       "reel": "f870736be0f590ce37bcccba1f92b7e578de5a06"
+    },
+    {
+      "number": 16,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T13:53:48.884Z",
+      "detail": "scheduled for 2026-11-04T00:00:00.000Z reel 1383453583867648 (music: egmont)",
+      "story": "owen-v-beckham-4-november",
+      "reel": "03634ad32ecdbfe28bd185d84a80c1fbc544b5ee"
     }
   ]
 }
