@@ -90,6 +90,10 @@ Example: "He won the World Cup on two rebuilt knees."
 It is the first thing anyone sees in the Reel, and the first 2-3 seconds decide whether Meta shows it to more people:
 open on the most surprising fact, never a scene-setter ("On a cold night in..."). Quizzes too: the hook goes on the mystery
 cover, e.g. "He grew up in a refugee hotel. Can you name him in 4 clues?", using the first clue or two, never the answer.
+The Reel runs about 25 seconds: the cover for 3 s, then each card for 4 s. The first 4-6 seconds (cover + fact card 1)
+decide whether anyone stays, and the first 20 seconds (cover + facts 1-4) carry the story (owner, 28 Oct 2026). So: fact
+card 1 is the single most surprising fact, readable in 4 seconds (aim for 20 words or fewer), and facts 2-4 build on it;
+keep the quieter context for card 5. Comparisons: card 1 sets up the twist, not the date.
 No "like/share/tag a friend" asks in hooks or captions: Meta demotes engagement bait (owner briefed 27 Oct 2026). The quiz
 close card ("Send this to the friend who thinks they know football") is the owner's decision of 25 Oct and stays until
 the owner says otherwise.

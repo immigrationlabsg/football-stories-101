@@ -28,8 +28,12 @@ Experiments queued (one per week, in this order):
 1. Topical tie-in: the weekly drafting run checks the coming week's big fixtures and news and gives at least one story a
    link to them ("Arsenal play Liverpool on Saturday: the night in 1989..."). Within the format; no OK needed.
 2. Caption first line names the player and the moment (Instagram search). Within the format.
-3. Shorter Reel (about 20 s, the surprise in the first second) for one week. Changes the signed-off format: owner's OK.
-4. Posting time, once Instagram shows where followers live. Owner's OK.
+3. ~~Shorter Reel~~ Owner, 28 Oct 2026: keep the full Reel (about 25 s: cover 3 s, cards 4 s each), but put the weight
+   on the first 4-6 seconds (cover + fact card 1) and the first 20 seconds (facts 1-4). From the 31 Oct drafting run,
+   fact card 1 is the most surprising fact in under ~20 words (docs/drafting-brief.md). *Watch:* Facebook average watch
+   time (2-6 s in week 1) and Instagram views per reach, new drafts against older ones.
+4. Posting time, once Instagram shows where followers live. Bring to the owner with evidence (owner, 28 Oct 2026:
+   proposals come with evidence; keep refining experiments without asking).
 
 ## Baseline, 27 Oct 2026 (first 8 days, 20-27 Oct)
 
