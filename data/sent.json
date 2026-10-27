@@ -285,15 +285,6 @@
       "reel": "c937aab8f92afa7112d0c97a548c78c2d8abf4e9"
     },
     {
-      "number": 10,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T04:03:28.247Z",
-      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 979404971298247 (music: mozart40)",
-      "story": "messi-v-ronaldo-29-october",
-      "reel": "dbba903b7d4b639bd8eda6291678c90ac861fe64"
-    },
-    {
       "number": 13,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-23T00:00:00.000Z reel 2645319822558453 (music: hebrides) (cover: mystery card)",
       "story": "guess-the-legend-luka-modric",
       "reel": "0f2561abab3249e01248aa893b989f15a1d0da37"
+    },
+    {
+      "number": 10,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T13:51:36.625Z",
+      "detail": "scheduled for 2026-10-29T00:00:00.000Z reel 1138578345371343 (music: mozart40)",
+      "story": "messi-v-ronaldo-29-october",
+      "reel": "18075d9e57585d636f59fd67804999d1ea05f03b"
     }
   ]
 }
