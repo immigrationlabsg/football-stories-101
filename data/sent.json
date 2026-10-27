@@ -258,15 +258,6 @@
       "story": "le-tissier-v-totti-26-october"
     },
     {
-      "number": 31,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T04:54:19.283Z",
-      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1747857826915767 (music: hebrides)",
-      "story": "pele-v-cristiano-ronaldo-19-november",
-      "reel": "75966a425a8216dc6c8d71f4e992b3408a467b67"
-    },
-    {
       "number": 32,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1158736773305418 (music: egmont)",
       "story": "baggio-v-messi-16-november",
       "reel": "690fbda8f51eadf2a976460ffa714b97eac10b33"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T15:35:33.302Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1443336974668498 (music: hebrides)",
+      "story": "pele-v-cristiano-ronaldo-19-november",
+      "reel": "89ca33eac2521d8436f87a389984d9ab842c2010"
     }
   ]
 }
