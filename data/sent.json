@@ -267,15 +267,6 @@
       "reel": "982dfe1a4abd221c709c829049c26e0af0fdbcdc"
     },
     {
-      "number": 17,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T03:58:04.599Z",
-      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 2058740564843348 (music: coriolan) (cover: mystery card)",
-      "story": "guess-the-legend-andrea-pirlo",
-      "reel": "dde816f6d721872e33cea86caf8e5a277d230c5d"
-    },
-    {
       "number": 25,
       "network": "facebook",
       "status": "scheduled",
@@ -425,6 +416,15 @@
       "detail": "scheduled for 2026-11-04T00:00:00.000Z reel 1383453583867648 (music: egmont)",
       "story": "owen-v-beckham-4-november",
       "reel": "03634ad32ecdbfe28bd185d84a80c1fbc544b5ee"
+    },
+    {
+      "number": 17,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-27T14:02:22.781Z",
+      "detail": "scheduled for 2026-11-05T00:00:00.000Z reel 2624466311309443 (music: coriolan) (cover: mystery card)",
+      "story": "guess-the-legend-andrea-pirlo",
+      "reel": "c11091d2a3abc48830338db73f842b8e1518ce66"
     }
   ]
 }
