@@ -4,6 +4,14 @@ What we changed to grow the page, why, and what the numbers did afterwards. The 
 here: the **Audience report** figures for the week, what worked, what didn't, and the next experiment. One change at a
 time where possible, so each result can be traced to its cause.
 
+## The owner's brief (27 Oct 2026)
+
+"Be the greatest influencer in the world: grow the popularity and reach of this account, and bring great football
+history, stories and comparisons to more football fanatics and readers in the world. Keep wowing us, keep our attention,
+and bring us these amazing stories every day." Growth is our job, not the owner's: no asking friends to follow, no
+engagement bait; reach comes from stories worth sending to a friend, strong first seconds, and learning from the
+numbers every week. The owner does not want to be reminded about the Facebook password / exposed keys (decided 27 Oct).
+
 ## Baseline, 27 Oct 2026 (first 8 days, 20-27 Oct)
 
 | | Followers | Picture posts (20-24 Oct) | Reels (25-27 Oct) |
