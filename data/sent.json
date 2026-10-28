@@ -425,6 +425,31 @@
       "detail": "scheduled for 2026-11-23T00:00:00.000Z reel 28832444046414407 (music: hebrides) (cover: mystery card)",
       "story": "guess-the-legend-luka-modric",
       "reel": "c615acceccea1471d3aee236cbf2443401c14f58"
+    },
+    {
+      "number": 9,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-10-28T00:02:46.315Z",
+      "detail": "reel media 17921215818239904",
+      "story": "maracanazo-1950"
+    },
+    {
+      "number": 9,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-10-28T00:02:46.315Z",
+      "detail": "thread 18109938308185024 (cards, Reel in reply, topic Football)",
+      "story": "maracanazo-1950"
+    },
+    {
+      "number": 36,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-28T00:03:17.275Z",
+      "detail": "scheduled for 2026-11-24T00:00:00.000Z reel 1102394945973677 (music: egmont)",
+      "story": "aguero-9320-manchester-city-2012",
+      "reel": "0e7ff867c745f10f3ce19c44ceb9161ea6ca3744"
     }
   ]
 }
