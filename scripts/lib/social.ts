@@ -43,6 +43,36 @@ export const INSTAGRAM_LIMIT = 2200;
 /** AI disclosure on every post from the Reels on (owner's decision, 25 Oct 2026): the paintings are made with AI. */
 export const AI_NOTE = 'Illustrations made with AI.';
 
+/**
+ * Hashtags for Instagram and Facebook (owner, 30 Oct 2026: "do what it takes"): #FootballHistory, then the story's first
+ * two clubs and, outside quizzes, its first two players, five at most. A quiz never names its clubs or players: they would
+ * give the answer away. Threads takes one topic tag instead, so it gets none.
+ */
+export function hashtagsFor(data: { format?: string; clubs: string[]; players: string[] }): string {
+  const tag = (s: string) =>
+    '#' +
+    s
+      .replace(/æ/g, 'ae').replace(/Æ/g, 'Ae').replace(/[øØ]/g, (c) => (c === 'ø' ? 'o' : 'O')).replace(/ß/g, 'ss')
+      .replace(/[łŁ]/g, (c) => (c === 'ł' ? 'l' : 'L')).replace(/[đð]/g, 'd').replace(/[ĐÐ]/g, 'D').replace(/þ/g, 'th').replace(/Þ/g, 'Th')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[’'`]/g, '')
+      .split(/[^A-Za-z0-9]+/)
+      .filter(Boolean)
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join('');
+  const tags = data.format === 'quiz' ? ['Football History', 'Guess The Legend', 'Football Quiz'] : ['Football History', ...data.clubs.slice(0, 2), ...data.players.slice(0, 2)];
+  // A tag needs a letter (#1860 is not a hashtag); a name in another script leaves nothing and is skipped.
+  return [...new Set(tags.map(tag).filter((x) => x.length > 2 && /[A-Za-z]/.test(x)))].slice(0, 5).join(' ');
+}
+/** Hashtags go last; Instagram keeps as many as fit its limit, dropping from the end (the story itself is never cut). */
+function withTags(text: string, tags: string): { facebook: string; instagram: string } {
+  const add = (t: string[]) => (t.length ? `${text}\n\n${t.join(' ')}` : text);
+  const all = tags ? tags.split(' ') : [];
+  let keep = all.length;
+  while (keep > 0 && add(all.slice(0, keep)).length > INSTAGRAM_LIMIT) keep--;
+  return { facebook: add(all), instagram: add(all.slice(0, keep)) };
+}
+
 /** The text for each network. Shared by the social/NNN.md file and by the automatic posting. */
 export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'archive'; webLive: boolean }): SocialPosts {
   const { subject, angle } = splitTitle(story.data.title);
@@ -61,7 +91,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
       .join('\n').replace(/\n{3,}/g, '\n\n').trim();
     const threads = `Guess the legend: ${story.data.clues.length} clues, one name. Swipe one card at a time. How many did you need? The answer comes after the fourth clue.\n${AI_NOTE}`;
     const threadsReply = `The same clues as a Reel, answer at the end. More on Instagram: ${igLinkQuiz}`;
-    return { facebook, instagram: facebook, threads, threadsReply, webUrl, link };
+    return { ...withTags(facebook, hashtagsFor(story.data)), threads, threadsReply, webUrl, link };
   }
 
   // The Morning Founder posts the whole story natively, ending with the question,
@@ -119,9 +149,8 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-  // Instagram carries the same text as Facebook, under the carousel. It is never cut: if it is over
-  // Instagram's 2,200-character limit, posting stops and says by how much, so the story can be tightened.
-  const instagram = facebook;
+  // Instagram carries the Facebook text, under the Reel, with as many of the hashtags as fit. The story is never cut: if it is over Instagram's
+  // 2,200-character limit even without the hashtags, posting stops and says by how much, so the story can be tightened.
 
   // Threads is a 500-character teaser: the start of the opening, the reveal phrase, and the first line of the payoff,
   // posted with the cards and a topic tag (owner, 27 Oct 2026: Threads did better with cards than with the Reel). The
@@ -143,7 +172,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
   const threads = threadsBody + aiLine;
   const threadsReply = `The whole story as a Reel. More on Instagram: ${igLink}`;
-  return { facebook, instagram, threads, threadsReply, webUrl, link };
+  return { ...withTags(facebook, usesReel(story.data.date) ? hashtagsFor(story.data) : ''), threads, threadsReply, webUrl, link };
 }
 
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
@@ -161,13 +190,13 @@ export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
 
 ${facebook}
 
-## Instagram (carousel: the cards listed below, in order; the same text as Facebook)
+## Instagram (the cards listed below, in order; the Facebook text, without the hashtags if they would pass 2,200 characters)
 
 ${instagram}
 
 ${instagram.length > INSTAGRAM_LIMIT ? `**Too long for Instagram by ${instagram.length - INSTAGRAM_LIMIT} characters (limit ${INSTAGRAM_LIMIT}).**\n\n` : ''}Alt text for the carousel: ${story.data.hero.alt}
 
-## Threads (the same 7 cards as Instagram with this text, topic tag "Football")
+## Threads (the same cards as Instagram with this text, topic tag "Football")
 
 ${threads}
 

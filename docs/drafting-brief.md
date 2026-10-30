@@ -39,7 +39,12 @@ three digits). Copy the front matter shape from
 - `sources`: three to eight, books as "Author, Title (Publisher, year)", web sources as full URLs you actually opened
 - `question`: one line to the reader, ends the story
 - `followUpOf`: only when the story returns to the subject of an earlier one with a new angle: that story's number
-- `facts`: exactly five, one per carousel card (cover, five fact cards, closing card makes seven). Each restates
+- `lineup`: optional, for a story about a famous team in one match (the Legendary XI card, see docs/posting-format.md):
+  `title` such as "Celtic, Lisbon, 25 May 1967" (at most 60 characters), `rows` from the forwards down to the
+  goalkeeper, each row left to right as seen from the stand behind the goal they attack (left winger first), exactly 11
+  surnames (or the name the player went by), and an optional `note` such as the score. Take the starting XI from two
+  independent sources (the club's own site, UEFA or FIFA, a newspaper match report) and log both in the fact-check log.
+- `facts`: exactly five, one per carousel card (cover, five fact cards and the closing card make seven; a Legendary XI adds an eighth). Each restates
   something the body says, in the order the story tells it, at most 110 characters, with nothing the body leaves out
 
 ## The body (about 340 to 360 words)

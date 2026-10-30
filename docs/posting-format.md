@@ -44,6 +44,17 @@ change it only when the owner decides to.
   AI." (Facebook and Instagram; on Threads only when it fits within 500 bytes without shortening the teaser), and every Reel file carries the IPTC tag DigitalSourceType =
   trainedAlgorithmicMedia, which Meta reads for its "AI info" label. Meta only requires a label for photorealistic video
   or audio; ours are paintings, so this is for trust, not a legal must.
+- **Hashtags** (owner, 30 Oct 2026, from the Spirit Football benchmark): after the AI line, Facebook and Instagram end
+  with up to five tags: #FootballHistory, the story's first two `clubs` and first two `players` (CamelCase, accents
+  dropped). A quiz gets #FootballHistory #GuessTheLegend #FootballQuiz only, so no tag gives the answer away. Instagram
+  keeps as many tags as fit in 2,200 characters, dropping from the end (most stories are written close to the limit, so
+  often only #FootballHistory fits); the story is never cut for them, and verify warns if no tag fits. Threads has its topic tag instead.
+- **The Legendary XI card** (owner, 30 Oct 2026): a story about a famous team may add a `lineup` (title, rows of names
+  from attack down to the goalkeeper, exactly 11, an optional note). It becomes an extra card between the fifth fact and
+  the closing card (8 cards, a Reel of 26.8 s instead of 23.4 s; its 25 s music clip is slowed slightly, pitch kept, so
+  the fade-out still lands on the music), drawn by `scripts/lib/lineup-card.ts`: a pitch with gold
+  dots and the names, no faces, so no photo or likeness question arises. Every name comes from two sources in the story's
+  fact-check log. First used on 039, the Lisbon Lions (27 Nov).
 - Facebook Reels are scheduled in Meta in advance like the picture posts were; Instagram Reels and Threads posts go out
   from the daily run at the slot. `data/schedule.json` `reels_from` sets the start date.
 

@@ -29,7 +29,7 @@ for (const s of stories) {
   if (!s.file.startsWith(`${n}-`)) errors.push(`${s.file}: file name does not start with its number ${n}`);
   if (s.data.format === 'quiz') {
     if (s.data.clues.length !== 4 || !s.data.answer) errors.push(`${n}: a Guess the legend quiz needs 4 clues and an answer`);
-  } else if (s.data.facts.length !== 5) errors.push(`${n}: ${s.data.facts.length} facts; the 7-card carousel needs 5`);
+  } else if (s.data.facts.length !== 5) errors.push(`${n}: ${s.data.facts.length} facts; the carousel needs 5`);
   if (!s.data.hook) errors.push(`${n}: no hook (the banner line on the pictures)`);
   if (!s.data.question) errors.push(`${n}: no reader question`);
   if (!fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src))) errors.push(`${n}: hero picture ${s.data.hero.src} is missing`);
@@ -40,9 +40,13 @@ for (const s of stories) {
   if (!/More on Instagram: instagram\.com\//.test(posts.threadsReply)) errors.push(`${n}: the Threads reply has no Instagram link`);
   if (/instagram\.com\//.test(posts.threads)) errors.push(`${n}: the Threads post itself carries a link; it belongs in the reply`);
   if (/github\.io|football-stories-101\//i.test(posts.facebook + posts.threads + posts.threadsReply)) errors.push(`${n}: a social post links the website`);
-  if (usesReel(s.data.date) && !posts.facebook.trimEnd().endsWith(AI_NOTE)) errors.push(`${n}: a post is missing the AI disclosure "${AI_NOTE}"`);
-  const len = posts.facebook.length;
+  // The AI line closes the post, followed only by the hashtags (from 30 Oct 2026).
+  for (const [net, text] of [['Facebook', posts.facebook], ['Instagram', posts.instagram]] as const) {
+    if (usesReel(s.data.date) && !new RegExp(`\\n${AI_NOTE.replace(/\./g, '\\.')}(\\n\\n#\\w+( #\\w+)*)?$`).test(text.trimEnd())) errors.push(`${n}: the ${net} post is missing the AI disclosure "${AI_NOTE}" as its last line`);
+  }
+  const len = posts.instagram.length;
   if (len > INSTAGRAM_LIMIT) errors.push(`${n}: post is ${len} characters, over Instagram's ${INSTAGRAM_LIMIT}`);
+  if (/\n\n#\w/.test(posts.facebook) && !/\n\n#\w/.test(posts.instagram)) warnings.push(`${n}: the Instagram caption is too long for any hashtag (Facebook keeps them)`);
 }
 // No story twice: a subject may return only as a marked follow-up with a different angle.
 const seen = new Map<string, number>();

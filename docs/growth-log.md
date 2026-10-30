@@ -12,6 +12,12 @@ and bring us these amazing stories every day." Growth is our job, not the owner'
 engagement bait; reach comes from stories worth sending to a friend, strong first seconds, and learning from the
 numbers every week. The owner does not want to be reminded about the Facebook password / exposed keys (decided 27 Oct).
 
+## Standing instruction (owner, 30 Oct 2026)
+
+"Always review on your own work and the results and research on other successful examples, and work on improving the
+results and testing on your own." So every week, without being asked: read our numbers, study at least one page that
+does better, pick one change, test it, and log what happened here.
+
 ## How every decision is made: the four asks (owner, 28 Oct 2026)
 
 Before any growth decision, answer: (1) what a top professional (head of social at a big football account) would do
@@ -79,6 +85,43 @@ non-followers (we have none). **What did not:** nobody has interacted yet beyond
 3. **No "send this to a mate" line.** Item 6 was approved but not done: Meta has demoted posts that ask for likes, shares
    or tags ("engagement bait") since 2017, which would cost reach. Shares have to come from the story itself.
 4. **Weekly review** every Monday (see top).
+
+## Changes on 30 Oct 2026 (owner: "do what it takes")
+
+- **Legendary XI card**: an eighth card with the starting XI on a drawn pitch, for famous-team stories. First on 039,
+  Celtic's Lisbon Lions, 27 Nov (the daily run schedules its Facebook Reel once the site carries the new Reel). To measure
+  against the other Reels: shares and sends per 1,000 reached, average watch %, saves.
+- **Hashtags** on Facebook and Instagram (#FootballHistory, two clubs, two players; quizzes generic only). Instagram
+  keeps as many as fit 2,200 characters (often only #FootballHistory). Facebook Reels already scheduled (012 onward) get
+  them through the Reels caption action. To measure: Instagram reach from
+  hashtags (the post's "From hashtags" line in the app) and non-follower reach.
+
+## Research, 30 Oct 2026 (web search; pages could not be opened, so figures are from search summaries)
+
+Evidence marked [P] primary (Meta, Mosseri, peer-reviewed), [D] large vendor dataset, [S] secondary.
+- Ranking: watch time, likes and sends are Instagram's top signals; sends per reach matter most for reaching
+  non-followers (Mosseri, Jan 2025) [P]. Instagram's skip rate counts viewers who leave in the first 3 s [S].
+- Captions: at most five hashtags (Instagram cap, Dec 2025) and no links; hashtags add little reach (Mosseri) [P/S].
+  Ours: up to five, no links. Reposted or agency-style content stops being recommended (2024-2026) [P/S]; our own
+  paintings are safe.
+- Carousels: 6.9% engagement per person reached against 3.3% for Reels (Buffer, 52M posts, 2026), while Reels get
+  more reach [D].
+- Threads: Meta says replying is "just as important as posting"; topic tags help [P].
+- Nostalgia anchored to a date gets sent ("20 Years Ago Sports", ~700 to ~400k in two weeks) [S]; a numbered daily ritual
+  brings people back (The United Strand) [S]. Asking fans to comment or take a quiz did not work in a study of 64,778
+  NFL Instagram posts [P], so quizzes must pay off inside the Reel (ours reveal at the end).
+- Not available yet: Trial Reels (need 1,000 followers).
+
+Queued experiments, one a week, in order:
+1. First frame already moving, biggest surprise in 6-10 large words (watch: Facebook average watch above 6 s,
+   Instagram skip rate).
+2. A 12-15 s cut (4-5 cards) against 25-29 s (needs the owner: Reel length is signed off). Watch: % watched.
+3. Instagram carousel with music against a Reel for one comparable story (needs the owner). Watch: reach, saves,
+   sends.
+4. Comparisons that end on a debatable verdict made to be sent, never a request (watch: shares per 1,000 reached).
+5. Threads: two or three extra single-card fact posts a week (needs the owner: posting rhythm).
+6. Numbered series labels ("Legendary XI #1", "On this day #12") on covers.
+7. An Instagram Collab post with a similar small account (needs the owner's OK for the partner).
 
 ## Ideas waiting for evidence
 

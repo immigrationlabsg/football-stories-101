@@ -75,7 +75,7 @@ export async function postStoryToSocials(
   const n = pad3(story.data.number);
   const heroUrl = absoluteUrl(`/images/derived/${n}-fb.png`); // the headline card for Facebook
   // The Instagram carousel: the cover, one card per fact, and the closing card.
-  const cardCount = story.data.format === 'quiz' ? story.data.clues.length + 3 : story.data.facts.length + 2;
+  const cardCount = story.data.format === 'quiz' ? story.data.clues.length + 3 : story.data.facts.length + 2 + (story.data.lineup ? 1 : 0);
   const cardUrls = Array.from({ length: cardCount }, (_, i) => absoluteUrl(`/images/derived/${n}-ig-${String(i + 1).padStart(2, '0')}.png`));
   // From reels_from (data/schedule.json) every network gets the Reel: the same cards with music, the same text.
   const reel = usesReel(story.data.date);

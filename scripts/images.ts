@@ -15,10 +15,14 @@ import crypto from 'node:crypto';
 import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
 import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
+import { renderLineup } from './lib/lineup-card';
 import { MYSTERY_COVER, renderQuizCover, renderQuizClue, renderQuizReveal, renderQuizClose } from './lib/quiz-cards';
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
 import { site, SITE_URL, SITE_BASE } from '../src/site.config';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import ffmpegPath from 'ffmpeg-static';
 import { endReelTools, renderReel, trackFor, usesReel } from './lib/reel';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
@@ -54,6 +58,21 @@ async function wholeFor(img: Buffer, w: number, h: number): Promise<Buffer> {
   return sharp(img).resize(w * 2, h * 2, { fit: 'contain', background: { r, g, b } }).jpeg({ quality: 90 }).toBuffer();
 }
 const SHARE_FRAMING = 'pairs whole, 26 Oct 2026';
+/**
+ * The music clips are 25 s, enough for the usual 7 cards (23.4 s). A Reel with an extra card (the Legendary XI) runs
+ * longer, so its clip is slowed just enough to last (pitch kept), and the fade-out in reel.ts still lands on the music.
+ * Done here, not in reel.ts, because a change to reel.ts would re-make (and need re-uploading) every scheduled Reel.
+ */
+const REEL_SECONDS = (cards: number) => 3 + 4 * (cards - 1) - 0.6 * (cards - 1);
+const TRACK_SECONDS = 25;
+const STRETCH = 'atempo to reel length + 0.5 s, 30 Oct 2026';
+async function musicFor(track: string, cards: number, out: string): Promise<string> {
+  const need = REEL_SECONDS(cards) + 0.5;
+  if (need <= TRACK_SECONDS) return track;
+  if (!ffmpegPath) throw new Error('ffmpeg is not available on this machine');
+  await promisify(execFile)(ffmpegPath, ['-y', '-loglevel', 'error', '-i', track, '-filter:a', `atempo=${(TRACK_SECONDS / need).toFixed(4)}`, '-c:a', 'aac', '-b:a', '192k', out]);
+  return out;
+}
 
 let previous: Record<string, { hash?: string; cards?: string[]; share?: string }> = {};
 try {
@@ -88,9 +107,10 @@ const reelStories: Record<string, string> = {}; // published as reel-stories.jso
 const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/reel.ts'));
 const DAY = 86_400_000;
 const reelFailures: string[] = [];
-for (const f of fs.readdirSync(OUT)) if (f.endsWith('.tmp.mp4')) fs.rmSync(path.join(OUT, f), { force: true }); // left by an interrupted render
+for (const f of fs.readdirSync(OUT)) if (f.endsWith('.tmp.mp4') || f.endsWith('.tmp.m4a')) fs.rmSync(path.join(OUT, f), { force: true }); // left by an interrupted render
 const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/cards.ts');
 const cardsSource = fs.readFileSync(cardsScript);
+const lineupSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'lineup-card.ts'));
 const quizCardsSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'quiz-cards.ts'));
 const widthsKey = WIDTHS.join(',');
 
@@ -120,6 +140,7 @@ for (const story of stories) {
     : [
         () => renderIgCover(story.data, hero),
         ...story.data.facts.map((fact, i) => () => renderIgFact(story.data, fact, i + 1, story.data.facts.length)),
+        ...(story.data.lineup ? [() => renderLineup(story.data)] : []),
         () => renderIgClose(story.data),
       ];
   const og = path.join(OUT, `${n}-og.png`);
@@ -131,8 +152,9 @@ for (const story of stories) {
   const hash = hashOf(
     hero,
     JSON.stringify({ number: story.data.number, title: story.data.title, dek: story.data.dek, hook: story.data.hook, question: story.data.question, facts: story.data.facts, site: SITE_LABEL,
-      ...(quiz ? { clues: story.data.clues, answer: story.data.answer } : {}) }),
+      ...(quiz ? { clues: story.data.clues, answer: story.data.answer } : {}), ...(story.data.lineup ? { lineup: story.data.lineup } : {}) }),
     cardsSource,
+    ...(story.data.lineup ? [lineupSource] : []),
     ...(quiz ? [quizCardsSource, mystery!] : []),
     widthsKey,
   );
@@ -160,12 +182,13 @@ for (const story of stories) {
   const t = story.data.date.getTime();
   if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     const track = trackFor(story.data.number);
-    const reelHash = hashOf(hash, fs.readFileSync(track), reelSource);
+    const reelHash = hashOf(hash, fs.readFileSync(track), reelSource, ...(REEL_SECONDS(cardFiles.length) + 0.5 > TRACK_SECONDS ? [STRETCH] : []));
     if (!force && reelsPrev[n] === reelHash && fs.existsSync(reel)) console.log(`${n} reel: up to date`);
     else {
       const started = Date.now();
       try {
-        await renderReel(cardFiles, track, reel);
+        await renderReel(cardFiles, await musicFor(track, cardFiles.length, path.join(OUT, `${n}-music.tmp.m4a`)), reel);
+        fs.rmSync(path.join(OUT, `${n}-music.tmp.m4a`), { force: true });
         console.log(`${n} reel: made with ${path.basename(track)} in ${Math.round((Date.now() - started) / 1000)}s`);
         reels[n] = reelHash;
         reelMusic[n] = path.basename(track, '.m4a');
@@ -173,6 +196,7 @@ for (const story of stories) {
       } catch (e) {
         reelFailures.push(`${n}: ${(e as Error).message.slice(0, 300)}`);
         fs.rmSync(`${reel}.tmp.mp4`, { force: true });
+        fs.rmSync(path.join(OUT, `${n}-music.tmp.m4a`), { force: true });
       }
     }
     if (reelsPrev[n] === reelHash && fs.existsSync(reel)) {

@@ -50,6 +50,11 @@ what the weekly run does.
 8. Report the headlines, any claim cut during fact-checking, and the editor's preview link
    https://immigrationlabsg.github.io/football-stories-101/preview/editors-desk/
 
+## Legendary XI (from 30 Oct 2026)
+When a story is about a famous team in one match (a final, a record night), give it a `lineup` (docs/drafting-brief.md):
+the eleven who started, from two sources logged in the fact-check log. Aim for at least one such story every two weeks;
+famous XIs are what football pages' best-shared posts are built on (growth log, Spirit Football benchmark).
+
 ## Topical tie-in (from 28 Oct 2026, growth log experiment 1)
 Before choosing the week's regular stories, look up the coming week's biggest fixtures and football news (web search).
 Where a reserved or new angle has an honest link (the same clubs, a player's anniversary, a record about to be matched),

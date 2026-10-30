@@ -76,6 +76,19 @@ export const storySchema = z.object({
    * facts, the answer on the reveal card, and its body is the short story told after the answer.
    */
   format: z.enum(['story', 'quiz']).default('story'),
+  /**
+   * The "Legendary XI" card (owner, 30 Oct 2026), for stories about a famous side: a title ("Celtic, Lisbon, 25 May
+   * 1967"), the rows from attack (first) to goalkeeper (last), and an optional line under the pitch. Every name is
+   * fact-checked like any other fact. Adds one card, before the closing card.
+   */
+  lineup: z
+    .object({
+      title: z.string().trim().min(1).max(60),
+      rows: z.array(z.array(z.string().trim().min(1).max(22)).min(1).max(5)).min(3).max(6),
+      note: z.string().trim().max(70).optional(),
+    })
+    .refine((l) => l.rows.flat().length === 11, 'a lineup has exactly 11 names')
+    .optional(),
   clues: z.array(z.string().trim().min(1).max(160, 'a clue must be 160 characters or fewer')).max(4).default([]),
   answer: z.string().trim().min(1).optional(),
   draft: z.boolean().default(false),

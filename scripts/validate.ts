@@ -22,12 +22,12 @@ for (const s of stories) {
   if (s.words < WORDS_MIN || s.words > WORDS_MAX) {
     warnings.push(`${s.file}: body is ${s.words} words; the target is about 400 (soft limit ${WORDS_MIN} to ${WORDS_MAX})`);
   }
-  const social = socialPosts(s, { kind: 'scheduled', webLive: false }).facebook.length;
+  const social = socialPosts(s, { kind: 'scheduled', webLive: false }).instagram.length;
   if (social > INSTAGRAM_LIMIT) {
     warnings.push(`${s.file}: the Facebook and Instagram text is ${social} characters, over Instagram's ${INSTAGRAM_LIMIT}; Instagram will refuse it`);
   }
   if (s.data.facts.length !== 5) {
-    warnings.push(`${s.file}: ${s.data.facts.length} fact(s); the 7-card Instagram carousel needs exactly 5`);
+    warnings.push(`${s.file}: ${s.data.facts.length} fact(s); the carousel needs exactly 5`);
   }
   if (!s.data.question) {
     warnings.push(`${s.file}: no reader question; the Facebook caption will end without one`);
