@@ -63,7 +63,7 @@ Facebook captions.
 - Instagram, last 28 days: reach 340, views 371, 5 interactions (5 likes; no comments, saves or shares), 6 profile visits.
 - Threads, total: 283 views, no likes, replies or reposts.
 - Facebook: readable since the new Page key of 27 Oct (with `read_insights`). Facebook barely distributes us yet: single-
-  digit plays per Reel against ~110 accounts per Reel on Instagram, and viewers leave within 2-6 seconds of a ~40-second
+  digit plays per Reel against ~110 accounts per Reel on Instagram, and viewers leave within 2-6 seconds of a ~23-second
   Reel. "People reached" (post_impressions_unique) is no longer offered by Meta for Reels; the weekly review should find
   its replacement metric.
 - *Biggest lesson so far:* Instagram is where the reach is. On Facebook the first seconds are not holding anyone yet,
@@ -112,16 +112,36 @@ Evidence marked [P] primary (Meta, Mosseri, peer-reviewed), [D] large vendor dat
   NFL Instagram posts [P], so quizzes must pay off inside the Reel (ours reveal at the end).
 - Not available yet: Trial Reels (need 1,000 followers).
 
+**Owner, 30 Oct 2026: "Ok try it and we'll measure the success. My only request is for the entire page to stay
+consistent in the way it's being presented eventually."** Rules in docs/posting-format.md ("Experiments and the house
+look"). Calendar: each test runs Tuesday to Sunday (six posts); the Monday review judges it on the complete week,
+posts Monday's story in the standard format, and builds the next test. Experiments 1-3 change Instagram only; 5 changes
+Threads only; Facebook is the steady control throughout.
+- Tue 3 - Sun 8 Nov: experiment 1, the first frame.
+- Tue 10 - Sun 15 Nov: experiment 2, the 12-15 s cut.
+- Tue 17 - Sun 22 Nov: experiment 3, an Instagram carousel instead of the Reel (every story that week).
+- Tue 24 - Sun 29 Nov: experiment 5, extra Threads fact posts.
+- What each needs built first (the code today makes one Reel per story, shared by Facebook, Instagram and the Threads
+reply, and Facebook schedules it 27 days ahead): experiments 1 and 2 need a separate Instagram-only video
+(NNN-reel-ig.mp4) so the test never reaches Facebook or Threads; experiment 3 needs social-post.ts to send a Reel-era
+story to Instagram as a carousel (without music: Meta's publishing API cannot add music to a carousel); experiment 5
+needs a new posting path for single-card fact posts.
+- Already moving during the baseline, so read results with care: hashtags and the sharper cover lines (from 29-30 Oct),
+and the Legendary XI Reel on all networks on 27 Nov (inside the Threads test week).
+- Early December: roll the winners out everywhere and write the consolidated format into posting-format.md.
+- Experiments 4 and 6 go into the drafting brief only if a test shows they help; 7 (Collab) waits for a partner: shortlist
+  similar small accounts, and the owner sends the invitation (we never message other accounts).
+
 Queued experiments, one a week, in order:
-1. First frame already moving, biggest surprise in 6-10 large words (watch: Facebook average watch above 6 s,
-   Instagram skip rate).
-2. A 12-15 s cut (4-5 cards) against 25-29 s (needs the owner: Reel length is signed off). Watch: % watched.
-3. Instagram carousel with music against a Reel for one comparable story (needs the owner). Watch: reach, saves,
+1. First frame already moving, biggest surprise in 6-10 large words (watch: Instagram skip rate and average watch
+   time against the previous weeks; Facebook, unchanged, is the control).
+2. A 12-15 s cut (4-5 cards) against the standard 23.4 s (26.8 s with a Legendary XI); approved 30 Oct. Watch: % watched.
+3. Instagram carousel (no music through the API) instead of the Reel for a week; approved 30 Oct. Watch: reach, saves,
    sends.
 4. Comparisons that end on a debatable verdict made to be sent, never a request (watch: shares per 1,000 reached).
-5. Threads: two or three extra single-card fact posts a week (needs the owner: posting rhythm).
+5. Threads: two or three extra single-card fact posts a week; approved 30 Oct.
 6. Numbered series labels ("Legendary XI #1", "On this day #12") on covers.
-7. An Instagram Collab post with a similar small account (needs the owner's OK for the partner).
+7. An Instagram Collab post with a similar small account (approved 30 Oct; the owner invites the partner).
 
 ## Ideas waiting for evidence
 

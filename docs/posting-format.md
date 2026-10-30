@@ -80,6 +80,21 @@ The sections below describe the picture posts (stories 001 to 005) and the text,
 - Within Threads' 500 limit, counted in bytes.
 - Posted by the daily run at the slot time.
 
+## Experiments and the house look (owner, 30 Oct 2026)
+The owner approved trying the queued experiments in docs/growth-log.md (including the shorter Reel, an Instagram
+carousel, extra Threads posts and a Collab post) "and we'll measure the success", with one request: **the whole page
+must end up consistent in how it is presented.** So:
+- **One test at a time, one week each, one thing changed.** Everything else stays as above.
+- **Tests run on Instagram or Threads only, where posts go out live each day, Tuesday to Sunday.** Facebook keeps the
+  standard version as the steady control, so the page never shows two styles side by side on one network. A test video
+  is a separate Instagram-only file; the shared Reel (Facebook, and the Threads reply) is never changed for a test.
+- **Every test keeps the house look:** the dark and gold cards, Libre Baskerville and Inter, our own paintings, and each
+  network's usual text (on Facebook and Instagram the sign-off, AI line and hashtags; on Threads the topic tag and the AI
+  line as described above).
+- **After each test, keep or drop, written in the growth log with the numbers.** A kept change becomes the standard on
+  every network (Facebook Reels already scheduled are re-made and re-uploaded) and this file is updated; a dropped one
+  is removed everywhere. By early December the page runs one consistent format again.
+
 ## Everywhere
 - **No website link** on any post.
 - Every picture credits its photo and says "Image generated with AI" (on the website).
