@@ -35,6 +35,17 @@ Experiments queued (one per week, in this order):
 4. Posting time, once Instagram shows where followers live. Bring to the owner with evidence (owner, 28 Oct 2026:
    proposals come with evidence; keep refining experiments without asking).
 
+## Benchmark: Spirit Football (Facebook, 128K followers), looked at 30 Oct 2026
+
+Owner's screenshots of their post of 29 Oct: "the 2002-03 Real Madrid XI" (2K reactions, 57 comments, 82 shares, about
+1.6% of followers). Why it out-performs us: mainly the 128K followers who see it first; then a legendary XI every fan
+knows, a one-name question ("Who was the heartbeat of this Madrid side for you?"), one instantly readable picture (a
+lineup graphic plus a team photo), club hashtags, several posts a day. Not to copy: their pictures are UEFA's graphic and
+an agency photo (copyright risk; we paint our own), and the text restates results instead of telling something new.
+Taken up: one-name closing questions (drafting brief, from 31 Oct) and more stories built on beloved teams and famous
+XIs. Proposed to the owner: a painted "Legendary XI" card for team stories, and 3-5 club hashtags on Instagram and
+Facebook captions.
+
 ## Baseline, 27 Oct 2026 (first 8 days, 20-27 Oct)
 
 | | Followers | Picture posts (20-24 Oct) | Reels (25-27 Oct) |

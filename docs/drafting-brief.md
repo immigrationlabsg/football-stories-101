@@ -94,6 +94,10 @@ The Reel runs about 25 seconds: the cover for 3 s, then each card for 4 s. The f
 decide whether anyone stays, and the first 20 seconds (cover + facts 1-4) carry the story (owner, 28 Oct 2026). So: fact
 card 1 is the single most surprising fact, readable in 4 seconds (aim for 20 words or fewer), and facts 2-4 build on it;
 keep the quieter context for card 5. Comparisons: card 1 sets up the twist, not the date.
+The closing question must be answerable with one name or one word (owner's benchmark, 30 Oct 2026: "Who was the
+heartbeat of that Madrid side for you?" draws comments; "whose first game would you rather have seen?" asks readers to
+think first). Good: "Who was the best player on that pitch?", "Which of the four goals was the best?". It is a genuine
+question about the story, never "comment YES if...".
 No "like/share/tag a friend" asks in hooks or captions: Meta demotes engagement bait (owner briefed 27 Oct 2026). The quiz
 close card ("Send this to the friend who thinks they know football") is the owner's decision of 25 Oct and stays until
 the owner says otherwise.
