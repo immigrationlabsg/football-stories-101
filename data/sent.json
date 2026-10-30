@@ -475,6 +475,31 @@
       "detail": "scheduled for 2026-11-25T00:00:00.000Z reel 1855943345563118 (music: coriolan)",
       "story": "best-v-maradona-25-november",
       "reel": "85aebe7e58a9559e69fa7c26d0d6d54ec60d5047"
+    },
+    {
+      "number": 11,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-10-30T00:01:43.263Z",
+      "detail": "reel media 18109826975524430",
+      "story": "athletic-club-basque-only"
+    },
+    {
+      "number": 11,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-10-30T00:01:43.263Z",
+      "detail": "thread 18098104277215825 (cards, Reel in reply, topic Football)",
+      "story": "athletic-club-basque-only"
+    },
+    {
+      "number": 38,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-10-30T00:02:13.964Z",
+      "detail": "scheduled for 2026-11-26T00:00:00.000Z reel 1128882556543975 (music: mozart40)",
+      "story": "george-weah-monrovia-ballon-dor",
+      "reel": "ecda907e2aad24619fe8c86133da5fe9aed48275"
     }
   ]
 }
