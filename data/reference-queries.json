@@ -595,5 +595,104 @@
       "Juan Roman Riquelme Boca Juniors",
       "Riquelme Argentina 2002"
     ]
+  },
+  "p1201a": {
+    "want": "Raúl González in Real Madrid white, number 7, face clearly visible (late 1990s or 2000s)",
+    "queries": [
+      "Raúl González Real Madrid",
+      "Raul Real Madrid 7",
+      "Raúl González Blanco Real Madrid 2003",
+      "Raul Gonzalez Real Madrid 2008"
+    ]
+  },
+  "p1201b": {
+    "want": "Lionel Messi in Barcelona's blue and claret around 2009-2010, face clearly visible",
+    "queries": [
+      "Lionel Messi 2009",
+      "Lionel Messi Barcelona 2009",
+      "Lionel Messi 2010 Barcelona",
+      "Messi Camp Nou 2009"
+    ]
+  },
+  "q1202": {
+    "want": "Marta (Marta Vieira da Silva) in Brazil's yellow shirt, number 10, face clearly visible",
+    "queries": [
+      "Marta Vieira da Silva",
+      "Marta Brazil women football",
+      "Marta Brasil seleção feminina",
+      "Marta Vieira da Silva 2019"
+    ]
+  },
+  "p1204a": {
+    "want": "Alessandro Del Piero in Juventus black-and-white stripes, face clearly visible",
+    "queries": [
+      "Alessandro Del Piero Juventus",
+      "Del Piero Juventus 10",
+      "Alessandro Del Piero 2008",
+      "Del Piero Juve"
+    ]
+  },
+  "p1204b": {
+    "want": "Luis Suárez in Liverpool red around 2013-2014, face clearly visible",
+    "queries": [
+      "Luis Suárez Liverpool",
+      "Luis Suarez Liverpool 2013",
+      "Suarez Liverpool FC",
+      "Luis Suárez Anfield"
+    ]
+  },
+  "p1207a": {
+    "want": "Cristiano Ronaldo in Real Madrid white around 2016-2018, face clearly visible",
+    "queries": [
+      "Cristiano Ronaldo Real Madrid 2017",
+      "Cristiano Ronaldo 2017",
+      "Cristiano Ronaldo Real Madrid 2018",
+      "Cristiano Ronaldo Ballon d'Or"
+    ]
+  },
+  "p1207b": {
+    "want": "Kylian Mbappé in Paris Saint-Germain's shirt around 2021, face clearly visible",
+    "queries": [
+      "Kylian Mbappé PSG",
+      "Kylian Mbappe Paris Saint-Germain",
+      "Mbappé 2021",
+      "Kylian Mbappé 2022"
+    ]
+  },
+  "p1210a": {
+    "want": "Harry Kane in England's white shirt around 2021-2022, face clearly visible",
+    "queries": [
+      "Harry Kane England",
+      "Harry Kane England 2022",
+      "Harry Kane 2021",
+      "Harry Kane World Cup"
+    ]
+  },
+  "p1210b": {
+    "want": "Mohamed Salah in Liverpool red around 2019, face clearly visible",
+    "queries": [
+      "Mohamed Salah Liverpool",
+      "Mohamed Salah 2019",
+      "Salah Liverpool FC",
+      "Mohamed Salah Anfield"
+    ]
+  },
+  "r1208": {
+    "want": "Real Madrid's Galácticos 2000-2006: Zidane, Figo, Ronaldo or Beckham in Real Madrid white, face clearly visible",
+    "queries": [
+      "Zinedine Zidane Real Madrid",
+      "Luís Figo Real Madrid",
+      "Ronaldo Real Madrid 2003",
+      "Real Madrid 2003 Zidane Figo"
+    ]
+  },
+  "r1209": {
+    "want": "David Beckham in England's white shirt around 2001-2002, face clearly visible",
+    "queries": [
+      "David Beckham England 2002",
+      "David Beckham England",
+      "Beckham England captain",
+      "David Beckham 2001"
+    ]
   }
 }
