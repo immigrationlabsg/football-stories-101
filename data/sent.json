@@ -550,6 +550,22 @@
       "detail": "scheduled for 2026-11-28T02:00:00.000Z reel 1131275849893984 (music: egmont)",
       "story": "riquelme-v-ronaldinho-28-november",
       "reel": "9eb463129bafaed78b1e1910fe525bf5c5323052"
+    },
+    {
+      "number": 14,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-02T00:01:39.954Z",
+      "detail": "reel media 18437682079179137",
+      "story": "lev-yashin-ballon-dor-goalkeeper"
+    },
+    {
+      "number": 14,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-02T00:01:39.954Z",
+      "detail": "thread 17890164882479493 (cards, Reel in reply, topic Football)",
+      "story": "lev-yashin-ballon-dor-goalkeeper"
     }
   ]
 }
