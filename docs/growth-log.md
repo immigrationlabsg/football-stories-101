@@ -143,6 +143,50 @@ Queued experiments, one a week, in order:
 6. Numbered series labels ("Legendary XI #1", "On this day #12") on covers.
 7. An Instagram Collab post with a similar small account (approved 30 Oct; the owner invites the partner).
 
+## Weekly review, 2 Nov 2026 (week 27 Oct - 2 Nov)
+
+**Numbers (Audience report, run 2 Nov 04:43 UTC).**
+- Instagram: 0 followers; last 28 days 912 accounts reached, 1,042 views, 22 accounts engaged, 20 interactions, 7 profile
+  visits. Every Reel since 25 Oct reached 101-122 accounts (014, posted this morning, 45 so far). Best: 030's Gabar barge
+  (122 reached, 7 likes) and 1989 Milan (122). Shares 0 on every post; 2 saves in all.
+- Threads: 0 followers; 400 views in 28 days. Picture posts (20-24 Oct) 19-70 views; Reel only (25-27 Oct) 0-23; cards
+  with topic tag and Reel reply (28 Oct-2 Nov) 10-33, average 20. Cards beat the bare Reel; keep them.
+- Facebook: 0 followers. Reels 006-009 had 1-5 plays (avg watch 1.8-5.5 s); 010-014 have **0 plays**. "People reached" is
+  still not readable (post_impressions_unique refused; replacement not found). Facebook is giving us no distribution.
+- By format (Instagram reach): regular stories 103-122; "on this day" comparisons 101-108; no quiz posted yet (017 on 5 Nov).
+- Hashtags (from 31 Oct): 012 118 and 013 107 reached, no visible lift yet; too early to read.
+
+**Last week's changes.** No calendar test ran (the calendar starts 3 Nov). The sharper cover lines (29 Oct on) and the
+Threads cards (28 Oct on) are kept; the hooks show no change in Instagram reach (still ~100-120) and must be read on watch
+time, which Instagram's API does not give per Reel here.
+
+**Benchmarks (public web, search snippets only; instagram.com, facebook.com and x.com could not be opened).**
+90s Football (about 891K on X, 524K on a 90s Facebook page) pins plain "player vs opponent, year" posts; Old School
+Panini (about 76K Facebook, 128K X) tells one short anecdote on one sticker image, the closest to our model; Retro
+Footballers (about 44K Instagram), @history.fc_ (about 14K from 134 posts). No post-level numbers were reachable.
+Takeaways: lead with the year and the names; one niche said in the name and bio, and a recurring visual object;
+nostalgia audiences look biggest on Facebook. Not for us: reposted broadcast clips and agency photos, sponsor links,
+"DM for collabs" bios, mass following.
+
+**The four asks.** (1) A head of social would fix distribution before polishing creative: Facebook shows nothing, so
+Instagram is where tests can be read. (2) Rawest material: per-Reel reach and likes above, our own covers side by side.
+(3) Method: one change a week on Instagram, Facebook unchanged as control. (4) Evidence beyond us: reach per Reel and
+likes per 100 reached against the previous two weeks (Instagram baseline: ~110 reached, ~2 likes per Reel).
+
+**This week's test (3-8 Nov, Instagram only): experiment 1, the first frame.** Built and checked: for 015, 016, 018, 019
+and 020 Instagram posts its own Reel (NNN-reel-ig.mp4) whose cover is the story's biggest surprise in at most 10 words
+(the new `stinger` field) in large type on a tall dark band, the painting below and never covered (pairs shown whole).
+The quiz on 5 Nov keeps its mystery cover. The independent check found 020's cover cutting Guardiola's head (crop now from
+the top) and "lost their first game" unsupported (the first competitive game was a qualifier win): 020's dek, hook, fact
+card and body now say "first league game" (card 1 "first La Liga season"), so 020's shared Reel changes too and its
+scheduled Facebook Reel is replaced with Reels replace after deploy. Facebook and the Threads reply keep the standard Reel (fingerprints of 015-019 checked
+unchanged against the live site; 020 changed only for its correction). Watch: Instagram reach and likes per Reel against ~110 and ~2; keep if the five test
+posts beat the baseline clearly (at least +20% reach or double the likes), else drop.
+
+**For the owner.** Facebook Reels get 0 plays. One possible cause: the posting app is in Development mode, and Meta can
+limit such posts to the app's own people. Our rule says never switch the apps to Live, so nothing was changed; the owner
+can check by opening the Facebook Page in a private browser window while logged out and seeing whether the Reels show.
+
 ## Ideas waiting for evidence
 
 - Posting time. 08:00 Singapore is midnight in the UK and 01:00 in Lagos. Once followers exist, Instagram's audience

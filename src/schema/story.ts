@@ -51,6 +51,8 @@ export const storySchema = z.object({
   dek: nonEmpty('dek').max(DEK_MAX, `dek must be ${DEK_MAX} characters or fewer`),
   /** One punchy line for the share cards (Facebook image, Instagram cover): a banner above the painting. */
   hook: z.string().trim().max(100, 'hook must be 100 characters or fewer').optional(),
+  // Instagram test "first frame" (growth log, 3-8 Nov 2026): the story's biggest surprise in at most 10 words.
+  stinger: z.string().trim().max(70).refine((s) => { const w = s.split(/\s+/).length; return w >= 6 && w <= 10; }, 'a stinger has 6 to 10 words').optional(),
   slug: nonEmpty('slug').regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug must be lower-case words joined by hyphens'),
   date: z.coerce.date(),
   updated: z.coerce.date().optional(),

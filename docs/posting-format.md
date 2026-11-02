@@ -95,6 +95,12 @@ must end up consistent in how it is presented.** So:
   every network (Facebook Reels already scheduled are re-made and re-uploaded) and this file is updated; a dropped one
   is removed everywhere. By early December the page runs one consistent format again.
 
+### Test running now
+- **3-8 Nov, experiment 1 "first frame" (Instagram only):** `data/schedule.json` `instagram_test`. Stories with a
+  `stinger` in that window post `NNN-reel-ig.mp4` on Instagram: the same cards and music, with a cover of the stinger (at
+  most 10 words, the biggest surprise from fact card 1 or the hook, nothing new) in large type above the painting
+  (`scripts/lib/test-cover.ts`). Set `instagram_test` to null when the test ends.
+
 ## Everywhere
 - **No website link** on any post.
 - Every picture credits its photo and says "Image generated with AI" (on the website).

@@ -34,6 +34,13 @@ for (const s of stories) {
   if (!s.data.question) errors.push(`${n}: no reader question`);
   if (!fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src))) errors.push(`${n}: hero picture ${s.data.hero.src} is missing`);
   if (!fs.existsSync(path.join(ROOT, `docs/fact-checks/${n}.md`))) errors.push(`${n}: no fact-check log docs/fact-checks/${n}.md`);
+  // The week's Instagram test (data/schedule.json instagram_test): a story in its window without a stinger would post the
+  // standard Reel and spoil the comparison.
+  {
+    const it = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/schedule.json'), 'utf8')).instagram_test;
+    const day = new Date(s.data.date.getTime() + 8 * 3600e3).toISOString().slice(0, 10);
+    if (it && s.data.format !== 'quiz' && day >= it.from && day <= it.to && !s.data.stinger) warnings.push(`${n}: in the Instagram test week (${it.name}) but has no stinger, so Instagram gets the standard Reel`);
+  }
   const posts = socialPosts(s, { kind: 'scheduled', webLive: false });
   if (Buffer.byteLength(posts.threads, 'utf8') > 500) errors.push(`${n}: Threads text is over 500 bytes`);
   // Threads (owner, 27 Oct 2026): cards and teaser in the post, the Reel and the Instagram link in the reply.

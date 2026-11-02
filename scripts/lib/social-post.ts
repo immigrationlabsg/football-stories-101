@@ -2,6 +2,7 @@ import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
 import { UnconfirmedReel, metaConfigured, postFacebookPhoto, postFacebookReel, setFacebookReelCover, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
 import { musicTag, usesReel } from './reel';
+import { instagramTestFor } from './test-cover';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
 import fs from 'node:fs';
@@ -80,6 +81,9 @@ export async function postStoryToSocials(
   // From reels_from (data/schedule.json) every network gets the Reel: the same cards with music, the same text.
   const reel = usesReel(story.data.date);
   const reelUrl = absoluteUrl(`/images/derived/${n}-reel.mp4`);
+  // The week's Instagram-only test (docs/posting-format.md "Experiments and the house look"): its own Reel file.
+  const igTest = reel ? instagramTestFor(story.data) : null;
+  const igReelUrl = igTest ? absoluteUrl(`/images/derived/${n}-reel-ig.mp4`) : reelUrl;
   const out: Outcome[] = [];
 
   const done = opts.skipDone ? socialDone(story.data.number) : new Set<Network>();
@@ -90,7 +94,7 @@ export async function postStoryToSocials(
     }
     try {
       if (opts.dryRun) {
-        const urls = reel ? (network === 'threads' ? [...cardUrls, reelUrl] : [reelUrl]) : network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
+        const urls = reel ? (network === 'threads' ? [...cardUrls, reelUrl] : [network === 'instagram' ? igReelUrl : reelUrl]) : network === 'facebook' ? [heroUrl] : cardUrls; // Instagram and Threads share the carousel cards
         for (const u of urls) await waitForUrl(u, 1, 0); // in a dry run, still prove every picture is live
         const text = network === 'facebook' ? posts.facebook : network === 'instagram' ? posts.instagram : posts.threads;
         const over = network === 'instagram' && text.length > INSTAGRAM_LIMIT ? `; TOO LONG for Instagram by ${text.length - INSTAGRAM_LIMIT}` : '';
@@ -136,7 +140,8 @@ export async function postStoryToSocials(
           out.push({ network, status: opts.scheduleAt ? 'drafted' : 'posted', detail: `${opts.scheduleAt ? `scheduled for ${opts.scheduleAt.toISOString()}` : 'posted'} reel ${id} ${musicTag(story.data.number)}${cover}${note}`, ...(hash ? { reel: hash } : {}) });
         } else if (network === 'instagram') {
           if (posts.instagram.length > INSTAGRAM_LIMIT) throw new Error(`text is ${posts.instagram.length - INSTAGRAM_LIMIT} characters over Instagram's ${INSTAGRAM_LIMIT} limit; tighten the story, nothing was posted`);
-          out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: reelUrl, caption: posts.instagram })}` });
+          if (igTest) await waitForUrl(igReelUrl);
+          out.push({ network, status: 'posted', detail: `reel media ${await postInstagramReel({ videoUrl: igReelUrl, caption: posts.instagram })}${igTest ? ` (test: ${igTest})` : ''}` });
         } else {
           // Threads: the cards with the teaser and a topic tag, the Reel in a reply (owner, 27 Oct 2026).
           for (const u of cardUrls) await waitForUrl(u);

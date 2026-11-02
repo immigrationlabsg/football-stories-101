@@ -16,6 +16,7 @@ import sharp from 'sharp';
 import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
 import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
 import { renderLineup } from './lib/lineup-card';
+import { instagramTestFor, renderFirstFrameCover } from './lib/test-cover';
 import { MYSTERY_COVER, renderQuizCover, renderQuizClue, renderQuizReveal, renderQuizClose } from './lib/quiz-cards';
 import { pad3, PLACEHOLDER_HERO } from '../src/schema/story';
 import type { Manifest } from '../src/lib/image-manifest';
@@ -104,6 +105,15 @@ try {
 const reels: Record<string, string> = {};
 const reelMusic: Record<string, string> = {}; // published as reel-music.json: which track each Reel online carries
 const reelStories: Record<string, string> = {}; // published as reel-stories.json: which story (slug) each Reel online shows
+// The week's Instagram-only test Reels (NNN-reel-ig.mp4), tracked apart so they never touch the shared Reels' record.
+const REELS_IG = path.join(OUT, 'reels-ig.json');
+let reelsIgPrev: Record<string, string> = {};
+try {
+  reelsIgPrev = JSON.parse(fs.readFileSync(REELS_IG, 'utf8'));
+} catch {
+  reelsIgPrev = {};
+}
+const reelsIg: Record<string, string> = {};
 const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/reel.ts'));
 const DAY = 86_400_000;
 const reelFailures: string[] = [];
@@ -112,6 +122,7 @@ const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), '
 const cardsSource = fs.readFileSync(cardsScript);
 const lineupSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'lineup-card.ts'));
 const quizCardsSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'quiz-cards.ts'));
+const testCoverSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'test-cover.ts'));
 const widthsKey = WIDTHS.join(',');
 
 for (const story of stories) {
@@ -205,6 +216,31 @@ for (const story of stories) {
       reelStories[n] = story.data.slug;
     }
   } else if (fs.existsSync(reel)) fs.unlinkSync(reel);
+  // The Instagram test Reel: the same cards and music with the test's own cover (data/schedule.json instagram_test).
+  const igReel = path.join(OUT, `${n}-reel-ig.mp4`);
+  const igCover = path.join(OUT, `${n}-test-cover.png`);
+  const test = instagramTestFor(story.data);
+  if (test === 'first-frame' && !story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
+    const track = trackFor(story.data.number);
+    const igHash = hashOf(hash, fs.readFileSync(track), reelSource, testCoverSource, test, story.data.stinger ?? '');
+    if (!force && reelsIgPrev[n] === igHash && fs.existsSync(igReel) && fs.existsSync(igCover)) reelsIg[n] = igHash;
+    else {
+      try {
+        fs.writeFileSync(igCover, await renderFirstFrameCover(story.data, hero));
+        const files = [igCover, ...cardFiles.slice(1)];
+        await renderReel(files, await musicFor(track, files.length, path.join(OUT, `${n}-music.tmp.m4a`)), igReel);
+        fs.rmSync(path.join(OUT, `${n}-music.tmp.m4a`), { force: true });
+        reelsIg[n] = igHash;
+        console.log(`${n} Instagram test Reel (${test}): made`);
+      } catch (e) {
+        reelFailures.push(`${n} (Instagram test): ${(e as Error).message.slice(0, 300)}`);
+        fs.rmSync(`${igReel}.tmp.mp4`, { force: true });
+        fs.rmSync(path.join(OUT, `${n}-music.tmp.m4a`), { force: true });
+      }
+    }
+  } else {
+    for (const f of [igReel, igCover]) if (fs.existsSync(f)) fs.unlinkSync(f);
+  }
   // Remove stale slides from a previous, longer facts list
   for (const f of fs.readdirSync(OUT)) {
     if (f.startsWith(`${n}-ig-`) && !cards.includes(`/images/derived/${f}`)) fs.unlinkSync(path.join(OUT, f));
@@ -218,6 +254,7 @@ if (force || !fs.existsSync(def)) fs.writeFileSync(def, await renderDefault(site
 
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(REELS, JSON.stringify(reels, null, 2));
+fs.writeFileSync(REELS_IG, JSON.stringify(reelsIg, null, 2));
 fs.writeFileSync(path.join(OUT, 'reel-music.json'), JSON.stringify(reelMusic, null, 2));
 fs.writeFileSync(path.join(OUT, 'reel-stories.json'), JSON.stringify(reelStories, null, 2));
 await endReelTools();
