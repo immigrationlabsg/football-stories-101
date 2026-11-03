@@ -40,7 +40,7 @@ Weekly drafting run for Football Stories 101. git pull origin main; read CLAUDE.
 ## 5. Instagram link reminder: Monday 11:23 (until it works)
 
 ```
-Weekly reminder the owner asked for: link Instagram @foot.ballstories101 to the Facebook Page "Football Stories 101". Run check-facebook.yml with post_id=link and read its log. If "RESULT: LINKED": tell the owner, remove this task, update the Obsidian vault note Football Social Posts and the Decision Log, and propose testing Meta's licensed music for Reels. If "NOT LINKED": remind the owner once, briefly: Instagram app → Profile → Edit profile → Facebook: Connect → log in with the Facebook profile that has full control of the Page → choose Football Stories 101 → Done; if it says "temporarily restricted", wait a week; Meta Verified support is the way to reach a person. Nothing else.
+Weekly reminder the owner asked for: link Instagram @foot.ballstories101 to the Facebook Page "Football Stories 101". Run check-facebook.yml with post_id=link and read its log. If "RESULT: LINKED": tell the owner, remove this task, update the Obsidian vault note Football Social Posts and the Decision Log, and propose testing Meta's licensed music for Reels. If "NOT LINKED": remind the owner once, briefly: Instagram app → Profile → Edit profile → Facebook: Connect → log in with the Facebook profile that has full control of the Page → choose Football Stories 101 → Done; if it says "temporarily restricted", try the Business Suite route (business.facebook.com → Settings → Accounts → Instagram accounts → Connect), and to reach a person use Meta Business Support (business.facebook.com/business-support-home → choose the Page → Contact support / chat); the owner is not Meta Verified, so never suggest Meta Verified support. Nothing else.
 ```
 
 ## 6. Weekly growth review: Monday 12:41
@@ -58,5 +58,6 @@ Weekly growth review for Football Stories 101. The owner's brief (27-30 Oct 2026
 
 ## Setting up on the Mac
 
-Done on 3 Nov 2026: see `ops/mac/README.md` (launchd jobs, logs, the keep-awake job, and the switch that keeps the
+**Running on the Mac since 4 Nov 2026, 00:50 Singapore.** The cloud session was deleted by the owner and its eight Football
+Stories routines in claude.ai were paused (not deleted) the same night; the Mac's switch file is on. Setup: see `ops/mac/README.md` (launchd jobs, logs, the keep-awake job, and the switch that keeps the
 Mac's copies off until the cloud session's copies are switched off, so nothing runs twice or not at all).

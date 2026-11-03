@@ -280,9 +280,13 @@ caption under the photo. That credit is a legal requirement of the licence: neve
 **Every painting is made through Codex on the owner's Mac mini, with the owner's ChatGPT plan.** No API credit and no
 key: Codex was signed in once in the browser (`codex login`). In a Claude session in this folder on the Mac:
 
-1. `npm run paint:codex -- 43` (story numbers, or a draft's reference key such as `t1201`). It sends Codex exactly the
-   same photo, style reference and instructions as the API painter (`scripts/lib/paint-inputs.ts`) and saves
-   `design/paintings/NNN.png`. Codex's own log is in `design/paintings/codex/NNN-log.txt` (not committed).
+1. `npm run paint:codex -- 43 44 45` (story numbers, or a draft's reference key such as `t1201`). It sends Codex exactly
+   the same photo, style reference and instructions as the API painter (`scripts/lib/paint-inputs.ts`) and saves
+   `design/paintings/NNN.png`. Three stories paint at once (`PARALLEL=1` for one at a time). Codex only calls its image
+   tool: no skill file, no AGENTS.md, no commands, read-only; about 1-1.5 minutes and 13-14 thousand tokens a painting
+   (4 Nov 2026 test: 54 s and 97 s, 12.8 and 14.4 thousand, painted side by side; the first, 043, took about 18.5
+   thousand). Codex is told to pass the instructions to the image tool word for word. Time and tokens per painting are logged in
+   `design/paintings/codex/usage.csv`, Codex's own log in `design/paintings/codex/NNN-log.txt` (neither committed).
 2. Open the painting and every card at full size and check them against the picture standard
    (`docs/picture-guide.md`); repaint until it passes.
 3. If Codex says the plan's limit is reached (`/status` in Codex shows it) or it gives no painting, use the fallback
