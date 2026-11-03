@@ -37,11 +37,15 @@ Weekly research run for Football Stories 101. git pull origin main; read CLAUDE.
 Weekly drafting run for Football Stories 101. git pull origin main; read CLAUDE.md (definition of done, "Never" list, picture standard) and docs/weekly-drafting.md, and follow it exactly, especially step 5a (the weekly mix). Make 7 new pieces in the owner's rhythm: an "on this day" comparison every third day, a "Guess the legend" quiz every ninth day, regular stories otherwise. npm run verify lists upcoming comparison and quiz days still holding a regular story: fill those for the next 14 days with npm run hand-over, then add regular stories (next reserved angles in docs/story-bank.md) at the end of the queue. Two independent sources per claim, verified quotes only, a fact-check log for each; one-name closing questions; famous-team stories get a Legendary XI lineup; topical tie-ins where honest. Pictures painted from real Commons photos with npm run paint:codex (Codex on the ChatGPT plan; the "Paint with GPT Image" workflow only if Codex cannot paint, docs/runbook.md section 13); open every painting and card at full size against the picture standard. Hand-overs of days Facebook already has scheduled: push, wait for the site's reel-stories.json to show the new slug, then Reels switch (dry run first) outside 06:00-10:45 Singapore and confirm with Check a Facebook post. npm run validate and verify with 0 errors, the verifier subagent on the week's pieces, commit "content: NNN to NNN" and push. Finish with a short report to the owner: seven headlines with dates and formats, anything cut in fact-checking, what the verifier found, and the editor's preview link https://immigrationlabsg.github.io/football-stories-101/preview/editors-desk/
 ```
 
-## 5. Instagram link reminder: Monday 11:23 (until it works)
+## 5. Instagram link reminder: stopped (owner, 4 Nov 2026)
 
-```
-Weekly reminder the owner asked for: link Instagram @foot.ballstories101 to the Facebook Page "Football Stories 101". Run check-facebook.yml with post_id=link and read its log. If "RESULT: LINKED": tell the owner, remove this task, update the Obsidian vault note Football Social Posts and the Decision Log, and propose testing Meta's licensed music for Reels. If "NOT LINKED": remind the owner once, briefly: Instagram app → Profile → Edit profile → Facebook: Connect → log in with the Facebook profile that has full control of the Page → choose Football Stories 101 → Done; if it says "temporarily restricted", try the Business Suite route (business.facebook.com → Settings → Accounts → Instagram accounts → Connect), and to reach a person use Meta Business Support (business.facebook.com/business-support-home → choose the Page → Contact support / chat); the owner is not Meta Verified, so never suggest Meta Verified support. Nothing else.
-```
+Stopped for good. Meta's business support told the owner on 4 Nov 2026 that his personal Facebook profile carries a
+restriction from an old business portfolio that cannot be reversed, so he cannot connect Instagram to the Page. The owner
+decided to stop trying ("a waste of time"). Posting does not need the link: Instagram posts through our own app. What the
+page goes without: Meta's licensed music for Reels (we keep the four public-domain clips), the shared inbox and combined
+insights in Business Suite. Never create a second Facebook profile for the owner to get round the restriction. If the
+link is ever wanted again, the way is a trusted second Page admin with full control who connects Instagram from their own
+profile. The Mac job was removed and the cloud routine is paused.
 
 ## 6. Weekly growth review: Monday 12:41
 

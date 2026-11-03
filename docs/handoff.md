@@ -29,7 +29,6 @@ Mac runs them, they keep firing into the cloud session.
 | Mon-Fri 08:16 / Sat-Sun 10:16 | Delivery check: all three networks recorded, Facebook confirmed, one line to the owner |
 | Thu 08:52 | Weekly research note and story-bank angles |
 | Sat 08:47 | Weekly drafting: 7 pieces in the rhythm (comparison every 3rd day, quiz every 9th) |
-| Mon 11:23 | Reminder to link Instagram to the Facebook Page (until it works) |
 | Mon 12:41 | Weekly growth review: numbers, benchmarks, keep or drop last week's test, build the next |
 
 ## State on 3 Nov 2026
@@ -39,7 +38,9 @@ Mac runs them, they keep firing into the cloud session.
 - **Facebook Reels are invisible to the public** (docs/incidents/2026-11-03-facebook-reels-hidden.md). The owner wants
   them public: the posting app must be switched to Live by the owner in developers.facebook.com, then Claude checks and
   re-uploads hidden Reels if needed.
-- **Instagram is still not linked to the Facebook Page** ("temporarily restricted"). Posting is unaffected.
+- **Instagram will not be linked to the Facebook Page.** The owner's profile has an irreversible restriction from an old
+  business portfolio (Meta business support, 4 Nov); the owner stopped trying and the reminder is gone. Posting is
+  unaffected (docs/scheduled-tasks.md, section 5).
 - **OpenAI API credit** was added on 3 Nov (the API is billed apart from the ChatGPT plan; the first $20 went to
   ChatGPT credits by mistake). scripts/paint-gpt.ts now saves OpenAI's reported usage per painting in
   design/paintings/usage/.

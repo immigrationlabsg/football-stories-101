@@ -34,7 +34,6 @@ job 1 morning-post "1 7 50" "2 7 50" "3 7 50" "4 7 50" "5 7 50" "6 9 50" "0 9 50
 job 2 delivery-check "1 8 16" "2 8 16" "3 8 16" "4 8 16" "5 8 16" "6 10 16" "0 10 16"
 job 3 research "4 8 52"
 job 4 drafting "6 8 47"
-job 5 instagram-link "1 11 23"
 job 6 growth-review "1 12 41"
 
 # Keep the Mac awake (no idle sleep; the screen may still turn off) whenever the owner is logged in.
