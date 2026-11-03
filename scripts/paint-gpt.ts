@@ -147,4 +147,12 @@ for (const n of stories) {
   }
   fs.writeFileSync(path.join(OUT, `${n}.png`), Buffer.from(json.data[0].b64_json, 'base64'));
   console.log(`${n}: painted (${ref.commons ?? 'no reference photo'})`);
+  // What each painting used, as OpenAI reports it, so the cost per picture is known from real runs (owner, 3 Nov 2026).
+  const u = json.usage ?? {};
+  const row = [new Date().toISOString(), n, MODEL, QUALITY, u.input_tokens_details?.text_tokens ?? '', u.input_tokens_details?.image_tokens ?? '', u.output_tokens ?? '', u.total_tokens ?? ''];
+  // One small file per painting, so two paint runs saving at once never overwrite each other's record.
+  const when = new Date().toISOString().replace(/[:.]/g, '-');
+  fs.mkdirSync(path.join(OUT, 'usage'), { recursive: true });
+  fs.writeFileSync(path.join(OUT, 'usage', `${n}-${when}.csv`), 'when,story,model,quality,text_in,image_in,out,total\n' + row.map((x) => String(x).replace(/,/g, ' ')).join(',') + '\n');
+  console.log(`${n}: usage ${JSON.stringify(u)}`);
 }
