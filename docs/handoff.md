@@ -18,7 +18,10 @@ docs/growth-log.md (newest section last).
    but the scheduled tasks below keep firing into the cloud session, not into the terminal. Use it for one-off jobs
    (for example the Meta dashboard steps), not to replace the cloud session.
 
-## What runs on its own (scheduled tasks, all firing into the cloud session)
+## What runs on its own (scheduled tasks)
+
+The owner wants these moved to the Mac (3 Nov 2026). Full instructions and setup: docs/scheduled-tasks.md. Until the
+Mac runs them, they keep firing into the cloud session.
 
 | When (Singapore) | Task |
 |---|---|
