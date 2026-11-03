@@ -46,17 +46,11 @@ Mac runs them, they keep firing into the cloud session.
 - **044 (2 Dec), "Guess the legend: Marta": done.** Painted from a real 2018 photo, installed, independently verified;
   the record claim was narrowed to the Women's World Cup (the 2026 men's World Cup was not checked). Maradona moved to
   046 (4 Dec). 020 (8 Nov) was corrected to "first league game" and its Facebook Reel replaced and confirmed.
-- **043 (1 Dec), "On this day: Raúl v Messi": blocked on the painting.** Text and fact-check are done in
-  design/drafts/1201-raul-v-messi/. OpenAI's Images API refused every Messi painting: 8 times (5 on 26 Oct, 3 on 3 Nov;
-  the last with the new photo File:Lionel Messi - Reus.jpg, request req_6d1148ff0ee04062bd891934b4e7c7c9). Do not try
-  to get round the API's filter. The owner wants it painted automatically through Codex with his ChatGPT plan on the
-  Mac (docs/painting-with-codex.md): Raúl and Messi from the photos in data/reference-photos.json "t1201", the same
-  instructions as scripts/paint-gpt.ts, checked at full size against docs/picture-guide.md, then `npm run hand-over --
-  43 design/drafts/1201-raul-v-messi/story.mdx design/drafts/1201-raul-v-messi/fact-check.md`. Facebook will have
-  scheduled the old 043 (Munich) on 4 Nov, so after the push and deploy run the Reels workflow, action switch 43 (dry run
-  first, outside 06:00-10:45 Singapore), and confirm with Check a Facebook post. More free Messi photos:
-  design/candidates-colour/m01.jpg and m01.json.
-- **Calendar:** verify warns that 043 (1 Dec) and 046 (4 Dec) are "on this day" days holding regular stories. Planned
+- **043 (1 Dec), "On this day: Raúl v Messi": painted and installed (3 Nov, Mac session).** Painted through Codex on
+  the owner's ChatGPT plan (docs/fact-checks/043.md "Picture"); Munich 1968 moved to 047 (5 Dec). If Facebook scheduled
+  Munich for 1 Dec before the push, run Reels switch 43 (dry run first, outside 06:00-10:45 Singapore) and confirm with
+  Check a Facebook post.
+- **Calendar:** verify warns that 046 (4 Dec) is an "on this day" day holding a regular story. Planned
   comparisons: 4 Dec Del Piero v Suárez, 7 Dec Ronaldo v Mbappé, 10 Dec Kane v Salah; regular stories 8-9 Dec
   (Galácticos; Beckham v Greece 2001 with a Legendary XI).
 - **OpenAI support email** about the Messi refusals is drafted in the owner's admin@immigrationlab.sg Gmail (to

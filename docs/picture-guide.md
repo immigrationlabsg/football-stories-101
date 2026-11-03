@@ -15,7 +15,7 @@ To make the hero for a new story (the recipe the editor chose, "C": high quality
 
 1. Add the story's search queries to `data/reference-queries.json` and run **Reference candidates** (Actions tab) for that story.
    Look at `design/candidates/NNN.jpg`, pick the photo, and put its Commons file name, a one-line "why", the kit and an "alt" in `data/reference-photos.json`.
-2. Run **Reference photos** to download the photo, then **Paint with GPT Image** for the story number. Look at `design/paintings/NNN.png`.
+2. Run **Reference photos** to download the photo, then paint it on the Mac with `npm run paint:codex -- N` (Codex on the owner's ChatGPT plan; **Paint with GPT Image** only as the fallback, docs/runbook.md section 13). Look at `design/paintings/NNN.png`.
 3. Run `npm run publish-painting -- N`. It writes the hero, the alt text and the credit ("Painting after a photo by NAME, LICENCE, via Wikimedia Commons. Image generated with AI.").
 4. Delete the working files again (`design/references/`, `design/candidates/`, `design/paintings/*.png`).
 

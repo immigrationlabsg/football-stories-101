@@ -9,9 +9,8 @@ reached 100+ accounts per Reel).
 in Development mode is shown only to people with a role on the app. CLAUDE.md says "never turn the Meta apps to Live",
 so it was never switched.
 
-**Decision.** The owner, 3 Nov 2026: "I want the facebook reels to be live." The line in CLAUDE.md's "Never" list is
-for the owner to update (Claude's edit of CLAUDE.md was blocked as self-modification); until then this note records the
-owner's decision.
+**Decision.** The owner, 3 Nov 2026: "I want the facebook reels to be live." On the owner's instruction (3 Nov,
+Mac session) CLAUDE.md's "Never" list now records it: the Facebook posting app goes Live; other Meta apps stay as they are.
 
 **Steps (owner, on a computer).** developers.facebook.com → My Apps → the posting app → check "App Mode: Development" at
 the top → App settings → Basic: Privacy Policy URL https://immigrationlabsg.github.io/football-stories-101/privacy/ and

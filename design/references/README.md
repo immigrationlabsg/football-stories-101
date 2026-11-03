@@ -82,8 +82,8 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 041-2.jpg | 041 | CC BY-SA 2.0 | Seán Murray | [Commons](https://commons.wikimedia.org/wiki/File:Manchester_United_Treble_celebration.jpg) |
 | 042-1.jpg | 042 | CC BY-SA 2.0 | Peter Woodentop | [Commons](https://commons.wikimedia.org/wiki/File:LCFC_lift_the_Premier_League_Trophy_(26943755296)_(cropped).jpg) |
 | 042-2.jpg | 042 | CC BY-SA 2.0 | Peter Woodentop | [Commons](https://commons.wikimedia.org/wiki/File:LCFC_players_celebrate_after_victory_vs_Everton_(27859481336).jpg) |
-| 043-1.jpg | 043 | Public domain | Scanpix | [Commons](https://commons.wikimedia.org/wiki/File:Busby_babes_last_match.jpg) |
-| 043-2.jpg | 043 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Bobby_charlton_elgrafico.JPG) |
+| 047-1.jpg | 047 | Public domain | Scanpix | [Commons](https://commons.wikimedia.org/wiki/File:Busby_babes_last_match.jpg) |
+| 047-2.jpg | 047 | Public domain | Unknown author Unknown author | [Commons](https://commons.wikimedia.org/wiki/File:Bobby_charlton_elgrafico.JPG) |
 | 044-1.jpg | 044 | CC BY-SA 4.0 | Amerpear | [Commons](https://commons.wikimedia.org/wiki/File:Marta_Brazil_2.jpg) |
 | 045-1.jpg | 045 | CC BY-SA 2.5 | Mr. Alexander Ottesen | [Commons](https://commons.wikimedia.org/wiki/File:Trophy_presentation_Highbury_2004.JPG) |
 | 045-2.jpg | 045 | CC0 | John Nesejas | [Commons](https://commons.wikimedia.org/wiki/File:Thierry_Henry%E2%80%99s_iconic_knee_slide.jpg) |
@@ -94,5 +94,5 @@ Save a photo from this folder on your phone, attach it in ChatGPT with the promp
 | 903-1.jpg | 903 | CC BY 3.0 | Biser Todorov (original picture), Mess (derivative work) | [Commons](https://commons.wikimedia.org/wiki/File:Andrea_Pirlo_BGR-ITA_2012.jpg) |
 | 904-1.jpg | 904 | CC BY 2.0 | rayand | [Commons](https://commons.wikimedia.org/wiki/File:Didier_Drogba_Champions_League_Winner_medal.jpg) |
 | 905-1.jpg | 905 | CC BY-SA 3.0 | Светлана Бекетова | [Commons](https://commons.wikimedia.org/wiki/File:Luka_Modri%C4%87_in_2018.jpg) |
-| t1201-1.jpg | t1201 | CC BY-SA 2.0 | Jan S0L0 | [Commons](https://commons.wikimedia.org/wiki/File:Ra%C3%BAl_Gonz%C3%A1lez_in_Real_Madrid_2009.jpg) |
-| t1201-2.jpg | t1201 | CC BY 2.0 | Laia from Reus, Catalonia | [Commons](https://commons.wikimedia.org/wiki/File:Lionel_Messi_-_Reus.jpg) |
+| 043-1.jpg | 043 | CC BY-SA 2.0 | Jan S0L0 | [Commons](https://commons.wikimedia.org/wiki/File:Ra%C3%BAl_Gonz%C3%A1lez_in_Real_Madrid_2009.jpg) |
+| 043-2.jpg | 043 | CC BY 2.0 | Laia from Reus, Catalonia | [Commons](https://commons.wikimedia.org/wiki/File:Lionel_Messi_-_Reus.jpg) |

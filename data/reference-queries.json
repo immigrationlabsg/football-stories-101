@@ -296,16 +296,6 @@
       "Leicester City celebration King Power"
     ]
   },
-  "043": {
-    "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley",
-    "queries": [
-      "Manchester United 1968 European Cup",
-      "Bobby Charlton 1968",
-      "George Best Manchester United",
-      "Manchester United Benfica 1968",
-      "Busby Babes"
-    ]
-  },
   "045": {
     "want": "Arsenal Invincibles 2003-04: Henry scoring or celebrating, team with the trophy",
     "queries": [
@@ -323,6 +313,27 @@
       "Maradona 1986",
       "Maradona Azteca",
       "Maradona goal of the century"
+    ]
+  },
+  "047": {
+    "want": "Manchester United 1968 European Cup win: Charlton, Best, the trophy at Wembley",
+    "queries": [
+      "Manchester United 1968 European Cup",
+      "Bobby Charlton 1968",
+      "George Best Manchester United",
+      "Manchester United Benfica 1968",
+      "Busby Babes"
+    ]
+  },
+  "m01": {
+    "want": "New Lionel Messi reference photos for the 1 Dec comparison (owner, 3 Nov 2026): Barcelona, ideally 2009-10, face clearly visible, free licence; not File:Messi Barcelona - Valladolid (cropped).jpg or Jeroen Bennink's 2011 photo",
+    "queries": [
+      "Lionel Messi 2009",
+      "Lionel Messi 2010",
+      "Messi FC Barcelona 2009",
+      "Messi Barcelona Camp Nou",
+      "Lionel Messi Ballon d'Or 2009",
+      "Leo Messi Barça"
     ]
   },
   "p1029a": {
@@ -693,17 +704,6 @@
       "David Beckham England",
       "Beckham England captain",
       "David Beckham 2001"
-    ]
-  },
-  "m01": {
-    "want": "New Lionel Messi reference photos for the 1 Dec comparison (owner, 3 Nov 2026): Barcelona, ideally 2009-10, face clearly visible, free licence; not File:Messi Barcelona - Valladolid (cropped).jpg or Jeroen Bennink's 2011 photo",
-    "queries": [
-      "Lionel Messi 2009",
-      "Lionel Messi 2010",
-      "Messi FC Barcelona 2009",
-      "Messi Barcelona Camp Nou",
-      "Lionel Messi Ballon d'Or 2009",
-      "Leo Messi Barça"
     ]
   }
 }

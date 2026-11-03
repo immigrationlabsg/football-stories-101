@@ -55,34 +55,35 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 040 | Moments | On this day: Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt | scheduled |
 | 041 | Moments | Camp Nou, 26 May 1999: Manchester United's two goals in stoppage time (moved from 035) | scheduled |
 | 042 | Clubs | Leicester City 2015–16: champions at 5,000 to 1 (moved from 043) | scheduled |
-| 043 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 044) | scheduled |
+| 043 | Moments | On this day: Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December | scheduled |
 | 044 | Players | Guess the legend / Marta: a three-day bus ride, a European final at 18 and the World Cup scoring record | scheduled |
 | 045 | Eras | Arsenal's Invincibles, 2003–04: 38 league games unbeaten (moved from 028) | scheduled |
 | 046 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 044) | scheduled |
-| 047 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming (follow-up of 012) | reserved |
-| 048 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
-| 049 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
-| 050 | Clubs | Parma in the 1990s: the small-town club Parmalat built, and how it fell | reserved |
-| 051 | Eras | France 1998–2000: World Cup and European champions back to back | reserved |
-| 052 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
-| 053 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
-| 054 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
-| 055 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 043) | reserved |
-| 056 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
-| 057 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
-| 058 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
-| 059 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
-| 060 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
-| 061 | Players | Romário at Barcelona: the hat-trick in the 5–0 against Real Madrid, January 1994 | reserved |
-| 062 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
-| 063 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
-| 064 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
-| 065 | Players | Didier Drogba: Munich 2012, the late header and the last penalty of the Champions League final (follow-up of 026; the 2005 peace appeal is already told in 026) | reserved |
-| 066 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
-| 067 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
-| 068 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
-| 069 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
-| 070 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
+| 047 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 043) | scheduled |
+| 048 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming (follow-up of 012) | reserved |
+| 049 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
+| 050 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
+| 051 | Clubs | Parma in the 1990s: the small-town club Parmalat built, and how it fell | reserved |
+| 052 | Eras | France 1998–2000: World Cup and European champions back to back | reserved |
+| 053 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
+| 054 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
+| 055 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
+| 056 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 047) | reserved |
+| 057 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
+| 058 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
+| 059 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
+| 060 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
+| 061 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
+| 062 | Players | Romário at Barcelona: the hat-trick in the 5–0 against Real Madrid, January 1994 | reserved |
+| 063 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
+| 064 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
+| 065 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
+| 066 | Players | Didier Drogba: Munich 2012, the late header and the last penalty of the Champions League final (follow-up of 026; the 2005 peace appeal is already told in 026) | reserved |
+| 067 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
+| 068 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
+| 069 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
+| 070 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
+| 071 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days

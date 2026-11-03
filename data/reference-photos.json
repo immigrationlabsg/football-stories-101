@@ -561,16 +561,18 @@
   ],
   "043": [
     {
-      "commons": "File:Busby babes last match.jpg",
-      "licence": "Public domain",
-      "why": "The Busby Babes lined up in Belgrade on 5 February 1958, their last match before Munich.",
-      "kit": "Manchester United red shirts, white shorts, 1958",
-      "alt": "Watercolour painting of Manchester United players in red shirts and white shorts lined up before a match in 1958, one in the foreground"
+      "commons": "File:Raúl González in Real Madrid 2009.jpg",
+      "licence": "CC BY-SA 2.0",
+      "pair": true,
+      "why": "1 Dec comparison, Raúl v Messi: left, Raúl, head and upper body, in Real Madrid's white 1998-99 adidas home shirt: white with a navy polo collar, navy adidas stripes on the shoulders, the Real Madrid crest and the TEKA sponsor in navy capital letters across the chest (his photo is from 2009 with bwin: replace bwin with TEKA, and remove the captain's armband), his face, long wet hair and expression exactly as in his photo; right, Lionel Messi at a Barcelona training session in February 2010, smiling, in Barcelona's fluorescent yellow-green Nike training top with the club crest and dark training trousers, exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
+      "kit": "Real Madrid's white 1998-99 adidas home shirt with the TEKA sponsor (in place of the photo's 2009 bwin shirt)",
+      "alt": "Watercolour painting split in two: Raúl in Real Madrid's white TEKA shirt and Lionel Messi smiling in Barcelona's fluorescent yellow training top"
     },
     {
-      "commons": "File:Bobby charlton elgrafico.JPG",
-      "licence": "",
-      "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+      "commons": "File:Lionel Messi - Reus.jpg",
+      "licence": "CC BY 2.0",
+      "why": "Lionel Messi at a Barcelona training session at Reus Deportiu's ground, 9 February 2010 (2009-10, the season of his first Ballon d'Or)",
+      "kit": "Barcelona's 2009-10 Nike training top, as photographed"
     }
   ],
   "044": [
@@ -607,6 +609,20 @@
       "commons": "File:Maradona pateando v inglaterra.jpg",
       "licence": "Public domain",
       "why": "Maradona sliding the Goal of the Century past Shilton."
+    }
+  ],
+  "047": [
+    {
+      "commons": "File:Busby babes last match.jpg",
+      "licence": "Public domain",
+      "why": "The Busby Babes lined up in Belgrade on 5 February 1958, their last match before Munich.",
+      "kit": "Manchester United red shirts, white shorts, 1958",
+      "alt": "Watercolour painting of Manchester United players in red shirts and white shorts lined up before a match in 1958, one in the foreground"
+    },
+    {
+      "commons": "File:Bobby charlton elgrafico.JPG",
+      "licence": "",
+      "why": "Bobby Charlton, survivor and 1968 European Cup winner."
     }
   ],
   "901": [
@@ -653,22 +669,6 @@
       "kit": "Croatia's dark blue chequered 2018 Nike away shirt with the red number 10 and a green captain's armband",
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
-    }
-  ],
-  "t1201": [
-    {
-      "commons": "File:Raúl González in Real Madrid 2009.jpg",
-      "licence": "CC BY-SA 2.0",
-      "pair": true,
-      "why": "1 Dec comparison, Raúl v Messi: left, Raúl, head and upper body, in Real Madrid's white 1998-99 adidas home shirt: white with a navy polo collar, navy adidas stripes on the shoulders, the Real Madrid crest and the TEKA sponsor in navy capital letters across the chest (his photo is from 2009 with bwin: replace bwin with TEKA, and remove the captain's armband), his face, long wet hair and expression exactly as in his photo; right, Lionel Messi at a Barcelona training session in February 2010, smiling, in Barcelona's fluorescent yellow-green Nike training top with the club crest and dark training trousers, exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
-      "kit": "Real Madrid's white 1998-99 adidas home shirt with the TEKA sponsor (in place of the photo's 2009 bwin shirt)",
-      "alt": "Watercolour painting split in two: Raúl in Real Madrid white and Lionel Messi in Barcelona's blue and claret"
-    },
-    {
-      "commons": "File:Lionel Messi - Reus.jpg",
-      "licence": "CC BY 2.0",
-      "why": "Lionel Messi at a Barcelona training session at Reus Deportiu's ground, 9 February 2010 (2009-10, the season of his first Ballon d'Or)",
-      "kit": "Barcelona's 2009-10 Nike training top, as photographed"
     }
   ]
 }

@@ -1,4 +1,8 @@
-# Painting with the owner's ChatGPT plan through Codex (to set up on the Mac mini)
+# Painting with the owner's ChatGPT plan through Codex
+
+**Status (3 Nov 2026): in use and the default painter.** `npm run paint:codex -- N` (scripts/paint-codex.ts) on the
+Mac; the API workflow is the fallback. How to use it: docs/runbook.md section 13. First painting: 043, Raúl v Messi.
+The plan below is kept as the record of how it was set up (step 3's shell script became scripts/paint-codex.ts).
 
 Owner, 3 Nov 2026: use the ChatGPT subscription for paintings instead of OpenAI API credit, automatically.
 

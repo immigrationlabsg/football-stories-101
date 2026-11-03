@@ -20,5 +20,8 @@ GitHub runs the same check every evening (workflow **Verify**) and emails the ow
 - Publish a painting of a named player that was not painted from a real photo of him, or any picture that fails the
   "Picture standard" in `docs/picture-guide.md` (look at the painting and the cards at full size before scheduling).
 - Put a key or token in chat, a file or a commit; secrets live only in GitHub repository secrets.
-- Turn the Meta apps to Live, or link the website on social posts.
+- Link the website on social posts.
+- Change a Meta app's mode without the owner. The Facebook posting app goes Live (owner's decision, 3 Nov 2026, so
+  Facebook Reels are public: docs/incidents/2026-11-03-facebook-reels-hidden.md); the owner makes the switch. Any other
+  Meta app, such as the Threads app, stays in Development mode.
 - Shorten a story by cutting facts silently, or add a fact without a fact-check entry.

@@ -8,135 +8,41 @@
  * Results land in design/paintings/NNN.png for the editor to review; nothing goes live from here.
  *
  * Runs on GitHub's servers (workflow "Paint with GPT Image"), which holds OPENAI_API_KEY.
- * The API is billed per image, separately from ChatGPT Plus.
+ * The API is billed per image, separately from ChatGPT Plus. This is the fallback painter: the default is
+ * scripts/paint-codex.ts on the owner's Mac (ChatGPT plan), which sends the same images and words (scripts/lib/paint-inputs.ts).
  *
  *   npm run paint -- 5 6 7 8 9
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import sharp from 'sharp';
 import { ROOT } from './lib/stories';
-import { api, free, image, strip } from './lib/commons';
+import { STYLE_REF, paintInputs } from './lib/paint-inputs';
 
-type Ref = { commons: string | null; why: string; kit?: string; crop?: string; fit?: 'pad' | 'cover'; pair?: boolean };
-const refs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/reference-photos.json'), 'utf8')) as Record<string, Ref[]>;
 const KEY = process.env.OPENAI_API_KEY;
 // gpt-image-1 was shut down by OpenAI on 23 Oct 2026; its listed replacement is the GPT Image 2.5 pair (Sunburst: precise).
 const MODEL = process.env.MODEL?.trim() || 'gpt-image-2.5-sunburst';
 const QUALITY = process.env.QUALITY || 'high';
 const OUT = path.join(ROOT, 'design/paintings');
-// The editor's approved Ronaldo painting: the look every story is matched to.
-const STYLE_REF = path.join(ROOT, 'public/images/stories/001-ronaldo-r9.jpg');
 const stories = process.argv.slice(2).map((n) => n.padStart(3, '0'));
 if (!KEY) throw new Error('OPENAI_API_KEY is not set. Add it as a repository secret (see docs/runbook.md, section 13).');
 if (!stories.length) throw new Error('Give the story numbers to paint, e.g. npm run paint -- 5 6 7');
 fs.mkdirSync(OUT, { recursive: true });
 
-const wording = (kit?: string) =>
-  'a detailed, semi-realistic watercolour illustration, like a sports-magazine cover. ' +
-  'Vivid, saturated colours with strong contrast, crisp detail, confident brush edges, ' +
-  'paper texture and loose splashes only around the borders, and a dark, detailed background with any crowd as blurred colour. ' +
-  'Square (1:1) frame, the main subject clearly in view with clear space between the top of the head and the top edge. Keep the colours true to the period' +
-  (kit ? ` (${kit})` : '') +
-  ', and keep every crest, logo, stripe, shirt number and lettering exactly as in the photo. ' +
-  'Keep the composition, pose, faces and likenesses exactly as photographed: each person\'s face, skin tone, hair and build must stay ' +
-  'true to the photo, so the player is instantly recognisable. Show the whole head and hair inside the frame with clear space ' +
-  'above it; never crop the top of a head. Do not add text, a signature or a frame.';
-
-async function padded(source: string, W = 1024, H = 1024): Promise<Buffer> {
-  const TOP = Math.round(H * 0.127); // headroom above the photo
-  const back = await sharp(source).rotate().resize(W, H, { fit: 'cover' }).blur(40).modulate({ brightness: 0.85 }).toBuffer();
-  const front = await sharp(source).rotate().resize(W, H - TOP, { fit: 'inside' }).toBuffer();
-  const m = await sharp(front).metadata();
-  return sharp(back)
-    .composite([{ input: front, left: Math.round((W - (m.width ?? W)) / 2), top: H - (m.height ?? H - TOP) }])
-    .jpeg({ quality: 92 })
-    .toBuffer();
-}
-
-/** design/references/NNN-i.jpg, fetched from Commons (licence-checked) when the Reference photos workflow has not. */
-async function photo(n: string, i: number, file: string): Promise<string | null> {
-  const source = path.join(ROOT, 'design/references', `${n}-${i}.jpg`);
-  if (fs.existsSync(source)) return source;
-  const json = await api({ action: 'query', prop: 'imageinfo', iiprop: 'url|extmetadata', iiurlwidth: '1600', titles: file });
-  const ii = (Object.values(json.query?.pages ?? {})[0] as any)?.imageinfo?.[0];
-  const lic = strip(ii?.extmetadata?.LicenseShortName?.value ?? '');
-  if (!ii || !free(lic)) {
-    console.error(`${n}: ${file} ${ii ? `has licence "${lic}", not free to reuse` : 'not found on Commons'}`);
-    return null;
-  }
-  fs.mkdirSync(path.dirname(source), { recursive: true });
-  await sharp(await image(ii.thumburl ?? ii.url)).rotate().resize(1600, 1600, { fit: 'inside' }).jpeg({ quality: 88 }).toFile(source);
-  console.log(`${n}: reference ${file} (${lic}) downloaded`);
-  return source;
-}
-
 for (const n of stories) {
-  const ref = refs[n]?.[0];
-  if (!ref) {
-    console.warn(`${n}: no entry in data/reference-photos.json`);
+  const input = await paintInputs(n);
+  if (!input) {
+    process.exitCode = 1;
     continue;
   }
+  const { photo, prompt } = input;
   const form = new FormData();
   form.append('model', MODEL);
   form.append('size', '1024x1024');
   form.append('quality', QUALITY);
   // Only the gpt-image-1 family took this setting; the 2.5 models edit at high fidelity by default.
   if (MODEL.startsWith('gpt-image-1')) form.append('input_fidelity', 'high');
-  const style = new Blob([fs.readFileSync(STYLE_REF)], { type: 'image/jpeg' });
-  let prompt: string;
-  const second = refs[n]?.[1];
-  // A comparison paints both players from their photos or not at all: never one from a photo and one from a description.
-  if (ref.pair && !(ref.commons && second?.commons)) {
-    console.error(`${n}: "pair" needs a Commons photo in both entries; nothing painted`);
-    process.exitCode = 1;
-    continue;
-  }
-  if (ref.pair) {
-    // An "on this day" comparison: one real photo per player, side by side, each with headroom (picture standard).
-    const [a, b] = [await photo(n, 1, ref.commons!), await photo(n, 2, second!.commons!)];
-    if (!a || !b) {
-      process.exitCode = 1;
-      continue;
-    }
-    const halves = await sharp({ create: { width: 1024, height: 1024, channels: 3, background: '#ffffff' } })
-      .composite([{ input: await padded(a, 512, 1024), left: 0, top: 0 }, { input: await padded(b, 512, 1024), left: 512, top: 0 }])
-      .jpeg({ quality: 92 })
-      .toBuffer();
-    form.append('image[]', new Blob([new Uint8Array(halves)], { type: 'image/jpeg' }), `${n}.jpg`);
-    form.append('image[]', style, 'style.jpg');
-    prompt =
-      `Repaint the first image as ${wording()} It shows two different players side by side: keep it as a split composition, the left ` +
-      `player in the left half and the right player in the right half, joined by a soft vertical watercolour bleed down the middle. ` +
-      `Each player's face, skin tone, hair, build, kit, shirt number, crest and logos must stay exactly as in his half of the photo ` +
-      `(left: ${ref.kit ?? 'as photographed'}; right: ${second!.kit ?? 'as photographed'}). The second image is the style reference: match ` +
-      `its colour saturation, level of detail, contrast and brushwork, but not its subject, pose or composition. Scene: ${ref.why}`;
-  } else if (ref.commons) {
-    const source = await photo(n, 1, ref.commons);
-    if (!source) {
-      process.exitCode = 1;
-      continue;
-    }
-    // The whole photo goes in, lower in the square, over a blurred copy of itself, so the head always has room above it
-    // (owner, 26 Oct 2026: Pirlo's head was cut off). "fit": "cover" in data/reference-photos.json crops to fill instead.
-    const cropped =
-      ref.fit === 'cover'
-        ? await sharp(source).rotate().resize(1024, 1024, { fit: 'cover', position: ref.crop ?? sharp.strategy.attention }).jpeg({ quality: 92 }).toBuffer()
-        : await padded(source);
-    form.append('image[]', new Blob([new Uint8Array(cropped)], { type: 'image/jpeg' }), `${n}.jpg`);
-    form.append('image[]', style, 'style.jpg');
-    prompt =
-      `Repaint the first image as ${wording(ref.kit)} The second image is the style reference: match its colour saturation, level of detail, ` +
-      `contrast and brushwork, but not its subject, pose or composition. Scene: ${ref.why}`;
-  } else {
-    // No free photo: paint a scene with no real person in it. A named player is never painted from a description
-    // (owner, 25 Oct 2026: a text-only "Drogba" came out looking nothing like him); give him a Commons photo instead.
-    const scene = ref.why.replace(/^.*?Paint without a reference:\s*/, '');
-    form.append('image[]', style, 'style.jpg');
-    prompt =
-      `Paint ${wording()} The attached image is the style reference: match its colour saturation, level of detail, contrast and brushwork, ` +
-      `but not its subject, pose or composition. Scene: ${scene} Do not depict any specific real person; no recognisable face.`;
-  }
+  if (photo) form.append('image[]', new Blob([new Uint8Array(photo)], { type: 'image/jpeg' }), `${n}.jpg`);
+  form.append('image[]', new Blob([fs.readFileSync(STYLE_REF)], { type: 'image/jpeg' }), 'style.jpg');
   form.append('prompt', prompt);
   const res = await fetch('https://api.openai.com/v1/images/edits', { method: 'POST', headers: { Authorization: `Bearer ${KEY}` }, body: form });
   const json = (await res.json()) as any;
@@ -146,7 +52,7 @@ for (const n of stories) {
     continue;
   }
   fs.writeFileSync(path.join(OUT, `${n}.png`), Buffer.from(json.data[0].b64_json, 'base64'));
-  console.log(`${n}: painted (${ref.commons ?? 'no reference photo'})`);
+  console.log(`${n}: painted (${input.label})`);
   // What each painting used, as OpenAI reports it, so the cost per picture is known from real runs (owner, 3 Nov 2026).
   const u = json.usage ?? {};
   const row = [new Date().toISOString(), n, MODEL, QUALITY, u.input_tokens_details?.text_tokens ?? '', u.input_tokens_details?.image_tokens ?? '', u.output_tokens ?? '', u.total_tokens ?? ''];

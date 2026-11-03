@@ -275,9 +275,26 @@ caption under the photo. That credit is a legal requirement of the licence: neve
   workflow → story number.
 - The record of which photo each story uses, with its licence, is in `data/hero-sources.json`.
 
-### Paintings with GPT Image (optional, paid)
+### Who paints: Codex on the Mac first, the API only as a fallback (owner, 3 Nov 2026)
 
-The free way is by hand in ChatGPT: see `docs/picture-guide.md`. To have GitHub paint them instead:
+**Every painting is made through Codex on the owner's Mac mini, with the owner's ChatGPT plan.** No API credit and no
+key: Codex was signed in once in the browser (`codex login`). In a Claude session in this folder on the Mac:
+
+1. `npm run paint:codex -- 43` (story numbers, or a draft's reference key such as `t1201`). It sends Codex exactly the
+   same photo, style reference and instructions as the API painter (`scripts/lib/paint-inputs.ts`) and saves
+   `design/paintings/NNN.png`. Codex's own log is in `design/paintings/codex/NNN-log.txt` (not committed).
+2. Open the painting and every card at full size and check them against the picture standard
+   (`docs/picture-guide.md`); repaint until it passes.
+3. If Codex says the plan's limit is reached (`/status` in Codex shows it) or it gives no painting, use the fallback
+   below. If Codex or the API refuses a painting, do not reword the request to get round the refusal: tell the owner.
+
+The first painting made this way was 043, Raúl v Messi (3 Nov 2026), after the API had refused every Messi painting.
+Painting needs the Mac to be on and logged in; the cloud session cannot use the ChatGPT plan.
+
+### Fallback: paintings with the GPT Image API (paid per image)
+
+Use this only when Codex cannot paint (see above). The manual way is by hand in ChatGPT: see `docs/picture-guide.md`.
+To have GitHub paint them through the API:
 
 1. On platform.openai.com, add billing and set a monthly budget limit under Limits. API use is billed separately from ChatGPT Plus.
 2. Create an API key under API keys. Do not paste it into any chat.

@@ -39,7 +39,8 @@ what the weekly run does.
      Facebook already had the slot, run the Reels workflow (action switch, that number; Dry run first, then unticked)
      outside 06:00-10:45 Singapore time, and confirm with "Check a Facebook post" (`reel:<new id>`).
    - **Pictures:** every named player is painted from a real Commons photo (add the file to `data/reference-photos.json`
-     with `kit`, then run "Paint with GPT Image"); a comparison needs one photo per player. Check the painting and the
+     with `kit`, then run `npm run paint:codex -- N` on the Mac; "Paint with GPT Image" only if Codex cannot paint,
+     docs/runbook.md section 13); a comparison needs one photo per player. Check the painting and the
      cards against the "Picture standard" in `docs/picture-guide.md` before handing over the day.
 6. Run `npm run validate` and `npm run verify` and fix every error. Ask the `verifier` subagent to check the week's
    stories (facts against the fact-check logs, no repeated story, rotation, dates, length). Then commit to `main` with
