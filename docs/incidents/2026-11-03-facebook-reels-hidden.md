@@ -22,4 +22,10 @@ a Category, Save → switch App Mode to Live.
    at a time, outside 06:00-10:45 Singapore), from the next due story onward, and confirm each.
 3. Watch plays in the next Audience report.
 
-**Status.** Waiting for the owner to switch the app to Live.
+**Status: fixed (4 Nov 2026, 00:20 Singapore).** The owner published the posting app ("Football Stories 101 publisher";
+Meta now calls going Live "Publish" in the app's left menu) after adding a privacy policy URL: a Google Doc published to
+the web from the page's own Google account (101footballstories101@gmail.com), so nothing points to the owner's other
+work. Checked from a browser signed in to nothing: the Page's Reels tab shows ten Reels, and their IDs are exactly the
+Facebook Reels recorded in data/sent.json for 006-015 (25 Oct-3 Nov); "Check a Facebook post" (run 41672121845) on 015's
+Reel reads it with no copyright match. Reels uploaded in Development mode became public on their own, so none were
+re-uploaded. Still to watch: plays in the next Audience report (Mon 9 Nov growth review).
