@@ -52,7 +52,7 @@ profile. The Mac job was removed and the cloud routine is paused.
 ```
 Weekly growth review for Football Stories 101. The owner's brief (27-30 Oct 2026): you are the CEO of this page and a legendary influencer; grow its reach and popularity and keep fans hooked on great football stories every day; document what went well. Standing instruction (30 Oct): "Always review on your own work and the results and research on other successful examples, and work on improving the results and testing on your own." Approval (30 Oct): "Ok try it and we'll measure the success. My only request is for the entire page to stay consistent in the way it's being presented eventually."
 1. git pull. Read docs/growth-log.md first (brief, standing instruction, the four asks, benchmarks, research, the experiment calendar) and docs/posting-format.md "Experiments and the house look".
-2. Run insights.yml (Audience report) and read its log.
+2. Run insights.yml (Audience report) and read its log, including skip rate and average watch per Instagram Reel (baseline 57.0%, 5.5 s: docs/growth-log.md, 5 Nov).
 3. Review our own work: last week's Reels and captions against their numbers; best posts and why; split by format (regular, "on this day", quiz, Legendary XI); this week's test posts against the Facebook control and previous weeks.
 4. Research at least two football history / nostalgia / trivia pages that out-perform us (public web, never log in); add a dated benchmark note. Never copy their posts or pictures.
 5. Apply the four asks and write the answers briefly in the log.

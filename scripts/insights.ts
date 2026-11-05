@@ -76,7 +76,7 @@ async function metric(base: string, path: string, token: string | undefined, nam
       const social = (await val('post_video_social_actions')) as any;
       const reactions = await val('post_video_likes_by_reaction_type');
       const total = (o: any) => (o && typeof o === 'object' ? Object.values(o).reduce((a: number, b: any) => a + (Number(b) || 0), 0) : o);
-      say(`| ${String(r.n).padStart(3, '0')} | ${r.id} | ${await val('post_impressions_unique')} | ${await val('blue_reels_play_count')} | ${await val('fb_reels_total_plays')} | ${typeof avg === 'number' ? (avg / 1000).toFixed(1) : avg} | ${total(reactions)} | ${social?.COMMENT ?? (typeof social === 'object' ? 0 : social)} | ${social?.SHARE ?? (typeof social === 'object' ? 0 : social)}  ${why.replace(/\|/g, '/')} |`);
+      say(`| ${String(r.n).padStart(3, '0')} | ${r.id} | ${await val('post_impressions_unique')} | ${await val('blue_reels_play_count')} | ${await val('fb_reels_total_plays')} | ${typeof avg === 'number' ? (avg / 1000).toFixed(1) : avg} | ${total(reactions)} | ${social?.COMMENT ?? (typeof social === 'object' ? 0 : social)} | ${social?.SHARE ?? (typeof social === 'object' ? 0 : social)} | ${why.replace(/\|/g, '/')} |`);
     }
   }
   const posts = await get(FB, `${page}/published_posts`, t, { fields: 'id,created_time,message,shares,reactions.summary(true).limit(0),comments.summary(true).limit(0)', limit: '15' });

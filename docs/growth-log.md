@@ -187,6 +187,41 @@ posts beat the baseline clearly (at least +20% reach or double the likes), else 
 limit such posts to the app's own people. Our rule says never switch the apps to Live, so nothing was changed; the owner
 can check by opening the Facebook Page in a private browser window while logged out and seeing whether the Reels show.
 
+## Mid-week diagnosis, 5 Nov 2026 (owner: "start working on the growth")
+
+**Correction.** The 2 Nov review said Instagram's API gives no watch time per Reel. It does: `scripts/insights.ts` had never
+asked. The Audience report now reads average watch time, total watch time and skip rate per Reel, plus reach by follower
+type and surface. Also corrected: Trial Reels need 200 followers on a professional account (1,000 only on a personal one;
+Instagram help page, archived 4 Sep 2026), not 1,000 as written on 30 Oct.
+
+**The numbers we never had (Reels 006-014, 25 Oct - 2 Nov, standard format; Reel length 23.4 s).** Skip rate 48-67%, average
+57.0%; average watch 3.1-6.3 s, mean 5.5 s, about a quarter of the Reel. All reach is non-followers (1,320 of 1,320, last
+28 days); 11 profile visits, no follower gained. Country breakdowns return no data yet. Follows per Reel are not offered.
+
+**What it means (inference, not something Meta states).** Instagram tests each Reel on a small audience and widens only for
+top performers (Meta's recommendations pages). Flat reach of 99-124 with 0 shares looks like never leaving that first
+batch. More than half leave within 3 s; a 5.5 s mean then implies those who stay average roughly 9-13 s, so cards 2-3 (estimate).
+This is a holding problem, not a hashtag or profile problem. Our fact cards average 17 words in 4 s (about 24 characters a second); the cover's painting
+then gives way to plain text cards with only a slow zoom.
+
+**Test running (first frame, to 8 Nov).** The rule set on 2 Nov stays (at least +20% reach or double the likes). Skip rate
+and average watch are now read beside it against 57.0% and 5.5 s, because those are what the first frame acts on. So far
+015: 54.2%, 6.7 s; 016: 59.3%, 4.9 s; two posts, no verdict. (017, the quiz, is outside the test: 65.0%, 4.4 s.)
+
+**Plan, in order of expected effect (evidence notes in the review of 5 Nov: weak where marked).**
+1. 10-15 Nov, experiment 2 as approved and on the calendar: the 12-15 s cut (about 13 s with 4 cards), Instagram only, one
+   change. Cards left out drop facts for that Reel: log which ones openly. The quiz on 14 Nov (026) can't fit and stays standard.
+   Watch skip rate and watch %.
+2. Next proposals, neither approved nor on the calendar; each would take a calendar week and needs the owner's OK:
+   - Reading load: the same Reel length with at most about 12 words a card (only 1 of 45 cards in 006-014 is that short).
+   - Voiceover on the same cards, Instagram only (weak evidence: no study isolates it, and fast-growing faceless pages tend
+     to narrate). A sample comes first.
+3. Name field "Football History Stories 101": search matches the name as well as the handle, and the dot in our handle
+   splits "football" (inference). Needs the owner's OK. Cheap, but only 11 profile visits so far.
+4. Trial Reels from 200 followers. The carousel and Threads weeks stay on the calendar unless the owner changes them. Posting
+   time and a second daily post wait until the Reels hold, and both need the owner's OK.
+5. Collab stays approved but later: the initiator's account reportedly counts more, so a 0-follower initiator adds little.
+
 ## Ideas waiting for evidence
 
 - Posting time. 08:00 Singapore is midnight in the UK and 01:00 in Lagos. Once followers exist, Instagram's audience
