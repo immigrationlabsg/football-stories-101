@@ -122,12 +122,12 @@ async function metric(base: string, path: string, token: string | undefined, nam
   if (media.error) say(`Posts: ${media.error}`);
   else {
     say('');
-    say('| date | post | reach | views | likes | comments | saves | shares | reposts | follows | avg watch (ms) | total watch (ms) | skip rate |');
-    say('|---|---|---|---|---|---|---|---|---|---|---|---|---|');
+    say('| date | post | reach | views | likes | comments | saves | shares | follows | avg watch (ms) | total watch (ms) | skip rate |');
+    say('|---|---|---|---|---|---|---|---|---|---|---|---|');
     for (const x of media.data ?? []) {
       const m: Record<string, string> = {};
-      for (const k of ['reach', 'views', 'saved', 'shares', 'reposts', 'follows', 'ig_reels_avg_watch_time', 'ig_reels_video_view_total_time', 'reels_skip_rate']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
-      say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.reposts} | ${m.follows} | ${m.ig_reels_avg_watch_time} | ${m.ig_reels_video_view_total_time} | ${m.reels_skip_rate} |`);
+      for (const k of ['reach', 'views', 'saved', 'shares', 'follows', 'ig_reels_avg_watch_time', 'ig_reels_video_view_total_time', 'reels_skip_rate']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
+      say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.follows} | ${m.ig_reels_avg_watch_time} | ${m.ig_reels_video_view_total_time} | ${m.reels_skip_rate} |`);
     }
   }
   say('');

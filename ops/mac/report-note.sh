@@ -4,29 +4,29 @@
 #
 #   print -r -- "$REPORT" | ops/mac/report-note.sh ["log file name"] [seconds the alert stays up, default a day]
 #
-# macOS lets a background job add to a known file in ~/Documents but not list the folder, so the note must already exist
-# and is only ever appended to. If it can't be written, the alert says so and points to the log.
+# macOS refuses a background job access to ~/Documents, so Obsidian itself adds the text, through its obsidian:// link
+# (tried 5 Nov 2026: a direct append fails with "operation not permitted"). The job can't read the note back, so the alert
+# also names the log, which always holds the full report.
 set -u
-LOGNAME_=${1:-}
+LOG_NAME=${1:-the newest task6 file}
 ALERT_SECONDS=${2:-86400}
-NOTE="$HOME/Documents/Obsidian Vault/Projects/Football Stories 101/Football Growth Reports.md"
-URI='obsidian://open?vault=Obsidian%20Vault&file=Projects%2FFootball%20Stories%20101%2FFootball%20Growth%20Reports'
-REPORT=$(cat)
-
-if print -r -- "
+VAULT='Obsidian Vault'
+NOTE='Projects/Football Stories 101/Football Growth Reports'
+TEXT=$(cat)
+ENCODE='import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read(), safe=""))'
+V=$(print -rn -- "$VAULT" | /usr/bin/python3 -c "$ENCODE")
+F=$(print -rn -- "$NOTE" | /usr/bin/python3 -c "$ENCODE")
+C=$(print -r -- "
 
 ## $(date +'%-d %b %Y')
 
-$REPORT" >> "$NOTE" 2>/dev/null; then
-  MESSAGE="This week's growth report is ready in your vault."
-  BUTTONS='{"Later", "Open report"}'
-else
-  MESSAGE="This week's growth report could not be saved to your vault. The full report is in the log: ${LOGNAME_:-~/Library/Logs/football-stories-101}"
-  BUTTONS='{"OK"}'
-  URI=''
-fi
+$TEXT" | /usr/bin/python3 -c "$ENCODE")
 
-CHOICE=$(osascript -e "display dialog \"$MESSAGE\" with title \"Football Stories 101\" buttons $BUTTONS default button 1 giving up after $ALERT_SECONDS" 2>&1)
+open -g "obsidian://new?vault=$V&file=$F&content=$C&append=true&silent=true"
+print -r -- "note: asked Obsidian to add the report, exit $?"
+
+MESSAGE="This week's growth report is ready in your vault. If it isn't there, it's in ~/Library/Logs/football-stories-101 ($LOG_NAME)."
+CHOICE=$(osascript -e "display dialog \"$MESSAGE\" with title \"Football Stories 101\" buttons {\"Later\", \"Open report\"} default button 2 giving up after $ALERT_SECONDS" 2>&1)
 print -r -- "alert: $CHOICE"
-[[ -n $URI && $CHOICE == *"Open report"* ]] && open "$URI"
+[[ $CHOICE == *"Open report"* ]] && open "obsidian://open?vault=$V&file=$F"
 exit 0

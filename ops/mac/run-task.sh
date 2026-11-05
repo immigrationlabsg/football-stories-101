@@ -45,6 +45,11 @@ OUT=$(print -r -- "$PROMPT" | claude -p --permission-mode auto "${GUARD[@]}" 2>&
 STATUS=$?
 print -r -- "$OUT" >> "$LOG"
 echo "$(date): task $N ($MODE) finished, exit $STATUS" >> "$LOG"
-# The task's report to the owner: a Mac notification with its last line; the whole report is in the log.
+# The Monday growth review's report goes in the owner's vault, with an alert that stays up (owner, 5 Nov 2026).
+if [[ $N == 6 && $MODE == run ]]; then
+  print -r -- "$OUT" | "${0:A:h}/report-note.sh" "${LOG:t}" >> "$LOG" 2>&1
+  exit 0
+fi
+# Every other task's report to the owner: a Mac notification with its last line; the whole report is in the log.
 LAST=$(print -r -- "$OUT" | grep -v '^[[:space:]]*$' | tail -1 | tr -d '"\\' | cut -c1-200)
 osascript -e "display notification \"$LAST\" with title \"Football Stories: task $N\" subtitle \"Log: ${LOG:t}\"" 2>/dev/null

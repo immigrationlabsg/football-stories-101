@@ -8,7 +8,8 @@ folder.
 - **Where the repo lives:** `~/Developer/football-stories-101`. macOS does not let background jobs read `~/Documents`,
   so the old path `~/Documents/Claude/Projects/football-stories-101` is only a shortcut to it.
 - **Reports:** each run's full output is in `~/Library/Logs/football-stories-101/` (one file per run), and its last
-  line pops up as a Mac notification.
+  line pops up as a Mac notification. The Monday growth review is different: `ops/mac/report-note.sh` has Obsidian add the
+  report to the vault note "Football Growth Reports" and puts up an alert that stays until answered (owner, 5 Nov 2026).
 - **Switched off until the cloud copies are off.** Jobs skip (and note it in `skipped.log`) until the file
   `~/.football-stories-101/mac-tasks-on` exists, so the Mac and the cloud session never both post. To switch on:
   `mkdir -p ~/.football-stories-101 && touch ~/.football-stories-101/mac-tasks-on`; to switch off, delete that file.
