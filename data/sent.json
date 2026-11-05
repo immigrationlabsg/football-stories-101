@@ -626,6 +626,31 @@
       "detail": "scheduled for 2026-12-01T00:00:00.000Z reel 1695343855527787 (music: hebrides)",
       "story": "raul-v-messi-1-december",
       "reel": "dcd5db9fd3a2a508fbe48046584c79a56ec9b833"
+    },
+    {
+      "number": 17,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-05T00:01:49.471Z",
+      "detail": "reel media 17893819275616463",
+      "story": "guess-the-legend-andrea-pirlo"
+    },
+    {
+      "number": 17,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-05T00:01:49.471Z",
+      "detail": "thread 18351624046282413 (cards, Reel in reply, topic Football)",
+      "story": "guess-the-legend-andrea-pirlo"
+    },
+    {
+      "number": 44,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-05T00:02:14.570Z",
+      "detail": "scheduled for 2026-12-02T00:00:00.000Z reel 1507339874558282 (music: egmont) (cover: mystery card)",
+      "story": "guess-the-legend-marta",
+      "reel": "d0459b4a9c0b3885a60350669e63d5ba0b5ec696"
     }
   ]
 }
