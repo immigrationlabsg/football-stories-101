@@ -101,19 +101,33 @@ async function metric(base: string, path: string, token: string | undefined, nam
   say('## Instagram');
   const me = await get(IG, 'me', t, { fields: 'username,account_type,followers_count,follows_count,media_count' });
   say(me.error ? `Account: ${me.error}` : `@${me.username} (${me.account_type ?? 'type unknown'}): ${me.followers_count} followers, follows ${me.follows_count}, ${me.media_count} posts`);
-  for (const m of ['reach', 'views', 'accounts_engaged', 'total_interactions', 'profile_views', 'follows_and_unfollows']) {
+  const profile = await get(IG, 'me', t, { fields: 'name,biography,website' });
+  say(profile.error ? `Profile: ${profile.error}` : `Name field: ${profile.name ?? '(empty)'} / bio: ${short(profile.biography)} / website: ${profile.website ?? '(none)'}`);
+  for (const m of ['reach', 'views', 'accounts_engaged', 'total_interactions', 'profile_views', 'profile_links_taps', 'follows_and_unfollows']) {
     say(`last 28 days ${m}: ${await metric(IG, 'me/insights', t, m, { period: 'day', metric_type: 'total_value', since, until })}`);
+  }
+  // Who is being reached: followers or strangers, and which surface or country. Meta holds some of these back on small accounts.
+  for (const [m, breakdown, extra] of [
+    ['reach', 'follow_type', { period: 'day', since, until }],
+    ['reach', 'media_product_type', { period: 'day', since, until }],
+    ['reached_audience_demographics', 'country', { period: 'lifetime', timeframe: 'this_month' }],
+    ['engaged_audience_demographics', 'country', { period: 'lifetime', timeframe: 'this_month' }],
+    ['follower_demographics', 'country', { period: 'lifetime' }],
+  ] as [string, string, Record<string, string>][]) {
+    const j = await get(IG, 'me/insights', t, { metric: m, metric_type: 'total_value', breakdown, ...extra });
+    const results = j.data?.[0]?.total_value?.breakdowns?.[0]?.results as { dimension_values: string[]; value: number }[] | undefined;
+    say(`${m} by ${breakdown}: ${j.error ? `n/a (${j.error})` : results?.length ? results.map((r) => `${r.dimension_values.join('/')} ${r.value}`).join(', ') : 'n/a (no data)'}`);
   }
   const media = await get(IG, 'me/media', t, { fields: 'id,caption,timestamp,media_type,like_count,comments_count', limit: '15' });
   if (media.error) say(`Posts: ${media.error}`);
   else {
     say('');
-    say('| date | post | reach | views | likes | comments | saves | shares | follows |');
-    say('|---|---|---|---|---|---|---|---|---|');
+    say('| date | post | reach | views | likes | comments | saves | shares | reposts | follows | avg watch (ms) | total watch (ms) | skip rate |');
+    say('|---|---|---|---|---|---|---|---|---|---|---|---|---|');
     for (const x of media.data ?? []) {
       const m: Record<string, string> = {};
-      for (const k of ['reach', 'views', 'saved', 'shares', 'follows']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
-      say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.follows} |`);
+      for (const k of ['reach', 'views', 'saved', 'shares', 'reposts', 'follows', 'ig_reels_avg_watch_time', 'ig_reels_video_view_total_time', 'reels_skip_rate']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
+      say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.reposts} | ${m.follows} | ${m.ig_reels_avg_watch_time} | ${m.ig_reels_video_view_total_time} | ${m.reels_skip_rate} |`);
     }
   }
   say('');
