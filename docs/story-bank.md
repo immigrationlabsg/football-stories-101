@@ -84,6 +84,13 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 069 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
 | 070 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
 | 071 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
+| 072 | Eras | Spain 2008–12: three major tournaments in a row, ending 4–0 against Italy | reserved |
+| 073 | Moments | Belgrade, 20 June 1976: Panenka's chip, practised for chocolate and beer | reserved |
+| 074 | Players | Johan Cruyff and the 1978 World Cup: the reason he gave 30 years later (follow-up of 004) | reserved |
+| 075 | Clubs | Lyon's women: five European titles in a row and eight in all (follow-up of 024) | reserved |
+| 076 | Eras | Bayern Munich 1974–76: three European Cups and the square posts of Hampden | reserved |
+| 077 | Moments | Daejeon, 18 June 2002: Ahn Jung-hwan's golden goal and the row with Perugia | reserved |
+| 078 | Players | Stanley Matthews: the first Ballon d'Or, won at 41 | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
