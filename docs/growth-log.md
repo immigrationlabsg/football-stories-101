@@ -254,6 +254,8 @@ Posted at 20:00 Singapore, not 08:00, while the news was trending: Facebook at 2
 
 **Checks:** four independent checks by frames, transcript and sound levels; the last passed it for the owner. Two small framing fixes after that were checked by me only. Not heard by ear, not seen on a phone. No causal evidence yet: this is a hypothesis about shares until it runs.
 
+**Sound change, 7 Nov:** owner said the Reel was "a bit choppy" and likes the music. The mix had eight hard volume steps and a voice-triggered compressor that pumped between words. Now the same track with slow ramps only, a steady level under the voice, and one bar-line repeat at about 20.5 s. A new smooth track was generated and dropped: the owner prefers the original. Independent check passed before one small timing correction, which I measured myself. Not yet heard by anyone but the owner; if it still sounds choppy, the next suspect is the voice, which has about 32 short silences inside the speech.
+
 **Needs the owner before any test:** this is a different format from the signed-off 23 s cards and public-domain tracks. If approved, the post caption needs the AI and photo credit line, and `data/reference-photos.json` needs the five new Commons files.
 
 ## Ideas waiting for evidence
