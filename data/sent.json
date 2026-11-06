@@ -676,6 +676,15 @@
       "detail": "scheduled for 2026-12-03T00:00:00.000Z reel 1358765422869531 (music: coriolan)",
       "story": "arsenal-invincibles-2003-04",
       "reel": "dfc8ec51290fff53272f0c19c2fac3bb27ecefe5"
+    },
+    {
+      "number": 900,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-06T09:01:58.971Z",
+      "detail": "scheduled for 2026-11-06T12:00:00.000Z reel 3000743136950476 (music: egmont)",
+      "story": "cristiano-ronaldo-portugal-goodbye",
+      "reel": "ef2e7ca260764baef650735a205c13c0089490ee"
     }
   ]
 }
