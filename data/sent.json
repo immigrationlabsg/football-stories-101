@@ -685,6 +685,22 @@
       "detail": "scheduled for 2026-11-06T12:00:00.000Z reel 3000743136950476 (music: egmont)",
       "story": "cristiano-ronaldo-portugal-goodbye",
       "reel": "ef2e7ca260764baef650735a205c13c0089490ee"
+    },
+    {
+      "number": 900,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-06T12:02:19.343Z",
+      "detail": "reel media 18137634544741509 (test: first-frame)",
+      "story": "cristiano-ronaldo-portugal-goodbye"
+    },
+    {
+      "number": 900,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-06T12:02:19.343Z",
+      "detail": "thread 18121633150974758 (cards, Reel in reply, topic Football)",
+      "story": "cristiano-ronaldo-portugal-goodbye"
     }
   ]
 }
