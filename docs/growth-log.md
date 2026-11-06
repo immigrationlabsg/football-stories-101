@@ -232,6 +232,18 @@ Posted at 20:00 Singapore, not 08:00, while the news was trending: Facebook at 2
 
 **Trending evidence used (Instagram, seen logged out on 6 Nov; likes only, views hidden, not a full trending list).** Ronaldo's own Reel 29.6M likes; Portugal 5.3M; 433 2.27M and 2.25M; UEFA EURO 245K. The angle was what Portugal was before him, which those posts mostly did not lead with.
 
+## Format comparison, 7 Nov 2026 (owner: "increase shares and followers")
+
+**Our Reels so far:** 0 shares on every Instagram Reel in the Audience report, about 1,558 reached in 28 days, 11 profile visits, 0 followers. Ronaldo (900) at 4.6 hours: reach 108, skip 54.6%, watch 6.7 s, 6 likes, 0 saves, 0 shares; no breakout.
+
+**Seen on public pages, logged out. Share counts are hidden there, so views and likes stand in for them; one look, not a study.** @tifofootball_ (283K followers): "Why are Arsenal sometimes called THE Arsenal?" 218K views, 15.3K likes, 84 comments; own-goals record question 81.3K views, 1.9K likes; a hosts' guessing game on Messi 384K views, 21.7K likes. @thesefootballtimes (43.1K, history clips with captions): 672-13.1K views, best 556 likes. @brfootball (15.9M): illustrated Ronaldo story 492K views against 13.6M for its top Reel on the same grid; not opened. An independent check read the likes and comments again but could not get the view figures.
+
+**The gap, as far as it can be seen.** Tifo's illustrated Reels open on a question a fan already has, narrate, change picture every few seconds and put three to six words on screen. Ours are statements on seven text cards with a slow zoom, about 17 words per 4 s, no voice. Likes per view are not the gap (Ronaldo 5%, Arsenal 7%, own goals 2.3%). Tifo's size explains much of its reach. No study shows voice or scene changes cause shares (seller-video study of 2,511: speech rate raises shares, scene count inverted U; one preliminary 2023 study: AI voice 7.4% fewer shares). Treat as a hypothesis.
+
+**Sample built, not posted:** story 033, 45 s, nine painted scenes with no people, a synthetic voice, short captions, one closing question. The independent check failed the first cut on facts and pictures; the fixes were made and rechecked by frames and transcript, not by a second independent pass. Waiting on the owner: whether to test it. It changes several things at once, so it would need the owner's OK as an exception to one change at a time.
+
+**Open fact question from that check:** "He was told it was a crick" in 033 has no named source in its log (one search and one page found only "a bit of a sore neck"), and "The man who calmed it was a rabbi" overstates (his captain also welcomed him). 033 is scheduled at Meta for 21 Nov.
+
 ## Ideas waiting for evidence
 
 - Posting time. 08:00 Singapore is midnight in the UK and 01:00 in Lagos. Once followers exist, Instagram's audience
