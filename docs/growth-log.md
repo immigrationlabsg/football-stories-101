@@ -222,6 +222,16 @@ and average watch are now read beside it against 57.0% and 5.5 s, because those 
    time and a second daily post wait until the Reels hold, and both need the owner's OK.
 5. Collab stays approved but later: the initiator's account reportedly counts more, so a 0-follower initiator adds little.
 
+## Extra post, 6 Nov 2026: Ronaldo's international retirement (900, owner's request and OK)
+
+Posted at 20:00 Singapore, not 08:00, while the news was trending: Facebook at 20:00:32 (reel 3000743136950476, Meta says published, no copyright match), Instagram at 20:02 (https://www.instagram.com/foot.ballstories101/reel/DfZjn3Vipae/), Threads at 20:02. Eight cards, 26.8 s.
+
+**Keep it out of the first-frame verdict.** It uses the test's first frame, and its record in `data/sent.json` says "test: first-frame" because it fell in the test window, but a one-off on trending news at a different hour says nothing about the first frame. It also differs in length (26.8 s against 23.4 s) and in time of day.
+
+**Question it does answer.** Does a Reel on a name people are searching for right now leave the first small audience? Read at the Monday review, about 2.5 days in, against Reels 006-014: reach 99-124, skip rate 57.0%, average watch 5.5 s, 0 shares. Also compare 018 from the same morning (150 reach, 179 views after 12 hours). One post, so it is a lead, not a result. Starting point: 0 followers on all three.
+
+**Trending evidence used (Instagram, seen logged out on 6 Nov; likes only, views hidden, not a full trending list).** Ronaldo's own Reel 29.6M likes; Portugal 5.3M; 433 2.27M and 2.25M; UEFA EURO 245K. The angle was what Portugal was before him, which those posts mostly did not lead with.
+
 ## Ideas waiting for evidence
 
 - Posting time. 08:00 Singapore is midnight in the UK and 01:00 in Lagos. Once followers exist, Instagram's audience
