@@ -670,5 +670,14 @@
       "crop": "attention",
       "alt": "Watercolour painting of Luka Modrić in Croatia's number 10 shirt at the 2018 World Cup"
     }
+  ],
+  "900": [
+    {
+      "commons": "File:Euro 2016 Cristiano Ronaldo.jpg",
+      "why": "Tribute to Cristiano Ronaldo on his international retirement: Ronaldo at Euro 2016 in Portugal's red home shirt with the number 7 and the captain's armband, running, exactly as in the photo. Only him: remove the other player's legs at the top of the photo. Background a dark blurred stadium crowd at night instead of the grass and white lines. Everything about him (face, hair, build, pose) exactly as in his photo. No lettering of any kind under the crest on the chest: the red shirt below the crest is plain. The captain's armband is plain dark blue with no words, logos or badges on it. The only characters anywhere in the picture are the white number 7 on the shirt and on the shorts.",
+      "kit": "Portugal's red and dark-red Nike 2016 home shirt, number 7, captain's armband, green socks",
+      "alt": "Watercolour painting of Cristiano Ronaldo running in Portugal's red number 7 shirt with the captain's armband",
+      "fit": "pad"
+    }
   ]
 }

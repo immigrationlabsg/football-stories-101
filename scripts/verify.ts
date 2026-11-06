@@ -29,7 +29,7 @@ for (const s of stories) {
   if (!s.file.startsWith(`${n}-`)) errors.push(`${s.file}: file name does not start with its number ${n}`);
   if (s.data.format === 'quiz') {
     if (s.data.clues.length !== 4 || !s.data.answer) errors.push(`${n}: a Guess the legend quiz needs 4 clues and an answer`);
-  } else if (s.data.facts.length !== 5) errors.push(`${n}: ${s.data.facts.length} facts; the carousel needs 5`);
+  } else if (s.data.facts.length !== 5 && !(s.data.extra && s.data.facts.length === 6)) errors.push(`${n}: ${s.data.facts.length} facts; the carousel needs 5`);
   if (!s.data.hook) errors.push(`${n}: no hook (the banner line on the pictures)`);
   if (!s.data.question) errors.push(`${n}: no reader question`);
   if (!fs.existsSync(path.join(PUBLIC_DIR, s.data.hero.src))) errors.push(`${n}: hero picture ${s.data.hero.src} is missing`);
@@ -123,32 +123,33 @@ const numbers = stories.map((s) => s.data.number);
 if (new Set(numbers).size !== numbers.length) errors.push('two stories share a number');
 
 // 2. The calendar: a launch date, one story per day, the right hour, nothing stranded as a draft.
+const calendar = live.filter((s) => !s.data.extra); // one-off extra posts sit outside the daily rhythm
 if (live.length && !schedule.launch_date) errors.push('stories are scheduled but data/schedule.json has no launch_date');
 if (schedule.launch_date) {
   const drafts = stories.filter((s) => s.data.draft);
   if (drafts.length) warnings.push(`${drafts.length} story(ies) still drafts: ${drafts.map((s) => pad(s.data.number)).join(', ')}`);
 }
-for (let i = 0; i < live.length; i++) {
-  const s = live[i];
+for (let i = 0; i < calendar.length; i++) {
+  const s = calendar[i];
   const d = s.data.date;
   const weekend = [0, 6].includes(new Date(d.getTime() + 8 * 3600e3).getUTCDay());
   if (d.getUTCHours() !== (weekend ? 2 : 0) || d.getUTCMinutes() !== 0) errors.push(`${pad(s.data.number)}: ${d.toISOString()} is not the ${weekend ? '10:00' : '8:00'} SGT slot`);
   if (i > 0) {
-    const gap = Math.round((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(live[i - 1].data.date.getUTCFullYear(), live[i - 1].data.date.getUTCMonth(), live[i - 1].data.date.getUTCDate())) / DAY);
-    if (gap === 0) errors.push(`${pad(live[i - 1].data.number)} and ${pad(s.data.number)} are on the same day`);
+    const gap = Math.round((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(calendar[i - 1].data.date.getUTCFullYear(), calendar[i - 1].data.date.getUTCMonth(), calendar[i - 1].data.date.getUTCDate())) / DAY);
+    if (gap === 0) errors.push(`${pad(calendar[i - 1].data.number)} and ${pad(s.data.number)} are on the same day`);
     if (gap > 1) errors.push(`gap of ${gap - 1} day(s) with no story before ${pad(s.data.number)}`);
-    if (s.data.pillar === live[i - 1].data.pillar) warnings.push(`${pad(live[i - 1].data.number)} and ${pad(s.data.number)} are both "${s.data.pillar}" back to back`);
+    if (s.data.pillar === calendar[i - 1].data.pillar) warnings.push(`${pad(calendar[i - 1].data.number)} and ${pad(s.data.number)} are both "${s.data.pillar}" back to back`);
   }
   if (i > 1) {
     const c = (x: typeof s) => x.data.countries[0];
-    if (c(s) === c(live[i - 1]) && c(s) === c(live[i - 2])) warnings.push(`three ${c(s)} stories in a row ending at ${pad(s.data.number)}`);
+    if (c(s) === c(calendar[i - 1]) && c(s) === c(calendar[i - 2])) warnings.push(`three ${c(s)} stories in a row ending at ${pad(s.data.number)}`);
   }
 }
 // "On this day" comparisons every third day from data/schedule.json on_this_day_from (owner, 25 Oct 2026).
 if (schedule.on_this_day_from) {
   const start = Date.parse(`${schedule.on_this_day_from}T00:00:00+08:00`);
   const every = schedule.on_this_day_every ?? 3;
-  for (const s of live) {
+  for (const s of calendar) {
     const sgDay = Math.floor((s.data.date.getTime() + 8 * 3600e3 - (start + 8 * 3600e3)) / DAY);
     if (sgDay < 0 || s.data.date.getTime() < now.getTime()) continue;
     const due = sgDay % every === 0;
@@ -168,14 +169,14 @@ if (schedule.guess_the_legend_from) {
     const day = sgDate(qStart + k * (schedule.guess_the_legend_every ?? 9) * DAY);
     quizDays.add(isOtd(day) ? sgDate(Date.parse(`${day}T00:00:00+08:00`) + DAY) : day);
   }
-  for (const s of live) {
+  for (const s of calendar) {
     if (s.data.date.getTime() < now.getTime()) continue;
     const day = sgDate(s.data.date.getTime());
     if (quizDays.has(day) && s.data.format !== 'quiz') warnings.push(`${pad(s.data.number)} (${day}) is a "Guess the legend" day; give the slot a quiz and move this story to the end`);
     if (!quizDays.has(day) && s.data.format === 'quiz') warnings.push(`${pad(s.data.number)} is a "Guess the legend" quiz outside the every-9-days rhythm`);
   }
 }
-const last = live.at(-1);
+const last = calendar.at(-1);
 const buffer = (schedule.min_buffer_days ?? 14) * DAY;
 if (schedule.launch_date && (!last || last.data.date.getTime() < now.getTime() + buffer)) {
   warnings.push(`stories run out on ${last?.data.date.toISOString().slice(0, 10) ?? 'launch'}: less than ${schedule.min_buffer_days ?? 14} days ahead; draft more`);
@@ -186,7 +187,7 @@ const social = (sent.social ?? []) as { number: number; network: string; status?
 const has = (n: number, net: string) => social.some((r) => r.number === n && r.network === net);
 for (const s of live) {
   const t = s.data.date.getTime();
-  if (t > now.getTime() + 20 * 60e3 && t < now.getTime() + 26 * DAY && !has(s.data.number, 'facebook')) {
+  if (!s.data.extra && t > now.getTime() + 20 * 60e3 && t < now.getTime() + 26 * DAY && !has(s.data.number, 'facebook')) {
     warnings.push(`${pad(s.data.number)} (${s.data.date.toISOString().slice(0, 10)}) is not scheduled on Facebook yet; run "Schedule Facebook posts"`);
   }
   // A story is late once its slot is DELIVERY_GRACE_MIN minutes past (2 hours by default; the delivery check uses 20).

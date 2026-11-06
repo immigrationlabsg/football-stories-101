@@ -26,7 +26,7 @@ for (const s of stories) {
   if (social > INSTAGRAM_LIMIT) {
     warnings.push(`${s.file}: the Facebook and Instagram text is ${social} characters, over Instagram's ${INSTAGRAM_LIMIT}; Instagram will refuse it`);
   }
-  if (s.data.facts.length !== 5) {
+  if (s.data.facts.length !== 5 && !(s.data.extra && s.data.facts.length === 6)) {
     warnings.push(`${s.file}: ${s.data.facts.length} fact(s); the carousel needs exactly 5`);
   }
   if (!s.data.question) {

@@ -125,6 +125,17 @@ const quizCardsSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'qu
 const testCoverSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'test-cover.ts'));
 const widthsKey = WIDTHS.join(',');
 
+// A one-off extra post has no place in the numbered series, so its closing card hides the "Story No." line. Done here, not
+// in cards.ts, because a change to cards.ts would re-make (and need re-uploading) every scheduled Reel.
+async function closeWithoutNumber(story: (typeof stories)[number]['data']): Promise<Buffer> {
+  const card = await renderIgClose(story);
+  const { data } = await sharp(card).extract({ left: 10, top: 10, width: 1, height: 1 }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  return sharp(card)
+    .composite([{ input: { create: { width: 340, height: 50, channels: 3, background: { r: data[0], g: data[1], b: data[2] } } }, left: 70, top: 72 }])
+    .png()
+    .toBuffer();
+}
+
 for (const story of stories) {
   const n = pad3(story.data.number);
   const heroPath = heroFile(story);
@@ -152,7 +163,7 @@ for (const story of stories) {
         () => renderIgCover(story.data, hero),
         ...story.data.facts.map((fact, i) => () => renderIgFact(story.data, fact, i + 1, story.data.facts.length)),
         ...(story.data.lineup ? [() => renderLineup(story.data)] : []),
-        () => renderIgClose(story.data),
+        () => (story.data.extra ? closeWithoutNumber(story.data) : renderIgClose(story.data)),
       ];
   const og = path.join(OUT, `${n}-og.png`);
   const fb = path.join(OUT, `${n}-fb.png`);

@@ -46,12 +46,12 @@ const follower = stories.find((s) => s.data.followUpOf === slot);
 if (follower) throw new Error(`${pad3(follower.data.number)} follows up ${pad3(slot)}, so ${pad3(slot)} cannot move to the end of the queue; hand over another slot`);
 
 // Where the old story goes: the next free number, the day after the last scheduled story, at that day's slot time.
-const live = stories.filter((s) => !s.data.draft).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const live = stories.filter((s) => !s.data.draft && !s.data.extra).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 const lastDay = live.at(-1)!.data.date;
 const sgMidnight = Date.parse(`${new Date(lastDay.getTime() + 8 * 3600e3).toISOString().slice(0, 10)}T00:00:00+08:00`) + DAY;
 const weekend = [0, 6].includes(new Date(sgMidnight + 8 * 3600e3).getUTCDay());
 const newDate = new Date(sgMidnight + (weekend ? 10 : 8) * 3600e3).toISOString().replace('.000Z', 'Z');
-const to = Math.max(...stories.map((s) => s.data.number)) + 1;
+const to = Math.max(...stories.filter((s) => !s.data.extra).map((s) => s.data.number)) + 1;
 const [from3, to3] = [pad3(slot), pad3(to)];
 
 const DATA_FILES = ['data/reference-photos.json', 'data/reference-queries.json'];

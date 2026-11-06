@@ -20,6 +20,7 @@ what the weekly run does.
 4. Scheduling:
    - if `launch_date` is null, save every story with `draft: true` and `date: 2027-01-01T00:00:00Z`;
    - otherwise give each new story the next free daily slot after the last scheduled story
+   (numbers 900 and up are one-off extra posts, `extra: true`; they take no slot and the series carries on from the highest normal number)
      (Story No. 001 on `launch_date`; weekdays `T00:00:00Z`, weekends `T02:00:00Z`) and `draft: false`.
 5. Mark them `drafted` (or `scheduled`) in the story bank.
 5a. **The weekly mix (owner, 25-26 Oct 2026): 7 pieces a week.** Every third day from `on_this_day_from` is an

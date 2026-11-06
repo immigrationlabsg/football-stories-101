@@ -93,6 +93,11 @@ export const storySchema = z.object({
     .optional(),
   clues: z.array(z.string().trim().min(1).max(160, 'a clue must be 160 characters or fewer')).max(4).default([]),
   answer: z.string().trim().min(1).optional(),
+  /**
+   * A one-off topical post beside the day's story (owner, 6 Nov 2026: Ronaldo's retirement). Any hour, outside the daily
+   * calendar and rhythm checks, up to six fact cards, and no story number on the closing card. Posted by a manual run.
+   */
+  extra: z.boolean().default(false),
   draft: z.boolean().default(false),
 });
 
