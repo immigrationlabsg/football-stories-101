@@ -244,6 +244,18 @@ Posted at 20:00 Singapore, not 08:00, while the news was trending: Facebook at 2
 
 **Open fact question from that check:** "He was told it was a crick" in 033 has no named source in its log (one search and one page found only "a bit of a sore neck"), and "The man who calmed it was a rabbi" overstates (his captain also welcomed him). 033 is scheduled at Meta for 21 Nov.
 
+## Owner rejected the Trautmann sample, Maradona sample made, 7 Nov 2026
+
+**Owner's verdict on the Trautmann sample:** did not know who he was, the pictures did not make them visualise anything, and no music. "Even I would not share it." The missing music was my mix error: music about -30 LUFS under a voice at about -15. Lesson: a share needs a name people already know and pictures that show the moment itself; a surprising story about an unknown man asks too much in the first seconds.
+
+**New sample, not posted (kept in ~/Developer/football-stories-samples/maradona-reel):** 43.7 s, Maradona v England 1986, hook "The most notorious goal in World Cup history. Four minutes later, the same man scored the Goal of the Century." Whole paintings from real Commons photographs with camera moves, a drawn pitch map counting the five players, the 1980 Wembley miss and his brother's advice as the turn, "Cheat or genius?" at the end. Voice, generated music and crowd sound, music measured under the voice throughout. Facts in `docs/fact-checks/046.md`.
+
+**Tried and dropped:** AI motion clips (faces, shirts and numbers drift, duplicate balls), cut-out layers (headless players, halos).
+
+**Checks:** four independent checks by frames, transcript and sound levels; the last passed it for the owner. Two small framing fixes after that were checked by me only. Not heard by ear, not seen on a phone. No causal evidence yet: this is a hypothesis about shares until it runs.
+
+**Needs the owner before any test:** this is a different format from the signed-off 23 s cards and public-domain tracks. If approved, the post caption needs the AI and photo credit line, and `data/reference-photos.json` needs the five new Commons files.
+
 ## Ideas waiting for evidence
 
 - Posting time. 08:00 Singapore is midnight in the UK and 01:00 in Lagos. Once followers exist, Instagram's audience
