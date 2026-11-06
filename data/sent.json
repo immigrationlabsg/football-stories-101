@@ -651,6 +651,31 @@
       "detail": "scheduled for 2026-12-02T00:00:00.000Z reel 1507339874558282 (music: egmont) (cover: mystery card)",
       "story": "guess-the-legend-marta",
       "reel": "d0459b4a9c0b3885a60350669e63d5ba0b5ec696"
+    },
+    {
+      "number": 18,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-06T00:01:45.776Z",
+      "detail": "reel media 18105328298372905 (test: first-frame)",
+      "story": "eusebio-mozambique-benfica-1966"
+    },
+    {
+      "number": 18,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-06T00:01:45.776Z",
+      "detail": "thread 18081915866382908 (cards, Reel in reply, topic Football)",
+      "story": "eusebio-mozambique-benfica-1966"
+    },
+    {
+      "number": 45,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-06T00:02:09.753Z",
+      "detail": "scheduled for 2026-12-03T00:00:00.000Z reel 1358765422869531 (music: coriolan)",
+      "story": "arsenal-invincibles-2003-04",
+      "reel": "dfc8ec51290fff53272f0c19c2fac3bb27ecefe5"
     }
   ]
 }
