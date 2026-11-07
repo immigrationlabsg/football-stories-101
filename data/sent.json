@@ -348,15 +348,6 @@
       "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
     },
     {
-      "number": 22,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-27T15:31:43.954Z",
-      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1140893038432648 (music: mozart40)",
-      "story": "van-persie-v-salah-10-november",
-      "reel": "b128ae8cd42beeb6e5752c3550619ff297248500"
-    },
-    {
       "number": 25,
       "network": "facebook",
       "status": "scheduled",
@@ -727,6 +718,15 @@
       "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 2430137441125881 (music: cinematic-trailer)",
       "story": "denmark-euro-1992",
       "reel": "d77789069bad67be49b04598043b9779484e4a34"
+    },
+    {
+      "number": 22,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T17:54:50.670Z",
+      "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1118145271218716 (music: sports-documentary)",
+      "story": "van-persie-v-salah-10-november",
+      "reel": "9e3301707d8913cafb991e63ba91b2acbf936740"
     }
   ]
 }
