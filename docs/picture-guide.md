@@ -110,7 +110,7 @@ point in its report. The verifier repeats the check.
 4. **Period kit.** The shirt should match the year of the story. If the only photo shows the wrong shirt, say which kit you want in the prompt (for example "Ajax white shirt with a broad red band, 1973").
 5. **Simple background.** Grass, sky or a blurred stand is ideal. Busy stadium signs and crowds turn into clutter in watercolour.
 6. **Free licence only.** Public domain, CC0, CC BY or CC BY-SA. Never use NC (non-commercial), ND (no derivatives) or "fair use" photos, or agency photos that carry no free licence.
-7. **No crests or sponsors.** Badges, sponsor names and advertising boards should not dominate the picture. The prompt removes them, but it works better if they are small to begin with.
+7. **Readable kit, no clutter.** Advertising boards should not dominate the picture. Crests, maker's logos and sponsors the photo shows stay (owner, 7 Nov 2026); prompts kept from before then removed them.
 8. **Portrait-friendly framing.** Head and upper body, with some space around them, crops well to a square. A tiny figure in a wide shot does not.
 
 If no free photo exists, paint a scene without a real person's face: a figure seen from behind, an object (a neck brace, a trophy, a ship), or a place. The table marks these stories "no reference".

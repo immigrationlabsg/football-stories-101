@@ -27,7 +27,7 @@ change it only when the owner decides to.
   "special_weeks"). Featured means either name of a comparison, a quiz's answer or a story's main subject; a passing
   mention in another story is not featuring.
 
-- **A one-off extra post for huge news** (owner, 6 Nov 2026, first: Ronaldo's international retirement): `extra: true` in the story, a number from 906 up (900 was the first; 901-905 are taken in data/reference-photos.json), any hour, up to six fact cards, no story number on the closing card. It sits outside the calendar and rhythm checks and is posted by a manual "Publish daily" run with its story number. Only with the owner's OK each time.
+- **A one-off extra post for huge news** (owner, 6 Nov 2026, first: Ronaldo's international retirement): `extra: true` in the story, a number from 906 up (900 was the first; 901-905 are taken in data/reference-photos.json), any hour, up to six fact cards, no story number on the closing card. It sits outside the calendar and rhythm checks. If it goes to all networks it is posted by a manual "Publish daily" run with its story number; that run also emails and posts to Telegram, so a story with `onlyOn` never goes that way. Only with the owner's OK each time.
 
 - **Extra posts: narrated Reels** (owner, 7 Nov 2026): three a week, Tue, Thu and Sun at 20:00 Singapore, Instagram and Threads only, Facebook stays the control. Made by the weekly run (`docs/scheduled-tasks.md`, task 7) with the `narrated-reel` skill, posted after the owner's OK by workflow "Post extras", not by "Publish daily". Steps in `.claude/skills/narrated-reel/references/posting.md`.
 

@@ -129,6 +129,16 @@ for (const s of stories) {
   else if (fs.statSync(file).size > 90e6) errors.push(`${n}: narrated Reel is over 90 MB, too large for the repository and Instagram`);
   if (!s.data.extra) errors.push(`${n}: a narrated Reel must be an extra post`);
   if (!s.data.reelCredits) errors.push(`${n}: a narrated Reel needs reelCredits (every photo's author and licence)`);
+  if (!s.data.onlyOn?.length) errors.push(`${n}: a narrated Reel needs onlyOn, or the daily run would post it to Facebook, email and Telegram`);
+  const reply = (sent.social ?? []).find((r: { number: number; network: string; detail: string }) => r.number === s.data.number && r.network === 'threads' && r.detail.includes('Reel reply FAILED'));
+  if (reply) warnings.push(`${n}: the Threads post is live but its Reel reply failed; post the Reel to that thread by hand`);
+}
+// Two extras on one Singapore day would post the same evening.
+const extraDays = new Map<string, number>();
+for (const s of stories.filter((x) => x.data.extra && !x.data.draft)) {
+  const day = new Date(s.data.date.getTime() + 8 * 3600e3).toISOString().slice(0, 10);
+  if (extraDays.has(day)) errors.push(`${pad(s.data.number)} and ${pad(extraDays.get(day)!)} are both extra posts on ${day}`);
+  extraDays.set(day, s.data.number);
 }
 const numbers = stories.map((s) => s.data.number);
 if (new Set(numbers).size !== numbers.length) errors.push('two stories share a number');

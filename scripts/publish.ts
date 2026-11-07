@@ -115,7 +115,7 @@ function pickArchive(stories: LoadedStory[], sent: SentFile): LoadedStory | null
   const todayKeyPrefix = `archive:`;
   const sentToday = new Set(sent.sent.filter((r) => r.key.startsWith(todayKeyPrefix) && r.key.endsWith(isoDate(now))).map((r) => r.number));
   const pool = stories
-    .filter((s) => !s.data.draft && s.data.date.getTime() <= now.getTime() - DUE_WINDOW_MS)
+    .filter((s) => !s.data.draft && !s.data.onlyOn && s.data.date.getTime() <= now.getTime() - DUE_WINDOW_MS)
     .filter((s) => !sentToday.has(s.data.number));
   if (pool.length === 0) return null;
   pool.sort(

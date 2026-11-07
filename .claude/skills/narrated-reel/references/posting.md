@@ -6,7 +6,7 @@ Route built 7 Nov 2026. First real post: story 906 on 10 Nov; update this file w
 2. Copy `final.mp4` to `assets/reels/NNN-<name>.mp4`. Add the story: a number from 906 up, `extra: true`, `onlyOn: ["instagram", "threads"]`, `narratedReel: "assets/reels/NNN-<name>.mp4"`, `reelCredits` (every photo's author and licence, for the caption), date at 12:00Z (20:00 Singapore), hero, facts, the same question as the ending card, and `docs/fact-checks/NNN.md`. Add the photos to `data/reference-photos.json`.
 3. `npm run images`, then look at the story's cards at full size: Threads posts them with the Reel in a reply.
 4. `npm run verify`, commit, push. Once the site has deployed, run "Post to social" with the story number, networks `instagram threads` and Dry run ticked: it proves the mp4 and cards are live and prints the captions.
-5. Nothing more is needed. "Post extras" posts at the date: GitHub starts it around the slot and the Mac starts it at 19:45. It waits for the exact time, skips what is recorded, and retries only what is missing for six hours.
+5. Nothing more is needed. "Post extras" posts at the date: GitHub starts it around the slot and the Mac starts it at 19:45. It waits for the exact time, skips what is recorded, and a later start retries only what is missing; the last automatic start is 20:47 Singapore, so after that rerun "Post extras" by hand (it still posts up to six hours late). A failed run, or a Threads post whose Reel reply failed, turns red and GitHub emails the owner.
 
 `onlyOn` is enforced in `postStoryToSocials`, so no route can send the story to Facebook. The daily run ignores these stories, so no email or Telegram goes out.
 

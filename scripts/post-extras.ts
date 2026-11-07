@@ -25,5 +25,6 @@ for (const story of due) {
   }
   const outcomes = await postStoryToSocials(story, { kind: 'scheduled', webLive: webLiveDate(story).getTime() <= Date.now(), dryRun, networks: story.data.onlyOn, skipDone: true });
   if (!dryRun) recordSocial(story.data.number, outcomes, story.data.slug);
-  if (outcomes.some((o) => o.status === 'failed')) process.exitCode = 1;
+  // A Threads post whose Reel reply failed is recorded as posted (it is live), so turn the run red: GitHub emails the owner.
+  if (outcomes.some((o) => o.status === 'failed' || o.detail.includes('Reel reply FAILED'))) process.exitCode = 1;
 }
