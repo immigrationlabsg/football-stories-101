@@ -17,3 +17,5 @@
 | "No team has ever won by more" and "first ever season in Europe", both from good reports | Verifier: HJK 10-0 in qualifying; the 1980-81 Mitropa Cup. A fan would answer in the comments | Attribute a record to its source and test it against the records page; say the narrower true thing |
 | Writing "blue shorts" into the kit rule without looking | Painted wrong: the photo has white shorts | Read the kit off the photo itself |
 | Zooming a team painting that fills the width | Outer player cut at the edge | Leave grass either side when painting; don't zoom a full-width group |
+| A custom painted end card with the question | Owner: posts should stay consistent and end on the page's own ending card | `closing_card.ts` plus `R.closing()`; the question is spoken with a caption just before it |
+| `still()` shots from a JPEG are tagged full-range, and the concat decoder then lifts everything after them | Maradona's ending card came out at grey 31 against 16 on Como, seen only by sampling the pixel | `still()` now converts to TV range; sample the card colour in the final file |

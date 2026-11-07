@@ -126,7 +126,7 @@ c1=wt(7,3)-0.08; c2=wt(7,5); e7=VOICE_END
 R.anim('fist',b11,c1,(1.0,1.04,25,25,0,0))
 R.anim('goal',c1,c2,(1.0,1.02,0,0,0,0))
 R.anim('celebrate',c2,e7,(1.0,1.04,-21,-21,0,10))
-R.endcard(('fist',(0,0,1024,720)),('goal',(0,470,1024,1190)),[("CHEAT",WHITE),("OR GENIUS?",GOLD)])
+R.closing()   # the page's own ending card; make closing.png first with scripts/closing_card.ts
 R.finish_video(sizes={'ABOUT 11 SECONDS':96,'ENGLAND PLAYERS, THEN ROUND THE KEEPER':(60,960)})
 VE=VOICE_END; T=dur(f'{R.B}/captioned.mp4')
 fader=[(0,-11.5),(lt(1)-0.2,-11.5),(lt(2),-13),      # hook, then settle under the story

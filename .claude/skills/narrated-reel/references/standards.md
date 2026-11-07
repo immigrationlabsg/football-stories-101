@@ -22,6 +22,10 @@ The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py`
 - AI tag (M): `XMP-iptcExt:DigitalSourceType` = trainedAlgorithmicMedia. `R.mix` writes it. Any later re-encode loses it: rewrite it.
 - No black frames (M).
 
+## Ending
+
+- The last thing on screen is the page's own ending card, byte for byte the renderer the daily posts use, for 4 s with the question in italics. The spoken question gets a normal caption over the last picture before it.
+
 ## Captions
 - Burnt in frame by frame by the engine, in Arial Black, white with a black outline, accent word in gold.
 - On screen at least 0.9 s (M), no faster than 27 characters a second (M). Three rows at most.

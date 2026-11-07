@@ -17,7 +17,7 @@ def encoder(out,crf=17):
 class Reel:
     """CH: for each voice line, a list of (words in chunk, caption text or None, accented words, caption y centre).
     Voice clips are lines/0.mp3, 1.mp3... TEMPO and GAP give each line's speed and the pause after it."""
-    def __init__(self,folder,CH,TEMPO,GAP,end_hold=2.4,scenes='scenes'):
+    def __init__(self,folder,CH,TEMPO,GAP,end_hold=4.0,scenes='scenes'):
         self.S=os.path.abspath(folder); self.B=self.S+'/build'; os.makedirs(self.B,exist_ok=True)
         self.CH,self.TEMPO,self.GAP,self.end_hold,self.scenes=CH,TEMPO,GAP,end_hold,scenes
         self.shots=[]; self.extend={}; self.cache={}
@@ -82,7 +82,7 @@ class Reel:
         out=self.next_out(); n=int(round(end*FPS))-int(round(start*FPS))
         im=Image.open(f'{self.S}/{folder or self.scenes}/{name}.png').convert('RGB'); w,h=im.size; cw=int(h*9/16); x=int((w-cw)*cx); im=im.crop((x,0,x+cw,h)).resize((W*2,H*2),Image.LANCZOS); p=f'{self.B}/_{name}.jpg'; im.save(p,quality=94)
         z=f"{z0}+({z1}-{z0})*on/{max(1,n)}"
-        run('ffmpeg','-y','-loop','1','-i',p,'-vf',f"zoompan=z='{z}':x='(iw-iw/zoom)*{cx}':y='(ih-ih/zoom)*{cy}':d={n}:s={W}x{H}:fps={FPS},format=yuv420p",'-frames:v',str(n),'-c:v','libx264','-crf','18','-preset','medium',out)
+        run('ffmpeg','-y','-loop','1','-i',p,'-vf',f"zoompan=z='{z}':x='(iw-iw/zoom)*{cx}':y='(ih-ih/zoom)*{cy}':d={n}:s={W}x{H}:fps={FPS},scale=in_range=pc:out_range=tv,format=yuv420p",'-frames:v',str(n),'-c:v','libx264','-crf','18','-preset','medium',out)
     def endcard(self,top,bottom,words,dur_s=None):
         """words: rows of (text, colour). top and bottom: (painting, crop box), pictures above and below the question."""
         out=self.next_out(); dur_s=dur_s or (self.END-self.VOICE_END)
@@ -93,6 +93,12 @@ class Reel:
             d.text(((W-f.getlength(t_))/2,790+i*160),t_,font=f,fill=c,stroke_width=6,stroke_fill=(0,0,0,255))
         im=Image.alpha_composite(im.convert('RGBA'),ov).convert('RGB'); p=f'{self.B}/_end.jpg'; im.save(p,quality=94)
         run('ffmpeg','-y','-loop','1','-i',p,'-vf','format=yuv420p','-t',f'{dur_s}','-r',str(FPS),'-c:v','libx264','-crf','18',out)
+    def closing(self,png='closing.png',dur_s=None):
+        """The page's own ending card (from scripts/closing_card.ts), laid out as the daily Reels lay it: blurred copy behind, slow zoom, 4 s."""
+        out=self.next_out(); dur_s=dur_s or (self.END-self.VOICE_END); n=int(round(dur_s*FPS))
+        fc=(f"[0:v]split[x][y];[x]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:2,eq=brightness=-0.15,fps={FPS}[bg];"
+            f"[y]scale=1620:2025,zoompan=z='1+0.06*on/{n}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d={n}:s=1080x1350:fps={FPS}[c];[bg][c]overlay=0:285:shortest=1,format=yuv420p,setsar=1[v]")
+        run('ffmpeg','-y','-loop','1','-t',f'{dur_s}','-i',f'{self.S}/{png}','-filter_complex',fc,'-map','[v]','-frames:v',str(n),'-r',str(FPS),'-c:v','libx264','-crf','18',out)
     # ---- captions
     @staticmethod
     def caption(txt,acc,y,out,size=76,wrap=800):
