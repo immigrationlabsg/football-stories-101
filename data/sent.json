@@ -694,15 +694,6 @@
       "reel": "a29f6a21258bc43222f3a5945bd0000e2c4f1d33"
     },
     {
-      "number": 20,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-07T17:51:14.659Z",
-      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 1433825321719434 (music: sports-documentary)",
-      "story": "barcelona-guardiola-2008-2012",
-      "reel": "e5c4af34542dad5d3f6271d271388551c95caafe"
-    },
-    {
       "number": 21,
       "network": "facebook",
       "status": "scheduled",
@@ -728,6 +719,15 @@
       "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 1693439635484779 (music: cinematic-trailer)",
       "story": "wimbledon-crazy-gang-1988-fa-cup",
       "reel": "42cd280c5c6e48fdf1630efeb37785ad229166ab"
+    },
+    {
+      "number": 20,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T23:28:19.314Z",
+      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 4602450816657479 (music: sports-documentary)",
+      "story": "barcelona-guardiola-2008-2012",
+      "reel": "772bb1a939ae05195f1ce2cdc7233a41ad12fbcc"
     }
   ]
 }
