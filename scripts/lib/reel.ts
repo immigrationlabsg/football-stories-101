@@ -78,3 +78,6 @@ export async function renderReel(cardFiles: string[], track: string, out: string
 export const AI_SOURCE_TYPE = 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia';
 /** Stops the background exiftool process; call once when all Reels are made, or the build never exits. */
 export const endReelTools = () => exiftool.end();
+
+/** Where a finished picture Reel lives when it is not in the repository: the public "reels" release. */
+export const reelReleaseUrl = (file: string) => `https://github.com/immigrationlabsg/football-stories-101/releases/download/reels/${file.split('/').pop()}`;

@@ -72,28 +72,29 @@ Weekly ad hoc Reels for Football Stories 101 (owner, 7 Nov 2026: three narrated 
 6. Report to the owner: for each Reel the path of the mp4, the script, the news hook with its source, the caption, what was not verified (nobody can hear it here), credits left. Say that the Reels post only after the owner says OK, and that the committed drafts are visible in the public repository meanwhile: on their OK a session sets draft: false and pushes before the slot, and workflow "Post extras" posts them.
 ```
 
-## 8. Daily narration batch: every day 09:00
+## 8. Daily picture Reels: every day 09:00
 
 ```
-Daily narration batch for Football Stories 101 (owner, 8 Nov 2026: every Reel has narration and music sample 3 or 4 rotating, on Facebook, Instagram and Threads; "every day at 9am, just do 5 more again, until all are changed"). In this folder:
-1. git pull. Read CLAUDE.md (the Never list) and the "Narrated Reels" part of docs/posting-format.md. Run npm run narration -- status. If nothing is left, say so in one line and stop.
-2. Run npm run narration -- plan 5. It prints each story's spoken lines, which are the cards' own text. Read every line as a voice would say it. You may change how a line is written in its lines.json so it is said correctly (a score, a season, a name's spelling), never what it says: no added, cut or changed fact. If a card's text cannot be read aloud sensibly, leave that story out and report it.
-3. Check Higgsfield's balance. If it is under 100 credits, stop and tell the owner; never buy credits. Make each line with generate_audio: model text2speech_v2, variant elevenlabs, voice_type preset, voice_id from lines.json, about 6 jobs at a time (a 429 refusal means fewer, wait, then resend only those). Download each result to assets/narration/NNN/<line number>.mp3. Never send anything to earshot's llm command.
-4. For each story run npm run narration -- test NNN <a temporary folder> and check the file with ffmpeg and ~/Developer/football-stories-samples/.venv/bin/python -I: every clip's words against its line by transcript, loudness about -14 LUFS, true peak under -1 dB, length under the track's limit, and look at frames as each line starts to see that its card is the one on screen. A story that fails: make the voice again or leave it out and report it. A name the transcriber mishears needs saying in the report, not a guess.
-5. npm run validate and npm run verify with 0 errors, except that a "Facebook Reel has other music" error for a story in this batch is expected: only task 9 clears it, after this push. Have a general-purpose subagent that did not do the work check the batch the same way, tracing it end to end; fix what it finds and recheck. Tell it not to report anything as blocked until it has tried every allowed route.
-6. Commit "narration: NNN to NNN" and push. Confirm the "Build and deploy" run succeeded and that /images/derived/reel-music.json on the site names each new story with its right track. Facebook's scheduled Reels are replaced by task 9 at 11:05, because the repository forbids that between 06:00 and 10:45.
-7. Report to the owner in 3-5 lines: which stories were done, which music each has, credits left, anything not verified (nobody can hear it here), how many are left.
+Daily picture Reels for Football Stories 101 (owner, 8 Nov 2026: every Reel is storytelling with pictures behind the captions, narration, and music sample 3 or 4 rotating, on Facebook, Instagram and Threads; no wording-only cards; "every day at 9am, just do 5 more"). In this folder:
+1. git pull. Read CLAUDE.md (the Never list), docs/picture-guide.md, the "Narrated Reels" part of docs/posting-format.md and .claude/skills/narrated-reel/SKILL.md with its references. Run npm run narration -- status. If nothing is left, say so in one line and stop.
+2. Run npm run narration -- plan 5. The script for each is its printed lines: the cards' own fact-checked words. You may change how a line is written in lines.json so it is said correctly, never what it says.
+3. Check Higgsfield's balance. Under 100 credits, stop and tell the owner; never buy credits. Make any missing clip per the skill (voice in lines.json, about 6 at a time; on a 429, wait and resend only those) into assets/narration/NNN/.
+4. Give each story its own general-purpose subagent, working only in ~/Developer/football-stories-samples/story-NNN/, to build it by .claude/skills/narrated-reel/references/daily-reel-recipe.md: the story's fixed voice and script, music 3-sports-documentary (even numbers, end_src 62.5) or 4-cinematic-trailer (odd, end_src 65), 6 to 12 paintings from Commons photos only (never agency or uncleared; a named player from a real photo; real logos only; no moment invented), first frame the event, captions on pictures all the way, the page's ending card. Tell each one to try every allowed route before reporting anything as blocked. A story with no good pictures: leave it out and report it; never post a weak one.
+5. A separate general-purpose subagent that did not build them checks every Reel: frames at full size, words against lines.json, check_reel.py, ticks, licences. Fix and recheck.
+6. Upload each final.mp4 with gh release upload reels <file>#<name> as NNN-<slug>.mp4 on the "reels" release of this repository. In the story set narratedReel: "assets/reels/NNN-<slug>.mp4" and reelCredits (under 200 characters, every author and licence), and add the new photos to data/reference-photos.json and any credit the site needs. Do not put these videos in git.
+7. npm run validate and npm run verify with 0 errors, except a "Facebook Reel has other music" error for a story in this batch: only task 9 clears it. Commit "reels: NNN to NNN" and push. Confirm the Build and deploy run succeeded. A Reel more than 10 days away reaches the site later, on its own.
+8. Report to the owner in 3-5 lines: what was done, music, credits left, gaps, anything not verified (nobody can hear it here), how many are left.
 ```
 
-## 9. Facebook swap for the narrated batch: every day 11:05
+## 9. Facebook swap for the picture Reels: every day 11:05
 
 ```
-Facebook swap for Football Stories 101 (owner, 8 Nov 2026: Facebook, Instagram and Threads all get the narrated Reel). This runs after task 8 because scripts/reels.ts forbids Facebook changes between 06:00 and 10:45 Singapore. In this folder:
-1. git pull. List upcoming stories that have every clip in assets/narration/NNN (npm run narration -- status lists only those still without) and whose Facebook record in data/sent.json is missing or does not name sports-documentary or cinematic-trailer. Leave out a story with no record that is more than 27 days away: the daily run schedules it when it comes into Meta's window. If none, say so in one line and stop. If today's Build and deploy run is not finished, wait for it, and compare /images/derived/reels.json with the voices before starting.
-2. Soonest first, at most 5 a day, and one at a time: gh workflow run reels.yml -f action=replace -f from=N -f dry_run=false, and wait for it to finish before starting the next. Never start two together: Meta's anti-spam stopped a bulk run on 24 Oct. If Meta refuses with a limit, stop for today and report; the next run continues. A story with no Facebook record yet gets action=switch with from=N and to=N in the same way.
-3. git pull and read each story's new record. It must name the new track. If a record says UNCONFIRMED, run action=confirm for that story once Meta has had time, and read the result. Never upload a story again while it is UNCONFIRMED.
-4. Check one of them with the Check a Facebook post workflow (check-facebook.yml, post_id reel:<id>): scheduled, no copyright match.
-5. Report in 1-3 lines: which were swapped, and anything still waiting. Say nothing more if all went well.
+Facebook swap for Football Stories 101 (owner, 8 Nov 2026). This runs at 11:05 because scripts/reels.ts forbids Facebook changes between 06:00 and 10:45 Singapore. In this folder:
+1. git pull. Fetch /images/derived/reels.json from the site. List upcoming stories that have narratedReel and whose number is in reels.json, whose Facebook record in data/sent.json is missing or whose record's "reel" hash differs from the site's. If none, say so in one line and stop. If a Build and deploy run is in progress, wait for it first.
+2. Soonest first, at most 5 a day, one at a time: gh workflow run reels.yml -f action=replace -f from=N -f dry_run=false, and wait for it to finish before the next. A story with no Facebook record gets action=switch with from=N and to=N the same way. Never run two together: Meta's anti-spam stopped a bulk run on 24 Oct. If Meta refuses with a limit, stop for today and report.
+3. git pull and read each new record. It must name the right track and the site's hash. If it says UNCONFIRMED, run action=confirm for it after Meta has had time; never upload a story again while it is UNCONFIRMED.
+4. Check one with check-facebook.yml (post_id reel:<id>): scheduled, no copyright match.
+5. Report in 1-3 lines: what was swapped, what is waiting.
 ```
 
 ## Setting up on the Mac

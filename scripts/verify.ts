@@ -9,8 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadStories, PUBLIC_DIR, ROOT } from './lib/stories';
 import { AI_NOTE, INSTAGRAM_LIMIT, socialPosts } from './lib/social';
-import { MUSIC_DIR, TRACKS, legacyMusicTag, musicTag, usesReel } from './lib/reel';
-import { narrationFor, needsNarration } from './lib/narration';
+import { MUSIC_DIR, TRACKS, legacyMusicTag, musicTag, reelReleaseUrl, usesReel } from './lib/reel';
+import { needsNarration } from './lib/narration';
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -126,11 +126,12 @@ for (const s of stories) {
   if (!s.data.narratedReel) continue;
   const n = pad(s.data.number);
   const file = path.join(ROOT, s.data.narratedReel);
-  if (!fs.existsSync(file)) errors.push(`${n}: narrated Reel ${s.data.narratedReel} is missing`);
-  else if (fs.statSync(file).size > 90e6) errors.push(`${n}: narrated Reel is over 90 MB, too large for the repository and Instagram`);
-  if (!s.data.extra) errors.push(`${n}: a narrated Reel must be an extra post`);
+  if (!fs.existsSync(file)) {
+    const r = await fetch(reelReleaseUrl(s.data.narratedReel), { method: 'HEAD' }).catch(() => null);
+    if (!r?.ok) errors.push(`${n}: narrated Reel ${s.data.narratedReel} is neither in the repository nor on the reels release`);
+  } else if (fs.statSync(file).size > 90e6) errors.push(`${n}: narrated Reel is over 90 MB, too large for the repository and Instagram`);
   if (!s.data.reelCredits) errors.push(`${n}: a narrated Reel needs reelCredits (every photo's author and licence)`);
-  if (!s.data.onlyOn?.length) errors.push(`${n}: a narrated Reel needs onlyOn, or the daily run would post it to Facebook, email and Telegram`);
+  if (s.data.extra && !s.data.onlyOn?.length) errors.push(`${n}: an extra narrated Reel needs onlyOn, or the daily run would post it to Facebook, email and Telegram`);
   const reply = (sent.social ?? []).find((r: { number: number; network: string; detail: string }) => r.number === s.data.number && r.network === 'threads' && r.detail.includes('Reel reply FAILED'));
   if (reply) warnings.push(`${n}: the Threads post is live but its Reel reply failed; post the Reel to that thread by hand`);
 }
@@ -139,10 +140,10 @@ for (const s of stories.filter((x) => !x.data.draft && needsNarration(x.data.dat
   const n = pad(s.data.number);
   const days = (s.data.date.getTime() - Date.now()) / 86400e3;
   if (s.data.narratedReel) {
-    for (const net of ['facebook', 'instagram', 'threads']) if (!s.data.onlyOn?.includes(net as 'facebook')) errors.push(`${n}: every Reel goes to all three networks (owner, 8 Nov 2026), but this one leaves out ${net}`);
-  } else if (!narrationFor(n)) {
-    if (days < 2) errors.push(`${n}: posts within 2 days and has no voice yet; run scheduled task 8, or the post will fail`);
-    else if (days < 4) warnings.push(`${n}: no voice yet, posting in ${Math.round(days)} days`);
+    if (s.data.extra) for (const net of ['facebook', 'instagram', 'threads']) if (!s.data.onlyOn?.includes(net as 'facebook')) errors.push(`${n}: every Reel goes to all three networks (owner, 8 Nov 2026), but this one leaves out ${net}`);
+  } else {
+    if (days < 2) errors.push(`${n}: posts within 2 days and has no picture Reel yet; run scheduled task 8`);
+    else if (days < 4) warnings.push(`${n}: no picture Reel yet, posting in ${Math.round(days)} days`);
   }
 }
 // Two extras on one Singapore day would post the same evening.

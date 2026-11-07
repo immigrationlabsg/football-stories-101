@@ -26,6 +26,7 @@ import { promisify } from 'node:util';
 import ffmpegPath from 'ffmpeg-static';
 import { endReelTools, renderReel, trackFor, usesReel } from './lib/reel';
 import { narrationFor, needsNarration, renderNarratedReel } from './lib/narration';
+import { reelReleaseUrl } from './lib/reel';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
 const WIDTHS = [480, 800, 1200];
@@ -95,6 +96,8 @@ if (errors.length) {
 }
 
 const manifest: Manifest = {};
+// GitHub Pages holds 1 GB: finished picture Reels stay on the site only from 10 days before their date to 2 days after.
+const VISUAL_REEL_DAYS = 10;
 // Reels are tracked in their own file: reels.json maps a story number to the hash its Reel was made from.
 const REELS = path.join(OUT, 'reels.json');
 let reelsPrev: Record<string, string> = {};
@@ -204,17 +207,26 @@ for (const story of stories) {
   // The Reel: only for stories that post as Reels, from two days ago to 28 days ahead (Facebook schedules 27 days out).
   const reel = path.join(OUT, `${n}-reel.mp4`);
   const t = story.data.date.getTime();
-  if (story.data.narratedReel && !story.data.draft && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
-    // A finished voiced Reel: published as it is, under the same name the posting code asks for.
+  if (story.data.narratedReel && !story.data.draft && t > Date.now() - 2 * DAY && t < Date.now() + VISUAL_REEL_DAYS * DAY) {
+    // A finished voiced Reel: published as it is, under the same name the posting code asks for. New ones are kept
+    // on the repository's "reels" release (about 25 MB each, ten a week, too much for git history).
     const source = path.join(ROOT, story.data.narratedReel);
-    const reelHash = hashOf(fs.readFileSync(source));
-    if (force || reelsPrev[n] !== reelHash || !fs.existsSync(reel)) {
-      fs.copyFileSync(source, reel);
-      console.log(`${n} reel: narrated file ${story.data.narratedReel}`);
+    let bytes: Buffer | null = fs.existsSync(source) ? fs.readFileSync(source) : null;
+    if (!bytes) {
+      const r = await fetch(reelReleaseUrl(story.data.narratedReel));
+      if (r.ok) bytes = Buffer.from(await r.arrayBuffer());
+      else reelFailures.push(`${n}: ${story.data.narratedReel} is neither in the repository nor on the reels release (${r.status})`);
     }
-    reels[n] = reelHash;
-    reelMusic[n] = path.basename(trackFor(story.data.number), '.m4a');
-    reelStories[n] = story.data.slug;
+    if (bytes) {
+      const reelHash = hashOf(bytes);
+      if (force || reelsPrev[n] !== reelHash || !fs.existsSync(reel)) {
+        fs.writeFileSync(reel, bytes);
+        console.log(`${n} reel: narrated file ${story.data.narratedReel}`);
+      }
+      reels[n] = reelHash;
+      reelMusic[n] = path.basename(trackFor(story.data.number), '.m4a');
+      reelStories[n] = story.data.slug;
+    }
   } else if (!story.data.draft && needsNarration(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     // Narration and music on every Reel (owner, 8 Nov 2026). Without its voice a story has no Reel at all, so posting
     // fails loudly and the delivery check says so, rather than sending out a Reel the owner ruled out.

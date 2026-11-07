@@ -17,7 +17,7 @@ A Stop hook (`.claude/settings.json`) runs `npm run verify` at the end of every 
 GitHub runs the same check every evening (workflow **Verify**) and emails the owner if it fails.
 
 ## Narrated Reels
-New voiced Reels (extra posts, the Maradona style) follow the `narrated-reel` skill in `.claude/skills/narrated-reel/`: script, pictures, voice, music, mix, standards and checks.
+Every Reel (daily and extra posts, owner, 8 Nov 2026) follows the `narrated-reel` skill in `.claude/skills/narrated-reel/`: script, pictures, voice, music, mix, standards and checks. Daily stories use its `references/daily-reel-recipe.md`.
 
 ## Never
 - Publish a painting of a named player that was not painted from a real photo of him, or any picture that fails the

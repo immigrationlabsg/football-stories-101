@@ -33,9 +33,9 @@ function linesFor(d: any): NarrationLine[] {
 }
 const [action, count, folder] = process.argv.slice(2);
 const all = loadStories().stories.filter((s) => !s.data.draft && !s.data.narratedReel && needsNarration(s.data.date) && s.data.date.getTime() > Date.now() - 3600e3).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
-const left = all.filter((s) => !narrationFor(pad3(s.data.number)));
+const left = all; // a story is finished once it has its picture Reel (narratedReel)
 if (action === 'status') {
-  console.log(`finished ${all.length - left.length}, left ${left.length}: ${left.map((s) => pad3(s.data.number)).join(' ')}`);
+  console.log(`left without a picture Reel ${left.length}: ${left.map((s) => pad3(s.data.number)).join(' ')}`);
 } else if (action === 'plan') {
   for (const s of left.slice(0, Number(count || 5))) {
     const n = pad3(s.data.number);

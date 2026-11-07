@@ -33,9 +33,10 @@ change it only when the owner decides to.
 
 ## Narrated Reels, from 8 November 2026 (owner's decision, 8 Nov)
 - **Every Reel has narration and music sample 3 or 4, on Facebook, Instagram and Threads**, including the three ad hoc posts a week. Even story numbers use sample 3 (sports documentary), odd numbers sample 4 (cinematic trailer); `TRACKS` in `scripts/lib/reel.ts`.
-- A daily card Reel: the voice (Dylan) reads each card's own text, no new facts, and each card stays up as long as its line, so a Reel runs about 45 seconds. Clips are in `assets/narration/NNN/`, mixed at build time by `scripts/lib/narration.ts`.
+- **Every Reel is storytelling with pictures behind the captions, no wording-only cards (owner, 8 Nov 2026)**, made like the Zidane Reel with the `narrated-reel` skill. The voice (Dylan) reads the cards' own fact-checked words, so there are no new facts, and a Reel runs about 45 seconds. Clips are in `assets/narration/NNN/`; finished Reels are on the repository's public "reels" release (`narratedReel` in the story), and reach the site 10 days before their date.
+- Threads keeps the cards with the Reel in the reply, as the ad hoc posts do. The Instagram and Facebook posts are the Reel.
 - `narration_from` in `data/schedule.json` is the start date. A story from then with no voice gets no Reel, so its post fails loudly rather than going out with the old music. `npm run verify` is an error two days before that would happen.
-- Task 8 makes five voices a day at 09:00 until all are done; task 9 swaps Facebook's scheduled Reels at 11:05 (`docs/scheduled-tasks.md`). Instagram and Threads take the site's Reel at posting time, so they need no swap. The section below still describes how slots and uploads work; the classical music no longer applies from this date.
+- Task 8 makes five Reels a day at 09:00 until all are done; task 9 swaps Facebook's scheduled Reels at 11:05 (`docs/scheduled-tasks.md`). Instagram and Threads take the site's Reel at posting time, so they need no swap. The section below still describes how slots and uploads work; the classical music no longer applies from this date.
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook and Instagram, and with the Reel in a reply on Threads (from 28 Oct; see Threads)**, replacing the

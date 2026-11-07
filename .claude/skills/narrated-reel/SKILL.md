@@ -11,6 +11,8 @@ Before starting, read [references/standards.md](references/standards.md). It hol
 
 Keep the owner's project rules in force throughout (repo `CLAUDE.md`, `docs/picture-guide.md`, `docs/editorial-standards.md`, the handoff). Nothing is posted without the owner's OK.
 
+**Daily stories too (owner, 8 Nov 2026):** every Reel now has this style, on Facebook, Instagram and Threads. For a daily story, the script and voice come from its cards: follow [references/daily-reel-recipe.md](references/daily-reel-recipe.md). Ad hoc Reels follow the steps below in full.
+
 ## Where things live
 
 - Each reel gets a folder: `~/Developer/football-stories-samples/<slug>/`. It is outside the repo because of its size and outside Documents so scheduled tasks can read it. It holds `lines/`, `photos/`, `scenes/`, `music.mp3`, `reel.py`, `licences.json`, `PROVENANCE.md`, `build/`, `final.mp4`.
@@ -62,7 +64,7 @@ Write `scenes.txt` (`name|photo|what to paint`; the photo name uses underscores,
 ### 4. Voice
 
 `mcp__higgsfield__generate_audio` (or `generate_audio_batch`), one file per line, saved as `lines/0.mp3`, `1.mp3`...:
-`model: text2speech_v2, variant: elevenlabs, voice_type: preset, voice_id: 30fc8796-ceb6-4a66-b3a7-4a145ef7f346`.
+`model: text2speech_v2, variant: elevenlabs, voice_type: preset, voice_id: b847bc29-f184-583a-8ad9-d1f1e16d1a60` (Dylan, the owner's choice on Zidane; Como and Maradona keep their earlier voice).
 Spell out names and numbers as they should be said ("eleven"). Send them a few at a time: a batch of eight had one line refused for rate limits and that retry stayed queued for minutes.
 
 ### 5. Music

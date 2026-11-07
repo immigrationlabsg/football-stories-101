@@ -175,7 +175,12 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   const threadsReply = story.data.reelCredits
     ? `The story as a voiced Reel. More on Instagram: ${igLink}\n${story.data.reelCredits}`.slice(0, THREADS_LIMIT)
     : `The whole story as a Reel. More on Instagram: ${igLink}`;
-  return { ...withTags(facebook, usesReel(story.data.date) ? hashtagsFor(story.data) : ''), threads, threadsReply, webUrl, link };
+  const tags = usesReel(story.data.date) ? hashtagsFor(story.data) : '';
+  const tagged = withTags(facebook, tags);
+  // A daily story's caption already fills Instagram's limit: there the credits are on the Reel's ending card (narrated-reel skill, credit_end.py).
+  const withoutCredits = story.data.reelCredits && !story.data.extra ? withTags(facebook.replace(`\n\n${story.data.reelCredits}`, ''), tags).instagram : null;
+  const instagram = withoutCredits ?? tagged.instagram;
+  return { facebook: tagged.facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
 export function socialMarkdown(story: LoadedStory, ctx: SocialContext): string {
