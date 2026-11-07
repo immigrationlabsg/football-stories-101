@@ -5,6 +5,7 @@ The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py`
 ## Story
 - A name or event most fans know. A surprising story about an unknown man asks too much in the first seconds.
 - About 110 words, 40 to 45 s. 6 to 8 voice lines. It should earn its length; cut it if a line carries no new fact.
+- The first frame shows the impactful event itself, one the world knows (owner, 7 Nov 2026), not a portrait or a collage about it. See SKILL.md.
 - Line 0 states the hook. A question or contradiction a fan wants resolved.
 - Every claim logged in `docs/fact-checks/`; nothing added without an entry. Disputes flagged to the owner.
 - No asking for likes, shares, tags or follows. An end question that starts an argument is fine.

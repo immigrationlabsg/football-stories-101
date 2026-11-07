@@ -33,6 +33,8 @@ Keep to the story that serves that rise. On Como the owner cut a side fact, "It 
 
 Write 6 to 8 short spoken lines, about 110 words and 40 to 45 seconds in all:
 
+**The first frame shows the event (owner, 7 Nov 2026).** It must be an important, impactful moment the world knows, because that creates the interest: the headbutt, the goal, the trophy lift, the red card. Not a portrait, a back view or a collage about it. Pick this picture before writing. If the moment has no free-licence photo on Commons, don't fall back quietly and don't use an uncleared photo: put the gap and the options to the owner with the draft (the uncleared photos on 908 were the owner's exception for that Reel only).
+
 **The attention test comes first (owner, 7 Nov 2026).** Start from what fans already care about and argue over: the famous moment, the controversy, the name. Then give the angle they don't know. Would a fan stop scrolling in 3 seconds and send it to a friend to argue about? If the story rests on a person nobody knows, however true or moving, drop it (Zidane's father was rejected; Zidane's headbutt was what the owner wanted).
 
 **The shape (owner, 7 Nov 2026): a recent trend that people relate to and that catches their attention, then history they may not know, then a hook question or something like it.** On Como: the 9-1, then bankrupt to Champions League, then "Who's the next Como?", spoken and on the end card. How that shape is expressed is left to our creativity, so vary it rather than repeating a template.
