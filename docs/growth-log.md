@@ -280,3 +280,5 @@ Owner, 8 Nov 2026: "I want all reels from now on to have both narration, and rot
 **Superseded by this order:** experiment 2 (the 12-15 s cut planned for 10-15 Nov) is dropped, because it tested a shorter version of a format that no longer runs. Facebook is no longer the control for narrated extras. The current Instagram first-frame test does not apply to narrated Reels.
 
 **What to read next:** this changes everything at once, so there's no control group. Compare watch time and shares with the classical Reels before 8 Nov, and read it knowing that length, voice and music all changed together. Como and Maradona keep their earlier voice, so those two also differ from the rest.
+
+**Zidane on Facebook:** the owner confirmed on 8 Nov 2026, after being told of the added copyright risk, that Reel 908 with its three paintings from uncleared photos goes to Facebook as well as Instagram and Threads.
