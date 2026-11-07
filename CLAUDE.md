@@ -16,6 +16,9 @@ on 20 Oct 2026 (Reels from 25 Oct, decided 24 Oct) is `docs/posting-format.md` (
 A Stop hook (`.claude/settings.json`) runs `npm run verify` at the end of every turn and blocks while it reports errors.
 GitHub runs the same check every evening (workflow **Verify**) and emails the owner if it fails.
 
+## Narrated Reels
+New voiced Reels (extra posts, the Maradona style) follow the `narrated-reel` skill in `.claude/skills/narrated-reel/`: script, pictures, voice, music, mix, standards and checks.
+
 ## Never
 - Publish a painting of a named player that was not painted from a real photo of him, or any picture that fails the
   "Picture standard" in `docs/picture-guide.md` (look at the painting and the cards at full size before scheduling).
