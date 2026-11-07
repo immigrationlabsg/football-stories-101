@@ -4,6 +4,8 @@
   "stories_per_week": 7,
   "min_buffer_days": 14,
   "reels_from": "2026-10-25",
+  "narration_from": "2026-11-08",
+  "_narration_help": "Reels dated on or after this carry narration and the two rotating music tracks; without its voice a story gets no Reel (owner, 8 Nov 2026). scripts/lib/narration.ts.",
   "_reels_help": "Stories dated on or after reels_from (Singapore date) post as a Reel (7 cards + music) on Facebook, Instagram and Threads instead of the picture posts. Owner decision 24 Oct 2026.",
   "on_this_day_from": "2026-10-26",
   "on_this_day_every": 3,

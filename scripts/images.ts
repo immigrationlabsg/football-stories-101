@@ -25,6 +25,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import ffmpegPath from 'ffmpeg-static';
 import { endReelTools, renderReel, trackFor, usesReel } from './lib/reel';
+import { narrationFor, needsNarration, renderNarratedReel } from './lib/narration';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
 const WIDTHS = [480, 800, 1200];
@@ -118,6 +119,7 @@ const reelSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.ur
 const DAY = 86_400_000;
 const reelFailures: string[] = [];
 for (const f of fs.readdirSync(OUT)) if (f.endsWith('.tmp.mp4') || f.endsWith('.tmp.m4a')) fs.rmSync(path.join(OUT, f), { force: true }); // left by an interrupted render
+const narratedSource = fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/narration.ts'));
 const cardsScript = path.join(path.dirname(new URL(import.meta.url).pathname), 'lib/cards.ts');
 const cardsSource = fs.readFileSync(cardsScript);
 const lineupSource = fs.readFileSync(path.join(path.dirname(cardsScript), 'lineup-card.ts'));
@@ -211,8 +213,34 @@ for (const story of stories) {
       console.log(`${n} reel: narrated file ${story.data.narratedReel}`);
     }
     reels[n] = reelHash;
-    reelMusic[n] = 'narrated';
+    reelMusic[n] = path.basename(trackFor(story.data.number), '.m4a');
     reelStories[n] = story.data.slug;
+  } else if (!story.data.draft && needsNarration(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
+    // Narration and music on every Reel (owner, 8 Nov 2026). Without its voice a story has no Reel at all, so posting
+    // fails loudly and the delivery check says so, rather than sending out a Reel the owner ruled out.
+    const voiced = narrationFor(n);
+    if (!voiced) {
+      fs.rmSync(reel, { force: true });
+      console.log(`${n} reel: waiting for its narration`);
+    } else {
+      const track = trackFor(story.data.number);
+      const reelHash = hashOf(hash, fs.readFileSync(track), narratedSource, JSON.stringify(voiced.narration), ...voiced.clips.map((c) => fs.readFileSync(c)));
+      if (force || reelsPrev[n] !== reelHash || !fs.existsSync(reel)) {
+        try {
+          const total = await renderNarratedReel(cardFiles, voiced.clips, voiced.narration.lines, track, reel);
+          console.log(`${n} reel: narrated, ${path.basename(track)}, ${total.toFixed(1)} s`);
+        } catch (e) {
+          reelFailures.push(`${n}: ${(e as Error).message.slice(0, 300)}`);
+          fs.rmSync(`${reel}.tmp.mp4`, { force: true });
+          fs.rmSync(reel, { force: true }); // an older Reel left here would be taken for this one
+        }
+      }
+      if (fs.existsSync(reel)) {
+        reels[n] = reelHash;
+        reelMusic[n] = path.basename(track, '.m4a');
+        reelStories[n] = story.data.slug;
+      }
+    }
   } else if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     const track = trackFor(story.data.number);
     const reelHash = hashOf(hash, fs.readFileSync(track), reelSource, ...(REEL_SECONDS(cardFiles.length) + 0.5 > TRACK_SECONDS ? [STRETCH] : []));
@@ -241,7 +269,7 @@ for (const story of stories) {
   // The Instagram test Reel: the same cards and music with the test's own cover (data/schedule.json instagram_test).
   const igReel = path.join(OUT, `${n}-reel-ig.mp4`);
   const igCover = path.join(OUT, `${n}-test-cover.png`);
-  const test = story.data.narratedReel ? null : instagramTestFor(story.data); // a narrated Reel is never part of a card test
+  const test = story.data.narratedReel || needsNarration(story.data.date) ? null : instagramTestFor(story.data); // a narrated Reel is never part of a card test
   if (test === 'first-frame' && !story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     const track = trackFor(story.data.number);
     const igHash = hashOf(hash, fs.readFileSync(track), reelSource, testCoverSource, test, story.data.stinger ?? '');

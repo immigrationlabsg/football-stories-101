@@ -36,6 +36,8 @@ job 3 research "4 8 52"
 job 4 drafting "6 8 47"
 job 6 growth-review "1 12 41"
 job 7 adhoc-reels "0 14 7"
+job 8 narration-batch "0 9 0" "1 9 0" "2 9 0" "3 9 0" "4 9 0" "5 9 0" "6 9 0"
+job 9 facebook-swap "0 11 5" "1 11 5" "2 11 5" "3 11 5" "4 11 5" "5 11 5" "6 11 5"
 
 # Every evening at 19:45, start "Post extras": it posts any narrated extra due at 20:00 and does nothing otherwise.
 # No Claude session is involved; GitHub's own schedule for the workflow is the backup.

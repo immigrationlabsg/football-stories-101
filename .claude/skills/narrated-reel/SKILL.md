@@ -67,7 +67,9 @@ Spell out names and numbers as they should be said ("eleven"). Send them a few a
 
 ### 5. Music
 
-Default: `elevenlabs_music_v2_5`, `force_instrumental: true`, `duration` in seconds. Ask for a track at least as long as the Reel plus 8 s, so no repeat is needed. Find where its sound ends with `ffmpeg -i music.mp3 -af silencedetect=n=-40dB:d=0.5 -f null -`: that `silence_start` is your `end_src`, measured for each track.
+**Owner, 8 Nov 2026: every Reel uses sample 3 or 4, not new music.** Even story numbers: `~/Developer/football-stories-samples/music-style-samples/raw/3-sports-documentary.mp3` (`end_src` 62.5). Odd: `4-cinematic-trailer.mp3` (`end_src` 65). Copy it to the Reel's folder and mix it as `standards.md` says; `como-reel-v2` and `maradona-reel-v2` are the worked examples. A Reel must be shorter than `end_src`. The voice for new Reels is Dylan (`b847bc29-f184-583a-8ad9-d1f1e16d1a60`), the voice the owner chose for Zidane.
+
+Only if the owner asks for other music: `elevenlabs_music_v2_5`, `force_instrumental: true`, `duration` in seconds. Ask for a track at least as long as the Reel plus 8 s, so no repeat is needed. Find where its sound ends with `ffmpeg -i music.mp3 -af silencedetect=n=-40dB:d=0.5 -f null -`: that `silence_start` is your `end_src`, measured for each track.
 
 The owner kept the music in this prompt, so start from it:
 

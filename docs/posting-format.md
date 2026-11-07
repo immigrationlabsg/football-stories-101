@@ -29,7 +29,13 @@ change it only when the owner decides to.
 
 - **A one-off extra post for huge news** (owner, 6 Nov 2026, first: Ronaldo's international retirement): `extra: true` in the story, a number from 906 up (900 was the first; 901-905 are taken in data/reference-photos.json), any hour, up to six fact cards, no story number on the closing card. It sits outside the calendar and rhythm checks. If it goes to all networks it is posted by a manual "Publish daily" run with its story number; that run also emails and posts to Telegram, so a story with `onlyOn` never goes that way. Only with the owner's OK each time.
 
-- **Extra posts: narrated Reels** (owner, 7 Nov 2026): three a week, Tue, Thu and Sun at 20:00 Singapore, Instagram and Threads only, Facebook stays the control. Made by the weekly run (`docs/scheduled-tasks.md`, task 7) with the `narrated-reel` skill, posted after the owner's OK by workflow "Post extras", not by "Publish daily". Steps in `.claude/skills/narrated-reel/references/posting.md`.
+- **Extra posts: narrated Reels** (owner, 7 Nov 2026; 8 Nov: on all three networks, Facebook is no longer the control): three a week, Tue, Thu and Sun at 20:00 Singapore, on Facebook, Instagram and Threads. Made by the weekly run (`docs/scheduled-tasks.md`, task 7) with the `narrated-reel` skill, posted after the owner's OK by workflow "Post extras", not by "Publish daily". Steps in `.claude/skills/narrated-reel/references/posting.md`.
+
+## Narrated Reels, from 8 November 2026 (owner's decision, 8 Nov)
+- **Every Reel has narration and music sample 3 or 4, on Facebook, Instagram and Threads**, including the three ad hoc posts a week. Even story numbers use sample 3 (sports documentary), odd numbers sample 4 (cinematic trailer); `TRACKS` in `scripts/lib/reel.ts`.
+- A daily card Reel: the voice (Dylan) reads each card's own text, no new facts, and each card stays up as long as its line, so a Reel runs about 45 seconds. Clips are in `assets/narration/NNN/`, mixed at build time by `scripts/lib/narration.ts`.
+- `narration_from` in `data/schedule.json` is the start date. A story from then with no voice gets no Reel, so its post fails loudly rather than going out with the old music. `npm run verify` is an error two days before that would happen.
+- Task 8 makes five voices a day at 09:00 until all are done; task 9 swaps Facebook's scheduled Reels at 11:05 (`docs/scheduled-tasks.md`). Instagram and Threads take the site's Reel at posting time, so they need no swap. The section below still describes how slots and uploads work; the classical music no longer applies from this date.
 
 ## Reels, from 25 October 2026 (owner's decision, 24 Oct)
 - **Every story dated 25 Oct 2026 or later posts as a Reel on Facebook and Instagram, and with the Reel in a reply on Threads (from 28 Oct; see Threads)**, replacing the

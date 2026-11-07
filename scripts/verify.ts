@@ -10,6 +10,7 @@ import path from 'node:path';
 import { loadStories, PUBLIC_DIR, ROOT } from './lib/stories';
 import { AI_NOTE, INSTAGRAM_LIMIT, socialPosts } from './lib/social';
 import { MUSIC_DIR, TRACKS, legacyMusicTag, musicTag, usesReel } from './lib/reel';
+import { narrationFor, needsNarration } from './lib/narration';
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -133,6 +134,17 @@ for (const s of stories) {
   const reply = (sent.social ?? []).find((r: { number: number; network: string; detail: string }) => r.number === s.data.number && r.network === 'threads' && r.detail.includes('Reel reply FAILED'));
   if (reply) warnings.push(`${n}: the Threads post is live but its Reel reply failed; post the Reel to that thread by hand`);
 }
+// Owner, 8 Nov 2026: every Reel from narration_from has a voice and goes to all three networks. The daily batch (task 8) keeps ahead of the calendar.
+for (const s of stories.filter((x) => !x.data.draft && needsNarration(x.data.date) && x.data.date.getTime() > Date.now())) {
+  const n = pad(s.data.number);
+  const days = (s.data.date.getTime() - Date.now()) / 86400e3;
+  if (s.data.narratedReel) {
+    for (const net of ['facebook', 'instagram', 'threads']) if (!s.data.onlyOn?.includes(net as 'facebook')) errors.push(`${n}: every Reel goes to all three networks (owner, 8 Nov 2026), but this one leaves out ${net}`);
+  } else if (!narrationFor(n)) {
+    if (days < 2) errors.push(`${n}: posts within 2 days and has no voice yet; run scheduled task 8, or the post will fail`);
+    else if (days < 4) warnings.push(`${n}: no voice yet, posting in ${Math.round(days)} days`);
+  }
+}
 // Two extras on one Singapore day would post the same evening.
 const extraDays = new Map<string, number>();
 for (const s of stories.filter((x) => x.data.extra && !x.data.draft)) {
@@ -242,7 +254,9 @@ if (schedule.reels_from) {
       warnings.push(`${pad(s.data.number)} is a Reel story but Facebook still has its picture post scheduled; run "Reels" with action switch`);
     } else if (usesReel(s.data.date) && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && r.detail && !r.detail.includes(musicTag(s.data.number))
       && !(!r.detail.includes('(music:') && legacyMusicTag(s.data.number) === musicTag(s.data.number))) {
-      warnings.push(`${pad(s.data.number)}'s Facebook Reel has other music than ${musicTag(s.data.number)}; run "Reels" with action switch`);
+      // Within two days it would really go out with the wrong sound: an error, so the nightly run and task 2 catch a stopped batch.
+      const soon = needsNarration(s.data.date) && s.data.date.getTime() - now.getTime() < 2 * 86400e3;
+      (soon ? errors : warnings).push(`${pad(s.data.number)}'s Facebook Reel has other music than ${musicTag(s.data.number)}; run "Reels" with action ${soon ? 'replace' : 'switch'}`);
     }
     // A quiz Reel must open on the mystery card on Facebook, never on a frame of the answer.
     if (s.data.format === 'quiz' && s.data.date.getTime() > now.getTime() && r?.status === 'scheduled' && r.detail?.includes(' reel ') && !r.detail.includes('(cover: mystery card)')) {

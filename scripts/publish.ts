@@ -26,6 +26,7 @@ import { socialMarkdown, socialFilename, telegramCaption } from './lib/social';
 import { sendTelegramPhoto, telegramConfigured } from './lib/telegram';
 import { postStoryToSocials, recordSocial, type Outcome } from './lib/social-post';
 import { metaConfigured } from './lib/meta';
+import { narrationFor, needsNarration } from './lib/narration';
 import { pad3, storyNumber } from '../src/schema/story';
 import { isoDate } from '../src/lib/format';
 
@@ -210,7 +211,8 @@ async function main() {
     socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun: socialDry, skipDone: true });
     if (!socialDry) recordSocial(story.data.number, socialOutcomes, story.data.slug);
     // Keep Facebook's Planner filled: schedule each upcoming story once it is inside Meta's scheduling window.
-    for (const next of stories.filter((s) => !s.data.draft && !s.data.onlyOn?.length && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
+    // A story still waiting for its voice has no Reel yet: task 9 gives Facebook its Reel once the voice is in (docs/scheduled-tasks.md).
+    for (const next of stories.filter((s) => !s.data.draft && !s.data.onlyOn?.length && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS && (!needsNarration(s.data.date) || narrationFor(pad3(s.data.number))))) {
       const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
       if (!socialDry) recordSocial(next.data.number, ahead, next.data.slug);
       if (ahead.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1; // a refused or unconfirmed schedule turns the run red too

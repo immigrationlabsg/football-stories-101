@@ -272,3 +272,11 @@ Como (906) Tue 10 Nov, Maradona (907) Thu 12 Nov, Zidane (908) Sun 15 Nov, all 2
 Zidane (908), approved by the owner on 7 Nov 2026 after they rejected the father story as serving no purpose. It opens on the headbutt and answers Materazzi's words. On the owner's instruction, three paintings in this Reel come from uncleared news photos they supplied: exception for this Reel only, logged in docs/fact-checks/908.md, source files kept out of the repo. "Faced Italy again" rests on the 2 Oct match, already played, so no recheck is needed.
 
 Sound of the Zidane Reel replaced on 8 Nov 2026 at the owner's choice, after a listening test: a new narrator voice and new generated sports documentary music (their cut F), which they prefer to the classical clips. Earshot helped measure the test, but the owner's ear decided. The music moves more than in the previous cuts, including a lift of about 9 dB over a second at 0:07, mostly bass, and the red-card thump is largely buried. Nobody has tried it on a phone. Same story, pictures and captions, so its numbers stay comparable with Como and Maradona as a narrated extra, though the voice and music differ.
+
+## Narration and new music on every Reel, from 8 Nov 2026 (owner's order)
+
+Owner, 8 Nov 2026: "I want all reels from now on to have both narration, and rotate the music between samples 3 and 4", on Facebook, Instagram and Threads, the three ad hoc posts included. Daily card Reels now read the card text aloud (Dylan voice) and run about 45 s instead of about 23 s. First batch 20, 21, 22, 906, 23; five more each day at 09:00 (task 8), with Facebook swapped at 11:05 (task 9).
+
+**Superseded by this order:** experiment 2 (the 12-15 s cut planned for 10-15 Nov) is dropped, because it tested a shorter version of a format that no longer runs. Facebook is no longer the control for narrated extras. The current Instagram first-frame test does not apply to narrated Reels.
+
+**What to read next:** this changes everything at once, so there's no control group. Compare watch time and shares with the classical Reels before 8 Nov, and read it knowing that length, voice and music all changed together. Como and Maradona keep their earlier voice, so those two also differ from the rest.

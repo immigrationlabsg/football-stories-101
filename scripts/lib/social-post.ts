@@ -1,7 +1,8 @@
 import type { LoadedStory } from './stories';
 import { INSTAGRAM_LIMIT, socialPosts } from './social';
 import { UnconfirmedReel, metaConfigured, postFacebookPhoto, postFacebookReel, setFacebookReelCover, postInstagramCarousel, postInstagramReel, postThreads, waitForUrl } from './meta';
-import { musicTag, usesReel } from './reel';
+import { musicTag, trackFor, usesReel } from './reel';
+import { needsNarration } from './narration';
 import { instagramTestFor } from './test-cover';
 import { absoluteUrl } from '../../src/lib/url';
 import { pad3 } from '../../src/schema/story';
@@ -82,9 +83,17 @@ export async function postStoryToSocials(
   const reel = usesReel(story.data.date);
   const reelUrl = absoluteUrl(`/images/derived/${n}-reel.mp4`);
   // The week's Instagram-only test (docs/posting-format.md "Experiments and the house look"): its own Reel file.
-  const igTest = reel && !story.data.narratedReel ? instagramTestFor(story.data) : null;
+  const igTest = reel && !story.data.narratedReel && !needsNarration(story.data.date) ? instagramTestFor(story.data) : null;
   const igReelUrl = igTest ? absoluteUrl(`/images/derived/${n}-reel-ig.mp4`) : reelUrl;
   const out: Outcome[] = [];
+  // Owner, 8 Nov 2026: no Reel goes out with the old sound. If a deploy failed, the site may still hold the old file under the same name.
+  const expected = path.basename(trackFor(story.data.number), '.m4a');
+  const checkSound = async () => {
+    if (!reel || !needsNarration(story.data.date)) return;
+    const r = await fetch(absoluteUrl('/images/derived/reel-music.json'), { cache: 'no-store' });
+    const live = r.ok ? ((await r.json()) as Record<string, string>)[n] : undefined;
+    if (live !== expected) throw new Error(`the Reel on the site has music "${live ?? 'unknown'}", not "${expected}"; nothing was posted. Check the last Build and deploy run.`);
+  };
 
   const done = opts.skipDone ? socialDone(story.data.number) : new Set<Network>();
   for (const network of networks) {
@@ -116,6 +125,7 @@ export async function postStoryToSocials(
         continue;
       }
       if (reel) {
+        await checkSound();
         if (opts.draft) throw new Error('a Reel cannot be saved as a Facebook draft through the API; nothing was posted (use a dry run to preview)');
         await waitForUrl(reelUrl);
         if (network === 'facebook') {
