@@ -19,3 +19,4 @@
 | Zooming a team painting that fills the width | Outer player cut at the edge | Leave grass either side when painting; don't zoom a full-width group |
 | A custom painted end card with the question | Owner: posts should stay consistent and end on the page's own ending card | `closing_card.ts` plus `R.closing()`; the question is spoken with a caption just before it |
 | `still()` shots from a JPEG are tagged full-range, and the concat decoder then lifts everything after them | Maradona's ending card came out at grey 31 against 16 on Como, seen only by sampling the pixel | `still()` now converts to TV range; sample the card colour in the final file |
+| A true, moving story about someone nobody knows (Zidane's father) | Owner rejected it: "serves no purpose and attract nobody's attention" | Start from what fans already care about and argue over (the headbutt, not the father); the famous thing in the first 3 seconds; then the angle they don't know |

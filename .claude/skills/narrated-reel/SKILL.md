@@ -33,6 +33,8 @@ Keep to the story that serves that rise. On Como the owner cut a side fact, "It 
 
 Write 6 to 8 short spoken lines, about 110 words and 40 to 45 seconds in all:
 
+**The attention test comes first (owner, 7 Nov 2026).** Start from what fans already care about and argue over: the famous moment, the controversy, the name. Then give the angle they don't know. Would a fan stop scrolling in 3 seconds and send it to a friend to argue about? If the story rests on a person nobody knows, however true or moving, drop it (Zidane's father was rejected; Zidane's headbutt was what the owner wanted).
+
 **The shape (owner, 7 Nov 2026): a recent trend that people relate to and that catches their attention, then history they may not know, then a hook question or something like it.** On Como: the 9-1, then bankrupt to Champions League, then "Who's the next Como?", spoken and on the end card. How that shape is expressed is left to our creativity, so vary it rather than repeating a template.
 
 **The objective, always: bring people history and stories that are memorable, so they want to share them with friends and choose to like or follow the account.** Earn that with the story. The rule against asking for likes, shares, tags or follows still stands.
