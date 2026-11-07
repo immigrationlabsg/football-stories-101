@@ -143,6 +143,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     `_____`,
     ``,
     `Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.`,
+    ...(story.data.reelCredits ? [``, story.data.reelCredits] : []),
     ...(usesReel(story.data.date) ? [``, AI_NOTE] : []),
   ]
     .join('\n')
@@ -171,7 +172,9 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
   const threads = threadsBody + aiLine;
-  const threadsReply = `The whole story as a Reel. More on Instagram: ${igLink}`;
+  const threadsReply = story.data.reelCredits
+    ? `The story as a voiced Reel. More on Instagram: ${igLink}\n${story.data.reelCredits}`.slice(0, THREADS_LIMIT)
+    : `The whole story as a Reel. More on Instagram: ${igLink}`;
   return { ...withTags(facebook, usesReel(story.data.date) ? hashtagsFor(story.data) : ''), threads, threadsReply, webUrl, link };
 }
 

@@ -13,7 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { loadStories, PUBLIC_DIR, heroFile } from './lib/stories';
+import { loadStories, PUBLIC_DIR, heroFile, ROOT } from './lib/stories';
 import { renderOg, renderIgCover, renderFbCard, renderIgFact, renderIgClose, renderDefault } from './lib/cards';
 import { renderLineup } from './lib/lineup-card';
 import { instagramTestFor, renderFirstFrameCover } from './lib/test-cover';
@@ -202,7 +202,18 @@ for (const story of stories) {
   // The Reel: only for stories that post as Reels, from two days ago to 28 days ahead (Facebook schedules 27 days out).
   const reel = path.join(OUT, `${n}-reel.mp4`);
   const t = story.data.date.getTime();
-  if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
+  if (story.data.narratedReel && !story.data.draft && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
+    // A finished voiced Reel: published as it is, under the same name the posting code asks for.
+    const source = path.join(ROOT, story.data.narratedReel);
+    const reelHash = hashOf(fs.readFileSync(source));
+    if (force || reelsPrev[n] !== reelHash || !fs.existsSync(reel)) {
+      fs.copyFileSync(source, reel);
+      console.log(`${n} reel: narrated file ${story.data.narratedReel}`);
+    }
+    reels[n] = reelHash;
+    reelMusic[n] = 'narrated';
+    reelStories[n] = story.data.slug;
+  } else if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     const track = trackFor(story.data.number);
     const reelHash = hashOf(hash, fs.readFileSync(track), reelSource, ...(REEL_SECONDS(cardFiles.length) + 0.5 > TRACK_SECONDS ? [STRETCH] : []));
     if (!force && reelsPrev[n] === reelHash && fs.existsSync(reel)) console.log(`${n} reel: up to date`);
@@ -230,7 +241,7 @@ for (const story of stories) {
   // The Instagram test Reel: the same cards and music with the test's own cover (data/schedule.json instagram_test).
   const igReel = path.join(OUT, `${n}-reel-ig.mp4`);
   const igCover = path.join(OUT, `${n}-test-cover.png`);
-  const test = instagramTestFor(story.data);
+  const test = story.data.narratedReel ? null : instagramTestFor(story.data); // a narrated Reel is never part of a card test
   if (test === 'first-frame' && !story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     const track = trackFor(story.data.number);
     const igHash = hashOf(hash, fs.readFileSync(track), reelSource, testCoverSource, test, story.data.stinger ?? '');

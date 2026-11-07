@@ -1,9 +1,15 @@
 # Posting a narrated Reel
 
-This file is finished once the first narrated Reel has been posted; update it with what really happened.
+Route built 7 Nov 2026. First real post: story 906 on 10 Nov; update this file with what really happened.
 
-- Owner's OK first, for the file and the caption. Posting as a one-off extra uses a story file numbered from 906 up (901-905 are taken) with `extra: true`, as the Ronaldo post (900) did. Read `docs/handoff.md` and the 900 commits before posting.
-- Timing: never a manual posting run between 06:00 and 08:45 Singapore (10:45 at weekends). 20:00 Singapore lets it compare with Ronaldo (900).
-- Networks: Instagram and Threads for a format test; Facebook stays the control unless the owner says otherwise.
-- No website link. AI and photo credit line in the caption.
-- Confirm live on each network and record in `data/sent.json`; log in `docs/growth-log.md`; judge at the Monday review, and keep it out of any other experiment's verdict.
+1. Owner's OK first, for the file and the caption. The weekly run (task 7 in `docs/scheduled-tasks.md`) saves its Reels with `draft: true` until then.
+2. Copy `final.mp4` to `assets/reels/NNN-<name>.mp4`. Add the story: a number from 906 up, `extra: true`, `onlyOn: ["instagram", "threads"]`, `narratedReel: "assets/reels/NNN-<name>.mp4"`, `reelCredits` (every photo's author and licence, for the caption), date at 12:00Z (20:00 Singapore), hero, facts, the same question as the ending card, and `docs/fact-checks/NNN.md`. Add the photos to `data/reference-photos.json`.
+3. `npm run images`, then look at the story's cards at full size: Threads posts them with the Reel in a reply.
+4. `npm run verify`, commit, push. Once the site has deployed, run "Post to social" with the story number, networks `instagram threads` and Dry run ticked: it proves the mp4 and cards are live and prints the captions.
+5. Nothing more is needed. "Post extras" posts at the date: GitHub starts it around the slot and the Mac starts it at 19:45. It waits for the exact time, skips what is recorded, and retries only what is missing for six hours.
+
+`onlyOn` is enforced in `postStoryToSocials`, so no route can send the story to Facebook. The daily run ignores these stories, so no email or Telegram goes out.
+
+- Timing: never a manual posting run between 06:00 and 08:45 Singapore (10:45 at weekends).
+- No website link in the caption.
+- After posting, confirm live on each network; log in `docs/growth-log.md`; judge at the Monday review and keep it out of any other experiment's verdict.

@@ -64,7 +64,9 @@ for (const s of [...stories].sort((a, b) => a.data.number - b.data.number)) {
   const titleKey = s.data.title.trim().toLowerCase();
   if (stories.some((o) => o !== s && o.data.title.trim().toLowerCase() === titleKey)) errors.push(`${pad(s.data.number)}: the same title as another story`);
   const earlier = seen.get(key);
-  if (earlier && s.data.followUpOf !== earlier) {
+  // An extra post may retell a subject in a new form with the owner's OK; it stays visible as a warning.
+  if (earlier && s.data.extra) warnings.push(`${pad(s.data.number)} (extra) returns to "${subject}" (story ${pad(earlier)}); keep them apart or move the daily story`);
+  else if (earlier && s.data.followUpOf !== earlier) {
     errors.push(`${pad(s.data.number)} returns to "${subject}" (story ${pad(earlier)}) without followUpOf: ${earlier}; give it a new angle and mark it, or drop it`);
   }
   if (!earlier) seen.set(key, s.data.number);
@@ -118,6 +120,15 @@ for (const m of bank.matchAll(/^\| (\d{3}) \| \w+ \| (.+?) \| reserved \|$/gm)) 
   const subject = m[2].split(/[:/]/)[0].replace(/\s*\(.*?\)\s*/g, '').replace(/'s .*$/, '').trim().toLowerCase();
   const hit = [...subjects.entries()].find(([k]) => k === subject || k.startsWith(subject + ' ') || subject.startsWith(k + ' '));
   if (hit && !/follow-up of/i.test(m[2])) warnings.push(`bank angle ${m[1]} ("${m[2].slice(0, 50)}") returns to story ${pad(hit[1])} without "(follow-up of ${pad(hit[1])})"`);
+}
+for (const s of stories) {
+  if (!s.data.narratedReel) continue;
+  const n = pad(s.data.number);
+  const file = path.join(ROOT, s.data.narratedReel);
+  if (!fs.existsSync(file)) errors.push(`${n}: narrated Reel ${s.data.narratedReel} is missing`);
+  else if (fs.statSync(file).size > 90e6) errors.push(`${n}: narrated Reel is over 90 MB, too large for the repository and Instagram`);
+  if (!s.data.extra) errors.push(`${n}: a narrated Reel must be an extra post`);
+  if (!s.data.reelCredits) errors.push(`${n}: a narrated Reel needs reelCredits (every photo's author and licence)`);
 }
 const numbers = stories.map((s) => s.data.number);
 if (new Set(numbers).size !== numbers.length) errors.push('two stories share a number');
@@ -193,7 +204,7 @@ for (const s of live) {
   // A story is late once its slot is DELIVERY_GRACE_MIN minutes past (2 hours by default; the delivery check uses 20).
   const grace = Number(process.env.DELIVERY_GRACE_MIN ?? 120) * 60e3;
   if (t < now.getTime() - grace && t > now.getTime() - 7 * DAY) {
-    for (const net of ['facebook', 'instagram', 'threads']) if (!has(s.data.number, net)) errors.push(`${pad(s.data.number)} was due ${s.data.date.toISOString().slice(0, 16)}Z but has no ${net} record in data/sent.json`);
+    for (const net of s.data.onlyOn ?? ['facebook', 'instagram', 'threads']) if (!has(s.data.number, net)) errors.push(`${pad(s.data.number)} was due ${s.data.date.toISOString().slice(0, 16)}Z but has no ${net} record in data/sent.json`);
   }
 }
 

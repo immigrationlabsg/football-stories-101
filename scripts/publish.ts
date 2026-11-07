@@ -101,7 +101,7 @@ function pickDue(stories: LoadedStory[], sent: SentFile): LoadedStory | null {
     stories.map((s) => s.data.number).filter((n) => needed.length > 0 && needed.every((net) => records.some((r) => r.number === n && r.network === net))),
   );
   const due = stories
-    .filter((s) => !s.data.draft)
+    .filter((s) => !s.data.draft && !s.data.onlyOn) // stories limited to some networks go out through "Post extras" (no email)
     .filter((s) => !posted.has(s.data.number))
     .filter((s) => s.data.date.getTime() <= now.getTime() && s.data.date.getTime() > now.getTime() - DUE_WINDOW_MS)
     .filter((s) => !sentNumbers.has(s.data.number))
@@ -210,7 +210,7 @@ async function main() {
     socialOutcomes = await postStoryToSocials(story, { kind, webLive, dryRun: socialDry, skipDone: true });
     if (!socialDry) recordSocial(story.data.number, socialOutcomes, story.data.slug);
     // Keep Facebook's Planner filled: schedule each upcoming story once it is inside Meta's scheduling window.
-    for (const next of stories.filter((s) => !s.data.draft && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
+    for (const next of stories.filter((s) => !s.data.draft && !s.data.onlyOn?.length && s.data.date.getTime() > now.getTime() + 20 * 60e3 && s.data.date.getTime() < now.getTime() + FACEBOOK_WINDOW_MS)) {
       const ahead = await postStoryToSocials(next, { kind, webLive: false, dryRun: socialDry, networks: ['facebook'], scheduleAt: next.data.date, skipDone: true });
       if (!socialDry) recordSocial(next.data.number, ahead, next.data.slug);
       if (ahead.some((o) => o.status === 'failed' || o.detail.includes('UNCONFIRMED'))) process.exitCode = 1; // a refused or unconfirmed schedule turns the run red too

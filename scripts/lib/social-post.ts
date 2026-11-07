@@ -82,12 +82,17 @@ export async function postStoryToSocials(
   const reel = usesReel(story.data.date);
   const reelUrl = absoluteUrl(`/images/derived/${n}-reel.mp4`);
   // The week's Instagram-only test (docs/posting-format.md "Experiments and the house look"): its own Reel file.
-  const igTest = reel ? instagramTestFor(story.data) : null;
+  const igTest = reel && !story.data.narratedReel ? instagramTestFor(story.data) : null;
   const igReelUrl = igTest ? absoluteUrl(`/images/derived/${n}-reel-ig.mp4`) : reelUrl;
   const out: Outcome[] = [];
 
   const done = opts.skipDone ? socialDone(story.data.number) : new Set<Network>();
   for (const network of networks) {
+    // The one guard for every route (daily run, Facebook planner, Reels switch, manual runs).
+    if (story.data.onlyOn && !story.data.onlyOn.includes(network)) {
+      out.push({ network, status: 'skipped', detail: `this story posts only to ${story.data.onlyOn.join(' and ')}` });
+      continue;
+    }
     if (done.has(network)) {
       out.push({ network, status: 'skipped', detail: 'already posted or scheduled (data/sent.json)' });
       continue;

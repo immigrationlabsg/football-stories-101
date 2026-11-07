@@ -264,3 +264,7 @@ Posted at 20:00 Singapore, not 08:00, while the news was trending: Facebook at 2
   report shows where they are; if most are in Europe or Africa, an evening Singapore slot would suit them better (needs
   the owner: the posting time is part of the signed-off format).
 - Threads topic: "Football" against a narrower tag such as "Football History".
+
+## Narrated extras, from 10 Nov 2026 (owner's OK, 7 Nov)
+
+Como (906) Tue 10 Nov, Maradona (907) Thu 12 Nov, Zidane (908) Sun 15 Nov, all 20:00 Singapore, Instagram and Threads only, Facebook the control. Then three a week from the Sunday run (task 7). Keep them out of experiment 2's verdict (12-15 s cut, 10-15 Nov). Question: does a voiced Reel on a trending story earn shares and follows? Baseline: 0 shares on every Instagram Reel so far. Judge at the Monday reviews, first on 16 Nov, by reach, watch time, shares and follows against the card Reels. To do: 046 repeats the Maradona match on 4 Dec and sits on an "on this day" date, so the Saturday drafting run should give its slot to a comparison and move it to the end of the queue with `npm run hand-over`, then replace its scheduled Facebook Reel.

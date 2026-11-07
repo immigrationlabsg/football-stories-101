@@ -136,7 +136,7 @@ Attach the reference photo and paste:
 Follow-up fixes, one line each:
 
 1. "The face no longer looks like the person in the photo. Redo it, keeping the face exactly as photographed and changing only the painting style."
-2. "There is still a logo, crest or lettering on the shirt or in the background. Remove it completely and leave plain fabric or plain wash."
+2. "There is a logo, crest or lettering that is not in the photo. Remove only that and leave plain fabric or plain wash. Keep the crest, maker's logo and sponsor the photo really shows (owner, 7 Nov 2026)."
 3. "Make it looser and lighter: more white paper showing, softer edges, less detail in the background."
 4. "Make it square and move the figure into the centre with more space above the head."
 

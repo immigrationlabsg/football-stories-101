@@ -45,12 +45,12 @@ OUT=$(print -r -- "$PROMPT" | claude -p --permission-mode auto "${GUARD[@]}" 2>&
 STATUS=$?
 print -r -- "$OUT" >> "$LOG"
 echo "$(date): task $N ($MODE) finished, exit $STATUS" >> "$LOG"
-# The Monday growth review's report goes in the owner's vault, with an alert that stays up (owner, 5 Nov 2026).
-if [[ $N == 6 && $MODE == run ]]; then
+# The Monday growth review's and the Sunday Reels' reports go in the owner's vault, with an alert that stays up (owner, 5 Nov 2026).
+if [[ ($N == 6 || $N == 7) && $MODE == run ]]; then
   if [[ $STATUS == 0 ]]; then
     print -r -- "$OUT" | "${0:A:h}/report-note.sh" "${LOG:t}" >> "$LOG" 2>&1
   else
-    osascript -e "display dialog \"This week's growth review did not finish. See ${LOG:t} in ~/Library/Logs/football-stories-101.\" with title \"Football Stories 101\" buttons {\"OK\"} giving up after 86400" >> "$LOG" 2>&1
+    osascript -e "display dialog \"This week's task $N (growth review or ad hoc Reels) did not finish. See ${LOG:t} in ~/Library/Logs/football-stories-101.\" with title \"Football Stories 101\" buttons {\"OK\"} giving up after 86400" >> "$LOG" 2>&1
   fi
   exit 0
 fi

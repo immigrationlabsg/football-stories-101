@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Installs the six scheduled tasks of docs/scheduled-tasks.md as launchd jobs (Singapore times; the Mac's clock is
+# Installs the scheduled tasks of docs/scheduled-tasks.md as launchd jobs (Singapore times; the Mac's clock is
 # Asia/Singapore) plus a job that keeps the Mac from idle sleep. Safe to run again. See ops/mac/README.md.
 set -eu
 REPO=${0:A:h:h:h}
@@ -35,6 +35,25 @@ job 2 delivery-check "1 8 16" "2 8 16" "3 8 16" "4 8 16" "5 8 16" "6 10 16" "0 1
 job 3 research "4 8 52"
 job 4 drafting "6 8 47"
 job 6 growth-review "1 12 41"
+job 7 adhoc-reels "0 14 7"
+
+# Every evening at 19:45, start "Post extras": it posts any narrated extra due at 20:00 and does nothing otherwise.
+# No Claude session is involved; GitHub's own schedule for the workflow is the backup.
+label=sg.footballstories101.post-extras
+cat > "$AGENTS/$label.plist" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>$label</string>
+<key>ProgramArguments</key><array><string>/bin/zsh</string><string>$REPO/ops/mac/start-extras.sh</string></array>
+<key>StartCalendarInterval</key><dict><key>Hour</key><integer>19</integer><key>Minute</key><integer>45</integer></dict>
+<key>StandardOutPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
+<key>StandardErrorPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
+</dict></plist>
+PLIST
+launchctl bootout "gui/$(id -u)/$label" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$AGENTS/$label.plist"
+echo "installed $label"
 
 # Keep the Mac awake (no idle sleep; the screen may still turn off) whenever the owner is logged in.
 label=sg.footballstories101.keep-awake

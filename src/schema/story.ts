@@ -98,6 +98,12 @@ export const storySchema = z.object({
    * calendar and rhythm checks, up to six fact cards, and no story number on the closing card. Posted by a manual run.
    */
   extra: z.boolean().default(false),
+  /** Post only to these networks (owner, 7 Nov 2026: narrated extras on Instagram and Threads, Facebook stays the control). Empty means all. */
+  onlyOn: z.array(z.enum(['facebook', 'instagram', 'threads'])).optional(),
+  /** A finished voiced Reel made with the narrated-reel skill, committed under assets/reels/. Posted instead of the card Reel. */
+  narratedReel: z.string().trim().regex(/^assets\/reels\/[a-z0-9-]+\.mp4$/, 'narratedReel must be assets/reels/<name>.mp4').optional(),
+  /** Credits for every photo the narrated Reel's paintings came from; goes in the caption above the AI line. */
+  reelCredits: z.string().trim().min(1).optional(),
   draft: z.boolean().default(false),
 });
 

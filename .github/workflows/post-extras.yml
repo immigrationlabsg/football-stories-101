@@ -1,0 +1,60 @@
+name: Post extras
+
+# Posts stories limited to some networks (narrated extras, 20:00 Singapore, 12:00 UTC) at their time. Asked several times
+# because GitHub's scheduler can start late; the Mac also starts it at 19:45 (ops/mac/install.sh). A retry posts only what is missing.
+on:
+  schedule:
+    - cron: "37,52 11 * * *"
+    - cron: "7,27,47 12 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: show what is due, post nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social-posting
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+      WEB_LAG_DAYS: ${{ vars.WEB_LAG_DAYS || '7' }}
+      PUBLIC_INSTAGRAM_URL: ${{ vars.PUBLIC_INSTAGRAM_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run post-extras
+        env:
+          DRY_RUN: ${{ inputs.dry_run == true && '1' || '0' }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+      - name: Commit the record
+        if: ${{ always() && inputs.dry_run != true }}
+        run: |
+          git add data/sent.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "chore(publish): record extra posts"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "Could not save the record to main; check data/sent.json before any other posting run." >&2
+          exit 1

@@ -13,7 +13,7 @@ The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py`
 - File (M): 1080x1920, 30 fps, H.264 yuv420p.
 - Every painting of a person comes from a real free Commons photo of that person (PD, CC0, CC BY, CC BY-SA). Empty places may be painted with no photo, as the picture guide allows. Note licence, author, source in `licences.json` (a blank author means read the file's page), credit in the caption.
 - Whole paintings with camera moves only. Moving pictures made by AI drifted faces and shirts, and cut-out layers left headless players; both were tried and dropped.
-- Faces must look like the person, every head inside the frame. Kit true to the photo: correct colours, numbers and badge. Removing a maker's logo needs the owner's approval, as the picture guide says.
+- Faces must look like the person, every head inside the frame. Kit true to the photo: correct colours, numbers and badge. Keep the maker's and sponsor's logos as they appear in the photo; do not remove them (owner, 7 Nov 2026). Never invent one the photo does not show.
 - Nothing important cut at the frame edge at any moment of a shot: hands, the ball, feet of main figures. Keep 10 px clear. Check the last frame of every zoom, not just the middle.
 - Extended paintings must show no straight join or dark band; set `R.extend[name]=(cut,ty)` and look at the top and bottom of the frame.
 - Picture pace as in the approved Reel: 20 shots in 43.7 s, most 1 to 2.6 s, longest 6 s. No same-painting jump: where one shot follows another of the same painting, its camera starts where the last one ended.
