@@ -560,15 +560,6 @@
       "story": "lev-yashin-ballon-dor-goalkeeper"
     },
     {
-      "number": 20,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-02T05:09:12.025Z",
-      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 2023366835285661 (music: egmont)",
-      "story": "barcelona-guardiola-2008-2012",
-      "reel": "cefd78e1b6ee5d6380c5410b1918f074fcd98a7c"
-    },
-    {
       "number": 15,
       "network": "instagram",
       "status": "posted",
@@ -726,6 +717,15 @@
       "detail": "scheduled for 2026-12-04T00:00:00.000Z reel 1676862647501775 (music: mozart40)",
       "story": "diego-maradona-four-minutes-england",
       "reel": "a29f6a21258bc43222f3a5945bd0000e2c4f1d33"
+    },
+    {
+      "number": 20,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T17:51:14.659Z",
+      "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 1433825321719434 (music: sports-documentary)",
+      "story": "barcelona-guardiola-2008-2012",
+      "reel": "e5c4af34542dad5d3f6271d271388551c95caafe"
     }
   ]
 }
