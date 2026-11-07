@@ -701,6 +701,31 @@
       "at": "2026-11-06T12:02:19.343Z",
       "detail": "thread 18121633150974758 (cards, Reel in reply, topic Football)",
       "story": "cristiano-ronaldo-portugal-goodbye"
+    },
+    {
+      "number": 19,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-07T02:02:13.450Z",
+      "detail": "reel media 18012877121989575 (test: first-frame)",
+      "story": "torres-v-watt-7-november"
+    },
+    {
+      "number": 19,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-07T02:02:13.450Z",
+      "detail": "thread 18075868025487667 (cards, Reel in reply, topic Football)",
+      "story": "torres-v-watt-7-november"
+    },
+    {
+      "number": 46,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T02:02:40.072Z",
+      "detail": "scheduled for 2026-12-04T00:00:00.000Z reel 1676862647501775 (music: mozart40)",
+      "story": "diego-maradona-four-minutes-england",
+      "reel": "a29f6a21258bc43222f3a5945bd0000e2c4f1d33"
     }
   ]
 }
