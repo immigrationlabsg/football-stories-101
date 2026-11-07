@@ -38,9 +38,14 @@ const dryRun = process.env.DRY_RUN === '1';
 // Older records carry no hash, so "replace" would re-upload every Reel in a range: one story at a time.
 if (action === 'replace' && to !== from) throw new Error('replace takes one story at a time (from and to the same number)');
 const SENT = path.join(ROOT, 'data/sent.json');
-// Never during the morning posting window (06:00-10:45 Singapore): the daily run saves data/sent.json then too.
-const sgHour = (new Date().getUTCHours() + 8) % 24 + new Date().getUTCMinutes() / 60;
-if (action !== 'check' && !dryRun && sgHour >= 6 && sgHour < 10.75) throw new Error('Not between 06:00 and 10:45 Singapore time: the daily run may be posting. Run it later.');
+// Never during the morning posting window, when the daily run saves data/sent.json too. Its first try is 06:07
+// Singapore on weekdays and 08:07 at weekends (publish-daily.yml), so the window is 06:00-10:45 on weekdays and
+// 07:55-10:45 on Saturday and Sunday (owner, 8 Nov 2026: a Sunday swap before 08:00 so the new Reel posts).
+const sgNow = new Date(Date.now() + 8 * 3600e3);
+const sgHour = sgNow.getUTCHours() + sgNow.getUTCMinutes() / 60;
+const weekend = [0, 6].includes(sgNow.getUTCDay());
+const windowStart = weekend ? 7 + 55 / 60 : 6;
+if (action !== 'check' && !dryRun && sgHour >= windowStart && sgHour < 10.75) throw new Error(`Not between ${weekend ? '07:55' : '06:00'} and 10:45 Singapore time: the daily run may be posting. Run it later.`);
 const stories = loadStories().stories.filter((s) => !s.data.draft && s.data.number >= from && s.data.number <= to);
 let failed = 0;
 let uploads = 0;
