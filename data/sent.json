@@ -170,14 +170,6 @@
       "story": "eusebio-mozambique-benfica-1966"
     },
     {
-      "number": 21,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:29:48.958Z",
-      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 1117315264352229 (music: coriolan)",
-      "story": "denmark-euro-1992"
-    },
-    {
       "number": 23,
       "network": "facebook",
       "status": "scheduled",
@@ -726,6 +718,15 @@
       "detail": "scheduled for 2026-11-08T02:00:00.000Z reel 1433825321719434 (music: sports-documentary)",
       "story": "barcelona-guardiola-2008-2012",
       "reel": "e5c4af34542dad5d3f6271d271388551c95caafe"
+    },
+    {
+      "number": 21,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T17:52:48.098Z",
+      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 2430137441125881 (music: cinematic-trailer)",
+      "story": "denmark-euro-1992",
+      "reel": "d77789069bad67be49b04598043b9779484e4a34"
     }
   ]
 }
