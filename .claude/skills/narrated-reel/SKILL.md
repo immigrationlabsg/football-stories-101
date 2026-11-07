@@ -33,10 +33,14 @@ Keep to the story that serves that rise. On Como the owner cut a side fact, "It 
 
 Write 6 to 8 short spoken lines, about 110 words and 40 to 45 seconds in all:
 
-- **Line 0 is the whole hook**, and works with the sound off through its captions.
+**The shape (owner, 7 Nov 2026): a recent trend that people relate to and that catches their attention, then history they may not know, then a hook question or something like it.** On Como: the 9-1, then bankrupt to Champions League, then "Who's the next Como?", spoken and on the end card. How that shape is expressed is left to our creativity, so vary it rather than repeating a template.
+
+**The objective, always: bring people history and stories that are memorable, so they want to share them with friends and choose to like or follow the account.** Earn that with the story. The rule against asking for likes, shares, tags or follows still stands.
+
+- **Line 0 is the whole hook**, and works with the sound off through its captions. For news, it is the result itself, on screen from the first frame.
 - The middle shows the moment step by step, so a viewer can picture it.
 - A turn at about two thirds where the story has a real surprise. Say "But here's the part that surprised me" only if it did: Como's script does not use it.
-- A short close that echoes the hook, then an end-card question that starts an argument. Never ask for a like, share, tag or follow.
+- A short close that echoes the hook, then a question that starts an argument, spoken and on the end card. Never ask for a like, share, tag or follow.
 
 Every claim needs a fact-check entry in `docs/fact-checks/`, two sources where they exist, and wording that stays inside what the sources say. Log disputed points and tell the owner. For news, confirm the result on UEFA, the league or a major outlet the same day, and date-stamp anything that may change ("fourth in the table" goes stale).
 
@@ -80,7 +84,7 @@ Copy `examples/maradona-reel.py` to the folder as `reel.py`. Change `TEMPO`, `GA
 ~/Developer/football-stories-samples/.venv/bin/python -I ~/Developer/football-stories-101/.claude/skills/narrated-reel/scripts/check_reel.py final.mp4
 ```
 
-It measures the file, loudness, AI tag, caption speed, voice over music, sudden steps, pumping, the ending and every word. Then read `build/contact.jpg` and open full-size frames at each cut and caption. A clean run does not finish the job: anything measured here can still look or sound wrong.
+It measures the file, loudness, AI tag, caption speed, voice over music, sudden steps, pumping, the ending and every word. Its word list comes from the transcriber, so names it mishears (Lens, Serie A) need a person's ear; and it does not measure caption position. Then read `build/contact.jpg` and open full-size frames at each cut and caption. A clean run does not finish the job: anything measured here can still look or sound wrong.
 
 Run `npm run verify`, then have the `verifier` subagent, which did not make it, check against `standards.md` with the sound stems, frames and sources. Fix what it finds and recheck what changed. Say plainly what no one could verify: an agent cannot hear, so say the mix was measured and only a person can judge it.
 

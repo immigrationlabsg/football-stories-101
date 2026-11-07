@@ -14,3 +14,6 @@
 | Louder music at +1 dB | "he remembered" misheard as "you remembered" | Re-transcribe after any level change |
 | Codex refused one celebrate repaint | Not reworded to get past it. Used a local colour edit of the existing painting | Same again |
 | Como script with Michael Essien's wife buying the club | Owner: doesn't matter, keep to rags to riches | Facts must serve the rise; check the three steps in SKILL.md |
+| "No team has ever won by more" and "first ever season in Europe", both from good reports | Verifier: HJK 10-0 in qualifying; the 1980-81 Mitropa Cup. A fan would answer in the comments | Attribute a record to its source and test it against the records page; say the narrower true thing |
+| Writing "blue shorts" into the kit rule without looking | Painted wrong: the photo has white shorts | Read the kit off the photo itself |
+| Zooming a team painting that fills the width | Outer player cut at the edge | Leave grass either side when painting; don't zoom a full-width group |
