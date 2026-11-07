@@ -170,14 +170,6 @@
       "story": "eusebio-mozambique-benfica-1966"
     },
     {
-      "number": 23,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:30:48.503Z",
-      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 28738238659173738 (music: hebrides)",
-      "story": "wimbledon-crazy-gang-1988-fa-cup"
-    },
-    {
       "number": 24,
       "network": "facebook",
       "status": "scheduled",
@@ -727,6 +719,15 @@
       "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1118145271218716 (music: sports-documentary)",
       "story": "van-persie-v-salah-10-november",
       "reel": "9e3301707d8913cafb991e63ba91b2acbf936740"
+    },
+    {
+      "number": 23,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-07T17:56:40.324Z",
+      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 1693439635484779 (music: cinematic-trailer)",
+      "story": "wimbledon-crazy-gang-1988-fa-cup",
+      "reel": "42cd280c5c6e48fdf1630efeb37785ad229166ab"
     }
   ]
 }
