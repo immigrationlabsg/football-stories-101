@@ -143,7 +143,7 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     `_____`,
     ``,
     `Football is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.`,
-    ...(story.data.reelCredits ? [``, story.data.reelCredits] : []),
+    // No photo credits in captions or on the Reel (owner, 8 Nov 2026): the AI line below is the only note. Credits stay in the story file (reelCredits) and on the site.
     ...(usesReel(story.data.date) ? [``, AI_NOTE] : []),
   ]
     .join('\n')
@@ -172,14 +172,12 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
   let threadsBody = threadsTries.find((t) => bytes(t) <= room) ?? threadsTries[threadsTries.length - 1];
   while (bytes(threadsBody) > room) threadsBody = threadsBody.slice(0, -2) + '…';
   const threads = threadsBody + aiLine;
-  const threadsReply = story.data.reelCredits
-    ? `The story as a voiced Reel. More on Instagram: ${igLink}\n${story.data.reelCredits}`.slice(0, THREADS_LIMIT)
+  const threadsReply = story.data.narratedReel
+    ? `The story as a voiced Reel. More on Instagram: ${igLink}`
     : `The whole story as a Reel. More on Instagram: ${igLink}`;
   const tags = usesReel(story.data.date) ? hashtagsFor(story.data) : '';
   const tagged = withTags(facebook, tags);
-  // A daily story's caption already fills Instagram's limit: there the credits are on the Reel's ending card (narrated-reel skill, credit_end.py).
-  const withoutCredits = story.data.reelCredits && !story.data.extra ? withTags(facebook.replace(`\n\n${story.data.reelCredits}`, ''), tags).instagram : null;
-  const instagram = withoutCredits ?? tagged.instagram;
+  const instagram = tagged.instagram;
   return { facebook: tagged.facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
