@@ -332,15 +332,6 @@
       "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
     },
     {
-      "number": 25,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-27T15:32:44.976Z",
-      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 957219107034436 (music: coriolan)",
-      "story": "scholes-v-buffon-13-november",
-      "reel": "28087c21ba5c1936fbea93234728b214d5aff930"
-    },
-    {
       "number": 26,
       "network": "facebook",
       "status": "scheduled",
@@ -745,6 +736,15 @@
       "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1651696649664141 (music: sports-documentary)",
       "story": "lyon-seven-straight-titles-2002-2008",
       "reel": "d7aa855f06a8cc6600919ad1d921954398cd3b0f"
+    },
+    {
+      "number": 25,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T02:56:23.577Z",
+      "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 1440484914868339 (music: cinematic-trailer)",
+      "story": "scholes-v-buffon-13-november",
+      "reel": "a30431b6b9c6e585ccef766981eaf1e30a58891d"
     }
   ]
 }
