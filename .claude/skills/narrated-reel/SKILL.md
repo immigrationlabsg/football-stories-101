@@ -55,7 +55,7 @@ Every claim needs a fact-check entry in `docs/fact-checks/`, two sources where t
 
 **Pinterest allowed (owner, 8 Nov 2026):** when the real moment isn't on Commons, use a Pinterest photo and paint it; see `references/daily-reel-recipe.md`, Sources.
 
-Use `commons.py search` and `commons.py get`. Any named player's painting starts from a free Wikimedia Commons photo under PD, CC0, CC BY or CC BY-SA (`docs/picture-guide.md`). Never Getty, AP, Reuters or PA, even as a reference. A paid licence is the owner's decision only. Read each file's licence page, record it, and credit it in the post. Plan one picture per beat of the story; a drawn pitch map or timeline is the honest answer for anything no photograph shows. Do not invent a moment by painting it with no source photo, and no match footage, no other account's pictures.
+Use `commons.py search` and `commons.py get`. Any named player's painting starts from a free Wikimedia Commons photo under PD, CC0, CC BY or CC BY-SA (`docs/picture-guide.md`). Never Getty, AP, Reuters or PA, even as a reference. A paid licence is the owner's decision only. Read each file's licence page, record it, and credit it in `reelCredits` (shown on the story's web page). Plan one picture per beat of the story; a drawn pitch map or timeline is the honest answer for anything no photograph shows. Do not invent a moment by painting it with no source photo, and no match footage, no other account's pictures.
 
 Show nothing you have not looked at. If there is no good photo of the key moment, say so early and change the story or the angle rather than settling for a weak picture: weak pictures were the first rejection.
 
@@ -105,7 +105,7 @@ Send the file with `SendUserFile`, `display: attach`, and say to play it in thei
 
 ### 9. Post, only with the owner's OK
 
-See `references/posting.md`. Instagram and Threads carry a new-format test; Facebook is the control unless the owner says otherwise. Write the caption with the AI and photo credit line, add new photos to `data/reference-photos.json`, confirm on each network that it went live, and log it in `docs/growth-log.md`.
+See `references/posting.md`. Instagram and Threads carry a new-format test; Facebook is the control unless the owner says otherwise. Captions carry only the AI line ("Illustrations made with AI."); photo credits go in `reelCredits` and show on the story's web page, never on the Reel or in captions (owner, 8 Nov 2026). Then add new photos to `data/reference-photos.json`, confirm on each network that it went live, and log it in `docs/growth-log.md`.
 
 ## Testing the engine
 

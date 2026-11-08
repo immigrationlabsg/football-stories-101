@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# RETIRED 8 Nov 2026: the owner ordered no credits on the Reel. Do not run. Credits go in the story's reelCredits (shown on its web page).
 """Writes the photo credits small on a Reel's ending card, so they travel with the video (Instagram's caption has no room).
    python credit_end.py final.mp4 "Paintings after Commons photos by ..."   keeps final-before-credit.mp4, replaces final.mp4.
    Audio is copied untouched; the video is re-encoded once at high quality; the AI tag is written again."""
