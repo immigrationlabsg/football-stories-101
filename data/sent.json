@@ -694,15 +694,6 @@
       "reel": "a29f6a21258bc43222f3a5945bd0000e2c4f1d33"
     },
     {
-      "number": 23,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-07T17:56:40.324Z",
-      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 1693439635484779 (music: cinematic-trailer)",
-      "story": "wimbledon-crazy-gang-1988-fa-cup",
-      "reel": "42cd280c5c6e48fdf1630efeb37785ad229166ab"
-    },
-    {
       "number": 20,
       "network": "facebook",
       "status": "scheduled",
@@ -744,6 +735,15 @@
       "detail": "scheduled for 2026-11-10T00:00:00.000Z reel 1604188357558810 (music: sports-documentary)",
       "story": "van-persie-v-salah-10-november",
       "reel": "014505d2a41afcc76f235c9cd196bf3e4ec52556"
+    },
+    {
+      "number": 23,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T02:53:56.828Z",
+      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 2178034636925875 (music: cinematic-trailer)",
+      "story": "wimbledon-crazy-gang-1988-fa-cup",
+      "reel": "56244c868621299e6cedc3f7acfc3471f445e98b"
     }
   ]
 }
