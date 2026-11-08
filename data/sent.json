@@ -332,15 +332,6 @@
       "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
     },
     {
-      "number": 26,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-27T15:33:37.374Z",
-      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 1344780257609114 (music: mozart40) (cover: mystery card)",
-      "story": "guess-the-legend-didier-drogba",
-      "reel": "827afe811e15cc1b7eb59c6092a6c479246bd089"
-    },
-    {
       "number": 28,
       "network": "facebook",
       "status": "scheduled",
@@ -745,6 +736,15 @@
       "detail": "scheduled for 2026-11-13T00:00:00.000Z reel 1440484914868339 (music: cinematic-trailer)",
       "story": "scholes-v-buffon-13-november",
       "reel": "a30431b6b9c6e585ccef766981eaf1e30a58891d"
+    },
+    {
+      "number": 26,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T02:57:36.380Z",
+      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 2573211346498742 (music: sports-documentary) (cover: mystery card)",
+      "story": "guess-the-legend-didier-drogba",
+      "reel": "9ed0091422a29e8974a5d4b005a9d2b8dd6d1bb4"
     }
   ]
 }
