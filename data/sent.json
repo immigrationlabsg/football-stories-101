@@ -244,15 +244,6 @@
       "reel": "95854345c1a2e3a1a54fb9486e943cb5c9633296"
     },
     {
-      "number": 29,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T13:11:52.819Z",
-      "detail": "scheduled for 2026-11-17T00:00:00.000Z reel 1730530014680684 (music: coriolan)",
-      "story": "greece-euro-2004",
-      "reel": "a3d8f6fbe19d10dc2d260e17fd2d7660447eb35b"
-    },
-    {
       "number": 30,
       "network": "facebook",
       "status": "scheduled",
@@ -745,6 +736,15 @@
       "detail": "scheduled for 2026-11-16T00:00:00.000Z reel 1836919544003624 (music: sports-documentary)",
       "story": "baggio-v-messi-16-november",
       "reel": "cba912492101fcf49e3801671528124266445ec8"
+    },
+    {
+      "number": 29,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T03:01:40.423Z",
+      "detail": "scheduled for 2026-11-17T00:00:00.000Z reel 1637780364472894 (music: cinematic-trailer)",
+      "story": "greece-euro-2004",
+      "reel": "22f86689786f4700336e1ca541eea618d5e16fdd"
     }
   ]
 }
