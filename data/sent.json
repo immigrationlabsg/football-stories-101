@@ -244,15 +244,6 @@
       "reel": "95854345c1a2e3a1a54fb9486e943cb5c9633296"
     },
     {
-      "number": 30,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T13:13:37.153Z",
-      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1153102200561262 (music: mozart40)",
-      "story": "lily-parr-dick-kerr-ladies",
-      "reel": "351107eb355b28f35fa5f9e0faffacc3ea08ea7f"
-    },
-    {
       "number": 8,
       "network": "instagram",
       "status": "posted",
@@ -745,6 +736,15 @@
       "detail": "scheduled for 2026-11-17T00:00:00.000Z reel 1637780364472894 (music: cinematic-trailer)",
       "story": "greece-euro-2004",
       "reel": "22f86689786f4700336e1ca541eea618d5e16fdd"
+    },
+    {
+      "number": 30,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T03:06:42.703Z",
+      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1212300328129897 (music: sports-documentary)",
+      "story": "lily-parr-dick-kerr-ladies",
+      "reel": "7f0735742bb77828cd830c71f72099c772bdf408"
     }
   ]
 }
