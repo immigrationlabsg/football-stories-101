@@ -170,14 +170,6 @@
       "story": "eusebio-mozambique-benfica-1966"
     },
     {
-      "number": 24,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-24T08:31:18.181Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 2143990016487351 (music: egmont)",
-      "story": "lyon-seven-straight-titles-2002-2008"
-    },
-    {
       "number": 6,
       "network": "facebook",
       "status": "scheduled",
@@ -744,6 +736,15 @@
       "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 2178034636925875 (music: cinematic-trailer)",
       "story": "wimbledon-crazy-gang-1988-fa-cup",
       "reel": "56244c868621299e6cedc3f7acfc3471f445e98b"
+    },
+    {
+      "number": 24,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T02:55:06.939Z",
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1651696649664141 (music: sports-documentary)",
+      "story": "lyon-seven-straight-titles-2002-2008",
+      "reel": "d7aa855f06a8cc6600919ad1d921954398cd3b0f"
     }
   ]
 }
