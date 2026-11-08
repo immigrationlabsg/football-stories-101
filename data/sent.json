@@ -694,15 +694,6 @@
       "reel": "a29f6a21258bc43222f3a5945bd0000e2c4f1d33"
     },
     {
-      "number": 21,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-07T17:52:48.098Z",
-      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 2430137441125881 (music: cinematic-trailer)",
-      "story": "denmark-euro-1992",
-      "reel": "d77789069bad67be49b04598043b9779484e4a34"
-    },
-    {
       "number": 22,
       "network": "facebook",
       "status": "scheduled",
@@ -744,6 +735,15 @@
       "at": "2026-11-08T02:02:06.247Z",
       "detail": "thread 18117949865045390 (cards, Reel in reply, topic Football)",
       "story": "barcelona-guardiola-2008-2012"
+    },
+    {
+      "number": 21,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-08T02:51:10.487Z",
+      "detail": "scheduled for 2026-11-09T00:00:00.000Z reel 1114018688078806 (music: cinematic-trailer)",
+      "story": "denmark-euro-1992",
+      "reel": "bea8a869455c7c8b658073b585b9cabb7bc8db9f"
     }
   ]
 }
