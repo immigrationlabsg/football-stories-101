@@ -282,3 +282,14 @@ Owner, 8 Nov 2026: "I want all reels from now on to have both narration, and rot
 **What to read next:** this changes everything at once, so there's no control group. Compare watch time and shares with the classical Reels before 8 Nov, and read it knowing that length, voice and music all changed together. Como and Maradona keep their earlier voice, so those two also differ from the rest.
 
 **Zidane on Facebook:** the owner confirmed on 8 Nov 2026, after being told of the added copyright risk, that Reel 908 with its three paintings from uncleared photos goes to Facebook as well as Instagram and Threads.
+
+## 10-day trial of the voiced style, 8-17 Nov 2026 (owner, 8 Nov)
+
+Owner: "I like the current style, let's try for 10 days straight then come back with a report on its performance." Measured by **likes, shares and followers**, which should lead to more views. Stories 20-29 (8-17 Nov) are the trial: narration, music samples 3/4, a new picture every 2-3 s, about 45 s, no credits on the Reel. Report due 18 Nov (scheduled task `fs101-ten-day-report`). Research on other pages runs 12 and 16 Nov (task `fs101-competitor-research`) and lands below as ideas for the next change if the trial doesn't improve.
+
+**Baseline, Audience report run 42438129062 on 8 Nov 10:30 SGT (card-style Reels 006-019 and Ronaldo 900):**
+- Followers: Facebook 0, Instagram 0, Threads 0.
+- Instagram, 15 posts 26 Oct-7 Nov: reach 99-152 each, views 112-182, likes 0-7 (total 36, about 2.4 a post), saves 0-1, **shares 0 on every post**, average watch 3.1-6.7 s, skip rate 46-67%.
+- Facebook Reels 006-019: plays 0-175 (most 1), reactions 0 except Ronaldo 900 (1), shares 0. Facebook's page reach metric is no longer served by Meta (code 100); plays stand in.
+- Threads, 11 posts: views 1-51, likes 0, reposts 0, shares 0.
+- Instagram follows per post are not available from the API for Reels; followers are read from the account count.
