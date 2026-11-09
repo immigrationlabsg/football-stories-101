@@ -85,13 +85,13 @@ Parked until there is evidence or the owner decides:
 - **YouTube Shorts as a fourth channel** (owner's call: a new account). The 9 Nov benchmark: Sporty2D, a 1-week-old
   Shorts page of 2D cartoons, got 59K and 55K views on its two football Shorts (its other sports 0.9K-8K), while the
   same videos on its Instagram had 6 followers. Worth a test; one page is not proof.
-- **Replying on other accounts' Threads posts.** Meta suggests it; the owner's rule forbids messaging other accounts.
-  Needs the owner's ruling.
+- **Replying on other accounts' Threads posts: allowed** (owner, 9 Nov: "Allow"). Genuine, on-topic public replies only,
+  never asking for likes, shares or follows. To be added as a Threads idea after test 3.
 - **Instagram library music**: only if Meta's posting API can attach it. Check first.
 - **Length**: our 45 s already sits in Instagram's suggested 30-60 s. No test.
 
 Rules every test keeps: the voiced, painted house look; no asking for likes, shares or follows; no website link; no
-messaging other accounts; paintings only from real photos; every fact checked; no Facebook changes from 06:00 to 10:45 SGT.
+direct messages to other accounts (genuine public Threads replies are allowed); paintings only from real photos; every fact checked; no Facebook changes from 06:00 to 10:45 SGT.
 
 ## 3. How we measure
 
@@ -185,5 +185,5 @@ shares and followers since 8 Nov. Then the loop repeats with the next idea in th
 
 - OK on this plan and the order of the tests, including measuring tests 1, 2 and 4 before against after (no Facebook control).
 - Yes or no: Threads text takes (test 3) and the Boxing Day countdown (test 4).
-- Yes or no on YouTube Shorts as a fourth channel.
-- A ruling on replying to other accounts' Threads posts.
+- ~~YouTube Shorts~~: started 9 Nov (@foot.ballstories101). TikTok: waits on the owner creating the account.
+- ~~A ruling on replying to other accounts' Threads posts~~: allowed, 9 Nov.
