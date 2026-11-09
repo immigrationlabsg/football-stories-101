@@ -745,6 +745,22 @@
       "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1212300328129897 (music: sports-documentary)",
       "story": "lily-parr-dick-kerr-ladies",
       "reel": "7f0735742bb77828cd830c71f72099c772bdf408"
+    },
+    {
+      "number": 21,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-09T00:02:20.487Z",
+      "detail": "reel media 18150337945567737",
+      "story": "denmark-euro-1992"
+    },
+    {
+      "number": 21,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-09T00:02:20.487Z",
+      "detail": "thread 18094069325694911 (cards, Reel in reply, topic Football)",
+      "story": "denmark-euro-1992"
     }
   ]
 }
