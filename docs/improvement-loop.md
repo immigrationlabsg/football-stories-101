@@ -213,3 +213,39 @@ Owner: "We need to identify the key factors and keep it, while continuing to imp
 5. **Network differences get their own line in each review.** Instagram shows each Reel to a test group of non-followers first (all of our Instagram reach so far is non-followers), so a strong story can break out from zero followers. Facebook gave our Page's Reels between 0 and 253 plays with 1 follower, so on Facebook we watch for anything that lifts plays (posting time, posting directly instead of scheduled, captions, the first 3 seconds) as separate tests. Testing on Facebook changes the rule that Facebook stays unchanged as the control (section 2, `docs/posting-format.md`), so each Facebook test needs the owner's OK first, and nothing changes on Facebook between 06:00 and 10:45 SGT.
 6. **Scheduled:** the 18 Nov review runs inside the trial report task; later reviews run from the desktop task `fs101-factor-review` on the 28th, 8th and 18th of each month at 12:41 SGT (about every 10 days). Its text is in `ops/tasks/fs101-factor-review.md`. Created 9 Nov on the owner's say-so; its 18 Nov run stops at once because that review is in the trial report.
 7. **Not built yet:** a script that joins the factor sheet to the snapshots for the review table. Until it exists, the analyst builds the table by hand from both files, and the verifier recomputes it.
+
+
+## 10. Adam Mosseri's guidance, and what it changes for us (owner, 9 Nov 2026)
+
+Owner: "Understand what he said, and take what he said as serious context to how we strategize on our reels and growing our account."
+
+**Source:** Colin and Samir's interview with Adam Mosseri, head of Instagram, published 26 Oct 2026. It is on Instagram (https://www.instagram.com/p/De8mKLVCW8X/) and YouTube (https://www.youtube.com/watch?v=sxizdQ2hRfk, 71:39). Also used: Mosseri's 6 Nov post on the cleaned-up Insights, and Instagram's Original Content Guidelines, linked from his profile (https://creators.instagram.com/original-content-guidelines). Wording comes from YouTube's auto-captions, read 9 Nov, so quotes are close, not word-perfect. Full notes are in `docs/growth-log.md` under "Mosseri interview notes, 9 Nov 2026".
+
+**What he said that matters to us**
+
+| # | Mosseri | What it means for FS101 |
+|---|---|---|
+| 1 | Reaching people who don't follow you ("unconnected reach") is driven by **sends per reach**. For a new creator, the metrics to follow are sends per reach, likes per reach, then watch time. Edits now does this maths, and it is coming to Insights. | Every one of our Instagram viewers is a non-follower, so sends per reach is our main Instagram number. 021 got 25 shares on 1,083 reached (2.3%); earlier Reels got 0. |
+| 2 | Shows that work are "ready to engage with immediately": "it reminds you of a friend" and "you immediately want to send it". | Pick and write every story so a fan thinks of a specific friend, club rival or argument ("send this to your Arsenal mate"). We still never ask for a share. The story must make people want to send it. |
+| 3 | Ranking isn't only engagement. **Originality** (original creators get more distribution than aggregators), **breakouts** (every post gets a chance; "a brand new account can get millions of views") and **recency** ("ebb and flow with what's happening in the world right now"). | Keep our own paintings, script and voice: this is our edge. Tie stories to what football is talking about this week: last night's match, an anniversary, a record just broken. |
+| 4 | Instagram leans on watch time less than its competitors. It looks at "how likely you are to watch most of the video", plus sends, comments and likes. | Aim for viewers finishing the Reel, not for longer Reels. Keep about 45 s; watch completion (021: 22.9 s of 45 s). |
+| 5 | Carousels are doing well now. With music they can show in the Reels viewer; they get a "second chance" (shown again if skipped); and their depth drives sends. | A painted carousel with music is a strong new format to test on Instagram. |
+| 6 | Be clear about who you are and what your goal is, and pick only the tools that fit. "You don't have to use all of the formats." | Stay one focused account: true football stories. No off-topic posts. |
+| 7 | AI content isn't ranked differently, but AI accounts and AI characters must now label themselves, and Instagram is still learning to rank new kinds of AI content (it uses "worth your time" surveys). Originality is the principle. | Keep "Illustrations made with AI." on every post. Check whether the posting API can set Instagram's AI label. Never reuse other creators' scripts. |
+| 8 | "What works today might not work in 6 months." He reinvented the same idea (a creator spotlight) three or four times in 7 years. | Expect a format to fade. The 10-day factor review (section 9) watches for decline, and we change the format, not the mission. |
+| 9 | Instagram checks what share of your followers you reach, so a follower count "means something", and it uses each viewer's history to predict who comes back. | Followers come from people who keep seeing and liking us. A steady daily series and recognisable look help returning viewers. |
+
+Original Content Guidelines: narration, a storyline or creative graphics that re-contextualise count as original. Borders, watermarks, speed changes or only crediting do not. An account that mostly posts unoriginal content isn't recommended to non-followers until a "significant percentage" of its last 30 days is original. Our voiced, painted stories fit. Our 20:00 extras must keep the same standard.
+
+**What changes now (no test needed, within the standing rules)**
+1. **Instagram's headline numbers become sends per reach, then likes per reach, then watch time / skip rate**, in that order, in every review, scoreboard and report. Shares per 1,000 reached (section 1) already is sends per reach; likes per 1,000 reached is added beside likes per post.
+2. **Sendability check at the writing stage.** The writer adds one line to each story's plan: who would a fan send this to, and why. The fact-checker and verifier treat a story with no clear answer as weak. This changes no rule: we still never ask for shares.
+3. **Recency first when picking stories.** When two stories are equally good, pick the one tied to this week's football. Research round 2 lists the open dates (22, 25 and 30 Nov).
+4. **Account Status check, monthly**, in the Instagram app (Settings, Account Status), to confirm our posts can still be recommended. The 28th factor review asks the owner to look, or reads it in the signed-in Chrome if Instagram shows it on the web.
+5. **Factor sheet** (section 9): new fields `sendable_to` (who a fan would send it to) and `recency_tie` (what this week's football it hooks to).
+
+**New tests for the queue (owner to choose the order; one change a week, as always)**
+- **Recency week:** every daily story hooked to that week's football (last night's match, an anniversary, a record). Bar: Instagram sends per reach above the baseline, with at least 3 shares from 2 or more posts.
+- **Carousel week (Instagram only):** each day's story also posted as a painted carousel with music. Bar: carousel sends per reach against the same day's Reel. Facebook and Threads unchanged.
+
+Test 1 (story pick by feeling, 23-29 Nov) already picks for awe, outrage and paradox. The sendability check is part of the same pick, so test 1 still changes one thing.
