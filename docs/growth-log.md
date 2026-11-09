@@ -441,3 +441,10 @@ Facebook-control rule in `docs/posting-format.md` for those tests); Threads text
 YouTube Shorts and TikTok as new channels ("On top of YouTube, I want to start TikTok too. Can you setup YouTube on your
 own end and start it."); replies on other accounts' Threads posts "Allow". Replies stay genuine, on-topic and never ask
 for likes, shares or follows; the standing ban on direct messages to other accounts is unchanged.
+
+## YouTube Shorts started, 9 Nov 2026 (owner: "Can you setup YouTube on your own end and start it.")
+
+- Channel **Football Stories 101**, handle **@foot.ballstories101**, on the FS101 Google account (101footballstories101@gmail.com), channel id UCQe3iYpi_zHJjMTfYu0QLdg. Created in YouTube Studio through Chrome; the owner's request was the go-ahead to accept YouTube's terms.
+- First Short, uploaded by hand: 021 Denmark 1992 (our best Reel so far), https://www.youtube.com/shorts/HE71Ekm5xQA. Public, not made for kids, AI use set to "Yes" (to match "Illustrations made with AI."), no website link. The uploaded file is byte-identical to the posted Reel (sha1 bea8a869455c...). YouTube's checks found no issues.
+- Daily posting isn't automatic yet. YouTube keeps videos uploaded through its API from an unaudited app private, so either upload by hand through Chrome or use Zernio (the TikTok route already chosen), which says it posts Shorts too. TikTok waits on the owner creating the account (they will do it later at the Mac).
+- Measurement: the Audience report and the snapshot don't read YouTube yet; YouTube Studio shows views, likes and subscribers.
