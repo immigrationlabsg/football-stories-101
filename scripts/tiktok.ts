@@ -93,7 +93,7 @@ if (MODE === 'accounts') {
   if (accounts.length !== 1) throw new Error(`Expected exactly 1 connected TikTok account, found ${accounts.length}.`);
   const accountId = accounts[0]._id ?? accounts[0].id;
   const info = await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
-  const levels: string[] = info.privacyLevels ?? info.privacy_level_options ?? [];
+  const levels: string[] = (info.privacyLevels ?? []).map((l: any) => (typeof l === 'string' ? l : l.value));
   if (levels.length && !levels.includes('PUBLIC_TO_EVERYONE')) throw new Error(`Public posting not allowed for this account: ${levels.join(', ')}`);
 
   const body = {
