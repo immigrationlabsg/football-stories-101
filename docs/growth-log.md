@@ -432,3 +432,12 @@ rechecked by me the same day). Never copied: no posts, titles or pictures reused
    line-0 hook type (paradox or scoreline first, as in 021 and Sporty2D's best Shorts) or a numbered series label.
 4. Outside evidence: the benchmark pages' own split (absurd and paradox stories 7 times their other posts) agrees with
    our 021 result and with Berger and Milkman's awe finding. Still only two narrated posts of ours: a lead, not a result.
+
+## Improvement loop approved, 9 Nov 2026
+
+The owner approved `docs/improvement-loop.md` (tests, measurement, the growth-verifier, the weekly loop). Their answers:
+the plan "Approve"; measuring the Reel tests before against after with no Facebook control "Yes agree" (this replaces the
+Facebook-control rule in `docs/posting-format.md` for those tests); Threads text takes and the Boxing Day countdown "Yes";
+YouTube Shorts and TikTok as new channels ("On top of YouTube, I want to start TikTok too. Can you setup YouTube on your
+own end and start it."); replies on other accounts' Threads posts "Allow". Replies stay genuine, on-topic and never ask
+for likes, shares or follows; the standing ban on direct messages to other accounts is unchanged.
