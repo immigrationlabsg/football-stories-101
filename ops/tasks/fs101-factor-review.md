@@ -1,4 +1,4 @@
-# Desktop scheduled task: fs101-factor-review (waiting for the owner to approve creating it)
+# Desktop scheduled task: fs101-factor-review (created 9 Nov 2026; the desktop task runs this text)
 
 Schedule: cron `41 12 8,18,28 * *` (12:41 SGT on the 8th, 18th and 28th, about every 10 days). See docs/improvement-loop.md section 9.
 
