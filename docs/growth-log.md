@@ -525,3 +525,10 @@ Source: Colin and Samir's interview with Adam Mosseri, 26 Oct 2026 (https://www.
 - About 69-70 min: "what works today might not work in 6 months". He reinvented his creator spotlight from Story to green-screen video to carousel when "what resonates with people changed".
 - Mosseri, 6 Nov 2026 post: Instagram has "cleaned up Insights for creators and businesses".
 - Instagram Original Content Guidelines (https://creators.instagram.com/original-content-guidelines): narration, a storyline or creative graphics that re-contextualise count as original. Borders, watermarks, speed changes or only crediting do not. Unoriginal accounts lose recommendations to non-followers until a "significant percentage" of the last 30 days is original. Check Account Status.
+
+## Extra 909, posted 9 Nov 2026 (owner: "go ahead and post this now")
+- Spurs 3-5 United (2001), opened on Sunday's 4-4 with Villa (recency test from the decision panel). 42.2 s, sha1 461e25ecba47..., Dylan voice, music sample 4.
+- Facebook Reel 1901380111293859 (published 15:30Z, checked with check-facebook.yml: ready, published, copyright check complete); Instagram media 17964042453251921; Threads 18079609877738457 (cards, Reel in reply). All at 23:30 SGT.
+- TikTok, first post through Zernio: https://www.tiktok.com/@foot.ballstories101/video/7706192107320446226 at 23:21 SGT, public, "Creator labelled as AI-generated" shown (owner's phone screenshot).
+- Beckham special week 4-10 Nov added to data/schedule.json (he is one of five scorers; 016 featured him on 4 Nov).
+- Judge at the Monday review; keep it out of other experiments' verdicts. Lead the Instagram read with sends per reach.
