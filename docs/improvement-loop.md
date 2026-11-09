@@ -181,6 +181,30 @@ shares and followers since 8 Nov. Then the loop repeats with the next idea in th
    control change once the owner agrees.
 4. 18-19 Nov: the trial report and the locked baseline. 23 Nov: test 1 starts.
 
+## 9. Success factors: track every post, review every 10 days (owner, 9 Nov 2026)
+
+Owner: "We need to identify the key factors and keep it, while continuing to improve on it every 10 days... keep it in the sop that we will need to track all these data and factors for success, so that we can improve on the results methodically."
+
+**Why:** on 9 Nov the same Reel (021 Denmark 1992) reached 1,083 accounts on Instagram (25 shares, 22.9 s average watch, 34.8% skip), got 436 views in 3 hours on YouTube, and got 0 plays and 0 shares on Facebook. Story 020, built the same way the day before, reached 118 on Instagram. So the format alone doesn't explain results: the story, the hook and each network's rules all matter, and we can only tell them apart if every post's ingredients are written down.
+
+1. **Factor sheet, every post (`data/post-factors.json`).** The analyst fills one entry per story on the day it posts, from the story file, build log and sent records. Fields:
+   - **Story:** pillar, themes, feeling (awe / outrage / paradox / other), story shape (underdog, record, tragedy, two-date pair, quiz, era), world-known event yes/no, famous names, a date tie (anniversary or last night's match).
+   - **Hook:** the first on-screen line, its type (paradox, question, number, name), and whether a famous name is in it.
+   - **First frame:** what it shows (the event moment, a portrait or a collage).
+   - **Format:** length in seconds, voice, music track, number of paintings, ending question.
+   - **Posting:** date, weekday, SGT time per network, how it was posted (API scheduled, API direct, Studio by hand).
+   - **Caption:** first words and length.
+2. **Outcomes stay where they are.** Numbers come from the daily snapshots (`data/metrics/`) and YouTube Studio, scored at 48 h, never typed into the factor sheet. Read YouTube from Studio in Chrome on the FS101 account: views, average percentage viewed, likes, subscribers and, once shown, viewed vs swiped away. Facebook's reach metric currently errors in the API (`post_impressions_unique`), so Facebook plays are the measure until that is fixed.
+3. **Every 10 days: factor review.** It falls on 18 Nov (with the trial report), then 28 Nov, 8 Dec, 18 Dec and so on. The analyst lines up the last 10 posts' factors against their 48 h outcomes per network and lists:
+   - which factors the top 3 posts share and the bottom 3 lack;
+   - what differs between networks;
+   - any single post more than 3 times the median, reported but never the only proof.
+
+   The master proposes keep / test / drop, and the growth-verifier checks every number against the snapshots.
+4. **Keep, test, improve.** A factor that shows up in the top posts in two reviews in a row becomes a hypothesis for the weekly test queue (section 2), and is kept only if its test clears the bar (section 3). The weekly tests and Wednesday decisions keep running; the 10-day review feeds them and records what to keep.
+5. **Network differences get their own line in each review.** Instagram shows each Reel to a test group of non-followers first (all of our Instagram reach so far is non-followers), so a strong story can break out from zero followers. Facebook gave our Page's Reels between 0 and 253 plays with 1 follower, so on Facebook we watch for anything that lifts plays (posting time, posting directly instead of scheduled, captions, the first 3 seconds) as separate tests.
+6. **Not built yet:** a script that joins the factor sheet to the snapshots for the review table. Until it exists, the analyst builds the table by hand from both files, and the verifier recomputes it.
+
 ## 8. What needs the owner
 
 - OK on this plan and the order of the tests, including measuring tests 1, 2 and 4 before against after (no Facebook control).

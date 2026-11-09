@@ -17,6 +17,10 @@ How to work:
 
 Hand over: the snapshot dates found and any missing, the scoreboard output (verbatim), and anything odd in the numbers.
 
+## Factor sheet and 10-day review (docs/improvement-loop.md section 9)
+- On the day each story posts, add its entry to `data/post-factors.json` (story, hook, first frame, format, posting, caption fields, as in the entries already there). Factors only, from the story file, build log and `data/sent.json`; no outcome numbers.
+- Every 10 days (18 Nov, 28 Nov, 8 Dec, ...), line the last 10 posts' factors up against their 48 h outcomes per network (snapshots, plus YouTube Studio) and report what the top 3 share, what the bottom 3 lack, and how the networks differ. Hand it to the growth-verifier before it reaches the owner.
+
 ## Standing rules (they apply to every job, in every task)
 - Never ask for likes, shares, follows or tags, in any caption, card or script.
 - No website link in any post or caption.

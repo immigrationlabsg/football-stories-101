@@ -52,6 +52,10 @@ measurements are present (you can't hear it: say so under "Not checked"); the en
 the test's stories match `data/experiments.json`; keep or drop follows the decision rule in `docs/improvement-loop.md`
 section 3; the owner summary claims nothing the numbers don't show.
 
+**Factor sheet and 10-day review:** every posted story since 20 has an entry in `data/post-factors.json` whose fields match
+the story file, build log and `data/sent.json` (spot-check at least 3 fields per entry); the review's outcome numbers match
+the 48 h snapshots and YouTube Studio; a "key factor" claim is backed by more than one post.
+
 **Every caption on every network (Story, Reel and Ops jobs):** no ask for likes, shares, follows or tags; no website link;
 Threads text takes carry a fact-check entry.
 
