@@ -293,3 +293,140 @@ Owner: "I like the current style, let's try for 10 days straight then come back 
 - Facebook Reels 006-019: plays 0-175 (most 1), reactions 0 except Ronaldo 900 (1), shares 0. Facebook's page reach metric is no longer served by Meta (code 100); plays stand in.
 - Threads, 11 posts: views 1-51, likes 0, reposts 0, shares 0.
 - Instagram follows per post are not available from the API for Reels; followers are read from the account count.
+
+## Research on other pages, round 1, 8 Nov 2026
+
+Ideas for **after 17 Nov**, only if the 10-day trial doesn't lift likes, shares and followers. Nothing here changes the voiced style during the trial. Not repeated from earlier sections: Tifo, These Football Times, B/R Football, Spirit Football, 20 Years Ago Sports, the NFL question study, the hashtag cap, carousels and Collab (already approved). Evidence labels: **study** (peer-reviewed), **platform** (Meta or Instagram's own words), **vendor** (a tool company's dataset), **one page** (numbers seen on one public page, logged out, on 8 Nov 2026), **anecdote**.
+
+**What a share rate looks like elsewhere (one page each; TikTok shows shares to logged-out visitors, Instagram doesn't).** Diez Ball's Iniesta video: 3.8M views, 567K likes, 15.5K shares, about 0.4% shares per view. UMN Takes' "The Dirtiest Match in World Cup History": 274.1K views, 12.6K likes, 672 shares, about 0.25%. At those rates a Reel needs roughly 250-400 views to earn its first share, so 0 shares at about 110-150 reach is roughly what you'd expect. This is our estimate, from another app's numbers: the shares problem is partly a reach problem.
+
+**Ideas, ranked by likely effect on shares and follows**
+
+1. **Pick stories for a high-energy feeling: awe, anger or tension. Avoid stories that only leave people sad.**
+   - Others: the biggest videos on the pages below are awe (Iniesta 2010, Messi), outrage (the "Battle of Nuremberg", the "Red Card King") or shock. "The Dirtiest Match in World Cup History" earned 274.1K views; the same account's usual floor is about 3,000-8,000.
+   - Source: Berger and Milkman, "What Makes Online Content Viral?", Journal of Marketing Research, 2012. They studied all New York Times articles over three months. "Content that evokes high-arousal positive (awe) or negative (anger or anxiety) emotions is more viral." Sadness is "less viral." https://faculty.wharton.upenn.edu/wp-content/uploads/2011/11/Virality.pdf
+   - Strength: **study**, but on emailed news articles, not Reels. One counterpoint: Diez Ball's top video (Iniesta, 3.8M) is a tribute to a friend who died, so grief mixed with triumph also travels.
+   - Test: the drafting run labels each story's main feeling. For one week, every story is awe or outrage. Compare shares per 1,000 reached with the trial week.
+
+2. **A countdown series tied to a dated event ("Day 3/10").**
+   - Others: Diez Ball (TikTok, 216.7K followers) ran "20 stories in 20 days before the world cup". Episodes had 35.6K-543.6K views up to Day 11, then 441.5K-3.8M from Day 15 to Day 20; Day 18 was not among the 20 of 22 episodes that loaded.
+   - Source: https://www.tiktok.com/@diez.ball (playlist "World Cup Stories", 22 videos).
+   - Strength: **one page**. The rise can't be separated from the World Cup getting closer, and the page has a presenter on camera, which we don't.
+   - Test: pick a dated event after 17 Nov from the fixtures (a derby, a final, a draw). Run 7-10 numbered stories that end on it, with "Day n/10" on the first frame and in the caption. Compare follows over those days with the trial. Never ask for a follow.
+
+3. **If the skip rate doesn't fall, test the first 3 seconds alone.**
+   - Others: Instagram's own advice is to "Start with a compelling hook in the first three seconds", to make Reels that stand on their own for people who don't follow you, and to watch the view rate after 3 seconds. The Professional Dashboard tips (reported July 2024) begin "Grab attention in the first 3 seconds". On football TikTok, the hook is often a true superlative ("The most dangerous defender in the world: the Red Card King", 9M views on @legoat2215).
+   - Sources: Instagram for Creators, 26 Feb 2025, https://creators.instagram.com/blog/helping-creators-of-all-sizes-break-through; Social Media Today, 10 Jul 2024, https://www.socialmediatoday.com/news/instagram-shares-tips-for-reels-creators/721054/; https://www.tiktok.com/@legoat2215.
+   - Strength: **platform** for the 3-second rule; **one page** for superlatives. That page mostly uses match footage, which we never use.
+   - Test: keep the body of the Reel. Rotate the type of line 0 (a true superlative, the result first, a question) across a week. Compare skip rate and average watch time. Every superlative needs a fact-check entry; drop it if a source doesn't say "most" or "only".
+   - Already in our favour: a vendor study of 10,110 Facebook Reels from 704 brand Pages (Emplifi, reported 22 Mar 2026) found human speech in the first three seconds got a "better response", and speech beat music on 10-second retention by almost 25%. Our narration covers this. https://www.socialmediatoday.com/news/human-speech-and-presence-help-drive-reels-engagement/
+
+4. **Threads: one short text take a day on that day's football news, with one topic tag.**
+   - Others: Meta's own Threads tips (Oct 2024): "Jump on trends and share your thoughts on cultural moments", "Use a topic tag in your posts to make it discoverable", "Experiment with content formats to identify what works best".
+   - Source: https://www.socialmediatoday.com/news/meta-shares-tips-on-how-to-grow-your-threads-presence/729031/
+   - Strength: **platform**.
+   - Test: one week on Threads only, keeping the card posts. Compare views per post (baseline 1-51) and followers.
+   - Meta also advises "Join ongoing conversations by replying to threads that resonate with you". That means public replies on other accounts' posts, so it needs the owner's ruling first.
+
+5. **Keep the length at 30-60 s if the trial disappoints; don't cut first.**
+   - Others: the same dashboard tips say "Reels that are 30-60 seconds long see better performance". Mosseri has said there is no perfect length (as reported by Buffer). The big TikTok story videos run about 3 minutes (Diez Ball's Iniesta about 184 s, as read from the web player).
+   - Sources: Social Media Today, above; https://buffer.com/resources/instagram-reels-length
+   - Strength: **platform** (a dashboard tip, July 2024) plus **one page**.
+   - Test: none on Instagram, since our 45 s already sits in that range. If the TikTok route opens, try a longer cut there only.
+
+6. **Audio from Instagram's library.**
+   - Others: Instagram's 26 Feb 2025 post tells creators to add audio. The 2024 dashboard tips say "Tap into trends, and trending audio".
+   - Strength: **platform**, but there are no numbers.
+   - The catch: we post through Meta's API, which may not be able to attach library music. Check this before proposing anything. Our music samples 3/4 stay during the trial.
+
+**Points that aren't ideas but answer the owner's list**
+- **First followers.** Instagram: non-followers first see a Reel in "a small audience", then wider audiences if it does well. "One of the most effective ways to grow is to post consistently." Instagram's example is @pov_husband, with "over 1.2 billion views across reels" since launching in April 2024 (platform, same post). Trial Reels would help but are locked for us. Sources disagree on the threshold: 1,000 followers in Mosseri's 2025 expansion, as reported by Social Media Today (https://www.socialmediatoday.com/news/instagram-expands-access-trial-reels/752895/), against 200 in our 5 Nov note.
+- **Posting frequency.** Buffer's roughly 2M-post study links 3-5 posts a week to more than double the follower growth of 1-2 posts (vendor, correlation only; https://buffer.com/resources/how-often-to-post-on-instagram/). We already post daily, so more posts is not the gap.
+- **Questions at the end.** Meta's engagement-bait rule covers posts that "explicitly request engagement (such as votes, shares, comments, tags, likes, or other reactions)" (https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait/). A genuine question that asks for none of those isn't named in the rule, so our closing question looks safe.
+- **Ranking signals.** Mosseri, Jan 2025: "The top three signals that matter most for ranking are watch time, likes and sends" (platform, via https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/). Already in our 30 Oct notes, repeated here only because ideas 1-3 aim at sends.
+- **Cover frames and the profile grid.** Only vendor advice and one creator's anecdote; nothing worth a test yet.
+- **UMN Takes caution.** This account's 236K followers (bio: "Football stories you won't hear anywhere else") came partly from skill-clip compilations: its oldest visible videos (Aug 2025) are clips, one with 802K views. Its story videos since July 2026 mostly get 3,000-8,000 views each. Its follower count says little about the story format.
+
+**Routes tried**
+- Instagram, logged out (built-in browser): @eventi.memorabili profile read (28.5k followers; a media-kit site claims 1.5M, which doesn't match). The Reels tab and the counts on posts need a login, so no Instagram view or share numbers.
+- TikTok, logged out: #footballhistory tag page, then the profiles @legoat2215, @diez.ball and @umn.takes, and two video pages for likes, shares and saves. Post dates were decoded from video IDs.
+- Social Blade (growth history): HTTP 403. No follower-growth timeline was found for any account, so "grew fast from small" could not be confirmed for anyone.
+- Web search (standard) for football history, "on this day" and faceless story creators with growth timelines: results were mostly tool vendors' marketing. The Juventus Women TikTok (1.6M followers in just over a year, club-run, behind-the-scenes) was found but doesn't fit our format.
+- Instagram's creators site: the /grow/reels page returned 404; the 26 Feb 2025 blog post was read instead. The official Facebook creators page is dated 2022 and general.
+- Berger and Milkman PDF: WebFetch couldn't read it, so the abstract was pulled from the downloaded file with macOS PDFKit.
+- Mosseri's original videos (Instagram, Threads): not opened, because they need a login. Quotes come from news reports that cite them, and are marked as such.
+- Not reached: YouTube's official Shorts guidance (search returned only third parties), and a peer-reviewed study on hooks in short video (none found).
+
+## Weekly review, 9 Nov 2026 (week 3-9 Nov)
+
+**Numbers (Audience report, run 42563209216, 9 Nov 12:42 SGT).**
+- Followers: **Facebook 1 (the first, 1 follow in 28 days)**, Instagram 0, Threads 0.
+- Instagram, last 28 days: 2,049 reached (all non-followers), 2,386 views, 50 interactions, 11 profile visits, 0 shares on
+  every post, 4 saves in all.
+- Facebook: 774 media views in 28 days. Plays per Reel jumped from 0-5 (29 for the quiz) to 175 (018), 235 (900) and 253 (020, the first
+  narrated daily Reel, avg watch 3.6 s, 1 reaction). 021 has 0 plays so far (posted 4.7 h earlier).
+- Threads: 549 views in 28 days; 1-51 per post, no likes or reposts (the 1 reply on each post since 28 Oct is our own Reel reply).
+
+**Our own work, by format (Instagram; reach, skip rate, average watch, likes).** Four of the card Reels below were
+also first-frame test posts (015 and 018 under regular, 016 and 019 under "on this day"), so read the split with care.
+| | posts | reach (mean) | skip (mean) | watch (mean) | likes/post |
+|---|---|---|---|---|---|
+| Regular card Reels, 27 Oct-6 Nov | 7 | 120 | 54.8% | 5.4 s of 23.4 | 3.4 |
+| "On this day" card Reels | 4 | 110 | 57.1% | 5.8 s | 1.5 |
+| Quiz (017 Pirlo) | 1 | 114 | 65.0% | 4.6 s | 0 |
+| Legendary XI | 0 | first on 27 Nov (039) | | | |
+| **Narrated, 020 Barcelona** (8 Nov) | 1 | 118 | 46.6% | 11.9 s of 44.7 (27%) | 0 |
+| **Narrated, 021 Denmark 1992** (9 Nov, 4.7 h old) | 1 | **305** | **38.1%** | **33.7 s of 44.8 (75%)** | 6 |
+- Best post of the life of the page: 021 Denmark 1992, already the widest reach of any Reel after less than five hours
+  and the first to hold most viewers to the end. Why (inference): an underdog story every fan half-remembers, a paradox in
+  the first line ("This team didn't qualify") over the trophy picture, a voice that carries the viewer through, and the
+  awe feeling the 8 Nov research ranked first. 020 had the same format and a similar opening frame but stayed in the first
+  batch (118), so format alone doesn't explain it: the story's pull does.
+- Next best: 018 Eusébio (152, "smuggled into Portugal under a woman's name", also 175 Facebook plays) and the Gabar
+  barge (30 Oct, 7 likes). Weakest: the quiz (65% skip) and "on this day" comparisons (the lowest likes of the card formats): both open on two names or a
+  mystery rather than one surprise.
+- The 20:00 Ronaldo extra (900) didn't break out on Instagram (108) but drew 235 Facebook plays.
+
+**Last week's experiment, experiment 1 "first frame" (Instagram only, 3-8 Nov): DROPPED.** Test posts 015, 016, 018 and
+019 (017, the quiz, was outside the test; 900, the extra, used the test cover but was kept out of the verdict on 6 Nov; 020 on 8 Nov went out narrated, without the test
+cover). Mean reach 124 against about 110 (+13%; the bar was +20%), likes 3.0 a post against about 2 (1.5 times; the bar
+was double). Skip rate 52.6% against 57.0% and watch 5.8 s against 5.5 s: a small move the right way, below the bar set
+on 2 Nov. Facebook (control): 1 play each for 015, 016 and 019, 175 for 018, so the control can't separate anything.
+Dropped everywhere: `instagram_test` set to null; the test Reels never reached Facebook or Threads, and nothing scheduled
+carries them. What carries over: narrated Reels already open on the hook in large captions over a painting, which is
+the same idea inside the owner's new format.
+
+**This week: no new experiment, on purpose.** The calendar's experiment 2 (the 12-15 s cut) was dropped on 8 Nov by the
+owner's narration order, and the owner set a 10-day trial of the voiced style (8-17 Nov) to be judged on likes, shares and
+followers. A second change on Instagram or Threads during the trial would break both the trial and "one change at a time".
+So the trial is this week's test. The next test (from the 8 Nov research: a hook-type rotation on line 0, or the
+awe/outrage story pick) is proposed in the trial report on 18 Nov, with the owner's say on whether the carousel and
+Threads weeks still fit a narrated page.
+
+**Benchmark, 9 Nov 2026 (YouTube Shorts, public pages read logged out; subscriber counts and two channels' view counts
+rechecked by me the same day). Never copied: no posts, titles or pictures reused.**
+- **Sporty2D** (https://www.youtube.com/@Sporty2D): 120 subscribers, joined 2 Nov 2026, original 2D cartoons of absurd
+  true sports stories, about 70 s, daily. Its two football Shorts: "The World Record Nobody Wanted" (Madagascar lost 149-0)
+  59K views, 845 likes; "Both Teams Attacked Their Own Goal" (Barbados v Grenada 1994) 55K views, 733 likes; its other
+  sports 0.9K-8K. The same Reels on its Instagram (@sporty2d) have 6 followers. Lesson: a new, tiny account with a
+  format like ours gets tens of thousands of views on Shorts while Instagram doesn't push it; and the absurd-paradox story
+  ("149 goals and lost?") beats the rest of its own output about 7 times.
+- **FootballVault** (https://www.youtube.com/@FVaultTV): 21.6K subscribers, a fixed 42 s length and a one-country series
+  on World Cup heartbreak ("Colombia's World Cup Journey" 288K views, "Japan Has Never Won a World Cup Knockout Game" 242K;
+  the latest, Uruguay, 21K). Lesson: a repeatable series that gives each nation's fans a reason to comment. Not for us:
+  its broadcast footage and team photos.
+- **Icon Stories** (https://www.youtube.com/@IconStories00): 83.4K subscribers, 21 s "Evolution" series (Ronaldo 2.6M
+  views). Lesson: a fixed series label. Not for us: AI pictures of real people in scenes that never happened.
+- Not reachable: TikTok profiles (an almost empty page, probably a bot check, not bypassed); Planet Football on Instagram
+  (images only). Two YouTube story channels found through analytics sites were skipped (match footage; inactive).
+
+**The four asks.**
+1. A head of social would put the Reel where it can travel: the strongest evidence this week is Sporty2D, a one-week-old
+   channel with Reels like ours, getting 55-59K views on YouTube Shorts while its Instagram has 6 followers. Adding YouTube
+   Shorts changes the signed-off format, so it goes to the owner, not into a test.
+2. Rawest material: the per-Reel watch and skip numbers above. 021's 75% watch against 27% for 020, in the same format,
+   points at story choice: an underdog paradox.
+3. Methods: one change at a time on Instagram, judged on skip rate, watch % and reach; the next one after the trial is the
+   line-0 hook type (paradox or scoreline first, as in 021 and Sporty2D's best Shorts) or a numbered series label.
+4. Outside evidence: the benchmark pages' own split (absurd and paradox stories 7 times their other posts) agrees with
+   our 021 result and with Berger and Milkman's awe finding. Still only two narrated posts of ours: a lead, not a result.

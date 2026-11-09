@@ -107,10 +107,12 @@ must end up consistent in how it is presented.** So:
   is removed everywhere. By early December the page runs one consistent format again.
 
 ### Test running now
-- **3-8 Nov, experiment 1 "first frame" (Instagram only):** `data/schedule.json` `instagram_test`. Stories with a
-  `stinger` in that window post `NNN-reel-ig.mp4` on Instagram: the same cards and music, with a cover of the stinger (at
-  most 10 words, the biggest surprise from fact card 1 or the hook, nothing new) in large type above the painting
-  (`scripts/lib/test-cover.ts`). Set `instagram_test` to null when the test ends.
+- **None (from 9 Nov 2026).** `data/schedule.json` `instagram_test` is null. Experiment 1 "first frame" (3-8 Nov) was
+  dropped at the 9 Nov review (docs/growth-log.md); it never reached Facebook or Threads, so nothing else changes.
+  Narrated Reels already open on the hook in large captions over a painting. The owner's 10-day trial of the voiced style
+  (8-17 Nov) runs with no other test beside it; the next test is proposed in the trial report on 18 Nov.
+- How a test is wired, for next time: stories in the `instagram_test` window with a `stinger` post `NNN-reel-ig.mp4` on
+  Instagram only (`scripts/lib/test-cover.ts`). Set `instagram_test` to null when the test ends.
 
 ## Everywhere
 - **No website link** on any post.

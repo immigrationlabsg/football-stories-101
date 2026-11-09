@@ -17,10 +17,6 @@
   "_special_weeks_help": "One legend per week (owner, 26 Oct 2026): no featured player in two pieces less than 7 days apart, unless it is a special week for him. To allow one, add {\"legend\": \"Diego Maradona\", \"from\": \"YYYY-MM-DD\", \"to\": \"YYYY-MM-DD\", \"why\": \"...\"} (Singapore dates).",
   "threads_topic": "Football",
   "_threads_topic_help": "Threads topic tag on every post (owner approved 27 Oct 2026): it files the post in that topic's feed. 1-50 characters, no '.' or '&'. The weekly review may test another tag and records the result in docs/growth-log.md.",
-  "instagram_test": {
-    "name": "first-frame",
-    "from": "2026-11-03",
-    "to": "2026-11-08"
-  },
+  "instagram_test": null,
   "_instagram_test_help": "The week's Instagram-only test (owner approved 30 Oct 2026; docs/posting-format.md \"Experiments and the house look\"). Stories dated from..to (Singapore dates) post a separate Instagram Reel NNN-reel-ig.mp4; Facebook and Threads keep the standard Reel. first-frame: the cover is the story's stinger (6 to 10 words) in large type on a tall dark band, the painting below it, never covered. Quizzes keep their mystery cover. Set to null between tests."
 }

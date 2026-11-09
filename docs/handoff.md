@@ -58,8 +58,8 @@ Mac runs them, they keep firing into the cloud session.
   support@openai.com); the owner may send it from the OpenAI account's own address.
 - **Cost tests queued:** medium vs high quality and a smaller style reference, each shown to the owner side by side
   before any change.
-- **Next weekly growth review:** Mon 9 Nov, judging the "first frame" test (5 Instagram posts, 3-8 Nov) against ~110
-  reach and ~2 likes per Reel.
+- **Weekly growth review, 9 Nov:** the "first frame" test was dropped (below its bar; docs/growth-log.md) and
+  `instagram_test` is null. No test runs during the owner's 10-day trial of the voiced style (8-17 Nov).
 - **Experiments:** one per week on Instagram or Threads, Facebook as the control; winners rolled out everywhere so the
   page ends consistent (owner, 30 Oct). Calendar in docs/growth-log.md.
 
