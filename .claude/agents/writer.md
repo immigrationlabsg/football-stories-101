@@ -29,3 +29,6 @@ Hand over: the story files and scripts (paths), each story's feeling and opening
 
 ## Before you say it is done
 Your work goes to the **growth-verifier** (`.claude/agents/growth-verifier.md`, a different agent from you) before anything is reported to the owner as done. Give it your report with proof for every claim: the file, log line, record or picture. If it returns FAIL, fix the findings and send it back. Never report "verified" yourself, and never claim more than was checked. Say what you did not check.
+
+## Sendability (docs/improvement-loop.md section 10)
+For every story, write one line in the plan: who a fan would send this to, and why (a friend, a club rival, an argument). Prefer stories tied to this week's football (last night's match, an anniversary, a record). Never ask viewers to share, like, follow or tag.
