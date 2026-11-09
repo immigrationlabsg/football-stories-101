@@ -309,7 +309,7 @@ Ideas for **after 17 Nov**, only if the 10-day trial doesn't lift likes, shares 
    - Test: the drafting run labels each story's main feeling. For one week, every story is awe or outrage. Compare shares per 1,000 reached with the trial week.
 
 2. **A countdown series tied to a dated event ("Day 3/10").**
-   - Others: Diez Ball (TikTok, 216.7K followers) ran "20 stories in 20 days before the world cup". Episodes had 35.6K-543.6K views up to Day 11, then 441.5K-3.8M from Day 15 to Day 20; Day 18 was not among the 20 of 22 episodes that loaded.
+   - Others: Diez Ball (TikTok, 216.7K followers) ran "20 stories in 20 days before the world cup". Episodes had 35.6K-543.6K views up to Day 11. From Day 12 they jumped: 1.1M, 1.4M and 522.3K for Days 12-14, then 441.5K-3.8M for Days 15-20. Day 18 was not among the 20 of 22 episodes that loaded.
    - Source: https://www.tiktok.com/@diez.ball (playlist "World Cup Stories", 22 videos).
    - Strength: **one page**. The rise can't be separated from the World Cup getting closer, and the page has a presenter on camera, which we don't.
    - Test: pick a dated event after 17 Nov from the fixtures (a derby, a final, a draw). Run 7-10 numbered stories that end on it, with "Day n/10" on the first frame and in the caption. Compare follows over those days with the trial. Never ask for a follow.
@@ -329,7 +329,7 @@ Ideas for **after 17 Nov**, only if the 10-day trial doesn't lift likes, shares 
    - Meta also advises "Join ongoing conversations by replying to threads that resonate with you". That means public replies on other accounts' posts, so it needs the owner's ruling first.
 
 5. **Keep the length at 30-60 s if the trial disappoints; don't cut first.**
-   - Others: the same dashboard tips say "Reels that are 30-60 seconds long see better performance". Mosseri has said there is no perfect length (as reported by Buffer). The big TikTok story videos run about 3 minutes (Diez Ball's Iniesta about 184 s, as read from the web player).
+   - Others: the same dashboard tips say "Reels that are 30-60 seconds long see better performance". Mosseri has said there is no perfect length (as reported by Buffer). The big TikTok story videos run about 3 minutes (Diez Ball's Iniesta about 183 s, from TikTok's page data).
    - Sources: Social Media Today, above; https://buffer.com/resources/instagram-reels-length
    - Strength: **platform** (a dashboard tip, July 2024) plus **one page**.
    - Test: none on Instagram, since our 45 s already sits in that range. If the TikTok route opens, try a longer cut there only.
@@ -345,10 +345,10 @@ Ideas for **after 17 Nov**, only if the 10-day trial doesn't lift likes, shares 
 - **Questions at the end.** Meta's engagement-bait rule covers posts that "explicitly request engagement (such as votes, shares, comments, tags, likes, or other reactions)" (https://transparency.meta.com/features/approach-to-ranking/content-distribution-guidelines/engagement-bait/). A genuine question that asks for none of those isn't named in the rule, so our closing question looks safe.
 - **Ranking signals.** Mosseri, Jan 2025: "The top three signals that matter most for ranking are watch time, likes and sends" (platform, via https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/). Already in our 30 Oct notes, repeated here only because ideas 1-3 aim at sends.
 - **Cover frames and the profile grid.** Only vendor advice and one creator's anecdote; nothing worth a test yet.
-- **UMN Takes caution.** This account's 236K followers (bio: "Football stories you won't hear anywhere else") came partly from skill-clip compilations: its oldest visible videos (Aug 2025) are clips, one with 802K views. Its story videos since July 2026 mostly get 3,000-8,000 views each. Its follower count says little about the story format.
+- **UMN Takes caution.** This account's 236K followers (bio: "Football stories you won't hear anywhere else") came partly from other formats: its older videos (Nov 2024 to Sep 2025) are player edits and skill clips, one with 802K views. Its story videos since July 2026 mostly get 3,000-8,000 views each (median about 4,200, checked 9 Nov), with a few recent bigger ones (165K, 64.3K). Its follower count says little about the story format.
 
 **Routes tried**
-- Instagram, logged out (built-in browser): @eventi.memorabili profile read (28.5k followers; a media-kit site claims 1.5M, which doesn't match). The Reels tab and the counts on posts need a login, so no Instagram view or share numbers.
+- Instagram, logged out (built-in browser): @eventi.memorabili profile read (28.5k followers). A search summary credited Collabstr with 1.5M; the checker couldn't find that figure on the logged-out Collabstr page, so it is dropped. The Reels tab and the counts on posts need a login, so no Instagram view or share numbers.
 - TikTok, logged out: #footballhistory tag page, then the profiles @legoat2215, @diez.ball and @umn.takes, and two video pages for likes, shares and saves. Post dates were decoded from video IDs.
 - Social Blade (growth history): HTTP 403. No follower-growth timeline was found for any account, so "grew fast from small" could not be confirmed for anyone.
 - Web search (standard) for football history, "on this day" and faceless story creators with growth timelines: results were mostly tool vendors' marketing. The Juventus Women TikTok (1.6M followers in just over a year, club-run, behind-the-scenes) was found but doesn't fit our format.
