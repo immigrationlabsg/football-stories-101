@@ -94,13 +94,18 @@ if (MODE === 'accounts') {
   const accounts = (await tiktokAccounts()).filter((a) => a.platform === PLATFORM);
   if (accounts.length !== 1) throw new Error(`Expected exactly 1 connected ${LABEL} account, found ${accounts.length}.`);
   const accountId = accounts[0]._id ?? accounts[0].id;
-  // YouTube Short: title is the story's question (the Reel's ending question), as on the hand-uploaded Shorts.
-  const title = (story.data.question ?? story.data.hook ?? story.data.title).slice(0, 100);
+  // YouTube Short title, as on the hand-uploaded Shorts: the Reel's hook plus #shorts (YouTube allows 100 characters).
+  const hook = (story.data.hook ?? story.data.question ?? story.data.title).trim();
+  const title = `${hook} #shorts`.length <= 100 ? `${hook} #shorts` : hook.length <= 100 ? hook : (story.data.question ?? hook).slice(0, 100);
+  // SCHEDULE_AT (ISO time, e.g. 2026-11-19T08:00:00+08:00): Zernio publishes it then instead of now.
+  const at = process.env.SCHEDULE_AT?.trim();
+  if (at && Number.isNaN(Date.parse(at))) throw new Error(`SCHEDULE_AT is not a time: ${at}`);
+  const when = at ? { scheduledFor: new Date(at).toISOString() } : { publishNow: true };
   const ytBody = {
     content: caption,
     mediaItems: [{ type: 'video', url: videoUrl }],
     platforms: [{ platform: 'youtube', accountId, platformSpecificData: { title, visibility: 'public', madeForKids: false, containsSyntheticMedia: true, categoryId: '17' } }],
-    publishNow: true,
+    ...when,
   };
   const info: any = PLATFORM === 'youtube' ? {} : await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
   const levels: string[] = (info.privacyLevels ?? []).map((l: any) => (typeof l === 'string' ? l : l.value));
@@ -122,7 +127,7 @@ if (MODE === 'accounts') {
     },
     publishNow: true,
   };
-  console.log(`Story ${number} -> ${LABEL}${PLATFORM === 'youtube' ? ` "${title}"` : ''} @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
+  console.log(`Story ${number} -> ${LABEL}${PLATFORM === 'youtube' ? ` "${title}"${at ? ` at ${at}` : ''}` : ''} @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
   if (dryRun) {
     console.log('Dry run: nothing posted.');
     process.exit(0);

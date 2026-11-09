@@ -19,6 +19,10 @@ on:
         description: "Story number to post (mode post)"
         type: string
         default: ""
+      schedule_at:
+        description: "YouTube only: publish at this time, e.g. 2026-11-19T08:00:00+08:00 (empty = now)"
+        type: string
+        default: ""
       dry_run:
         description: "Dry run: show the caption and video, post nothing"
         type: boolean
@@ -54,6 +58,7 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run == true && '1' || '0' }}
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PLATFORM: ${{ inputs.platform }}
+          SCHEDULE_AT: ${{ inputs.schedule_at }}
       - name: Commit the record
         if: ${{ always() && inputs.mode == 'post' && inputs.dry_run != true }}
         run: |
