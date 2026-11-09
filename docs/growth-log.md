@@ -417,7 +417,9 @@ rechecked by me the same day). Never copied: no posts, titles or pictures reused
   its broadcast footage and team photos.
 - **Icon Stories** (https://www.youtube.com/@IconStories00): 83.4K subscribers, 21 s "Evolution" series (Ronaldo 2.6M
   views). Lesson: a fixed series label. Not for us: AI pictures of real people in scenes that never happened.
-- Not reachable: TikTok profiles (an almost empty page, probably a bot check, not bypassed); Planet Football on Instagram
+- TikTok: the research agent's first tries returned an almost empty page; a retry of the public profile page worked for
+  Sporty2D's TikTok (@sporty2d): 1 follower, so YouTube Shorts is where its views come from. @footballvault on TikTok is
+  an unrelated person. Wayback has no copies of either. Also not reachable: Planet Football on Instagram
   (images only). Two YouTube story channels found through analytics sites were skipped (match footage; inactive).
 
 **The four asks.**
