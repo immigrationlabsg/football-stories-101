@@ -107,7 +107,7 @@ Daily picture Reels for Football Stories 101 (owner, 8 Nov 2026: every Reel is s
 8. Report to the owner in 3-5 lines: what was done, music, credits left, gaps, anything not verified (nobody can hear it here), how many are left.
 ```
 
-## 9. Facebook swap for the picture Reels: every day 11:05
+## 9. Facebook swap for the picture Reels: every day 11:05 (OFF since 9 Nov 2026: replaced by the desktop scheduled task `fs101-swap-reel-031`, daily 11:10; kept for reference)
 
 ```
 Facebook swap for Football Stories 101 (owner, 8 Nov 2026). This runs at 11:05 because scripts/reels.ts forbids Facebook changes between 06:00 and 10:45 Singapore. In this folder:
