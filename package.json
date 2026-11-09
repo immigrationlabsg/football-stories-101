@@ -28,6 +28,8 @@
     "verify": "tsx scripts/verify.ts",
     "check-delivery": "tsx scripts/check-delivery.ts",
     "insights": "tsx scripts/insights.ts",
+    "scoreboard": "tsx scripts/scoreboard.ts",
+    "scoreboard:test": "tsx scripts/scoreboard-fixture.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "reels": "tsx scripts/reels.ts",
     "publish-painting": "tsx scripts/publish-painting.ts",

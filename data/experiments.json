@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "about": "The register of the improvement loop (docs/improvement-loop.md). Read by `npm run scoreboard` together with data/metrics/*.json. One entry per trial or test: dates (Singapore, Monday to Sunday except test 4), the one change, which posts count, and the bar. Written before a test week starts; the growth-verifier checks it. Never edit a bar after its week has started.",
+  "scoring": {
+    "default": "48h",
+    "note": "A counted post is scored from the first daily snapshot (13:00 Singapore) at least 48 hours after it was posted, so every post is scored at the same age. Daily snapshots: data/metrics/YYYY-MM-DD.json."
+  },
+  "entries": [
+    {
+      "id": "baseline",
+      "kind": "baseline",
+      "name": "10-day trial of the voiced style (baseline)",
+      "status": "planned",
+      "start": "2026-11-08",
+      "end": "2026-11-17",
+      "change": "Narration, music samples 3 and 4, a new picture every 2-3 s, about 45 s, no credits on the Reel (owner, 8 Nov 2026). The trial itself is the baseline for every test.",
+      "counted": {
+        "stories": { "from": 20, "to": 28 },
+        "rule": "The daily posts of 8-16 Nov 2026 (stories 020-028, 9 posts), at 08:00 Singapore on weekdays and 10:00 at weekends, whatever their format. The 17 Nov post (029) is too young and is not part of the baseline. Extras (stories 900-908, the 20:00 series) are excluded."
+      },
+      "scoreAt": {
+        "mode": "latest",
+        "notAfter": "2026-11-18",
+        "note": "Locked in the trial report on 18 Nov: these posts are read at whatever age they are then (2 to 10 days), not at exactly 48 h. Older posts have had longer to collect likes, so this baseline is generous, which makes the tests harder to pass. The scoreboard marks the baseline as provisional until then."
+      },
+      "excludeStories": "900-908",
+      "reportOn": "2026-11-18",
+      "bar": null,
+      "ownerOk": "Owner, 8 Nov 2026: 'I like the current style, let's try for 10 days straight then come back with a report on its performance.'"
+    },
+    {
+      "id": "test-1",
+      "kind": "test",
+      "name": "Test 1: story pick by feeling",
+      "status": "planned",
+      "start": "2026-11-23",
+      "end": "2026-11-29",
+      "change": "Every daily post (stories, comparisons, quiz) chosen for awe, outrage or an absurd paradox, with a name fans know. The writer tags each story's feeling.",
+      "counted": {
+        "stories": { "from": 35, "to": 41 },
+        "rule": "All 7 daily posts of 23-29 Nov (stories 035-041) at 08:00 (10:00 at weekends), whatever their format. Extras (900-908) do not count."
+      },
+      "excludeStories": "900-908",
+      "compare": { "previous": { "stories": { "from": 28, "to": 34 }, "label": "the week before (16-22 Nov)" } },
+      "bar": {
+        "likesPerPost": { "pctAbove": 30, "against": "baseline" },
+        "shares": { "minShares": 3, "minPosts": 2, "ratesAbove": "baseline" }
+      },
+      "followers": "Reported, judged only on the 4-week trend.",
+      "evidence": "Berger and Milkman 2012 (peer-reviewed; emailed New York Times articles, not Reels): awe and anger spread most, sadness least. Our own 021 and Sporty2D's '149-0' point the same way.",
+      "ownerOk": "Owner, 9 Nov 2026: 'Approve' the plan; 'Yes agree' to measuring before against after, without Facebook as a control (docs/growth-log.md, 'Improvement loop approved, 9 Nov 2026')."
+    },
+    {
+      "id": "test-2",
+      "kind": "test",
+      "name": "Test 2: first 3 seconds",
+      "status": "planned",
+      "start": "2026-11-30",
+      "end": "2026-12-06",
+      "change": "Test 1's change stays in (per the lag rule) unless dropped on 2 Dec. Rotate the opening line by day: a true 'most/only' fact, the result first, or a question (2-3 days each). Each story carries an `opening` tag.",
+      "counted": {
+        "stories": { "from": 42, "to": 48 },
+        "rule": "All 7 daily posts of 30 Nov - 6 Dec (stories 042-048), whatever their format. Extras (900-908) do not count."
+      },
+      "excludeStories": "900-908",
+      "compare": { "previous": { "stories": { "from": 35, "to": 41 }, "label": "the week before (23-29 Nov, test 1)" } },
+      "bar": {
+        "skipRatePointsDown": { "points": 5, "against": "previous" },
+        "likesPerPost": { "pctAbove": 20, "against": "previous" }
+      },
+      "followers": "Reported, judged only on the 4-week trend.",
+      "afterwards": "If kept, the best opening type becomes standard.",
+      "evidence": "Instagram's own advice: hook in the first 3 seconds (platform advice).",
+      "ownerOk": "Owner, 9 Nov 2026: 'Approve' the plan; 'Yes agree' to before against after (docs/growth-log.md, 'Improvement loop approved, 9 Nov 2026')."
+    },
+    {
+      "id": "test-3",
+      "kind": "test",
+      "name": "Test 3: Threads text takes",
+      "status": "planned",
+      "start": "2026-12-07",
+      "end": "2026-12-13",
+      "change": "Threads only: one short text take a day on that day's football news, one topic tag, each with a fact-check entry; card posts continue. Facebook and Instagram stay as controls.",
+      "networks": ["threads"],
+      "counted": {
+        "stories": { "from": 49, "to": 55 },
+        "includeUnmappedInWindow": true,
+        "rule": "Threads posts of 7-13 Dec: the 7 daily card posts (stories 049-055) and the daily text takes (Threads posts with no story number, posted inside the week). Instagram and Facebook are shown only as controls."
+      },
+      "excludeStories": "900-908",
+      "compare": { "previous": { "stories": { "from": 42, "to": 48 }, "label": "the week before (30 Nov - 6 Dec)" } },
+      "bar": {
+        "threadsLikesPlusRepostsMin": 5,
+        "threadsViewsMedianAbove": "baseline"
+      },
+      "followers": "Reported, judged only on the 4-week trend.",
+      "evidence": "Meta's own Threads tips (platform advice). No numbers.",
+      "ownerOk": "Owner, 9 Nov 2026: 'Yes' to the Threads text takes (docs/growth-log.md, 'Improvement loop approved, 9 Nov 2026')."
+    },
+    {
+      "id": "test-4",
+      "kind": "test",
+      "name": "Test 4: Countdown to Boxing Day",
+      "status": "planned",
+      "start": "2026-12-17",
+      "end": "2026-12-26",
+      "change": "'Day 1/10' to 'Day 10/10' countdown to Boxing Day on the 10 daily stories. Comparisons and the quiz pause for those 10 days. The one 10-day test (an exception to Monday-Sunday).",
+      "counted": {
+        "stories": { "from": 59, "to": 68 },
+        "storiesConfirmed": false,
+        "rule": "All 10 daily posts of 17-26 Dec. The numbers 059-068 assume one story a day with no gaps from 020 on 8 Nov; confirm them against the story files when the countdown is built, and correct this entry before 17 Dec. Extras (900-908) do not count."
+      },
+      "excludeStories": "900-908",
+      "compare": { "previous": { "stories": { "from": 49, "to": 58 }, "label": "the 10 days before (7-16 Dec)" } },
+      "bar": {
+        "likesPerPost": { "pctAbove": 30, "against": "previous" },
+        "shares": { "minShares": 3, "minPosts": 2, "ratesAbove": "previous" }
+      },
+      "followers": "Reported, judged only on the 4-week trend.",
+      "evidence": "One TikTok page's World Cup countdown: 35.6K-543.6K views up to Day 11, then 0.4-3.8M. One page, a presenter on camera, and the rise cannot be separated from the World Cup getting closer.",
+      "ownerOk": "Owner, 9 Nov 2026: 'Yes' to the Boxing Day countdown (docs/growth-log.md, 'Improvement loop approved, 9 Nov 2026')."
+    },
+    {
+      "id": "test-5",
+      "kind": "test",
+      "name": "Test 5: re-test the best kept change",
+      "status": "planned",
+      "start": null,
+      "end": null,
+      "change": "Re-test the best kept change against the newest idea from the weekly research (January 2027). Stops us keeping something that only worked once.",
+      "counted": {
+        "stories": null,
+        "rule": "To be set in this register before the week starts (dates, the one change, counted stories and the bar)."
+      },
+      "excludeStories": "900-908",
+      "compare": { "previous": null },
+      "bar": null,
+      "followers": "Reported, judged only on the 4-week trend.",
+      "ownerOk": "Not needed until the change is chosen; anything that changes the rhythm needs the owner's OK."
+    }
+  ]
+}

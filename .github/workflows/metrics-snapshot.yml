@@ -1,0 +1,62 @@
+name: Metrics snapshot
+
+# Daily snapshot for the improvement loop (docs/improvement-loop.md section 3): runs the read-only Audience report
+# (scripts/insights.ts) with SNAPSHOT_FILE set, which also writes the same numbers as data/metrics/YYYY-MM-DD.json,
+# and commits only that file. Reads Meta exactly as the Audience report does and posts nothing.
+# 13:00 Singapore = 05:00 UTC, so a weekday post (08:00) is about 53 h old, a weekend post (10:00) about 51 h.
+# The report lists only the last 15 posts per network, so a missed day must be caught up the next day:
+# run this workflow by hand (Actions, Metrics snapshot, Run workflow). `npm run scoreboard` lists missing days.
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # only to commit data/metrics/*.json
+
+concurrency:
+  group: metrics-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Read the numbers and write the snapshot
+        run: |
+          mkdir -p data/metrics
+          SNAPSHOT_FILE="data/metrics/$(TZ=Asia/Singapore date +%F).json" npm run insights
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+      - name: Refuse an empty snapshot
+        run: |
+          f="data/metrics/$(TZ=Asia/Singapore date +%F).json"
+          node -e '
+            const s = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
+            const have = [s.facebook.followers, s.instagram.followers, s.threads.followers].filter((x) => typeof x === "number").length;
+            const posts = s.facebook.reels.length + s.facebook.posts.length + s.instagram.posts.length + s.threads.posts.length;
+            console.log(`followers read on ${have} of 3 networks; ${posts} post rows`);
+            if (have === 0 || posts === 0) { console.error("The snapshot has no real numbers (keys missing or Meta refused). Not committing it."); process.exit(1); }
+          ' "$f"
+      - name: Commit the snapshot (data/metrics/*.json only)
+        run: |
+          git add data/metrics/*.json
+          if git diff --cached --quiet; then echo "Nothing new to commit."; exit 0; fi
+          git config user.name "football-stories-101[bot]"
+          git config user.email "football-stories-101[bot]@users.noreply.github.com"
+          git commit -m "metrics: snapshot $(TZ=Asia/Singapore date +%F)"
+          for attempt in 1 2; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          echo "Could not push the snapshot to main after a retry." >&2
+          exit 1

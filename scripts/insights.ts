@@ -2,6 +2,11 @@
  * Read-only audience report: followers, reach and per-post numbers from Facebook, Instagram and Threads.
  * Changes nothing. Each figure is asked for separately, so a missing permission shows as one line, not a failure.
  *   npm run insights
+ *
+ * Snapshot option (improvement loop, docs/improvement-loop.md section 3): set SNAPSHOT_FILE=data/metrics/YYYY-MM-DD.json
+ * and the same numbers are also written there as JSON, with the time they were read. Printing and the calls to Meta
+ * are unchanged; the snapshot only collects what the report already reads.
+ *   SNAPSHOT_FILE=data/metrics/2026-11-10.json npm run insights
  */
 const FB = 'https://graph.facebook.com/v21.0';
 const IG = 'https://graph.instagram.com/v21.0';
@@ -25,6 +30,33 @@ const say = (s = '') => out.push(s);
 const sum = (vals?: { value: number }[]) => (vals ?? []).reduce((a, v) => a + (typeof v.value === 'number' ? v.value : 0), 0);
 const short = (s?: string) => String(s ?? '').replace(/\s+/g, ' ').replace(/\|/g, '/').slice(0, 45);
 const day = (s?: string) => String(s ?? '?').slice(0, 10);
+// ---- Snapshot (only written when SNAPSHOT_FILE is set) ----
+const snapFile = env.SNAPSHOT_FILE?.trim();
+const num = (v: unknown): number | null => {
+  if (v === null || v === undefined || v === '') return null;
+  const n = typeof v === 'number' ? v : Number(v);
+  return Number.isFinite(n) ? n : null; // "n/a (...)" and "?" become null
+};
+const snap = {
+  schema: 1,
+  read_at: new Date().toISOString(),
+  facebook: { followers: null as number | null, page_likes: null as number | null, reels: [] as any[], posts: [] as any[] },
+  instagram: { followers: null as number | null, posts: [] as any[] },
+  threads: { followers: null as number | null, posts: [] as any[] },
+};
+// Story number of each post, read from data/sent.json (every long id in a record's detail text points to its story).
+const storyOf = new Map<string, number>();
+{
+  const fs = await import('node:fs');
+  try {
+    for (const r of JSON.parse(fs.readFileSync('data/sent.json', 'utf8')).social as { number: number; detail: string }[]) {
+      for (const id of String(r.detail).match(/\d{9,}/g) ?? []) storyOf.set(id, r.number);
+    }
+  } catch {
+    /* no sent.json: story numbers stay null */
+  }
+}
+const storyFor = (id: string | undefined) => (id ? storyOf.get(id) ?? id.split('_').map((p) => storyOf.get(p)).find((n) => n !== undefined) ?? null : null);
 const since = String(Math.floor(Date.now() / 1000) - 28 * 86400);
 const until = String(Math.floor(Date.now() / 1000));
 
@@ -45,6 +77,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
   say('## Facebook Page');
   const p = await get(FB, page, t, { fields: 'name,followers_count,fan_count' });
   say(p.error ? `Page: ${p.error}` : `${p.name}: ${p.followers_count ?? '?'} followers, ${p.fan_count ?? '?'} likes`);
+  if (!p.error) {
+    snap.facebook.followers = num(p.followers_count);
+    snap.facebook.page_likes = num(p.fan_count);
+  }
   for (const m of ['page_post_engagements', 'page_views_total', 'page_daily_follows_unique', 'page_media_view']) {
     say(`last 28 days ${m}: ${await metric(FB, `${page}/insights`, t, m, { period: 'day', since, until })}`);
   }
@@ -76,7 +112,16 @@ async function metric(base: string, path: string, token: string | undefined, nam
       const social = (await val('post_video_social_actions')) as any;
       const reactions = await val('post_video_likes_by_reaction_type');
       const total = (o: any) => (o && typeof o === 'object' ? Object.values(o).reduce((a: number, b: any) => a + (Number(b) || 0), 0) : o);
-      say(`| ${String(r.n).padStart(3, '0')} | ${r.id} | ${await val('post_impressions_unique')} | ${await val('blue_reels_play_count')} | ${await val('fb_reels_total_plays')} | ${typeof avg === 'number' ? (avg / 1000).toFixed(1) : avg} | ${total(reactions)} | ${social?.COMMENT ?? (typeof social === 'object' ? 0 : social)} | ${social?.SHARE ?? (typeof social === 'object' ? 0 : social)} | ${why.replace(/\|/g, '/')} |`);
+      const reach = await val('post_impressions_unique');
+      const plays = await val('blue_reels_play_count');
+      const playsAll = await val('fb_reels_total_plays');
+      const comments = social?.COMMENT ?? (typeof social === 'object' ? 0 : social);
+      const shares = social?.SHARE ?? (typeof social === 'object' ? 0 : social);
+      say(`| ${String(r.n).padStart(3, '0')} | ${r.id} | ${reach} | ${plays} | ${playsAll} | ${typeof avg === 'number' ? (avg / 1000).toFixed(1) : avg} | ${total(reactions)} | ${comments} | ${shares} | ${why.replace(/\|/g, '/')} |`);
+      snap.facebook.reels.push({
+        id: r.id, story: r.n, timestamp: r.at ?? null, likes: num(total(reactions)), comments: num(comments), shares: num(shares), saves: null,
+        reposts: null, reach: num(reach), views: num(plays), views_incl_replays: num(playsAll), avg_watch_s: typeof avg === 'number' ? avg / 1000 : null, skip_rate: null,
+      });
     }
   }
   const posts = await get(FB, `${page}/published_posts`, t, { fields: 'id,created_time,message,shares,reactions.summary(true).limit(0),comments.summary(true).limit(0)', limit: '15' });
@@ -90,6 +135,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
       const views = await metric(FB, `${x.id}/insights`, t, 'post_media_view', {});
       const clicks = await metric(FB, `${x.id}/insights`, t, 'post_clicks', {});
       say(`| ${day(x.created_time)} | ${short(x.message)} | ${reach} | ${views} | ${clicks} | ${x.reactions?.summary?.total_count ?? 0} | ${x.comments?.summary?.total_count ?? 0} | ${x.shares?.count ?? 0} |`);
+      snap.facebook.posts.push({
+        id: x.id, story: storyFor(x.id), timestamp: x.created_time ?? null, likes: num(x.reactions?.summary?.total_count ?? 0), comments: num(x.comments?.summary?.total_count ?? 0),
+        shares: num(x.shares?.count ?? 0), saves: null, reposts: null, reach: num(reach), views: num(views), avg_watch_s: null, skip_rate: null,
+      });
     }
   }
   say('');
@@ -101,6 +150,7 @@ async function metric(base: string, path: string, token: string | undefined, nam
   say('## Instagram');
   const me = await get(IG, 'me', t, { fields: 'username,account_type,followers_count,follows_count,media_count' });
   say(me.error ? `Account: ${me.error}` : `@${me.username} (${me.account_type ?? 'type unknown'}): ${me.followers_count} followers, follows ${me.follows_count}, ${me.media_count} posts`);
+  if (!me.error) snap.instagram.followers = num(me.followers_count);
   const profile = await get(IG, 'me', t, { fields: 'name,biography,website' });
   say(profile.error ? `Profile: ${profile.error}` : `Name field: ${profile.name ?? '(empty)'} / bio: ${short(profile.biography)} / website: ${profile.website ?? '(none)'}`);
   for (const m of ['reach', 'views', 'accounts_engaged', 'total_interactions', 'profile_views', 'profile_links_taps', 'follows_and_unfollows']) {
@@ -128,6 +178,11 @@ async function metric(base: string, path: string, token: string | undefined, nam
       const m: Record<string, string> = {};
       for (const k of ['reach', 'views', 'saved', 'shares', 'follows', 'ig_reels_avg_watch_time', 'ig_reels_video_view_total_time', 'reels_skip_rate']) m[k] = await metric(IG, `${x.id}/insights`, t, k, {});
       say(`| ${day(x.timestamp)} | ${short(x.caption)} | ${m.reach} | ${m.views} | ${x.like_count ?? 0} | ${x.comments_count ?? 0} | ${m.saved} | ${m.shares} | ${m.follows} | ${m.ig_reels_avg_watch_time} | ${m.ig_reels_video_view_total_time} | ${m.reels_skip_rate} |`);
+      snap.instagram.posts.push({
+        id: x.id, story: storyFor(x.id), timestamp: x.timestamp ?? null, media_type: x.media_type ?? null, likes: num(x.like_count ?? 0), comments: num(x.comments_count ?? 0),
+        shares: num(m.shares), saves: num(m.saved), reposts: null, reach: num(m.reach), views: num(m.views), follows: num(m.follows),
+        avg_watch_ms: num(m.ig_reels_avg_watch_time), total_watch_ms: num(m.ig_reels_video_view_total_time), skip_rate: num(m.reels_skip_rate),
+      });
     }
   }
   say('');
@@ -140,7 +195,9 @@ async function metric(base: string, path: string, token: string | undefined, nam
   const me = await get(TH, 'me', t, { fields: 'username' });
   say(me.error ? `Account: ${me.error}` : `@${me.username}`);
   for (const m of ['followers_count', 'views', 'likes', 'replies', 'reposts']) {
-    say(`${m}: ${await metric(TH, 'me/threads_insights', t, m, { since, until })}`);
+    const v = await metric(TH, 'me/threads_insights', t, m, { since, until });
+    say(`${m}: ${v}`);
+    if (m === 'followers_count') snap.threads.followers = num(v);
   }
   const posts = await get(TH, 'me/threads', t, { fields: 'id,text,timestamp', limit: '15' });
   if (posts.error) say(`Posts: ${posts.error}`);
@@ -152,6 +209,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
       const m: Record<string, string> = {};
       for (const k of ['views', 'likes', 'replies', 'reposts', 'shares']) m[k] = await metric(TH, `${x.id}/insights`, t, k, {});
       say(`| ${day(x.timestamp)} | ${short(x.text)} | ${m.views} | ${m.likes} | ${m.replies} | ${m.reposts} | ${m.shares} |`);
+      snap.threads.posts.push({
+        id: x.id, story: storyFor(x.id), timestamp: x.timestamp ?? null, likes: num(m.likes), comments: num(m.replies), shares: num(m.shares), saves: null,
+        reposts: num(m.reposts), reach: null, views: num(m.views), avg_watch_s: null, skip_rate: null,
+      });
     }
   }
 }
@@ -159,3 +220,10 @@ async function metric(base: string, path: string, token: string | undefined, nam
 const report = out.join('\n');
 console.log(report);
 if (env.GITHUB_STEP_SUMMARY) (await import('node:fs')).appendFileSync(env.GITHUB_STEP_SUMMARY, report + '\n');
+if (snapFile) {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  fs.mkdirSync(path.dirname(snapFile), { recursive: true });
+  fs.writeFileSync(snapFile, JSON.stringify(snap, null, 2) + '\n');
+  console.error(`Snapshot written to ${snapFile}`);
+}
