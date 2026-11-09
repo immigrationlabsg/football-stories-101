@@ -25,6 +25,8 @@ type Rec = { number: number; story: string; at: string; postId: string; status: 
 
 async function api(method: string, route: string, body?: unknown): Promise<any> {
   if (!KEY) throw new Error('ZERNIO_API_KEY is not set (repo secret).');
+  // Shape only, never the key: Zernio keys are "sk_" plus 64 hex characters (67 in all).
+  if (!/^sk_[0-9a-f]{64}$/.test(KEY)) throw new Error(`ZERNIO_API_KEY does not look like a Zernio key (length ${KEY.length}, starts with "sk_": ${KEY.startsWith('sk_')}). Copy the key again and re-save it.`);
   const r = await fetch(`${API}${route}`, {
     method,
     headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
