@@ -21,7 +21,9 @@ const RAW = process.env.ZERNIO_API_KEY?.trim();
 const KEY = RAW?.match(/sk_[0-9a-f]{64}/)?.[0] ?? RAW;
 const MODE = process.env.MODE ?? 'accounts';
 const dryRun = process.env.DRY_RUN !== '0';
-const RECORD = path.join(ROOT, 'data/tiktok.json');
+const PLATFORM = process.env.PLATFORM === 'youtube' ? 'youtube' : 'tiktok';
+const LABEL = PLATFORM === 'youtube' ? 'YouTube' : 'TikTok';
+const RECORD = path.join(ROOT, PLATFORM === 'youtube' ? 'data/youtube.json' : 'data/tiktok.json');
 
 type Rec = { number: number; story: string; at: string; postId: string; status: string; url?: string | null };
 
@@ -77,7 +79,7 @@ if (MODE === 'accounts') {
   if (!story) throw new Error(`No story ${number}.`);
   if (story.data.draft) throw new Error(`Story ${number} is a draft.`);
   if (records().some((r) => r.number === number)) {
-    console.log(`Story ${number} is already on TikTok (data/tiktok.json). Nothing posted.`);
+    console.log(`Story ${number} is already on ${LABEL} (${path.basename(RECORD)}). Nothing posted.`);
     process.exit(0);
   }
   const caption = socialPosts(story, { kind: 'scheduled', webLive: false }).instagram;
@@ -89,14 +91,22 @@ if (MODE === 'accounts') {
   const head = await fetch(videoUrl, { method: 'HEAD' });
   if (!head.ok) throw new Error(`The Reel is not on the site (${head.status}): ${videoUrl}`);
 
-  const accounts = (await tiktokAccounts()).filter((a) => a.platform === 'tiktok');
-  if (accounts.length !== 1) throw new Error(`Expected exactly 1 connected TikTok account, found ${accounts.length}.`);
+  const accounts = (await tiktokAccounts()).filter((a) => a.platform === PLATFORM);
+  if (accounts.length !== 1) throw new Error(`Expected exactly 1 connected ${LABEL} account, found ${accounts.length}.`);
   const accountId = accounts[0]._id ?? accounts[0].id;
-  const info = await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
+  // YouTube Short: title is the story's question (the Reel's ending question), as on the hand-uploaded Shorts.
+  const title = (story.data.question ?? story.data.hook ?? story.data.title).slice(0, 100);
+  const ytBody = {
+    content: caption,
+    mediaItems: [{ type: 'video', url: videoUrl }],
+    platforms: [{ platform: 'youtube', accountId, platformSpecificData: { title, visibility: 'public', madeForKids: false, containsSyntheticMedia: true, categoryId: '17' } }],
+    publishNow: true,
+  };
+  const info = PLATFORM === 'youtube' ? {} as any : await = await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
   const levels: string[] = (info.privacyLevels ?? []).map((l: any) => (typeof l === 'string' ? l : l.value));
   if (levels.length && !levels.includes('PUBLIC_TO_EVERYONE')) throw new Error(`Public posting not allowed for this account: ${levels.join(', ')}`);
 
-  const body = {
+  const body = PLATFORM === 'youtube' ? ytBody : {
     content: caption,
     mediaItems: [{ type: 'video', url: videoUrl }],
     platforms: [{ platform: 'tiktok', accountId }],
@@ -112,7 +122,7 @@ if (MODE === 'accounts') {
     },
     publishNow: true,
   };
-  console.log(`Story ${number} -> TikTok @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
+  console.log(`Story ${number} -> ${LABEL}${PLATFORM === 'youtube' ? ` "${title}"` : ''} @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
   if (dryRun) {
     console.log('Dry run: nothing posted.');
     process.exit(0);
@@ -120,7 +130,7 @@ if (MODE === 'accounts') {
   const res = await api('POST', '/posts', body);
   const post = res.post ?? {};
   const p = (post.platforms ?? [])[0] ?? {};
-  console.log(`Zernio: post ${post._id} status ${post.status}; TikTok status ${p.status}${p.errorMessage ? `; error: ${p.errorMessage}` : ''}`);
+  console.log(`Zernio: post ${post._id} status ${post.status}; ${LABEL} status ${p.status}${p.errorMessage ? `; error: ${p.errorMessage}` : ''}`);
   if (post._id && post.status !== 'failed') {
     const file = fs.existsSync(RECORD) ? JSON.parse(fs.readFileSync(RECORD, 'utf8')) : { posts: [] };
     file.posts.push({ number, story: story.data.slug, at: new Date().toISOString(), postId: post._id, status: post.status, url: p.platformPostUrl ?? null } satisfies Rec);
