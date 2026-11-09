@@ -761,6 +761,31 @@
       "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 2976758932688690 (music: cinematic-trailer)",
       "story": "pele-v-cristiano-ronaldo-19-november",
       "reel": "2482a1157558ef64b9835ab30e9256a11589d31c"
+    },
+    {
+      "number": 909,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-09T15:32:27.485Z",
+      "detail": "posted reel 1901380111293859 (music: cinematic-trailer) UNCONFIRMED: checking Facebook Reel 1901380111293859 failed: https://graph.facebook.com/v21.0/1901380111293859 responded 400: Unsupported get request. Object with ID '190138",
+      "story": "manchester-united-five-at-white-hart-lane",
+      "reel": "461e25ecba4729631a2ab30ba41a458e7ac8ccba"
+    },
+    {
+      "number": 909,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-09T15:32:27.485Z",
+      "detail": "reel media 17964042453251921",
+      "story": "manchester-united-five-at-white-hart-lane"
+    },
+    {
+      "number": 909,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-09T15:32:27.485Z",
+      "detail": "thread 18079609877738457 (cards, Reel in reply, topic Football)",
+      "story": "manchester-united-five-at-white-hart-lane"
     }
   ]
 }
