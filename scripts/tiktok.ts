@@ -102,7 +102,7 @@ if (MODE === 'accounts') {
     platforms: [{ platform: 'youtube', accountId, platformSpecificData: { title, visibility: 'public', madeForKids: false, containsSyntheticMedia: true, categoryId: '17' } }],
     publishNow: true,
   };
-  const info = PLATFORM === 'youtube' ? {} as any : await = await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
+  const info: any = PLATFORM === 'youtube' ? {} : await api('GET', `/accounts/${accountId}/tiktok/creator-info?mediaType=video`);
   const levels: string[] = (info.privacyLevels ?? []).map((l: any) => (typeof l === 'string' ? l : l.value));
   if (levels.length && !levels.includes('PUBLIC_TO_EVERYONE')) throw new Error(`Public posting not allowed for this account: ${levels.join(', ')}`);
 

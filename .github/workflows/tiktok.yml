@@ -57,7 +57,7 @@ jobs:
       - name: Commit the record
         if: ${{ always() && inputs.mode == 'post' && inputs.dry_run != true }}
         run: |
-          for f in data/tiktok.json data/youtube.json; do [ -f "$f" ] && git add "$f"; done
+          for f in data/tiktok.json data/youtube.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "football-stories-101[bot]"
           git config user.email "football-stories-101[bot]@users.noreply.github.com"
