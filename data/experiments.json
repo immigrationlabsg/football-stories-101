@@ -60,7 +60,8 @@
       "change": "Test 1's change stays in (per the lag rule) unless dropped on 2 Dec. Rotate the opening line by day: a true 'most/only' fact, the result first, or a question (2-3 days each). Each story carries an `opening` tag.",
       "counted": {
         "stories": { "from": 42, "to": 48 },
-        "rule": "All 7 daily posts of 30 Nov - 6 Dec (stories 042-048), whatever their format. Extras (900-908) do not count."
+        "storiesConfirmed": false,
+        "rule": "All 7 daily posts of 30 Nov - 6 Dec (stories 042-048), whatever their format. Stories past 047 do not exist yet: the numbers assume one story a day with no gaps from 020 on 8 Nov; confirm them against the story files when they are built, and correct this entry before 30 Nov. Extras (900-908) do not count."
       },
       "excludeStories": "900-908",
       "compare": { "previous": { "stories": { "from": 35, "to": 41 }, "label": "the week before (23-29 Nov, test 1)" } },
@@ -84,8 +85,9 @@
       "networks": ["threads"],
       "counted": {
         "stories": { "from": 49, "to": 55 },
+        "storiesConfirmed": false,
         "includeUnmappedInWindow": true,
-        "rule": "Threads posts of 7-13 Dec: the 7 daily card posts (stories 049-055) and the daily text takes (Threads posts with no story number, posted inside the week). Instagram and Facebook are shown only as controls."
+        "rule": "Threads posts of 7-13 Dec: the 7 daily card posts (stories 049-055) and the daily text takes (Threads posts with no story number, posted inside the week). Stories past 047 do not exist yet: the numbers assume one story a day with no gaps from 020 on 8 Nov; confirm them when built, and correct this entry before 7 Dec. Instagram and Facebook are shown only as controls."
       },
       "excludeStories": "900-908",
       "compare": { "previous": { "stories": { "from": 42, "to": 48 }, "label": "the week before (30 Nov - 6 Dec)" } },
@@ -114,7 +116,7 @@
       "compare": { "previous": { "stories": { "from": 49, "to": 58 }, "label": "the 10 days before (7-16 Dec)" } },
       "bar": {
         "likesPerPost": { "pctAbove": 30, "against": "previous" },
-        "shares": { "minShares": 3, "minPosts": 2, "ratesAbove": "previous" }
+        "shares": { "minShares": 3, "minPosts": 2 }
       },
       "followers": "Reported, judged only on the 4-week trend.",
       "evidence": "One TikTok page's World Cup countdown: 35.6K-543.6K views up to Day 11, then 0.4-3.8M. One page, a presenter on camera, and the rise cannot be separated from the World Cup getting closer.",

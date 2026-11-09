@@ -8,7 +8,7 @@ folder.
 - **Where the repo lives:** `~/Developer/football-stories-101`. macOS does not let background jobs read `~/Documents`,
   so the old path `~/Documents/Claude/Projects/football-stories-101` is only a shortcut to it.
 - **Reports:** each run's full output is in `~/Library/Logs/football-stories-101/` (one file per run), and its last
-  line pops up as a Mac notification. The Monday growth review is different: `ops/mac/report-note.sh` has Obsidian add the
+  line pops up as a Mac notification. The Monday growth review (task 6a) and the Wednesday decision (task 6b, 12:47) are different: `ops/mac/report-note.sh` has Obsidian add the
   report to the vault note "Football Growth Reports" and puts up an alert that stays until answered (owner, 5 Nov 2026).
 - **Switched off until the cloud copies are off.** Jobs skip (and note it in `skipped.log`) until the file
   `~/.football-stories-101/mac-tasks-on` exists, so the Mac and the cloud session never both post. To switch on:
@@ -16,6 +16,8 @@ folder.
 - **Awake:** the job `sg.footballstories101.keep-awake` runs `caffeinate -i` while the owner is logged in, so the Mac
   never idle-sleeps (the screen still turns off). The Mac must stay logged in; after a restart, log in once.
 - **Post extras:** at 19:45 every evening `ops/mac/start-extras.sh` starts the "Post extras" workflow (no Claude session); it posts only what is due at 20:00.
+- **Weekly loop (9 Nov 2026):** task 6 became **6a** (Monday 12:41, review) and **6b** (Wednesday 12:47, decision); run them with `ops/mac/run-task.sh 6a` or `6b` (an old `6` still means 6a, and `install.sh` removes the old `task6-growth-review` job).
+- **Snapshot alert:** at 13:40 every day `ops/mac/check-snapshot.sh` checks the latest "Metrics snapshot" run on GitHub (read-only). If it failed, is unfinished or did not start today, it shows a Mac notification and adds a line to the report note. `zsh ops/mac/check-snapshot.sh dry` shows what it would do without showing or writing anything.
 - **Install or change times:** edit `ops/mac/install.sh` and run `zsh ops/mac/install.sh` (safe to repeat).
 - **Test a task without doing it:** `zsh ops/mac/run-task.sh N test`. Claude checks it could do the task and changes
   nothing; posting, pushing, committing and starting workflows are blocked in test runs.

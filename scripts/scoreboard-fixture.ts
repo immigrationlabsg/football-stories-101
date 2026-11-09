@@ -15,7 +15,7 @@ const day1 = Date.parse('2026-11-08T00:00:00Z'); // story 20
 const tsOf = (story: number) => day1 + (story - 20) * DAY;
 const failures: string[] = [];
 
-type Plan = { igLikes: (s: number) => number; fbLikes: (s: number) => number; thLikes: (s: number) => number; igShares: (s: number) => number; skip: (s: number) => number };
+type Plan = { igLikes: (s: number) => number; fbLikes: (s: number) => number; thLikes: (s: number) => number; igShares: (s: number) => number; skip: (s: number) => number; thReposts?: (s: number) => number };
 
 function writeStories(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
@@ -33,7 +33,7 @@ function writeSnapshots(dir: string, plan: Plan, from: string, to: string) {
       reach: 100, views: 120, follows: null, avg_watch_ms: 6000, total_watch_ms: 1, skip_rate: plan.skip(s),
     }));
     const fb = stories.map((s) => ({ id: `fb${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString(), likes: plan.fbLikes(s), comments: 0, shares: 0, saves: null, reposts: null, reach: null, views: 50, views_incl_replays: 60, avg_watch_s: 5, skip_rate: null }));
-    const th = stories.map((s) => ({ id: `th${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString(), likes: plan.thLikes(s), comments: 0, shares: 0, saves: null, reposts: 0, reach: null, views: 20, avg_watch_s: null, skip_rate: null }));
+    const th = stories.map((s) => ({ id: `th${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString(), likes: plan.thLikes(s), comments: 0, shares: 0, saves: null, reposts: plan.thReposts?.(s) ?? 0, reach: null, views: 20, avg_watch_s: null, skip_rate: null }));
     const date = new Date(t).toISOString().slice(0, 10);
     fs.writeFileSync(
       path.join(dir, `${date}.json`),
@@ -71,12 +71,12 @@ run('no snapshots', path.join(root, 'none'), '2026-11-30T00:00:00Z', ['Snapshots
 // 2. One snapshot only: the test posts are not yet 48 h old.
 const one = path.join(root, 'one');
 writeSnapshots(one, { igLikes: () => 2, fbLikes: () => 0, thLikes: () => 0, igShares: () => 0, skip: () => 55 }, '2026-11-10', '2026-11-10');
-run('one snapshot', one, '2026-11-30T00:00:00Z', ['Snapshots in', ': 1.', 'NOT ENOUGH DATA']);
+run('one snapshot', one, '2026-11-30T00:00:00Z', ['Snapshots in', ': 1.', 'NOT ENOUGH DATA', 'not posted yet'], ['no 48 h score yet for stories 035']);
 
 // 3. A test that clears its bar: more likes, 3 shares from 2 posts, skip rate down.
 const keep = path.join(root, 'keep');
 writeSnapshots(keep, { igLikes: (s) => (s >= 35 && s <= 41 ? 4 : 2), fbLikes: (s) => (s >= 35 && s <= 41 ? 1 : 0), thLikes: (s) => (s >= 35 && s <= 41 ? 1 : 0), igShares: (s) => (s === 36 ? 2 : s === 38 ? 1 : 0), skip: (s) => (s >= 35 && s <= 41 ? 50 : 55) }, '2026-11-10', '2026-12-03');
-const keepText = run('keep', keep, '2026-12-02T05:00:00Z', ['Verdict', 'KEEP: the bar is cleared and the early signs agree', 'likes per post: PASS', 'shares: PASS', '3 shares from 2 posts', 'quiz', 'comparison', 'No missing days'], ['MISSING DAYS']);
+const keepText = run('keep', keep, '2026-12-02T05:00:00Z', ['Verdict', 'KEEP: the bar is cleared and the early signs agree', 'likes per post: PASS', 'shares: PASS', '3 shares from 2 different stories', 'quiz', 'comparison', 'No missing days'], ['MISSING DAYS']);
 if (!/Stories scored \| 7 \| 9 \| 7/.test(keepText)) failures.push('keep: expected 7 test stories, 9 baseline stories and 7 previous-week stories scored');
 
 // 4. A test that misses on likes and shares: dropped.
@@ -89,6 +89,21 @@ const extend = path.join(root, 'extend');
 writeSnapshots(extend, { igLikes: (s) => (s >= 35 && s <= 41 ? 4 : 2), fbLikes: () => 0, thLikes: () => 0, igShares: (s) => (s === 36 ? 2 : 0), skip: () => 55 }, '2026-11-10', '2026-12-03');
 run('extend', extend, '2026-12-02T05:00:00Z', ['EXTEND one more week', 'likes per post: PASS', 'shares: FAIL']);
 
+// 7. One 30-like post among six with none, against a baseline of 2: it clears the likes bar on the mean, but one post
+//    cannot decide a test (the median is 0), so the verdict is EXTEND and the post is listed. Shares are real (3 from 2 stories).
+const outlier = path.join(root, 'outlier');
+writeSnapshots(outlier, { igLikes: (s) => (s === 36 ? 30 : s >= 35 && s <= 41 ? 0 : 2), fbLikes: () => 0, thLikes: () => 0, igShares: (s) => (s === 37 ? 2 : s === 38 ? 1 : 0), skip: () => 55 }, '2026-11-10', '2026-12-03');
+const outText = run('outlier', outlier, '2026-12-02T05:00:00Z', ['likes per post: PASS', 'EXTEND: the verdict flips without the outlier post(s)', 'Outlier posts (reported always', 'story 036 with 30 likes', 'median 0', 'Without the outlier post(s) (story 036)', 'likes per post: FAIL'], ['KEEP:']);
+if (/\): KEEP:/.test(outText)) failures.push('outlier: a single 30-like post must never give KEEP');
+
+// 8. Three shares that all come from ONE story (two networks) are not "3 shares from 2 different posts": the share bar fails.
+const oneStory = path.join(root, 'one-story');
+writeSnapshots(oneStory, { igLikes: (s) => (s >= 35 && s <= 41 ? 4 : 2), fbLikes: () => 0, thLikes: () => 0, igShares: (s) => (s === 36 ? 2 : 0), thReposts: (s) => (s === 36 ? 1 : 0), skip: () => 55 }, '2026-11-10', '2026-12-03');
+run('one story shares', oneStory, '2026-12-02T05:00:00Z', ['shares: FAIL', '3 shares from 1 different stories', 'EXTEND one more week'], ['KEEP:']);
+
+// 9. A test with no outliers lists "none".
+run('no outlier listed', keep, '2026-12-02T05:00:00Z', ['Outlier posts (reported always; one post never decides a test alone): none.']);
+
 // 6. A missing day is reported.
 const gap = path.join(root, 'gap');
 writeSnapshots(gap, { igLikes: () => 2, fbLikes: () => 0, thLikes: () => 0, igShares: () => 0, skip: () => 55 }, '2026-11-10', '2026-11-14');
@@ -100,4 +115,4 @@ if (failures.length) {
   console.error(`Scoreboard fixture FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log('Scoreboard fixture passed: no snapshots, one snapshot, keep, drop, extend and a missing day all behave as the plan says.');
+console.log('Scoreboard fixture passed: no snapshots, one snapshot, keep, drop, extend, a single outlier post, shares from one story and a missing day all behave as the plan says.');

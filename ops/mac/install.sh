@@ -34,7 +34,12 @@ job 1 morning-post "1 7 50" "2 7 50" "3 7 50" "4 7 50" "5 7 50" "6 9 50" "0 9 50
 job 2 delivery-check "1 8 16" "2 8 16" "3 8 16" "4 8 16" "5 8 16" "6 10 16" "0 10 16"
 job 3 research "4 8 52"
 job 4 drafting "6 8 47"
-job 6 growth-review "1 12 41"
+job 6a growth-review "1 12 41"
+job 6b wednesday-decision "3 12 47"
+# Task 6 was split into 6a and 6b on 9 Nov 2026: remove the old job so the Monday review does not run twice.
+old=sg.footballstories101.task6-growth-review
+launchctl bootout "gui/$(id -u)/$old" 2>/dev/null || true
+rm -f "$AGENTS/$old.plist"
 job 7 adhoc-reels "0 14 7"
 job 8 picture-reels "0 9 0" "1 9 0" "2 9 0" "3 9 0" "4 9 0" "5 9 0" "6 9 0"
 job 9 facebook-swap "0 11 5" "1 11 5" "2 11 5" "3 11 5" "4 11 5" "5 11 5" "6 11 5"
@@ -49,6 +54,24 @@ cat > "$AGENTS/$label.plist" <<PLIST
 <key>Label</key><string>$label</string>
 <key>ProgramArguments</key><array><string>/bin/zsh</string><string>$REPO/ops/mac/start-extras.sh</string></array>
 <key>StartCalendarInterval</key><dict><key>Hour</key><integer>19</integer><key>Minute</key><integer>45</integer></dict>
+<key>StandardOutPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
+<key>StandardErrorPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
+</dict></plist>
+PLIST
+launchctl bootout "gui/$(id -u)/$label" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$AGENTS/$label.plist"
+echo "installed $label"
+
+# Every day at 13:40 (Singapore), 40 minutes after the 13:00 "Metrics snapshot" workflow: if its latest run failed or did
+# not run today, put up a Mac notification and add a line to the owner's report note (ops/mac/check-snapshot.sh).
+label=sg.footballstories101.check-snapshot
+cat > "$AGENTS/$label.plist" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>$label</string>
+<key>ProgramArguments</key><array><string>/bin/zsh</string><string>$REPO/ops/mac/check-snapshot.sh</string></array>
+<key>StartCalendarInterval</key><dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>40</integer></dict>
 <key>StandardOutPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
 <key>StandardErrorPath</key><string>$HOME/Library/Logs/football-stories-101/launchd.log</string>
 </dict></plist>

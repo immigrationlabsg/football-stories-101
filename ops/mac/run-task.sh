@@ -3,10 +3,12 @@
 # ops/mac/README.md). The instruction is read from that file at run time, so it stays the only copy.
 #
 #   ops/mac/run-task.sh 2          run task 2 (skipped until the Mac's tasks are switched on)
+#   ops/mac/run-task.sh 6a         the Monday growth review; 6b the Wednesday decision (headings "## 6a." and "## 6b.")
 #   ops/mac/run-task.sh 2 test     a test: Claude checks it could do the task, changes nothing, starts no run
 set -u
 N=$1
 MODE=${2:-run}
+[[ $N == 6 ]] && N=6a   # task 6 was split on 9 Nov 2026; an old launchd job that still passes 6 runs the Monday review
 REPO=${0:A:h:h:h}
 export PATH="$HOME/.local/bin:$HOME/.local/opt/gh/bin:$HOME/.local/opt/node/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 LOGS="$HOME/Library/Logs/football-stories-101"
@@ -46,11 +48,11 @@ STATUS=$?
 print -r -- "$OUT" >> "$LOG"
 echo "$(date): task $N ($MODE) finished, exit $STATUS" >> "$LOG"
 # The Monday growth review's and the Sunday Reels' reports go in the owner's vault, with an alert that stays up (owner, 5 Nov 2026).
-if [[ ($N == 6 || $N == 7) && $MODE == run ]]; then
+if [[ ($N == 6a || $N == 6b || $N == 7) && $MODE == run ]]; then
   if [[ $STATUS == 0 ]]; then
     print -r -- "$OUT" | "${0:A:h}/report-note.sh" "${LOG:t}" >> "$LOG" 2>&1
   else
-    osascript -e "display dialog \"This week's task $N (growth review or ad hoc Reels) did not finish. See ${LOG:t} in ~/Library/Logs/football-stories-101.\" with title \"Football Stories 101\" buttons {\"OK\"} giving up after 86400" >> "$LOG" 2>&1
+    osascript -e "display dialog \"This week's task $N (growth review, Wednesday decision or ad hoc Reels) did not finish. See ${LOG:t} in ~/Library/Logs/football-stories-101.\" with title \"Football Stories 101\" buttons {\"OK\"} giving up after 86400" >> "$LOG" 2>&1
   fi
   exit 0
 fi

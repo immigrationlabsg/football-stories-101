@@ -157,6 +157,8 @@ interface Group {
   unscored: { post: Post; reason: string }[];
   storiesExpected: number[];
   storiesMissing: number[];
+  notPosted: number[]; // expected stories with no post row in any snapshot (not posted yet, or missing from the snapshots)
+  notScoredYet: number[]; // posted, but no snapshot at the scoring age holds them yet
 }
 const inRange = (s: number | null, r?: { from: number; to: number } | null) => s !== null && !!r && s >= r.from && s <= r.to;
 const excludedStory = (s: number | null, spec?: string) => {
@@ -166,7 +168,7 @@ const excludedStory = (s: number | null, spec?: string) => {
 
 function buildGroup(entry: any, stories: { from: number; to: number } | null | undefined, scoreAt: any, opts: { unmapped: boolean }): Group {
   const nets: string[] = entry.networks ?? [...NETWORKS];
-  const g: Group = { scored: [], unscored: [], storiesExpected: [], storiesMissing: [] };
+  const g: Group = { scored: [], unscored: [], storiesExpected: [], storiesMissing: [], notPosted: [], notScoredYet: [] };
   if (!stories) return g;
   for (let s = stories.from; s <= stories.to; s++) g.storiesExpected.push(s);
   for (const p of posts.values()) {
@@ -190,6 +192,9 @@ function buildGroup(entry: any, stories: { from: number; to: number } | null | u
   }
   const have = new Set(g.scored.filter((x) => x.post.story !== null).map((x) => x.post.story));
   g.storiesMissing = g.storiesExpected.filter((s) => !have.has(s));
+  const seen = new Set([...posts.values()].filter((p) => nets.includes(p.network) && p.story !== null).map((p) => p.story));
+  g.notPosted = g.storiesMissing.filter((s) => !seen.has(s));
+  g.notScoredYet = g.storiesMissing.filter((s) => seen.has(s));
   return g;
 }
 
@@ -201,9 +206,11 @@ interface Agg {
   likesMedian: number | null;
   likesTotal: number;
   unitLikes: number[];
+  unitLikeMap: Map<string, number>;
   byNet: Record<string, NetAgg>;
   sharesTotal: number;
-  postsWithShares: number;
+  postsWithShares: number; // network posts with at least one share
+  storiesWithShares: number; // different daily stories with at least one share (the share bar counts these)
 }
 interface NetAgg {
   posts: number;
@@ -223,6 +230,7 @@ function aggregate(scored: Scored[]): Agg {
   const byNet: Record<string, NetAgg> = {};
   let sharesTotal = 0;
   let postsWithShares = 0;
+  const shareUnits = new Set<string>();
   for (const s of scored) {
     const o = s.obs;
     if (o.likes !== null) unitLikes.set(s.unit, (unitLikes.get(s.unit) ?? 0) + o.likes);
@@ -239,6 +247,7 @@ function aggregate(scored: Scored[]): Agg {
       b.postsWithShares++;
       sharesTotal += o.shares;
       postsWithShares++;
+      shareUnits.add(s.unit);
     }
   }
   for (const [net, b] of Object.entries(byNet)) {
@@ -252,7 +261,7 @@ function aggregate(scored: Scored[]): Agg {
     b.watchMean = mean(nums(rows.map((s) => s.obs.watchS)));
   }
   const ul = [...unitLikes.values()];
-  return { posts: scored.length, units: ul.length, likesMean: mean(ul), likesMedian: median(ul), likesTotal: ul.reduce((a, b) => a + b, 0), unitLikes: ul, byNet, sharesTotal, postsWithShares };
+  return { posts: scored.length, units: ul.length, likesMean: mean(ul), likesMedian: median(ul), likesTotal: ul.reduce((a, b) => a + b, 0), unitLikes: ul, unitLikeMap: unitLikes, byNet, sharesTotal, postsWithShares, storiesWithShares: shareUnits.size };
 }
 const DENOM: Record<string, string> = { instagram: 'reached', facebook: 'plays', threads: 'views' };
 
@@ -297,23 +306,14 @@ function evaluate(entry: any, test: Agg, refs: { baseline: Agg | null; previous:
     if (!r || r.likesMean === null || test.likesMean === null) legs.push({ name: 'likes per post', status: 'n/a', detail: `no scored posts for ${refLabel(bar.likesPerPost.against)} or for the test` });
     else {
       const need = r.likesMean * (1 + bar.likesPerPost.pctAbove / 100);
-      let ok = test.likesMean > need;
-      let note = '';
-      const med = test.likesMedian ?? 0;
-      if (ok && med >= 1) {
-        const kept = test.unitLikes.filter((x) => x <= 3 * med);
-        const meanWithout = mean(kept);
-        if (kept.length < test.unitLikes.length && meanWithout !== null && !(meanWithout > need)) {
-          ok = false;
-          note = ` (clears the bar only because of a post over 3 times the median of ${f1(med)}: it cannot decide a test alone)`;
-        }
-      }
-      legs.push({ name: 'likes per post', status: ok ? 'pass' : 'fail', detail: `${f2(test.likesMean)} vs ${f2(r.likesMean)} in ${refLabel(bar.likesPerPost.against)} (${pct(test.likesMean, r.likesMean)}; bar +${bar.likesPerPost.pctAbove}%, needs more than ${f2(need)})${note}` });
+      const ok = test.likesMean > need;
+      legs.push({ name: 'likes per post', status: ok ? 'pass' : 'fail', detail: `${f2(test.likesMean)} vs ${f2(r.likesMean)} in ${refLabel(bar.likesPerPost.against)} (${pct(test.likesMean, r.likesMean)}; bar +${bar.likesPerPost.pctAbove}%, needs more than ${f2(need)})` });
     }
   }
   if (bar.shares) {
-    const r = ref(bar.shares.ratesAbove);
-    const enough = test.sharesTotal >= bar.shares.minShares && test.postsWithShares >= bar.shares.minPosts;
+    const r = ref(bar.shares.ratesAbove ?? 'baseline');
+    // "At least 3 shares from at least 2 different posts" means 2 different daily stories, however many networks carried them.
+    const enough = test.sharesTotal >= bar.shares.minShares && test.storiesWithShares >= bar.shares.minPosts;
     let above = 0;
     let below = 0;
     const parts: string[] = [];
@@ -325,10 +325,10 @@ function evaluate(entry: any, test: Agg, refs: { baseline: Agg | null; previous:
       else if (t < b) below++;
       parts.push(`${net} ${f2(t)} vs ${f2(b)}`);
     }
-    const rateOk = above >= 1 && above >= below;
+    const rateOk = !bar.shares.ratesAbove || (above >= 1 && above >= below); // test 4's bar has no rate clause
     const ok = enough && rateOk;
-    const shortOf = enough ? '' : `; the bar needs at least ${bar.shares.minShares} shares from ${bar.shares.minPosts}+ posts and there are ${test.sharesTotal} from ${test.postsWithShares}`;
-    legs.push({ name: 'shares', status: !r ? 'n/a' : ok ? 'pass' : 'fail', detail: `${test.sharesTotal} shares from ${test.postsWithShares} posts; per 1,000 ${parts.join(', ') || 'no comparable rates'}${shortOf}${enough && !rateOk ? '; rate not above the reference' : ''}` });
+    const shortOf = enough ? '' : `; the bar needs at least ${bar.shares.minShares} shares from ${bar.shares.minPosts}+ different stories and there are ${test.sharesTotal} from ${test.storiesWithShares}`;
+    legs.push({ name: 'shares', status: !r && bar.shares.ratesAbove ? 'n/a' : ok ? 'pass' : 'fail', detail: `${test.sharesTotal} shares from ${test.storiesWithShares} different stories; per 1,000 ${parts.join(', ') || 'no comparable rates'}${shortOf}${enough && !rateOk ? '; rate not above the reference' : ''}` });
   }
   if (bar.skipRatePointsDown) {
     const r = ref(bar.skipRatePointsDown.against);
@@ -369,6 +369,33 @@ function evaluate(entry: any, test: Agg, refs: { baseline: Agg | null; previous:
   cmp('skip rate %', ti?.skipMean, ri?.skipMean, false);
   cmp('average watch s', ti?.watchMean, ri?.watchMean, true);
   return { legs, early: signs.length ? signs.join('; ') : 'not available', earlyBad: worse > better };
+}
+
+// A single post must not decide a test: a post (a daily story, likes added over the networks) with more than 3 times the
+// median likes, or, when the median is 0 (our normal case), more than half of all the week's likes.
+function outliersOf(a: Agg | null): { unit: string; likes: number }[] {
+  if (!a) return [];
+  const m = a.likesMedian ?? 0;
+  const found: { unit: string; likes: number }[] = [];
+  for (const [unit, likes] of a.unitLikeMap) {
+    if (m > 0 ? likes > 3 * m : a.likesTotal > 0 && likes > a.likesTotal / 2) found.push({ unit, likes });
+  }
+  return found;
+}
+const unitLabel = (u: string) => (/^\d+$/.test(u) ? `story ${u.padStart(3, '0')}` : `post ${u.split('|')[1] ?? u}`);
+const outlierText = (a: Agg | null) => {
+  const o = outliersOf(a);
+  if (!o.length) return 'none';
+  return o.map((x) => `${unitLabel(x.unit)} with ${x.likes} likes (${a!.likesMedian ? `over 3 times the median of ${f1(a!.likesMedian)}` : `${((x.likes / a!.likesTotal) * 100).toFixed(0)}% of the week's ${a!.likesTotal} likes, median 0`})`).join('; ');
+};
+const missingText = (g: Group) => [g.notPosted.length ? `not posted yet (or not in any snapshot): ${g.notPosted.map((x) => String(x).padStart(3, '0')).join(', ')}` : '', g.notScoredYet.length ? `posted but no score at the scoring age yet: ${g.notScoredYet.map((x) => String(x).padStart(3, '0')).join(', ')}` : ''].filter(Boolean).join('; ');
+type Kind = 'KEEP' | 'DROP' | 'EXTEND' | 'NOT ENOUGH DATA';
+function decide(legs: Leg[], earlyBad: boolean, early: string, extended: boolean): { kind: Kind; text: string } {
+  const nd = legs.filter((l) => l.status === 'n/a');
+  if (nd.length) return { kind: 'NOT ENOUGH DATA', text: `NOT ENOUGH DATA (${nd.map((l) => l.name).join(', ')} cannot be read yet)` };
+  if (legs.every((l) => l.status === 'pass')) return earlyBad ? { kind: 'EXTEND', text: 'EXTEND once: the bar is cleared but the early signs move the other way' } : { kind: 'KEEP', text: `KEEP: the bar is cleared${early === 'not available' ? ' (early signs not available)' : ' and the early signs agree'}` };
+  if (legs.every((l) => l.status === 'fail')) return { kind: 'DROP', text: 'DROP: misses on every part of the bar' };
+  return extended ? { kind: 'DROP', text: 'DROP: still unclear after the one extension' } : { kind: 'EXTEND', text: 'EXTEND one more week once (the queue moves back one week), then drop if still unclear' };
 }
 
 // ---------- print ----------
@@ -456,7 +483,7 @@ for (const e of entries) {
   const prevGroup = prevStories ? buildGroup(e, prevStories, undefined, { unmapped: false }) : null;
   const prevAgg = prevGroup?.scored.length ? aggregate(prevGroup.scored) : null;
 
-  say(`Scored: ${mine.scored.length} posts (${myAgg?.units ?? 0} of ${mine.storiesExpected.length} counted stories${mine.storiesMissing.length ? `; no 48 h score yet for stories ${mine.storiesMissing.map((s) => String(s).padStart(3, '0')).join(', ')}` : ''}).`);
+  say(`Scored: ${mine.scored.length} posts (${myAgg?.units ?? 0} of ${mine.storiesExpected.length} counted stories${mine.storiesMissing.length ? `; ${missingText(mine)}` : ''}).`);
   for (const u of mine.unscored.slice(0, 12)) say(`  not scored: ${u.post.network} ${u.post.id} (story ${u.post.story ?? '?'}): ${u.reason}`);
   if (e.kind === 'baseline') say(baselineProvisional ? `PROVISIONAL: the baseline locks on ${e.scoreAt.notAfter} (trial report); until then it is read from the latest snapshot at whatever age the posts are.` : 'Baseline locked.');
 
@@ -474,7 +501,7 @@ for (const e of entries) {
   }
   say('');
   scoreTable(cols, nets);
-  if (prevGroup && prevGroup.storiesMissing.length && prevAgg) say(`(previous period: no 48 h score yet for stories ${prevGroup.storiesMissing.join(', ')})`);
+  if (prevGroup && prevGroup.storiesMissing.length && prevAgg) say(`(previous period: ${missingText(prevGroup)})`);
 
   if (e.start && e.end) {
     say('');
@@ -486,6 +513,8 @@ for (const e of entries) {
     }
   }
   if (e.kind !== 'baseline') formatSplit(mine);
+  say('');
+  say(`Outlier posts (reported always; one post never decides a test alone): ${outlierText(myAgg)}.`);
 
   if (e.kind === 'baseline') continue;
 
@@ -505,19 +534,28 @@ for (const e of entries) {
     continue;
   }
   if (mine.storiesMissing.length) {
-    say(`Verdict: NOT ENOUGH DATA (scored ${myAgg.units} of ${mine.storiesExpected.length} counted stories; the rest are not yet 48 h old or are missing from the snapshots).`);
+    say(`Verdict: NOT ENOUGH DATA (scored ${myAgg.units} of ${mine.storiesExpected.length} counted stories; ${missingText(mine)}).`);
     continue;
   }
   const { legs, early, earlyBad } = evaluate(e, myAgg, { baseline: baselineAgg, previous: prevAgg });
   say('Bar:');
   for (const l of legs) say(`- ${l.name}: ${l.status.toUpperCase()}: ${l.detail}`);
   say(`Early signs (explain, never decide alone): ${early}`);
-  const nd = legs.filter((l) => l.status === 'n/a');
-  let verdict: string;
-  if (nd.length) verdict = `NOT ENOUGH DATA (${nd.map((l) => l.name).join(', ')} cannot be read yet)`;
-  else if (legs.every((l) => l.status === 'pass')) verdict = earlyBad ? 'EXTEND once: the bar is cleared but the early signs move the other way' : `KEEP: the bar is cleared${early === 'not available' ? ' (early signs not available)' : ' and the early signs agree'}`;
-  else if (legs.every((l) => l.status === 'fail')) verdict = 'DROP: misses on every part of the bar';
-  else verdict = e.extended ? 'DROP: still unclear after the one extension' : 'EXTEND one more week once (the queue moves back one week), then drop if still unclear';
+  const full = decide(legs, earlyBad, early, !!e.extended);
+  let verdict = full.text;
+  const outl = outliersOf(myAgg);
+  if (outl.length && (full.kind === 'KEEP' || full.kind === 'DROP')) {
+    // Recompute without the outlier post(s): if the verdict flips, one post decided it, so it is not decided.
+    const drop = new Set(outl.map((x) => x.unit));
+    const rest = mine.scored.filter((x) => !drop.has(x.unit));
+    const restAgg = rest.length ? aggregate(rest) : null;
+    const again = restAgg ? evaluate(e, restAgg, { baseline: baselineAgg, previous: prevAgg }) : null;
+    const without = again ? decide(again.legs, again.earlyBad, again.early, !!e.extended) : null;
+    say(`Without the outlier post(s) (${outl.map((x) => unitLabel(x.unit)).join(', ')}):`);
+    if (again) for (const l of again.legs) say(`- ${l.name}: ${l.status.toUpperCase()}: ${l.detail}`);
+    else say('- no other counted post is left to score');
+    if (!without || without.kind !== full.kind) verdict = `EXTEND: the verdict flips without the outlier post(s) (with them: ${full.kind}; without: ${without ? without.kind : 'nothing left'}), so a single post cannot decide this test${e.extended ? '; it was already extended once, so the master session decides' : ''}`;
+  }
   say(`Verdict (for the master session to confirm; a post over 3 times the median never decides alone): ${verdict}.`);
 }
 

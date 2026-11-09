@@ -8,6 +8,8 @@
  * are unchanged; the snapshot only collects what the report already reads.
  *   SNAPSHOT_FILE=data/metrics/2026-11-10.json npm run insights
  */
+import { storyIdMap, storyForId } from './lib/story-ids';
+
 const FB = 'https://graph.facebook.com/v21.0';
 const IG = 'https://graph.instagram.com/v21.0';
 const TH = 'https://graph.threads.net/v1.0';
@@ -44,19 +46,16 @@ const snap = {
   instagram: { followers: null as number | null, posts: [] as any[] },
   threads: { followers: null as number | null, posts: [] as any[] },
 };
-// Story number of each post, read from data/sent.json (every long id in a record's detail text points to its story).
-const storyOf = new Map<string, number>();
-{
+// Story number of each post, read from data/sent.json (the Page id is never used as a key: scripts/lib/story-ids.ts).
+const storyOf = await (async () => {
   const fs = await import('node:fs');
   try {
-    for (const r of JSON.parse(fs.readFileSync('data/sent.json', 'utf8')).social as { number: number; detail: string }[]) {
-      for (const id of String(r.detail).match(/\d{9,}/g) ?? []) storyOf.set(id, r.number);
-    }
+    return storyIdMap(JSON.parse(fs.readFileSync('data/sent.json', 'utf8')).social);
   } catch {
-    /* no sent.json: story numbers stay null */
+    return new Map<string, number>(); // no sent.json: story numbers stay null
   }
-}
-const storyFor = (id: string | undefined) => (id ? storyOf.get(id) ?? id.split('_').map((p) => storyOf.get(p)).find((n) => n !== undefined) ?? null : null);
+})();
+const storyFor = (id: string | undefined) => storyForId(storyOf, id);
 const since = String(Math.floor(Date.now() / 1000) - 28 * 86400);
 const until = String(Math.floor(Date.now() / 1000));
 

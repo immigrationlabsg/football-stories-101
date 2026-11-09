@@ -30,6 +30,7 @@
     "insights": "tsx scripts/insights.ts",
     "scoreboard": "tsx scripts/scoreboard.ts",
     "scoreboard:test": "tsx scripts/scoreboard-fixture.ts",
+    "metrics:check": "tsx scripts/check-story-ids.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "reels": "tsx scripts/reels.ts",
     "publish-painting": "tsx scripts/publish-painting.ts",
