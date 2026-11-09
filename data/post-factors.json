@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "about": "One entry per posted story: the ingredients of the post, so the 10-day factor review (docs/improvement-loop.md section 9) can line them up against 48 h outcomes from data/metrics/*.json and YouTube Studio. Factors only; never type outcome numbers here except in early_read notes.",
+  "about": "One entry per posted story: the ingredients of the post, so the 10-day factor review (docs/improvement-loop.md section 9) can line them up against 48 h outcomes from data/metrics/*.json and YouTube Studio. Factors only; never type outcome numbers here except in early_read notes. Fields left null (paintings, caption_chars, YouTube time) are filled at the next 10-day review, from frames every 2 s of the posted file and the posted caption.",
   "posts": [
     {
       "story": 20,
@@ -31,12 +31,14 @@
       "hook_type": "paradox",
       "name_in_hook": false,
       "first_frame": "event moment: trophy lift (Rome 2009) with caption",
-      "length_s": null,
+      "length_s": 44.7,
       "voice": true,
       "music": "sports-documentary",
       "ending_question": "Would Barcelona have hired Guardiola if he had lost his first two games before getting the job?",
       "caption_first_words": "On 31 August 2008 Barcelona opened their league",
-      "youtube": null
+      "youtube": null,
+      "paintings": null,
+      "caption_chars": null
     },
     {
       "story": 21,
@@ -72,7 +74,10 @@
       "ending_question": "Which team in your memory did better because nobody expected anything of them?",
       "caption_first_words": "On 31 May 1992 the Yugoslavia squad were in Sweden",
       "extras": "human layers: Laudrup's feud with the coach, Vilfort's daughter, the beach myth busted",
-      "early_read": "9 Nov ~19:35 SGT, about 11.5 h old (not a 48 h score): Instagram reach 1,083, views 1,206, likes 47, shares 25, saves 4, avg watch 22.9 s, skip 34.8% (Audience report run 42610248322); Facebook 0 plays, 0 shares (same run, and the Reel page in Chrome); YouTube 436 views in 3 h 7 min, 63.1% average viewed, 5 likes, 0 subscribers (Studio)."
+      "early_read": "9 Nov ~19:35 SGT, about 11.5 h old (not a 48 h score): Instagram reach 1,083, views 1,206, likes 47, shares 25, saves 4, avg watch 22.9 s, skip 34.8% (Audience report run 42610248322); Facebook 0 plays, 0 shares (same run, and the Reel page in Chrome); YouTube 436 views in 3 h 7 min, 63.1% average viewed, 5 likes, 0 subscribers (Studio).",
+      "paintings": null,
+      "caption_chars": null,
+      "first_frame_check": "Checked 9 Nov against the posted file (final.mp4, sha1 bea8a869455c...): frame at 0.3 s is a trophy lift with 'THIS TEAM DIDN'T QUALIFY'. The scoreboard opening in reel.py is an older build, not what was posted."
     }
   ]
 }
