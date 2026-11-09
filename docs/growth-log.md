@@ -448,3 +448,10 @@ for likes, shares or follows; the standing ban on direct messages to other accou
 - First Short, uploaded by hand: 021 Denmark 1992 (our best Reel so far), https://www.youtube.com/shorts/HE71Ekm5xQA. Public, not made for kids, AI use set to "Yes" (to match "Illustrations made with AI."), no website link. The uploaded file is byte-identical to the posted Reel (sha1 bea8a869455c...). YouTube's checks found no issues.
 - Daily posting isn't automatic yet. YouTube keeps videos uploaded through its API from an unaudited app private, so either upload by hand through Chrome or use Zernio (the TikTok route already chosen), which says it posts Shorts too. TikTok waits on the owner creating the account (they will do it later at the Mac).
 - Measurement: the Audience report and the snapshot don't read YouTube yet; YouTube Studio shows views, likes and subscribers.
+
+### YouTube schedule, 9 Nov 2026 (owner: "only schedule the next 10")
+- Stories 22-30 are uploaded by hand in YouTube Studio (Chrome, FS101 account) and scheduled to go public one a day, the morning after each Reel's Facebook day: 22 on 10 Nov 08:00, 23 on 11 Nov, 24 on 12 Nov, 25 on 13 Nov 08:00, 26 on 14 Nov 10:00, 27 on 15 Nov 10:00, 28 on 16 Nov 08:00, 29 on 17 Nov, 30 on 18 Nov 08:00 (all SGT). Video ids: jEw-fY5gC1g, z16Jzw7bJE8, VjX8nyTJpek, UKQN8TggGDg, Iz85grYBd04, ttiBYBSScdw, 0ygaCNiILyo, AhXAW24DJAA, 2RBgZswRFqI.
+- Title is the Reel's hook question; description is the Reel caption with no website link; AI use "Yes"; not made for kids. Uploaded files match the site Reels byte for byte (sha1 checked in-page before upload).
+- Checked: the Studio Shorts list shows all nine as "Scheduled" with the right titles and dates; story 25's Visibility panel shows 13 Nov 2026 08:00.
+- Story 31 (planned 19 Nov 08:00) is NOT scheduled: YouTube said "Daily upload limit reached" (about 10 uploads a day until the channel is phone-verified). Retry after the limit resets, or the owner does YouTube's one-time phone Verify.
+- Only the next 10 are queued on purpose, so changes from the improvement loop after the 10-day trial don't mean redoing uploads.
