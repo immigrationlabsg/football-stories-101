@@ -96,9 +96,17 @@ The owner approved trying the queued experiments in docs/growth-log.md (includin
 carousel, extra Threads posts and a Collab post) "and we'll measure the success", with one request: **the whole page
 must end up consistent in how it is presented.** So:
 - **One test at a time, one week each, one thing changed.** Everything else stays as above.
-- **Tests run on Instagram or Threads only, where posts go out live each day, Tuesday to Sunday.** Facebook keeps the
-  standard version as the steady control, so the page never shows two styles side by side on one network. A test video
-  is a separate Instagram-only file; the shared Reel (Facebook, and the Threads reply) is never changed for a test.
+- **Facebook is no longer the control for the Reel tests (owner, 9 Nov 2026, "Yes agree").** Since the 8 Nov narration
+  order the Reel is the same file on Facebook, Instagram and Threads, so a test that changes the story or the Reel
+  (tests 1, 2 and 4 of `docs/improvement-loop.md`) changes it on all three, and is measured each test week before
+  against after: against the baseline (the trial's posts of 8-16 Nov) and the week before, by `npm run scoreboard`
+  from the daily snapshots in `data/metrics/`. A test that changes one network only (test 3, Threads text takes) keeps
+  the other two as controls. Decision record: docs/growth-log.md, "Improvement loop approved, 9 Nov 2026". The older rule
+  below (tests on Instagram or Threads only, Facebook as the steady control, a separate Instagram-only test video) applies
+  only to a test that really is one network's own file.
+- **Older rule (30 Oct), still true for one-network tests:** run them on Instagram or Threads only, where posts go out
+  live each day, Tuesday to Sunday, with Facebook keeping the standard version so the page never shows two styles side
+  by side on one network.
 - **Every test keeps the house look:** the dark and gold cards, Libre Baskerville and Inter, our own paintings, and each
   network's usual text (on Facebook and Instagram the sign-off, AI line and hashtags; on Threads the topic tag and the AI
   line as described above).
