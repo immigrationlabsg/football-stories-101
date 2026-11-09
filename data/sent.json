@@ -305,15 +305,6 @@
       "reel": "82f18558f7ed745e7528bd04457beb58898d2458"
     },
     {
-      "number": 31,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-27T15:35:33.302Z",
-      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1443336974668498 (music: hebrides)",
-      "story": "pele-v-cristiano-ronaldo-19-november",
-      "reel": "89ca33eac2521d8436f87a389984d9ab842c2010"
-    },
-    {
       "number": 34,
       "network": "facebook",
       "status": "scheduled",
@@ -761,6 +752,15 @@
       "at": "2026-11-09T00:02:20.487Z",
       "detail": "thread 18094069325694911 (cards, Reel in reply, topic Football)",
       "story": "denmark-euro-1992"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-09T04:31:07.855Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 2976758932688690 (music: cinematic-trailer)",
+      "story": "pele-v-cristiano-ronaldo-19-november",
+      "reel": "2482a1157558ef64b9835ab30e9256a11589d31c"
     }
   ]
 }
