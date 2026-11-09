@@ -249,3 +249,43 @@ Original Content Guidelines: narration, a storyline or creative graphics that re
 - **Carousel week (Instagram only):** each day's story also posted as a painted carousel with music. Bar: carousel sends per reach against the same day's Reel. Facebook and Threads unchanged.
 
 Test 1 (story pick by feeling, 23-29 Nov) already picks for awe, outrage and paradox. The sendability check is part of the same pick, so test 1 still changes one thing.
+
+## 11. Decision panel: 5 independent voters (owner, 9 Nov 2026)
+
+Owner: "Based on your verifier / panel voters, which will you pick? If you did not come up with a panel voter, then start coming up with it. Base off the decisions of voting on whatever factors you mentioned earlier."
+
+**How it works.** For any choice between tests or strategies, the master sends 5 independent agents (Sonnet, quick) the same brief and the same files, each with a different lens:
+1. growth and sends;
+2. measurement skeptic;
+3. brand and rules guardian;
+4. production and operations;
+5. the fan.
+
+Each scores every option 1-5 on the same six factors:
+1. Mosseri's guidance supports it.
+2. Our own data supports it.
+3. Likely effect on sends per reach.
+4. Can be measured cleanly.
+5. Cost and risk.
+6. Fit with the standing rules and the consistent look.
+
+Each gives a total, a vote, and the condition that would flip it. The majority decides. The master checks every flip condition against the facts before acting, and the growth-verifier checks any fact the decision rests on. The owner can overrule.
+
+**First vote, 9 Nov 2026: which new test runs first after the Boxing Day countdown?**
+
+| Voter lens | Recency | Carousel | Vote | Would flip if |
+|---|---|---|---|---|
+| Growth and sends | 22 | 15 | Recency | Meta's API officially supports carousel music |
+| Measurement skeptic | 19 | 19 | Carousel (tie broken for its built-in control) | the API can't attach music to carousels |
+| Brand and rules | 20 | 17 | Recency | music can be attached to carousels of approved paintings |
+| Production and operations | 21 | 16 | Recency | a carousel with music can be scheduled with no daily hand work |
+| Fan | 22 | 17 | Recency | the API can attach library music to carousels |
+| **Total** | **104** | **84** | **4 to 1 for recency** | |
+
+Decision: **recency week first.** Two voters checked our code and Meta's documentation: our posting code already posts image carousels, but Meta's API attaches audio to Reels only, not carousels. That meets the carousel voter's own flip condition, so the result is effectively unanimous. The carousel test is parked until there is a way to attach music without hand work, because Mosseri's main reason for carousels (showing in the Reels viewer) needs music.
+
+Guardrails the voters set for the recency week:
+- Most hooks are planned ahead: anniversaries and records already verified, which suits our 3-4 week lead.
+- "Last night's match" stories only after the full fact-check, with a hard cut-off, and never touching Facebook 06:00-10:45 SGT.
+- Paintings only from real photos of the moment, as always.
+- It's scored before against after (no control), so it needs at least 3 shares from 2 or more posts, and one big post doesn't decide it.
