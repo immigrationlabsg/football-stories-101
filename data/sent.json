@@ -767,7 +767,7 @@
       "network": "facebook",
       "status": "posted",
       "at": "2026-11-09T15:32:27.485Z",
-      "detail": "posted reel 1901380111293859 (music: cinematic-trailer) UNCONFIRMED: checking Facebook Reel 1901380111293859 failed: https://graph.facebook.com/v21.0/1901380111293859 responded 400: Unsupported get request. Object with ID '190138",
+      "detail": "posted reel 1901380111293859 (music: cinematic-trailer)",
       "story": "manchester-united-five-at-white-hart-lane",
       "reel": "461e25ecba4729631a2ab30ba41a458e7ac8ccba"
     },
