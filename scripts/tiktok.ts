@@ -167,6 +167,10 @@ if (MODE === 'accounts') {
     .filter((e: any) => e.network === 'instagram' && e.status === 'posted' && String(e.detail ?? '').startsWith('reel media')
       && Date.parse(e.at) >= Math.max(since, GO_LIVE))
     .map((e: any) => e.number))].filter((n) => !done.has(n));
+  // Held from automatic posting until the owner says yes in chat: 908 (Zidane) uses paintings from agency photos.
+  const HOLD = new Set<number>([908]);
+  for (const n of due.filter((n) => HOLD.has(n))) console.log(`Story ${n} is held: post it to ${LABEL} only by hand, after the owner's OK.`);
+  due.splice(0, due.length, ...due.filter((n) => !HOLD.has(n)));
   if (!due.length) console.log(`Nothing due for ${LABEL}: no Instagram post in the last 20 hours that is not on ${LABEL} already.`);
   for (const n of due.slice(0, 2)) {
     try {
