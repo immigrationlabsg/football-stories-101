@@ -544,3 +544,11 @@ Source: Colin and Samir's interview with Adam Mosseri, 26 Oct 2026 (https://www.
 - Shorts list checked after both: 11-19 Nov all Scheduled, one per day.
 
 - YouTube, 10 Nov 2026 19:56 SGT: posted through Zernio after the daily upload limit reset (run 42811470193), public, https://www.youtube.com/watch?v=Oi_HJgiv0xk. Title "Two goals down to Villa. Twice. And United still came back. #shorts". Recorded in data/youtube.json.
+
+## Denmark-style story on 023 and 024, 10 Nov 2026 (night)
+
+Owner, 10 Nov: "For Lyon and tomorrow's reel, the story telling and initial 3s hook have to be all similar to the Denmark reel", after a mockup, then "Yes build both. Post it across all platforms". Also: "From now on, don't upload onto YouTube anymore", and extras keep going to TikTok automatically.
+- 023 Wimbledon (11 Nov): new hook "This club was non-league. Eleven years later, they won the FA Cup." over Beasant's save, then the Cup lift; line 2 names "non-league Wimbledon"; new question "Which club in your memory climbed further, faster, from nowhere?". Story page hook and question updated. Facebook Reel replaced (new 1625727822362473, old 2178034636925875 deleted).
+- 024 Lyon (12 Nov): hook kept; story re-voiced in Denmark's order: leaders Lens come to Lyon on the last day, a draw enough for them; Lyon win 3-1, their first title; year after year they sold their stars (Essien, Diarra, Malouda, Abidal); still they won, Juninho the constant; 2008, seven in a row with four coaches and a first double. Cut from the Reel with the owner's OK: "Weeks later, Lyon let the coach go" (still on the page). "Every summer" became "year after year" because every single summer could not be proven. New question "Which club in your memory sold its stars year after year, and kept winning?".
+- YouTube: no new uploads. The scheduled Lyon Short (fu41Q7AR5K8, 12 Nov) is the earlier hook-only cut.
+- Judge: 023 and 024 reach, 3-second hold, shares per reach against 021 Denmark and the earlier card Reels, before deciding the next day's Reel.
