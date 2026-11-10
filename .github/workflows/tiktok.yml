@@ -1,14 +1,23 @@
 name: TikTok
 
-# TikTok through Zernio (scripts/tiktok.ts). Started by hand only for now: "accounts" and "status" read and change nothing;
-# "post" is a dry run unless dry_run is unticked. Each real post is recorded in data/tiktok.json.
+# TikTok through Zernio (scripts/tiktok.ts). "accounts" and "status" read and change nothing; "post" is a dry run unless
+# dry_run is unticked. Each real post is recorded in data/tiktok.json, which stops a second post of the same story.
+# Automatic (owner, 10 Nov 2026): when "Publish daily" or "Post extras" finishes, and at backup times, mode "auto" posts
+# to TikTok every Reel that went to Instagram in the last 20 hours and is not on TikTok yet.
 on:
+  workflow_run:
+    workflows: ["Publish daily", "Post extras"]
+    types: [completed]
+  schedule:
+    # Backups: after the weekday (00:00 UTC) and weekend (02:00 UTC) posts, and after the 12:00 UTC extras.
+    - cron: "35 0,1,2,3 * * *"
+    - cron: "35 12,13 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: "accounts (read only), post, or status (read only)"
+        description: "accounts (read only), auto (post what is due), post, or status (read only)"
         type: choice
-        options: [accounts, post, status]
+        options: [accounts, auto, post, status]
         default: accounts
       platform:
         description: "tiktok or youtube"
@@ -37,6 +46,8 @@ concurrency:
 
 jobs:
   tiktok:
+    # After a publishing run, only when it succeeded; the backup times cover the rest.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
@@ -53,14 +64,14 @@ jobs:
       - run: npm ci
       - run: npm run tiktok
         env:
-          MODE: ${{ inputs.mode }}
+          MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'auto' }}
           STORY: ${{ inputs.story }}
-          DRY_RUN: ${{ inputs.dry_run == true && '1' || '0' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true && '1' || '0' }}
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
-          PLATFORM: ${{ inputs.platform }}
+          PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || 'tiktok' }}
           SCHEDULE_AT: ${{ inputs.schedule_at }}
       - name: Commit the record
-        if: ${{ always() && inputs.mode == 'post' && inputs.dry_run != true }}
+        if: ${{ always() && (github.event_name != 'workflow_dispatch' || ((inputs.mode == 'post' || inputs.mode == 'auto') && inputs.dry_run != true)) }}
         run: |
           for f in data/tiktok.json data/youtube.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then exit 0; fi

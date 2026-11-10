@@ -4,6 +4,7 @@
  *   MODE=accounts npm run tiktok                 read only: connected accounts and TikTok creator info
  *   MODE=post STORY=21 npm run tiktok            dry run: show the caption and video, post nothing
  *   MODE=post STORY=21 DRY_RUN=0 npm run tiktok  post that story's Reel to TikTok, public, with the AI label
+ *   MODE=auto DRY_RUN=0 npm run tiktok           post every Instagram Reel of the last 20 hours not on TikTok yet
  *
  * Each post is recorded in data/tiktok.json, which stops a second post of the same story.
  * The caption is the Instagram caption (it ends with "Illustrations made with AI." and has no website link).
@@ -61,26 +62,14 @@ function records(): Rec[] {
   }
 }
 
-if (MODE === 'accounts') {
-  const list = await tiktokAccounts();
-  if (!list.length) console.log('No connected accounts.');
-  for (const a of list) {
-    console.log(`${a.platform}: @${a.username ?? a.displayName ?? '?'} id=${a._id ?? a.id} active=${a.isActive ?? '?'}`);
-    if (a.platform === 'tiktok') {
-      const info = await api('GET', `/accounts/${a._id ?? a.id}/tiktok/creator-info?mediaType=video`);
-      const { status: _s, ...rest } = info;
-      console.log(`  creator info: ${JSON.stringify(rest).slice(0, 1500)}`);
-    }
-  }
-} else if (MODE === 'post') {
-  const number = Number(process.env.STORY);
+async function postStory(number: number): Promise<void> {
   if (!Number.isInteger(number) || number <= 0) throw new Error('STORY must be a story number, e.g. 21.');
   const story = loadStories().stories.find((s) => s.data.number === number);
   if (!story) throw new Error(`No story ${number}.`);
   if (story.data.draft) throw new Error(`Story ${number} is a draft.`);
   if (records().some((r) => r.number === number)) {
     console.log(`Story ${number} is already on ${LABEL} (${path.basename(RECORD)}). Nothing posted.`);
-    process.exit(0);
+    return;
   }
   const caption = socialPosts(story, { kind: 'scheduled', webLive: false }).instagram;
   // Owner rule: no website link in social posts.
@@ -130,25 +119,75 @@ if (MODE === 'accounts') {
   console.log(`Story ${number} -> ${LABEL}${PLATFORM === 'youtube' ? ` "${title}"${at ? ` at ${at}` : ''}` : ''} @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
   if (dryRun) {
     console.log('Dry run: nothing posted.');
-    process.exit(0);
+    return;
   }
-  const res = await api('POST', '/posts', body);
-  const post = res.post ?? {};
-  const p = (post.platforms ?? [])[0] ?? {};
-  console.log(`Zernio: post ${post._id} status ${post.status}; ${LABEL} status ${p.status}${p.errorMessage ? `; error: ${p.errorMessage}` : ''}`);
-  if (post._id && post.status !== 'failed') {
-    const file = fs.existsSync(RECORD) ? JSON.parse(fs.readFileSync(RECORD, 'utf8')) : { posts: [] };
-    file.posts.push({ number, story: story.data.slug, at: new Date().toISOString(), postId: post._id, status: post.status, url: p.platformPostUrl ?? null } satisfies Rec);
-    fs.writeFileSync(RECORD, JSON.stringify(file, null, 2) + '\n');
-  } else {
-    process.exitCode = 1;
+  // Record the attempt BEFORE posting: if the answer is lost or says "failed" after the platform took it, the record
+  // still stops the automatic runs from posting the story again. A failed attempt is left for the owner to retry by hand.
+  const file = fs.existsSync(RECORD) ? JSON.parse(fs.readFileSync(RECORD, 'utf8')) : { posts: [] };
+  const rec: Rec = { number, story: story.data.slug, at: new Date().toISOString(), postId: '', status: 'attempting', url: null };
+  file.posts.push(rec);
+  const save = () => fs.writeFileSync(RECORD, JSON.stringify(file, null, 2) + '\n');
+  save();
+  try {
+    const res = await api('POST', '/posts', body);
+    const post = res.post ?? {};
+    const p = (post.platforms ?? [])[0] ?? {};
+    console.log(`Zernio: post ${post._id} status ${post.status}; ${LABEL} status ${p.status}${p.errorMessage ? `; error: ${p.errorMessage}` : ''}`);
+    Object.assign(rec, { postId: post._id ?? '', status: post._id && post.status !== 'failed' ? post.status : `failed: ${p.errorMessage ?? post.status ?? 'no post id'}`, url: p.platformPostUrl ?? null });
+    if (!post._id || post.status === 'failed') process.exitCode = 1;
+  } catch (e) {
+    rec.status = `failed or unknown: ${String((e as Error).message).slice(0, 200)}`;
+    throw e;
+  } finally {
+    save();
   }
+}
+
+if (MODE === 'accounts') {
+  const list = await tiktokAccounts();
+  if (!list.length) console.log('No connected accounts.');
+  for (const a of list) {
+    console.log(`${a.platform}: @${a.username ?? a.displayName ?? '?'} id=${a._id ?? a.id} active=${a.isActive ?? '?'}`);
+    if (a.platform === 'tiktok') {
+      const info = await api('GET', `/accounts/${a._id ?? a.id}/tiktok/creator-info?mediaType=video`);
+      const { status: _s, ...rest } = info;
+      console.log(`  creator info: ${JSON.stringify(rest).slice(0, 1500)}`);
+    }
+  }
+} else if (MODE === 'auto') {
+  // Daily automation: post every Reel that went to Instagram in the last 20 hours and is not on this platform yet.
+  // Started after "Publish daily" and "Post extras" finish, with backup times; data/tiktok.json stops a second post.
+  const sent: any = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sent.json'), 'utf8'));
+  const since = Date.now() - 20 * 3600 * 1000;
+  const done = new Set(records().map((r) => r.number));
+  // Reels only (a carousel is recorded as "media ..."), and only posts from the go-live day on, so an old story
+  // re-posted by hand or as a test does not cross to TikTok.
+  const GO_LIVE = Date.parse('2026-11-10T00:00:00Z');
+  const due = [...new Set<number>((sent.social ?? [])
+    .filter((e: any) => e.network === 'instagram' && e.status === 'posted' && String(e.detail ?? '').startsWith('reel media')
+      && Date.parse(e.at) >= Math.max(since, GO_LIVE))
+    .map((e: any) => e.number))].filter((n) => !done.has(n));
+  if (!due.length) console.log(`Nothing due for ${LABEL}: no Instagram post in the last 20 hours that is not on ${LABEL} already.`);
+  for (const n of due.slice(0, 2)) {
+    try {
+      await postStory(n);
+    } catch (e) {
+      console.error(`Story ${n}: ${(e as Error).message}`);
+      process.exitCode = 1;
+    }
+  }
+} else if (MODE === 'post') {
+  await postStory(Number(process.env.STORY));
 } else if (MODE === 'status') {
   for (const r of records()) {
+    if (!r.postId) {
+      console.log(`${r.number}: ${r.status} (no Zernio post id; check TikTok by hand)`);
+      continue;
+    }
     const res = await api('GET', `/posts/${r.postId}`);
     const p = (res.post?.platforms ?? [])[0] ?? {};
     console.log(`${r.number}: ${res.post?.status} ${p.platformPostUrl ?? ''} ${p.errorMessage ?? ''}`);
   }
 } else {
-  throw new Error(`Unknown MODE ${MODE} (accounts, post or status).`);
+  throw new Error(`Unknown MODE ${MODE} (accounts, auto, post or status).`);
 }
