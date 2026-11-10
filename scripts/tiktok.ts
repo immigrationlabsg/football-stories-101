@@ -107,8 +107,8 @@ async function postStory(number: number): Promise<void> {
     tiktokSettings: {
       privacy_level: 'PUBLIC_TO_EVERYONE',
       allow_comment: true,
-      allow_duet: false,
-      allow_stitch: false,
+      allow_duet: true, // owner 10 Nov 2026: allow reuse (Duet, Stitch), matching the account setting "Everyone"
+      allow_stitch: true,
       video_made_with_ai: true, // TikTok's "AI-generated content" label: the paintings are made with AI
       video_cover_timestamp_ms: 300, // the first frame shows the world-known event
       content_preview_confirmed: true,
