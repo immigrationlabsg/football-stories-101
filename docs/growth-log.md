@@ -532,3 +532,8 @@ Source: Colin and Samir's interview with Adam Mosseri, 26 Oct 2026 (https://www.
 - TikTok, first post through Zernio: https://www.tiktok.com/@foot.ballstories101/video/7706192107320446226 at 23:21 SGT, public, "Creator labelled as AI-generated" shown (owner's phone screenshot).
 - Beckham special week 4-10 Nov added to data/schedule.json (he is one of five scorers; 016 featured him on 4 Nov).
 - Judge at the Monday review; keep it out of other experiments' verdicts. Lead the Instagram read with sends per reach.
+
+### Hook change starts now, 10 Nov 2026 (owner's order)
+- Owner: "the next change you are going to implement will be to work on the hook, and it has to begin now", starting with the Reel two days out, using 021 Denmark's hook as the model. This is a change inside the 10-day trial, by the owner's choice; the 18 Nov report must read stories 024 onward with that in mind.
+- The pattern from 021: "This team didn't qualify for Euro 92. They won it." A pointing word ("this team") over the picture of the outcome, a contradiction in the first line, under 12 words, the payoff said straight after, then the "how" opens the story.
+- 024 Lyon (12 Nov), opening line changed from "Never champions of France. Then seven titles in a row." to "This club had never won the league. Then seven, in a row." (11 words). Same first frame (Juninho beside the 2008 trophy), same seven-star graphic, lines 1-7 byte-identical. Built in football-stories-samples/story-024-v3, checked by check_reel.py and an independent verifier (truth, transcript, captions, nothing else changed). The previous file is kept as story-024-v2/final.mp4.
