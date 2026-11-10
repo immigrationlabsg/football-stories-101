@@ -823,10 +823,10 @@
       "number": 24,
       "network": "facebook",
       "status": "scheduled",
-      "at": "2026-11-10T14:21:20.028Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 4555582654680286 (music: sports-documentary)",
+      "at": "2026-11-10T18:04:36.765Z",
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1539845418235430 (music: sports-documentary)",
       "story": "lyon-seven-straight-titles-2002-2008",
-      "reel": "d214a75128f285e7e1cdd97206e7ce73c4e93ede"
+      "reel": "3c54f52e4dc3615331097cfbcb4025e7fd9e8930"
     }
   ]
 }
