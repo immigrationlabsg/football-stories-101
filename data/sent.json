@@ -786,15 +786,6 @@
       "story": "van-persie-v-salah-10-november"
     },
     {
-      "number": 24,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-10T11:40:07.416Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 5605884982970179 (music: sports-documentary)",
-      "story": "lyon-seven-straight-titles-2002-2008",
-      "reel": "3e9bfb0ac5b2ac2fb685d2ffa8e0434335c18ad9"
-    },
-    {
       "number": 906,
       "network": "facebook",
       "status": "posted",
@@ -827,6 +818,15 @@
       "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 1625727822362473 (music: cinematic-trailer)",
       "story": "wimbledon-crazy-gang-1988-fa-cup",
       "reel": "df8667e78f6c1e4fa4cfdefa66a22cd6d0e758a2"
+    },
+    {
+      "number": 24,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-10T13:58:13.310Z",
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 2151451415733473 (music: sports-documentary)",
+      "story": "lyon-seven-straight-titles-2002-2008",
+      "reel": "7dda0e5ab3cdcd0091f5411f6886e3ec6400864f"
     }
   ]
 }
