@@ -542,3 +542,5 @@ Source: Colin and Samir's interview with Adam Mosseri, 26 Oct 2026 (https://www.
 - Story 31 (Pelé v Ronaldo) uploaded by hand in Studio after the daily upload limit reset: https://youtube.com/shorts/zxvroNSzcLw, scheduled public 19 Nov 2026 08:00 SGT. File byte-identical to story-031-v2/final.mp4 (sha1 2482a1157558...). Not made for kids; AI use "Yes"; title = the story's hook; description = dek, question, AI line, hashtags.
 - Story 24 (Lyon) replaced on YouTube with the new-hook Reel: https://youtube.com/shorts/fu41Q7AR5K8, scheduled 12 Nov 2026 08:00 SGT, title "This club had never won the league. Then seven, in a row." (sha1 3e9bfb0ac5b2..., same as the site's file). The old upload (old opening) is set to Private, not deleted.
 - Shorts list checked after both: 11-19 Nov all Scheduled, one per day.
+
+- YouTube, 10 Nov 2026 19:56 SGT: posted through Zernio after the daily upload limit reset (run 42811470193), public, https://www.youtube.com/watch?v=Oi_HJgiv0xk. Title "Two goals down to Villa. Twice. And United still came back. #shorts". Recorded in data/youtube.json.
