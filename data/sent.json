@@ -666,15 +666,6 @@
       "reel": "014505d2a41afcc76f235c9cd196bf3e4ec52556"
     },
     {
-      "number": 23,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-08T02:53:56.828Z",
-      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 2178034636925875 (music: cinematic-trailer)",
-      "story": "wimbledon-crazy-gang-1988-fa-cup",
-      "reel": "56244c868621299e6cedc3f7acfc3471f445e98b"
-    },
-    {
       "number": 25,
       "network": "facebook",
       "status": "scheduled",
@@ -827,6 +818,15 @@
       "at": "2026-11-10T12:03:19.022Z",
       "detail": "thread 18119408633039517 (cards, Reel in reply, topic Football)",
       "story": "como-nine-years-nine-goals"
+    },
+    {
+      "number": 23,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-10T13:48:05.422Z",
+      "detail": "scheduled for 2026-11-11T00:00:00.000Z reel 1625727822362473 (music: cinematic-trailer)",
+      "story": "wimbledon-crazy-gang-1988-fa-cup",
+      "reel": "df8667e78f6c1e4fa4cfdefa66a22cd6d0e758a2"
     }
   ]
 }
