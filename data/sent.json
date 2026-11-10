@@ -675,15 +675,6 @@
       "reel": "56244c868621299e6cedc3f7acfc3471f445e98b"
     },
     {
-      "number": 24,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-08T02:55:06.939Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1651696649664141 (music: sports-documentary)",
-      "story": "lyon-seven-straight-titles-2002-2008",
-      "reel": "d7aa855f06a8cc6600919ad1d921954398cd3b0f"
-    },
-    {
       "number": 25,
       "network": "facebook",
       "status": "scheduled",
@@ -802,6 +793,15 @@
       "at": "2026-11-10T00:02:06.010Z",
       "detail": "thread 18155048182527137 (cards, Reel in reply, topic Football)",
       "story": "van-persie-v-salah-10-november"
+    },
+    {
+      "number": 24,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-10T11:40:07.416Z",
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 5605884982970179 (music: sports-documentary)",
+      "story": "lyon-seven-straight-titles-2002-2008",
+      "reel": "3e9bfb0ac5b2ac2fb685d2ffa8e0434335c18ad9"
     }
   ]
 }
