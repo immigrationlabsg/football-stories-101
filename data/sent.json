@@ -802,6 +802,31 @@
       "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 5605884982970179 (music: sports-documentary)",
       "story": "lyon-seven-straight-titles-2002-2008",
       "reel": "3e9bfb0ac5b2ac2fb685d2ffa8e0434335c18ad9"
+    },
+    {
+      "number": 906,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-10T12:03:19.022Z",
+      "detail": "posted reel 1169050252192554 (music: sports-documentary)",
+      "story": "como-nine-years-nine-goals",
+      "reel": "ae64714d0ac3d50d3ddc9411dbe9c62c6a8483c7"
+    },
+    {
+      "number": 906,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-10T12:03:19.022Z",
+      "detail": "reel media 18109279319299558",
+      "story": "como-nine-years-nine-goals"
+    },
+    {
+      "number": 906,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-10T12:03:19.022Z",
+      "detail": "thread 18119408633039517 (cards, Reel in reply, topic Football)",
+      "story": "como-nine-years-nine-goals"
     }
   ]
 }
