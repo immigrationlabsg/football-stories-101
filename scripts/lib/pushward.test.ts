@@ -361,12 +361,13 @@ function fakeFetch(responder: (c: Call, i: number) => { status: number; body?: u
 }
 const board = () => buildBoard({ name: 'Lyon', stats, url: URL });
 
-test('pushBoard: creates (idempotent) then PATCHes ongoing with merge-patch, priority 9 and stale_ttl 6 h', async () => {
-  const f = fakeFetch((c) => (c.method === 'POST' ? { status: 201, body: { slug: 'fs101-results' } } : { status: 200, body: { state: 'ongoing' } }));
+test('pushBoard: GET first; creates only when missing (metered) then PATCHes ongoing with merge-patch, priority 9 and stale_ttl 6 h', async () => {
+  const f = fakeFetch((c) => (c.method === 'GET' ? { status: 404, body: {} } : c.method === 'POST' ? { status: 201, body: { slug: 'fs101-results' } } : { status: 200, body: { state: 'ongoing' } }));
   const r = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101 results', content: board(), fetchImpl: f.impl });
-  assert.deepEqual(r, { ok: true, status: 200, quotaExceeded: false, rateLimited: false, error: null, updates: 1 });
-  assert.equal(f.calls.length, 2);
-  const [create, patch] = f.calls;
+  assert.deepEqual(r, { ok: true, status: 200, quotaExceeded: false, rateLimited: false, error: null, updates: 2 });
+  assert.equal(f.calls.length, 3);
+  const [get, create, patch] = f.calls;
+  assert.equal(get.method, 'GET');
   assert.equal(create.url, 'https://api.pushward.app/activities');
   assert.equal(create.method, 'POST');
   assert.equal(create.headers['Content-Type'], 'application/json');
@@ -389,7 +390,9 @@ test('pushBoard: creates (idempotent) then PATCHes ongoing with merge-patch, pri
 
 test('pushBoard: 429 quota.exceeded is reported as quotaExceeded, without the key', async () => {
   const f = fakeFetch((c) =>
-    c.method === 'POST'
+    c.method === 'GET'
+      ? { status: 200, body: { state: 'ongoing' } }
+      : c.method === 'POST'
       ? { status: 200, body: {} }
       : { status: 429, body: { code: 'quota.exceeded', detail: 'quota exceeded for live_activity_updates', kind: 'live_activity_updates', used: 250, limit: 250, reset_at: '2026-12-01T00:00:00Z', status: 429 } },
   );
@@ -405,7 +408,7 @@ test('pushBoard: 429 quota.exceeded is reported as quotaExceeded, without the ke
 });
 
 test('pushBoard: 429 rate_limit.exceeded is not a quota problem and carries retry time', async () => {
-  const f = fakeFetch((c) => (c.method === 'POST' ? { status: 200 } : { status: 429, body: { code: 'rate_limit.exceeded', detail: 'rate limit exceeded', retry_after_ms: 60000 } }));
+  const f = fakeFetch((c) => (c.method === 'GET' ? { status: 200, body: { state: 'ongoing' } } : { status: 429, body: { code: 'rate_limit.exceeded', detail: 'rate limit exceeded', retry_after_ms: 60000 } }));
   const r = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: f.impl });
   assert.equal(r.quotaExceeded, false);
   assert.equal(r.rateLimited, true);
@@ -413,19 +416,19 @@ test('pushBoard: 429 rate_limit.exceeded is not a quota problem and carries retr
 });
 
 test('pushBoard: a 429 whose detail mentions quota but code differs is not quotaExceeded (match on code)', async () => {
-  const f = fakeFetch((c) => (c.method === 'POST' ? { status: 200 } : { status: 429, body: { code: 'other', detail: 'quota-ish' } }));
+  const f = fakeFetch((c) => (c.method === 'GET' ? { status: 200, body: { state: 'ongoing' } } : { status: 429, body: { code: 'other', detail: 'quota-ish' } }));
   const r = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: f.impl });
   assert.equal(r.quotaExceeded, false);
 });
 
-test('pushBoard: errors that echo the key are redacted; create failure stops before PATCH', async () => {
+test('pushBoard: errors that echo the key are redacted; a failed read stops before any metered call', async () => {
   const f = fakeFetch(() => ({ status: 401, body: `invalid token ${FAKE_KEY}` }));
   const r = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: f.impl });
   assert.equal(r.ok, false);
   assert.equal(r.status, 401);
   assert.equal(f.calls.length, 1);
   assert.ok(!(r.error ?? '').includes(FAKE_KEY), r.error ?? '');
-  assert.match(r.error ?? '', /create failed: HTTP 401/);
+  assert.match(r.error ?? '', /read failed: HTTP 401/);
 });
 
 test('pushBoard: network errors and timeouts never leak the key', async () => {
@@ -440,6 +443,13 @@ test('pushBoard: network errors and timeouts never leak the key', async () => {
   const b = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: hanging, timeoutMs: 30 });
   assert.equal(b.ok, false);
   assert.match(b.error ?? '', /timed out/);
+});
+
+test('pushBoard: an existing activity is never re-created (the create call is metered)', async () => {
+  const f = fakeFetch((c) => (c.method === 'GET' ? { status: 200, body: { state: 'ongoing' } } : { status: 200, body: {} }));
+  const r = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: f.impl });
+  assert.equal(r.updates, 1);
+  assert.deepEqual(f.calls.map((c) => c.method), ['GET', 'PATCH']);
 });
 
 test('pushBoard: refuses a missing or malformed key, bad slug or invalid board without calling the network', async () => {
@@ -463,14 +473,14 @@ test('pushBoard restart: still ongoing after ~3 days -> end then ongoing (2 upda
   assert.equal(a.updates, 2);
   assert.deepEqual(
     ongoing.calls.map((c) => `${c.method} ${c.body?.state ?? ''}`.trim()),
-    ['POST', 'GET', 'PATCH ended', 'PATCH ongoing'],
+    ['GET', 'PATCH ended', 'PATCH ongoing'],
   );
   const ended = fakeFetch((c) => (c.method === 'GET' ? { status: 200, body: { state: 'ended' } } : { status: 200, body: {} }));
   const b = await pushBoard({ key: FAKE_KEY, slug: 'fs101-results', name: 'FS101', content: board(), fetchImpl: ended.impl, restart: true });
   assert.equal(b.updates, 1);
   assert.deepEqual(
     ended.calls.map((c) => c.method),
-    ['POST', 'GET', 'PATCH'],
+    ['GET', 'PATCH'],
   );
 });
 

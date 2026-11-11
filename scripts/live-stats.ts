@@ -142,23 +142,40 @@ for (const n of Object.values(nets)) n.posts.sort((a, b) => Date.parse(b.at ?? '
 
 // "Today's story": the daily Reel (under 900) posted most recently on any network, so it switches the moment the new
 // Reel posts (08:00 weekdays, 10:00 weekends) and the Dynamic Island is updated straight away (owner, 11 Nov 2026).
-const daily = Object.values(nets).flatMap((n) => n.posts).filter((p) => p.story != null && p.story < 900 && Date.parse(p.at ?? '0') <= Date.now()).sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'))[0]?.story ?? null;
+const firstPost = new Map<number, number>();
+for (const p of Object.values(nets).flatMap((n) => n.posts)) {
+  const t = Date.parse(p.at ?? '');
+  if (p.story == null || p.story >= 900 || !Number.isFinite(t) || t > Date.now()) continue;
+  firstPost.set(p.story, Math.min(firstPost.get(p.story) ?? t, t));
+}
+// A late post of yesterday's Reel (e.g. TikTok catching up) must not take the island back: rank by first post time.
+const daily = [...firstPost.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {}, widget: prev.widget ?? {} };
 
 // ---- Dynamic Island (PushWard board) and Home Screen widget: scripts/lib/pushward.ts, scripts/lib/pushward-widget.ts ----
 // Free plan budgets: 250 Live Activity and 50 widget updates a month. PUSHWARD_PLAN=paid lifts the island to every 5 min.
 const short = (v: number | null) => (v == null ? '–' : v >= 1e6 ? `${(v / 1e6).toFixed(1)}m` : v >= 1e4 ? `${Math.round(v / 1e3)}k` : v >= 1e3 ? `${(v / 1e3).toFixed(1)}k` : String(v));
 const todayOf = (n: Net) => n.posts.find((x) => x.story === daily);
-const postedAt = Object.values(nets).map((n) => todayOf(n)?.at).filter(Boolean).sort()[0] ?? null;
+const postedAt = daily != null && firstPost.has(daily) ? new Date(firstPost.get(daily)!).toISOString() : null;
 const monthOf = (t: string) => t.slice(0, 7);
 const nowIso = new Date().toISOString();
 if (!PUSH_KEY) console.log('Dynamic Island and widget: PUSHWARD_KEY not set, skipped.');
 else if (daily != null) {
   const isl = out.island as { pushes?: string[]; story?: number; last_start?: string | null; views?: Record<string, number | null> };
-  isl.pushes = (isl.pushes ?? []).filter((t) => monthOf(t) === monthOf(nowIso));
+  // This month's pushes, plus the latest one so slot timing survives the month change.
+  const allPushes = isl.pushes ?? [];
+  isl.pushes = allPushes.filter((t) => monthOf(t) === monthOf(nowIso));
+  const lastEver = allPushes[allPushes.length - 1];
+  const pushLog = lastEver && !isl.pushes.includes(lastEver) ? [lastEver, ...isl.pushes] : isl.pushes;
   const plan = env.PUSHWARD_PLAN === 'paid' ? 'paid' : 'free';
-  const base = { now: nowIso, postedAt, lastPushes: isl.pushes, plan, storyChanged: isl.story !== daily, force: env.FORCE_PUSH === '1', lastStart: isl.last_start ?? null } as const;
-  let d = pw.shouldPush({ ...base, quotaUsedThisMonth: isl.pushes.length });
+  const base = { now: nowIso, postedAt, lastPushes: pushLog, plan, storyChanged: isl.story !== daily, force: env.FORCE_PUSH === '1', lastStart: isl.last_start ?? null } as const;
+  // After a failure wait 30 minutes (a quota error: until PushWard's reset), so a broken call can't burn the month.
+  const isl2 = isl as typeof isl & { retry_after?: string };
+  const waiting = isl2.retry_after && Date.parse(isl2.retry_after) > Date.now();
+  // Only today's Reel gets update slots: yesterday's Reel is never re-pushed in the morning before the new one posts.
+  const sgDay = (t: number) => new Date(t + 8 * 3600e3).toISOString().slice(0, 10);
+  const postedToday = postedAt != null && sgDay(Date.parse(postedAt)) === sgDay(Date.now());
+  let d = !postedToday && env.FORCE_PUSH !== '1' ? { push: false, reason: "today's Reel has not posted yet", restart: false } : waiting ? { push: false, reason: `waiting after a failed update until ${isl2.retry_after}`, restart: false } : pw.shouldPush({ ...base, quotaUsedThisMonth: isl.pushes.length });
   if (d.push) {
     // Confirm with PushWard's own counter and the activity's state before spending an update.
     const q = await pw.getQuota({ key: PUSH_KEY });
@@ -173,16 +190,27 @@ else if (daily != null) {
     if (r.ok) {
       for (let i = 0; i < Math.max(1, r.updates); i++) isl.pushes.push(nowIso);
       Object.assign(isl, { story: daily, views: Object.fromEntries(Object.entries(stats).map(([k, v]) => [k, v.views])), ...(d.restart || isl.story !== daily ? { last_start: nowIso } : {}) });
+      delete isl2.retry_after;
       console.log(`Dynamic Island updated (${d.reason}); ${isl.pushes.length} updates this month.`);
-    } else console.log(`::warning::Dynamic Island update failed: ${r.error ?? r.status}${r.quotaExceeded ? ' (monthly quota used up)' : ''}`);
+    } else {
+      for (let i = 0; i < r.updates; i++) isl.pushes.push(nowIso); // a create that went through before the failure
+      const n = new Date();
+      isl2.retry_after = (r.quotaExceeded ? new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1)) : new Date(n.getTime() + 30 * 60e3)).toISOString();
+      console.log(`::warning::Dynamic Island update failed: ${r.error ?? r.status}${r.quotaExceeded ? ' (monthly quota used up)' : ''}; next try after ${isl2.retry_after}`);
+    }
   }
   // Home Screen widget
-  const wd = (out.widget ??= {}) as { last_push?: string; count?: number; story?: number };
-  const w = pwWidget.shouldUpdateWidget({ now: new Date(), storyChanged: wd.story !== daily, updatesThisMonth: wd.count ?? 0, lastUpdate: wd.last_push ?? null });
+  const wd = (out.widget ??= {}) as { last_push?: string; count?: number; story?: number; retry_after?: string };
+  const wWait = wd.retry_after && Date.parse(wd.retry_after) > Date.now();
+  const w = wWait ? { update: false, reason: 'waiting after a failure', used: wd.count ?? 0 } : pwWidget.shouldUpdateWidget({ now: new Date(), storyChanged: wd.story !== daily, updatesThisMonth: wd.count ?? 0, lastUpdate: wd.last_push ?? null });
   if (w.update) {
     const r = await pwWidget.pushWidget({ key: PUSH_KEY, payload: pwWidget.buildWidget(out, { dashboardUrl: DASHBOARD }) });
-    if (r.ok) { Object.assign(wd, { last_push: nowIso, count: w.used + 1, story: daily }); console.log(`Widget updated (${w.reason}).`); }
-    else console.log(`::warning::Widget update failed: ${r.error ?? r.status}`);
+    if (r.ok) { Object.assign(wd, { last_push: nowIso, count: w.used + 1, story: daily }); delete wd.retry_after; console.log(`Widget updated (${w.reason}).`); }
+    else {
+      const n = new Date();
+      wd.retry_after = (r.quotaExceeded ? (r.resetAt ?? new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1)).toISOString()) : new Date(n.getTime() + 60 * 60e3).toISOString());
+      console.log(`::warning::Widget update failed: ${r.error ?? r.status}; next try after ${wd.retry_after}`);
+    }
   }
 }
 

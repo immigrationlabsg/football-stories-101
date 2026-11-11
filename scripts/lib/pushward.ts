@@ -434,12 +434,12 @@ export type PushBoardResult = {
   quotaExceeded: boolean;
   rateLimited: boolean;
   error: string | null;
-  /** PATCHes accepted (each counts against the monthly quota). */
+  /** Metered calls accepted (the create POST and every PATCH count against the monthly quota). */
   updates: number;
   retryAfterMs?: number;
 };
 
-/** POST /activities (idempotent) then PATCH /activities/{slug} with state ongoing and the board. One activity, kept running. */
+/** GET (free), POST /activities only when missing, then PATCH /activities/{slug} with state ongoing and the board. One activity, kept running. */
 export async function pushBoard(input: PushBoardInput): Promise<PushBoardResult> {
   const key = input.key?.trim() ?? '';
   const out = (r: Partial<PushBoardResult> & { ok: boolean; status: number }): PushBoardResult => ({
@@ -460,26 +460,29 @@ export async function pushBoard(input: PushBoardInput): Promise<PushBoardResult>
   const failed = (r: Extract<CallResult, { ok: false }>, updates = 0) =>
     out({ ok: false, status: r.status, quotaExceeded: r.quotaExceeded, rateLimited: r.rateLimited, retryAfterMs: r.retryAfterMs, error: r.error, updates });
 
-  const created = await call(conn, 'create', 'POST', '/activities', {
-    slug: input.slug,
-    name: truncate(input.name, 256) || input.slug,
-    priority,
-    ended_ttl: c.ended_ttl ?? 7 * 24 * 3600,
-    stale_ttl: staleTtl,
-    dismissal_ttl: c.dismissal_ttl ?? 15 * 60,
-  });
-  if (!created.ok) return failed(created);
-
+  // The create call is metered like an update (docs: "a create and then the first update, and both count"), so look
+  // first (GET is free) and create only when the activity does not exist yet.
   const path = `/activities/${encodeURIComponent(input.slug)}`;
   const merge = 'application/merge-patch+json';
   let updates = 0;
-  if (input.restart) {
-    const now = await getActivity({ ...conn, slug: input.slug });
-    if (now.ok && now.state === 'ongoing') {
-      const ended = await call(conn, 'end', 'PATCH', path, { state: 'ended', dismissal_ttl: 0 }, merge);
-      if (!ended.ok) return failed(ended);
-      updates++;
-    }
+  const before = await getActivity({ ...conn, slug: input.slug });
+  if (!before.ok) return out({ ok: false, status: before.status, error: before.error ?? 'could not read the activity' });
+  if (!before.exists) {
+    const created = await call(conn, 'create', 'POST', '/activities', {
+      slug: input.slug,
+      name: truncate(input.name, 256) || input.slug,
+      priority,
+      ended_ttl: c.ended_ttl ?? 7 * 24 * 3600,
+      stale_ttl: staleTtl,
+      dismissal_ttl: c.dismissal_ttl ?? 15 * 60,
+    });
+    if (!created.ok) return failed(created);
+    updates++;
+  }
+  if (input.restart && before.exists && before.state === 'ongoing') {
+    const ended = await call(conn, 'end', 'PATCH', path, { state: 'ended', dismissal_ttl: 0 }, merge);
+    if (!ended.ok) return failed(ended, updates);
+    updates++;
   }
   const r = await call(conn, 'update', 'PATCH', path, { state: 'ongoing', priority, stale_ttl: staleTtl, content: input.content }, merge);
   if (!r.ok) return failed(r, updates);
