@@ -1,7 +1,7 @@
 /**
  * Live results feed for the phone dashboard (public/live/) and the iPhone Dynamic Island (PushWard). Read only on every
  * network: it posts nothing to Instagram, Threads, TikTok or YouTube.
- *   META_FILE=/tmp/meta.json  the snapshot `SNAPSHOT_FILE=... npm run insights` just wrote (Instagram, Threads)
+ *   READ_META=1               read Instagram and Threads now (the workflow does this every 5 minutes)
  *   PREV_FILE=prev.json       the last live.json (keeps the time of the last Dynamic Island update)
  *   OUT_FILE=live.json        written here; the workflow pushes it to the live-stats branch
  *   ZERNIO_API_KEY            TikTok and YouTube numbers (repo secret, never printed)
@@ -12,6 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, STORIES_DIR } from './lib/stories';
+import { storyIdMap, storyForId } from './lib/story-ids';
 
 const env = process.env;
 const API = 'https://zernio.com/api/v1';
@@ -40,16 +41,57 @@ for (const f of fs.readdirSync(STORIES_DIR)) {
 }
 const titleOf = (n: number | null) => (n == null ? '' : titles.get(n) ?? `Story ${n}`);
 
-// ---- Instagram and Threads: from the Meta snapshot ----
-const meta = readJson(env.META_FILE, {});
-const fromMeta = (k: 'instagram' | 'threads'): Net => {
-  const m = meta?.[k];
-  if (!m) return { followers: null, posts: [], error: 'not read' };
-  return {
-    followers: m.followers ?? null,
-    posts: (m.posts ?? []).map((p: any) => ({ story: p.story ?? null, title: titleOf(p.story ?? null), at: p.timestamp ? new Date(p.timestamp).toISOString() : null, views: p.views ?? null, likes: p.likes ?? null, shares: p.shares ?? null, comments: p.comments ?? null, url: null })),
-  };
+// ---- Instagram and Threads: read straight from Meta when READ_META=1 (every 5 minutes), otherwise the last numbers ----
+// Light on purpose: the same keys post the daily Reels, so only the latest 3 posts and the follower count are read
+// (about 12 calls), well inside Meta's hourly limits (owner, 11 Nov 2026: today's Reel only, refreshed fast).
+const prev = readJson(env.PREV_FILE, {});
+const storyOf = storyIdMap(readJson(path.join(ROOT, 'data/sent.json'), { social: [] }).social ?? []);
+async function mget(base: string, route: string, token: string | undefined, params: Record<string, string> = {}): Promise<any> {
+  if (!token) return { error: 'no key saved' };
+  try {
+    const r = await fetch(`${base}/${route}?${new URLSearchParams({ ...params, access_token: token })}`, { signal: AbortSignal.timeout(20000) });
+    const j: any = await r.json().catch(() => ({}));
+    return !r.ok || j.error ? { error: String(j.error?.message ?? r.status).slice(0, 120) } : j; // never the URL: it holds the key
+  } catch {
+    return { error: 'network error' };
+  }
+}
+const metricOf = (j: any): number | null => {
+  const d = j?.data?.[0];
+  const v = d?.total_value?.value ?? d?.values?.[0]?.value;
+  return typeof v === 'number' ? v : v == null ? null : Number(v);
 };
+async function fromMeta(k: 'instagram' | 'threads'): Promise<Net> {
+  if (env.READ_META !== '1' && prev.networks?.[k]) return prev.networks[k];
+  const IG = 'https://graph.instagram.com/v21.0', TH = 'https://graph.threads.net/v1.0';
+  const posts: Post[] = [];
+  if (k === 'instagram') {
+    const t = env.INSTAGRAM_ACCESS_TOKEN;
+    const me = await mget(IG, 'me', t, { fields: 'followers_count' });
+    const media = await mget(IG, 'me/media', t, { fields: 'id,timestamp,like_count,comments_count,permalink', limit: '3' });
+    if (media.error) return { ...(prev.networks?.instagram ?? { followers: null, posts: [] }), error: media.error };
+    for (const x of media.data ?? []) {
+      const story = storyForId(storyOf, x.id);
+      const views = metricOf(await mget(IG, `${x.id}/insights`, t, { metric: 'views' }));
+      const shares = metricOf(await mget(IG, `${x.id}/insights`, t, { metric: 'shares' }));
+      posts.push({ story, title: titleOf(story), at: x.timestamp ? new Date(x.timestamp).toISOString() : null, views, likes: x.like_count ?? null, shares, comments: x.comments_count ?? null, url: x.permalink ?? null });
+    }
+    return { followers: me.followers_count ?? null, posts };
+  }
+  const t = env.THREADS_ACCESS_TOKEN;
+  const now = Math.floor(Date.now() / 1000);
+  const followers = metricOf(await mget(TH, 'me/threads_insights', t, { metric: 'followers_count', since: String(now - 2 * 86400), until: String(now) }));
+  const list = await mget(TH, 'me/threads', t, { fields: 'id,timestamp,permalink', limit: '3' });
+  if (list.error) return { ...(prev.networks?.threads ?? { followers: null, posts: [] }), error: list.error };
+  for (const x of list.data ?? []) {
+    const story = storyForId(storyOf, x.id);
+    const ins = await mget(TH, `${x.id}/insights`, t, { metric: 'views,likes,replies,shares' });
+    const m: Record<string, number | null> = {};
+    for (const d of ins.data ?? []) m[d.name] = d.total_value?.value ?? d.values?.[0]?.value ?? null;
+    posts.push({ story, title: titleOf(story), at: x.timestamp ? new Date(x.timestamp).toISOString() : null, views: m.views ?? null, likes: m.likes ?? null, shares: m.shares ?? null, comments: m.replies ?? null, url: x.permalink ?? null });
+  }
+  return { followers, posts };
+}
 
 // ---- TikTok and YouTube: from Zernio ----
 async function api(route: string): Promise<any> {
@@ -83,22 +125,22 @@ async function fromZernio(platform: 'tiktok' | 'youtube'): Promise<Net> {
     }
     return { followers, posts };
   } catch (e) {
-    return { followers: null, posts: [], error: (e as Error).message.slice(0, 200) };
+    // Keep the last numbers on a passing error, so the page and island never blank out for a minute.
+    return { ...(prev.networks?.[platform] ?? { followers: null, posts: [] }), error: (e as Error).message.slice(0, 200) };
   }
 }
 
 const nets: Record<string, Net> = {
-  instagram: fromMeta('instagram'),
+  instagram: await fromMeta('instagram'),
   tiktok: await fromZernio('tiktok'),
   youtube: await fromZernio('youtube'),
-  threads: fromMeta('threads'),
+  threads: await fromMeta('threads'),
 };
 for (const n of Object.values(nets)) n.posts.sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'));
 
 // "Today's story": the daily Reel (under 900) posted most recently on any network, so it switches the moment the new
 // Reel posts (08:00 weekdays, 10:00 weekends) and the Dynamic Island is updated straight away (owner, 11 Nov 2026).
 const daily = Object.values(nets).flatMap((n) => n.posts).filter((p) => p.story != null && p.story < 900 && Date.parse(p.at ?? '0') <= Date.now()).sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'))[0]?.story ?? null;
-const prev = readJson(env.PREV_FILE, {});
 const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {} };
 
 // ---- Dynamic Island (PushWard board, 4 tiles). Free plan: 250 updates a month, so about every 2 hours, 08:00-23:00 SGT. ----

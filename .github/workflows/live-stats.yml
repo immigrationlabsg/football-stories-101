@@ -1,9 +1,10 @@
 name: Live stats
 
-# Read only on every network (owner, 11 Nov 2026): every 30 minutes, reads views, likes, shares and followers for
-# Instagram and Threads (Meta, as the Audience report does) and TikTok and YouTube (Zernio), writes live.json to the
-# live-stats branch for the phone dashboard (public/live/), and about every 2 hours updates the iPhone Dynamic Island
-# through PushWard when the PUSHWARD_KEY secret is set. Never touches main, so it never rebuilds the site.
+# Read only on every network (owner, 11 Nov 2026): one long job reads TikTok and YouTube (Zernio) every minute and
+# Instagram and Threads (Meta, latest 3 posts only) every 5 minutes, writes live.json to the live-stats branch for the
+# phone dashboard (public/live/), and updates the iPhone Dynamic Island through PushWard (when the PUSHWARD_KEY secret
+# is set) about every 2 hours and whenever the new daily Reel posts. Never touches main, so it never rebuilds the site.
+# The cron starts a fresh job every 30 minutes and cancels the old one, so a late or stuck run never leaves a long gap.
 on:
   schedule:
     - cron: "*/30 * * * *"
@@ -19,12 +20,12 @@ permissions:
 
 concurrency:
   group: live-stats
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   stats:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,30 +35,32 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Read Instagram and Threads
-        run: SNAPSHOT_FILE="$RUNNER_TEMP/meta.json" npm run -s insights > /dev/null
+      - name: Read every minute for up to an hour
+        run: |
+          git fetch --depth 1 origin live-stats && git show origin/live-stats:live.json > "$RUNNER_TEMP/prev.json" || echo "{}" > "$RUNNER_TEMP/prev.json"
+          out="$RUNNER_TEMP/out"; mkdir -p "$out"; cd "$out"; git init -q -b live-stats; cp "$RUNNER_TEMP/prev.json" live.json
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cd "$GITHUB_WORKSPACE"
+          i=0; end=$((SECONDS + 3600))
+          while [ $SECONDS -lt $end ]; do
+            start=$SECONDS
+            READ_META=$([ $((i % 5)) -eq 0 ] && echo 1 || echo 0) FORCE_PUSH=$([ $i -eq 0 ] && echo "$FORCE_FIRST" || echo 0) \
+              npm run -s live-stats || echo "::warning::read $i failed"
+            [ -s "$RUNNER_TEMP/live.json" ] && cp "$RUNNER_TEMP/live.json" "$RUNNER_TEMP/prev.json"
+            # Push only when a number changed, so the page's free GitHub API checks mostly come back "not modified".
+            if [ -s "$RUNNER_TEMP/live.json" ] && ! cmp -s <(jq -S 'del(.read_at)' "$RUNNER_TEMP/live.json") <(jq -S 'del(.read_at)' "$out/live.json" 2>/dev/null); then
+              cp "$RUNNER_TEMP/live.json" "$out/live.json"
+              (cd "$out" && git add live.json && git commit -q --amend --allow-empty -m "Live stats" 2>/dev/null || git commit -q -m "Live stats" && \
+                git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-stats) || echo "::warning::push $i failed"
+            fi
+            i=$((i + 1)); sleep $(( 60 - (SECONDS - start) > 0 ? 60 - (SECONDS - start) : 1 ))
+          done
         env:
-          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
-          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
-          GITHUB_STEP_SUMMARY: /dev/null
-      - name: Last live.json
-        run: git fetch --depth 1 origin live-stats && git show origin/live-stats:live.json > "$RUNNER_TEMP/prev.json" || echo "{}" > "$RUNNER_TEMP/prev.json"
-      - name: Read TikTok and YouTube, build live.json, update the Dynamic Island
-        run: npm run -s live-stats
-        env:
-          META_FILE: ${{ runner.temp }}/meta.json
           PREV_FILE: ${{ runner.temp }}/prev.json
           OUT_FILE: ${{ runner.temp }}/live.json
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PUSHWARD_KEY: ${{ secrets.PUSHWARD_KEY }}
-          FORCE_PUSH: ${{ inputs.force_push && '1' || '0' }}
-      - name: Publish to the live-stats branch (one commit, replaced each time)
-        run: |
-          d="$RUNNER_TEMP/out" && mkdir -p "$d" && cp "$RUNNER_TEMP/live.json" "$d/" && cd "$d"
-          git init -q -b live-stats && git add live.json
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "Live stats $(date -u +%FT%TZ)"
-          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-stats
-        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          FORCE_FIRST: ${{ inputs.force_push && '1' || '0' }}
           GITHUB_TOKEN: ${{ github.token }}

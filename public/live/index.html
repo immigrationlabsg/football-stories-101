@@ -54,7 +54,7 @@
 <h2>Followers</h2>
 <div class="grid" id="followers"></div>
 
-<footer class="muted">Only today's Reel. It switches to the new Reel as soon as it posts (08:00 weekdays, 10:00 weekends).<br>The page checks every minute; new numbers arrive about every 30 minutes.</footer>
+<footer class="muted">Only today's Reel. It switches to the new Reel as soon as it posts (08:00 weekdays, 10:00 weekends).<br>TikTok and YouTube are read every minute, Instagram and Threads every 5 minutes.</footer>
 
 <script>
 const SRC = 'https://raw.githubusercontent.com/immigrationlabsg/football-stories-101/live-stats/live.json';
@@ -69,7 +69,7 @@ function render() {
   const n = data.networks || {}, s = data.today_story;
   let total = 0;
   document.getElementById('story').textContent = s ? data.today_title : 'No Reel yet';
-  document.getElementById('upd').textContent = 'Updated ' + ago(data.read_at);
+  document.getElementById('upd').textContent = 'Checked every minute · last change ' + ago(data.read_at);
   document.getElementById('today').innerHTML = Object.entries(NETS).map(([k,[name,c]]) => {
     const net = n[k] || {}, p = (net.posts || []).find(x => x.story === s) || {};
     total += p.views || 0;
@@ -84,16 +84,29 @@ function render() {
     `<div class="card"><div class="net"><i style="background:${c}"></i>${name}</div><div class="v">${fmt((n[k]||{}).followers)}</div><div class="muted">followers</div></div>`).join('');
 }
 
+// GitHub's API sees a change within a minute; an unchanged file comes back "304" and does not use up the
+// 60-an-hour free allowance. If the allowance runs out, fall back to the raw file (up to 5 minutes behind).
+const API_URL = 'https://api.github.com/repos/immigrationlabsg/football-stories-101/contents/live.json?ref=live-stats';
+let etag = null;
+async function fetchLive() {
+  try {
+    const r = await fetch(API_URL, { headers: { Accept: 'application/vnd.github.raw+json', ...(etag ? { 'If-None-Match': etag } : {}) }, cache: 'no-store' });
+    if (r.status === 304) return null;
+    if (r.ok) { etag = r.headers.get('ETag'); return await r.json(); }
+  } catch {}
+  const r = await fetch(SRC, { cache: 'no-store' });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
 async function load() {
   try {
-    const r = await fetch(SRC + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error(r.status);
-    const next = await r.json();
+    const next = await fetchLive();
+    if (!next) { render(); return; }
     if (data && next.read_at !== data.read_at) for (const k in NETS) lastViews[k] = ((data.networks[k]||{}).posts||[]).find(x => x.story === data.today_story)?.views;
     data = next; render();
   } catch (e) { document.getElementById('upd').textContent = data ? 'Updated ' + ago(data.read_at) + ' · offline' : 'Numbers not available yet'; }
 }
-load(); setInterval(load, 60000);
+load(); setInterval(load, 70000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
 </script>
 </body>
