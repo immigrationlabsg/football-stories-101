@@ -55,6 +55,28 @@ if (id?.startsWith('ig:')) {
   console.log(del ? `DELETED Instagram post ${media}` : JSON.stringify({ ...d, caption: d.caption ? `${String(d.caption).slice(0, 80)}…` : undefined }, null, 2));
   process.exit(0);
 }
+if (id === 'igaudio') {
+  // Read only. Meta's Instagram Audio API (June 2026): trending licensed music for Reels. Needs a Facebook Login token
+  // (the Page token) and an Instagram account linked to the Page; Instagram Login tokens are not supported.
+  const pr = await fetch(`https://graph.facebook.com/v22.0/${process.env.META_PAGE_ID}?fields=instagram_business_account{id,username}&access_token=${token}`);
+  const pj = (await pr.json()) as any;
+  const igId = pj.instagram_business_account?.id ?? process.env.META_IG_USER_ID;
+  console.log(`Page link: ${pj.error ? `Meta says ${pj.error.message}` : pj.instagram_business_account ? `linked to @${pj.instagram_business_account.username}` : 'no Instagram account linked'}`);
+  if (!igId) process.exit(1);
+  for (const type of ['music', 'original_sound']) {
+    const r = await fetch(`https://graph.facebook.com/v22.0/ig_audio?audio_type=${type}&user_id=${igId}&access_token=${token}`);
+    const d = (await r.json()) as any;
+    if (!r.ok || d.error) {
+      console.log(`${type}: Meta says ${d.error?.message ?? r.status} (code ${d.error?.code ?? '?'}${d.error?.error_subcode ? `/${d.error.error_subcode}` : ''})`);
+      continue;
+    }
+    const list: any[] = d.data ?? d.audio ?? [];
+    console.log(`${type}: ${list.length} trending`);
+    for (const a of list.slice(0, 25)) console.log(`  ${a.id ?? a.audio_id} | ${a.title ?? a.name ?? '?'} | ${a.display_artist ?? a.artist ?? a.ig_username ?? ''} | ${a.duration_in_ms ?? a.duration ?? ''}`);
+    if (!list.length) console.log(`  raw: ${JSON.stringify(d).slice(0, 400)}`);
+  }
+  process.exit(0);
+}
 if (id === 'link') {
   // Is an Instagram account connected to the Page? (Needed for "Share to Facebook" and Meta's licensed music.)
   const r = await fetch(`https://graph.facebook.com/v21.0/${process.env.META_PAGE_ID}?fields=name,instagram_business_account{id,username},connected_instagram_account{id,username}&access_token=${token}`);

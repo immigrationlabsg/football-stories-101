@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       post_id:
-        description: "Post ID, or the word list to list what is on the Page, or link (is Instagram connected to the Page?), or reel:<video id> for a Facebook Reel, or ig:<media id> for an Instagram post, or threads to check the Threads key"
+        description: "Post ID, or the word list to list what is on the Page, or link (is Instagram connected to the Page?), or reel:<video id> for a Facebook Reel, or ig:<media id> for an Instagram post, or threads to check the Threads key, or igaudio (trending Instagram music, read only)"
         required: true
       delete:
         description: "Delete this post or draft"
@@ -31,5 +31,6 @@ jobs:
           DELETE_FLAG: ${{ inputs.delete && '--delete' || '' }}
           META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
