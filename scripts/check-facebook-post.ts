@@ -62,6 +62,19 @@ if (id === 'igaudio') {
   const pj = (await pr.json()) as any;
   const igId = pj.instagram_business_account?.id ?? process.env.META_IG_USER_ID;
   console.log(`Page link: ${pj.error ? `Meta says ${pj.error.message}` : pj.instagram_business_account ? `linked to @${pj.instagram_business_account.username}` : 'no Instagram account linked'}`);
+  // Also try the Instagram Login token (Meta says it is unsupported; tried so the answer is tested, not assumed).
+  const igTok = process.env.INSTAGRAM_ACCESS_TOKEN;
+  if (igTok) {
+    const me = (await (await fetch(`https://graph.instagram.com/v22.0/me?fields=user_id,username,account_type&access_token=${igTok}`)).json()) as any;
+    console.log(`Instagram login token: ${me.error ? `Meta says ${me.error.message}` : `@${me.username} ${me.account_type ?? ''} ${me.user_id ?? ''}`}`);
+    for (const v of ['v22.0', 'v23.0', 'v24.0']) for (const uid of [me.user_id, process.env.META_IG_USER_ID].filter(Boolean)) {
+      const r = await fetch(`https://graph.instagram.com/${v}/ig_audio?audio_type=music&user_id=${uid}&access_token=${igTok}`);
+      const d = (await r.json()) as any;
+      const n = (d.data ?? d.audio ?? []).length;
+      console.log(`  instagram-login ${v} user ${String(uid).slice(-4)}: ${d.error ? `Meta says ${d.error.message} (code ${d.error.code}${d.error.error_subcode ? `/${d.error.error_subcode}` : ''})` : `${n} trending music`}`);
+      if (n) for (const a of (d.data ?? d.audio).slice(0, 15)) console.log(`    ${a.id ?? a.audio_id} | ${a.title ?? '?'} | ${a.display_artist ?? ''}`);
+    }
+  }
   if (!igId) process.exit(1);
   for (const type of ['music', 'original_sound']) {
     const r = await fetch(`https://graph.facebook.com/v22.0/ig_audio?audio_type=${type}&user_id=${igId}&access_token=${token}`);
