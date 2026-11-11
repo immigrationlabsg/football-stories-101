@@ -55,6 +55,27 @@ if (id?.startsWith('ig:')) {
   console.log(del ? `DELETED Instagram post ${media}` : JSON.stringify({ ...d, caption: d.caption ? `${String(d.caption).slice(0, 80)}…` : undefined }, null, 2));
   process.exit(0);
 }
+if (id?.startsWith('igaudiotest:')) {
+  // Test only: make an Instagram Reel CONTAINER with audio_configuration through the Instagram Login token and report
+  // whether Meta accepts it. media_publish is never called, so nothing is posted; an unpublished container expires in 24 h.
+  const igTok = process.env.INSTAGRAM_ACCESS_TOKEN!;
+  const audio = id.slice('igaudiotest:'.length);
+  const video = 'https://immigrationlabsg.github.io/football-stories-101/images/derived/023-reel.mp4';
+  const body = new URLSearchParams({ media_type: 'REELS', video_url: video, caption: 'test container, never published', share_to_feed: 'false', audio_configuration: JSON.stringify({ audio_id: audio, audio_volume: 15, video_volume: 100 }), access_token: igTok });
+  const r = await fetch(`https://graph.instagram.com/v22.0/${process.env.META_IG_USER_ID}/media`, { method: 'POST', body });
+  const d = (await r.json()) as any;
+  if (d.error) {
+    console.log(`CONTAINER: Meta says ${d.error.message} (code ${d.error.code}${d.error.error_subcode ? `/${d.error.error_subcode}` : ''})`);
+    process.exit(0);
+  }
+  console.log(`CONTAINER: created (not published)`);
+  for (let i = 0; i < 40; i++) {
+    await new Promise((res) => setTimeout(res, 5000));
+    const st = (await (await fetch(`https://graph.instagram.com/v22.0/${d.id}?fields=status_code,status&access_token=${igTok}`)).json()) as any;
+    if (st.status_code && st.status_code !== 'IN_PROGRESS') { console.log(`CONTAINER STATUS: ${st.status_code} ${st.status ?? ''}`); break; }
+  }
+  process.exit(0);
+}
 if (id === 'igaudio') {
   // Read only. Meta's Instagram Audio API (June 2026): trending licensed music for Reels. Needs a Facebook Login token
   // (the Page token) and an Instagram account linked to the Page; Instagram Login tokens are not supported.
