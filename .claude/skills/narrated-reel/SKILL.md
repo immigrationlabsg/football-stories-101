@@ -42,6 +42,7 @@ Write about 9 short spoken lines, 150 to 175 words, 55 to 63 seconds in all (Lyo
 - The whole of line 0 is on screen, in full, from the very first frame. That frame is also the cover and the YouTube tile, so the words on it must be a strong hook on their own: a contradiction a fan wants explained, with the person, the loss or win, and the twist. No half sentence, no scene-setting ("January 1975") on frame 0.
 - The picture under it is that person's face, full width in the top panel, for the whole hook.
 - Spoken words and the first-frame caption match word for word. If the caption is reworded, re-voice line 0.
+- The same hook goes everywhere (owner, 11 Nov 2026): set the story's `hook` field to line 0's exact words. It becomes the YouTube title (plus #shorts), the first line of every caption (Facebook, Instagram, Threads, TikTok; `scripts/lib/social.ts` adds it for voiced Reels) and the banner on the Threads cards. If Facebook already has the post scheduled, run the Reels workflow with action `caption` for that story.
 
 **The attention test comes first (owner, 7 Nov 2026).** Start from what fans already care about and argue over: the famous moment, the controversy, the name. Then give the angle they don't know. Would a fan stop scrolling in 3 seconds and send it to a friend to argue about? If the story rests on a person nobody knows, however true or moving, drop it (Zidane's father was rejected; Zidane's headbutt was what the owner wanted).
 

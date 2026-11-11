@@ -6,6 +6,8 @@
  *   MODE=post STORY=21 DRY_RUN=0 npm run tiktok  post that story's Reel to TikTok, public, with the AI label
  *   MODE=auto DRY_RUN=0 npm run tiktok           post every Instagram Reel of the last 20 hours not on TikTok yet
  *   MODE=music npm run tiktok                    read only: TikTok's trending Commercial Music Library tracks (COUNTRY=US)
+ *   MODE=views npm run tiktok                    read only: views of every TikTok and YouTube post; fails (so GitHub
+ *                                                emails the owner) if one has under 20 views 12-36 hours after posting
  *
  * Each post is recorded in data/tiktok.json, which stops a second post of the same story.
  * The caption is the Instagram caption (it ends with "Illustrations made with AI." and has no website link).
@@ -250,6 +252,39 @@ if (MODE === 'accounts') {
     const p = (res.post?.platforms ?? [])[0] ?? {};
     console.log(`${r.number}: ${res.post?.status} ${p.platformPostUrl ?? ''} ${p.errorMessage ?? ''}`);
   }
+} else if (MODE === 'views') {
+  // Owner, 11 Nov 2026: alarm when a post is stuck near zero views (3 of the first 5 TikToks had 0; YouTube Shorts can
+  // stall too). Read only. Each post is judged once, in the run 12-36 hours after it went out (WINDOW_HOURS widens it).
+  const [lo, hi] = (process.env.WINDOW_HOURS ?? '12-36').split('-').map(Number);
+  const MIN = Number(process.env.MIN_VIEWS ?? 20);
+  const lines: string[] = [];
+  const stuck: string[] = [];
+  for (const [platform, file] of [['TikTok', 'data/tiktok.json'], ['YouTube', 'data/youtube.json']] as const) {
+    const recs: Rec[] = fs.existsSync(path.join(ROOT, file)) ? JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8')).posts ?? [] : [];
+    for (const r of recs) {
+      const hours = (Date.now() - Date.parse(r.at)) / 3600e3;
+      if (!r.postId || !r.status.startsWith('published') || hours < lo || hours > hi) continue;
+      let views: number | null = null;
+      let note = '';
+      try {
+        const res = await api('GET', `/analytics?postId=${r.postId}`);
+        views = res.analytics?.views ?? res.platformAnalytics?.[0]?.analytics?.views ?? null;
+        if (res.status === 202 || views === null) note = `numbers not synced yet (${res.syncStatus ?? res.status})`;
+      } catch (e) {
+        note = `could not read (${(e as Error).message.slice(0, 120)})`;
+      }
+      const line = `${platform} ${pad3(r.number)} (${r.story}), ${hours.toFixed(0)} h old: ${views ?? '?'} views${note ? `; ${note}` : ''} ${r.url ?? ''}`;
+      lines.push(line);
+      if (views !== null && !note && views < MIN) stuck.push(line);
+    }
+  }
+  const report = [`Posts ${lo}-${hi} hours old:`, ...(lines.length ? lines : ['(none)']), '', stuck.length ? `STUCK under ${MIN} views:\n${stuck.join('\n')}` : `None under ${MIN} views.`].join('\n');
+  console.log(report);
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\`\`\`\n${report}\n\`\`\`\n`);
+  if (stuck.length) {
+    process.exitCode = 1;
+    console.error(`::error::${stuck.length} post(s) stuck under ${MIN} views. Likely causes: a held-back new account, reused-content or audio matching. Check the post in the app.`);
+  }
 } else {
-  throw new Error(`Unknown MODE ${MODE} (accounts, auto, post, music or status).`);
+  throw new Error(`Unknown MODE ${MODE} (accounts, auto, post, music, status or views).`);
 }

@@ -16,7 +16,7 @@ Accounts: Instagram 0 followers (since 20 Oct); YouTube 3 subscribers (since 9 N
 
 ## Why, most likely first
 
-1. **Each platform tests a new post on a different-sized first audience** (high confidence, the data shows it). YouTube gave nearly every Short about 1,000 tries, even a weak one. Instagram shows each Reel to about 120 people and only widens a Reel people send to friends (Denmark, 25 shares). So most of the gap is the platform, not the Reel.
+1. **This week, each platform tested our posts on a different-sized first audience** (the data shows it for these posts; not a fixed rule). Four of our five Shorts reached about 1,000 views and one only 146. YouTube publishes no test size, and Shorts stuck near zero are common, especially on new channels: the owner has seen it before. Since August 2026 YouTube counts a view from the first frame, so those views include instant swipes; engaged views (people who kept watching) were 284 to 822. Instagram showed each Reel to about 120 people and widened only Denmark, which people sent to friends (25 shares). So this week most of the gap came from the platforms, but the YouTube figure can drop to near zero at any time.
 2. **Three of five TikTok posts got no views at all** (the zeros are data; the cause is a guess, medium confidence). Most likely a brand-new account being held back after three posts in about 21 hours through the API. Possibly reused-content or audio matching. TikTok's account status screen is only in the phone app.
 3. **TikTok only shows the page in Singapore and Malaysia** (high confidence): a small audience for European football history.
 4. **TikTok viewers leave at about 10 s**, while the same file holds about 60% on YouTube (medium confidence on why): a general local audience rather than football fans, no trending sound yet (the first post with it is 024), words low on screen where TikTok's buttons cover them, and a long essay caption.
@@ -26,9 +26,11 @@ Accounts: Instagram 0 followers (since 20 Oct); YouTube 3 subscribers (since 9 N
 
 ## Fixes that can run automatically
 
-- **Measure:** a read-only analytics mode for TikTok and YouTube (Zernio analytics, or the YouTube Analytics API) feeding the daily snapshot, and an alarm when a TikTok post has under 20 views after 12 hours.
+- **Measure:** a read-only analytics mode for TikTok and YouTube (Zernio analytics, or the YouTube Analytics API) feeding the daily snapshot, and an alarm when a TikTok or YouTube post has under 20 views after 12 hours.
 - **TikTok:** a short caption (hook with name, club and year, one payoff line, the question, AI line, 3-5 hashtags, under about 300 characters); one TikTok a day for two weeks while the account warms up; test trending sound on even stories and off on odd ones; later a TikTok cut with words above the bottom quarter.
-- **YouTube:** use "stayed vs swiped" as the daily hook score (Denmark 60% and Wimbledon 55% are the bar); keep hook plus #shorts as the title; test an evening upload time.
+- **YouTube:** use "stayed vs swiped" as the hook score, but only for a Short with a few hundred views (Denmark 60% and Wimbledon 55% are the bar). A Short near zero is a warning sign of its own: the daily alarm flags it. Keep hook plus #shorts as the title; test an evening upload time.
 - **Instagram:** story choice is the main lever (sends lift a Reel out of the first 120); hook and name in the first 125 characters (done since 11 Nov); test 20:00 SGT on extras.
 
 Sources: [YouTube engaged views](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/), [Instagram on reaching new people](https://creators.instagram.com/blog/helping-creators-of-all-sizes-break-through), [TikTok For You](https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you/), [Zernio analytics](https://docs.zernio.com/analytics/get-analytics.mdx), plus vendor guides on TikTok's zero-view warm-up (anecdotal).
+
+_Corrected 11 Nov 2026: the first version said YouTube gives every Short about 1,000 test views. That was only this week's result for 4 of 5 Shorts, not a YouTube rule._
