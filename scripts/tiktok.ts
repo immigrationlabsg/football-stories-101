@@ -158,7 +158,20 @@ async function postStory(number: number): Promise<void> {
   const save = () => fs.writeFileSync(RECORD, JSON.stringify(file, null, 2) + '\n');
   save();
   try {
-    const res = await api('POST', '/posts', body);
+    let res: any;
+    try {
+      res = await api('POST', '/posts', body);
+    } catch (e) {
+      if (!track) throw e;
+      res = { post: { status: 'failed', platforms: [{ errorMessage: (e as Error).message.slice(0, 200) }] } };
+    }
+    // A track TikTok refuses at publish time must not cost the day's post: retry once without it.
+    if (track && (!res.post?._id || res.post?.status === 'failed')) {
+      console.log(`Post with music failed (${res.post?.platforms?.[0]?.errorMessage ?? res.post?.status}); retrying without the trending track.`);
+      const { musicSoundInfo: _m, videoOriginalSoundVolume: _v, ...plain } = (body as any).tiktokSettings;
+      res = await api('POST', '/posts', { ...body, tiktokSettings: plain });
+      delete rec.music;
+    }
     const post = res.post ?? {};
     const p = (post.platforms ?? [])[0] ?? {};
     console.log(`Zernio: post ${post._id} status ${post.status}; ${LABEL} status ${p.status}${p.errorMessage ? `; error: ${p.errorMessage}` : ''}`);
