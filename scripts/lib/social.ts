@@ -134,7 +134,10 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     head = headParas.join('\n\n');
     tailOfOpening = tailParas.join('\n\n');
   }
-  const opening = m ? [head, REVEAL, tailOfOpening, afterReveal].filter(Boolean).join('\n\n') : plain;
+  // A voiced Reel opens every caption with its spoken hook, the same words as the Reel's first frame and the YouTube
+  // title (owner, 11 Nov 2026: "match hook for all platforms").
+  const hookLine = story.data.narratedReel && story.data.hook ? story.data.hook.trim().replace(/([^.!?])$/, '$1.') : '';
+  const opening = [hookLine, m ? [head, REVEAL, tailOfOpening, afterReveal].filter(Boolean).join('\n\n') : plain].filter(Boolean).join('\n\n');
   const facebook = [
     opening,
     ``,
@@ -162,8 +165,8 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
         [head, REVEAL, tailOfOpening, payoff],
         [head, REVEAL, tailOfOpening],
         [head, REVEAL],
-      ].map((parts) => parts.filter(Boolean).join('\n\n'))
-    : [`${story.data.dek}\n\n${num}: ${subject} / ${angle}.`];
+      ].map((parts) => [hookLine, ...parts].filter(Boolean).join('\n\n'))
+    : [[hookLine, `${story.data.dek}\n\n${num}: ${subject} / ${angle}.`].filter(Boolean).join('\n\n')];
   // Counted in UTF-8 bytes to be safe: Threads counts some characters (emoji) by their byte length.
   const bytes = (t: string) => Buffer.byteLength(t, 'utf8');
   // Room is kept for the AI line: on Threads the Reel (which carries the AI tag) is only in the reply.
@@ -177,7 +180,12 @@ export function socialPosts(story: LoadedStory, ctx: { kind: 'scheduled' | 'arch
     : `The whole story as a Reel. More on Instagram: ${igLink}`;
   const tags = usesReel(story.data.date) ? hashtagsFor(story.data) : '';
   const tagged = withTags(facebook, tags);
-  const instagram = tagged.instagram;
+  // If the hook line pushes the Instagram/TikTok text past 2,200 characters, those two drop the sign-off line rather
+  // than the hook or any of the story (Facebook keeps it).
+  const SIGN_OFF = '\n\nFootball is full of stories nobody told you. I write one up every morning. Follow Football Stories 101.';
+  const instagram = hookLine && facebook.length > INSTAGRAM_LIMIT && facebook.includes(SIGN_OFF)
+    ? withTags(facebook.replace(SIGN_OFF, ''), tags).instagram
+    : tagged.instagram;
   return { facebook: tagged.facebook, instagram, threads, threadsReply, webUrl, link };
 }
 
