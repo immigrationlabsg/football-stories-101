@@ -27,7 +27,7 @@ const PLATFORM = process.env.PLATFORM === 'youtube' ? 'youtube' : 'tiktok';
 const LABEL = PLATFORM === 'youtube' ? 'YouTube' : 'TikTok';
 const RECORD = path.join(ROOT, PLATFORM === 'youtube' ? 'data/youtube.json' : 'data/tiktok.json');
 
-type Rec = { number: number; story: string; at: string; postId: string; status: string; url?: string | null };
+type Rec = { number: number; story: string; at: string; postId: string; status: string; url?: string | null; music?: string };
 
 async function api(method: string, route: string, body?: unknown): Promise<any> {
   if (!KEY) throw new Error('ZERNIO_API_KEY is not set (repo secret).');
@@ -53,6 +53,30 @@ async function tiktokAccounts(): Promise<any[]> {
   const res = await api('GET', '/accounts?limit=50');
   const list: any[] = res.accounts ?? res.data ?? [];
   return list;
+}
+
+// Owner, 11 Nov 2026: add trending music to every TikTok post automatically (no hand step).
+// Picks the highest-ranked trending Commercial Music Library song that suits a football story: a real song (not a
+// sound effect or numbered stock jingle), an energetic genre, and a clip long enough to run under most of the Reel.
+// The Reel keeps its own sound (voice and music) at full volume; the trending track sits low underneath.
+// Any failure here posts the Reel without the extra track rather than blocking the post. TIKTOK_MUSIC=off turns it off.
+const MUSIC_GENRES = /ELECTRONIC|HIP_HOP|POP|ROCK|EDM|TRAP|DJ|EPIC/i;
+const NOT_A_SONG = /\(\d{5,}\)|vacuum|sound effect|\bsfx\b|impact|stinger|whoosh|vibration|pass by|jingle|christmas|lullaby|karaoke|meditation|\bhz\b/i;
+async function pickTrack(accountId: string, seconds: number): Promise<{ id: string; label: string; end: number } | null> {
+  if ((process.env.TIKTOK_MUSIC ?? 'on') === 'off') return null;
+  try {
+    const res = await api('GET', `/accounts/${accountId}/tiktok/commercial-music?countryCode=${process.env.COUNTRY ?? 'US'}`);
+    const tracks: any[] = (res.tracks ?? []).slice().sort((a: any, b: any) => (a.rank ?? 999) - (b.rank ?? 999));
+    const ok = tracks.filter((t) => t.clip?.id && (t.clip.durationSec ?? 0) >= 45 && MUSIC_GENRES.test((t.genres ?? []).join('/'))
+      && !NOT_A_SONG.test(`${t.name} ${t.artist}`));
+    const t = ok[0];
+    if (!t) return null;
+    const end = Math.round(Math.min(seconds, t.clip.durationSec) * 1000);
+    return { id: String(t.clip.id), label: `#${t.rank} ${t.name} - ${t.artist}`, end };
+  } catch (e) {
+    console.log(`Trending music not added: ${(e as Error).message.slice(0, 200)}`);
+    return null;
+  }
 }
 
 function records(): Rec[] {
@@ -101,6 +125,8 @@ async function postStory(number: number): Promise<void> {
   const levels: string[] = (info.privacyLevels ?? []).map((l: any) => (typeof l === 'string' ? l : l.value));
   if (levels.length && !levels.includes('PUBLIC_TO_EVERYONE')) throw new Error(`Public posting not allowed for this account: ${levels.join(', ')}`);
 
+  const track = PLATFORM === 'youtube' ? null : await pickTrack(accountId, 70);
+  const music = track ? { musicSoundInfo: { musicSoundId: track.id, musicSoundVolume: Number(process.env.MUSIC_VOLUME ?? 15), musicSoundStart: 0, musicSoundEnd: track.end }, videoOriginalSoundVolume: 100 } : {};
   const body = PLATFORM === 'youtube' ? ytBody : {
     content: caption,
     mediaItems: [{ type: 'video', url: videoUrl }],
@@ -112,11 +138,13 @@ async function postStory(number: number): Promise<void> {
       allow_stitch: true,
       video_made_with_ai: true, // TikTok's "AI-generated content" label: the paintings are made with AI
       video_cover_timestamp_ms: 300, // the first frame shows the world-known event
+      ...music,
       content_preview_confirmed: true,
       express_consent_given: true,
     },
     publishNow: true,
   };
+  if (track) console.log(`Trending music: ${track.label} (volume ${music.musicSoundInfo?.musicSoundVolume}, Reel sound 100)`);
   console.log(`Story ${number} -> ${LABEL}${PLATFORM === 'youtube' ? ` "${title}"${at ? ` at ${at}` : ''}` : ''} @${accounts[0].username ?? '?'}\nVideo: ${videoUrl}\nCaption (${caption.length} chars):\n${caption}\n`);
   if (dryRun) {
     console.log('Dry run: nothing posted.');
@@ -125,7 +153,7 @@ async function postStory(number: number): Promise<void> {
   // Record the attempt BEFORE posting: if the answer is lost or says "failed" after the platform took it, the record
   // still stops the automatic runs from posting the story again. A failed attempt is left for the owner to retry by hand.
   const file = fs.existsSync(RECORD) ? JSON.parse(fs.readFileSync(RECORD, 'utf8')) : { posts: [] };
-  const rec: Rec = { number, story: story.data.slug, at: new Date().toISOString(), postId: '', status: 'attempting', url: null };
+  const rec: Rec = { number, story: story.data.slug, at: new Date().toISOString(), postId: '', status: 'attempting', url: null, ...(track ? { music: track.label } : {}) };
   file.posts.push(rec);
   const save = () => fs.writeFileSync(RECORD, JSON.stringify(file, null, 2) + '\n');
   save();
