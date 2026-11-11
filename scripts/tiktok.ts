@@ -312,10 +312,10 @@ if (MODE === 'accounts') {
       const url: string = p.platformPostUrl ?? p.platformAnalytics?.[0]?.platformPostUrl ?? '';
       const id = /(?:v=|shorts\/|youtu\.be\/)([\w-]{11})/.exec(url)?.[1];
       if (!id || !accountId) continue;
-      const d = await api('GET', `/analytics/youtube/daily-views?videoId=${id}&accountId=${accountId}&fromDate=${String(p.publishedAt ?? '').slice(0, 10) || '2026-11-01'}&toDate=${new Date().toISOString().slice(0, 10)}`).catch(() => null);
+      const d = await api('GET', `/analytics/youtube/daily-views?videoId=${id}&accountId=${accountId}&fromDate=${String(p.publishedAt ?? '').slice(0, 10) || '2026-11-01'}&toDate=${new Date().toISOString().slice(0, 10)}`).catch((e) => ({ error: (e as Error).message.slice(0, 160) }));
       const days: any[] = d?.dailyViews ?? [];
       const views = days.reduce((t, x) => t + (x.views ?? 0), 0);
-      if (!views) { rows.push({ pct: -1, line: `   -    ${String(p.analytics?.views ?? '?').padStart(5)} views  ${(p.content ?? '').split('\n')[0].slice(0, 70)}  (no watch data yet) ${url}` }); continue; }
+      if (!views) { rows.push({ pct: -1, line: `   -    ${String(p.analytics?.views ?? '?').padStart(5)} views  ${(p.content ?? '').split('\n')[0].slice(0, 70)}  (no watch data yet${d?.error ? `: ${d.error}` : d?.provisionalSince ? `, provisional since ${d.provisionalSince}` : ''}) ${url}` }); continue; }
       const pct = days.reduce((t, x) => t + (x.averageViewPercentage ?? 0) * (x.views ?? 0), 0) / views;
       const secs = days.reduce((t, x) => t + (x.averageViewDuration ?? 0) * (x.views ?? 0), 0) / views;
       const subs = days.reduce((t, x) => t + (x.subscribersGained ?? 0) - (x.subscribersLost ?? 0), 0);
