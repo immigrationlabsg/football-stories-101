@@ -3,7 +3,8 @@ name: TikTok
 # TikTok through Zernio (scripts/tiktok.ts). "accounts" and "status" read and change nothing; "post" is a dry run unless
 # dry_run is unticked. Each real post is recorded in data/tiktok.json, which stops a second post of the same story.
 # Automatic (owner, 10 Nov 2026): when "Publish daily" or "Post extras" finishes, and at backup times, mode "auto" posts
-# to TikTok every Reel that went to Instagram in the last 20 hours and is not on TikTok yet.
+# to TikTok every Reel that went to Instagram in the last 20 hours and is not on TikTok yet; since 11 Nov 2026 the
+# same run posts it to YouTube too.
 on:
   workflow_run:
     workflows: ["Publish daily", "Post extras"]
@@ -70,6 +71,16 @@ jobs:
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || 'tiktok' }}
           SCHEDULE_AT: ${{ inputs.schedule_at }}
+      # Owner, 11 Nov 2026: YouTube posts at the same time as TikTok (ends the 10 Nov pause). Same rules and record
+      # file per platform (data/youtube.json), so a story is never posted twice.
+      - name: YouTube (automatic runs)
+        if: ${{ always() && github.event_name != 'workflow_dispatch' }}
+        run: npm run tiktok
+        env:
+          MODE: auto
+          DRY_RUN: '0'
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          PLATFORM: youtube
       - name: Commit the record
         if: ${{ always() && (github.event_name != 'workflow_dispatch' || ((inputs.mode == 'post' || inputs.mode == 'auto') && inputs.dry_run != true)) }}
         run: |
