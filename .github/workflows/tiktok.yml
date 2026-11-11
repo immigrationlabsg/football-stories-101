@@ -16,9 +16,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "accounts (read only), auto (post what is due), post, or status (read only)"
+        description: "accounts (read only), auto (post what is due), post, status or music (read only)"
         type: choice
-        options: [accounts, auto, post, status]
+        options: [accounts, auto, post, status, music]
         default: accounts
       platform:
         description: "tiktok or youtube"

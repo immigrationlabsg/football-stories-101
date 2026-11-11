@@ -5,6 +5,7 @@
  *   MODE=post STORY=21 npm run tiktok            dry run: show the caption and video, post nothing
  *   MODE=post STORY=21 DRY_RUN=0 npm run tiktok  post that story's Reel to TikTok, public, with the AI label
  *   MODE=auto DRY_RUN=0 npm run tiktok           post every Instagram Reel of the last 20 hours not on TikTok yet
+ *   MODE=music npm run tiktok                    read only: TikTok's trending Commercial Music Library tracks (COUNTRY=US)
  *
  * Each post is recorded in data/tiktok.json, which stops a second post of the same story.
  * The caption is the Instagram caption (it ends with "Illustrations made with AI." and has no website link).
@@ -182,6 +183,17 @@ if (MODE === 'accounts') {
   }
 } else if (MODE === 'post') {
   await postStory(Number(process.env.STORY));
+} else if (MODE === 'music') {
+  // Read only. Works only for accounts connected through the TikTok for Business app (Zernio docs, "Locations & music").
+  const acc = (await tiktokAccounts()).filter((a) => a.platform === 'tiktok');
+  if (acc.length !== 1) throw new Error(`Expected exactly 1 connected TikTok account, found ${acc.length}.`);
+  const id = acc[0]._id ?? acc[0].id;
+  for (const cc of (process.env.COUNTRY ?? 'US,GB').split(',')) {
+    const res = await api('GET', `/accounts/${id}/tiktok/commercial-music?countryCode=${cc.trim()}`);
+    const tracks: any[] = res.tracks ?? [];
+    console.log(`${cc}: ${tracks.length} trending tracks`);
+    for (const t of tracks.slice(0, 40)) console.log(`  #${t.rank} ${t.name} - ${t.artist} [${(t.genres ?? []).join('/')}] ${t.durationSec}s clip=${t.clip?.id ?? '-'} (${t.clip?.durationSec ?? '-'}s)`);
+  }
 } else if (MODE === 'status') {
   for (const r of records()) {
     if (!r.postId) {
@@ -193,5 +205,5 @@ if (MODE === 'accounts') {
     console.log(`${r.number}: ${res.post?.status} ${p.platformPostUrl ?? ''} ${p.errorMessage ?? ''}`);
   }
 } else {
-  throw new Error(`Unknown MODE ${MODE} (accounts, auto, post or status).`);
+  throw new Error(`Unknown MODE ${MODE} (accounts, auto, post, music or status).`);
 }
