@@ -4,7 +4,8 @@ name: Live stats
 # Instagram and Threads (Meta, latest 3 posts only) every 5 minutes, writes live.json to the live-stats branch for the
 # phone dashboard (public/live/), and updates the iPhone Dynamic Island through PushWard (when the PUSHWARD_KEY secret
 # is set) when the new daily Reel posts and then about +15m, +30m, +1h, +2h, +3h, +5h, +7h (free plan budget). Never touches main, so it never rebuilds the site.
-# The cron starts a fresh job every 30 minutes and cancels the old one, so a late or stuck run never leaves a long gap.
+# GitHub drops most scheduled starts (12 Nov: one start in 11 hours), so each job starts the next one itself just before
+# it ends (workflow_dispatch). The cron is only a backup: while a job runs, the next start waits instead of cancelling it.
 on:
   schedule:
     - cron: "*/30 * * * *"
@@ -17,15 +18,16 @@ on:
 
 permissions:
   contents: write # only to push live.json to the live-stats branch
+  actions: write # only to start the next run of this workflow
 
 concurrency:
   group: live-stats
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   stats:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,19 +37,19 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Read every minute for up to an hour
+      - name: Read every minute for five and a half hours
         run: |
           git fetch --depth 1 origin live-stats && git show origin/live-stats:live.json > "$RUNNER_TEMP/prev.json" || echo "{}" > "$RUNNER_TEMP/prev.json"
           out="$RUNNER_TEMP/out"; mkdir -p "$out"; cd "$out"; git init -q -b live-stats; cp "$RUNNER_TEMP/prev.json" live.json
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cd "$GITHUB_WORKSPACE"
-          i=0; end=$((SECONDS + 3600))
+          i=0; end=$((SECONDS + 19800))
           while [ $SECONDS -lt $end ]; do
             start=$SECONDS
             # Fresh post records each minute, so a Reel posted after this job started is recognised straight away.
             git fetch -q --depth 1 origin main 2>/dev/null && git checkout -q FETCH_HEAD -- data/sent.json data/tiktok.json data/youtube.json 2>/dev/null || true
             READ_META=$([ $((i % 5)) -eq 0 ] && echo 1 || echo 0) FORCE_PUSH=$([ $i -eq 0 ] && echo "$FORCE_FIRST" || echo 0) \
-              npm run -s live-stats || echo "::warning::read $i failed"
+              timeout 50 npm run -s live-stats || echo "::warning::read $i failed"
             [ -s "$RUNNER_TEMP/live.json" ] && cp "$RUNNER_TEMP/live.json" "$RUNNER_TEMP/prev.json"
             # Push only when a number changed, so the page's free GitHub API checks mostly come back "not modified".
             if [ -s "$RUNNER_TEMP/live.json" ] && ! cmp -s <(jq -S 'del(.read_at)' "$RUNNER_TEMP/live.json") <(jq -S 'del(.read_at)' "$out/live.json" 2>/dev/null); then
@@ -67,3 +69,8 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           FORCE_FIRST: ${{ inputs.force_push && '1' || '0' }}
           GITHUB_TOKEN: ${{ github.token }}
+      - name: Start the next run
+        if: ${{ !cancelled() }}
+        run: gh workflow run live-stats.yml --ref main -R "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
