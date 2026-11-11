@@ -1,15 +1,17 @@
 ---
 name: narrated-reel
-description: Makes a narrated Football Stories 101 Reel from start to finish, in the style the owner approved on the Maradona sample: a hook on a famous name, paintings from real photographs with camera moves, a voiceover, background music with no choppy volume changes, short captions and an end-card question. Use this whenever anyone asks for a new voiced, narrated or "Maradona-style" Reel or video for Football Stories 101, an extra post on football news (a result, a retirement, a record), or a remake of a story in the new format, and also when fixing the sound or pictures of such a Reel, even if they only say "make a video on Zidane" or "do one on Como". Not for the routine daily card Reels, which scripts/images.ts builds on its own.
+description: Makes a narrated Football Stories 101 Reel from start to finish, in the owner's newest style (Lyon, 11 Nov 2026): a strong one-person hook written in full on the first frame, paintings from real photographs on top with the words appearing on white below, a voiceover, background music with no choppy volume changes and the page's ending card. Use this whenever anyone asks for a new voiced, narrated or "Maradona-style" Reel or video for Football Stories 101, an extra post on football news (a result, a retirement, a record), or a remake of a story in the new format, and also when fixing the sound or pictures of such a Reel, even if they only say "make a video on Zidane" or "do one on Como". Not for the routine daily card Reels, which scripts/images.ts builds on its own.
 ---
 
 # Narrated Reel
 
 The owner's test: *would you send this to a friend?* They rejected the first sample because they did not know the player, the pictures did not make them visualise the moment, and they heard no music. They called the next one choppy until the music mix was fixed. Those four complaints are why this skill exists.
 
-Before starting, read [references/standards.md](references/standards.md). It holds every limit and the reason for it. [references/lessons.md](references/lessons.md) lists what was tried and rejected, so read it before trying anything clever. [examples/maradona-reel.py](examples/maradona-reel.py) is the approved Reel as code, and the place to copy from.
+Before starting, read [references/standards.md](references/standards.md). It holds every limit and the reason for it. [references/lessons.md](references/lessons.md) lists what was tried and rejected, so read it before trying anything clever. [examples/split-reel.py](examples/split-reel.py) (Lyon, story-024-v9) is the newest style as code (built 11 Nov 2026; update this line when the owner approves a newer one), and the place to copy from. `examples/maradona-reel.py` stays only for the engine regression test at the end.
 
 Keep the owner's project rules in force throughout (repo `CLAUDE.md`, `docs/picture-guide.md`, `docs/editorial-standards.md`, the handoff). Nothing is posted without the owner's OK.
+
+**Keeping this skill current (owner, 11 Nov 2026).** After any new change or trial on a Reel, ask the owner whether it should become a rule here. When a new rule replaces an old one, delete the old one everywhere in this skill (SKILL.md, references, example), so the skill holds only the latest, most efficient version. Never keep two rules that disagree.
 
 **Daily stories too (owner, 8 Nov 2026):** every Reel now has this style, on Facebook, Instagram and Threads. For a daily story, the script and voice come from its cards: follow [references/daily-reel-recipe.md](references/daily-reel-recipe.md). Ad hoc Reels follow the steps below in full.
 
@@ -33,9 +35,13 @@ These steps need not fit into one Reel. The owner: "you don't have to combine al
 
 Keep to the story that serves that rise. On Como the owner cut a side fact, "It doesn't matter whether Essien's wife bought it. We only want to show their story of become rags to riches." A fact can be true and interesting and still not belong. Classic stories with a famous name (Maradona 1986) remain fine.
 
-Write 6 to 8 short spoken lines, about 110 words and 40 to 45 seconds in all:
+Write about 9 short spoken lines, 150 to 175 words, 55 to 63 seconds in all (Lyon: 9 lines, 62 s). The Reel must stay shorter than the music's `end_src`, with one bar-line repeat if needed.
 
-**The first frame shows the event (owner, 7 Nov 2026).** It must be an important, impactful moment the world knows, because that creates the interest: the headbutt, the goal, the trophy lift, the red card. Not a portrait, a back view or a collage about it. Pick this picture before writing. If the moment has no free-licence photo on Commons, don't fall back quietly and don't use an uncleared photo: put the gap and the options to the owner with the draft (the uncleared photos on 908 were the owner's exception for that Reel only).
+**The hook and the first frame (owner, 11 Nov 2026; replaces the 7 Nov rule that the first frame shows the event).**
+- Line 0 is a paradox about one person, in one sentence: "The coach who lost his job after winning the league and cup double", "The defender who knocked his own club out of the FA Cup, then built the club that won it".
+- The whole of line 0 is on screen, in full, from the very first frame. That frame is also the cover and the YouTube tile, so the words on it must be a strong hook on their own: a contradiction a fan wants explained, with the person, the loss or win, and the twist. No half sentence, no scene-setting ("January 1975") on frame 0.
+- The picture under it is that person's face, full width in the top panel, for the whole hook.
+- Spoken words and the first-frame caption match word for word. If the caption is reworded, re-voice line 0.
 
 **The attention test comes first (owner, 7 Nov 2026).** Start from what fans already care about and argue over: the famous moment, the controversy, the name. Then give the angle they don't know. Would a fan stop scrolling in 3 seconds and send it to a friend to argue about? If the story rests on a person nobody knows, however true or moving, drop it (Zidane's father was rejected; Zidane's headbutt was what the owner wanted).
 
@@ -43,7 +49,7 @@ Write 6 to 8 short spoken lines, about 110 words and 40 to 45 seconds in all:
 
 **The objective, always: bring people history and stories that are memorable, so they want to share them with friends and choose to like or follow the account.** Earn that with the story. The rule against asking for likes, shares, tags or follows still stands.
 
-- **Line 0 is the whole hook**, and works with the sound off through its captions. For news, it is the result itself, on screen from the first frame.
+- **One person is the thread** through the story, set up early, and the ending pays them off (their exit, or an echo of the hook).
 - The middle shows the moment step by step, so a viewer can picture it.
 - A turn at about two thirds where the story has a real surprise. Say "But here's the part that surprised me" only if it did: Como's script does not use it.
 - A short close that echoes the hook, then a question that starts an argument, spoken with a caption over the last picture.
@@ -83,10 +89,16 @@ Reuse the same track on later Reels only if the owner wants a signature sound; n
 
 ### 6. Build
 
-Copy `examples/maradona-reel.py` to the folder as `reel.py`. Change `TEMPO`, `GAP`, `CH`, the shots, the question on the ending card, the fader and the `R.mix` line. **Delete Maradona's values:** `scenes='scenes2'`, `base()` and the two map functions (they need his `pitch.png`), `join=(15.839,33.294)` (a new track has its own bars; leave `join` out unless the track is too short), `end_src=38.9` and `crowd`. Crowd sound is optional: Maradona's came from the sound of two Higgsfield video test clips at 22.5 credits per 5 s, never from match footage. `R.extend[name]=(cut,ty)` is for a wide painting: `cut` is the rows faded off its top and `ty` the row where the blurred top strip starts. Keep the engine as it is; if a rule must change, change `reel_engine.py` and rerun the Maradona regression below.
+Copy `examples/split-reel.py` to the folder as `reel.py`. Change `CH`, `TEMPO`, `GAP`, the shots, the overlays, the question on the ending card, the fader and the `R.mix` line (`join` and `end_src` belong to the music track: keep them only with the same track and a Reel of the same length).
 
-- `CH` is one list per voice line; each chunk is `(words, caption, accented words, y)`. The word count has to match what the transcriber hears, and the build stops if it does not, which is what keeps captions on the words.
-- `R.anim(painting, start, end, (zoom0, zoom1, dx0, dx1, dy0, dy1))`, with times from `wt(line, word)` and `lt(line)`. Pace: the approved Reel has 20 shots in 43.7 s, most of them 1 to 2.6 s, shortest 0.73 s, longest 6 s. Cut on the words and keep something moving.
+The layout, the same from frame 0 to the ending card (`SPLIT=0.0`): the painting in a 1080 x 1100 window on top with a soft edge into off-white paper (250,250,248); the words below in Helvetica Neue 84 px, ink (17,17,17), key words bold only, all the same size, centred between y 1140 and 1600. Each chunk's words appear one by one on the voice, fading in from pale grey. The first chunk (line 0, the whole hook) has its reveal times set to -1, so it is complete on frame 0. Line 1-style lists ("It wasn't... It wasn't...") stack as rows with a dark round cross (`LIST`). Overlays (scoreboard, counter, stars) sit inside the picture panel.
+
+`shot(name,a,b,(z0,z1,(cx0,cy0),(cx1,cy1)))` moves the camera over the painting: zoom over "cover" and the window's centre in painting pixels. Times come from `wt(line,word)` and `lt(line)`. No shot over 6 s (the build stops). Keep `repair_clip` and `snap_all`: they clean clicks at clip starts and put words on the sound.
+
+`R.extend` pads a painting to full-screen 9:16; the split layout doesn't need it (its window is nearly square), so don't use it. Keep the engine as it is; if a rule must change, change `reel_engine.py` and rerun the Maradona regression below.
+
+- `CH` is one list per voice line; each chunk is `(word count, caption, bold words, y)`. The word count has to match what the transcriber hears, and the build stops if it does not, which is what keeps captions on the words.
+- Pace: Lyon has 22 shots in 62 s, most 1.5 to 4 s, longest 6 s. Cut on the words and keep something moving.
 - `R.mix(...)`: see "Sound" in `standards.md`.
 
 ### 7. Check, then have it checked
@@ -101,11 +113,13 @@ Run `npm run verify`, then have the `verifier` subagent, which did not make it, 
 
 ### 8. Show the owner
 
-Send the file with `SendUserFile`, `display: attach`, and say to play it in their own video player: the in-app preview played it silently on 7 Nov. Give them what changed, what was checked, what could not be checked. Only their ear approves the sound.
+Send the file with `SendUserFile`, `display: attach`, and say to play it in their own video player: the in-app preview played it silently on 7 Nov. Give them what changed, what was checked, what could not be checked. Only their ear approves the sound. Also send the first frame as a still: it is the cover, so the owner judges the hook on it.
+
+Once the owner confirms the Reel in the newest style, add its number to `data/new-style.json`. Reels post on their day only, and only once confirmed (owner, 11 Nov 2026); the 10:00 Singapore reminder task flags tomorrow's unconfirmed stories.
 
 ### 9. Post, only with the owner's OK
 
-See `references/posting.md`. Instagram and Threads carry a new-format test; Facebook is the control unless the owner says otherwise. Captions carry only the AI line ("Illustrations made with AI."); photo credits go in `reelCredits` and show on the story's web page, never on the Reel or in captions (owner, 8 Nov 2026). Then add new photos to `data/reference-photos.json`, confirm on each network that it went live, and log it in `docs/growth-log.md`.
+See `references/posting.md`. Every Reel goes to Facebook, Instagram and Threads, and the automatic run posts the same Reel to TikTok and YouTube through Zernio. TikTok adds a trending Commercial Music Library track on its own at volume 15 (`scripts/tiktok.ts`, `pickTrack`); never hand-pick it or ask the owner to. Instagram and YouTube keep the Reel's own music: their APIs can't add trending sound for this account. Captions carry only the AI line ("Illustrations made with AI."); photo credits go in `reelCredits` and show on the story's web page, never on the Reel or in captions (owner, 8 Nov 2026). Then add new photos to `data/reference-photos.json`, confirm on each network that it went live, and log it in `docs/growth-log.md`.
 
 ## Testing the engine
 

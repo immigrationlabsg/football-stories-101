@@ -1,12 +1,11 @@
 # Standards for a narrated Reel
 
-The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py` tests the ones marked (M).
+The sound numbers come from the Reel the owner accepted on 7 Nov 2026; the layout from Lyon (11 Nov 2026). `check_reel.py` tests the ones marked (M).
 
 ## Story
 - A name or event most fans know. A surprising story about an unknown man asks too much in the first seconds.
-- About 110 words, 40 to 45 s. 6 to 8 voice lines. It should earn its length; cut it if a line carries no new fact.
-- The first frame shows the impactful event itself, one the world knows (owner, 7 Nov 2026), not a portrait or a collage about it. See SKILL.md.
-- Line 0 states the hook. A question or contradiction a fan wants resolved.
+- About 150 to 175 words, 55 to 63 s, about 9 voice lines. It should earn its length; cut it if a line carries no new fact.
+- Line 0 is a one-person paradox, written in full on the first frame over that person's face; that frame is the cover and YouTube tile, so its words must hook on their own (owner, 11 Nov 2026). See SKILL.md.
 - Every claim logged in `docs/fact-checks/`; nothing added without an entry. Disputes flagged to the owner.
 - No asking for likes, shares, tags or follows. An end question that starts an argument is fine.
 
@@ -17,8 +16,7 @@ The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py`
 - Whole paintings with camera moves only. Moving pictures made by AI drifted faces and shirts, and cut-out layers left headless players; both were tried and dropped.
 - Faces must look like the person, every head inside the frame. Kit true to the photo: correct colours, numbers and badge. Keep the maker's and sponsor's logos as they appear in the photo; do not remove them (owner, 7 Nov 2026). Never invent one the photo does not show.
 - Nothing important cut at the frame edge at any moment of a shot: hands, the ball, feet of main figures. Keep 10 px clear. Check the last frame of every zoom, not just the middle.
-- Extended paintings must show no straight join or dark band; set `R.extend[name]=(cut,ty)` and look at the top and bottom of the frame.
-- Picture pace as in the approved Reel: 20 shots in 43.7 s, most 1 to 2.6 s, longest 6 s. No same-painting jump: where one shot follows another of the same painting, its camera starts where the last one ended.
+- Picture pace as in Lyon: 22 shots in 62 s, longest 6 s. No same-painting jump: where one shot follows another of the same painting, its camera starts where the last one ended.
 - Flash and shake: one in the Reel, on the biggest word, for a reason. No decoration.
 - Drawn maps: markers and route must agree with the sources and with what the voice says on the same beat.
 - AI tag (M): `XMP-iptcExt:DigitalSourceType` = trainedAlgorithmicMedia. `R.mix` writes it. Any later re-encode loses it: rewrite it.
@@ -28,12 +26,11 @@ The numbers come from the Reel the owner accepted on 7 Nov 2026. `check_reel.py`
 
 - The last thing on screen is the page's own ending card, byte for byte the renderer the daily posts use, for 4 s with the question in italics. The spoken question gets a normal caption over the last picture before it.
 
-## Captions
-- Burnt in frame by frame by the engine, in Arial Black, white with a black outline, accent word in gold.
-- On screen at least 0.9 s (M), no faster than 27 characters a second (M). Three rows at most.
-- Keep y within 130 to 1536: Instagram's own buttons and text cover the rest.
-- Must not sit over a face, the ball or a map marker. Move the chunk's `y` for that shot.
-- Words match the voice. A dropped word in a caption is a fault unless it reads better and means the same.
+## Words on screen (owner, 11 Nov 2026; replaces the Arial Black captions)
+- Same layout from frame 0: painting on top (1080 x 1100), words on off-white paper below. Helvetica Neue 84 px, ink (17,17,17), key words bold only, every word the same size, centred between y 1140 and 1600 (Instagram's buttons and caption cover the rest).
+- Words appear one by one on the voice. Line 0 is the exception: complete on frame 0.
+- On screen at least 0.9 s (M), no faster than 27 characters a second (M). Four rows at most.
+- Words match the voice. A dropped word is a fault unless it reads better and means the same.
 
 ## Sound
 This is what the owner called choppy, then accepted once fixed. Keep to it.

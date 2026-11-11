@@ -13,3 +13,4 @@ Route built 7 Nov 2026. First real post: story 906 on 10 Nov; update this file w
 - Timing: never a manual posting run between 06:00 and 08:45 Singapore (10:45 at weekends).
 - No website link in the caption.
 - After posting, confirm live on each network; log in `docs/growth-log.md`; judge at the Monday review and keep it out of any other experiment's verdict.
+- TikTok and YouTube: the automatic TikTok workflow (`.github/workflows/tiktok.yml`, `scripts/tiktok.ts`) posts the same Reel to both through Zernio on the day. TikTok gets a trending track automatically; never schedule Shorts ahead.
