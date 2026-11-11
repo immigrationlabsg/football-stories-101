@@ -37,7 +37,8 @@
     "hand-over": "tsx scripts/hand-over.ts",
     "post-extras": "tsx scripts/post-extras.ts",
     "narration": "tsx scripts/narration.ts",
-    "tiktok": "tsx scripts/tiktok.ts"
+    "tiktok": "tsx scripts/tiktok.ts",
+    "live-stats": "tsx scripts/live-stats.ts"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.3",
