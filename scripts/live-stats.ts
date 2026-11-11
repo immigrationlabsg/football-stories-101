@@ -94,8 +94,9 @@ const nets: Record<string, Net> = {
 };
 for (const n of Object.values(nets)) n.posts.sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'));
 
-// "Today's story": the daily story (under 900) posted most recently on any network.
-const daily = Object.values(nets).flatMap((n) => n.posts).filter((p) => p.story != null && p.story < 900).sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'))[0]?.story ?? null;
+// "Today's story": the daily Reel (under 900) posted most recently on any network, so it switches the moment the new
+// Reel posts (08:00 weekdays, 10:00 weekends) and the Dynamic Island is updated straight away (owner, 11 Nov 2026).
+const daily = Object.values(nets).flatMap((n) => n.posts).filter((p) => p.story != null && p.story < 900 && Date.parse(p.at ?? '0') <= Date.now()).sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'))[0]?.story ?? null;
 const prev = readJson(env.PREV_FILE, {});
 const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {} };
 
@@ -103,7 +104,7 @@ const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: da
 const short = (v: number | null) => (v == null ? '–' : v >= 1e6 ? `${(v / 1e6).toFixed(1)}m` : v >= 1e4 ? `${Math.round(v / 1e3)}k` : v >= 1e3 ? `${(v / 1e3).toFixed(1)}k` : String(v));
 const sgHour = new Date(Date.now() + 8 * 3600e3).getUTCHours();
 const gapMin = Number(env.PUSH_EVERY_MIN ?? 115);
-const due = PUSH_KEY && sgHour >= 8 && sgHour <= 23 && (env.FORCE_PUSH === '1' || Date.now() - Date.parse(out.island.last_push ?? '0') >= gapMin * 60e3);
+const due = PUSH_KEY && sgHour >= 8 && sgHour <= 23 && (env.FORCE_PUSH === '1' || (daily != null && out.island.story !== daily) || Date.now() - Date.parse(out.island.last_push ?? '0') >= gapMin * 60e3);
 if (!PUSH_KEY) console.log('Dynamic Island: PUSHWARD_KEY not set, skipped.');
 else if (!due) console.log(`Dynamic Island: not due (last update ${out.island.last_push ?? 'never'}, Singapore hour ${sgHour}).`);
 else {
@@ -122,7 +123,7 @@ else {
     const body = { state: 'ongoing', content: { template: 'board', state: `${daily ?? ''} ${titleOf(daily)}`.trim().slice(0, 60), icon: 'soccerball', accent_color: 'green', compact_label: 'FS', compact_trailing_label: short(total).slice(0, 4), tiles, url_action: { url: DASHBOARD } } };
     const r = await fetch(`https://api.pushward.app/activities/${slug}`, { method: 'PATCH', headers: { ...H, 'Content-Type': 'application/merge-patch+json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(20000) });
     if (!r.ok) throw new Error(`update ${r.status} ${(await r.text()).slice(0, 200)}`);
-    out.island = { last_push: new Date().toISOString(), total };
+    out.island = { last_push: new Date().toISOString(), story: daily, total };
     console.log(`Dynamic Island updated: ${short(total)} views on today's story.`);
   } catch (e) {
     console.log(`::warning::Dynamic Island update failed: ${(e as Error).message}`);

@@ -45,7 +45,7 @@
 <div class="island" aria-live="polite">
   <span class="dot"></span>
   <div class="t"><b id="story">Loading…</b><span id="upd">Reading the latest numbers</span></div>
-  <div style="text-align:right"><div class="big" id="total">–</div><span class="muted">views today</span></div>
+  <div style="text-align:right"><div class="big" id="total">–</div><span class="muted">views, all platforms</span></div>
 </div>
 
 <h2>Today's story</h2>
@@ -54,11 +54,7 @@
 <h2>Followers</h2>
 <div class="grid" id="followers"></div>
 
-<h2>Recent posts</h2>
-<div class="tabs" id="tabs"></div>
-<div class="card"><table id="posts"></table></div>
-
-<footer class="muted">Refreshes every minute. New numbers arrive about every 30 minutes.</footer>
+<footer class="muted">Only today's Reel. It switches to the new Reel as soon as it posts (08:00 weekdays, 10:00 weekends).<br>The page checks every minute; new numbers arrive about every 30 minutes.</footer>
 
 <script>
 const SRC = 'https://raw.githubusercontent.com/immigrationlabsg/football-stories-101/live-stats/live.json';
@@ -66,8 +62,7 @@ const NETS = { instagram:['Instagram','var(--ig)'], tiktok:['TikTok','var(--tt)'
 const fmt = v => v == null ? '–' : v >= 1e6 ? (v/1e6).toFixed(1)+'m' : v >= 1e4 ? Math.round(v/1e3)+'k' : v >= 1e3 ? (v/1e3).toFixed(1)+'k' : String(v);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ago = t => { const m = Math.round((Date.now() - Date.parse(t)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : Math.round(m/60) + ' h ago'; };
-let data = null, tab = 'instagram', lastViews = {};
-try { tab = localStorage.getItem('fs101tab') || tab; } catch {}
+let data = null, lastViews = {};
 
 function render() {
   if (!data) return;
@@ -80,19 +75,14 @@ function render() {
     total += p.views || 0;
     const d = lastViews[k] != null && p.views != null && p.views > lastViews[k] ? `<span class="delta">+${fmt(p.views - lastViews[k])}</span>` : '';
     return `<div class="card"><div class="net"><i style="background:${c}"></i>${name}</div>
-      <div class="v">${fmt(p.views)} ${d}</div><div class="muted">views</div>
+      <div class="v">${fmt(p.views)} ${d}</div><div class="muted">views${p.at ? ' · posted ' + new Date(p.at).toLocaleTimeString('en-SG',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Singapore'}) : ''}</div>
       <div class="row"><span>♥ <b>${fmt(p.likes)}</b></span><span>↗ <b>${fmt(p.shares)}</b></span><span>💬 <b>${fmt(p.comments)}</b></span></div>
       ${net.error ? `<div class="err">Not read: ${esc(net.error).slice(0,80)}</div>` : !p.views && p.views !== 0 ? '<div class="muted" style="margin-top:6px">Not posted here yet</div>' : ''}</div>`;
   }).join('');
   document.getElementById('total').textContent = fmt(total);
   document.getElementById('followers').innerHTML = Object.entries(NETS).map(([k,[name,c]]) =>
     `<div class="card"><div class="net"><i style="background:${c}"></i>${name}</div><div class="v">${fmt((n[k]||{}).followers)}</div><div class="muted">followers</div></div>`).join('');
-  document.getElementById('tabs').innerHTML = Object.entries(NETS).map(([k,[name]]) => `<button aria-pressed="${k===tab}" data-k="${k}">${name}</button>`).join('');
-  const posts = ((n[tab] || {}).posts || []).slice(0, 15);
-  document.getElementById('posts').innerHTML = '<tr><th>Post</th><th>Views</th><th>♥</th><th>↗</th></tr>' + (posts.length ? posts.map(p =>
-    `<tr><td>${p.url ? `<a href="${esc(p.url)}" style="color:inherit">` : ''}${esc(p.story != null ? String(p.story).padStart(3,'0') + ' ' : '')}${esc(p.title)}${p.url ? '</a>' : ''}<div class="muted">${p.at ? new Date(p.at).toLocaleDateString('en-SG',{day:'numeric',month:'short'}) : ''}</div></td><td><b>${fmt(p.views)}</b></td><td>${fmt(p.likes)}</td><td>${fmt(p.shares)}</td></tr>`).join('') : '<tr><td colspan="4" class="muted">No posts read</td></tr>');
 }
-document.getElementById('tabs').addEventListener('click', e => { const k = e.target.dataset?.k; if (!k) return; tab = k; try { localStorage.setItem('fs101tab', k); } catch {} render(); });
 
 async function load() {
   try {
