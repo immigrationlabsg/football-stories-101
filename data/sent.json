@@ -820,15 +820,6 @@
       "reel": "df8667e78f6c1e4fa4cfdefa66a22cd6d0e758a2"
     },
     {
-      "number": 24,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-10T18:04:36.765Z",
-      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1539845418235430 (music: sports-documentary)",
-      "story": "lyon-seven-straight-titles-2002-2008",
-      "reel": "3c54f52e4dc3615331097cfbcb4025e7fd9e8930"
-    },
-    {
       "number": 23,
       "network": "instagram",
       "status": "posted",
@@ -843,6 +834,15 @@
       "at": "2026-11-11T00:02:19.700Z",
       "detail": "thread 18089079350313437 (cards, Reel in reply, topic Football)",
       "story": "wimbledon-crazy-gang-1988-fa-cup"
+    },
+    {
+      "number": 24,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-11T03:53:47.864Z",
+      "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1742455430182992 (music: sports-documentary)",
+      "story": "lyon-seven-straight-titles-2002-2008",
+      "reel": "179f4fc22f36904548c0d5f25c6f26a160de43a6"
     }
   ]
 }
