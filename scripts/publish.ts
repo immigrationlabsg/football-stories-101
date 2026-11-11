@@ -50,7 +50,9 @@ interface SentFile {
 const SENT_PATH = path.join(ROOT, 'data/sent.json');
 const DUE_WINDOW_MS = 24 * 60 * 60 * 1000;
 // Meta refuses Facebook schedule times much more than four weeks ahead (30 Nov failed on 19 Oct at 29.3 days).
-const FACEBOOK_WINDOW_MS = 27 * DUE_WINDOW_MS;
+// Owner, 11 Nov 2026: upload only on the day itself, once the style is confirmed: no Facebook scheduling ahead.
+// (Was 27 days; Meta refuses schedule times much more than four weeks ahead.) 0 = the loop below schedules nothing.
+const FACEBOOK_WINDOW_MS = 0 * DUE_WINDOW_MS;
 
 const now = process.env.PUBLISH_NOW ? new Date(process.env.PUBLISH_NOW) : new Date();
 if (Number.isNaN(now.getTime())) throw new Error(`PUBLISH_NOW is not a valid date: ${process.env.PUBLISH_NOW}`);
