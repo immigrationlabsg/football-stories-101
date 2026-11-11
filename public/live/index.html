@@ -68,7 +68,7 @@ function render() {
   if (!data) return;
   const n = data.networks || {}, s = data.today_story;
   let total = 0;
-  document.getElementById('story').textContent = s ? `${String(s).padStart(3,'0')} · ${data.today_title}` : 'No story yet';
+  document.getElementById('story').textContent = s ? data.today_title : 'No Reel yet';
   document.getElementById('upd').textContent = 'Updated ' + ago(data.read_at);
   document.getElementById('today').innerHTML = Object.entries(NETS).map(([k,[name,c]]) => {
     const net = n[k] || {}, p = (net.posts || []).find(x => x.story === s) || {};

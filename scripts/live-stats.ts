@@ -35,7 +35,8 @@ for (const f of fs.readdirSync(STORIES_DIR)) {
   const s = fs.readFileSync(path.join(STORIES_DIR, f), 'utf8');
   const n = Number(/^number:\s*(\d+)/m.exec(s)?.[1]);
   const t = /^title:\s*"?(.*?)"?\s*$/m.exec(s)?.[1];
-  if (n && t) titles.set(n, t.split(' / ')[0]);
+  // Header name (owner, 11 Nov 2026): "Lyon 2002–08" -> "Lyon"; names like "Pelé v Cristiano Ronaldo" stay as they are.
+  if (n && t) titles.set(n, t.split(' / ')[0].replace(/\s+\d{4}\s*(?:–|-|to)\s*\d{2,4}$/, '').trim());
 }
 const titleOf = (n: number | null) => (n == null ? '' : titles.get(n) ?? `Story ${n}`);
 
@@ -120,7 +121,7 @@ else {
   try {
     const c = await fetch('https://api.pushward.app/activities', { method: 'POST', headers: { ...H, 'Content-Type': 'application/json' }, body: JSON.stringify({ slug, name: 'FS101 results', priority: 5, stale_ttl: 3 * 3600 }), signal: AbortSignal.timeout(20000) });
     if (!c.ok) throw new Error(`create ${c.status} ${(await c.text()).slice(0, 200)}`);
-    const body = { state: 'ongoing', content: { template: 'board', state: `${daily ?? ''} ${titleOf(daily)}`.trim().slice(0, 60), icon: 'soccerball', accent_color: 'green', compact_label: 'FS', compact_trailing_label: short(total).slice(0, 4), tiles, url_action: { url: DASHBOARD } } };
+    const body = { state: 'ongoing', content: { template: 'board', state: titleOf(daily).slice(0, 60), icon: 'soccerball', accent_color: 'green', compact_label: 'FS', compact_trailing_label: short(total).slice(0, 4), tiles, url_action: { url: DASHBOARD } } };
     const r = await fetch(`https://api.pushward.app/activities/${slug}`, { method: 'PATCH', headers: { ...H, 'Content-Type': 'application/merge-patch+json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(20000) });
     if (!r.ok) throw new Error(`update ${r.status} ${(await r.text()).slice(0, 200)}`);
     out.island = { last_push: new Date().toISOString(), story: daily, total };
