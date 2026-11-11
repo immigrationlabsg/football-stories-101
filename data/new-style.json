@@ -2,6 +2,6 @@
   "note": "Reels the owner has confirmed in the newest style (owner, 11 Nov 2026: post on the day only, once the style is confirmed). The daily reminder task checks tomorrow's story against this list.",
   "confirmed": [
     { "number": 23, "sample": "story-023-v4", "confirmed": "2026-11-11" },
-    { "number": 24, "sample": "story-024-v8", "confirmed": "2026-11-11" }
+    { "number": 24, "sample": "story-024-v9", "confirmed": "2026-11-11" }
   ]
 }

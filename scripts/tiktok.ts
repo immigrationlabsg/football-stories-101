@@ -115,9 +115,14 @@ async function postStory(number: number): Promise<void> {
   const at = process.env.SCHEDULE_AT?.trim();
   if (at && Number.isNaN(Date.parse(at))) throw new Error(`SCHEDULE_AT is not a time: ${at}`);
   const when = at ? { scheduledFor: new Date(at).toISOString() } : { publishNow: true };
+  // The Short's thumbnail is the Reel's first frame, which carries the whole hook (owner, 11 Nov 2026). images.ts
+  // writes it next to the Reel; if it isn't there, the Short still posts and YouTube picks its own frame.
+  const coverUrl = absoluteUrl(`/images/derived/${pad3(number)}-cover.jpg`);
+  const cover = PLATFORM === 'youtube' && (await fetch(coverUrl, { method: 'HEAD' }).catch(() => null))?.ok;
+  if (PLATFORM === 'youtube') console.log(cover ? `Thumbnail: ${coverUrl}` : `No first-frame thumbnail at ${coverUrl}; YouTube will pick a frame.`);
   const ytBody = {
     content: caption,
-    mediaItems: [{ type: 'video', url: videoUrl }],
+    mediaItems: [{ type: 'video', url: videoUrl, ...(cover ? { thumbnail: coverUrl } : {}) }],
     platforms: [{ platform: 'youtube', accountId, platformSpecificData: { title, visibility: 'public', madeForKids: false, containsSyntheticMedia: true, categoryId: '17' } }],
     ...when,
   };
@@ -137,7 +142,7 @@ async function postStory(number: number): Promise<void> {
       allow_duet: true, // owner 10 Nov 2026: allow reuse (Duet, Stitch), matching the account setting "Everyone"
       allow_stitch: true,
       video_made_with_ai: true, // TikTok's "AI-generated content" label: the paintings are made with AI
-      video_cover_timestamp_ms: 300, // the first frame shows the world-known event
+      video_cover_timestamp_ms: 0, // the cover is the first frame, which carries the whole hook (owner, 11 Nov 2026)
       ...music,
       content_preview_confirmed: true,
       express_consent_given: true,

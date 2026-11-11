@@ -226,6 +226,12 @@ for (const story of stories) {
       reels[n] = reelHash;
       reelMusic[n] = path.basename(trackFor(story.data.number), '.m4a');
       reelStories[n] = story.data.slug;
+      // The first frame as a picture: the YouTube Short's thumbnail (owner, 11 Nov 2026: the tile shows the first frame).
+      const cover = path.join(OUT, `${n}-cover.jpg`);
+      if (ffmpegPath && (force || !fs.existsSync(cover) || fs.statSync(cover).mtimeMs < fs.statSync(reel).mtimeMs)) {
+        await promisify(execFile)(ffmpegPath, ['-y', '-loglevel', 'error', '-i', reel, '-frames:v', '1', '-q:v', '3', cover]);
+        console.log(`${n} reel: first-frame cover ${path.basename(cover)}`);
+      }
     }
   } else if (!story.data.draft && needsNarration(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     // Narration and music on every Reel (owner, 8 Nov 2026). Without its voice a story has no Reel at all, so posting
