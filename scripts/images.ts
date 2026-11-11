@@ -29,6 +29,14 @@ import { narrationFor, needsNarration, renderNarratedReel } from './lib/narratio
 import { reelReleaseUrl } from './lib/reel';
 
 const OUT = path.join(PUBLIC_DIR, 'images/derived');
+// A voiced Reel's first frame as a picture: the YouTube Short's thumbnail (owner, 11 Nov 2026: the tile shows the
+// first frame, which carries the whole hook). Remade whenever the Reel is newer than it.
+async function writeCover(n: string, reel: string) {
+  const cover = path.join(OUT, `${n}-cover.jpg`);
+  if (!ffmpegPath || (!force && fs.existsSync(cover) && fs.statSync(cover).mtimeMs >= fs.statSync(reel).mtimeMs)) return;
+  await promisify(execFile)(ffmpegPath, ['-y', '-loglevel', 'error', '-i', reel, '-frames:v', '1', '-q:v', '3', cover]);
+  console.log(`${n} reel: first-frame cover ${path.basename(cover)}`);
+}
 const WIDTHS = [480, 800, 1200];
 const SITE_LABEL = `${SITE_URL.replace(/^https?:\/\//, '')}${SITE_BASE === '/' ? '' : SITE_BASE}`;
 const force = process.argv.includes('--force');
@@ -226,12 +234,7 @@ for (const story of stories) {
       reels[n] = reelHash;
       reelMusic[n] = path.basename(trackFor(story.data.number), '.m4a');
       reelStories[n] = story.data.slug;
-      // The first frame as a picture: the YouTube Short's thumbnail (owner, 11 Nov 2026: the tile shows the first frame).
-      const cover = path.join(OUT, `${n}-cover.jpg`);
-      if (ffmpegPath && (force || !fs.existsSync(cover) || fs.statSync(cover).mtimeMs < fs.statSync(reel).mtimeMs)) {
-        await promisify(execFile)(ffmpegPath, ['-y', '-loglevel', 'error', '-i', reel, '-frames:v', '1', '-q:v', '3', cover]);
-        console.log(`${n} reel: first-frame cover ${path.basename(cover)}`);
-      }
+      await writeCover(n, reel);
     }
   } else if (!story.data.draft && needsNarration(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
     // Narration and music on every Reel (owner, 8 Nov 2026). Without its voice a story has no Reel at all, so posting
@@ -257,6 +260,7 @@ for (const story of stories) {
         reels[n] = reelHash;
         reelMusic[n] = path.basename(track, '.m4a');
         reelStories[n] = story.data.slug;
+        await writeCover(n, reel);
       }
     }
   } else if (!story.data.draft && usesReel(story.data.date) && t > Date.now() - 2 * DAY && t < Date.now() + 28 * DAY) {
