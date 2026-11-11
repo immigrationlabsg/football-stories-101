@@ -255,15 +255,21 @@ if (MODE === 'accounts') {
 } else if (MODE === 'views') {
   // Owner, 11 Nov 2026: alarm when a post is stuck near zero views (3 of the first 5 TikToks had 0; YouTube Shorts can
   // stall too). Read only. Each post is judged once, in the run 12-36 hours after it went out (WINDOW_HOURS widens it).
-  const [lo, hi] = (process.env.WINDOW_HOURS ?? '12-36').split('-').map(Number);
+  const m = /^(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)$/.exec((process.env.WINDOW_HOURS ?? '12-36').trim());
+  if (!m) throw new Error(`WINDOW_HOURS must look like 12-36, not "${process.env.WINDOW_HOURS}".`);
+  const [lo, hi] = [Number(m[1]), Number(m[2])];
+  // Scheduled runs measure age from that day's 13:15 UTC, not from when GitHub actually starts the job (often late), so
+  // the daily 24-hour windows join up exactly and every post is judged once. Manual runs measure from now.
+  const anchor = process.env.GITHUB_EVENT_NAME === 'schedule' ? (() => { const d = new Date(); d.setUTCHours(13, 15, 0, 0); return d.getTime() > Date.now() ? d.getTime() - 86400e3 : d.getTime(); })() : Date.now();
+  const unread: string[] = [];
   const MIN = Number(process.env.MIN_VIEWS ?? 20);
   const lines: string[] = [];
   const stuck: string[] = [];
   for (const [platform, file] of [['TikTok', 'data/tiktok.json'], ['YouTube', 'data/youtube.json']] as const) {
     const recs: Rec[] = fs.existsSync(path.join(ROOT, file)) ? JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8')).posts ?? [] : [];
     for (const r of recs) {
-      const hours = (Date.now() - Date.parse(r.at)) / 3600e3;
-      if (!r.postId || !r.status.startsWith('published') || hours < lo || hours > hi) continue;
+      const hours = (anchor - Date.parse(r.at)) / 3600e3;
+      if (!r.postId || r.status.startsWith('failed') || hours < lo || hours >= hi) continue;
       let views: number | null = null;
       let note = '';
       try {
@@ -275,12 +281,17 @@ if (MODE === 'accounts') {
       }
       const line = `${platform} ${pad3(r.number)} (${r.story}), ${hours.toFixed(0)} h old: ${views ?? '?'} views${note ? `; ${note}` : ''} ${r.url ?? ''}`;
       lines.push(line);
-      if (views !== null && !note && views < MIN) stuck.push(line);
+      if (note) unread.push(line);
+      else if (views !== null && views < MIN) stuck.push(line);
     }
   }
-  const report = [`Posts ${lo}-${hi} hours old:`, ...(lines.length ? lines : ['(none)']), '', stuck.length ? `STUCK under ${MIN} views:\n${stuck.join('\n')}` : `None under ${MIN} views.`].join('\n');
+  const report = [`Posts ${lo}-${hi} hours old:`, ...(lines.length ? lines : ['(none)']), '', stuck.length ? `STUCK under ${MIN} views:\n${stuck.join('\n')}` : `None under ${MIN} views.`, ...(unread.length ? ['', `COULD NOT READ (this is the only check of these posts):\n${unread.join('\n')}`] : [])].join('\n');
   console.log(report);
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\`\`\`\n${report}\n\`\`\`\n`);
+  if (unread.length) {
+    process.exitCode = 1;
+    console.error(`::error::${unread.length} post(s) could not be checked (Zernio error, expired key or numbers not synced). Look at them in the app.`);
+  }
   if (stuck.length) {
     process.exitCode = 1;
     console.error(`::error::${stuck.length} post(s) stuck under ${MIN} views. Likely causes: a held-back new account, reused-content or audio matching. Check the post in the app.`);

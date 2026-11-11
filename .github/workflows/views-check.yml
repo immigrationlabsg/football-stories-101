@@ -1,10 +1,11 @@
 name: Views check
 
 # Read only (scripts/tiktok.ts, MODE=views): every TikTok and YouTube post is checked once, 12-36 hours after it went
-# out. The run fails, so GitHub emails the owner, if a post has under 20 views (owner, 11 Nov 2026).
+# out. The run fails, so GitHub emails the owner, if a post has under 20 views or could not be read (owner, 11 Nov 2026).
 on:
   schedule:
-    - cron: "15 13 * * *" # 21:15 Singapore: the 08:00 post is 13 h old, yesterday's 20:00 extra about 25 h
+    - cron: "15 13 * * *" # 21:15 Singapore. Ages count from 13:15 UTC even when GitHub starts late; weekday 08:00 posts are
+    # judged the same day (about 13 h), weekend 10:00 posts and later ones the next day (about 35 h).
   workflow_dispatch:
     inputs:
       window_hours:
