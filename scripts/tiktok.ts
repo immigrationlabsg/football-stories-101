@@ -228,7 +228,14 @@ if (MODE === 'accounts') {
   let limit = 2;
   if (PLATFORM === 'tiktok' && Date.now() < WARM_UP_END) {
     due.sort((a, b) => Number(a >= 900) - Number(b >= 900) || a - b);
-    const today = records().filter((r) => !r.status.startsWith('failed') && sgDay(Date.parse(r.at)) === sgDay(Date.now())).length;
+    // The daily story posts by 10:00 Singapore (weekends), so before 11:00 an extra could take its slot: wait.
+    const sgHour = new Date(Date.now() + 8 * 3600e3).getUTCHours();
+    if (sgHour < 11 && due.some((n) => n >= 900)) {
+      console.log(`Warm-up: extras wait until 11:00 Singapore so the daily story gets the day's slot (${due.filter((n) => n >= 900).join(', ')}).`);
+      due.splice(0, due.length, ...due.filter((n) => n < 900));
+    }
+    // "failed or unknown" may have gone through, so only a plain failure frees the day's slot.
+    const today = records().filter((r) => !(r.status.startsWith('failed') && !r.status.startsWith('failed or unknown')) && sgDay(Date.parse(r.at)) === sgDay(Date.now())).length;
     limit = today ? 0 : 1;
     if (due.length > limit) console.log(`Warm-up (until 25 Nov): one TikTok a day. Posting ${limit ? due[0] : 'nothing'} today${due.length > limit ? `; skipping ${due.slice(limit).join(', ')}` : ''}.`);
   }
@@ -269,6 +276,7 @@ if (MODE === 'accounts') {
   const m = /^(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)$/.exec((process.env.WINDOW_HOURS ?? '12-36').trim());
   if (!m) throw new Error(`WINDOW_HOURS must look like 12-36, not "${process.env.WINDOW_HOURS}".`);
   const [lo, hi] = [Number(m[1]), Number(m[2])];
+  if (!(lo < hi)) throw new Error(`WINDOW_HOURS must go from younger to older, e.g. 12-36, not "${process.env.WINDOW_HOURS}".`);
   // Scheduled runs measure age from that day's 13:15 UTC, not from when GitHub actually starts the job (often late), so
   // the daily 24-hour windows join up exactly and every post is judged once. Manual runs measure from now.
   const anchor = process.env.GITHUB_EVENT_NAME === 'schedule' ? (() => { const d = new Date(); d.setUTCHours(13, 15, 0, 0); return d.getTime() > Date.now() ? d.getTime() - 86400e3 : d.getTime(); })() : Date.now();
