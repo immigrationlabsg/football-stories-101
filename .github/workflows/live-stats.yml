@@ -60,6 +60,7 @@ jobs:
           OUT_FILE: ${{ runner.temp }}/live.json
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PUSHWARD_KEY: ${{ secrets.PUSHWARD_KEY }}
+          PUSHWARD_PLAN: ${{ vars.PUSHWARD_PLAN || 'free' }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           FORCE_FIRST: ${{ inputs.force_push && '1' || '0' }}

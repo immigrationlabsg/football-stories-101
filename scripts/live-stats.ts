@@ -13,6 +13,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, STORIES_DIR } from './lib/stories';
 import { storyIdMap, storyForId } from './lib/story-ids';
+import * as pw from './lib/pushward';
+import * as pwWidget from './lib/pushward-widget';
 
 const env = process.env;
 const API = 'https://zernio.com/api/v1';
@@ -141,35 +143,46 @@ for (const n of Object.values(nets)) n.posts.sort((a, b) => Date.parse(b.at ?? '
 // "Today's story": the daily Reel (under 900) posted most recently on any network, so it switches the moment the new
 // Reel posts (08:00 weekdays, 10:00 weekends) and the Dynamic Island is updated straight away (owner, 11 Nov 2026).
 const daily = Object.values(nets).flatMap((n) => n.posts).filter((p) => p.story != null && p.story < 900 && Date.parse(p.at ?? '0') <= Date.now()).sort((a, b) => Date.parse(b.at ?? '0') - Date.parse(a.at ?? '0'))[0]?.story ?? null;
-const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {} };
+const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {}, widget: prev.widget ?? {} };
 
-// ---- Dynamic Island (PushWard board, 4 tiles). Free plan: 250 updates a month, so about every 2 hours, 08:00-23:00 SGT. ----
+// ---- Dynamic Island (PushWard board) and Home Screen widget: scripts/lib/pushward.ts, scripts/lib/pushward-widget.ts ----
+// Free plan budgets: 250 Live Activity and 50 widget updates a month. PUSHWARD_PLAN=paid lifts the island to every 5 min.
 const short = (v: number | null) => (v == null ? '–' : v >= 1e6 ? `${(v / 1e6).toFixed(1)}m` : v >= 1e4 ? `${Math.round(v / 1e3)}k` : v >= 1e3 ? `${(v / 1e3).toFixed(1)}k` : String(v));
-const sgHour = new Date(Date.now() + 8 * 3600e3).getUTCHours();
-const gapMin = Number(env.PUSH_EVERY_MIN ?? 115);
-const due = PUSH_KEY && sgHour >= 8 && sgHour <= 23 && (env.FORCE_PUSH === '1' || (daily != null && out.island.story !== daily) || Date.now() - Date.parse(out.island.last_push ?? '0') >= gapMin * 60e3);
-if (!PUSH_KEY) console.log('Dynamic Island: PUSHWARD_KEY not set, skipped.');
-else if (!due) console.log(`Dynamic Island: not due (last update ${out.island.last_push ?? 'never'}, Singapore hour ${sgHour}).`);
-else {
-  const label: Record<string, string> = { instagram: 'IG', tiktok: 'TikTok', youtube: 'YouTube', threads: 'Threads' };
-  const icon: Record<string, string> = { instagram: 'camera', tiktok: 'music.note', youtube: 'play.rectangle.fill', threads: 'at' };
-  const tiles = Object.entries(nets).map(([k, n]) => {
-    const p = n.posts.find((x) => x.story === daily);
-    return { label: `${label[k]} ♥${short(p?.likes ?? null)} ↗${short(p?.shares ?? null)} 👤${short(n.followers)}`.slice(0, 32), value: short(p?.views ?? null), unit: 'views', icon: icon[k], url_action: { url: DASHBOARD } };
-  });
-  const total = Object.values(nets).reduce((t, n) => t + (n.posts.find((x) => x.story === daily)?.views ?? 0), 0);
-  const H = { Authorization: `Bearer ${PUSH_KEY}` };
-  const slug = 'fs101-results';
-  try {
-    const c = await fetch('https://api.pushward.app/activities', { method: 'POST', headers: { ...H, 'Content-Type': 'application/json' }, body: JSON.stringify({ slug, name: 'FS101 results', priority: 5, stale_ttl: 3 * 3600 }), signal: AbortSignal.timeout(20000) });
-    if (!c.ok) throw new Error(`create ${c.status} ${(await c.text()).slice(0, 200)}`);
-    const body = { state: 'ongoing', content: { template: 'board', state: titleOf(daily).slice(0, 60), icon: 'soccerball', accent_color: 'green', compact_label: 'FS', compact_trailing_label: short(total).slice(0, 4), tiles, url_action: { url: DASHBOARD } } };
-    const r = await fetch(`https://api.pushward.app/activities/${slug}`, { method: 'PATCH', headers: { ...H, 'Content-Type': 'application/merge-patch+json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(20000) });
-    if (!r.ok) throw new Error(`update ${r.status} ${(await r.text()).slice(0, 200)}`);
-    out.island = { last_push: new Date().toISOString(), story: daily, total };
-    console.log(`Dynamic Island updated: ${short(total)} views on today's story.`);
-  } catch (e) {
-    console.log(`::warning::Dynamic Island update failed: ${(e as Error).message}`);
+const todayOf = (n: Net) => n.posts.find((x) => x.story === daily);
+const postedAt = Object.values(nets).map((n) => todayOf(n)?.at).filter(Boolean).sort()[0] ?? null;
+const monthOf = (t: string) => t.slice(0, 7);
+const nowIso = new Date().toISOString();
+if (!PUSH_KEY) console.log('Dynamic Island and widget: PUSHWARD_KEY not set, skipped.');
+else if (daily != null) {
+  const isl = out.island as { pushes?: string[]; story?: number; last_start?: string | null; views?: Record<string, number | null> };
+  isl.pushes = (isl.pushes ?? []).filter((t) => monthOf(t) === monthOf(nowIso));
+  const plan = env.PUSHWARD_PLAN === 'paid' ? 'paid' : 'free';
+  const base = { now: nowIso, postedAt, lastPushes: isl.pushes, plan, storyChanged: isl.story !== daily, force: env.FORCE_PUSH === '1', lastStart: isl.last_start ?? null } as const;
+  let d = pw.shouldPush({ ...base, quotaUsedThisMonth: isl.pushes.length });
+  if (d.push) {
+    // Confirm with PushWard's own counter and the activity's state before spending an update.
+    const q = await pw.getQuota({ key: PUSH_KEY });
+    const act = await pw.getActivity({ key: PUSH_KEY, slug: 'fs101-results' });
+    d = pw.shouldPush({ ...base, quotaUsedThisMonth: q.ok && q.used != null ? q.used : isl.pushes.length, quotaLimit: q.ok ? q.limit : null, quotaFromApi: q.ok && q.used != null, activityState: act.ok ? act.state : null });
+  }
+  if (!d.push) console.log(`Dynamic Island: not now (${d.reason}).`);
+  else {
+    const stats = Object.fromEntries(Object.entries(nets).map(([k, n]) => { const p = todayOf(n); return [k, { views: p?.views ?? null, likes: p?.likes ?? null, shares: p?.shares ?? null, comments: p?.comments ?? null, followers: n.followers }]; }));
+    const content = pw.buildBoard({ name: titleOf(daily), stats, previousViews: isl.story === daily ? isl.views : undefined, url: DASHBOARD });
+    const r = await pw.pushBoard({ key: PUSH_KEY, slug: 'fs101-results', name: 'FS101 results', content, restart: d.restart });
+    if (r.ok) {
+      for (let i = 0; i < Math.max(1, r.updates); i++) isl.pushes.push(nowIso);
+      Object.assign(isl, { story: daily, views: Object.fromEntries(Object.entries(stats).map(([k, v]) => [k, v.views])), ...(d.restart || isl.story !== daily ? { last_start: nowIso } : {}) });
+      console.log(`Dynamic Island updated (${d.reason}); ${isl.pushes.length} updates this month.`);
+    } else console.log(`::warning::Dynamic Island update failed: ${r.error ?? r.status}${r.quotaExceeded ? ' (monthly quota used up)' : ''}`);
+  }
+  // Home Screen widget
+  const wd = (out.widget ??= {}) as { last_push?: string; count?: number; story?: number };
+  const w = pwWidget.shouldUpdateWidget({ now: new Date(), storyChanged: wd.story !== daily, updatesThisMonth: wd.count ?? 0, lastUpdate: wd.last_push ?? null });
+  if (w.update) {
+    const r = await pwWidget.pushWidget({ key: PUSH_KEY, payload: pwWidget.buildWidget(out, { dashboardUrl: DASHBOARD }) });
+    if (r.ok) { Object.assign(wd, { last_push: nowIso, count: w.used + 1, story: daily }); console.log(`Widget updated (${w.reason}).`); }
+    else console.log(`::warning::Widget update failed: ${r.error ?? r.status}`);
   }
 }
 
