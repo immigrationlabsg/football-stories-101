@@ -221,7 +221,18 @@ if (MODE === 'accounts') {
   for (const n of due.filter((n) => HOLD.has(n))) console.log(`Story ${n} is held: post it to ${LABEL} only by hand, after the owner's OK.`);
   due.splice(0, due.length, ...due.filter((n) => !HOLD.has(n)));
   if (!due.length) console.log(`Nothing due for ${LABEL}: no Instagram post in the last 20 hours that is not on ${LABEL} already.`);
-  for (const n of due.slice(0, 2)) {
+  // Owner, 11 Nov 2026: one TikTok a day for two weeks while the new account warms up (3 of its first 5 posts got 0
+  // views after three posts in about 21 hours). The daily story goes first; an extra only on a day with no other post.
+  const WARM_UP_END = Date.parse('2026-11-25T16:00:00Z'); // end of 25 Nov, Singapore
+  const sgDay = (t: number) => new Date(t + 8 * 3600e3).toISOString().slice(0, 10);
+  let limit = 2;
+  if (PLATFORM === 'tiktok' && Date.now() < WARM_UP_END) {
+    due.sort((a, b) => Number(a >= 900) - Number(b >= 900) || a - b);
+    const today = records().filter((r) => !r.status.startsWith('failed') && sgDay(Date.parse(r.at)) === sgDay(Date.now())).length;
+    limit = today ? 0 : 1;
+    if (due.length > limit) console.log(`Warm-up (until 25 Nov): one TikTok a day. Posting ${limit ? due[0] : 'nothing'} today${due.length > limit ? `; skipping ${due.slice(limit).join(', ')}` : ''}.`);
+  }
+  for (const n of due.slice(0, limit)) {
     try {
       await postStory(n);
     } catch (e) {
@@ -288,6 +299,34 @@ if (MODE === 'accounts') {
   const report = [`Posts ${lo}-${hi} hours old:`, ...(lines.length ? lines : ['(none)']), '', stuck.length ? `STUCK under ${MIN} views:\n${stuck.join('\n')}` : `None under ${MIN} views.`, ...(unread.length ? ['', `COULD NOT READ (this is the only check of these posts):\n${unread.join('\n')}`] : [])].join('\n');
   console.log(report);
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\`\`\`\n${report}\n\`\`\`\n`);
+  // The daily scoreboard (owner, 11 Nov 2026): how much of each YouTube Short people watch, lifetime so far. YouTube's
+  // "stayed vs swiped" is not in its API, so this uses average percentage viewed (can pass 100% on Shorts, from loops).
+  // Every Short on the channel, hand uploads included. Read only; a failure here never hides the alarm above.
+  try {
+    const yt = (await tiktokAccounts()).find((a) => a.platform === 'youtube');
+    const accountId = yt?._id ?? yt?.id;
+    const list = await api('GET', `/analytics?platform=youtube&source=all&limit=50&fromDate=${new Date(Date.now() - 60 * 86400e3).toISOString().slice(0, 10)}`);
+    const posts: any[] = list.posts ?? list.data ?? [];
+    const rows: { pct: number; line: string }[] = [];
+    for (const p of posts) {
+      const url: string = p.platformPostUrl ?? p.platformAnalytics?.[0]?.platformPostUrl ?? '';
+      const id = /(?:v=|shorts\/|youtu\.be\/)([\w-]{11})/.exec(url)?.[1];
+      if (!id || !accountId) continue;
+      const d = await api('GET', `/analytics/youtube/daily-views?videoId=${id}&accountId=${accountId}&fromDate=${String(p.publishedAt ?? '').slice(0, 10) || '2026-11-01'}&toDate=${new Date().toISOString().slice(0, 10)}`).catch(() => null);
+      const days: any[] = d?.dailyViews ?? [];
+      const views = days.reduce((t, x) => t + (x.views ?? 0), 0);
+      if (!views) { rows.push({ pct: -1, line: `   -    ${String(p.analytics?.views ?? '?').padStart(5)} views  ${(p.content ?? '').split('\n')[0].slice(0, 70)}  (no watch data yet) ${url}` }); continue; }
+      const pct = days.reduce((t, x) => t + (x.averageViewPercentage ?? 0) * (x.views ?? 0), 0) / views;
+      const secs = days.reduce((t, x) => t + (x.averageViewDuration ?? 0) * (x.views ?? 0), 0) / views;
+      const subs = days.reduce((t, x) => t + (x.subscribersGained ?? 0) - (x.subscribersLost ?? 0), 0);
+      rows.push({ pct, line: `${pct.toFixed(0).padStart(4)}%  ${String(views).padStart(5)} views  ${secs.toFixed(0).padStart(3)} s avg  ${subs >= 0 ? '+' : ''}${subs} subs  ${(d?.title ?? p.content ?? '').split('\n')[0].slice(0, 70)}` });
+    }
+    const board = ['', 'YouTube scoreboard (average % of each Short watched, lifetime; YouTube finalises numbers after about 3 days):', ...rows.sort((x, y) => y.pct - x.pct).map((r) => r.line)].join('\n');
+    console.log(board);
+    if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n\`\`\`${board}\n\`\`\`\n`);
+  } catch (e) {
+    console.log(`::warning::YouTube scoreboard could not be read: ${(e as Error).message.slice(0, 200)}`);
+  }
   if (unread.length) {
     process.exitCode = 1;
     console.error(`::error::${unread.length} post(s) could not be checked (Zernio error, expired key or numbers not synced). Look at them in the app.`);
