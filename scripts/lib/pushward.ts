@@ -213,8 +213,8 @@ export const SCHEDULE = {
   quotaMargin: 5, // never go closer than this to PushWard's reported limit
   freeSlotsMin: [0, 15, 30, 60, 120, 180, 300, 420], // after the Reel posts: when the numbers move
   freeDailyMax: 10, // hard ceiling per day on the free plan
-  paidEveryMin: 5,
-  paidToleranceMs: 30e3, // cron jitter: 4 m 30 s counts as 5 minutes
+  paidEveryMin: 1, // paid plan: unlimited; needs "More Frequent Updates" on in the phone's PushWard settings (Apple allows ~15/h otherwise)
+  paidToleranceMs: 15e3, // loop jitter: 45 s counts as a minute
   // stale_ttl: longer than the biggest gap between free-plan slots in a day (2 h), shorter than the night, so the card
   // ends itself in the evening and the next morning's update is one clean push-to-start.
   staleTtlSec: 6 * 3600,
@@ -291,7 +291,7 @@ export function shouldPush(input: ShouldPushInput): ShouldPushResult {
     if (!inWindow) return no('outside 08:00-23:59 Singapore');
     if (input.storyChanged) return yes('new Reel');
     const gap = SCHEDULE.paidEveryMin * MIN - SCHEDULE.paidToleranceMs;
-    if (lastPush == null || now - lastPush >= gap) return yes('every 5 minutes');
+    if (lastPush == null || now - lastPush >= gap) return yes('every minute');
     return no(`last update ${Math.round((now - lastPush) / 1000)} s ago`);
   }
 

@@ -333,14 +333,14 @@ test('restart: only when the activity is ended (reported or stale) or has run ab
   assert.equal(quiet.restart, false);
 });
 
-test('paid plan: every 5 minutes 08:00-23:59 Singapore', () => {
+test('paid plan: pushes on every 5-minute step of the simulated day, 08:00-23:59 Singapore', () => {
   const { times } = simulateDay('2026-11-12', '08:00', { plan: 'paid' });
   assert.equal(times.length, 16 * 12);
   assert.equal(times[0], '08:00');
   assert.equal(times[times.length - 1], '23:55');
   const now = sgt('2026-11-12T12:00:00');
-  assert.equal(shouldPush(base({ plan: 'paid', now, lastPushes: [new Date(now - 280e3).toISOString()] })).push, true); // 4 m 40 s (cron jitter)
-  assert.equal(shouldPush(base({ plan: 'paid', now, lastPushes: [new Date(now - 180e3).toISOString()] })).push, false);
+  assert.equal(shouldPush(base({ plan: 'paid', now, lastPushes: [new Date(now - 50e3).toISOString()] })).push, true); // 50 s (loop jitter)
+  assert.equal(shouldPush(base({ plan: 'paid', now, lastPushes: [new Date(now - 30e3).toISOString()] })).push, false);
   assert.equal(shouldPush(base({ plan: 'paid', now: sgt('2026-11-12T07:55:00') })).push, false);
   assert.equal(shouldPush(base({ plan: 'paid', now, quotaUsedThisMonth: 99999, lastPushes: [new Date(now - 300e3).toISOString()] })).push, true);
 });

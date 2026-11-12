@@ -153,7 +153,7 @@ const daily = [...firstPost.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? nu
 const out: any = { schema: 1, read_at: new Date().toISOString(), today_story: daily, today_title: titleOf(daily), networks: nets, island: prev.island ?? {}, widget: prev.widget ?? {} };
 
 // ---- Dynamic Island (PushWard board) and Home Screen widget: scripts/lib/pushward.ts, scripts/lib/pushward-widget.ts ----
-// Free plan budgets: 250 Live Activity and 50 widget updates a month. PUSHWARD_PLAN=paid lifts the island to every 5 min.
+// Free plan budgets: 250 Live Activity and 50 widget updates a month. PUSHWARD_PLAN=paid: island every minute when a number changed, widget every 5 minutes when it changed.
 const short = (v: number | null) => (v == null ? '–' : v >= 1e6 ? `${(v / 1e6).toFixed(1)}m` : v >= 1e4 ? `${Math.round(v / 1e3)}k` : v >= 1e3 ? `${(v / 1e3).toFixed(1)}k` : String(v));
 const todayOf = (n: Net) => n.posts.find((x) => x.story === daily);
 const postedAt = daily != null && firstPost.has(daily) ? new Date(firstPost.get(daily)!).toISOString() : null;
@@ -176,6 +176,12 @@ else if (daily != null) {
   const sgDay = (t: number) => new Date(t + 8 * 3600e3).toISOString().slice(0, 10);
   const postedToday = postedAt != null && sgDay(Date.parse(postedAt)) === sgDay(Date.now());
   let d = !postedToday && env.FORCE_PUSH !== '1' ? { push: false, reason: "today's Reel has not posted yet", restart: false } : waiting ? { push: false, reason: `waiting after a failed update until ${isl2.retry_after}`, restart: false } : pw.shouldPush({ ...base, quotaUsedThisMonth: isl.pushes.length });
+  const statsNow = Object.fromEntries(Object.entries(nets).map(([k, n]) => { const p = todayOf(n); return [k, { views: p?.views ?? null, likes: p?.likes ?? null, shares: p?.shares ?? null, comments: p?.comments ?? null, followers: n.followers }]; }));
+  const sig = JSON.stringify([daily, statsNow]);
+  const isl3 = isl as typeof isl & { sig?: string };
+  // Paid plan: push only when a number moved (or 30 min passed, to keep the card fresh), not 960 identical updates a day.
+  const lastAt = pushLog.length ? Date.parse(pushLog[pushLog.length - 1]) : 0;
+  if (d.push && plan === 'paid' && d.reason === 'every minute' && isl3.sig === sig && Date.now() - lastAt < 30 * 60e3) d = { push: false, reason: 'numbers unchanged', restart: false };
   if (d.push) {
     // Confirm with PushWard's own counter and the activity's state before spending an update.
     const q = await pw.getQuota({ key: PUSH_KEY });
@@ -184,12 +190,14 @@ else if (daily != null) {
   }
   if (!d.push) console.log(`Dynamic Island: not now (${d.reason}).`);
   else {
-    const stats = Object.fromEntries(Object.entries(nets).map(([k, n]) => { const p = todayOf(n); return [k, { views: p?.views ?? null, likes: p?.likes ?? null, shares: p?.shares ?? null, comments: p?.comments ?? null, followers: n.followers }]; }));
+    const stats = statsNow;
     const content = pw.buildBoard({ name: titleOf(daily), stats, previousViews: isl.story === daily ? isl.views : undefined, url: DASHBOARD });
     const r = await pw.pushBoard({ key: PUSH_KEY, slug: 'fs101-results', name: 'FS101 results', content, restart: d.restart });
     if (r.ok) {
       for (let i = 0; i < Math.max(1, r.updates); i++) isl.pushes.push(nowIso);
       Object.assign(isl, { story: daily, views: Object.fromEntries(Object.entries(stats).map(([k, v]) => [k, v.views])), ...(d.restart || isl.story !== daily ? { last_start: nowIso } : {}) });
+      isl3.sig = sig;
+      if (plan === 'paid') isl.pushes = isl.pushes.slice(-100); // unlimited plan: keep the log small
       delete isl2.retry_after;
       console.log(`Dynamic Island updated (${d.reason}); ${isl.pushes.length} updates this month.`);
     } else {
@@ -202,10 +210,12 @@ else if (daily != null) {
   // Home Screen widget
   const wd = (out.widget ??= {}) as { last_push?: string; count?: number; story?: number; retry_after?: string };
   const wWait = wd.retry_after && Date.parse(wd.retry_after) > Date.now();
-  const w = wWait ? { update: false, reason: 'waiting after a failure', used: wd.count ?? 0 } : pwWidget.shouldUpdateWidget({ now: new Date(), storyChanged: wd.story !== daily, updatesThisMonth: wd.count ?? 0, lastUpdate: wd.last_push ?? null });
+  const wd2 = wd as typeof wd & { sig?: string };
+  const paidWidget = plan === 'paid' && postedToday && !wWait && wd2.sig !== sig && (!wd.last_push || Date.now() - Date.parse(wd.last_push) >= 5 * 60e3 - 15e3);
+  const w = paidWidget ? { update: true, reason: 'paid plan, numbers changed', used: wd.count ?? 0 } : plan === 'paid' ? { update: false, reason: 'paid plan, unchanged or under 5 min', used: wd.count ?? 0 } : wWait ? { update: false, reason: 'waiting after a failure', used: wd.count ?? 0 } : pwWidget.shouldUpdateWidget({ now: new Date(), storyChanged: wd.story !== daily, updatesThisMonth: wd.count ?? 0, lastUpdate: wd.last_push ?? null });
   if (w.update) {
     const r = await pwWidget.pushWidget({ key: PUSH_KEY, payload: pwWidget.buildWidget(out, { dashboardUrl: DASHBOARD }) });
-    if (r.ok) { Object.assign(wd, { last_push: nowIso, count: w.used + 1, story: daily }); delete wd.retry_after; console.log(`Widget updated (${w.reason}).`); }
+    if (r.ok) { Object.assign(wd, { last_push: nowIso, count: w.used + 1, story: daily, sig }); delete wd.retry_after; console.log(`Widget updated (${w.reason}).`); }
     else {
       const n = new Date();
       wd.retry_after = (r.quotaExceeded ? (r.resetAt ?? new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1)).toISOString()) : new Date(n.getTime() + 60 * 60e3).toISOString());
