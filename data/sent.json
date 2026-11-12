@@ -843,6 +843,22 @@
       "detail": "scheduled for 2026-11-12T00:00:00.000Z reel 1742455430182992 (music: sports-documentary)",
       "story": "lyon-seven-straight-titles-2002-2008",
       "reel": "179f4fc22f36904548c0d5f25c6f26a160de43a6"
+    },
+    {
+      "number": 24,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-12T00:02:09.442Z",
+      "detail": "reel media 18238753732322472",
+      "story": "lyon-seven-straight-titles-2002-2008"
+    },
+    {
+      "number": 24,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-12T00:02:09.442Z",
+      "detail": "thread 17912267922589061 (cards, Reel in reply, topic Football)",
+      "story": "lyon-seven-straight-titles-2002-2008"
     }
   ]
 }
