@@ -4,6 +4,7 @@
     { "number": 23, "sample": "story-023-v4", "confirmed": "2026-11-11" },
     { "number": 24, "sample": "story-024-v9", "confirmed": "2026-11-11" },
     { "number": 25, "sample": "story-025-v3", "confirmed": "2026-11-12" },
-    { "number": 26, "sample": "story-026-v3", "confirmed": "2026-11-12" }
+    { "number": 26, "sample": "story-026-v3", "confirmed": "2026-11-12" },
+    { "number": 27, "sample": "story-027-v3", "confirmed": "2026-11-12" }
   ]
 }
