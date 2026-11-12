@@ -2,14 +2,8 @@
 
 Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles at the bottom.
 
-**For the next weekly run (noted 26 Oct 2026; delete this note once done). Do both before 4 Nov: 043 enters Facebook's
-27-day window on 4 Nov and 044 on 5 Nov, and after that each hand-over also needs a Reels switch.**
-- 043 (Munich to Wembley, 1 Dec) tells Best's 1968 final goal, also told in 037 (25 Nov). 1 Dec is an "on this day" day:
-  give it the comparison with `npm run hand-over -- 43 ...`, so 043 moves to the end of the queue.
-- 044 (Maradona, Mexico 1986, 2 Dec) sits on a "Guess the legend" day: give the slot a quiz with `npm run hand-over -- 44 ...`
-  (not about Maradona, Best or anyone featured from 26 Nov to 8 Dec), so 044 moves to the end of the queue.
-- "Until 1995 only Europeans could win the Ballon d'Or" is told in 031 (19 Nov), 037 (25 Nov) and 038 (26 Nov). Avoid it
-  in new pieces before mid-December.
+**Still in force (noted 26 Oct 2026):** "Until 1995 only Europeans could win the Ballon d'Or" is told in 031 (19 Nov),
+037 (25 Nov) and 038 (26 Nov). Avoid it in new pieces before mid-December.
 
 | No. | Pillar | Story | Status |
 |---|---|---|---|
@@ -69,7 +63,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 054 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
 | 055 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
 | 056 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 047) | reserved |
-| 057 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | reserved |
+| 057 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | used by extra 908 (15 Nov); do not draft |
 | 058 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
 | 059 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
 | 060 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
@@ -91,6 +85,13 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 076 | Eras | Bayern Munich 1974–76: three European Cups and the square posts of Hampden | reserved |
 | 077 | Moments | Daejeon, 18 June 2002: Ahn Jung-hwan's golden goal and the row with Perugia | reserved |
 | 078 | Players | Stanley Matthews: the first Ballon d'Or, won at 41 | reserved |
+| 079 | Clubs | Steaua Bucharest, Seville 1986: Duckadam saved all four Barcelona penalties, and his top-level career ended that summer | reserved |
+| 080 | Eras | Liverpool under Bob Paisley, 1974–83: the reluctant number two who won three European Cups | reserved |
+| 081 | Moments | Munich, 25 June 1988: Van Basten began Euro 88 on the bench and ended it with the volley | reserved |
+| 082 | Players | Homare Sawa: Japan had never beaten the USA in 25 games, then the 2011 World Cup final | reserved |
+| 083 | Clubs | Kaiserslautern 1997–98: promoted, then champions of Germany at the first attempt | reserved |
+| 084 | Eras | Mourinho's Porto 2002–04: the UEFA Cup, the Champions League, and a team broken up within weeks | reserved |
+| 085 | Moments | Hamburg, 22 June 1974: East Germany beat West Germany, and the losers won the World Cup | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
