@@ -859,6 +859,31 @@
       "at": "2026-11-12T00:02:09.442Z",
       "detail": "thread 17912267922589061 (cards, Reel in reply, topic Football)",
       "story": "lyon-seven-straight-titles-2002-2008"
+    },
+    {
+      "number": 907,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-12T12:02:46.367Z",
+      "detail": "posted reel 1872193030872850 (music: cinematic-trailer)",
+      "story": "diego-maradona-cheat-and-genius",
+      "reel": "dd195cac76cd27041a3250f10910cb713b378df4"
+    },
+    {
+      "number": 907,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-12T12:02:46.367Z",
+      "detail": "reel media 18018988061972789",
+      "story": "diego-maradona-cheat-and-genius"
+    },
+    {
+      "number": 907,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-12T12:02:46.367Z",
+      "detail": "thread 17918709372493852 (cards, Reel in reply, topic Football)",
+      "story": "diego-maradona-cheat-and-genius"
     }
   ]
 }
