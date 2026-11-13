@@ -675,15 +675,6 @@
       "reel": "a30431b6b9c6e585ccef766981eaf1e30a58891d"
     },
     {
-      "number": 26,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-08T02:57:36.380Z",
-      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 2573211346498742 (music: sports-documentary) (cover: mystery card)",
-      "story": "guess-the-legend-didier-drogba",
-      "reel": "9ed0091422a29e8974a5d4b005a9d2b8dd6d1bb4"
-    },
-    {
       "number": 27,
       "network": "facebook",
       "status": "scheduled",
@@ -900,6 +891,15 @@
       "at": "2026-11-13T00:02:35.472Z",
       "detail": "thread 18096459053677772 (cards, Reel in reply, topic Football)",
       "story": "scholes-v-buffon-13-november"
+    },
+    {
+      "number": 26,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-13T03:07:16.421Z",
+      "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 2384906292248807 (music: sports-documentary) (cover: mystery card)",
+      "story": "guess-the-legend-didier-drogba",
+      "reel": "c775209460305bf3ccee6e771369108b213b8054"
     }
   ]
 }
