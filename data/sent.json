@@ -675,15 +675,6 @@
       "reel": "a30431b6b9c6e585ccef766981eaf1e30a58891d"
     },
     {
-      "number": 27,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-08T02:59:06.780Z",
-      "detail": "scheduled for 2026-11-15T02:00:00.000Z reel 2535447393606293 (music: cinematic-trailer)",
-      "story": "grande-torino-superga",
-      "reel": "64d7e9f7ba1f5b97130f511c55fc5cd004995cb8"
-    },
-    {
       "number": 28,
       "network": "facebook",
       "status": "scheduled",
@@ -900,6 +891,15 @@
       "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 2384906292248807 (music: sports-documentary) (cover: mystery card)",
       "story": "guess-the-legend-didier-drogba",
       "reel": "c775209460305bf3ccee6e771369108b213b8054"
+    },
+    {
+      "number": 27,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-13T03:09:10.441Z",
+      "detail": "scheduled for 2026-11-15T02:00:00.000Z reel 1670782478058017 (music: cinematic-trailer)",
+      "story": "grande-torino-superga",
+      "reel": "b7cfe1516a5a406b489aea0f349166e1029fc34a"
     }
   ]
 }
