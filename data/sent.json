@@ -884,6 +884,22 @@
       "at": "2026-11-12T12:02:46.367Z",
       "detail": "thread 17918709372493852 (cards, Reel in reply, topic Football)",
       "story": "diego-maradona-cheat-and-genius"
+    },
+    {
+      "number": 25,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-13T00:02:35.472Z",
+      "detail": "reel media 18646039834016626",
+      "story": "scholes-v-buffon-13-november"
+    },
+    {
+      "number": 25,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-13T00:02:35.472Z",
+      "detail": "thread 18096459053677772 (cards, Reel in reply, topic Football)",
+      "story": "scholes-v-buffon-13-november"
     }
   ]
 }
