@@ -307,12 +307,14 @@
     ]
   },
   "046": {
-    "want": "Maradona against England 1986, scoring or celebrating",
+    "want": "Sócrates in Brazil's yellow 1982 shirt, face clearly visible; Olivier Giroud in France's navy number 9 shirt (2022 World Cup ideally, 2018 acceptable), face clearly visible",
     "queries": [
-      "Maradona England 1986",
-      "Maradona 1986",
-      "Maradona Azteca",
-      "Maradona goal of the century"
+      "Socrates elgrafico 1983",
+      "Italy v brazil 1982",
+      "Sócrates Brazil 1986",
+      "Olivier Giroud 2018",
+      "2022 FIFA World Cup France 4–1 Australia",
+      "Olivier Giroud France"
     ]
   },
   "047": {
@@ -323,6 +325,76 @@
       "George Best Manchester United",
       "Manchester United Benfica 1968",
       "Busby Babes"
+    ]
+  },
+  "048": {
+    "want": "Maradona against England 1986, scoring or celebrating",
+    "queries": [
+      "Maradona England 1986",
+      "Maradona 1986",
+      "Maradona Azteca",
+      "Maradona goal of the century"
+    ]
+  },
+  "049": {
+    "want": "Paul Scholes in Manchester United's red home shirt, ideally 2002-03 Vodafone era, face clear; Son Heung-min in Tottenham's white Nike home shirt, ideally 2019-20, face clear",
+    "queries": [
+      "Paul Scholes Manchester United",
+      "Paul Scholes 2003",
+      "Scholes Vodafone Manchester United",
+      "Son Heung-min Tottenham",
+      "Heung-min Son 2019 Tottenham",
+      "Son Heung-min Tottenham Hotspur Stadium"
+    ]
+  },
+  "050": {
+    "want": "Real Madrid's Galácticos 2000-2006: Figo, Zidane or Ronaldo in Real Madrid's white Siemens or TEKA shirt, face clearly visible",
+    "queries": [
+      "Zinedine Zidane Real Madrid 2005",
+      "Luís Figo Real Madrid",
+      "Ronaldo Nazário Real Madrid 2005",
+      "Real Madrid Siemens 2004"
+    ]
+  },
+  "051": {
+    "want": "Ronaldinho in Barcelona's 2005-06 blue-and-claret home shirt, face clearly visible, ideally at the Bernabéu or celebrating",
+    "queries": [
+      "Ronaldinho 2005",
+      "Ronaldinho 2006 Barcelona",
+      "Ronaldinho FC Barcelona",
+      "Ronaldinho Camp Nou",
+      "Ronaldinho Bernabéu"
+    ]
+  },
+  "052": {
+    "want": "Benzema in Real Madrid's 2011-12 white bwin shirt; Salah in Liverpool's red 2017-18 Standard Chartered home shirt, face clear",
+    "queries": [
+      "Benzema Real Madrid 2011",
+      "Benzema Villarreal",
+      "Karim Benzema 2011",
+      "Mohamed Salah 2017",
+      "Mohamed Salah Liverpool 2018",
+      "Salah Liverpool 2017"
+    ]
+  },
+  "053": {
+    "want": "Jay-Jay Okocha, face clearly visible, ideally in a Nigeria, Eintracht Frankfurt, PSG or Bolton shirt",
+    "queries": [
+      "Jay-Jay Okocha",
+      "Okocha",
+      "Okocha Bolton",
+      "Okocha Nigeria",
+      "Augustine Okocha"
+    ]
+  },
+  "054": {
+    "want": "David Beckham in England's white number 7 shirt, captain, c. 2001-2003, face clear",
+    "queries": [
+      "David Beckham England",
+      "Beckham England 2001",
+      "Beckham England captain",
+      "Beckham Old Trafford free kick",
+      "Beckham 2002 World Cup"
     ]
   },
   "m01": {
@@ -626,21 +698,21 @@
     ]
   },
   "p1204a": {
-    "want": "Alessandro Del Piero in Juventus black-and-white stripes, face clearly visible",
+    "want": "Sócrates in Brazil's yellow shirt around 1982, face clearly visible",
     "queries": [
-      "Alessandro Del Piero Juventus",
-      "Del Piero Juventus 10",
-      "Alessandro Del Piero 2008",
-      "Del Piero Juve"
+      "Socrates elgrafico 1983",
+      "Italy v brazil 1982",
+      "Socrates with brazil in mexico 1986",
+      "Sócrates futebolista"
     ]
   },
   "p1204b": {
-    "want": "Luis Suárez in Liverpool red around 2013-2014, face clearly visible",
+    "want": "Olivier Giroud in France's navy number 9 shirt, 2022 World Cup or 2018, face clearly visible",
     "queries": [
-      "Luis Suárez Liverpool",
-      "Luis Suarez Liverpool 2013",
-      "Suarez Liverpool FC",
-      "Luis Suárez Anfield"
+      "Olivier Giroud 2018",
+      "2022 FIFA World Cup France 4–1 Australia",
+      "Olivier Giroud France",
+      "Olivier Giroud 2022"
     ]
   },
   "p1207a": {

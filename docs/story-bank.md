@@ -52,46 +52,50 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 043 | Moments | On this day: Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December | scheduled |
 | 044 | Players | Guess the legend / Marta: a three-day bus ride, a European final at 18 and the World Cup scoring record | scheduled |
 | 045 | Eras | Arsenal's Invincibles, 2003–04: 38 league games unbeaten (moved from 028) | scheduled |
-| 046 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 044) | scheduled |
+| 046 | Moments | On this day: Giroud v Sócrates / A record, a farewell and two Sundays on 4 December | scheduled |
 | 047 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 043) | scheduled |
-| 048 | Eras | Real Madrid's Galácticos, 2000–06: Figo, Zidane, Ronaldo, Beckham, and the trophies that stopped coming (follow-up of 012) | reserved |
-| 049 | Moments | Beckham v Greece, 6 October 2001: the free kick three years after the 1998 red card | reserved |
-| 050 | Players | Ronaldinho: the night the Bernabéu stood and applauded a Barcelona player, November 2005 | reserved |
-| 051 | Clubs | Parma in the 1990s: the small-town club Parmalat built, and how it fell | reserved |
-| 052 | Eras | France 1998–2000: World Cup and European champions back to back | reserved |
-| 053 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
-| 054 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
-| 055 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
-| 056 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 047) | reserved |
-| 057 | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | used by extra 908 (15 Nov); do not draft |
-| 058 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
-| 059 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
-| 060 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
-| 061 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
-| 062 | Players | Romário at Barcelona: the hat-trick in the 5–0 against Real Madrid, January 1994 | reserved |
-| 063 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
-| 064 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
-| 065 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
-| 066 | Players | Didier Drogba: Munich 2012, the late header and the last penalty of the Champions League final (follow-up of 026; the 2005 peace appeal is already told in 026) | reserved |
-| 067 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
-| 068 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
-| 069 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
-| 070 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
-| 071 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
-| 072 | Eras | Spain 2008–12: three major tournaments in a row, ending 4–0 against Italy | reserved |
-| 073 | Moments | Belgrade, 20 June 1976: Panenka's chip, practised for chocolate and beer | reserved |
-| 074 | Players | Johan Cruyff and the 1978 World Cup: the reason he gave 30 years later (follow-up of 004) | reserved |
-| 075 | Clubs | Lyon's women: five European titles in a row and eight in all (follow-up of 024) | reserved |
-| 076 | Eras | Bayern Munich 1974–76: three European Cups and the square posts of Hampden | reserved |
-| 077 | Moments | Daejeon, 18 June 2002: Ahn Jung-hwan's golden goal and the row with Perugia | reserved |
-| 078 | Players | Stanley Matthews: the first Ballon d'Or, won at 41 | reserved |
-| 079 | Clubs | Steaua Bucharest, Seville 1986: Duckadam saved all four Barcelona penalties, and his top-level career ended that summer | reserved |
-| 080 | Eras | Liverpool under Bob Paisley, 1974–83: the reluctant number two who won three European Cups | reserved |
-| 081 | Moments | Munich, 25 June 1988: Van Basten began Euro 88 on the bench and ended it with the volley | reserved |
-| 082 | Players | Homare Sawa: Japan had never beaten the USA in 25 games, then the 2011 World Cup final | reserved |
-| 083 | Clubs | Kaiserslautern 1997–98: promoted, then champions of Germany at the first attempt | reserved |
-| 084 | Eras | Mourinho's Porto 2002–04: the UEFA Cup, the Champions League, and a team broken up within weeks | reserved |
-| 085 | Moments | Hamburg, 22 June 1974: East Germany beat West Germany, and the losers won the World Cup | reserved |
+| 048 | Players | Diego Maradona, Mexico 1986: four minutes against England (moved from 046) | scheduled |
+| 049 | Moments | On this day: Son Heung-min v Scholes / Two runs on 7 December: one ended a record, one won the Puskás | scheduled |
+| 050 | Eras | Real Madrid's Galácticos / The election promise, and the trophies that stopped coming (follow-up of 012) | scheduled |
+| 051 | Players | Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player (Bernabéu, 19 November 2005) | scheduled |
+| 052 | Moments | On this day: Benzema v Salah / Two openers on 10 December that won nothing on the night | scheduled |
+| 053 | Players | Guess the legend / Jay-Jay Okocha: a friend's training session, a record fee, Olympic gold and a run past Oliver Kahn | scheduled |
+| 054 | Moments | David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup (6 October 2001) | scheduled |
+| 055 | Clubs | Parma in the 1990s: the small-town club Parmalat built, and how it fell | reserved |
+| 056 | Eras | France 1998–2000: World Cup and European champions back to back | reserved |
+| 057 | Moments | Rivaldo v Valencia, 17 June 2001: the overhead kick that put Barcelona in the Champions League | reserved |
+| 058 | Players | Zlatan Ibrahimović: from Rosengård to the 30-yard bicycle kick against England | reserved |
+| 059 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
+| 060 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 047) | reserved |
+| — | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | used by extra 908 (15 Nov); do not draft |
+| 061 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
+| 062 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
+| 063 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
+| 064 | Moments | Pasadena, 17 July 1994: Roberto Baggio's penalty | reserved |
+| 065 | Players | Romário at Barcelona: the hat-trick in the 5–0 against Real Madrid, January 1994 | reserved |
+| 066 | Clubs | Monaco 2004: a Champions League final from a club in a city of 38,000 | reserved |
+| 067 | Eras | The USA women's team, 1991–99: two World Cups and 90,185 at the Rose Bowl | reserved |
+| 068 | Moments | Wembley, 15 June 1996: Gascoigne's goal against Scotland | reserved |
+| 069 | Players | Didier Drogba: Munich 2012, the late header and the last penalty of the Champions League final (follow-up of 026; the 2005 peace appeal is already told in 026) | reserved |
+| 070 | Clubs | Leeds United 2001: a Champions League semi-final, then the debts | reserved |
+| 071 | Eras | Brazil 1970: Pelé, and Jairzinho scoring in every match of the World Cup | reserved |
+| 072 | Moments | Selhurst Park, 25 January 1995: Cantona's kick and what came after | reserved |
+| 073 | Players | Andriy Shevchenko: from the Chernobyl evacuation to the 2004 Ballon d'Or | reserved |
+| 074 | Clubs | Corinthians Democracy: Sócrates and the club that let its players vote, 1982–84 | reserved |
+| 075 | Eras | Spain 2008–12: three major tournaments in a row, ending 4–0 against Italy | reserved |
+| 076 | Moments | Belgrade, 20 June 1976: Panenka's chip, practised for chocolate and beer | reserved |
+| 077 | Players | Johan Cruyff and the 1978 World Cup: the reason he gave 30 years later (follow-up of 004) | reserved |
+| 078 | Clubs | Lyon's women: five European titles in a row and eight in all (follow-up of 024) | reserved |
+| 079 | Eras | Bayern Munich 1974–76: three European Cups and the square posts of Hampden | reserved |
+| 080 | Moments | Daejeon, 18 June 2002: Ahn Jung-hwan's golden goal and the row with Perugia | reserved |
+| 081 | Players | Stanley Matthews: the first Ballon d'Or, won at 41 | reserved |
+| 082 | Clubs | Steaua Bucharest, Seville 1986: Duckadam saved all four Barcelona penalties, and his top-level career ended that summer | reserved |
+| 083 | Eras | Liverpool under Bob Paisley, 1974–83: the reluctant number two who won three European Cups | reserved |
+| 084 | Moments | Munich, 25 June 1988: Van Basten began Euro 88 on the bench and ended it with the volley | reserved |
+| 085 | Players | Homare Sawa: Japan had never beaten the USA in 25 games, then the 2011 World Cup final | reserved |
+| 086 | Clubs | Kaiserslautern 1997–98: promoted, then champions of Germany at the first attempt | reserved |
+| 087 | Eras | Mourinho's Porto 2002–04: the UEFA Cup, the Champions League, and a team broken up within weeks | reserved |
+| 088 | Moments | Hamburg, 22 June 1974: East Germany beat West Germany, and the losers won the World Cup | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days

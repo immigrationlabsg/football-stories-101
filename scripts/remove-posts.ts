@@ -75,8 +75,15 @@ async function main() {
       if (!id) throw new Error(`"${t}" is not network:id`);
       if (net === 'facebook') await graphDelete(GRAPH, id, env.META_PAGE_ACCESS_TOKEN!, 'Facebook');
       else if (net === 'instagram') {
+        // Instagram-login token first; if that cannot delete, the Facebook-login route (Page token on graph.facebook.com).
         const direct = Boolean(env.INSTAGRAM_ACCESS_TOKEN?.trim());
-        await graphDelete(direct ? INSTAGRAM : GRAPH, id, (direct ? env.INSTAGRAM_ACCESS_TOKEN : env.META_PAGE_ACCESS_TOKEN)!, 'Instagram');
+        try {
+          await graphDelete(direct ? INSTAGRAM : GRAPH, id, (direct ? env.INSTAGRAM_ACCESS_TOKEN : env.META_PAGE_ACCESS_TOKEN)!, 'Instagram');
+        } catch (e) {
+          if (!direct) throw e;
+          console.log(`Instagram ${id}: Instagram token could not delete (${(e as Error).message.slice(0, 120)}); trying the Page token.`);
+          await graphDelete(GRAPH, id, env.META_PAGE_ACCESS_TOKEN!, 'Instagram (Page token)');
+        }
       } else if (net === 'threads') await threadsDelete(id);
       else if (net === 'youtube') await youtubeUnpublish(id);
       else throw new Error(`unknown network "${net}"`);
