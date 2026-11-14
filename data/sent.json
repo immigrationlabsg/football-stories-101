@@ -886,11 +886,12 @@
     {
       "number": 26,
       "network": "facebook",
-      "status": "scheduled",
+      "status": "removed",
       "at": "2026-11-13T03:07:16.421Z",
       "detail": "scheduled for 2026-11-14T02:00:00.000Z reel 2384906292248807 (music: sports-documentary) (cover: mystery card)",
       "story": "guess-the-legend-didier-drogba",
-      "reel": "c775209460305bf3ccee6e771369108b213b8054"
+      "reel": "c775209460305bf3ccee6e771369108b213b8054",
+      "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
     },
     {
       "number": 27,
@@ -904,18 +905,20 @@
     {
       "number": 26,
       "network": "instagram",
-      "status": "posted",
+      "status": "removed",
       "at": "2026-11-14T02:02:24.994Z",
       "detail": "reel media 18645084985050146",
-      "story": "guess-the-legend-didier-drogba"
+      "story": "guess-the-legend-didier-drogba",
+      "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
     },
     {
       "number": 26,
       "network": "threads",
-      "status": "posted",
+      "status": "removed",
       "at": "2026-11-14T02:02:24.994Z",
       "detail": "thread 18100879823400731 (cards, Reel in reply, topic Football)",
-      "story": "guess-the-legend-didier-drogba"
+      "story": "guess-the-legend-didier-drogba",
+      "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
     }
   ]
 }

@@ -94,7 +94,7 @@ async function postStory(number: number): Promise<void> {
   const story = loadStories().stories.find((s) => s.data.number === number);
   if (!story) throw new Error(`No story ${number}.`);
   if (story.data.draft) throw new Error(`Story ${number} is a draft.`);
-  if (records().some((r) => r.number === number)) {
+  if (records().some((r) => r.number === number && r.status !== 'removed')) {
     console.log(`Story ${number} is already on ${LABEL} (${path.basename(RECORD)}). Nothing posted.`);
     return;
   }
@@ -208,7 +208,7 @@ if (MODE === 'accounts') {
   // Started after "Publish daily" and "Post extras" finish, with backup times; data/tiktok.json stops a second post.
   const sent: any = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sent.json'), 'utf8'));
   const since = Date.now() - 20 * 3600 * 1000;
-  const done = new Set(records().map((r) => r.number));
+  const done = new Set(records().filter((r) => r.status !== 'removed').map((r) => r.number));
   // Reels only (a carousel is recorded as "media ..."), and only posts from the go-live day on, so an old story
   // re-posted by hand or as a test does not cross to TikTok.
   const GO_LIVE = Date.parse('2026-11-10T00:00:00Z');

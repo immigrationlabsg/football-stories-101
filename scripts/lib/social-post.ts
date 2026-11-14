@@ -45,7 +45,7 @@ function threadsTopic(): string {
 export function socialDone(number: number): Set<Network> {
   try {
     const records = (JSON.parse(fs.readFileSync(SENT, 'utf8')).social ?? []) as SocialRecord[];
-    return new Set(records.filter((r) => r.number === number).map((r) => r.network));
+    return new Set(records.filter((r) => r.number === number && (r as any).status !== 'removed').map((r) => r.network));
   } catch {
     return new Set();
   }

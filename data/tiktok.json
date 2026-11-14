@@ -55,9 +55,10 @@
       "story": "guess-the-legend-didier-drogba",
       "at": "2026-11-14T02:04:03.925Z",
       "postId": "6af7c194ffaaea74b72694b0",
-      "status": "published",
+      "status": "removed",
       "url": null,
-      "music": "#2 Self Aware - Mark Allan Wolfe"
+      "music": "#2 Self Aware - Mark Allan Wolfe",
+      "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
     }
   ]
 }
