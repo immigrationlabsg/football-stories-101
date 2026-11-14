@@ -56,6 +56,14 @@
       "status": "removed",
       "url": "https://www.youtube.com/watch?v=rjWD_XImKec",
       "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
+    },
+    {
+      "number": 26,
+      "story": "guess-the-legend-didier-drogba",
+      "at": "2026-11-14T02:59:17.209Z",
+      "postId": "6af7ce8525a7ffce628c6a37",
+      "status": "published",
+      "url": "https://www.youtube.com/watch?v=B5SPE_2V_RE"
     }
   ]
 }
