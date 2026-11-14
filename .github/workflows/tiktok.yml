@@ -25,6 +25,10 @@ on:
         type: choice
         options: [tiktok, youtube]
         default: tiktok
+      video_version:
+        description: "Replacement cut posted the same day (e.g. v4); leave empty normally"
+        required: false
+        default: ""
       story:
         description: "Story number to post (mode post)"
         type: string
@@ -71,6 +75,7 @@ jobs:
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || 'tiktok' }}
           SCHEDULE_AT: ${{ inputs.schedule_at }}
+          VIDEO_VERSION: ${{ inputs.video_version }}
       # Owner, 11 Nov 2026: YouTube posts at the same time as TikTok (ends the 10 Nov pause). Same rules and record
       # file per platform (data/youtube.json), so a story is never posted twice.
       - name: YouTube (automatic runs)

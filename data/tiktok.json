@@ -65,9 +65,10 @@
       "story": "guess-the-legend-didier-drogba",
       "at": "2026-11-14T02:58:26.170Z",
       "postId": "",
-      "status": "failed or unknown: POST /posts -> 409: {\"error\":\"This exact content is already scheduled, publishing, or was posted to this account within the last 24 hours.\",\"details\":{\"accountId\":\"6af1de9e29d52b6271f5b420\",\"platform\"",
+      "status": "removed",
       "url": null,
-      "music": "#2 Self Aware - Mark Allan Wolfe"
+      "music": "#2 Self Aware - Mark Allan Wolfe",
+      "note": "409 duplicate refusal on repost 2026-11-14; retried with VIDEO_VERSION"
     }
   ]
 }

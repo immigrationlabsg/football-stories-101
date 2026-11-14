@@ -103,7 +103,10 @@ async function postStory(number: number): Promise<void> {
   if (/https?:\/\/|github\.io|www\./i.test(caption)) throw new Error('The caption contains a link; nothing posted.');
   if (!caption.includes('Illustrations made with AI.')) throw new Error('The caption lacks the AI line; nothing posted.');
   if (caption.length > 2200) throw new Error(`The caption is ${caption.length} characters (TikTok allows 2,200).`);
-  const videoUrl = absoluteUrl(`/images/derived/${pad3(number)}-reel.mp4`);
+  // VIDEO_VERSION (e.g. "v4"): a replacement cut of a Reel already posted today. Zernio refuses the same content within
+  // 24 hours, so the version is added to the video address (the site ignores it and serves the current file).
+  const ver = process.env.VIDEO_VERSION?.trim();
+  const videoUrl = absoluteUrl(`/images/derived/${pad3(number)}-reel.mp4`) + (ver ? `?v=${encodeURIComponent(ver)}` : '');
   const head = await fetch(videoUrl, { method: 'HEAD' });
   if (!head.ok) throw new Error(`The Reel is not on the site (${head.status}): ${videoUrl}`);
 
