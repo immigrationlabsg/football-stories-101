@@ -925,7 +925,7 @@
       "network": "facebook",
       "status": "posted",
       "at": "2026-11-14T02:57:00.956Z",
-      "detail": "posted reel 1640796437583797 (music: sports-documentary) (cover: mystery card) UNCONFIRMED: checking Facebook Reel 1640796437583797 failed: https://graph.facebook.com/v21.0/1640796437583797 responded 400: Unsupported get request. Object with ID '164079",
+      "detail": "posted reel 1640796437583797 (music: sports-documentary) (cover: mystery card)",
       "story": "guess-the-legend-didier-drogba",
       "reel": "687c13a713aeb9eb58b6052db6e9f66642367d73"
     },
