@@ -900,6 +900,22 @@
       "detail": "scheduled for 2026-11-15T02:00:00.000Z reel 1670782478058017 (music: cinematic-trailer)",
       "story": "grande-torino-superga",
       "reel": "b7cfe1516a5a406b489aea0f349166e1029fc34a"
+    },
+    {
+      "number": 26,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-14T02:02:24.994Z",
+      "detail": "reel media 18645084985050146",
+      "story": "guess-the-legend-didier-drogba"
+    },
+    {
+      "number": 26,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-14T02:02:24.994Z",
+      "detail": "thread 18100879823400731 (cards, Reel in reply, topic Football)",
+      "story": "guess-the-legend-didier-drogba"
     }
   ]
 }
