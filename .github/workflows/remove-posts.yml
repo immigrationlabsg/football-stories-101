@@ -1,0 +1,40 @@
+name: Remove posts
+
+# Removes published posts the owner asked to take down (e.g. an old cut of a Reel). Runs by hand only.
+# Dry run is on by default: it only checks each post exists.
+on:
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "Space separated network:id (facebook:ID instagram:ID threads:ID youtube:ZERNIO_POST_ID)"
+        required: true
+      dry_run:
+        description: "Dry run: check the posts exist, delete nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-posting
+  cancel-in-progress: false
+
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run remove-posts
+        env:
+          TARGETS: ${{ inputs.targets }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}

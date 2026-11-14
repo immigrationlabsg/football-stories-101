@@ -867,6 +867,36 @@
       "licence": "CC BY 2.0",
       "author": "Roscoe Myrick",
       "why": "Picture Reel (scene); licence page read, logged in story-026-v3/licences.json."
+    },
+    {
+      "commons": "File:Allianz Arena 2012 Champions League Final.jpg",
+      "licence": "CC BY-SA 2.0",
+      "author": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/50896406@N04\">Christoph Anton Mitterer</a>",
+      "why": "Picture Reel (scene); licence page read, logged in story-026-v4/licences.json."
+    },
+    {
+      "commons": "File:Champions League Final 2012 extra time.jpg",
+      "licence": "CC BY 2.0",
+      "author": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/27478478@N00\">rayand</a>",
+      "why": "Picture Reel (scene); licence page read, logged in story-026-v4/licences.json."
+    },
+    {
+      "commons": "File:Champions League Final 2012 second half.jpg",
+      "licence": "CC BY 2.0",
+      "author": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/14385354@N00\">Markus Unger</a> from Vienna, Austria",
+      "why": "Picture Reel (scene); licence page read, logged in story-026-v4/licences.json."
+    },
+    {
+      "commons": "File:2012-05-19 Finale11 (7232995806).jpg",
+      "licence": "CC BY 2.0",
+      "author": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/14385354@N00\">Markus Unger</a> from Vienna, Austria",
+      "why": "Picture Reel (scene); licence page read, logged in story-026-v4/licences.json."
+    },
+    {
+      "commons": "File:Arsenal-Supporters.jpg",
+      "licence": "CC BY 2.0",
+      "author": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/wonker/\">wonker</a>",
+      "why": "Picture Reel (scene); licence page read, logged in story-026-v4/licences.json."
     }
   ],
   "027": [
@@ -1229,15 +1259,18 @@
   ],
   "046": [
     {
-      "commons": "File:Maradona vs england.jpg",
+      "commons": "File:Socrates elgrafico 1983.jpg",
       "licence": "Public domain",
-      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
-      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
+      "pair": true,
+      "why": "4 Dec comparison, Giroud v Sócrates: left, Sócrates, head to knees, in Brazil's yellow early-1980s shirt with the green round collar and green cuffs and the Brazil crest on the chest: a blue shield with three green stars above it and the small gold Jules Rimet cup in its centre, with NO letters at all on the shield (the top of the shield is plain blue), blue shorts, white socks with green tops, the ball at his feet, his beard, curly dark hair, long lean build and face exactly as in his photo (no shirt sponsor, no number visible). Right, Olivier Giroud, head and chest, his beard, swept-back hair, face and raised finger exactly as in his photo, but in France's navy 2022 World Cup Nike home shirt: plain navy body and plain navy sleeves (no brighter blue sleeves), a white Nike swoosh on his right chest, the gold rooster crest with the letters FFF and TWO small stars above it on his left chest, a small plain gold shield badge in the centre of the chest, and a GOLD number 9 below the swoosh; remove the 'France-Argentine 30 juin 2018' text and the green sleeve patch. Only these two players: no other figures; the background is a blurred stadium crowd at night.",
+      "kit": "Sócrates: Brazil's yellow early-1980s home shirt as photographed; Giroud: France's navy 2022 World Cup Nike home shirt (two stars, gold crest, gold number 9, white swoosh, gold champions shield in the centre), in place of the photo's 2018 one-star shirt; checked against File:2022 FIFA World Cup France 4–1 Australia - (9).jpg",
+      "alt": "Watercolour painting split in two: Sócrates, bearded, in Brazil's yellow early-1980s shirt with a ball at his feet, and Olivier Giroud in France's navy number 9 shirt"
     },
     {
-      "commons": "File:Maradona pateando v inglaterra.jpg",
-      "licence": "Public domain",
-      "why": "Maradona sliding the Goal of the Century past Shilton."
+      "commons": "File:Olivier Giroud 2018.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Olivier Giroud for France against Argentina at the 2018 World Cup, 30 June 2018 (the tournament he won without a shot on target), face clear, number 9",
+      "kit": "France's navy 2022 World Cup Nike home shirt: plain navy, white Nike swoosh, gold rooster crest with FFF and two stars, small gold champions shield in the centre of the chest, gold number 9 (repainted from the photo's 2018 shirt; kit reference: File:2022 FIFA World Cup France 4–1 Australia - (9).jpg, CC BY 4.0, Hossein Zohrevand)"
     }
   ],
   "047": [
@@ -1252,6 +1285,96 @@
       "commons": "File:Bobby charlton elgrafico.JPG",
       "licence": "",
       "why": "Bobby Charlton, survivor and 1968 European Cup winner."
+    }
+  ],
+  "048": [
+    {
+      "commons": "File:Maradona vs england.jpg",
+      "licence": "Public domain",
+      "why": "Maradona celebrating against England, 22 June 1986, with Fenwick on the ground.",
+      "alt": "Watercolour painting of Diego Maradona in Argentina's light-blue shirt, fist raised in celebration, with an England defender on the ground behind him"
+    },
+    {
+      "commons": "File:Maradona pateando v inglaterra.jpg",
+      "licence": "Public domain",
+      "why": "Maradona sliding the Goal of the Century past Shilton."
+    }
+  ],
+  "049": [
+    {
+      "commons": "File:P Scholes.jpg",
+      "licence": "CC BY 2.0",
+      "pair": true,
+      "why": "7 Dec comparison, Son Heung-min v Scholes: left, Paul Scholes, head and upper body, his face, short ginger hair, pale skin and expression exactly as in his photo, in Manchester United's red 2002-03 Nike home shirt: red with black side panels under the arms and a white collar, the white Nike swoosh on his right chest, the Manchester United crest on his left chest, and the Vodafone sponsor across the chest: the round white Vodafone speech-mark logo above the word 'vodafone' in white lower-case letters (his photo shows the 2007-08 shirt with AIG in a white box: replace AIG and the box with Vodafone; no number on the front). Right, Son Heung-min, head and upper body, his face, dark swept hair and build exactly as in his photo, in Tottenham Hotspur's white 2019-20 Nike home shirt: plain white with a navy V-neck collar, the small navy Nike swoosh on his right chest, the navy cockerel-on-a-ball crest on his left chest and the red AIA sponsor across the chest (his photo shows the 2016-17 Under Armour shirt: replace the Under Armour logo with the Nike swoosh, remove the navy shoulder yoke, the gold trim and the Premier League sleeve badge; no number on the front). Only these two players: no other figures, no ball; the background is a blurred stadium crowd.",
+      "kit": "Scholes: Manchester United's red 2002-03 Nike home shirt with the white Vodafone logo and wordmark, black side panels, white collar (in place of the photo's 2007-08 AIG shirt; checked against File:Ruud.JPG, March 2004, and the Wikipedia kit image Kit_body_manutd0204h.png); Son: Tottenham's white 2019-20 Nike home shirt, navy V-neck, red AIA (in place of the photo's 2016-17 Under Armour shirt; checked against Kit_body_tottenham1920h.png). Premier League shirts carry no front number, so 18 and 7 are not painted",
+      "alt": "Watercolour painting split in two: Paul Scholes in Manchester United's red home shirt with the Vodafone sponsor and Son Heung-min in Tottenham's white home shirt"
+    },
+    {
+      "commons": "File:Son Heung-Min Spurs 2016.jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Son Heung-min in Tottenham's white home shirt at Chelsea, 26 November 2016, face clear (three years before the Burnley goal)",
+      "kit": "Tottenham's 2016-17 Under Armour home shirt with AIA, as photographed; paint as the 2019-20 Nike home shirt"
+    }
+  ],
+  "050": [
+    {
+      "commons": "File:Zinedine zidane 2005.jpg",
+      "licence": "CC BY 2.0",
+      "why": "Zinedine Zidane, aged 33, one of the Galácticos, at a Real Madrid night match on 11 December 2005. Head and upper body, looking up into the floodlights with his arms out, exactly the pose of the photo. Paint his face exactly as photographed so he is instantly recognisable as Zidane: his very closely shaved head with the high, deeply receding hairline and the bare, balding crown (not a full head of hair), deep-set eyes under a heavy brow, his long, strong, slightly hooked nose, lean hollow cheeks, prominent chin and dark stubble, a weathered 33-year-old face. The white adidas shirt with the three black adidas stripes on the shoulders, the small adidas logo, the Real Madrid crest and the sponsor SIEMENS in dark navy capital letters across the chest, as in the photo: spell it exactly S-I-E-M-E-N-S, seven letters, the fourth letter a clear M with two peaks, printed flat and fully legible, not bent or broken by folds in the shirt. Only him: no other players, no trophy, no ball; the background is the dark stadium stand at night with soft floodlight haze.",
+      "kit": "Real Madrid's white 2005-06 adidas home shirt with the Siemens sponsor in dark letters and the Real Madrid crest, exactly as in the photo",
+      "alt": "Watercolour painting of Zinedine Zidane in Real Madrid's white Siemens shirt, looking up into the floodlights with his arms out, a stand behind him"
+    }
+  ],
+  "051": [
+    {
+      "commons": "File:Ronaldinho-7-5-2006.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Ronaldinho at the Bernabéu, 19 November 2005, smiling, head and shoulders: his face, smile, skin tone, build and the curls at the back of his neck exactly as in this May 2006 photo. Keep the dark headscarf over his hair exactly as in the photo; do not add a headband. Repaint the navy training top as Barcelona's 2005-06 Nike home shirt: narrow vertical stripes of royal blue and claret red, a blue round collar, the Barcelona crest on his left chest, a small Nike swoosh on his right chest, NO sponsor and NO number on the front. Leave out the sunglasses and the chain. Only Ronaldinho: no other figures; the background is a blurred stadium crowd at night.",
+      "kit": "Barcelona's 2005-06 Nike home shirt: narrow blue-and-claret stripes, crest, Nike swoosh, no front sponsor, no front number (the yellow RONALDINHO 10 is on the back only, see File:Ronaldinho corner.jpg; front checked against File:Ronaldinho - FC Barcelona (30836164).jpg, 3 Aug 2005), in place of the photo's navy training top. Headscarf kept as photographed: no 2005-06 photo confirms a headband",
+      "crop": "attention",
+      "alt": "Watercolour painting of Ronaldinho in Barcelona's blue-and-claret striped shirt, smiling, with a blurred stadium crowd behind him"
+    },
+    {
+      "commons": "File:Ronaldinho corner.jpg",
+      "licence": "CC BY-SA 2.0",
+      "why": "Kit reference only: Barcelona's 2005-06 Nike home shirt, number 10, Camp Nou, 20 December 2005 (face not visible)",
+      "kit": "Barcelona's 2005-06 Nike home shirt with RONALDINHO and number 10 in yellow"
+    }
+  ],
+  "052": [
+    {
+      "commons": "File:Benzema Villarreal.jpg",
+      "licence": "CC0",
+      "pair": true,
+      "why": "10 Dec comparison, Benzema v Salah: left, Karim Benzema running, head and upper body, in Real Madrid's white 2011-12 adidas home shirt exactly as in his photo: white with gold trim on the collar and gold adidas stripes on the shoulders, the Real Madrid crest, the small adidas logo and the bwin sponsor in black lower-case letters across the chest, his very short hair, face and expression exactly as in his photo. Right, Mohamed Salah, head and upper body, his face, curly hair and beard exactly as in his photo, but repaint his white away shirt as Liverpool's red 2017-18 New Balance home shirt: plain red with a white V-neck collar, the small white New Balance logo on his right chest, the gold Liverpool crest on his left chest and the white Standard Chartered wordmark with its logo across the chest; plain red sleeves with no Champions League badge. Only these two players: no other figures, no Villarreal defender; the background is a blurred stadium crowd at night.",
+      "kit": "Benzema: Real Madrid 2011-12 adidas home (bwin), as photographed. Salah: Liverpool 2017-18 New Balance home shirt (red, white V-neck, Standard Chartered in white), repainted from the 2017-18 away shirt in his photo; checked against File:Chelsea 1 Liverpool 0 (41947688562).jpg",
+      "alt": "Watercolour painting split in two: Karim Benzema running in Real Madrid's white bwin shirt with gold trim and Mohamed Salah in Liverpool's red Standard Chartered shirt"
+    },
+    {
+      "commons": "File:Mohamed Salah 2017.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Mohamed Salah at Spartak Moscow v Liverpool, 26 September 2017 (2017-18, the season of the 10 December 2017 derby); face clear and sharp",
+      "kit": "Liverpool's 2017-18 New Balance away shirt as photographed; paint as the red 2017-18 home shirt (Standard Chartered), see File:Chelsea 1 Liverpool 0 (41947688562).jpg for the red shirt"
+    }
+  ],
+  "053": [
+    {
+      "commons": "File:Match legends 2017 CC (1).jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "'Guess the legend' reveal: Jay-Jay Okocha running towards the camera, head to waist, his face, short hair, beard, skin tone and strong build exactly as in his photo, so he is instantly recognisable: keep his face as lean and narrow as in the photo, with his high cheekbones, the short, close-trimmed beard along the jaw and chin and thin moustache (not a full or bushy beard), his almond-shaped eyes and his small stud earring, exactly as photographed. Leave clear space above his head: the top of his hair sits well below the top edge, about one fifth of the picture height down. Repaint his shirt as Bolton Wanderers' all-white 2003-04 Reebok home shirt: completely plain white fabric with a plain white round collar and plain white short sleeves, no piping, no stripes and no coloured trim anywhere; the word Reebok across the chest in dark navy letters, as both maker and sponsor; a small Bolton Wanderers crest on his left chest; no number on the front; remove the blue camouflage pattern, the three shoulder stripes, the adidas logo and the blacked-out patch. White shorts if any shorts show. Leave out the spectators behind him and the soccer.ru watermark; the background is a blurred stadium crowd.",
+      "kit": "Bolton Wanderers' all-white 2003-04 Reebok home kit, Reebok as maker and front sponsor, number 10 on the back only (docs/fact-checks/053.md, Kit), repainted from the 2017 legends-match adidas shirt in the photo. White shirt from the 2004 League Cup final line-up diagram File:Bolton vs Middlesbrough 2004-02-29.svg; white shirt, shorts and socks per the 2003-04 season infobox on English Wikipedia (pointer only). No free photo of the 2003-04 shirt was found on Commons, so trim is left plain",
+      "crop": "attention",
+      "alt": "Watercolour painting of Jay-Jay Okocha running in Bolton Wanderers' white Reebok shirt"
+    }
+  ],
+  "054": [
+    {
+      "commons": "File:David Beckham.jpg",
+      "licence": "Public domain",
+      "why": "Beckham captaining England at Old Trafford, 6 October 2001 v Greece: his face, expression, raised right fist and build exactly as in this 2006 photo, and his hair exactly as in the photo (short, tousled light-brown hair: do not shave it). Leave clear space above his head: the top of his hair sits well below the top edge. Repaint the shirt as England's white 2001-03 Umbro home shirt: white with long sleeves, a navy-trimmed V-neck collar, thin navy seams from the collar over the shoulders, the navy Umbro diamond logo on the right side of his chest (the viewer's left), the Three Lions crest on the left side of his chest (the viewer's right), and a single thin red vertical stripe running straight down from the shoulder seam to the hem on the VIEWER'S RIGHT, just outside the crest, between the crest and his left armpit (nothing red on the viewer's left half of the shirt; remove the photo's diagonal red shoulder stripe). The navy number 7 in the centre of the chest, the blue captain's armband on his left arm as in the photo, navy shorts. Remove the small match text under the number. Only Beckham: plain green pitch behind him.",
+      "kit": "England's white 2001-03 Umbro home shirt (navy V-neck, single red vertical stripe on the left chest, navy Umbro logo, Three Lions crest, navy number 7), captain's armband, navy shorts, in place of the photo's 2006 shirt; checked against the Wikipedia kit image Kit_body_eng02h.png. Hair kept as in the 2006 photo (the October 2001 shaved head has only one source)",
+      "crop": "attention",
+      "alt": "Watercolour painting of David Beckham in England's white number 7 shirt with the captain's armband, fist raised"
     }
   ],
   "901": [
