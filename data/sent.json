@@ -919,6 +919,31 @@
       "detail": "thread 18100879823400731 (cards, Reel in reply, topic Football)",
       "story": "guess-the-legend-didier-drogba",
       "note": "removed 2026-11-14 (old cut; owner asked to replace it with the v4 cut)"
+    },
+    {
+      "number": 26,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-14T02:57:00.956Z",
+      "detail": "posted reel 1640796437583797 (music: sports-documentary) (cover: mystery card) UNCONFIRMED: checking Facebook Reel 1640796437583797 failed: https://graph.facebook.com/v21.0/1640796437583797 responded 400: Unsupported get request. Object with ID '164079",
+      "story": "guess-the-legend-didier-drogba",
+      "reel": "687c13a713aeb9eb58b6052db6e9f66642367d73"
+    },
+    {
+      "number": 26,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-14T02:57:00.956Z",
+      "detail": "reel media 18098268761403251",
+      "story": "guess-the-legend-didier-drogba"
+    },
+    {
+      "number": 26,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-14T02:57:00.956Z",
+      "detail": "thread 18132750359503723 (cards, Reel in reply, topic Football)",
+      "story": "guess-the-legend-didier-drogba"
     }
   ]
 }
