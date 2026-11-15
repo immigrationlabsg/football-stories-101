@@ -25,6 +25,8 @@ Keep the owner's project rules in force throughout (repo `CLAUDE.md`, `docs/pict
 
 ### 1. Pick the story and write the script
 
+**Work with the owner by [references/story-development.md](references/story-development.md) (owner, 16 Nov 2026).** In short: pitch 4 to 6 options before building anything. Take the owner's arc (hook, middle, payoff, question) and research each beat, saying plainly when one isn't true. Settle on one hard hook fact and stick to it. Get an OK on the script, then build a fast first cut. Offer a depth pass of 2 or 3 extra facts on the same thread. Build the setback-to-triumph arc in from draft 1. Before anything reaches the owner, the `reel-evaluator` agent must pass it at the pitch, script and final-cut gates ([references/evaluators.md](references/evaluators.md)).
+
 **Finding the story (the owner's steps, 7 Nov 2026), in this order:**
 
 1. What is the trending recent news in football?
