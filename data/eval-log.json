@@ -118,7 +118,8 @@
       "Not yet installed: assets/reels/028-baggio-v-messi-16-november.mp4 absent; public/images/derived/028-reel.mp4 is the old 9 Nov reel (sha cba9124...). Re-check after install.",
       "npm run verify: 1 error (046 Facebook slot) and 028 'on this day' warning, both not caused by this Reel."
     ],
-    "owner_verdict": null
+    "owner_verdict": null,
+    "followup": "16 Nov 00:45: reelCredits set to the full 163-character line before install (commit 6d58a1e), so the failing hard rule now passes. Site 028-reel.mp4 confirmed to be v2 (sha256 f61b2dec...)."
   },
   {
     "story": "028 v5 (story-028-v5)",
