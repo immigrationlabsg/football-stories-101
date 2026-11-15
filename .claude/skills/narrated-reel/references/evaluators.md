@@ -72,3 +72,10 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 5. **Keep score of the evaluator itself.** Track how often an owner rejection was a gate the evaluator passed. The goal is that the owner rarely finds a problem the evaluator missed.
 
 Small numbers warning: with 1 to 3 shares per post, one share swings everything. Treat a criterion change as a test, decided over at least 7 posts, never on one post.
+
+## Parked proposals and settled points (owner, 16 Nov 2026)
+
+- **Parked: a stricter P1 and P4.** P1 would score 2 only when the hook cuts against the person's legend and has stakes; stat or process curiosities would cap at 1. P4 would score 2 only if a fan could argue it from memory. The owner chose to keep the rubric as it is for now. Bring this back at a periodic review, or as soon as a production passes Gate 1 and the owner then rejects it.
+- **Settled, don't raise again:**
+  - The standard ending card's "Follow for…" line. It's the page's own card wording.
+  - Single-source lines spoken as "he said" or "says" (attributed speech). These are acceptable without "reportedly".
