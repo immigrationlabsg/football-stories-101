@@ -944,6 +944,22 @@
       "at": "2026-11-14T02:57:00.956Z",
       "detail": "thread 18132750359503723 (cards, Reel in reply, topic Football)",
       "story": "guess-the-legend-didier-drogba"
+    },
+    {
+      "number": 27,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-15T02:02:13.708Z",
+      "detail": "reel media 18123629738059989",
+      "story": "grande-torino-superga"
+    },
+    {
+      "number": 27,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-15T02:02:13.708Z",
+      "detail": "thread 17990435043075303 (cards, Reel in reply, topic Football)",
+      "story": "grande-torino-superga"
     }
   ]
 }
