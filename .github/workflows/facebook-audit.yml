@@ -1,0 +1,34 @@
+name: Facebook audit
+
+# Read-only check that every Reel already scheduled on Facebook was made from the video and story the site serves now
+# (scripts/facebook-audit.ts; owner, 16 Nov 2026, after Facebook still held 8 Nov videos for 028-030). It fails, so
+# GitHub emails the owner, when a stale one is due within 36 hours. Runs after every site deploy, at 21:15 Singapore,
+# and at 05:15 Singapore (before the 06:00 Facebook lock), so there is always time to fix it with "Reels" replace.
+on:
+  workflow_run:
+    workflows: ["Build and deploy"]
+    types: [completed]
+  schedule:
+    - cron: "15 13 * * *"
+    - cron: "15 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
+      SITE_BASE: ${{ vars.SITE_BASE || '/football-stories-101' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run facebook-audit

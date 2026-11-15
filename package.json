@@ -33,6 +33,7 @@
     "metrics:check": "tsx scripts/check-story-ids.ts",
     "schedule-facebook": "tsx scripts/schedule-facebook.ts",
     "reels": "tsx scripts/reels.ts",
+    "facebook-audit": "tsx scripts/facebook-audit.ts",
     "publish-painting": "tsx scripts/publish-painting.ts",
     "hand-over": "tsx scripts/hand-over.ts",
     "post-extras": "tsx scripts/post-extras.ts",

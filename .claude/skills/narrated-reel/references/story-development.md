@@ -31,7 +31,7 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
 7. **Fix the owner's factual slips politely and keep their intent.**
    - The 2016 miss was the Copa América final, not the World Cup.
    - The script used both: the 2014 World Cup final lost, then the 2016 Copa América penalty.
-8. **Final script OK → build → independent check → install → confirm live.**
+8. **Final script OK → build → independent check → install → confirm live.** Installing a rebuilt Reel has two halves: the site (release asset, then the deploy, then check the site's video hash) and Facebook (a Reel scheduled ahead keeps its old video and caption, so run "Reels" replace for that story, then `npm run facebook-audit`). Instagram and Threads take the video from the site, so only Facebook can go stale.
 
 **Evaluator gates (owner, 16 Nov 2026).** The `reel-evaluator` agent scores the pitch (before step 2), the script (before step 5) and the final cut (before the owner sees it as ready, and again before install), against [evaluators.md](evaluators.md). Only work that passes goes to the owner. Each score is logged in `data/eval-log.json`; reviews compare scores with shares and with the owner's verdicts, and propose rubric changes for the owner to confirm.
 

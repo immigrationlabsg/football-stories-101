@@ -57,6 +57,7 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 - `reelCredits` is under 200 characters and names every Commons author.
 - `npm run verify` shows no new error.
 - The script is word for word as the owner approved it.
+- **At install:** Facebook holds no stale schedule. `npm run facebook-audit` must show no error or warning for the story. If a Reel already scheduled on Facebook was rebuilt, run "Reels" with action replace for that story (with the owner's OK), then re-run the audit (owner, 16 Nov 2026).
 
 **Bar:** 12 of 14, with F1 and F4 at 2.
 
