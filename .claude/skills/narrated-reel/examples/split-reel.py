@@ -1,21 +1,23 @@
-# Story 024 v9 TEST (owner 11 Nov): v8 with the hook in the split layout (face on top, words on white below) and the first words on screen from frame 0, so the first frame is the thumbnail.
-# Template for the newest style (narrated-reel skill): split layout from frame 0, whole hook on the first frame, words one by one on white below, key words bold. Voice Dylan; music sample 3.
+# TEMPLATE for the newest style (narrated-reel skill, owner approved 15 Nov 2026): copy of story-908-v5/reel.py.
+# Hook = the most surprising fact, whole on frame 0; line 1 straight into the moment; then what fans don't know; payoff; debate question.
+# Story 908 v5 (15 Nov 2026): owner's referee opening (B1). Hook over the referee showing the red card; lines 1, 3, 4, 6 are v4's verified takes.
+# Same 025-027 format. Thread: nobody officiating saw it -> who sent him off -> the fourth official -> Golden Ball anyway -> community work -> no apology.
 import sys,os; sys.path.insert(0,os.path.expanduser('~/Developer/football-stories-101/.claude/skills/narrated-reel/scripts'))
 from reel_engine import *
 Y=1445
 CH=[
- [(13,"The coach who lost his job after winning the league and cup double",{"lost","job","double"},Y)],   # v9: owner 11 Nov, the whole hook on the first frame (was two chunks ending "the cup in the same season")
- [(5,"It wasn't a bad season",{"bad"},Y),(5,"It wasn't a losing run",{"losing"},Y),(6,"And it's not what you think",{"think"},Y)],
- [(15,"Stay with this, because the man who ran that club came from software, not football",{"software"},Y)],
- [(4,"The club is Lyon",{"Lyon"},Y),(12,"Jean-Michel Aulas took over in 1987, with Lyon in the second division",{"Aulas","second"},Y)],
- [(5,"Lyon had never been champions",{"never"},Y),(7,"In 2002, they finally won the league",{"2002"},Y)],
- [(6,"Then they did something completely different",{"different"},Y),(4,"They kept changing everything",{"everything"},Y),(8,"Four coaches. Their stars sold, year after year",{"Four","sold"},Y),(5,"Seven titles in a row",{"Seven"},Y),(9,"But their biggest star stayed for all seven: Juninho",{"Juninho"},Y),(6,"44 goals straight from free kicks",{"44"},Y)],
- [(7,"The seventh came with a first double",{"double"},Y),(7,"Weeks later, Lyon let the coach go",{"go"},Y),(8,"As Aulas put it: managing is foreseeing.",{"foreseeing"},Y)],
- [(5,"In 2009, the run ended",{"ended"},Y),(6,"That May, Juninho asked to leave",{"leave"},Y),(7,"At the press conference, he said nothing",{"nothing"},Y),(4,"He fought back tears",{"tears"},Y)],
- [(14,"Which club in your memory sold its stars year after year, and kept winning?",{"memory","sold"},Y)]   # owner 11 Nov: the question from the current Reel,
+ [(11,"The referee never saw Zidane's headbutt. So who sent him off?",{"never","saw","who"},Y)],
+ [(2,"Berlin, 2006.",{"Berlin,"},Y),(6,"The last game of his career.",{"last","career."},Y),(6,"A headbutt, and a red card.",{"headbutt,","red","card."},Y)],
+ [(8,"But the ball was at the other end.",{"other","end."},Y),(5,"Neither assistant saw it either.",{"Neither"},Y)],
+ [(6,"Then, a voice in his headset:",{"voice","headset:"},Y),(5,"\u201cHoracio, Horacio, I saw it.\u201d",{"saw","it.\u201d"},Y),(3,"The fourth official.",{"fourth","official."},Y)],
+ [(5,"Zidane's coach blamed television replays.",{"television","replays."},Y),(8,"The official said he saw it happen live.",{"live."},Y)],
+ [(9,"The next day, Zidane still won the Golden Ball.",{"still","Golden","Ball."},Y),(10,"Most of the votes were reportedly cast at half-time.",{"half-time."},Y)],
+ [(6,"FIFA banned him for three games.",{"three","games."},Y),(4,"But he had retired.",{"retired."},Y),(12,"So he agreed to three days of community work with children instead.",{"three","days","children"},Y)],
+ [(4,"To Materazzi, in 2010?",{"Materazzi,","2010?"},Y),(6,"\u201cIt would be to dishonour me.",{"dishonour"},Y),(3,"I'd rather die.\u201d",{"die.\u201d"},Y)],
+ [(9,"Would you still have given him the Golden Ball?",{"still","Golden","Ball?"},Y)]
 ]
 TEMPO=[1.0]*9
-GAP=[0.35,0.35,0.3,0.3,0.3,0.35,0.4,0.4,0.0]
+GAP=[0.4,0.3,0.3,0.3,0.4,0.35,0.4,0.4,0.0]
 R=Reel(os.path.dirname(os.path.abspath(__file__)),CH,TEMPO,GAP)
 import wave
 def repair_clip(i):
@@ -126,53 +128,52 @@ def stars(t0,t1,y=330):   # seven stars lit one by one
     return draw
 def ctext(d,y,t,f,fill,x=W/2): d.text((x-f.getlength(t)/2,y),t,font=f,fill=fill)
 fTs=ImageFont.truetype(FONT,60); fNs=ImageFont.truetype(FONT,130); fDs=ImageFont.truetype(FONT,40); fT=ImageFont.truetype(FONT,84); fN=ImageFont.truetype(FONT,200); fD=ImageFont.truetype(FONT,54)
-def score(t3):   # LYON 3-1 LENS, 4 May 2002 (story text)
+fC=ImageFont.truetype(FONT,52); fC2=ImageFont.truetype(FONT,40)
+def chip(t0,rows,y=40,t1=None):   # a dark panel with true facts, drawn (no logo, no crest)
     def draw(d,t):
-        d.rounded_rectangle((210,730,870,1030),36,fill=PANEL,outline=RIM,width=4)
-        ctext(d,745,'4 MAY 2002',fDs,WHITE); ctext(d,800,'LYON',fTs,GOLD,390); ctext(d,800,'LENS',fTs,WHITE,690)
-        if t>=t3: ctext(d,860,'3',fNs,GOLD,390); ctext(d,860,'1',fNs,WHITE,690)
+        if t<t0 or (t1 is not None and t>=t1): return
+        h=24+sum(r[1].size+16 for r in rows)
+        d.rounded_rectangle((120,y,960,y+h),30,fill=PANEL,outline=RIM,width=3); yy=y+14
+        for txt,f,col in rows: ctext(d,yy,txt,f,col); yy+=f.size+16
     return draw
-def counter(total,label,t0,t1,y=120):
-    fB2=ImageFont.truetype(FONT,190); fL=ImageFont.truetype(FONT,56)
+def score(t0,t1,y=40):   # FRANCE 1-1 ITALY, extra time
     def draw(d,t):
-        u=ease(min(1,max(0,(t-t0)/max(0.05,t1-t0)))); v=str(max(2,int(round(total*u))))
-        d.rounded_rectangle((200,y,880,y+340),40,fill=PANEL,outline=RIM,width=4); ctext(d,y+12,v,fB2,GOLD); ctext(d,y+250,label,fL,WHITE)
+        if t<t0: return
+        d.rounded_rectangle((170,y,910,y+300),34,fill=PANEL,outline=RIM,width=3); ctext(d,y+14,'EXTRA TIME',fC2,WHITE)
+        ctext(d,y+66,'FRANCE',fTs,WHITE,345); ctext(d,y+66,'ITALY',fTs,WHITE,735)
+        if t>=t1: ctext(d,y+136,'1',fNs,GOLD,345); ctext(d,y+136,'1',fNs,GOLD,735)
     return draw
-# ---- L0: the hook person's face (Alain Perrin) in the top panel for the whole hook
-shot('perrin',0,lt(1),(1.0,1.08,(512,560),(512,520)))   # owner 11 Nov: the coach's picture for the whole hook
-# ---- L1: not a bad season / not a losing run / not what you think
-shot('j08',lt(1),wt(1,5),(1.0,1.06,(512,560),(480,540)))
-shot('tifo_v',wt(1,5),wt(1,10),(1.0,1.08,(512,900),(512,860)))
-shot('celebrate06x',wt(1,10),lt(2),(1.0,1.06,(512,900),(512,860)))
-# ---- L2: the man who ran the club came from software (no portrait of him in the set: the fans)
-shot('tifo',lt(2),lt(3),(1.0,1.1,(768,430),(768,400)))
-# ---- L3: the club is Lyon; Aulas, 1987, second division (undated close-up of the LYON letters)
-shot('fans',lt(3),wt(3,4),(1.0,1.08,(768,512),(820,500)))
-shot('virage',wt(3,4),lt(4),(1.0,1.1,(768,512),(700,512)))   # undated crowd under the 1987 line
-# ---- L4: never champions; 2002, the first title
-shot('gerland',lt(4),wt(4,5),(1.05,1.15,(500,560),(400,560)))
-shot('lineup02',wt(4,5),lt(5),(1.0,1.06,(512,760),(512,740)))
-# ---- L5: completely different; kept changing everything; four coaches, stars sold; seven in a row
-shot('team03',lt(5),wt(5,10),(1.0,1.08,(512,760),(512,740)))
-shot('essien_lyon',wt(5,10),wt(5,13),(1.0,1.1,(640,700),(660,660)))
-shot('essien',wt(5,13),wt(5,18),(1.0,1.1,(547,700),(530,640)))
-shot('trophy',wt(5,18),wt(5,23),(1.0,1.08,(512,760),(512,700)),over=stars(wt(5,18),wt(5,22)+0.2,y=950))
-shot('junportrait',wt(5,23),wt(5,32),(1.0,1.06,(512,620),(512,580)))   # the star who stayed
-shot('junfk',wt(5,32),lt(6),(1.0,1.0,(512,640),(560,640)),over=counter(44,'DIRECT FREE KICKS',wt(5,32),wt(5,33)+0.3,y=700))
-# ---- L6: the seventh with a first double; weeks later the coach let go; Aulas: managing is foreseeing
-shot('cdf08',lt(6),wt(6,7),(1.0,1.08,(512,760),(512,730)))
-shot('perrin',wt(6,7),wt(6,14),(1.0,1.04,(512,620),(512,600)))
-shot('fans',wt(6,14),lt(7),(1.1,1.0,(820,500),(768,512)))
-# ---- L7: Juninho, the one constant; 2009 asked to leave; said nothing; fought back tears
-shot('gerland',lt(7),wt(7,5),(1.12,1.0,(800,560),(600,560)))   # 2009, the run ended: the ground, no celebration
-shot('taker',wt(7,5),wt(7,11),(1.0,1.08,(620,640),(640,600)))   # Juninho from behind, Feb 2009
-shot('junfk',wt(7,11),lt(8),(1.6,2.2,(470,380),(460,300)))   # slow push to his face, Novotel-era shirt (not the 2001 one)
-# ---- L8: the question
-shot('tifo_v',lt(8),VE,(1.0,1.08,(512,900),(512,860)))
+# ---- L0: the hook, whole on frame 0, over the referee showing the red card
+shot('card',0,lt(1),(1.0,1.06,(560,860),(600,840)))
+# ---- L1: Berlin 2006, his last game, the headbutt (the Reel's one flash), the red card
+shot('berlin',lt(1),wt(1,2),(1.05,1.15,(512,880),(512,860)),over=chip(lt(1),[('BERLIN',fTs,GOLD),('9 JULY 2006  WORLD CUP FINAL',fC2,WHITE)]))
+shot('pair',wt(1,2),wt(1,8),(1.0,1.08,(512,820),(560,800)))
+shot('butt',wt(1,8),wt(1,11),(1.0,1.06,(512,700),(512,690)),hit=wt(1,9)-wt(1,8))
+shot('card',wt(1,11),lt(2),(1.3,1.4,(700,600),(700,560)))
+# ---- L2: the ball was at the other end; neither assistant saw it
+shot('berlin',lt(2),wt(2,8),(1.1,1.2,(512,900),(512,880)))
+shot('wide',wt(2,8),lt(3),(1.0,1.08,(512,800),(512,780)))
+# ---- L3: the voice in his headset: the fourth official saw it
+shot('berlin',lt(3),wt(3,6),(1.3,1.4,(512,700),(512,690)))
+shot('contact',wt(3,6),lt(4),(1.0,1.08,(512,750),(512,730)),over=chip(wt(3,11),[('FOURTH OFFICIAL',fC2,WHITE),('LUIS MEDINA CANTALEJO',fC2,GOLD)],y=880))
+# ---- L4: Zidane's coach blamed TV replays; the official: he saw it live
+shot('wide',lt(4),wt(4,5),(1.5,1.6,(512,620),(560,600)))
+shot('contact',wt(4,5),lt(5),(1.2,1.3,(512,600),(512,560)),over=chip(wt(4,5),[('\u201cI SAW IT HAPPEN LIVE\u201d',fC2,GOLD),('MEDINA CANTALEJO, JULY 2006',fC2,WHITE)],y=880))
+# ---- L5: the Golden Ball anyway; most votes reportedly at half-time
+shot('trophywalk',lt(5),wt(5,9),(1.0,1.08,(512,640),(540,640)),over=chip(lt(5)+0.6,[('GOLDEN BALL',fTs,GOLD),('ZIDANE 2,012 POINTS',fC2,WHITE),('CANNAVARO 1,977',fC2,WHITE)],y=790))
+shot('wide',wt(5,9),lt(6),(1.15,1.25,(512,820),(560,820)))
+# ---- L6: a three-game ban for a retired man; three days of community work with children
+shot('portrait',lt(6),wt(6,10),(1.0,1.06,(512,600),(512,580)),over=chip(wt(6,4),[('FIFA: 3-MATCH BAN',fTs,GOLD)],y=40))
+shot('corner',wt(6,10),lt(7),(1.0,1.08,(512,540),(512,521)),over=chip(wt(6,14),[('3 DAYS OF COMMUNITY WORK',fC2,GOLD),('WITH CHILDREN',fC2,WHITE)],y=860))
+# ---- L7: to Materazzi, 2010: "I'd rather die"
+shot('mat06',lt(7),wt(7,4),(1.15,1.25,(560,521),(560,521)))
+shot('portrait',wt(7,4),lt(8),(1.08,1.16,(512,600),(512,560)),over=chip(wt(7,4),[('2010',fTs,GOLD)],y=40))
+# ---- L8: the question over the trophy walk, then the page's ending card
+shot('trophywalk',lt(8),VE,(1.12,1.2,(512,600),(560,580)))
 R.closing()
 print('SHOTS',len(SHOTS)); [print(s) for s in SHOTS]
 # ---- words: each chunk written word by word on the paper; line 0 complete from frame 0
-LIST={1}   # lines shown as a stacked list (the reference's "it's not a VPN / it's not a proxy" rows)
+LIST=set()   # keep empty: stacked "It wasn't..." list rows are no longer used (owner, 15 Nov 2026)
 CHUNKS=[]   # (line, text, accents, start, end, [word reveal times])
 for i,chs in enumerate(CH):
     k=0; L_=R.lines[i]
@@ -226,7 +227,9 @@ def paper_words(im,t):
         y=max(PTOP+20,PTOP+(PBOT-PTOP-sum(hs)-gap*(len(items)-1))/2)
         for c,hh in zip(items,hs):
             if t>=c[5][0]:
-                u=min(1,(t-c[5][0])/0.14); xmark(d,95,y+hh/2,36,u); draw_chunk(d,c[1],c[2],c[5],t,y,x_left=155,icon=1)
+                u=min(1,(t-c[5][0])/0.14)
+                if "wasn't" in c[1]: xmark(d,95,y+hh/2,36,u)   # round 2: no cross on the row that is true
+                draw_chunk(d,c[1],c[2],c[5],t,y,x_left=155,icon=1)
             y+=hh+gap
         return im
     hh=block_h(txt,acc); draw_chunk(d,txt,acc,times,t,PTOP+(PBOT-PTOP-hh)/2); return im
@@ -254,5 +257,5 @@ for c in CHUNKS: print('chunk',round(c[3],2),round(c[4],2),round(c[4]-c[3],2),ro
 if os.environ.get('DRY'): raise SystemExit
 finish()
 T=dur(f'{R.B}/captioned.mp4')
-fader=[(0,-13.5),(lt(1)-0.6,-13.5),(lt(1)+0.6,-15.5),(lt(7)-0.6,-15.5),(lt(7)+0.3,-14),(VE-0.2,-14),(VE+0.9,-4.5),(T,-4.5)]
-R.mix('final.mp4',music='music.mp3',join=(9.255,26.716) if T>62.3 else None,trim_db=1,end_src=62.5,fader=fader)   # 8-bar repeat (109.96 bpm) so the track covers 67 s
+fader=[(0,-13.5),(lt(1)-0.6,-13.5),(lt(1)+0.6,-14.5),(lt(2)-0.4,-14.5),(lt(2)+0.6,-15.5),(lt(5)-0.6,-15.5),(lt(5)+0.4,-15),(lt(7)-0.6,-15),(lt(7)+0.6,-16),(lt(8)-0.4,-16),(lt(8)+0.4,-14),(VE-0.2,-14),(VE+0.9,-4.5),(T,-4.5)]   # up for the headbutt, steady under the reveals, dip under the refusal, up into the question
+R.mix('final.mp4',music='music.mp3',join=(9.255,26.716) if T>62.3 else None,trim_db=1,end_src=62.5,fader=fader)   # 8-bar repeat (109.96 bpm) only if the Reel runs past 62.3 s
