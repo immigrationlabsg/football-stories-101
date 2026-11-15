@@ -68,7 +68,7 @@ says so publicly.
 
 ## Social banner line (required for every story)
 
-Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts.
+Each story needs one extra front-matter line, `hook`: a punchy line of 100 characters or fewer, written from the story itself with no new facts. Since 16 Nov 2026 every story becomes a narrated Reel whose line 0 is this hook, so write it by the narrated-reel skill's step 1 (owner, 15 Nov 2026, the Zidane model): the most surprising true fact or a contradiction, never a "The man who..." description that gives the story away.
 It is the banner on the Facebook picture and the Instagram cover.
 
 The Instagram carousel is seven cards: the cover, five fact cards from the `facts` field, and a closing card with the
