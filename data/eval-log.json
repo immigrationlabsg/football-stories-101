@@ -1,0 +1,275 @@
+[
+  {
+    "story": "028 (story-messi-red-v2)",
+    "gate": "1 pitch",
+    "date": "2026-11-16",
+    "scores": {
+      "P1": {
+        "score": 2,
+        "evidence": "Greatest player's debut lasted under a minute and ended in a red card: a legend-vs-moment contradiction most fans haven't heard"
+      },
+      "P2": {
+        "score": 2,
+        "evidence": "Messi, global"
+      },
+      "P3": {
+        "score": 2,
+        "evidence": "Red card at 18 -> 2014/2016 finals lost, quit -> 2022 world champion"
+      },
+      "P4": {
+        "score": 2,
+        "evidence": "'Which other legend do you know who started with a red card?' invites naming own case"
+      },
+      "P5": {
+        "score": 2,
+        "evidence": "Red card: Infobae 2005, EFE/Plano, CBS (opened). '47 seconds' is owner-fixed; logged DISPUTED (40/43/45/47/50) in FACT-CHECK.md and docs/fact-checks/028.md, not marked down"
+      }
+    },
+    "total": 10,
+    "bar": "8/10 with P1=2",
+    "pass": true,
+    "fixes": [],
+    "owner_verdict": "approved"
+  },
+  {
+    "story": "028 (story-messi-red-v2)",
+    "gate": "2 script",
+    "date": "2026-11-16",
+    "scores": {
+      "S1": {
+        "score": 2,
+        "evidence": "Line 0: one hard fact, one figure ('...red card after 47 seconds?')"
+      },
+      "S2": {
+        "score": 2,
+        "evidence": "Line 1: 'Budapest, August 2005. Messi, 18, comes off the bench'"
+      },
+      "S3": {
+        "score": 2,
+        "evidence": "One thread (red card -> redemption). Weakest link: line 7 'Shy off the pitch... hated losing' (owner's temper beat), kept as on-thread"
+      },
+      "S4": {
+        "score": 2,
+        "evidence": "Merk 'yellow also fair' (Goal DE 2021), Vanczak felt sorry (FFT + 444.hu excerpts), Pekerman tears (Bolavip), 2016 quit"
+      },
+      "S5": {
+        "score": 2,
+        "evidence": "Line 12 'Not bad for a career that began with a red card.'"
+      },
+      "S6": {
+        "score": 2,
+        "evidence": "Hook promise (debut red card, 47 s) told in lines 1-3"
+      },
+      "S7": {
+        "score": 1,
+        "evidence": "178 words (check_reel: 178 expected); outside 120-160, music loops once at 11.83 s"
+      }
+    },
+    "total": 13,
+    "bar": "12/14 with S1,S3=2",
+    "pass": true,
+    "fixes": [
+      "Hard-rule note: lines 4 (Pekerman's words), 5 (Merk, one Goal/SPOX interview) and 7 (Messi, Sport360) rest on one source each, spoken as attributed speech without 'reportedly'. Passed as attributed speech; rubric should say whether attribution counts as 'reportedly'.",
+      "Line 4 wording differs from first approved text ('left the pitch in tears' -> 'was in tears'); owner approved the v1 cut with the new wording."
+    ],
+    "owner_verdict": "approved"
+  },
+  {
+    "story": "028 (story-messi-red-v2)",
+    "gate": "3 final cut",
+    "date": "2026-11-16",
+    "scores": {
+      "F1": {
+        "score": 2,
+        "evidence": "Frame 0: whole hook over Merk raising the red card (card painting)"
+      },
+      "F2": {
+        "score": 1,
+        "evidence": "Cuts (scene detect): hook holds 0-5.4 s, Merk 21.8-25.9 s (4.1 s), pen16crop 51.4-55.1 s (3.7 s) exceed 3.5 s; none over 6 s. 908-v5 hook holds 3.5 s"
+      },
+      "F3": {
+        "score": 2,
+        "evidence": "Each line's picture matches (subon, pull, card, protest, walkoff+Pekerman, Merk, Vanczak, LEO 10 kerb, Ballon d'Or, Gotze/scoreboard, penalty crop, trophy lift)"
+      },
+      "F4": {
+        "score": 2,
+        "evidence": "timing.json captions match PROVENANCE script word for word; chips inside boxes, clear of faces (frames 6, 19.5, 43, 47, 49.5, 53, 57)"
+      },
+      "F5": {
+        "score": 2,
+        "evidence": "check_reel.py re-run: -13.9 LUFS, -1.5 dBTP, voice 9.9-13.5 dB over music, largest step 2.6 dB, no pumping; loop joint 11.83 s smooth. Only FAIL is word-survival spellings (Vanczak, 8/eight, d'Or)"
+      },
+      "F6": {
+        "score": 1,
+        "evidence": "Vanczak never transcribed right ('Real Mosvantar', 'Vansack'); Pekerman heard 'Pecherman'. Flagged for owner's ear (lines 2, 4, 6)"
+      },
+      "F7": {
+        "score": 2,
+        "evidence": "Page title/dek/body tell the same story; 47 s per owner; nothing beyond docs/fact-checks/028.md"
+      }
+    },
+    "total": 12,
+    "bar": "12/14 with F1,F4=2",
+    "pass": false,
+    "fixes": [
+      "HARD RULE FAIL: page reelCredits omits Commons authors J. Baikovicius (score14), Agencia Brasil/Marcello Casal Jr (goetze), Sebas (champ22). Replace with the PROVENANCE.md line (163 chars, names all).",
+      "Owner to listen to 'Vanczak' (lines 2, 6) and 'Pekerman' (line 4) before install (F6 -> 2).",
+      "Optional for F2 -> 2: split the 5.4 s hook hold and the 4.1 s Merk shot (needs re-render; not required to pass).",
+      "Not yet installed: assets/reels/028-baggio-v-messi-16-november.mp4 absent; public/images/derived/028-reel.mp4 is the old 9 Nov reel (sha cba9124...). Re-check after install.",
+      "npm run verify: 1 error (046 Facebook slot) and 028 'on this day' warning, both not caused by this Reel."
+    ],
+    "owner_verdict": null
+  },
+  {
+    "story": "028 v5 (story-028-v5)",
+    "gate": "1 pitch",
+    "date": "2026-11-16",
+    "scores": {
+      "P1": {
+        "score": 1,
+        "evidence": "Messi's Porto debut and a missed chance: mildly new, no shock ('ok, so what?')"
+      },
+      "P2": {
+        "score": 2,
+        "evidence": "Messi"
+      },
+      "P3": {
+        "score": 1,
+        "evidence": "Contradiction (record scorer / didn't shoot) only partial; no setback-to-triumph"
+      },
+      "P4": {
+        "score": 1,
+        "evidence": "'Porto or Espanyol: which is his real debut?' opinion/trivia"
+      },
+      "P5": {
+        "score": 1,
+        "evidence": "'I should have shot' rests on one source (ESPN Deportes)"
+      }
+    },
+    "total": 6,
+    "bar": "8/10 with P1=2",
+    "pass": false,
+    "fixes": [
+      "Would not reach owner: P1=1, total 6"
+    ],
+    "owner_verdict": "rejected: ok, so what?"
+  },
+  {
+    "story": "028 v5 (story-028-v5)",
+    "gate": "2 script",
+    "date": "2026-11-16",
+    "scores": {
+      "S1": {
+        "score": 1,
+        "evidence": "Line 0 stacks label + question + quote; no single hard figure"
+      },
+      "S2": {
+        "score": 2,
+        "evidence": "Line 1 'Porto, 16 November 2003...'"
+      },
+      "S3": {
+        "score": 0,
+        "evidence": "Mourinho / new stadium / Champions League line and Espanyol no. 30 line are side lines"
+      },
+      "S4": {
+        "score": 2,
+        "evidence": "No. 14 handiest shirt, two chances, quote, no. 30"
+      },
+      "S5": {
+        "score": 2,
+        "evidence": "'672 goals followed. That first night, he didn't score'"
+      },
+      "S6": {
+        "score": 2,
+        "evidence": "Quote told in line 5"
+      },
+      "S7": {
+        "score": 2,
+        "evidence": "~121 words"
+      }
+    },
+    "total": 11,
+    "bar": "12/14 with S1,S3=2",
+    "pass": false,
+    "fixes": [
+      "Would not reach owner: S3=0, S1=1"
+    ],
+    "owner_verdict": "rejected: ok, so what?"
+  },
+  {
+    "story": "028 v6 (story-028-v6)",
+    "gate": "1 pitch",
+    "date": "2026-11-16",
+    "scores": {
+      "P1": {
+        "score": 1,
+        "evidence": "Five youth/club teams in one season: a stat curiosity, no shock"
+      },
+      "P2": {
+        "score": 2,
+        "evidence": "Messi"
+      },
+      "P3": {
+        "score": 1,
+        "evidence": "Rise only, no setback"
+      },
+      "P4": {
+        "score": 2,
+        "evidence": "'Can you name a player who climbed faster?' invites naming (scores 2 too easily)"
+      },
+      "P5": {
+        "score": 2,
+        "evidence": "FC Barcelona, Goal, ESPN Deportes (opened)"
+      }
+    },
+    "total": 8,
+    "bar": "8/10 with P1=2",
+    "pass": false,
+    "fixes": [
+      "Total 8 met the bar; failed only on P1=1. P1 and P4 too soft (see proposal)"
+    ],
+    "owner_verdict": "rejected: ok, so what?"
+  },
+  {
+    "story": "028 v6 (story-028-v6)",
+    "gate": "2 script",
+    "date": "2026-11-16",
+    "scores": {
+      "S1": {
+        "score": 1,
+        "evidence": "Line 0 has two facts (five teams; first team before B)"
+      },
+      "S2": {
+        "score": 2,
+        "evidence": "Line 1 Porto"
+      },
+      "S3": {
+        "score": 1,
+        "evidence": "Porto two-chances/'I should have shot' line detours from the five-teams thread"
+      },
+      "S4": {
+        "score": 2,
+        "evidence": "U19B->U19A, 4 goals in one game, 37 games/35 goals"
+      },
+      "S5": {
+        "score": 1,
+        "evidence": "'It started with a shot he didn't take' ties to the Porto chance, not the hook"
+      },
+      "S6": {
+        "score": 1,
+        "evidence": "Barca C (team five) never spoken, only on the chip"
+      },
+      "S7": {
+        "score": 2,
+        "evidence": "~133 words"
+      }
+    },
+    "total": 10,
+    "bar": "12/14 with S1,S3=2",
+    "pass": false,
+    "fixes": [
+      "Would not reach owner: total 10, S1=1, S3=1"
+    ],
+    "owner_verdict": "rejected: ok, so what?"
+  }
+]
