@@ -15,7 +15,7 @@ const day1 = Date.parse('2026-11-08T00:00:00Z'); // story 20
 const tsOf = (story: number) => day1 + (story - 20) * DAY;
 const failures: string[] = [];
 
-type Plan = { igLikes: (s: number) => number; fbLikes: (s: number) => number; thLikes: (s: number) => number; igShares: (s: number) => number; skip: (s: number) => number; thReposts?: (s: number) => number };
+type Plan = { igLikes: (s: number) => number; fbLikes: (s: number) => number; thLikes: (s: number) => number; igShares: (s: number) => number; skip: (s: number) => number; thReposts?: (s: number) => number; fbNoTs?: number };
 
 function writeStories(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
@@ -32,7 +32,9 @@ function writeSnapshots(dir: string, plan: Plan, from: string, to: string) {
       id: `ig${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString().replace('.000Z', '+0000'), likes: plan.igLikes(s), comments: 0, shares: plan.igShares(s), saves: 0, reposts: null,
       reach: 100, views: 120, follows: null, avg_watch_ms: 6000, total_watch_ms: 1, skip_rate: plan.skip(s),
     }));
-    const fb = stories.map((s) => ({ id: `fb${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString(), likes: plan.fbLikes(s), comments: 0, shares: 0, saves: null, reposts: null, reach: null, views: 50, views_incl_replays: 60, avg_watch_s: 5, skip_rate: null }));
+    const fb: any[] = stories.map((s) => ({ id: s === plan.fbNoTs ? `777${s}` : `fb${s}`, story: s, timestamp: s === plan.fbNoTs ? null : new Date(tsOf(s)).toISOString(), likes: plan.fbLikes(s), comments: 0, shares: 0, saves: null, reposts: null, reach: null, views: 50, views_incl_replays: 60, avg_watch_s: 5, skip_rate: null }));
+    // A posted-directly Reel (no Meta timestamp) leaves its deleted old cut in the list as an empty row with a timestamp.
+    if (plan.fbNoTs !== undefined && stories.includes(plan.fbNoTs)) fb.push({ id: `fbold${plan.fbNoTs}`, story: plan.fbNoTs, timestamp: new Date(tsOf(plan.fbNoTs)).toISOString(), likes: null, comments: null, shares: null, saves: null, reposts: null, reach: null, views: null, views_incl_replays: null, avg_watch_s: null, skip_rate: null });
     const th = stories.map((s) => ({ id: `th${s}`, story: s, timestamp: new Date(tsOf(s)).toISOString(), likes: plan.thLikes(s), comments: 0, shares: 0, saves: null, reposts: plan.thReposts?.(s) ?? 0, reach: null, views: 20, avg_watch_s: null, skip_rate: null }));
     const date = new Date(t).toISOString().slice(0, 10);
     fs.writeFileSync(
@@ -57,8 +59,12 @@ fs.writeFileSync(expFile, JSON.stringify(experiments));
 const stories = path.join(root, 'stories');
 writeStories(stories);
 
+// Our own posting record (stands in for data/sent.json): story 36's Facebook Reel was posted directly, so only this record has its time.
+const sentFile = path.join(root, 'sent.json');
+fs.writeFileSync(sentFile, JSON.stringify({ sent: [], social: [{ number: 36, network: 'facebook', status: 'posted', at: new Date(tsOf(36)).toISOString(), detail: 'posted reel 77736 (music: x)' }] }));
+
 function run(name: string, metrics: string, now: string, expect: string[], reject: string[] = []) {
-  const text = execFileSync('npx', ['tsx', 'scripts/scoreboard.ts', '--metrics', metrics, '--experiments', expFile, '--stories', stories, '--now', now], { encoding: 'utf8' });
+  const text = execFileSync('npx', ['tsx', 'scripts/scoreboard.ts', '--metrics', metrics, '--experiments', expFile, '--stories', stories, '--sent', sentFile, '--now', now], { encoding: 'utf8' });
   for (const e of expect) if (!text.includes(e)) failures.push(`${name}: expected "${e}"`);
   for (const r of reject) if (text.includes(r)) failures.push(`${name}: did not expect "${r}"`);
   if (process.env.SHOW) console.log(`\n===== ${name} =====\n${text}`);
@@ -104,6 +110,14 @@ run('one story shares', oneStory, '2026-12-02T05:00:00Z', ['shares: FAIL', '3 sh
 // 9. A test with no outliers lists "none".
 run('no outlier listed', keep, '2026-12-02T05:00:00Z', ['Outlier posts (reported always; one post never decides a test alone): none.']);
 
+// 10. A Facebook Reel with no Meta timestamp is still scored (its time comes from the posting record), and the empty row
+//     of its deleted old cut is not counted: test 1 still has exactly 7 Facebook posts, one per story.
+const noTs = path.join(root, 'no-ts');
+writeSnapshots(noTs, { igLikes: () => 2, fbLikes: (s) => (s === 36 ? 5 : 0), thLikes: () => 0, igShares: () => 0, skip: () => 55, fbNoTs: 36 }, '2026-11-10', '2026-12-03');
+const noTsText = run('facebook without timestamp', noTs, '2026-12-02T05:00:00Z', []);
+if (!/facebook: posts scored \| 7 \|/.test(noTsText)) failures.push('facebook without timestamp: expected 7 Facebook posts scored in test 1 (the timestamp-less Reel kept, its empty old cut skipped)');
+if (!/facebook: likes per post \(mean \/ median\) \| 0\.71 \/ 0 \|/.test(noTsText)) failures.push('facebook without timestamp: expected Facebook likes 0.71 / 0 in test 1 (story 36\'s 5 reactions counted)');
+
 // 6. A missing day is reported.
 const gap = path.join(root, 'gap');
 writeSnapshots(gap, { igLikes: () => 2, fbLikes: () => 0, thLikes: () => 0, igShares: () => 0, skip: () => 55 }, '2026-11-10', '2026-11-14');
@@ -115,4 +129,4 @@ if (failures.length) {
   console.error(`Scoreboard fixture FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log('Scoreboard fixture passed: no snapshots, one snapshot, keep, drop, extend, a single outlier post, shares from one story and a missing day all behave as the plan says.');
+console.log('Scoreboard fixture passed: no snapshots, one snapshot, keep, drop, extend, a single outlier post, shares from one story, a Facebook Reel without a timestamp and a missing day all behave as the plan says.');

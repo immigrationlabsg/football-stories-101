@@ -118,7 +118,7 @@
       "Not yet installed: assets/reels/028-baggio-v-messi-16-november.mp4 absent; public/images/derived/028-reel.mp4 is the old 9 Nov reel (sha cba9124...). Re-check after install.",
       "npm run verify: 1 error (046 Facebook slot) and 028 'on this day' warning, both not caused by this Reel."
     ],
-    "owner_verdict": null,
+    "owner_verdict": "approved: \"The process below turned that into a story the owner called great\" and the owner described the process \"after the Messi red-card Reel (story 028, ~/Developer/football-stories-samples/story-messi-red-v2)\" (.claude/skills/narrated-reel/references/story-development.md lines 3 and 5, written by the session, not the owner's verbatim words); installed at the owner's request: commit 6d58a1e \"content: 028 becomes Messi's 47-second Argentina debut (owner, 16 Nov)\". No owner comment on F2 pace or F6 name pronunciation is written anywhere.",
     "followup": "16 Nov 00:45: reelCredits set to the full 163-character line before install (commit 6d58a1e), so the failing hard rule now passes. Site 028-reel.mp4 confirmed to be v2 (sha256 f61b2dec...)."
   },
   {

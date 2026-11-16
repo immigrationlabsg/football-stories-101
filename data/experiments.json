@@ -16,14 +16,14 @@
       "change": "Narration, music samples 3 and 4, a new picture every 2-3 s, about 45 s, no credits on the Reel (owner, 8 Nov 2026). The trial itself is the baseline for every test.",
       "counted": {
         "stories": { "from": 20, "to": 28 },
-        "rule": "The daily posts of 8-16 Nov 2026 (stories 020-028, 9 posts), at 08:00 Singapore on weekdays and 10:00 at weekends, whatever their format. The 17 Nov post (029) is too young and is not part of the baseline. Extras (stories 900-908, the 20:00 series) are excluded."
+        "rule": "The daily posts of 8-16 Nov 2026 (stories 020-028, 9 posts), at 08:00 Singapore on weekdays and 10:00 at weekends, whatever their format. The 17 Nov post (029) is too young and is not part of the baseline. Extras (stories 900-999, the 20:00 series, including 909) are excluded."
       },
       "scoreAt": {
         "mode": "latest",
         "notAfter": "2026-11-18",
         "note": "Locked in the trial report on 18 Nov: these posts are read at whatever age they are then (2 to 10 days), not at exactly 48 h. Older posts have had longer to collect likes, so this baseline is generous, which makes the tests harder to pass. The scoreboard marks the baseline as provisional until then."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "reportOn": "2026-11-18",
       "bar": null,
       "ownerOk": "Owner, 8 Nov 2026: 'I like the current style, let's try for 10 days straight then come back with a report on its performance.'"
@@ -38,9 +38,9 @@
       "change": "Every daily post (stories, comparisons, quiz) chosen for awe, outrage or an absurd paradox, with a name fans know. The writer tags each story's feeling.",
       "counted": {
         "stories": { "from": 35, "to": 41 },
-        "rule": "All 7 daily posts of 23-29 Nov (stories 035-041) at 08:00 (10:00 at weekends), whatever their format. Extras (900-908) do not count."
+        "rule": "All 7 daily posts of 23-29 Nov (stories 035-041) at 08:00 (10:00 at weekends), whatever their format. Extras (900-999, the 20:00 series; 909 exists since 9 Nov) do not count."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "compare": { "previous": { "stories": { "from": 28, "to": 34 }, "label": "the week before (16-22 Nov)" } },
       "bar": {
         "likesPerPost": { "pctAbove": 30, "against": "baseline" },
@@ -60,10 +60,10 @@
       "change": "Test 1's change stays in (per the lag rule) unless dropped on 2 Dec. Rotate the opening line by day: a true 'most/only' fact, the result first, or a question (2-3 days each). Each story carries an `opening` tag.",
       "counted": {
         "stories": { "from": 42, "to": 48 },
-        "storiesConfirmed": false,
-        "rule": "All 7 daily posts of 30 Nov - 6 Dec (stories 042-048), whatever their format. Stories past 047 do not exist yet: the numbers assume one story a day with no gaps from 020 on 8 Nov; confirm them against the story files when they are built, and correct this entry before 30 Nov. Extras (900-908) do not count."
+        "storiesConfirmed": true,
+        "rule": "All 7 daily posts of 30 Nov - 6 Dec (stories 042-048), whatever their format. Confirmed at the 16 Nov review against the story files: 042 dated 30 Nov to 048 dated 6 Dec, one a day, no gaps. Extras (900-999, the 20:00 series; 909 exists since 9 Nov) do not count."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "compare": { "previous": { "stories": { "from": 35, "to": 41 }, "label": "the week before (23-29 Nov, test 1)" } },
       "bar": {
         "skipRatePointsDown": { "points": 5, "against": "previous" },
@@ -87,9 +87,9 @@
         "stories": { "from": 49, "to": 55 },
         "storiesConfirmed": false,
         "includeUnmappedInWindow": true,
-        "rule": "Threads posts of 7-13 Dec: the 7 daily card posts (stories 049-055) and the daily text takes (Threads posts with no story number, posted inside the week). Stories past 047 do not exist yet: the numbers assume one story a day with no gaps from 020 on 8 Nov; confirm them when built, and correct this entry before 7 Dec. Instagram and Facebook are shown only as controls."
+        "rule": "Threads posts of 7-13 Dec: the 7 daily card posts (stories 049-055) and the daily text takes (Threads posts with no story number, posted inside the week). Checked at the 16 Nov review: 049 (7 Dec) to 054 (12 Dec) exist with the right dates; 055 (13 Dec) is not written yet, so confirm it when built and correct this entry before 7 Dec. Instagram and Facebook are shown only as controls."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "compare": { "previous": { "stories": { "from": 42, "to": 48 }, "label": "the week before (30 Nov - 6 Dec)" } },
       "bar": {
         "threadsLikesPlusRepostsMin": 5,
@@ -110,9 +110,9 @@
       "counted": {
         "stories": { "from": 59, "to": 68 },
         "storiesConfirmed": false,
-        "rule": "All 10 daily posts of 17-26 Dec. The numbers 059-068 assume one story a day with no gaps from 020 on 8 Nov; confirm them against the story files when the countdown is built, and correct this entry before 17 Dec. Extras (900-908) do not count."
+        "rule": "All 10 daily posts of 17-26 Dec. The numbers 059-068 assume one story a day with no gaps from 020 on 8 Nov; confirm them against the story files when the countdown is built, and correct this entry before 17 Dec. Extras (900-999, the 20:00 series; 909 exists since 9 Nov) do not count."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "compare": { "previous": { "stories": { "from": 49, "to": 58 }, "label": "the 10 days before (7-16 Dec)" } },
       "bar": {
         "likesPerPost": { "pctAbove": 30, "against": "previous" },
@@ -134,7 +134,7 @@
         "stories": null,
         "rule": "To be set in this register before the week starts (dates, the one change, counted stories and the bar)."
       },
-      "excludeStories": "900-908",
+      "excludeStories": "900-999",
       "compare": { "previous": null },
       "bar": null,
       "followers": "Reported, judged only on the 4-week trend.",

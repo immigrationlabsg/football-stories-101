@@ -552,3 +552,161 @@ Owner, 10 Nov: "For Lyon and tomorrow's reel, the story telling and initial 3s h
 - 024 Lyon (12 Nov): hook kept; story re-voiced in Denmark's order: leaders Lens come to Lyon on the last day, a draw enough for them; Lyon win 3-1, their first title; year after year they sold their stars (Essien, Diarra, Malouda, Abidal); still they won, Juninho the constant; 2008, seven in a row with four coaches and a first double. Cut from the Reel with the owner's OK: "Weeks later, Lyon let the coach go" (still on the page). "Every summer" became "year after year" because every single summer could not be proven. New question "Which club in your memory sold its stars year after year, and kept winning?". Facebook Reel replaced (final 4555582654680286; the 2151451415733473 cut was replaced again after the independent check moved "their first title" off a later-era kit onto the 2002 team photo). Independent check: both Reels pass (words, captions, pictures, facts, live files).
 - YouTube: no new uploads. The scheduled Lyon Short (fu41Q7AR5K8, 12 Nov) is the earlier hook-only cut.
 - Judge: 023 and 024 reach, 3-second hold, shares per reach against 021 Denmark and the earlier card Reels, before deciding the next day's Reel.
+
+## Weekly review, 16 Nov 2026 (week 9-16 Nov, trial days 2-9)
+
+Sources: `npm run scoreboard` over 8 snapshots (`data/metrics/2026-11-09` to `2026-11-16`); per-post figures from
+`data/metrics/2026-11-16.json`; the week before from `data/metrics/2026-11-09.json`. Every number was read from those
+files by a script, never added by hand.
+
+**Snapshots.** No day missing from 9 to 16 Nov. The 16 Nov file was taken by hand (run 43813651019, read 13:58 SGT)
+because GitHub starts the 13:00 SGT schedule (`cron: "0 5 * * *"`) about 7 hours late: the scheduled snapshots were read
+at 19:56-21:32 SGT, so a post "scored at 48 h" is in fact about 60 h old. The rule is the same for every post, so
+comparisons stay fair, but `docs/improvement-loop.md` section 1 is wrong on the time. Proposal: a Claude scheduled task at
+13:00 SGT that starts the workflow by hand, as the live-stats loop does. Today's scheduled run may still fire this evening
+and overwrite the 16 Nov file with a later read.
+
+**Scoreboard fix, 16 Nov.** Meta gives no timestamp for a Facebook Reel posted directly rather than scheduled (extras,
+same-day replacements), and `npm run scoreboard` skipped any row without one. For 026 it scored the deleted old cut (all
+figures empty) and dropped the live Reel (199 plays). `scripts/scoreboard.ts` now takes the time from our own record
+(`data/sent.json`) when Meta gives none, and skips an empty row when the same story has a live one. The numbers below are
+from the fixed scoreboard. Without the fix, any directly posted Facebook Reel in a test week would have been lost.
+
+**Numbers. Instagram first, in Mosseri's order (sends per reach, likes per reach, then watch).** The trial posts
+(020-028) are provisional: the baseline locks on 18 Nov, and they are read at 6-196 h, not at 48 h. The week before is the
+12 card Reels of 27 Oct-7 Nov (stories 008-019), read in the 9 Nov snapshot at 2-13 days old.
+
+| | Trial, 020-028 (9 posts) | Week before, 008-019 (12 posts) |
+|---|---|---|
+| Instagram shares per 1,000 reached (pooled) | 11.73 (25 shares, all on 021) | 0 (0 shares) |
+| Instagram likes per 1,000 reached (pooled) | 31.4 (67 likes / 2,131 reached) | 21.6 (30 / 1,392) |
+| Instagram likes per post, mean / median | 7.44 / 1 | 2.5 / 2.5 |
+| Instagram skip rate, mean | 45.6% | 56.4% |
+| Instagram average watch, mean | 16.9 s (Reels about 45 s) | 5.5 s (Reels about 23 s) |
+| Instagram reach, median | 118 | 115.5 |
+| Likes per post, all networks, mean / median | 7.56 / 1 | 2.5 (Facebook and Threads gave 0) |
+| Facebook reactions per post / plays median / shares | 0.11 / 3 / 0 | 0 / 1 / 0 |
+| Threads likes / reposts and shares / views median | 0 / 0 / 14 | 0 / 0 / 17.5 |
+
+- Read honestly: the trial's mean is lifted by one post (021). The median Instagram post got fewer likes in the trial (1)
+  than the card week (2.5). What clearly moved across most posts: skip rate down about 11 points and watch time up, as
+  expected of a longer voiced Reel.
+- Followers (snapshots 9 → 16 Nov): Facebook 1 → 3, Instagram 0 → 1, Threads 0 → 0. The series starts on 9 Nov, so
+  there is no 4-week trend yet (first possible on 7 Dec).
+
+| Story | Format | Age at read | IG reach / likes / shares / skip % | IG likes per 1,000 reached | FB plays / reactions | Threads views |
+|---|---|---|---|---|---|---|
+| 020 Barcelona | regular | 196 h | 118 / 0 / 0 / 46.6 | 0 | 256 / 1 | 5 |
+| **021 Denmark 1992** | regular | 174 h | **1,102 / 49 / 25 / 35.4** | 44.5 | 2 / 0 | 41 |
+| 022 Van Persie v Salah | on this day | 150 h | 118 / 0 / 0 / 47.0 | 0 | 2 / 0 | 16 |
+| 023 Wimbledon | regular | 126 h | 126 / 1 / 0 / 46.8 | 7.9 | 3 / 0 | 121 |
+| 024 Lyon | regular | 102 h | 127 / 2 / 0 / 49.2 | 15.7 | 1 / 0 | 16 |
+| 025 Scholes v Buffon | on this day | 78 h | 115 / 6 / 0 / 49.6 | 52.2 | 1 / 0 | 14 |
+| 026 Guess the legend: Drogba | quiz | 51 h | 110 / 0 / 0 / 57.5 | 0 | 199 / 0 | 3 |
+| 027 Grande Torino | regular | 28 h | 116 / 1 / 0 / 37.1 | 8.6 | 6 / 0 | 8 |
+| 028 Messi's 47 seconds | regular | 6 h | 199 / 8 / 0 / 41.0 | 40.2 | 190 / 0 | 9 |
+
+By format (too few posts to read an effect): regular 6 posts (all 25 shares on 021); "on this day" 2 (0 and 6 likes);
+quiz 1 (highest skip, 57.5%); Legendary XI none yet (first is 039, 27 Nov). Posts over 3 times the median: 021 (49
+likes), 028 (8, at 6 h), 025 (6). Reported, not decisive. Week before, on Facebook: plays 0-29 for 008-017, then 175
+(018) and 1 (019); 0 reactions on all 12.
+
+Extras (kept out): 908 Zidane, 18 h old, reached 1,485 on Instagram with 29 likes, 31.8% skip, 19.7 s watch, and 0
+shares. 900 and 906-909: Instagram reach 108-115, 0 shares; Facebook plays 14-275.
+
+**Our own work.**
+- Best: 021 Denmark 1992, still the only post that ever earned shares (22.7 per 1,000 reached), with the lowest skip of
+  the daily posts (35.4%). Then 028 Messi and 908 Zidane (the new Zidane-style script, 15-16 Nov): both got out of the
+  first batch of about 115 within hours (199 and 1,485 reached), with low skip (41.0% and 31.8%), but no shares yet.
+  025 Buffon weeping earned the best like rate (52 per 1,000 reached) without shares. Inference: a famous name with a
+  strong feeling earns likes; a share needs a reason to send it to a particular person (021: "anyone who backs an underdog").
+- Weakest: the Denmark-pattern copies 023 Wimbledon and 024 Lyon (reach 126-127, skip 47-49%): copying 021's hook shape
+  ("This club was...") over a less-known moment did not travel. The quiz again had the highest skip.
+- Low skip alone isn't enough: 027 Grande Torino had 37.1% skip but stayed at 116 reached (28 h old at the read).
+- Captions: since 11 Nov every caption opens with the Reel's hook. No caption effect can be separated from the Reel
+  changes made on the same days.
+- Facebook stays near zero (median 3 plays), with three lifts: 020 (256), 026 (199) and 028 (190). Facebook's posting
+  method changed on 11 Nov (posted on the day instead of scheduled weeks ahead, commit 733641a), and 026's Reel was a
+  same-day repost after the old cut was taken down. The 18 Nov factor review should line up each post's method against
+  its plays before anything is concluded.
+- **Did the trial change one thing only? No.** Besides the voiced style (8 Nov), the trial took in, mostly by the
+  owner's orders: the Denmark-style hook (10 Nov, 023 on); the split layout with the full hook on frame 0 and a
+  first-frame cover (11 Nov); captions opening with the hook (11 Nov); Facebook posting on the day instead of scheduled
+  ahead (11 Nov); 025-027 re-cut in the new style (12 Nov); 026 taken down on every network and reposted at 10:55 SGT
+  instead of 10:00 (14 Nov); and the Zidane-style script (15 Nov, 028 on). The 18 Nov trial report must read 020-022,
+  023-027 and 028 as different styles, and the locked baseline is a mix.
+
+**Benchmark, 16 Nov 2026** (public YouTube pages read logged out on 16 Nov by direct page requests, and re-read the same
+day by the growth-verifier; views and likes are the counts on the video pages; comments and shares are hidden from
+logged-out visitors; nothing copied; the truth of their stories not checked).
+- **AGH Stories** (https://www.youtube.com/@AGH.STORIES): 103K subscribers, 125 videos, joined Sep 2020. Shorts of
+  64-68 s every 1-3 days; one famous name per story, titled as one question or odd claim; caption line 1 repeats the
+  title. Six Shorts of 2-12 Nov had about 147K-1.26M views (median about 331K), likes 1.6-2.9% of views. Best: "Did Pelé
+  score 1270 goals?" (9 Nov), about 1.25M views, 3.8 times its median: a myth fans already argue about, settled with a
+  number. Its two weakest of the 14 Shorts since 16 Oct were a women's story (15,606) and a tennis story (25,907). Not
+  for us: AI pictures of real people in scenes that never happened, and claims we couldn't fact-check.
+- **Scribble Stadium** (https://www.youtube.com/@ScribbleStadium): 454-456 subscribers, 10 videos, joined Jan 2026;
+  narrated cartoons of 4-5 min about odd true sports stories. Its first four videos had 482-1,970 views; "Games Where
+  Teams Tried to Lose on Purpose" (2 Nov) then got 227,204, and later ones ranged from 7,410 ("Sports Curses That
+  Actually Came True") to 86,880 ("The Most Hated Goals in Football History"). Lesson: a paradox in the title ("tried to
+  lose") can be recommended to hundreds of thousands with a few hundred subscribers, but not every video gets it. Not for
+  us: long "worst moments" lists without a named source per case.
+- **Sporty2D**, revisited: 120 → 288 subscribers in a week; its 5 football Shorts of 4-15 Nov had about 7.3K-106K
+  views, its 6 other-sports Shorts 1.4K-26.9K. **FootballVault**: 21.6K → 23K subscribers.
+- Routes tried for the new pages' TikTok and Instagram: profile pages returned an empty page or a login shell; web search
+  found nothing; Social Blade (retried 16 Nov) sits behind a Cloudflare bot check, which we don't get around; Wayback
+  (retried 16 Nov) has no copies of tiktok.com/@agh.stories or instagram.com/agh.stories. Follower counts there unknown.
+
+**The four asks.**
+1. A head of social would stop copying 021's hook shape and copy what made it sendable: a moment the whole world knows,
+   told so a fan thinks of one person to send it to. AGH Stories does the same with myths fans already argue about.
+2. Rawest material: the per-post table. The only shares in 9 posts came from one story; the reach breakouts (021, 028,
+   908) all had low skip, but so did 027, which didn't break out; the Denmark-shape copies on lesser-known moments did not move.
+3. Methods: keep test 1 (story pick by feeling, 23-29 Nov) as registered, scored by the scoreboard on likes and shares,
+   with Instagram read in Mosseri's order as the rules already say. Queue as research ideas, not tests yet: a "myth
+   settled" story type (AGH Stories) and paradox-first titles on YouTube.
+4. Outside evidence: AGH Stories' myth Short (3.8 times its median), Scribble Stadium's and Sporty2D's paradox titles,
+   and Berger and Milkman's awe finding point the same way as our 021. Still one share-earning post of ours: a lead.
+
+**Next week's set-up (checked 16 Nov).**
+- 16-22 Nov: no test (the trial ends 17 Nov; trial report and locked baseline 18 Nov). Stories 029-034 are the "week
+  before" for test 1.
+- Test 1 (23-29 Nov, stories 035-041) is in `data/experiments.json` since 9 Nov with one change, dates, counted stories
+  and its bar. Its stories lacked the `feeling` tag; the writer added it on 16 Nov (035 awe, 036 awe, 037 other,
+  038 paradox, 039 awe, 040 paradox, 041 awe), with `sendable_to` and `recency_tie` (improvement-loop section 10). Tags
+  only: no text, hook or schedule changed.
+- **Not finished, for the owner:** 037 Best v Maradona (25 Nov) opens on two deaths, a sadness story, which the test's
+  own evidence says spreads least, so test 1's one change doesn't yet cover all 7 counted stories. 040 Riquelme v
+  Ronaldinho (28 Nov) is only a weak paradox (a same-date coincidence). Options for 037: lead with its paradox (each man
+  holds the prize the other never won) or re-pick it; either needs the owner's OK.
+- Facebook: every slot from 032 to 045 (all of test 1's 035-041 included) still holds an older Reel with older music
+  (`npm run verify` warnings); each needs its new Reel built, approved and switched in before its day, as the daily
+  11:10 swap does.
+- Register fixes: test 2's stories 042-048 confirmed against the story files (30 Nov-6 Dec, no gaps); test 3's 049-054
+  confirmed, 055 not written yet; the extras range widened from 900-908 to 900-999 because 909 exists. No bar, date or
+  change altered.
+- Owner OKs in writing: tests 1-4 ("Improvement loop approved, 9 Nov 2026").
+
+**Reel-evaluator review (first one).** No gated Reel is 48 h old yet: all seven `data/eval-log.json` entries are versions
+of 028 (posted 16 Nov 00:01Z, first scorable on the 18 Nov snapshot). One owner verdict filled (entry 3, 028 final cut:
+approved, from the story-development SOP, in the session's words). Rubric changes it proposes, for the owner to confirm
+(evaluators.md not changed):
+1. Take Zidane 908 out of the "high shares" examples: 0 shares on every network so far (high confidence; a factual fix).
+2. Add a "send-to" criterion: name who a viewer would send it to, and why (low confidence: rests on one share-earning post).
+3. Bring back the parked stricter hook (P1) and question (P4) scores. Evidence: the owner rejected a v6 pitch ("ok, so
+   what?") that met the total bar, and v5 passed the owner on 15 Nov before being rejected. (The evaluator also said the
+   "name your own case" questions of 021, 023, 024 and 027 earned shares only on 021; those four were never gated, so
+   that part is our reading of the posts, not a rubric score.) Moderate confidence on the owner's taste, none yet on shares.
+4. Mark scores given after the owner's verdict as retrospective, and leave them out of the evaluator's miss rate (high; honesty of the record).
+5. Score the facts criterion on the evidence even when the owner settles a disputed figure (028's "47 seconds"; CBS and
+   EFE say 43) (medium).
+
+**Open.** (1) Facebook's 4 Dec slot (story 046 Giroud v Sócrates) still holds the old Maradona Reel from before the
+14 Nov renumbering (`npm run verify` error). Dry runs of the switch (43796122069, 43805993439) refused because the site's
+046 Reel doesn't carry the current music: 046 has to be built and approved first. Not changed by this review. (2) 023's
+Instagram average watch of 49.8 s on a 45 s Reel looks like a counting oddity at Meta's end. (3) TikTok and YouTube are
+only in `live.json`, not in the scoreboard. (4) The snapshot runs late (above).
+
+**What works (kept by a test): none yet.** The first keep-or-drop decision is test 1's, on Wednesday 2 Dec. Leads to test,
+not rules: a world-known moment with a clear person to send it to (021); a low first-seconds skip helps but is not enough
+on its own (027).

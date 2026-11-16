@@ -24,6 +24,7 @@ const opt = (name: string, fallback: string) => {
 const METRICS = path.resolve(opt('metrics', path.join(ROOT, 'data/metrics')));
 const EXPERIMENTS = path.resolve(opt('experiments', path.join(ROOT, 'data/experiments.json')));
 const STORIES = path.resolve(opt('stories', path.join(ROOT, 'src/content/stories')));
+const SENT = path.resolve(opt('sent', path.join(ROOT, 'data/sent.json')));
 const NOW = Date.parse(opt('now', process.env.SCOREBOARD_NOW ?? new Date().toISOString()));
 const H = 3_600_000;
 const NETWORKS = ['facebook', 'instagram', 'threads'] as const;
@@ -114,8 +115,26 @@ interface Post {
 }
 const posts = new Map<string, Post>();
 const n = (v: any): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
+// Meta gives no timestamp for a Facebook Reel posted directly (not scheduled), e.g. extras and same-day replacements.
+// Fall back to the time our own record says it was posted (or scheduled for), from data/sent.json.
+const fbSentAt = new Map<string, number>();
+try {
+  const sent = fs.existsSync(SENT) ? JSON.parse(fs.readFileSync(SENT, 'utf8')) : {};
+  for (const x of sent.social ?? []) {
+    if (x.network !== 'facebook' || typeof x.detail !== 'string') continue;
+    const id = /reel (\d+)/.exec(x.detail)?.[1];
+    if (!id) continue;
+    const when = /scheduled for (\S+)/.exec(x.detail)?.[1] ?? x.at;
+    const t = parseTs(when);
+    if (t !== null) fbSentAt.set(id, t);
+  }
+} catch {
+  /* no record: rows without a timestamp are skipped, as before */
+}
+const allNull = (r: any) => ['likes', 'comments', 'shares', 'views'].every((k) => r[k] === null || r[k] === undefined);
+
 function add(network: Network, snap: Snap, r: any, o: Omit<Obs, 'snap'>) {
-  const ts = parseTs(r.timestamp);
+  const ts = parseTs(r.timestamp) ?? (network === 'facebook' && r.id ? fbSentAt.get(String(r.id)) ?? null : null);
   if (!r.id || ts === null) return;
   const key = `${network}|${r.id}`;
   let p = posts.get(key);
@@ -126,8 +145,12 @@ function add(network: Network, snap: Snap, r: any, o: Omit<Obs, 'snap'>) {
 for (const snap of snaps) {
   const d = snap.data;
   const reelStories = new Set<number>();
-  for (const r of d.facebook?.reels ?? []) {
+  const fbReels: any[] = d.facebook?.reels ?? [];
+  for (const r of fbReels) {
     if (typeof r.story === 'number') reelStories.add(r.story);
+    // A replaced Reel (old cut deleted) can stay in Meta's list with every figure empty; skip it when the same
+    // story has a live row in this snapshot, so the story isn't counted twice or scored from the empty row.
+    if (allNull(r) && typeof r.story === 'number' && fbReels.some((x) => x !== r && x.story === r.story && !allNull(x))) continue;
     add('facebook', snap, r, { likes: n(r.likes), comments: n(r.comments), shares: n(r.shares), reposts: null, denom: n(r.views), reach: null, views: n(r.views), skip: null, watchS: n(r.avg_watch_s) });
   }
   for (const r of d.facebook?.posts ?? []) {
