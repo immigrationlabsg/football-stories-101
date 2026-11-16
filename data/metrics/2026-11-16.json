@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "read_at": "2026-11-16T05:58:46.174Z",
+  "read_at": "2026-11-16T13:21:16.323Z",
   "facebook": {
     "followers": 3,
     "page_likes": 3,
@@ -360,9 +360,9 @@
         "saves": null,
         "reposts": null,
         "reach": null,
-        "views": 190,
-        "views_incl_replays": 197,
-        "avg_watch_s": 1.786,
+        "views": 192,
+        "views_incl_replays": 199,
+        "avg_watch_s": 1.778,
         "skip_rate": null
       },
       {
@@ -452,7 +452,7 @@
         "saves": null,
         "reposts": null,
         "reach": null,
-        "views": 197,
+        "views": 199,
         "avg_watch_s": null,
         "skip_rate": null
       },
@@ -662,17 +662,17 @@
         "story": 28,
         "timestamp": "2026-11-16T00:01:54+0000",
         "media_type": "VIDEO",
-        "likes": 8,
+        "likes": 9,
         "comments": 0,
         "shares": 0,
         "saves": 1,
         "reposts": null,
-        "reach": 199,
-        "views": 215,
+        "reach": 224,
+        "views": 240,
         "follows": null,
-        "avg_watch_ms": 14891,
-        "total_watch_ms": 2948456,
-        "skip_rate": 41
+        "avg_watch_ms": 15265,
+        "total_watch_ms": 3434734,
+        "skip_rate": 40.6
       },
       {
         "id": "18036961559854297",
@@ -684,12 +684,12 @@
         "shares": 0,
         "saves": 1,
         "reposts": null,
-        "reach": 1485,
-        "views": 1701,
+        "reach": 1486,
+        "views": 1702,
         "follows": null,
-        "avg_watch_ms": 19689,
-        "total_watch_ms": 29159930,
-        "skip_rate": 31.8
+        "avg_watch_ms": 19666,
+        "total_watch_ms": 29165133,
+        "skip_rate": 31.9
       },
       {
         "id": "18123629738059989",
@@ -927,7 +927,7 @@
         "saves": null,
         "reposts": 0,
         "reach": null,
-        "views": 9,
+        "views": 10,
         "avg_watch_s": null,
         "skip_rate": null
       },
