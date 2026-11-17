@@ -48,9 +48,15 @@
     },
     {
       "number": 30,
+      "sample": "trend-brazil",
+      "confirmed": "2026-11-18",
+      "note": "trend Reel, owner approved script 17 Nov and asked for it on 18 Nov; replaced Lily Parr"
+    },
+    {
+      "number": 32,
       "sample": "trend-pochettino",
       "confirmed": "2026-11-17",
-      "note": "trend Reel, owner approved finished video 17 Nov; replaced Lily Parr"
+      "note": "trend Reel, owner approved finished video 17 Nov; moved to 20 Nov at owner's request; replaced Cameroon"
     }
   ]
 }

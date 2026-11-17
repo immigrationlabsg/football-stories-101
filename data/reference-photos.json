@@ -1216,19 +1216,6 @@
       "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
     }
   ],
-  "032": [
-    {
-      "commons": null,
-      "licence": "n/a",
-      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette.",
-      "alt": "Watercolour painting of a Cameroon striker in a green shirt and red shorts, seen from behind, leaping to head the ball under floodlights"
-    },
-    {
-      "commons": "File:Milla2008cropped.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Roger Milla in Cameroon red (2008), for his likeness only; the 1990 opening match has no free photo."
-    }
-  ],
   "033": [
     {
       "commons": "File:Bert Trautmann's Neck Brace.jpg",
@@ -1531,6 +1518,19 @@
       "commons": "File:Dick, Kerr Ladies.jpg",
       "licence": "Public domain",
       "why": "The Dick, Kerr Ladies team photo."
+    }
+  ],
+  "056": [
+    {
+      "commons": null,
+      "licence": "n/a",
+      "why": "Commons has no free 1990 photo. Paint without a reference: a Cameroon striker in the green 1990 shirt with yellow and red trim and red shorts, no shirt number visible, rising high for a header under San Siro floodlights, seen from the side and slightly behind with his head tilted up towards the ball. Show a natural human head with short dark hair, an ear and the edge of the cheek, small and softly shadowed, not a featureless silhouette.",
+      "alt": "Watercolour painting of a Cameroon striker in a green shirt and red shorts, seen from behind, leaping to head the ball under floodlights"
+    },
+    {
+      "commons": "File:Milla2008cropped.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Roger Milla in Cameroon red (2008), for his likeness only; the 1990 opening match has no free photo."
     }
   ]
 }

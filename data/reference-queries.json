@@ -216,17 +216,6 @@
       "Greece national team 2004 celebration"
     ]
   },
-  "032": {
-    "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing",
-    "queries": [
-      "Roger Milla",
-      "Cameroun 1990",
-      "Lions Indomptables 1990",
-      "Argentina Mundial 1990",
-      "Coppa del Mondo 1990 San Siro",
-      "François Omam-Biyik"
-    ]
-  },
   "033": {
     "want": "Bert Trautmann in goal for Manchester City, 1950s",
     "queries": [
@@ -395,6 +384,17 @@
       "Lily Parr",
       "women's football 1920",
       "Dick Kerr Ladies 1921"
+    ]
+  },
+  "056": {
+    "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing",
+    "queries": [
+      "Roger Milla",
+      "Cameroun 1990",
+      "Lions Indomptables 1990",
+      "Argentina Mundial 1990",
+      "Coppa del Mondo 1990 San Siro",
+      "François Omam-Biyik"
     ]
   },
   "m01": {
