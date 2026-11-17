@@ -682,15 +682,6 @@
       "story": "denmark-euro-1992"
     },
     {
-      "number": 31,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-09T04:31:07.855Z",
-      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 2976758932688690 (music: cinematic-trailer)",
-      "story": "pele-v-cristiano-ronaldo-19-november",
-      "reel": "2482a1157558ef64b9835ab30e9256a11589d31c"
-    },
-    {
       "number": 909,
       "network": "facebook",
       "status": "posted",
@@ -1017,6 +1008,15 @@
       "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1508575437801184 (music: sports-documentary)",
       "story": "pochettino-murphy-bielsa",
       "reel": "0c0ff888ae933ce5a0df01bf693b3a9fa72ea8d4"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T16:29:14.770Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1995539218517136 (music: cinematic-trailer)",
+      "story": "ronaldinho-back-at-46",
+      "reel": "b4f41f3f30d321ba62f32117537ab4a3a8bcad6d"
     }
   ]
 }
