@@ -1013,10 +1013,10 @@
       "number": 32,
       "network": "facebook",
       "status": "scheduled",
-      "at": "2026-11-17T18:02:06.009Z",
-      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 2645536909200310 (music: sports-documentary)",
+      "at": "2026-11-17T18:25:33.509Z",
+      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1697319032054785 (music: sports-documentary)",
       "story": "pochettino-murphy-bielsa",
-      "reel": "4c1a8f15e6fc1f98ba10ac652f357293273f736c"
+      "reel": "8c2821421e7e0470a75d25808ef38f37291660b1"
     }
   ]
 }
