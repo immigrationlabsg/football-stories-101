@@ -1200,22 +1200,6 @@
       "why": "The giant Greek flag on the pitch at the Estádio da Luz before the final."
     }
   ],
-  "031": [
-    {
-      "commons": "File:Pele, 1965 (closeup).jpg",
-      "licence": "CC0",
-      "pair": true,
-      "why": "19 Nov comparison, Pelé v Cristiano Ronaldo: left, Pelé smiling, head and shoulders, in Santos's white shirt with the Santos crest; the photo is black and white, paint it in natural colour (white shirt, black hair, his skin tone as it is); right, Cristiano Ronaldo, head and shoulders, in Portugal's red 2013 Nike home shirt with the Portugal crest (his photo shows a red Portugal track jacket: paint the shirt instead), looking up as in his photo. No shirt numbers on the front. Everything else about each player (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
-      "kit": "Santos's white shirt with the Santos crest",
-      "alt": "Watercolour painting split in two: a smiling Pelé in Santos white and Cristiano Ronaldo in Portugal red"
-    },
-    {
-      "commons": "File:Cristiano Ronaldo - Croatia vs. Portugal, 10th June 2013 cropped.jpg",
-      "licence": "CC BY-SA 3.0",
-      "why": "Cristiano Ronaldo, Croatia v Portugal, 10 June 2013",
-      "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
-    }
-  ],
   "033": [
     {
       "commons": "File:Bert Trautmann's Neck Brace.jpg",
@@ -1531,6 +1515,22 @@
       "commons": "File:Milla2008cropped.jpg",
       "licence": "CC BY-SA 3.0",
       "why": "Roger Milla in Cameroon red (2008), for his likeness only; the 1990 opening match has no free photo."
+    }
+  ],
+  "057": [
+    {
+      "commons": "File:Pele, 1965 (closeup).jpg",
+      "licence": "CC0",
+      "pair": true,
+      "why": "19 Nov comparison, Pelé v Cristiano Ronaldo: left, Pelé smiling, head and shoulders, in Santos's white shirt with the Santos crest; the photo is black and white, paint it in natural colour (white shirt, black hair, his skin tone as it is); right, Cristiano Ronaldo, head and shoulders, in Portugal's red 2013 Nike home shirt with the Portugal crest (his photo shows a red Portugal track jacket: paint the shirt instead), looking up as in his photo. No shirt numbers on the front. Everything else about each player (face, hair, build) exactly as in his photo. Only these two players: no other figures, the background is a blurred stadium crowd at night.",
+      "kit": "Santos's white shirt with the Santos crest",
+      "alt": "Watercolour painting split in two: a smiling Pelé in Santos white and Cristiano Ronaldo in Portugal red"
+    },
+    {
+      "commons": "File:Cristiano Ronaldo - Croatia vs. Portugal, 10th June 2013 cropped.jpg",
+      "licence": "CC BY-SA 3.0",
+      "why": "Cristiano Ronaldo, Croatia v Portugal, 10 June 2013",
+      "kit": "Portugal's red 2013 Nike home shirt with the Portugal crest (in place of the photo's track jacket)"
     }
   ]
 }
