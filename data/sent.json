@@ -226,15 +226,6 @@
       "story": "le-tissier-v-totti-26-october"
     },
     {
-      "number": 32,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-10-26T05:44:54.690Z",
-      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1470487735041414 (music: egmont)",
-      "story": "cameroon-argentina-italia-90",
-      "reel": "ee6b5cb9386a2760e3cc685f43ed04c0868ef152"
-    },
-    {
       "number": 33,
       "network": "facebook",
       "status": "scheduled",
@@ -1013,8 +1004,17 @@
       "number": 30,
       "network": "facebook",
       "status": "scheduled",
-      "at": "2026-11-17T16:13:31.223Z",
-      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1698274225424552 (music: sports-documentary)",
+      "at": "2026-11-17T16:20:27.864Z",
+      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 3310609335792067 (music: sports-documentary)",
+      "story": "brazil-singapore-referee",
+      "reel": "e4c3dc74e93b18c902242e3006540753b0686b17"
+    },
+    {
+      "number": 32,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T16:22:05.520Z",
+      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1508575437801184 (music: sports-documentary)",
       "story": "pochettino-murphy-bielsa",
       "reel": "0c0ff888ae933ce5a0df01bf693b3a9fa72ea8d4"
     }
