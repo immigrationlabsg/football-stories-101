@@ -65,7 +65,10 @@ async function tiktokAccounts(): Promise<any[]> {
 const MUSIC_GENRES = /ELECTRONIC|HIP_HOP|POP|ROCK|EDM|TRAP|DJ|EPIC/i;
 const NOT_A_SONG = /\(\d{5,}\)|vacuum|sound effect|\bsfx\b|impact|stinger|whoosh|vibration|pass by|jingle|christmas|lullaby|karaoke|meditation|\bhz\b/i;
 async function pickTrack(accountId: string, seconds: number): Promise<{ id: string; label: string; end: number } | null> {
-  if ((process.env.TIKTOK_MUSIC ?? 'on') === 'off') return null;
+  // OFF by default since 18 Nov 2026: the US-chart track ("Self Aware") is blocked in Singapore, and TikTok muted the
+  // whole video (voice too) for viewers there on every post from 12-17 Nov. Owner: "Reverse it or change music for me
+  // to unmute it". Set TIKTOK_MUSIC=on only after checking the chosen sound plays in Singapore.
+  if ((process.env.TIKTOK_MUSIC ?? 'off') === 'off') return null;
   try {
     const res = await api('GET', `/accounts/${accountId}/tiktok/commercial-music?countryCode=${process.env.COUNTRY ?? 'US'}`);
     const tracks: any[] = (res.tracks ?? []).slice().sort((a: any, b: any) => (a.rank ?? 999) - (b.rank ?? 999));
