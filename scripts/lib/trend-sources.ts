@@ -269,7 +269,11 @@ export async function fetchAllSignals(day: Date = new Date(), limitMs = 8 * 60_0
   const signals: Signal[] = [];
   const errors: string[] = [];
   results.forEach((r, i) => {
-    if (r.status === 'fulfilled') signals.push(...r.value);
+    if (r.status === 'fulfilled') {
+      signals.push(...r.value);
+      // An empty feed is worth seeing (a source that answers but sends nothing); "On this day" can be empty legitimately.
+      if (!r.value.length && jobs[i].name !== 'onthisday') errors.push(`${jobs[i].name}: answered but sent 0 items`);
+    }
     else errors.push(`${jobs[i].name}: ${String((r.reason as Error)?.message ?? r.reason).slice(0, 150)}`);
   });
   return { signals, errors };
