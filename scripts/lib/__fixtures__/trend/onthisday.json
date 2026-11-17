@@ -1,0 +1,64 @@
+{
+ "events": [
+  {
+   "text": "Viewers of the Raiders\u2013Jets football game in the eastern United States are denied the opportunity to watch its exciting finish when NBC broadcasts Heidi instead, prompting changes to sports broadcasting in the U.S.",
+   "pages": [
+    {
+     "title": "Heidi_Game",
+     "description": "1968 American Football League game",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Heidi_Game"
+      }
+     }
+    }
+   ],
+   "year": 1968
+  },
+  {
+   "text": "A Vega rocket carrying SEOSat-Ingenio and TARANIS fails after liftoff.",
+   "pages": [
+    {
+     "title": "Vega_(rocket)",
+     "description": "European Space Agency launch system",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Vega_(rocket)"
+      }
+     }
+    }
+   ],
+   "year": 2020
+  },
+  {
+   "text": "The first known case of COVID-19 is traced to a 55-year-old man who had visited a market in Wuhan, Hubei Province, China.",
+   "pages": [
+    {
+     "title": "COVID-19",
+     "description": "Contagious disease caused by SARS-CoV-2",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/COVID-19"
+      }
+     }
+    }
+   ],
+   "year": 2019
+  },
+  {
+   "text": "Fifty people are killed when Tatarstan Airlines Flight 363 crashes at Kazan Airport, Russia.",
+   "pages": [
+    {
+     "title": "Tatarstan_Airlines_Flight_363",
+     "description": "2013 aircraft accident in Kazan, Russia",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Tatarstan_Airlines_Flight_363"
+      }
+     }
+    }
+   ],
+   "year": 2013
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <title><![CDATA[BBC Sport]]></title>
+        <description><![CDATA[BBC Sport - Football]]></description>
+        <link>https://www.bbc.co.uk/sport/football</link>
+        <image>
+            <url>http://news.bbc.co.uk/sol/shared/img/sport_120x60.gif</url>
+            <title>BBC Sport</title>
+            <link>https://www.bbc.co.uk/sport/football</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 17 Nov 2026 09:43:32 GMT</lastBuildDate>
+        <atom:link href="https://feeds.bbci.co.uk/sport/football/rss.xml" rel="self" type="application/rss+xml"/>
+        <copyright><![CDATA[Copyright: (C) British Broadcasting Corporation, see https://www.bbc.co.uk/usingthebbc/terms-of-use/#15metadataandrssfeeds for terms and conditions of reuse.]]></copyright>
+        <language><![CDATA[en-gb]]></language>
+        <ttl>15</ttl>
+        <item>
+            <title><![CDATA[What's the story with Scotland boss Pocognoli - is it time to go?]]></title>
+            <description><![CDATA[The sense of drift in this Scotland team can't go on much longer. Is it too late for Sebastien Pocognoli to win back players and fans?]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/crgqx1zz94d4o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/crgqx1zz94d4o#0</guid>
+            <pubDate>Tue, 17 Nov 2026 00:19:58 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0abe/live/50ce4e30-e21e-11f1-a094-5fdc692f3e33.jpg"/>
+        </item><item>
+            <title><![CDATA[Why always him? The rise and fall of Balotelli]]></title>
+            <description><![CDATA[Fifteen years since his 'Why always me?' Manchester derby T-shirt celebration, BBC Sport looks at the career of former Manchester City striker Mario Balotelli.]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/cvgxvg4v981o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/cvgxvg4v981o#0</guid>
+            <pubDate>Tue, 17 Nov 2026 06:15:43 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/033a/live/effd2720-ddf4-11f1-8445-15eb55286f71.jpg"/>
+        </item><item>
+            <title><![CDATA[Ronaldo, Maradona, Baggio - what happened to the World XI?]]></title>
+            <description><![CDATA[Football's biggest stars used to turn out in their prime for the Rest of the World XI, something that would not seem possible today.]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/cwj34058rvv6o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/cwj34058rvv6o#0</guid>
+            <pubDate>Tue, 17 Nov 2026 07:22:26 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ffc0/live/2037cc60-c261-11f1-a202-b3a903690ffe.jpg"/>
+        </item><item>
+            <title><![CDATA[Owono did not deserve 12-match ban - Pique]]></title>
+            <description><![CDATA[FC Andorra owner Gerard Pique says goalkeeper Jesus Owono did not deserve the 12-match suspension he received following his challenge which resulted in the death of Tenerife forward Jesus de Miguel.]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/c91430yk4el2o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/c91430yk4el2o#0</guid>
+            <pubDate>Tue, 17 Nov 2026 08:28:10 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/729a/live/738fe790-e25e-11f1-84cb-b9a30b11458c.jpg"/>
+        </item><item>
+            <title><![CDATA[Are Scotland still too reliant on 'old guard'?]]></title>
+            <description><![CDATA[After a bruising defeat in Switzerland to conclude Scotland's Nations League campaign, questions are being asked about the direction of travel under new head coach Sebastien Pocognoli.]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/c6zxvd1p4pr0o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/c6zxvd1p4pr0o#0</guid>
+            <pubDate>Tue, 17 Nov 2026 07:55:21 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a72d/live/90cf5280-e260-11f1-a094-5fdc692f3e33.jpg"/>
+        </item><item>
+            <title><![CDATA[How Frank can restore reputation and save Crystal Palace]]></title>
+            <description><![CDATA[Will Thomas Frank - now confirmed as the new manager of Crystal Palace - rebuild his reputation at Selhurst Park after a bruising time at Tottenham?]]></description>
+            <link>https://www.bbc.co.uk/sport/football/articles/cmge3y2qjlyro?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.co.uk/sport/football/articles/cmge3y2qjlyro#0</guid>
+            <pubDate>Mon, 16 Nov 2026 17:46:16 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a30c/live/69f709f0-df63-11f1-a8af-15d7a25dc0d1.png"/>
+        </item>
+    </channel>
+</rss>

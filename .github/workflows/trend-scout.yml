@@ -1,0 +1,63 @@
+name: Trend scout
+
+# Read only (owner, 17 Nov 2026): each morning, reads what football fans care about right now (Wikipedia's most-read
+# football pages, BBC/Guardian/ESPN football headlines, Google Trends, "On this day"), matches it against our stories
+# (data/story-bank.json) and upcoming anniversaries (data/football-anniversaries.json), and writes the ranked hooks to
+# the trend-scout branch (trend-hooks.json, trend-hooks.md), so it never rebuilds the site. Posts nothing.
+# The Mac task fs101-trend-scout turns the top hooks into pitches for the owner, who approves every hook and script.
+# 05:30 Singapore (21:30 UTC) daily, with a backup at 06:15 in case GitHub drops the first start.
+on:
+  schedule:
+    - cron: "30 21 * * *"
+    - cron: "15 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # only to push the results to the trend-scout branch
+
+concurrency:
+  group: trend-scout
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Already ran today?
+        id: done
+        run: |
+          day=$(TZ=Asia/Singapore date +%F)
+          if [ "${{ github.event_name }}" = schedule ] && git fetch -q --depth 1 origin trend-scout 2>/dev/null \
+             && git cat-file -e "FETCH_HEAD:history/$day.json" 2>/dev/null; then
+            echo "Today's scout ($day) is already saved; the backup start stops here."; echo skip=1 >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.done.outputs.skip != '1'
+        run: npm run -s trend-scout:test
+      - name: Read trends and rank hooks
+        if: steps.done.outputs.skip != '1'
+        run: OUT="$RUNNER_TEMP/out" npm run -s trend-scout
+      - name: Save to the trend-scout branch
+        if: steps.done.outputs.skip != '1'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd "$RUNNER_TEMP/out"
+          day=$(jq -r .day trend-hooks.json)
+          rm -f signals.json
+          git init -q -b trend-scout
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Keep earlier days' history from the branch (none on the first run).
+          { git fetch -q --depth 1 "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" trend-scout \
+            && git checkout -q FETCH_HEAD -- history; } 2>/dev/null || true
+          mkdir -p history && cp trend-hooks.json "history/$day.json"
+          git add -A && git commit -q -m "Trend scout $day"
+          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" trend-scout
