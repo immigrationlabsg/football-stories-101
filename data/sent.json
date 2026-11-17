@@ -992,15 +992,6 @@
       "story": "greece-euro-2004"
     },
     {
-      "number": 32,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-17T16:22:05.520Z",
-      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1508575437801184 (music: sports-documentary)",
-      "story": "pochettino-murphy-bielsa",
-      "reel": "0c0ff888ae933ce5a0df01bf693b3a9fa72ea8d4"
-    },
-    {
       "number": 30,
       "network": "facebook",
       "status": "scheduled",
@@ -1017,6 +1008,15 @@
       "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 28540937762247718 (music: cinematic-trailer)",
       "story": "ronaldinho-back-at-46",
       "reel": "9c5ebf7c4e5c06c1b49d1bf880ff36f72abb077b"
+    },
+    {
+      "number": 32,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T17:38:32.528Z",
+      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1655983912924116 (music: sports-documentary)",
+      "story": "pochettino-murphy-bielsa",
+      "reel": "3acc39f4a9374dbf75a1dbcb4900284875301c73"
     }
   ]
 }
