@@ -241,6 +241,14 @@ if (MODE === 'accounts') {
     const today = records().filter((r) => !(r.status.startsWith('failed') && !r.status.startsWith('failed or unknown')) && sgDay(Date.parse(r.at)) === sgDay(Date.now())).length;
     limit = today ? 0 : 1;
     if (due.length > limit) console.log(`Warm-up (until 25 Nov): one TikTok a day. Posting ${limit ? due[0] : 'nothing'} today${due.length > limit ? `; skipping ${due.slice(limit).join(', ')}` : ''}.`);
+    // Extras the owner asked for on TikTok despite the warm-up (owner, 18 Nov 2026: "Henry reel on YouTube and TikTok too").
+    const OWNER_EXTRA = new Set<number>([910]);
+    const extra = due.slice(limit).filter((n) => OWNER_EXTRA.has(n));
+    if (extra.length) {
+      console.log(`Warm-up exception (owner asked): also posting ${extra.join(', ')}.`);
+      due.splice(0, due.length, ...due.slice(0, limit), ...extra);
+      limit = due.length;
+    }
   }
   for (const n of due.slice(0, limit)) {
     try {
