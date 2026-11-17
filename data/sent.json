@@ -1001,15 +1001,6 @@
       "reel": "371b72c6532b6ae53fe742e8102f8883a8d77641"
     },
     {
-      "number": 32,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-17T17:38:32.528Z",
-      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1655983912924116 (music: sports-documentary)",
-      "story": "pochettino-murphy-bielsa",
-      "reel": "3acc39f4a9374dbf75a1dbcb4900284875301c73"
-    },
-    {
       "number": 31,
       "network": "facebook",
       "status": "scheduled",
@@ -1017,6 +1008,15 @@
       "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1764078974654166 (music: cinematic-trailer)",
       "story": "ronaldinho-back-at-46",
       "reel": "70c4f8c1a688455e43099b0fc12b34d532020f73"
+    },
+    {
+      "number": 32,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T18:02:06.009Z",
+      "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 2645536909200310 (music: sports-documentary)",
+      "story": "pochettino-murphy-bielsa",
+      "reel": "4c1a8f15e6fc1f98ba10ac652f357293273f736c"
     }
   ]
 }
