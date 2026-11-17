@@ -978,15 +978,6 @@
       "reel": "22fadd965993e6a654f3bfd65ea79c1196d9cfc9"
     },
     {
-      "number": 30,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-15T16:50:39.750Z",
-      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 3143265029349675 (music: sports-documentary)",
-      "story": "lily-parr-dick-kerr-ladies",
-      "reel": "ffa974b3ecca58f9c570056055bce603bdfaca95"
-    },
-    {
       "number": 28,
       "network": "instagram",
       "status": "posted",
@@ -1017,6 +1008,15 @@
       "at": "2026-11-17T00:02:22.260Z",
       "detail": "thread 18116431775611984 (cards, Reel in reply, topic Football)",
       "story": "greece-euro-2004"
+    },
+    {
+      "number": 30,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T16:13:31.223Z",
+      "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1698274225424552 (music: sports-documentary)",
+      "story": "pochettino-murphy-bielsa",
+      "reel": "0c0ff888ae933ce5a0df01bf693b3a9fa72ea8d4"
     }
   ]
 }
