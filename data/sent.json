@@ -1001,15 +1001,6 @@
       "reel": "0c0ff888ae933ce5a0df01bf693b3a9fa72ea8d4"
     },
     {
-      "number": 31,
-      "network": "facebook",
-      "status": "scheduled",
-      "at": "2026-11-17T16:29:14.770Z",
-      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 1995539218517136 (music: cinematic-trailer)",
-      "story": "ronaldinho-back-at-46",
-      "reel": "b4f41f3f30d321ba62f32117537ab4a3a8bcad6d"
-    },
-    {
       "number": 30,
       "network": "facebook",
       "status": "scheduled",
@@ -1017,6 +1008,15 @@
       "detail": "scheduled for 2026-11-18T00:00:00.000Z reel 1807764833845970 (music: sports-documentary)",
       "story": "brazil-singapore-referee",
       "reel": "371b72c6532b6ae53fe742e8102f8883a8d77641"
+    },
+    {
+      "number": 31,
+      "network": "facebook",
+      "status": "scheduled",
+      "at": "2026-11-17T17:37:05.436Z",
+      "detail": "scheduled for 2026-11-19T00:00:00.000Z reel 28540937762247718 (music: cinematic-trailer)",
+      "story": "ronaldinho-back-at-46",
+      "reel": "9c5ebf7c4e5c06c1b49d1bf880ff36f72abb077b"
     }
   ]
 }
