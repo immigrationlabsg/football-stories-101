@@ -1,14 +1,56 @@
 {
   "note": "Reels the owner has confirmed in the newest style (owner, 11 Nov 2026: post on the day only, once the style is confirmed). The daily reminder task checks tomorrow's story against this list.",
   "confirmed": [
-    { "number": 23, "sample": "story-023-v4", "confirmed": "2026-11-11" },
-    { "number": 24, "sample": "story-024-v9", "confirmed": "2026-11-11" },
-    { "number": 25, "sample": "story-025-v3", "confirmed": "2026-11-12" },
-    { "number": 26, "sample": "story-026-v4", "confirmed": "2026-11-13" },
-    { "number": 27, "sample": "story-027-v3", "confirmed": "2026-11-12" },
-    { "number": 908, "sample": "story-908-v5", "confirmed": "2026-11-15" },
-    { "number": 28, "sample": "story-messi-red-v2", "confirmed": "2026-11-16" },
-    { "number": 29, "sample": "story-029-v5", "confirmed": "2026-11-15" },
-    { "number": 30, "sample": "story-030-v4", "confirmed": "2026-11-15" }
+    {
+      "number": 23,
+      "sample": "story-023-v4",
+      "confirmed": "2026-11-11"
+    },
+    {
+      "number": 24,
+      "sample": "story-024-v9",
+      "confirmed": "2026-11-11"
+    },
+    {
+      "number": 25,
+      "sample": "story-025-v3",
+      "confirmed": "2026-11-12"
+    },
+    {
+      "number": 26,
+      "sample": "story-026-v4",
+      "confirmed": "2026-11-13"
+    },
+    {
+      "number": 27,
+      "sample": "story-027-v3",
+      "confirmed": "2026-11-12"
+    },
+    {
+      "number": 908,
+      "sample": "story-908-v5",
+      "confirmed": "2026-11-15"
+    },
+    {
+      "number": 28,
+      "sample": "story-messi-red-v2",
+      "confirmed": "2026-11-16"
+    },
+    {
+      "number": 29,
+      "sample": "story-029-v5",
+      "confirmed": "2026-11-15"
+    },
+    {
+      "number": 30,
+      "sample": "story-030-v4",
+      "confirmed": "2026-11-15"
+    },
+    {
+      "number": 30,
+      "sample": "trend-pochettino",
+      "confirmed": "2026-11-17",
+      "note": "trend Reel, owner approved finished video 17 Nov; replaced Lily Parr"
+    }
   ]
 }

@@ -216,16 +216,6 @@
       "Greece national team 2004 celebration"
     ]
   },
-  "030": {
-    "want": "Dick, Kerr Ladies in action or team photo, Lily Parr",
-    "queries": [
-      "Dick, Kerr Ladies",
-      "Dick Kerr Ladies",
-      "Lily Parr",
-      "women's football 1920",
-      "Dick Kerr Ladies 1921"
-    ]
-  },
   "032": {
     "want": "Cameroon v Argentina 1990: Omam-Biyik header, Cameroon players, Roger Milla dancing",
     "queries": [
@@ -395,6 +385,16 @@
       "Beckham England captain",
       "Beckham Old Trafford free kick",
       "Beckham 2002 World Cup"
+    ]
+  },
+  "055": {
+    "want": "Dick, Kerr Ladies in action or team photo, Lily Parr",
+    "queries": [
+      "Dick, Kerr Ladies",
+      "Dick Kerr Ladies",
+      "Lily Parr",
+      "women's football 1920",
+      "Dick Kerr Ladies 1921"
     ]
   },
   "m01": {
