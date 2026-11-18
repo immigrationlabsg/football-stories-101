@@ -171,7 +171,14 @@ for (let i = 0; i < calendar.length; i++) {
   if (i > 0) {
     const gap = Math.round((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(calendar[i - 1].data.date.getUTCFullYear(), calendar[i - 1].data.date.getUTCMonth(), calendar[i - 1].data.date.getUTCDate())) / DAY);
     if (gap === 0) errors.push(`${pad(calendar[i - 1].data.number)} and ${pad(s.data.number)} are on the same day`);
-    if (gap > 1) errors.push(`gap of ${gap - 1} day(s) with no story before ${pad(s.data.number)}`);
+    if (gap > 1) {
+      // Days the owner left free on purpose (data/schedule.json open_slots) only warn until a story fills them.
+      const open: string[] = schedule.open_slots ?? [];
+      const missing = Array.from({ length: gap - 1 }, (_, k) => new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - (gap - 1 - k) * DAY + 8 * 3600e3).toISOString().slice(0, 10));
+      const msg = `gap of ${gap - 1} day(s) with no story before ${pad(s.data.number)}`;
+      if (missing.every((day) => open.includes(day))) warnings.push(`${msg} (open slot ${missing.join(', ')}, to fill with a trending story)`);
+      else errors.push(msg);
+    }
     if (s.data.pillar === calendar[i - 1].data.pillar) warnings.push(`${pad(calendar[i - 1].data.number)} and ${pad(s.data.number)} are both "${s.data.pillar}" back to back`);
   }
   if (i > 1) {

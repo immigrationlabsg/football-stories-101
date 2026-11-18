@@ -41,7 +41,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 032 | Players | Trend Reel: Mauricio Pochettino / The boy who said no to Bielsa (owner swap 18 Nov; Cameroon moved to 056) | scheduled |
 | 033 | Players | Bert Trautmann: the 1956 FA Cup final played with a broken neck (moved from 026) | scheduled |
 | 034 | Moments | On this day: Defoe v Giroud / Two records matched on 22 November, 13 years apart | scheduled |
-| 035 | Players | Guess the legend / Luka Modrić: a refugee hotel, a loan in Mostar and the end of Messi and Ronaldo's run | scheduled |
+| 035 | Players | Guess the legend / Luka Modrić: a refugee hotel, a loan in Mostar and the end of Messi and Ronaldo's run | cancelled (owner, 18 Nov 2026: no more quizzes) |
 | 036 | Moments | 93:20, 13 May 2012: Agüero and Manchester City's first title in 44 years (moved from 013) | scheduled |
 | 037 | Moments | On this day: Best v Maradona / Two farewells on 25 November, 15 years apart | scheduled |
 | 038 | Players | George Weah: from Monrovia to the Ballon d'Or (moved from 037) | scheduled |
@@ -50,7 +50,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 041 | Moments | Camp Nou, 26 May 1999: Manchester United's two goals in stoppage time (moved from 035) | scheduled |
 | 042 | Clubs | Leicester City 2015–16: champions at 5,000 to 1 (moved from 043) | scheduled |
 | 043 | Moments | On this day: Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December | scheduled |
-| 044 | Players | Guess the legend / Marta: a three-day bus ride, a European final at 18 and the World Cup scoring record | scheduled |
+| 044 | Players | Guess the legend / Marta: a three-day bus ride, a European final at 18 and the World Cup scoring record | cancelled (owner, 18 Nov 2026: no more quizzes) |
 | 045 | Eras | Arsenal's Invincibles, 2003–04: 38 league games unbeaten (moved from 028) | scheduled |
 | 046 | Moments | On this day: Giroud v Sócrates / A record, a farewell and two Sundays on 4 December | scheduled |
 | 047 | Clubs | Manchester United after Munich 1958: ten years to the European Cup (moved from 043) | scheduled |
@@ -59,7 +59,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 050 | Eras | Real Madrid's Galácticos / The election promise, and the trophies that stopped coming (follow-up of 012) | scheduled |
 | 051 | Players | Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player (Bernabéu, 19 November 2005) | scheduled |
 | 052 | Moments | On this day: Benzema v Salah / Two openers on 10 December that won nothing on the night | scheduled |
-| 053 | Players | Guess the legend / Jay-Jay Okocha: a friend's training session, a record fee, Olympic gold and a run past Oliver Kahn | scheduled |
+| 053 | Players | Guess the legend / Jay-Jay Okocha: a friend's training session, a record fee, Olympic gold and a run past Oliver Kahn | cancelled (owner, 18 Nov 2026: no more quizzes) |
 | 054 | Moments | David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup (6 October 2001) | scheduled |
 | 055 | Players | Lily Parr and the Dick, Kerr Ladies: 53,000 at Goodison, then a ban (moved from 030) | scheduled |
 | 056 | Moments | Italia 90 opening match: Cameroon beat the world champions with nine men (moved from 032) | scheduled |
