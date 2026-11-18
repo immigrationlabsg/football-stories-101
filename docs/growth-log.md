@@ -929,3 +929,8 @@ Owner: "Try 2, while the idea and script generation stay as the current skill we
   plays. Instagram, Threads, TikTok and YouTube are unchanged.
 - **Unchanged:** story ideas and scripts follow the current skill (the Zidane-model lesser-known angle and the trend
   structure); no new skill rules.
+- Follow-up, same evening: the independent check found the Mac's task 9 (daily Facebook swap, launchd
+  `sg.footballstories101.task9-facebook-swap`) still loaded and running at 11:05, although it was paused on 11 Nov; it
+  would have scheduled 032-037 ahead again. It is now unloaded and disabled (`launchctl bootout` + `launchctl disable`,
+  stays off after a restart; undo with `launchctl enable` + `launchctl bootstrap`). Also: 033-037 now post on Facebook
+  only once their narrated Reels are live, as Instagram and Threads already did.
