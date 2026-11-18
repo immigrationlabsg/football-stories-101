@@ -16,6 +16,9 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
    - a middle theme (his early temper, with teammates as sources);
    - a payoff (he became the GOAT);
    - a closing question ("Which other legend … started with a red card?").
+<!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
+   *Share test, Reels posted 19-28 Nov 2026: pitch a split-verdict closing ("Cheat or genius?") and a quotable shock-line hook instead. See SKILL.md step 1.*
+<!-- SHARE-TEST-2026-11 END -->
    
    Research each beat.
 3. **Say plainly when a beat isn't true or can't be sourced, and offer the nearest true version.**

@@ -82,7 +82,7 @@ trial report, 18 Nov 2026".
 > shares not), the owner added two things to the narrated-reel skill for 10 days: (A) the hook is one quotable shock
 > line ("FIFA paid Ireland €5 million to stay quiet"); (B) the closing question is a split verdict ("Henry: cheat or
 > genius?"). Main measure: shares and reposts per 1,000 reached (and per the first ~120 views). Guardrails: Instagram
-> average watch 12.4 s and skip 46.7%, and views (IG reach 121.5, YouTube 1,134, TikTok 346.5 medians) must not fall.
+> average watch at or above 12.4 s, skip at or below 46.7%, views at or above the medians (IG reach 121.5, YouTube 1,134, TikTok 346.5).
 > Review on 29 Nov. Topic choice stays on the current skill, so the tests below (test 1 "story pick by feeling", 23-29
 > Nov) would overlap with it and blur the result: they wait until after the 29 Nov review (owner to confirm the new dates).
 > The Facebook same-day posting test (19-25 Nov, Facebook plays) runs alongside, because it measures a different number.

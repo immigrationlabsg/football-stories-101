@@ -992,5 +992,5 @@ closing). Watch time is up but shares are not ("ok cool, nice to know"). For the
 two additions are tested, written into `.claude/skills/narrated-reel/SKILL.md` step 1 as a dated trial:
 - **A. Hook = one quotable shock line** ("FIFA paid Ireland €5 million to stay quiet").
 - **B. Closing = a split verdict** ("Henry: cheat or genius?").
-Main measure: shares and reposts per 1,000 reached on every network. Guardrails: average watch, skip and views at or
-above the trial medians. Review on 29 Nov. 031, 911 and 032 were built before the change and count as "before".
+Main measure: shares and reposts per 1,000 reached on every network. Guardrails: average watch and views at or above the
+trial medians, skip at or below 46.7%. Review on 29 Nov. 031, 911 and 032 were built before the change and count as "before".

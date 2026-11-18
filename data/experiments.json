@@ -29,10 +29,28 @@
       "ownerOk": "Owner, 8 Nov 2026: 'I like the current style, let's try for 10 days straight then come back with a report on its performance.'"
     },
     {
+      "id": "share-test",
+      "kind": "test",
+      "name": "Share test: quotable shock-line hook + split-verdict closing",
+      "status": "running",
+      "start": "2026-11-19",
+      "end": "2026-11-28",
+      "change": "Two additions to the narrated-reel skill (SHARE-TEST-2026-11 blocks): (A) the hook is one quotable shock line; (B) the closing question is a split verdict. Topic choice and script structure unchanged.",
+      "counted": { "rule": "Every Reel posted 19-28 Nov whose script was written or rewritten from 18 Nov. 031, 911 and 032 were built earlier and count as 'before'." },
+      "bar": {
+        "main": "shares and reposts per 1,000 reached (and per first ~120 views) above the trial",
+        "guardrails": "IG average watch >= 12.4 s, IG skip <= 46.7%, views >= trial medians (IG reach 121.5, YouTube 1,134, TikTok 346.5)"
+      },
+      "review": "2026-11-29",
+      "removal": "If dropped: delete every SHARE-TEST-2026-11 block (grep -rn SHARE-TEST-2026-11 .claude) and set this entry's status to dropped.",
+      "ownerOk": "Owner, 18 Nov 2026: include both in how we generate content, write in the skill that they are tested for 10 days, then check if results improve; make it easy to remove."
+    },
+    {
       "id": "test-1",
       "kind": "test",
       "name": "Test 1: story pick by feeling",
-      "status": "planned",
+      "status": "postponed",
+      "postponed": "Owner, 18 Nov 2026: the share test runs first (Reels posted 19-28 Nov); test-1 waits until after the 29 Nov review, new dates for the owner to confirm (docs/improvement-loop.md section 2).",
       "start": "2026-11-23",
       "end": "2026-11-29",
       "change": "Every daily post (stories, comparisons, quiz) chosen for awe, outrage or an absurd paradox, with a name fans know. The writer tags each story's feeling.",
