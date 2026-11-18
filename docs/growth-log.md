@@ -968,3 +968,19 @@ hours, follower counts, Facebook lead times, baseline). The corrections below re
 - **Standing rules:** no violations found in the recommendations.
 
 The Facebook same-day test the owner chose on 18 Nov is unaffected: its numbers were verified.
+
+### Today's two posts, read 18 Nov 22:20 SGT (Audience report run 44323216060; live.json 14:19Z)
+
+| | Brazil 030 (08:00, 14 h old) | Henry 910 (20:00, 2 h old) |
+|---|---|---|
+| Instagram reach / views / likes / shares | 127 / 141 / 0 / 0 | 638 / 747 / 15 / 0 |
+| Instagram skip / avg watch | 38.6% / 13.0 s | 32.7% / 19.7 s |
+| Facebook plays / reactions | 83 / 1 (scheduled 6.6 h ahead) | 47 / 1 (posted on the day) |
+| TikTok views / likes / shares / comments | 1,079 / 21 / 2 / 3 | 184 / 6 / 0 / 1 |
+| YouTube views / likes | 284 / 7 | 13 / 0 |
+| Threads views | 67 | 11 |
+
+Reading (likely factors, not proven): Henry matches the Zidane profile on Instagram (world-known moment, a fact most
+fans don't know, skip under 33%, about 20 s watched) and is already the third-best Instagram Reel ever at 2 h. Brazil
+stalled on Instagram at the usual ~127 but is the best TikTok so far: the first TikTok with its own sound since the
+mute, and a Singapore story on a Singapore account. YouTube for Brazil is behind earlier Shorts at the same age.
