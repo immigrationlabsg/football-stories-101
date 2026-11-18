@@ -43,8 +43,6 @@ jobs:
           python-version: "3.12"
       - run: pip install -q "yt-dlp[default,curl-cffi]==2026.10.26"
       - name: Read every minute for five and a half hours
-        env:
-          TIKTOK_PUBLIC_FILE: ${{ runner.temp }}/tiktok-public.json
         run: |
           # Every 5 minutes, in the background: TikTok views, likes, comments and shares per video. A failed read
           # keeps the last good file, and live-stats falls back to Zernio when there is none.
@@ -78,6 +76,7 @@ jobs:
           done
         env:
           PREV_FILE: ${{ runner.temp }}/prev.json
+          TIKTOK_PUBLIC_FILE: ${{ runner.temp }}/tiktok-public.json
           OUT_FILE: ${{ runner.temp }}/live.json
           ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
           PUSHWARD_KEY: ${{ secrets.PUSHWARD_KEY }}
