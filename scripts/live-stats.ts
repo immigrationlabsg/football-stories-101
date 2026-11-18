@@ -132,9 +132,27 @@ async function fromZernio(platform: 'tiktok' | 'youtube'): Promise<Net> {
   }
 }
 
+// ---- TikTok: the public numbers TikTok itself shows, read by yt-dlp (owner, 18 Nov 2026) ----
+// Zernio's TikTok analytics said 0 views for most posts that TikTok Studio showed in the hundreds, so the workflow reads
+// the public profile with yt-dlp every few minutes (no sign-in, no key) into TIKTOK_PUBLIC_FILE. Shares are TikTok's
+// "repost_count". Zernio stays the fallback (and the follower count) when that file is missing or empty.
+function fromTiktokPublic(zernio: Net): Net {
+  const rows: any[] = readJson(env.TIKTOK_PUBLIC_FILE, []);
+  if (!Array.isArray(rows) || rows.length === 0) return zernio;
+  const recs: any[] = readJson(path.join(ROOT, 'data/tiktok.json'), { posts: [] }).posts ?? [];
+  const posts: Post[] = rows.map((r) => {
+    const t = typeof r.timestamp === 'number' ? r.timestamp * 1000 : NaN;
+    // Our post record is written seconds before TikTok's own post time; 15 minutes leaves room for slow uploads.
+    const rec = Number.isFinite(t) ? recs.find((x) => x.at && Math.abs(Date.parse(x.at) - t) < 15 * 60e3) : undefined;
+    const story: number | null = rec?.number ?? null;
+    return { story, title: story ? titleOf(story) : String(r.title ?? '').split('\n')[0].slice(0, 60), at: Number.isFinite(t) ? new Date(t).toISOString() : null, views: r.view_count ?? null, likes: r.like_count ?? null, shares: r.repost_count ?? null, comments: r.comment_count ?? null, url: r.webpage_url ?? null };
+  });
+  return { followers: zernio.followers, posts };
+}
+
 const nets: Record<string, Net> = {
   instagram: await fromMeta('instagram'),
-  tiktok: await fromZernio('tiktok'),
+  tiktok: fromTiktokPublic(await fromZernio('tiktok')),
   youtube: await fromZernio('youtube'),
   threads: await fromMeta('threads'),
 };

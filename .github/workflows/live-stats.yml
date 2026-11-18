@@ -37,8 +37,25 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # TikTok's own public numbers (owner, 18 Nov 2026): yt-dlp reads the profile, no sign-in or key. Pinned version.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q "yt-dlp[default,curl-cffi]==2026.10.26"
       - name: Read every minute for five and a half hours
+        env:
+          TIKTOK_PUBLIC_FILE: ${{ runner.temp }}/tiktok-public.json
         run: |
+          # Every 5 minutes, in the background: TikTok views, likes, comments and shares per video. A failed read
+          # keeps the last good file, and live-stats falls back to Zernio when there is none.
+          ( while true; do
+              timeout 120 yt-dlp -j --skip-download --playlist-end 30 "https://www.tiktok.com/@foot.ballstories101" 2>"$RUNNER_TEMP/yt-dlp.log" \
+                | jq -s '[.[] | {id, title, timestamp, view_count, like_count, comment_count, repost_count, save_count, webpage_url}]' > "$RUNNER_TEMP/tiktok-new.json" \
+                && [ "$(jq length "$RUNNER_TEMP/tiktok-new.json")" -gt 0 ] && mv "$RUNNER_TEMP/tiktok-new.json" "$TIKTOK_PUBLIC_FILE" \
+                || echo "::warning::TikTok public read failed: $(tail -c 300 "$RUNNER_TEMP/yt-dlp.log" 2>/dev/null)"
+              sleep 300
+            done ) &
+          sleep 20 # give the first TikTok read a head start
           git fetch --depth 1 origin live-stats && git show origin/live-stats:live.json > "$RUNNER_TEMP/prev.json" || echo "{}" > "$RUNNER_TEMP/prev.json"
           out="$RUNNER_TEMP/out"; mkdir -p "$out"; cd "$out"; git init -q -b live-stats; cp "$RUNNER_TEMP/prev.json" live.json
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
