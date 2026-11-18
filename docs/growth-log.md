@@ -864,7 +864,7 @@ share; posting method decided plays.
 **c. Ranked changes** (one at a time, each measured over 7 daily posts by shares and likes per first 120 views, with
 Instagram skip and YouTube stayed-to-watch as early signs; the bar stays at least 3 shares from at least 2 posts):
 1. **Story choice: a world-known moment or name + a lesser-known fact about it (the Zidane model), every day.** Why: all
-   three breakouts had it; the weakest posts didn't. Evidence: moderate (3 posts, 2 networks agree; AGH Stories points the
+   three breakouts had it; the weakest posts didn't. Evidence: LOW (see the verification corrections below; 3 posts, 2 networks agree; AGH Stories points the
    same way). Effort: low, already the rule since 16 Nov. Test: test 1 (23-29 Nov, story pick by feeling) as registered;
    compare against 029-034.
 2. **Facebook: post on the day (directly, or scheduled 7 h or less ahead) instead of a day or more ahead.** Why: 7 of 8
@@ -876,7 +876,7 @@ Instagram skip and YouTube stayed-to-watch as early signs; the bar stays at leas
    disagrees. Evidence: weak (only a lead from AGH Stories and Berger and Milkman; our 908 got 0 shares with this question).
    Effort: low. Test: after test 1.
 4. **Famous name in the first line on screen.** Why: 2 of 3 top posts. Evidence: weak to moderate. Effort: low.
-5. **Drop the quiz format and two-date pairs without a surprise.** Evidence: moderate (quiz highest skip twice, 022 and 026).
+5. **Drop the quiz format and two-date pairs without a surprise.** Evidence: LOW (only 026 is a quiz; see the verification corrections below).
 
 **d. What to implement first (for the owner to approve):** (1) keep test 1 exactly as registered, 23-29 Nov, with every
 story a world-known moment + lesser-known angle; (2) Facebook same-day posting as a separate Facebook-only test from
@@ -914,7 +914,7 @@ shares (low to moderate). Nothing in `evaluators.md` or `data/eval-log.json` was
 - Verification: the independent verifier subagent (step 5) could not be started in this run (agent launches refused
   twice). Instead a script re-read the Audience report log and checked every Instagram, Facebook and Threads figure and
   every age in the per-post table: 0 mismatches. YouTube and TikTok Studio figures were read once by the writer and are
-  not independently re-checked. An independent check is still owed.
+  not independently re-checked. An independent check was owed; it was done later on 18 Nov (next section).
 
 ### Owner decision, 18 Nov 2026 (evening)
 
@@ -937,3 +937,34 @@ Owner: "Try 2, while the idea and script generation stay as the current skill we
 - 18 Nov 22:20 SGT, owner: "Remove the Facebook Reels scheduled for 038-046 too". Removed (Remove posts run
   44322828910, each found then deleted) and their records taken out of `data/sent.json`. No Facebook Reel is now
   scheduled ahead; every daily story reaches Facebook from the morning run on its own day.
+
+### Verification corrections, 18 Nov 2026 (independent check, late evening)
+
+An independent verifier (it did not write the report) re-checked the report against Audience run 44230403800,
+`data/sent.json`, `data/post-factors.json`, `data/metrics/2026-11-09.json`, the views check (run 44230842868) and
+live.json. **About 120 figures matched** (every Instagram, Facebook and Threads number, medians, pooled rates, ages in
+hours, follower counts, Facebook lead times, baseline). The corrections below replace the wording above where they differ.
+
+- **023 "average watch longer than the Reel":** wrong. `post-factors.json` has 023 at 69 s, so 49.8 s is not longer than
+  the Reel; there is no counting oddity. Reels 023-029 run 63-69 s in that file, not "about 45 s".
+- **"Bottom posts lack a world-known moment":** contradicted. 022, 025 and 026 are marked world-known; only 024 is not.
+  A world-known moment is therefore NOT what separates top from bottom. 907 Maradona and 029 had the same ingredients
+  (world-known event, famous name, low skip) without a breakout. Treat the Zidane-model recommendation as **low
+  evidence: a hypothesis from 1-2 large breakouts**, not a finding.
+- **Top 3 by YouTube "stayed to watch":** only 908 (62.2%) and 021 (60.1%) lead; 025 (57.8%) and 023 (56.2%) are
+  above 028 (55.8%).
+- **Quiz:** only 026 is a quiz (022 is a two-date pair). Its 57.5% skip is highest within 020-029 only; extras 906
+  (70.5%) and 909 (61.3%) are higher. "Drop quiz" rests on one post.
+- **028 as a "breakout":** its reach was about 2x the usual; 021 and 908 were about 9x and 12x. Count it as a mild lift.
+- **Bottom-3 pick (024):** arbitrary; 020 was at least as weak.
+- **YouTube and "0 shares on all five networks":** the YouTube share figure comes only from live.json and was not read in
+  Studio, so "the rule does not hold on YouTube" is unverified; on Instagram it does fail (908: 1,488 reached, 0 shares).
+- **Facebook same-day pattern:** a hypothesis, not a "strong pattern" (evening extras confound it; card Reel 018 is a counter-example).
+- **YouTube followers 8 vs Studio subscribers gained 10:** unexplained (unsubscribes, or Studio data ending 16 Nov).
+- **Sources mixed:** 021 YouTube views are 1,364 (report), 1,355 (views check), 1,369 (live.json now); 022 is 172 / 139 /
+  172. The 03:01Z live.json cannot be recovered (branch has one commit, 14:17Z).
+- **Not re-checkable from files:** YouTube Studio (% viewed, stayed to watch, subscribers), TikTok Studio (likes, shares,
+  saves, watch), the muted-track claim, card-Reel lengths, the external studies.
+- **Standing rules:** no violations found in the recommendations.
+
+The Facebook same-day test the owner chose on 18 Nov is unaffected: its numbers were verified.
