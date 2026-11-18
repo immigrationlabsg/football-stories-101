@@ -42,6 +42,7 @@
         "guardrails": "IG average watch >= 12.4 s, IG skip <= 46.7%, views >= trial medians (IG reach 121.5, YouTube 1,134, TikTok 346.5)"
       },
       "review": "2026-11-29",
+      "sources": "Shares, views, likes, comments and saves: live.json on the live-stats branch (Instagram and Threads from Meta; TikTok from TikTok's own public counts via yt-dlp since 18 Nov; YouTube from Zernio) and the Audience report (insights.yml). TikTok watch time, % watched to the end, retention and traffic sources: TikTok Studio in the owner's Chrome, read only, one tab per video at https://www.tiktok.com/tiktokstudio/analytics/<video id> (wait ~7 s, read the text from \"Video views\"; Studio keeps lifetime numbers, so one read at the review is enough), saved to data/tiktok-studio.json. Video ids: yt-dlp -j --skip-download on https://www.tiktok.com/@foot.ballstories101.",
       "removal": "If dropped: delete every SHARE-TEST-2026-11 block (grep -rn SHARE-TEST-2026-11 .claude) and set this entry's status to dropped.",
       "ownerOk": "Owner, 18 Nov 2026: include both in how we generate content, write in the skill that they are tested for 10 days, then check if results improve; make it easy to remove."
     },
