@@ -71,6 +71,7 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 062 | Clubs | Super Depor: Deportivo La Coruña, champions of Spain in 2000 | reserved |
 | 063 | Eras | Manchester United's Class of 92: six youth-team players and a first team (follow-up of 047) | reserved |
 | — | Moments | Berlin, 9 July 2006: Zidane's last match and the headbutt | used by extra 908 (15 Nov); do not draft |
+| — | Moments | Cristiano Ronaldo, Solna, 19 November 2013: the hat-trick after the Ballon d'Or deadline (the Ronaldo half of 057, redone without Pelé) | used by extra 911 (19 Nov); do not draft |
 | 064 | Players | Ronaldo (R9), the second career: Real Madrid, the Old Trafford hat-trick and Corinthians (follow-up of 001) | reserved |
 | 065 | Clubs | Galatasaray 2000: Hagi and the first European trophy for a Turkish club | reserved |
 | 066 | Eras | Van Gaal's Ajax 1994–95: an unbeaten league season and the Champions League, built on the club's own academy (follow-up of 004) | reserved |
