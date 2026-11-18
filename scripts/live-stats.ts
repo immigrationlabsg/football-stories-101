@@ -138,16 +138,28 @@ async function fromZernio(platform: 'tiktok' | 'youtube'): Promise<Net> {
 // "repost_count". Zernio stays the fallback (and the follower count) when that file is missing or empty.
 function fromTiktokPublic(zernio: Net): Net {
   const rows: any[] = readJson(env.TIKTOK_PUBLIC_FILE, []);
-  if (!Array.isArray(rows) || rows.length === 0) return zernio;
+  if (!Array.isArray(rows) || rows.length === 0) {
+    // No public read yet: keep the last public numbers rather than drop to Zernio's (often 0 views).
+    const last = prev.networks?.tiktok;
+    return last?.source === 'public' ? { ...last, error: 'TikTok not read yet in this run; last numbers shown' } : zernio;
+  }
+  let age = 0;
+  try {
+    age = Date.now() - fs.statSync(env.TIKTOK_PUBLIC_FILE as string).mtimeMs;
+  } catch {}
   const recs: any[] = readJson(path.join(ROOT, 'data/tiktok.json'), { posts: [] }).posts ?? [];
   const posts: Post[] = rows.map((r) => {
     const t = typeof r.timestamp === 'number' ? r.timestamp * 1000 : NaN;
     // Our post record is written seconds before TikTok's own post time; 15 minutes leaves room for slow uploads.
-    const rec = Number.isFinite(t) ? recs.find((x) => x.at && Math.abs(Date.parse(x.at) - t) < 15 * 60e3) : undefined;
+    const near = Number.isFinite(t) ? recs.filter((x) => x.at && x.status !== 'removed' && Math.abs(Date.parse(x.at) - t) < 15 * 60e3) : [];
+    const rec = near.sort((a, b) => Math.abs(Date.parse(a.at) - t) - Math.abs(Date.parse(b.at) - t))[0];
     const story: number | null = rec?.number ?? null;
     return { story, title: story ? titleOf(story) : String(r.title ?? '').split('\n')[0].slice(0, 60), at: Number.isFinite(t) ? new Date(t).toISOString() : null, views: r.view_count ?? null, likes: r.like_count ?? null, shares: r.repost_count ?? null, comments: r.comment_count ?? null, url: r.webpage_url ?? null };
   });
-  return { followers: zernio.followers, posts };
+  const out: Net & { source: string } = { followers: zernio.followers, posts, source: 'public' };
+  // A read older than 20 minutes means the 5-minute reads are failing: say so on the page instead of looking live.
+  if (age > 20 * 60e3) out.error = `TikTok last read ${Math.round(age / 60e3)} min ago`;
+  return out;
 }
 
 const nets: Record<string, Net> = {

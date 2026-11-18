@@ -1,6 +1,6 @@
 name: Live stats
 
-# Read only on every network (owner, 11 Nov 2026): one long job reads TikTok and YouTube (Zernio) every minute and
+# Read only on every network (owner, 11 Nov 2026): one long job reads YouTube (Zernio) every minute and TikTok (its own public counts, yt-dlp) every 5 minutes and
 # Instagram and Threads (Meta, latest 3 posts only) every 5 minutes, writes live.json to the live-stats branch for the
 # phone dashboard (public/live/), and updates the iPhone Dynamic Island through PushWard (when the PUSHWARD_KEY secret
 # is set) when the new daily Reel posts and then about +15m, +30m, +1h, +2h, +3h, +5h, +7h (free plan budget). Never touches main, so it never rebuilds the site.
@@ -47,13 +47,14 @@ jobs:
           # Every 5 minutes, in the background: TikTok views, likes, comments and shares per video. A failed read
           # keeps the last good file, and live-stats falls back to Zernio when there is none.
           ( while true; do
-              timeout 120 yt-dlp -j --skip-download --playlist-end 30 "https://www.tiktok.com/@foot.ballstories101" 2>"$RUNNER_TEMP/yt-dlp.log" \
-                | jq -s '[.[] | {id, title, timestamp, view_count, like_count, comment_count, repost_count, save_count, webpage_url}]' > "$RUNNER_TEMP/tiktok-new.json" \
-                && [ "$(jq length "$RUNNER_TEMP/tiktok-new.json")" -gt 0 ] && mv "$RUNNER_TEMP/tiktok-new.json" "$TIKTOK_PUBLIC_FILE" \
+              timeout 120 yt-dlp -j --skip-download --ignore-errors --playlist-end 30 "https://www.tiktok.com/@foot.ballstories101" 2>"$RUNNER_TEMP/yt-dlp.log" \
+                | jq -s '[.[] | {id, title, timestamp, view_count, like_count, comment_count, repost_count, save_count, webpage_url}]' > "$RUNNER_TEMP/tiktok-new.json" || true; \
+                [ "$(jq length "$RUNNER_TEMP/tiktok-new.json")" -gt 0 ] && mv "$RUNNER_TEMP/tiktok-new.json" "$TIKTOK_PUBLIC_FILE" \
                 || echo "::warning::TikTok public read failed: $(tail -c 300 "$RUNNER_TEMP/yt-dlp.log" 2>/dev/null)"
               sleep 300
             done ) &
-          sleep 20 # give the first TikTok read a head start
+          # Wait (up to 2 minutes) for the first TikTok read, so a new job never starts on Zernio's numbers.
+          for w in $(seq 1 24); do [ -s "$TIKTOK_PUBLIC_FILE" ] && break; sleep 5; done
           git fetch --depth 1 origin live-stats && git show origin/live-stats:live.json > "$RUNNER_TEMP/prev.json" || echo "{}" > "$RUNNER_TEMP/prev.json"
           out="$RUNNER_TEMP/out"; mkdir -p "$out"; cd "$out"; git init -q -b live-stats; cp "$RUNNER_TEMP/prev.json" live.json
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
