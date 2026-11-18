@@ -6,6 +6,8 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
 
 ## The steps
 
+**Check every pitch and draft against [owner-taste.md](owner-taste.md) first (owner, 19 Nov 2026).** It records the hooks and bodies the owner approved and rejected.
+
 1. **Pitch, don't build.**
    - Offer 4 to 6 story options on the subject. Each gets: a hook line, a 2 to 3 line outline, a closing question, which facts are checked (outlets named), and one honest limit.
    - Rank them for shares.
@@ -17,7 +19,7 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
    - a payoff (he became the GOAT);
    - a closing question ("Which other legend … started with a red card?").
 <!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
-   *Share test, Reels posted 19-28 Nov 2026: pitch a split-verdict closing ("Cheat or genius?") and a quotable shock-line hook instead. See SKILL.md step 1.*
+   *Share test, Reels posted 19-28 Nov 2026: pitch a split-verdict closing ("Cheat or genius?") and a quotable shock-line hook instead (or an open-loop question that passes owner-taste.md). See SKILL.md step 1.*
 <!-- SHARE-TEST-2026-11 END -->
    
    Research each beat.
@@ -45,7 +47,7 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
 - Late payoff that ties back to the hook: "Not bad for a career that began with a red card."
 - A closing question that invites people to name another case, not just yes or no.
 <!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
-- During the share test (Reels posted 19-28 Nov 2026): use a split verdict instead, such as "Cheat or genius?", and a quotable shock-line hook. See SKILL.md step 1.
+- During the share test (Reels posted 19-28 Nov 2026): use a split verdict instead, such as "Cheat or genius?", and a quotable shock-line hook. (or an open-loop question that passes owner-taste.md). See SKILL.md step 1.
 <!-- SHARE-TEST-2026-11 END -->
 
 ## Improvements to make every time (evaluated 16 Nov 2026)

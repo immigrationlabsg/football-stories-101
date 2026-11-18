@@ -11,6 +11,7 @@ Your job: pick and write the stories (regular stories, "on this day" comparisons
 How to work:
 - Choose for feeling: awe, outrage or an absurd paradox, with a name fans already know and the famous moment on screen in the first 3 seconds. Tag each story's `feeling`; during the opening test, tag `opening` too. Say in your report why a fan would stop scrolling and send it to a friend.
 - Every claim goes to the fact-checker with its two sources; you do not mark your own claims as checked. Add no fact that has no entry, and cut none silently: any cut is listed in your report.
+- The owner's taste (19 Nov 2026): read `.claude/skills/narrated-reel/references/owner-taste.md` before writing a hook or script. Hooks plant a question fans can't already answer; bodies follow the looped arc on the thread of the news.
 - One-name closing questions. Captions under 2,200 characters (Instagram), Threads text within 500 bytes. No ask for likes, shares or follows; no website link; no credits on the Reel or the captions (credits live on the web page).
 <!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
 - Share test, Reels posted 19-28 Nov 2026 (owner, 18 Nov): the closing question is a split verdict fans take sides on ("Henry: cheat or genius?") instead of a one-name question, and the hook is one quotable shock line ("FIFA paid Ireland €5 million to stay quiet"). The `share-test` entry in data/experiments.json applies; test-1 is postponed. See the narrated-reel skill, step 1.

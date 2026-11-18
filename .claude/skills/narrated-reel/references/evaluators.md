@@ -19,7 +19,7 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 **Hard rules:** no invented facts; the hook fact is true.
 
 <!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
-**During the share test (Reels posted 19-28 Nov 2026, SKILL.md step 1):** P1 scores 2 only if the hook is one short, quotable shock line a fan could repeat word for word ("FIFA paid Ireland €5 million to stay quiet"). P4 scores 2 for a split verdict fans take sides on ("Henry: cheat or genius?"); an open "name another case" question scores 1 during the test.
+**During the share test (Reels posted 19-28 Nov 2026, SKILL.md step 1):** P1 scores 2 only if the hook is one short, quotable shock line a fan could repeat word for word ("FIFA paid Ireland €5 million to stay quiet"). P4 scores 2 for a split verdict fans take sides on ("Henry: cheat or genius?"); an open "name another case" question scores 1 during the test. An open-loop hook that passes the owner's taste check (owner-taste.md) also scores P1 at 2 (owner, 19 Nov 2026).
 <!-- SHARE-TEST-2026-11 END -->
 **Bar:** 8 of 10, with P1 at 2.
 
@@ -27,7 +27,7 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 
 | # | Criterion | 0 | 1 | 2 |
 |---|---|---|---|---|
-| S1 | Line 0: a single shock fact, stated plainly, one figure only | Describes the story ("The man who...") | Fact, but cluttered | One hard fact ("…red card after 47 seconds?") |
+| S1 | Line 0: a single shock fact, stated plainly, one figure only, or an open-loop question fans can't answer (owner-taste.md) | Describes the story ("The man who...") | Fact, but cluttered | One hard fact ("…red card after 47 seconds?") |
 | S2 | Line 1 goes straight into the moment | Build-up first | Within line 2 | Line 1 |
 | S3 | One thread, no detours (every line serves it) | 2+ side lines | 1 side line | None (no Mourinho-style colour) |
 | S4 | The middle holds facts most fans don't know | Retelling | 1 to 2 new facts | 3+ sourced lesser-known facts |
@@ -42,6 +42,8 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 - The `hook` and `question` fields match lines 0 and the last line.
 
 **Bar:** 12 of 14, with S1 and S3 at 2.
+
+**Owner's taste check (owner, 19 Nov 2026).** Before scoring, test the draft against [owner-taste.md](owner-taste.md): does the hook plant a question that fans of the club could not answer from this week's headlines, and does the body follow the looped arc on the thread of the news? A no is reported as a failed gate, whatever the score. A hook that passes this taste check may score S1 at 2 even as a question or two short sentences.
 
 ## Gate 3: Final cut (before the owner sees it as "ready", and again before install)
 
