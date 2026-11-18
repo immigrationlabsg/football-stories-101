@@ -934,3 +934,6 @@ Owner: "Try 2, while the idea and script generation stay as the current skill we
   would have scheduled 032-037 ahead again. It is now unloaded and disabled (`launchctl bootout` + `launchctl disable`,
   stays off after a restart; undo with `launchctl enable` + `launchctl bootstrap`). Also: 033-037 now post on Facebook
   only once their narrated Reels are live, as Instagram and Threads already did.
+- 18 Nov 22:20 SGT, owner: "Remove the Facebook Reels scheduled for 038-046 too". Removed (Remove posts run
+  44322828910, each found then deleted) and their records taken out of `data/sent.json`. No Facebook Reel is now
+  scheduled ahead; every daily story reaches Facebook from the morning run on its own day.
