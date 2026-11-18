@@ -40,7 +40,10 @@ The Messi debut Reel it replaced failed the owner's test: "ok, so what?" The pro
 - The hook is a shock fact that also fits the person's legend ("the greatest started with a red card").
 - One thread from setback to triumph: red card at 18 → finals lost → quit → world champion.
 - Late payoff that ties back to the hook: "Not bad for a career that began with a red card."
-- A closing question that invites people to name another case, not just yes or no. (During the share test, Reels posted 19-28 Nov 2026, use a split verdict instead, such as "Cheat or genius?", and a quotable shock-line hook: see SKILL.md step 1.)
+- A closing question that invites people to name another case, not just yes or no.
+<!-- SHARE-TEST-2026-11 START: trial items, remove the block from START to END if the 29 Nov review drops them -->
+- During the share test (Reels posted 19-28 Nov 2026): use a split verdict instead, such as "Cheat or genius?", and a quotable shock-line hook. See SKILL.md step 1.
+<!-- SHARE-TEST-2026-11 END -->
 
 ## Improvements to make every time (evaluated 16 Nov 2026)
 
