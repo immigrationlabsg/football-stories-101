@@ -915,3 +915,17 @@ shares (low to moderate). Nothing in `evaluators.md` or `data/eval-log.json` was
   twice). Instead a script re-read the Audience report log and checked every Instagram, Facebook and Threads figure and
   every age in the per-post table: 0 mismatches. YouTube and TikTok Studio figures were read once by the writer and are
   not independently re-checked. An independent check is still owed.
+
+### Owner decision, 18 Nov 2026 (evening)
+
+Owner: "Try 2, while the idea and script generation stay as the current skill we updated last night". So:
+- **Running from 19 Nov: Facebook same-day posting test (change 2).** Facebook gets each daily Reel from the 08:00
+  run itself (10:00 at weekends), the same run that posts Instagram and Threads, instead of a Reel scheduled a day or
+  more ahead. To start it, the Facebook Reels scheduled ahead for 031-037 were removed (Remove posts run 44321538528;
+  dry run 44321346748 found all 7 first) and their records taken out of `data/sent.json`. The ones scheduled ahead for
+  038-046 are still in place: decide after the test whether to remove them too.
+- **Measure:** Facebook plays, reactions and shares per post for 031-037 (19-25 Nov), set against the 7 posts scheduled
+  10 h or more ahead (021, 022, 023, 024, 025, 027, 029: none above 6 plays) and the 7 of 8 same-day posts at 190-276
+  plays. Instagram, Threads, TikTok and YouTube are unchanged.
+- **Unchanged:** story ideas and scripts follow the current skill (the Zidane-model lesser-known angle and the trend
+  structure); no new skill rules.
