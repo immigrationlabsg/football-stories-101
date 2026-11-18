@@ -1017,6 +1017,22 @@
       "detail": "scheduled for 2026-11-20T00:00:00.000Z reel 1697319032054785 (music: sports-documentary)",
       "story": "pochettino-murphy-bielsa",
       "reel": "8c2821421e7e0470a75d25808ef38f37291660b1"
+    },
+    {
+      "number": 30,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-18T00:02:26.730Z",
+      "detail": "reel media 18345709054257051",
+      "story": "brazil-singapore-referee"
+    },
+    {
+      "number": 30,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-18T00:02:26.730Z",
+      "detail": "thread 18103213658639896 (cards, Reel in reply, topic Football)",
+      "story": "brazil-singapore-referee"
     }
   ]
 }
