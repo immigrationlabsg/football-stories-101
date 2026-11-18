@@ -78,6 +78,15 @@ trial report, 18 Nov 2026".
 
 ## 2. What we will try, in order
 
+> **18 Nov 2026, owner: the share test runs first, Reels posted 19-28 Nov.** After the 10-day report (watch time up,
+> shares not), the owner added two things to the narrated-reel skill for 10 days: (A) the hook is one quotable shock
+> line ("FIFA paid Ireland €5 million to stay quiet"); (B) the closing question is a split verdict ("Henry: cheat or
+> genius?"). Main measure: shares and reposts per 1,000 reached (and per the first ~120 views). Guardrails: Instagram
+> average watch 12.4 s and skip 46.7%, and views (IG reach 121.5, YouTube 1,134, TikTok 346.5 medians) must not fall.
+> Review on 29 Nov. Topic choice stays on the current skill, so the tests below (test 1 "story pick by feeling", 23-29
+> Nov) would overlap with it and blur the result: they wait until after the 29 Nov review (owner to confirm the new dates).
+> The Facebook same-day posting test (19-25 Nov, Facebook plays) runs alongside, because it measures a different number.
+
 One change at a time, one test week each, so we know which change did what. Ranked by the research (docs/growth-log.md,
 "Research on other pages, round 1") and by our own best post. Each idea's evidence is labelled with its strength.
 

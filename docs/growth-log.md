@@ -984,3 +984,13 @@ Reading (likely factors, not proven): Henry matches the Zidane profile on Instag
 fans don't know, skip under 33%, about 20 s watched) and is already the third-best Instagram Reel ever at 2 h. Brazil
 stalled on Instagram at the usual ~127 but is the best TikTok so far: the first TikTok with its own sound since the
 mute, and a Singapore story on a Singapore account. YouTube for Brazil is behind earlier Shorts at the same age.
+
+### Share test registered, 18 Nov 2026 (owner)
+
+Owner: keep the Reel skill as it is (trending or world-known event plus a lesser-known fact; hook, link, body,
+closing). Watch time is up but shares are not ("ok cool, nice to know"). For the next 10 days (Reels posted 19-28 Nov)
+two additions are tested, written into `.claude/skills/narrated-reel/SKILL.md` step 1 as a dated trial:
+- **A. Hook = one quotable shock line** ("FIFA paid Ireland €5 million to stay quiet").
+- **B. Closing = a split verdict** ("Henry: cheat or genius?").
+Main measure: shares and reposts per 1,000 reached on every network. Guardrails: average watch, skip and views at or
+above the trial medians. Review on 29 Nov. 031, 911 and 032 were built before the change and count as "before".

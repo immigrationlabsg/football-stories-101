@@ -17,6 +17,8 @@ The owner is the final judge. The evaluator filters out weak work before it reac
 | P5 | The hook fact is checked in 2 outlets | No | 1 | 2+ |
 
 **Hard rules:** no invented facts; the hook fact is true.
+
+**During the share test (Reels posted 19-28 Nov 2026, SKILL.md step 1):** P1 scores 2 only if the hook is one short, quotable shock line a fan could repeat word for word ("FIFA paid Ireland €5 million to stay quiet"). P4 scores 2 for a split verdict fans take sides on ("Henry: cheat or genius?"); an open "name another case" question scores 1 during the test.
 **Bar:** 8 of 10, with P1 at 2.
 
 ## Gate 2: Script (before any voice or video; the owner OKs after it passes)
