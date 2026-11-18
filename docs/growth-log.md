@@ -710,3 +710,208 @@ only in `live.json`, not in the scoreboard. (4) The snapshot runs late (above).
 **What works (kept by a test): none yet.** The first keep-or-drop decision is test 1's, on Wednesday 2 Dec. Leads to test,
 not rules: a world-known moment with a clear person to send it to (021); a low first-seconds skip helps but is not enough
 on its own (027).
+
+## 10-day trial report, 18 Nov 2026
+
+Owner's trial (8 Nov): the voiced style for 10 days, judged on **likes, shares and followers**. Owner's goal for this review
+(15 Nov): **shares in the first ~120 views**. Trial = daily stories 020-029 (8-17 Nov). Extras 909, 906, 907 and 908 are
+kept apart. 030 (18 Nov) is 3 h old and is shown only for reference.
+
+**Sources (every number below comes from one of these):**
+- Audience report run 44230403800 (read 18 Nov 03:28 UTC = 11:28 SGT): Facebook, Instagram, Threads, per post.
+- `git show origin/live-stats:live.json` (read_at 2026-11-18T03:01Z): YouTube views and likes, TikTok for 023 and 030.
+- Views check run 44230842868 (manual, window 0-300 h, read only): TikTok and YouTube views through Zernio. It reported
+  0 TikTok views for 022, 024-029 and 908; TikTok Studio shows real views for these posts, so Zernio's TikTok numbers
+  for them are wrong. The run "failed" by design (posts under 20 views), which emails the owner; nothing was changed.
+- YouTube Studio in Chrome (Football Stories 101 channel, read only, 18 Nov about 11:35-11:45 SGT): average percentage
+  viewed, subscribers gained and likes (lifetime, Studio's analytics run up to 16 Nov), and "stayed to watch" per Short.
+- TikTok Studio in Chrome (FS101 account, read only, about 11:50 SGT): views, likes, comments, shares, saves, average watch.
+- Card-Reel baseline: `data/metrics/2026-11-09.json` (stories 008-019) and the 8 Nov baseline above (run 42438129062).
+
+### Headline
+
+- **Watch time and skip clearly improved; likes, shares and followers improved only a little, and mostly because of
+  one or two posts.** Instagram median skip fell from 55.3% to 46.7% and median average watch rose from 5.7 s to 12.4 s
+  (the Reels are about twice as long). Likes per 1,000 reached rose from 21.6 to 30.5 (pooled), but the median post got
+  fewer likes (1 against 2.5). Shares: 25 against 0, all 25 on one post (021 Denmark). Followers: Facebook 0 → 3,
+  Instagram 0 → 1, Threads 0 → 0, plus YouTube 8 and TikTok 0 on networks started during the trial.
+- **The owner's "no shares in the first ~120 views, no climb" rule does not hold in our data as stated.** On Instagram,
+  908 Zidane climbed from the usual ~120 to 1,488 reached with **0 shares** (29 likes, 31.8% skip), and 028 Messi to
+  235 with 0 shares. On YouTube, no Short has a single share, yet 12 of 13 passed 700 views. On TikTok there is 1 share
+  in total (028). What every breakout did have was a **low skip / high "stayed to watch"**. This is what Mosseri said
+  too: watch time is the top signal for everyone; sends matter a little more than likes for non-followers.
+- **The Zidane-style Reels (908, 028, 029) are the best group so far** on Instagram reach and likes (median reach 235,
+  median likes 10, median skip 39.4%), against Denmark-shape 023-027 (median reach 116, likes 1, skip 49.2%). Only three
+  posts, one of them an evening extra: a lead, not proof.
+
+### Comparison table (trial against the card Reels before 8 Nov)
+
+| Measure | Trial 020-029 (10 daily posts) | Card Reels 008-019 (12 posts) |
+|---|---|---|
+| Instagram reach, total / median | 2,292 / 121.5 | 1,392 / 115.5 |
+| Instagram likes, total / median | 70 / 1 | 30 / 2.5 |
+| Instagram likes per 1,000 reached (pooled) | 30.5 | 21.6 |
+| Instagram shares, total (per 1,000 reached) | 25 (10.9), all on 021 | 0 (0) |
+| Instagram saves, total | 5 | 4 |
+| Instagram skip rate, median | 46.7% | 55.3% |
+| Instagram average watch, median | 12.4 s | 5.7 s |
+| Facebook plays, median / reactions / shares | 3.5 / 1 / 0 | 1 / 0 / 0 |
+| Threads views, median / likes / reposts + shares | 15 / 0 / 0 | 17.5 / 0 / 0 |
+| YouTube (021-029, 9 Shorts) views median / likes total / shares | 1,134 / 108 / 0 | (not on YouTube yet) |
+| TikTok (021 hand upload, 023-029) views median / likes / shares | 346.5 / 92 / 1 | (not on TikTok yet) |
+| Followers now (baseline 8 Nov) | FB 3 (0), IG 1 (0), Threads 0 (0), YouTube 8, TikTok 0 | |
+
+Card figures are from the 9 Nov snapshot at 2-13 days old; trial figures are read today at 27-241 h old, so the trial
+had the same or more time per post except 029 (27 h). Ages of the extras: 909 204 h, 906 183 h, 907 135 h, 908 63 h.
+
+**Per post, all networks (18 Nov).** IG = reach / likes / shares / skip %. FB = plays / reactions. TH = Threads views
+(0 likes, 0 reposts, 0 shares on every post). YT = views (live.json) / likes / avg % viewed / stayed to watch % /
+subscribers gained (Studio, lifetime to 16 Nov). TT = TikTok views / likes / shares (TikTok Studio).
+
+| Story | Style | Age (h) | IG | FB | TH | YT | TT |
+|---|---|---|---|---|---|---|---|
+| 020 Barcelona | voiced v1 | 241 | 118 / 0 / 0 / 46.6 | 256 / 1 | 5 | not posted | not posted |
+| **021 Denmark 1992** | voiced v1 | 219 | **1,102 / 49 / 25 / 35.4** | 2 / 0 | 41 | 1,364 / 22 / 59.5 / 60.1 / +3 | 804 / 19 / 0 (hand upload 10 Nov) |
+| 022 Van Persie v Salah | voiced v1 | 195 | 118 / 0 / 0 / 47.0 | 4 / 0 | 16 | 172 / 2 / 53.1 / 31.9 / 0 | 0 views |
+| 023 Wimbledon | Denmark-shape | 171 | 126 / 1 / 0 / 46.8 | 3 / 0 | 121 | 1,267 / 16 / 58.9 / 56.2 / 0 | 315 / 11 / 0 |
+| 024 Lyon | Denmark-shape | 147 | 127 / 2 / 0 / 49.2 | 1 / 0 | 16 | 1,104 / 8 / 33.3 / 37.3 / +2 | 221 / 0 / 0 (muted) |
+| 025 Scholes v Buffon | Denmark-shape | 123 | 115 / 6 / 0 / 49.6 | 1 / 0 | 14 | 1,261 / 18 / 39.6 / 57.8 / +1 | 176 / 11 / 0 (muted) |
+| 026 Guess the legend | Denmark-shape (quiz) | 97 | 110 / 0 / 0 / 57.5 | 199 / 0 | 3 | 1,134 / 9 / 57.4 / 52.1 / 0 | 112 / 5 / 0 (muted) |
+| 027 Grande Torino | Denmark-shape | 73 | 116 / 1 / 0 / 37.1 | 6 / 0 | 8 | 707 / 6 / 46.7 / 55.0 / 0 | 451 / 19 / 0 (muted) |
+| 028 Messi's 47 seconds | Zidane-style | 51 | 235 / 10 / 0 / 40.0 | 193 / 0 | 10 | 1,232 / 21 / 47.2 / 55.8 / 0 | 378 / 7 / **1** (muted) |
+| 029 Greece 2004 | Zidane-style | 27 | 125 / 1 / 0 / 39.4 | 2 / 0 | 93 | 768 / 6 / too new | 528 / 20 / 0 (muted) |
+| *908 Zidane (extra)* | Zidane-style | 63 | *1,488 / 29 / 0 / 31.8* | 197 / 2 | 0 | 1,316 / 19 / 50.7 / 62.2 / +4 | 515 / 17 / 0 (muted) |
+| *909 Man Utd (extra)* | voiced extra | 204 | 110 / 2 / 0 / 61.3 | 260 / 4 | 127 | 1,145 / 12 / 47.6 / 33.0 / 0 | 0 views |
+| *906 Como (extra)* | voiced extra | 183 | 114 / 0 / 0 / 70.5 | 14 / 0 | 2 | 1,144 / 11 / 47.2 / 25.6 / 0 | 0 views |
+| *907 Maradona (extra)* | voiced extra | 135 | 115 / 1 / 0 / 49.6 | 236 / 1 | 6 | 1,078 / 11 / 54.7 / 44.7 / 0 | not posted |
+| *030 Brazil (reference)* | Zidane-style | 3 | 127 / 0 / 0 / 38.6 | 32 / 1 | 62 | 77 / 1 / - | 221 / 10 / 0 (music off) |
+
+Notes: 023's Instagram average watch (49.8 s) is longer than the Reel, a counting oddity at Meta's end. YouTube Studio
+analytics stop at 16 Nov, so 029's % viewed and "stayed" were not yet shown. YouTube "stayed to watch" is the share of
+feed viewers who did not swipe away.
+
+**Muted TikToks (a confound).** A US-chart track ("#2 Self Aware") was added to TikToks 024-029 and 908 and was muted in
+Singapore; music has been off since 18 Nov. Those TikTok numbers may be held down by the mute, so no TikTok comparison
+between styles is fair. 022, 906 and 909 show 0 views on TikTok (the early "held back" posts, as before).
+
+### Does "no shares in the first ~120 views = no climb" hold? (per network)
+
+- **Instagram:** every post first reaches about 110-130 non-followers. Three of 15 posts got beyond that: 021 (25 shares),
+  908 (0 shares) and 028 (0 shares, 1 save). Shares were enough once, but not needed twice. All three breakouts had a skip
+  rate of 40% or less; 027, 029 and 030 also had low skip (37-39%) and did not break out, so low skip is needed but not
+  enough. Confidence: low (3 breakouts). We can't see when shares came in, only totals.
+- **YouTube:** does not hold. 0 shares on all 13 Shorts, yet 12 passed 700 views and 10 passed 1,000. YouTube gives each
+  Short its own test. The ones that stalled had the lowest "stayed to watch" (022 31.9%, 172 views).
+- **TikTok:** does not hold on views (112-804 with 1 share in total), and the mute makes it hard to read.
+- **Facebook:** 0 shares on every post ever. Plays split in two (about 190-260, or 1-6), and that split lines up with how
+  the Reel was posted (factor review below), not with the story.
+- **Threads:** 0 likes, reposts or shares on every post; views 0-127. No signal to test.
+
+### 10-day factor review, 18 Nov 2026
+
+`data/post-factors.json` now has entries for 020-029 and extras 906-909 (12 added today, from the story files,
+`data/sent.json`, `data/tiktok.json` and `data/youtube.json`; paintings and caption length not counted because the
+posted files aren't in the checkout). Outcomes are the per-post table above, at the ages shown, not 48 h scores.
+
+- **Top 3 (Instagram reach and likes, all networks considered): 908 Zidane, 021 Denmark, 028 Messi.** What they share:
+  a **world-known event or name** (Euro 92, the 2006 headbutt, Messi); **a surprise most fans don't know** about it
+  (a team that didn't qualify, who really sent Zidane off, a 47-second red card); **low Instagram skip (31.8-40.0%)** and
+  the **highest YouTube "stayed to watch"** (55.8-62.2%); a **famous name in the hook** in two of three (908, 028).
+  Likely factors, each backed by more than one post.
+- **Bottom 3 (Instagram): 026 quiz (57.5% skip, 0 likes), 022 Van Persie v Salah (0 likes; 172 YouTube views, 31.9%
+  stayed) and 024 Lyon (49.2% skip; YouTube 33.3% viewed).** What they lack: a moment the whole world knows told from a
+  surprising side; 022 and 025 are two-date pairs, 024 and 023 copy 021's hook shape onto lesser-known clubs, 026 hides
+  the name. Likely factors.
+- **Networks differ.** Instagram rewards low skip and (once) shares. YouTube shows nearly everything to about 1,000
+  people and then sorts by "stayed to watch"; subscribers came from 908 (+4), 021 (+3), 024 (+2) and 025 (+1). TikTok is
+  muted (above). **Facebook plays follow the posting method:** posted directly or scheduled 7 h or less ahead, 7 of 8
+  posts got 190-276 plays (020 2.5 h ahead 256; 028 7.2 h 193; 026, 907, 908, 909 direct 197-260; Ronaldo 900 scheduled
+  3 h ahead 276; the exception 906, direct, 14). Scheduled 10 h or more ahead, 0 of 7 got more than 6 plays (021 21.2 h,
+  022 45.1 h, 023 10.2 h, 024 20.1 h, 025 117 h, 027 46.8 h, 029 31.2 h). 030 (6.6 h ahead) has 32 plays at 3 h old.
+  Strong pattern on 15 posts, but extras are also evening posts, and card Reel 018 got 175 plays though scheduled weeks
+  ahead, so it is a likely factor to test, not proven.
+- **Keep:** voiced style; world-known moment + lesser-known angle (Zidane model); famous name early. **Test:** Facebook
+  same-day posting; ending questions that pick a side in a debate. **Drop / pause:** copying 021's hook shape onto
+  lesser-known clubs (023, 024); quiz format (highest skip twice); two-date pairs without a surprise (022).
+
+### Recommendation
+
+The trial **did not hurt anything and clearly lifted watching** (skip down about 9 points, watch time about doubled),
+but likes per post (median) and shares did not rise across the board, and followers are still in single figures. So:
+**keep the voiced Zidane-style format, and start testing what makes a post break out**, one change at a time, measured
+by shares and likes per first 120 views, with skip / stayed-to-watch as the early sign.
+
+### How we revise
+
+**a. Why people share football posts** (evidence label in brackets):
+- High-arousal feelings (awe, anger, surprise) are shared more than low-arousal ones such as sadness [study: Berger and
+  Milkman, "What Makes Online Content Viral?", JMR 2012, https://faculty.wharton.upenn.edu/wp-content/uploads/2011/11/Virality.pdf].
+- Fans share to show identity and support their team, and to connect with other fans [study: Clavio and Frederick 2014,
+  college football check-ins; Kim, Cho and Kim 2021 on sports hashtags, summarised at
+  https://trace.tennessee.edu/jasm/vol6/iss2/18].
+- Instagram's top three signals are watch time, likes per reach and sends per reach; sends weigh slightly more than likes
+  for people who don't follow you, but watch time matters most for everyone [platform: Mosseri, Jan 2025, reported at
+  https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/].
+- A myth fans already argue about, settled with a fact (AGH Stories' Pelé Short, about 1.25M views, 3.8 times its
+  median) and paradox titles travel [one page, Benchmark 16 Nov above].
+- Our own: the one share-earner (021) was an underdog story a fan could send to "anyone who says nobody expected them".
+
+**b. What our share-earners and breakouts had.** Instagram: 021 (25 shares) and 908/028 (reach without shares) were all
+world-known moments told from an angle most fans don't know, with skip of 40% or less. TikTok's only share (028) is the
+same Messi Reel. YouTube: the same three plus 023 and 025 had the best "stayed to watch". Facebook: nothing earned a
+share; posting method decided plays.
+
+**c. Ranked changes** (one at a time, each measured over 7 daily posts by shares and likes per first 120 views, with
+Instagram skip and YouTube stayed-to-watch as early signs; the bar stays at least 3 shares from at least 2 posts):
+1. **Story choice: a world-known moment or name + a lesser-known fact about it (the Zidane model), every day.** Why: all
+   three breakouts had it; the weakest posts didn't. Evidence: moderate (3 posts, 2 networks agree; AGH Stories points the
+   same way). Effort: low, already the rule since 16 Nov. Test: test 1 (23-29 Nov, story pick by feeling) as registered;
+   compare against 029-034.
+2. **Facebook: post on the day (directly, or scheduled 7 h or less ahead) instead of a day or more ahead.** Why: 7 of 8
+   such posts got 190-276 plays, against 0 of 7 posts scheduled further ahead getting more than 6. Evidence: moderate
+   (15 posts, but confounded with evening extras). Effort: low. Test: one week of Facebook-only change; needs the owner's
+   OK because Facebook is the control network.
+3. **Ending question that makes the viewer take a side** ("Would you still have given him the Golden Ball?", "Cheat or
+   genius?") instead of "name your own example". Why: a side-taking question gives a reason to send it to someone who
+   disagrees. Evidence: weak (only a lead from AGH Stories and Berger and Milkman; our 908 got 0 shares with this question).
+   Effort: low. Test: after test 1.
+4. **Famous name in the first line on screen.** Why: 2 of 3 top posts. Evidence: weak to moderate. Effort: low.
+5. **Drop the quiz format and two-date pairs without a surprise.** Evidence: moderate (quiz highest skip twice, 022 and 026).
+
+**d. What to implement first (for the owner to approve):** (1) keep test 1 exactly as registered, 23-29 Nov, with every
+story a world-known moment + lesser-known angle; (2) Facebook same-day posting as a separate Facebook-only test from
+19 Nov (owner's OK needed); (3) decide whether the 4 Drogba (026) lessons become skill rules.
+Standing rules respected: no asking for likes, follows or shares; no DMs; no website links in posts; no invented facts;
+paintings only from real photos.
+
+**Evaluator calibration (step 4b).** The reel-evaluator agent could not be started in this run (agent launches were
+refused twice), so this is the report writer's reading of `data/eval-log.json` (18 entries, no outcomes filled) against
+the outcomes, not the evaluator's own review; it should be re-run by the evaluator. Only one gated Reel is old enough to
+score: 028 (Instagram 235 reached, 10 likes, 0 shares; TikTok 1 share; YouTube 55.8% stayed). One Reel can't show which
+criteria track shares. On the 16 Nov proposals: (1) take Zidane 908 out of the "high shares" examples: still holds, 0 shares
+on all five networks; (2) a "send-to" criterion: still low confidence, no new share-earner; (3) stricter hook and
+question scores: no new outcome evidence either way; (4) mark retrospective scores: still holds; (5) score facts on the
+evidence: still holds. New, for the owner to confirm: (6) add a "holds the first 3 seconds" criterion, since every
+breakout had Instagram skip of 40% or less and YouTube stayed-to-watch of 55% or more (moderate: 3 posts, 2 networks);
+(7) score "breakout potential" (watch, likes and sends together) rather than shares alone, since 2 of 3 breakouts had 0
+shares (low to moderate). Nothing in `evaluators.md` or `data/eval-log.json` was changed.
+
+### Routes tried
+
+- Audience report (insights.yml): ran, run 44230403800, all three Meta networks read.
+- Facebook reach: API refuses `post_impressions_unique` (code 100) on every Reel. Meta Business Suite in Chrome (read
+  only) says "Facebook reach will no longer be available starting October 31, 2026", shows "--" for reach, and its views
+  match the API (Brazil 36 vs 32 a few minutes apart). Plays remain the Facebook measure.
+- Instagram follows per Reel: API says the metric isn't supported for Reels (code 100); account totals used.
+- TikTok: live.json lists only 023 and 030 with numbers; Views check (Zernio, run 44230842868) gave 0 for 024-029 and 908;
+  TikTok profile page and TikTok Studio in Chrome (read only) gave the real views, likes, comments, shares and saves.
+- YouTube: live.json (views, likes); Views check (Zernio) gave views but its watch-percentage read hit a 429 rate limit;
+  YouTube Studio in Chrome (FS101 channel) gave % viewed, stayed to watch, likes and subscribers. Studio first opened on
+  a different personal channel at ?authuser=2; switched to Football Stories 101 in the account list (read only).
+- YouTube shares: live.json shows 0 on every Short; not separately read in Studio.
+- Drogba 026 "4 lessons": text not found in the repo, git log, vault memory or session transcripts searched; the owner
+  question is asked as written in the task.
+- Verification: the independent verifier subagent (step 5) could not be started in this run (agent launches refused
+  twice). Instead a script re-read the Audience report log and checked every Instagram, Facebook and Threads figure and
+  every age in the per-post table: 0 mismatches. YouTube and TikTok Studio figures were read once by the writer and are
+  not independently re-checked. An independent check is still owed.

@@ -56,6 +56,26 @@ harder to pass, not easier. From test 1 on, every post is scored at 48 h. The 17
 For reference, the best trial post so far, 021 Denmark 1992, had reach 305, 38% skip and 75% watched, but that was read
 only 4.7 h after posting, so it isn't a 48 h score.
 
+**Improvement-loop baseline, read 18 Nov at the ages shown** (Audience report run 44230403800, read 03:28 UTC; the 9
+daily posts of 8-16 Nov; extras and the 17 Nov post left out). Likes = Instagram likes + Facebook reactions + Threads
+likes. Shares per network: Instagram per 1,000 reached, Facebook per 1,000 plays, Threads reposts + shares per 1,000 views.
+
+| Story | Age (h) | Likes | IG shares /1,000 reached | FB shares /1,000 plays | Threads /1,000 views | IG reach | IG skip % | IG avg watch (s) |
+|---|---|---|---|---|---|---|---|---|
+| 020 | 241 | 1 | 0 | 0 | 0 | 118 | 46.6 | 11.6 |
+| 021 | 219 | 49 | 22.7 | 0 | 0 | 1,102 | 35.4 | 22.5 |
+| 022 | 195 | 0 | 0 | 0 | 0 | 118 | 47.0 | 9.4 |
+| 023 | 171 | 1 | 0 | 0 | 0 | 126 | 46.8 | 49.8 (oddity) |
+| 024 | 147 | 2 | 0 | 0 | 0 | 127 | 49.2 | 10.0 |
+| 025 | 123 | 6 | 0 | 0 | 0 | 115 | 49.6 | 10.4 |
+| 026 | 97 | 0 | 0 | 0 | 0 | 110 | 57.5 | 10.4 |
+| 027 | 73 | 1 | 0 | 0 | 0 | 116 | 37.1 | 13.2 |
+| 028 | 51 | 10 | 0 | 0 | 0 | 235 | 40.0 | 15.2 |
+| **Median** | | **1** | **0** | **0** | **0** | **118** | **46.8** | **11.6** |
+
+Total likes 70 (mean 7.8, lifted by 021). Shares: 25, all Instagram, all on 021. Report: `docs/growth-log.md`, "10-day
+trial report, 18 Nov 2026".
+
 ## 2. What we will try, in order
 
 One change at a time, one test week each, so we know which change did what. Ranked by the research (docs/growth-log.md,
