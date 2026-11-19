@@ -100,6 +100,13 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 089 | Clubs | Kaiserslautern 1997–98: promoted, then champions of Germany at the first attempt | reserved |
 | 090 | Eras | Mourinho's Porto 2002–04: the UEFA Cup, the Champions League, and a team broken up within weeks | reserved |
 | 091 | Moments | Hamburg, 22 June 1974: East Germany beat West Germany, and the losers won the World Cup | reserved |
+| 092 | Players | Ada Hegerberg: the first women's Ballon d'Or, won while she refused to play for Norway | reserved |
+| 093 | Clubs | Blackburn Rovers 1994–95: champions after losing on the final day at Anfield | reserved |
+| 094 | Eras | Brazil 1982: Zico, Sócrates, Falcão, and the draw they could not get against Italy | reserved |
+| 095 | Moments | Lyon, 3 June 1997: Roberto Carlos's free kick against France, and the physics paper that explained it | reserved |
+| 096 | Players | Gianluigi Buffon: the midfielder who became a goalkeeper because of Cameroon's Thomas N'Kono | reserved |
+| 097 | Clubs | Marseille 1993: European champions, then barred from defending the title | reserved |
+| 098 | Eras | Cruyff's Barcelona Dream Team, 1991–94: the first European Cup, then a 4–0 final defeat | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
