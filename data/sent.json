@@ -939,6 +939,31 @@
       "at": "2026-11-19T00:03:24.237Z",
       "detail": "thread 18131315669308867 (cards, Reel in reply, topic Football)",
       "story": "ronaldinho-back-at-46"
+    },
+    {
+      "number": 911,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-19T12:03:13.511Z",
+      "detail": "posted reel 2029724187945337 (music: cinematic-trailer)",
+      "story": "ronaldo-ballon-dor-deadline",
+      "reel": "31f6b9fb934278fc7b682135e4f844a21bb95c2d"
+    },
+    {
+      "number": 911,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-19T12:03:13.511Z",
+      "detail": "reel media 17982331173137086",
+      "story": "ronaldo-ballon-dor-deadline"
+    },
+    {
+      "number": 911,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-19T12:03:13.511Z",
+      "detail": "thread 18135242608753470 (cards, Reel in reply, topic Football)",
+      "story": "ronaldo-ballon-dor-deadline"
     }
   ]
 }
