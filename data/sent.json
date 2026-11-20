@@ -964,6 +964,31 @@
       "at": "2026-11-19T12:03:13.511Z",
       "detail": "thread 18135242608753470 (cards, Reel in reply, topic Football)",
       "story": "ronaldo-ballon-dor-deadline"
+    },
+    {
+      "number": 32,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-20T00:02:42.602Z",
+      "detail": "posted reel 1167787445594054 (music: sports-documentary)",
+      "story": "pochettino-murphy-bielsa",
+      "reel": "ce8f36a247570f0c8f7738599573e6cddc3f1cb5"
+    },
+    {
+      "number": 32,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-20T00:02:42.602Z",
+      "detail": "reel media 18146014018720805",
+      "story": "pochettino-murphy-bielsa"
+    },
+    {
+      "number": 32,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-20T00:02:42.602Z",
+      "detail": "thread 18086347040338642 (cards, Reel in reply, topic Football)",
+      "story": "pochettino-murphy-bielsa"
     }
   ]
 }
