@@ -989,6 +989,31 @@
       "at": "2026-11-20T00:02:42.602Z",
       "detail": "thread 18086347040338642 (cards, Reel in reply, topic Football)",
       "story": "pochettino-murphy-bielsa"
+    },
+    {
+      "number": 33,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-21T02:02:59.094Z",
+      "detail": "posted reel 1700431448148242 (music: cinematic-trailer)",
+      "story": "bert-trautmann-broken-neck-final",
+      "reel": "1b88599f284aa25bb5342cac74ee99132d8fdb50"
+    },
+    {
+      "number": 33,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-21T02:02:59.094Z",
+      "detail": "reel media 17880690981567858",
+      "story": "bert-trautmann-broken-neck-final"
+    },
+    {
+      "number": 33,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-21T02:02:59.094Z",
+      "detail": "thread 18097530464177902 (cards, Reel in reply, topic Football)",
+      "story": "bert-trautmann-broken-neck-final"
     }
   ]
 }
