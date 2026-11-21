@@ -1,0 +1,1036 @@
+{
+ "schema": 1,
+ "day": "2026-11-17",
+ "read_at": "2026-11-17T10:26:03.034Z",
+ "counts": {
+  "bbc": 82,
+  "guardian": 58,
+  "google-trends": 30,
+  "wikipedia": 70
+ },
+ "errors": [],
+ "hooks": [
+  {
+   "type": "anniversary",
+   "score": 9.63,
+   "anniversary": {
+    "date": "11-19",
+    "year": 2005,
+    "title": "Ronaldinho gets a standing ovation at the Bernabéu",
+    "people": [
+     "Ronaldinho",
+     "Samuel Eto'o"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Real Madrid"
+    ],
+    "countries": [
+     "Brazil",
+     "Spain"
+    ],
+    "angle": "Ronaldinho scored twice in a 3-0 win and Real Madrid fans stood to applaud him; the only other Barcelona player the Wikipedia article names with that tribute at the Bernabéu is Diego Maradona.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ronaldinho",
+     "https://fcbarcelona.com/en/news/1147476/on-this-day-standing-ovation-for-ronaldinho-at-santiago-bernabeu"
+    ],
+    "yearsAgo": 21,
+    "inDays": 2
+   },
+   "names": [
+    "Ronaldinho",
+    "Real Madrid",
+    "Brazil",
+    "Spain"
+   ],
+   "headline": "In 2 days (11-19): 21 years since Ronaldinho gets a standing ovation at the Bernabéu. Angle: Ronaldinho scored twice in a 3-0 win and Real Madrid fans stood to applaud him; the only other Barcelona player the Wikipedia article names with that tribute at the Bernabéu is Diego Maradona.",
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career"
+   ],
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 8.77,
+   "story": {
+    "number": 51,
+    "title": "Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player",
+    "date": "2026-12-09"
+   },
+   "names": [
+    "Ronaldinho",
+    "Diego Maradona",
+    "David Beckham",
+    "Lionel Messi",
+    "Manchester United",
+    "Brazil",
+    "Spain",
+    "Barcelona",
+    "Real Madrid",
+    "Argentina"
+   ],
+   "headline": "Story 051 \"Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player\" (due 2026-12-09) features Ronaldinho, Diego Maradona, David Beckham, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career",
+    "Wikipedia en: 47,745 reads of \"Ronaldinho\""
+   ]
+  },
+  {
+   "type": "new",
+   "score": 5.8,
+   "names": [
+    "Mauricio Pochettino"
+   ],
+   "why": [
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: How Pochettino came on Man Utd's radar - and what Carrick was told when",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job",
+    "GUARDIAN: Here Manchester United go again, taking the Two Ronnies route to hiring a new boss | Jonathan Wilson"
+   ],
+   "headline": "Mauricio Pochettino is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 5.75,
+   "anniversary": {
+    "date": "11-17",
+    "year": 2006,
+    "title": "Ferenc Puskás dies in Budapest aged 79",
+    "people": [
+     "Ferenc Puskás"
+    ],
+    "clubs": [
+     "Real Madrid"
+    ],
+    "countries": [
+     "Hungary",
+     "Spain"
+    ],
+    "angle": "Puskás scored four of Real Madrid's seven goals in the 1960 European Cup final, and later played four matches for Spain after becoming a Spanish citizen in 1962.",
+    "round": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ferenc_Puskás",
+     "https://www.aljazeera.com/news/2006/11/17/hungary-legend-puskas-dies-at-79"
+    ],
+    "yearsAgo": 20,
+    "inDays": 0
+   },
+   "names": [
+    "Real Madrid",
+    "Hungary",
+    "Spain"
+   ],
+   "headline": "Today (11-17): 20 years since Ferenc Puskás dies in Budapest aged 79 (round anniversary). Angle: Puskás scored four of Real Madrid's seven goals in the 1960 European Cup final, and later played four matches for Spain after becoming a Spanish citizen in 1962.",
+   "why": [],
+   "coveredIn": [
+    2,
+    18
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 4.42,
+   "story": {
+    "number": 40,
+    "title": "Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt",
+    "date": "2026-11-28"
+   },
+   "names": [
+    "Ronaldinho",
+    "Arsenal",
+    "Brazil",
+    "Spain",
+    "Barcelona",
+    "Real Madrid",
+    "Argentina"
+   ],
+   "headline": "Story 040 \"Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt\" (due 2026-11-28) features Ronaldinho, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career",
+    "Wikipedia en: 47,745 reads of \"Ronaldinho\""
+   ]
+  },
+  {
+   "type": "new",
+   "score": 3.92,
+   "names": [
+    "Harry Kane"
+   ],
+   "why": [
+    "BBC: Where does Kane rank among all-time England greats?",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it",
+    "GUARDIAN: Bone broth, sweets ban and acupuncture: Harry Kane’s road to record England cap",
+    "Wikipedia en: 22,518 reads of \"Harry Kane\""
+   ],
+   "headline": "Harry Kane is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 3.9,
+   "anniversary": {
+    "date": "11-17",
+    "year": 1993,
+    "title": "San Marino score after 8.3 seconds against England",
+    "people": [
+     "Davide Gualtieri",
+     "Stuart Pearce",
+     "Ian Wright"
+    ],
+    "clubs": [],
+    "countries": [
+     "San Marino",
+     "England"
+    ],
+    "angle": "Davide Gualtieri scored 8.3 seconds after kick-off in Bologna (England still won 7-1), and he was a part-timer who later worked as a computer salesman (Wikipedia) / ran an electronics shop (UEFA).",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Davide_Gualtieri",
+     "https://www.uefa.com/european-qualifiers/news/0202-0f881dd4ecfe-21630dd87c8e-1000--the-goal-san-marino-will-never-forget"
+    ],
+    "yearsAgo": 33,
+    "inDays": 0
+   },
+   "names": [
+    "England"
+   ],
+   "headline": "Today (11-17): 33 years since San Marino score after 8.3 seconds against England. Angle: Davide Gualtieri scored 8.3 seconds after kick-off in Bologna (England still won 7-1), and he was a part-timer who later worked as a computer salesman (Wikipedia) / ran an electronics shop (UEFA).",
+   "why": []
+  },
+  {
+   "type": "new",
+   "score": 3.86,
+   "names": [
+    "Thomas Frank (football manager)"
+   ],
+   "why": [
+    "BBC: How Frank can restore reputation and save Crystal Palace",
+    "GUARDIAN: Thomas Frank’s to-do list: lift mood, fix defence and fire up Sarr and Mateta",
+    "GUARDIAN: Thomas Frank confirmed as Crystal Palace manager after Pierre Sage’s sacking",
+    "Wikipedia en: 19,337 reads of \"Thomas Frank (football manager)\""
+   ],
+   "headline": "Thomas Frank (football manager) is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "new",
+   "score": 3.85,
+   "names": [
+    "James Trafford"
+   ],
+   "why": [
+    "BBC: Has Trafford replaced Pickford as England No 1?",
+    "BBC: Football Daily",
+    "Wikipedia en: 66,321 reads of \"James Trafford\"",
+    "Wikipedia es: 2,879 reads of \"James Trafford\""
+   ],
+   "headline": "James Trafford is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "bank",
+   "score": 3.7,
+   "story": {
+    "number": 41,
+    "title": "Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time",
+    "date": "2026-11-29"
+   },
+   "names": [
+    "Alex Ferguson",
+    "David Beckham",
+    "Manchester United",
+    "England",
+    "Spain",
+    "Germany",
+    "Norway"
+   ],
+   "headline": "Story 041 \"Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time\" (due 2026-11-29) features Alex Ferguson, David Beckham, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Michael Carrick was just the latest fall guy for Manchester United’s dysfunctional hierarchy | Jamie Jackson",
+    "GUARDIAN: Pochettino’s Chelsea maelstrom the best yardstick for what lies ahead at United",
+    "GUARDIAN: Beckham firm sues after fragrance found for sale in discount store"
+   ]
+  },
+  {
+   "type": "new",
+   "score": 3.6,
+   "names": [
+    "Pep Guardiola"
+   ],
+   "why": [
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job",
+    "GUARDIAN: Do good club managers necessarily make good international managers? | Jonathan Wilson"
+   ],
+   "headline": "Pep Guardiola is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "new",
+   "score": 3.6,
+   "names": [
+    "Andy Robertson"
+   ],
+   "why": [
+    "BBC: Pocognoli wants patience, but Scotland 'don't have time' - Robertson",
+    "BBC: Robertson eclipses Dalglish to become Scotland's most capped man",
+    "GUARDIAN: Switzerland roll over sorry Scotland to increase the pressure on Pocognoli",
+    "GUARDIAN: Record-breaking Andy Robertson is Scotland’s finest captain"
+   ],
+   "headline": "Andy Robertson is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    22
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 3.56,
+   "story": {
+    "number": 31,
+    "title": "Pelé v Cristiano Ronaldo / A 1,000th goal, a hat-trick in Sweden and one night in Zurich",
+    "date": "2026-11-19"
+   },
+   "names": [
+    "Cristiano Ronaldo",
+    "Pelé",
+    "Lionel Messi",
+    "Brazil",
+    "Portugal"
+   ],
+   "headline": "Story 031 \"Pelé v Cristiano Ronaldo / A 1,000th goal, a hat-trick in Sweden and one night in Zurich\" (due 2026-11-19) features Cristiano Ronaldo, Pelé, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Life after Ronaldo - Portugal face post-Bale Wales",
+    "BBC: Portugal boss responds to criticism from Ronaldo's mum",
+    "Wikipedia en: 21,672 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 3,622 reads of \"Cristiano Ronaldo\""
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 3.41,
+   "anniversary": {
+    "date": "11-19",
+    "year": 1969,
+    "title": "Pelé scores his 1,000th career goal at the Maracanã",
+    "people": [
+     "Pelé"
+    ],
+    "clubs": [
+     "Santos FC",
+     "CR Vasco da Gama"
+    ],
+    "countries": [
+     "Brazil"
+    ],
+    "angle": "The 1,000th goal was a penalty against Vasco da Gama at the Maracanã, and Brazil's postal service issued a commemorative stamp for it.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pelé",
+     "https://www.history.com/this-day-in-history/pele-scores-1000th-goal"
+    ],
+    "yearsAgo": 57,
+    "inDays": 2
+   },
+   "names": [
+    "Pelé",
+    "Brazil"
+   ],
+   "headline": "In 2 days (11-19): 57 years since Pelé scores his 1,000th career goal at the Maracanã. Angle: The 1,000th goal was a penalty against Vasco da Gama at the Maracanã, and Brazil's postal service issued a commemorative stamp for it.",
+   "why": [
+    "Wikipedia pt: 2,116 reads of \"Pelé\""
+   ],
+   "coveredIn": [
+    6
+   ]
+  },
+  {
+   "type": "new",
+   "score": 2.96,
+   "names": [
+    "Brajan Gruda"
+   ],
+   "why": [
+    "GUARDIAN: Nations League: Wirtz doubles up as Germany rout Netherlands to top group",
+    "Wikipedia en: 33,643 reads of \"Brajan Gruda\"",
+    "Wikipedia es: 5,745 reads of \"Brajan Gruda\""
+   ],
+   "headline": "Brajan Gruda is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 2.89,
+   "anniversary": {
+    "date": "11-29",
+    "year": 2010,
+    "title": "Barcelona 5-0 Real Madrid at the Camp Nou",
+    "people": [
+     "Pep Guardiola",
+     "José Mourinho",
+     "David Villa"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Real Madrid"
+    ],
+    "countries": [
+     "Spain"
+    ],
+    "angle": "The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2010%E2%80%9311_FC_Barcelona_season",
+     "https://www.si.com/more-sports/2010/11/29/barca-realtactical"
+    ],
+    "yearsAgo": 16,
+    "inDays": 12
+   },
+   "names": [
+    "Pep Guardiola",
+    "José Mourinho",
+    "David Villa",
+    "Real Madrid",
+    "Spain"
+   ],
+   "headline": "In 12 days (11-29): 16 years since Barcelona 5-0 Real Madrid at the Camp Nou. Angle: The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+   "why": [
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job"
+   ],
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.77,
+   "anniversary": {
+    "date": "11-28",
+    "year": 2016,
+    "title": "Chapecoense plane crash near Medellín",
+    "people": [
+     "Alan Ruschel",
+     "Jakson Follmann"
+    ],
+    "clubs": [
+     "Associação Chapecoense de Futebol",
+     "Atlético Nacional"
+    ],
+    "countries": [
+     "Brazil",
+     "Colombia"
+    ],
+    "angle": "Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+    "round": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/LaMia_Airlines_Flight_2933",
+     "https://www.goal.com/en-my/news/chapecoense-confirmed-as-copa-sudamericana-champions/139potinu0ejm1fgwgrgu7lw60"
+    ],
+    "yearsAgo": 10,
+    "inDays": 11
+   },
+   "names": [
+    "Alan Ruschel",
+    "Brazil"
+   ],
+   "headline": "In 11 days (11-28): 10 years since Chapecoense plane crash near Medellín (round anniversary). Angle: Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+   "why": [
+    "Wikipedia pt: 1,830 reads of \"Alan Ruschel\""
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.7,
+   "story": {
+    "number": 48,
+    "title": "Diego Maradona / Four minutes against England",
+    "date": "2026-12-06"
+   },
+   "names": [
+    "Diego Maradona",
+    "England",
+    "Argentina"
+   ],
+   "headline": "Story 048 \"Diego Maradona / Four minutes against England\" (due 2026-12-06) features Diego Maradona, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Ronaldo, Maradona, Baggio - what happened to the World XI?",
+    "GUARDIAN: Terry Butcher: ‘I’ve learned to live with the Hand of God goal better’"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.54,
+   "story": {
+    "number": 43,
+    "title": "Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December",
+    "date": "2026-12-01"
+   },
+   "names": [
+    "Cristiano Ronaldo",
+    "Lionel Messi",
+    "Manchester United",
+    "Spain",
+    "Barcelona",
+    "Real Madrid",
+    "Argentina"
+   ],
+   "headline": "Story 043 \"Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December\" (due 2026-12-01) features Cristiano Ronaldo, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Life after Ronaldo - Portugal face post-Bale Wales",
+    "BBC: Portugal boss responds to criticism from Ronaldo's mum",
+    "Wikipedia en: 21,672 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 3,622 reads of \"Cristiano Ronaldo\""
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.5,
+   "story": {
+    "number": 37,
+    "title": "Best v Maradona / Two farewells on 25 November, 15 years apart",
+    "date": "2026-11-25"
+   },
+   "names": [
+    "Diego Maradona",
+    "Manchester United",
+    "England",
+    "Northern Ireland",
+    "Argentina",
+    "Italy"
+   ],
+   "headline": "Story 037 \"Best v Maradona / Two farewells on 25 November, 15 years apart\" (due 2026-11-25) features Diego Maradona, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Ronaldo, Maradona, Baggio - what happened to the World XI?",
+    "GUARDIAN: Terry Butcher: ‘I’ve learned to live with the Hand of God goal better’"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.5,
+   "story": {
+    "number": 45,
+    "title": "Arsenal’s Invincibles / The season Wenger was laughed at for predicting, a year early",
+    "date": "2026-12-03"
+   },
+   "names": [
+    "Arsène Wenger",
+    "Arsenal",
+    "Manchester United",
+    "Chelsea",
+    "England",
+    "Everton"
+   ],
+   "headline": "Story 045 \"Arsenal’s Invincibles / The season Wenger was laughed at for predicting, a year early\" (due 2026-12-03) features Arsène Wenger, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Pochettino’s Chelsea maelstrom the best yardstick for what lies ahead at United"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.5,
+   "story": {
+    "number": 54,
+    "title": "David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup",
+    "date": "2026-12-12"
+   },
+   "names": [
+    "David Beckham",
+    "Manchester United",
+    "England",
+    "Germany",
+    "Greece",
+    "Argentina",
+    "Italy"
+   ],
+   "headline": "Story 054 \"David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup\" (due 2026-12-12) features David Beckham, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Beckham firm sues after fragrance found for sale in discount store"
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.5,
+   "anniversary": {
+    "date": "11-18",
+    "year": 2009,
+    "title": "Henry handball sends France to the World Cup, eliminating Ireland",
+    "people": [
+     "Thierry Henry",
+     "William Gallas"
+    ],
+    "clubs": [],
+    "countries": [
+     "France",
+     "Republic of Ireland"
+    ],
+    "angle": "The Football Association of Ireland was reportedly paid EUR 5 million by FIFA after the handball, according to the Irish Times, which says the sum surfaced in 2014 and was later confirmed by FAI chief John Delaney.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Thierry_Henry",
+     "https://www.irishtimes.com/sport/soccer/international/one-night-in-paris-henry-s-stray-hand-the-33rd-team-and-the-great-fifa-shakedown-1.4260282"
+    ],
+    "yearsAgo": 17,
+    "inDays": 1
+   },
+   "names": [
+    "Republic of Ireland"
+   ],
+   "headline": "In 1 day (11-18): 17 years since Henry handball sends France to the World Cup, eliminating Ireland. Angle: The Football Association of Ireland was reportedly paid EUR 5 million by FIFA after the handball, according to the Irish Times, which says the sum surfaced in 2014 and was later confirmed by FAI chief John Delaney.",
+   "why": [],
+   "coveredIn": [
+    13
+   ]
+  },
+  {
+   "type": "new",
+   "score": 2.44,
+   "names": [
+    "Romelu Lukaku"
+   ],
+   "why": [
+    "BBC: Belgium's Lukaku retires from internationals",
+    "Wikipedia en: 27,260 reads of \"Romelu Lukaku\"",
+    "Wikipedia es: 1,878 reads of \"Romelu Lukaku\""
+   ],
+   "headline": "Romelu Lukaku is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 2.4,
+   "anniversary": {
+    "date": "11-20",
+    "year": 2022,
+    "title": "Qatar lose the World Cup opener to Ecuador",
+    "people": [
+     "Enner Valencia"
+    ],
+    "clubs": [],
+    "countries": [
+     "Qatar",
+     "Ecuador"
+    ],
+    "angle": "Qatar became the first host nation to lose the opening match of a World Cup, and Valencia had a goal ruled out for offside by VAR in the opening minutes before scoring twice.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_A",
+     "https://www.timeslive.co.za/sport/soccer/2022-11-20-valencia-leads-ecuador-to-2-0-win-over-hosts-qatar-in-world-cup-opener/"
+    ],
+    "yearsAgo": 4,
+    "inDays": 3
+   },
+   "names": [
+    "Qatar"
+   ],
+   "headline": "In 3 days (11-20): 4 years since Qatar lose the World Cup opener to Ecuador. Angle: Qatar became the first host nation to lose the opening match of a World Cup, and Valencia had a goal ruled out for offside by VAR in the opening minutes before scoring twice.",
+   "why": []
+  }
+ ],
+ "heat": [
+  {
+   "name": "Brazil",
+   "kind": "country",
+   "heat": 7.85,
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career",
+    "Google Trends GB: \"singapore vs brazil\" (5,000+ searches) - Singapore vs Brazil: Friendlies stats & head-to-head"
+   ]
+  },
+  {
+   "name": "Mauricio Pochettino",
+   "kind": "person",
+   "heat": 6.44,
+   "why": [
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: How Pochettino came on Man Utd's radar - and what Carrick was told when",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job",
+    "GUARDIAN: Here Manchester United go again, taking the Two Ronnies route to hiring a new boss | Jonathan Wilson"
+   ]
+  },
+  {
+   "name": "Scotland",
+   "kind": "country",
+   "heat": 6,
+   "why": [
+    "BBC: What's the story with Scotland boss Pocognoli - is it time to go?",
+    "BBC: Are Scotland still too reliant on 'old guard'?",
+    "BBC: Pocognoli wants patience, but Scotland 'don't have time' - Robertson",
+    "GUARDIAN: Switzerland roll over sorry Scotland to increase the pressure on Pocognoli"
+   ]
+  },
+  {
+   "name": "Manchester City",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Why always him? The rise and fall of Balotelli",
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: Chelsea go top with 1-0 win against Man City",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job"
+   ]
+  },
+  {
+   "name": "England",
+   "kind": "country",
+   "heat": 6,
+   "why": [
+    "BBC: Has Trafford replaced Pickford as England No 1?",
+    "BBC: Football Daily",
+    "BBC: How did England cling on against Spain and what did Tuchel do differently?",
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid"
+   ]
+  },
+  {
+   "name": "Manchester United",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Man Utd to resurrect Hall interest - Tuesday's gossip",
+    "BBC: Every goal from the Women's Super League - matchweek 10",
+    "BBC: Which game will Chelsea's Palmer miss after red card?",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job"
+   ]
+  },
+  {
+   "name": "Chelsea",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Man Utd to resurrect Hall interest - Tuesday's gossip",
+    "BBC: Chelsea go top with 1-0 win against Man City",
+    "BBC: Which game will Chelsea's Palmer miss after red card?",
+    "GUARDIAN: Swansea braced to lose Vítor Matos as Strasbourg seek to replace Hugo Oliveira"
+   ]
+  },
+  {
+   "name": "Arsenal",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Man Utd to resurrect Hall interest - Tuesday's gossip",
+    "BBC: London City earn point in thrilling draw against Arsenal",
+    "BBC: Arsenal had more than 20 players on shortlist to capitalise on title win",
+    "GUARDIAN: Declan Rice agrees new Arsenal contract making him club’s joint highest-paid player"
+   ]
+  },
+  {
+   "name": "Spain",
+   "kind": "country",
+   "heat": 6,
+   "why": [
+    "BBC: Football Daily",
+    "BBC: How did England cling on against Spain and what did Tuchel do differently?",
+    "BBC: 60 minutes of perfection, 30 minutes of chaos - an England win for the ages",
+    "GUARDIAN: Tuchel and England must learn lessons of history, Seville and Southgateism | Barney Ronay"
+   ]
+  },
+  {
+   "name": "Ronaldinho",
+   "kind": "person",
+   "heat": 5.83,
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career",
+    "Wikipedia en: 47,745 reads of \"Ronaldinho\""
+   ]
+  },
+  {
+   "name": "Harry Kane",
+   "kind": "person",
+   "heat": 4.35,
+   "why": [
+    "BBC: Where does Kane rank among all-time England greats?",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it",
+    "GUARDIAN: Bone broth, sweets ban and acupuncture: Harry Kane’s road to record England cap",
+    "Wikipedia en: 22,518 reads of \"Harry Kane\""
+   ]
+  },
+  {
+   "name": "Thomas Frank (football manager)",
+   "kind": "person",
+   "heat": 4.29,
+   "why": [
+    "BBC: How Frank can restore reputation and save Crystal Palace",
+    "GUARDIAN: Thomas Frank’s to-do list: lift mood, fix defence and fire up Sarr and Mateta",
+    "GUARDIAN: Thomas Frank confirmed as Crystal Palace manager after Pierre Sage’s sacking",
+    "Wikipedia en: 19,337 reads of \"Thomas Frank (football manager)\""
+   ]
+  },
+  {
+   "name": "James Trafford",
+   "kind": "person",
+   "heat": 4.28,
+   "why": [
+    "BBC: Has Trafford replaced Pickford as England No 1?",
+    "BBC: Football Daily",
+    "Wikipedia en: 66,321 reads of \"James Trafford\"",
+    "Wikipedia es: 2,879 reads of \"James Trafford\""
+   ]
+  },
+  {
+   "name": "Ravenna FC",
+   "kind": "club",
+   "heat": 4.25,
+   "why": [
+    "BBC: Ronaldinho makes comeback in Ravenna win",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "GUARDIAN: Ronaldinho makes debut for Italian side Ravenna after 11-year hiatus in playing career",
+    "Wikipedia en: 17,600 reads of \"Ravenna FC\""
+   ]
+  },
+  {
+   "name": "Cristiano Ronaldo",
+   "kind": "person",
+   "heat": 4.12,
+   "why": [
+    "BBC: Life after Ronaldo - Portugal face post-Bale Wales",
+    "BBC: Portugal boss responds to criticism from Ronaldo's mum",
+    "Wikipedia en: 21,672 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 3,622 reads of \"Cristiano Ronaldo\""
+   ]
+  },
+  {
+   "name": "Pep Guardiola",
+   "kind": "person",
+   "heat": 4,
+   "why": [
+    "BBC: Pochettino says he would tell Guardiola to take USA job",
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pochettino: I’d tell Guardiola to ‘take it’ if he’s offered US coaching job",
+    "GUARDIAN: Do good club managers necessarily make good international managers? | Jonathan Wilson"
+   ]
+  },
+  {
+   "name": "Switzerland",
+   "kind": "country",
+   "heat": 4,
+   "why": [
+    "BBC: Are Scotland still too reliant on 'old guard'?",
+    "BBC: Pocognoli wants patience, but Scotland 'don't have time' - Robertson",
+    "BBC: Robertson eclipses Dalglish to become Scotland's most capped man",
+    "GUARDIAN: Switzerland roll over sorry Scotland to increase the pressure on Pocognoli"
+   ]
+  },
+  {
+   "name": "Andy Robertson",
+   "kind": "person",
+   "heat": 4,
+   "why": [
+    "BBC: Pocognoli wants patience, but Scotland 'don't have time' - Robertson",
+    "BBC: Robertson eclipses Dalglish to become Scotland's most capped man",
+    "GUARDIAN: Switzerland roll over sorry Scotland to increase the pressure on Pocognoli",
+    "GUARDIAN: Record-breaking Andy Robertson is Scotland’s finest captain"
+   ]
+  },
+  {
+   "name": "Brajan Gruda",
+   "kind": "person",
+   "heat": 3.29,
+   "why": [
+    "GUARDIAN: Nations League: Wirtz doubles up as Germany rout Netherlands to top group",
+    "Wikipedia en: 33,643 reads of \"Brajan Gruda\"",
+    "Wikipedia es: 5,745 reads of \"Brajan Gruda\""
+   ]
+  },
+  {
+   "name": "Crystal Palace F.C.",
+   "kind": "club",
+   "heat": 3,
+   "why": [
+    "BBC: How Frank can restore reputation and save Crystal Palace",
+    "GUARDIAN: Thomas Frank’s to-do list: lift mood, fix defence and fire up Sarr and Mateta",
+    "GUARDIAN: Thomas Frank confirmed as Crystal Palace manager after Pierre Sage’s sacking"
+   ]
+  },
+  {
+   "name": "Portugal",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "BBC: Life after Ronaldo - Portugal face post-Bale Wales",
+    "BBC: Portugal boss responds to criticism from Ronaldo's mum",
+    "BBC: Wales without Williams for Portugal as Bellamy makes Vitinha point"
+   ]
+  },
+  {
+   "name": "Wales",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "BBC: Life after Ronaldo - Portugal face post-Bale Wales",
+    "BBC: Wales without Williams for Portugal as Bellamy makes Vitinha point",
+    "BBC: Haaland helps Norway to win over Wales in Nations League"
+   ]
+  },
+  {
+   "name": "Germany",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "BBC: Klopp says Infantino worse than Blatter",
+    "BBC: The Unpromotables: Germany's league champions who can't go up",
+    "GUARDIAN: Nations League: Wirtz doubles up as Germany rout Netherlands to top group"
+   ]
+  },
+  {
+   "name": "Romelu Lukaku",
+   "kind": "person",
+   "heat": 2.71,
+   "why": [
+    "BBC: Belgium's Lukaku retires from internationals",
+    "Wikipedia en: 27,260 reads of \"Romelu Lukaku\"",
+    "Wikipedia es: 1,878 reads of \"Romelu Lukaku\""
+   ]
+  },
+  {
+   "name": "Jürgen Klopp",
+   "kind": "person",
+   "heat": 2.41,
+   "why": [
+    "BBC: Klopp says Infantino worse than Blatter",
+    "GUARDIAN: Nations League: Wirtz doubles up as Germany rout Netherlands to top group",
+    "Wikipedia es: 2,575 reads of \"Jürgen Klopp\""
+   ]
+  },
+  {
+   "name": "Mario Balotelli",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Why always him? The rise and fall of Balotelli",
+    "GUARDIAN: Ultimate 1-50: the male footballers best associated with each squad number"
+   ]
+  },
+  {
+   "name": "Diego Maradona",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Ronaldo, Maradona, Baggio - what happened to the World XI?",
+    "GUARDIAN: Terry Butcher: ‘I’ve learned to live with the Hand of God goal better’"
+   ]
+  },
+  {
+   "name": "Barcelona",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Man Utd to resurrect Hall interest - Tuesday's gossip",
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46"
+   ]
+  },
+  {
+   "name": "Northern Ireland",
+   "kind": "country",
+   "heat": 2,
+   "why": [
+    "BBC: How do NI replace 'perfect player' Donley?",
+    "BBC: Devlin nets winner as NI top Nations League group"
+   ]
+  },
+  {
+   "name": "Republic of Ireland",
+   "kind": "country",
+   "heat": 2,
+   "why": [
+    "BBC: Republic of Ireland captain Collins to miss Kosovo game",
+    "GUARDIAN: Republic of Ireland have plenty of promise, but are unable to shake self-sabotage"
+   ]
+  },
+  {
+   "name": "Wimbledon",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: 'It's been horrific' - Evatt says sickness bug decimated Blackpool",
+    "GUARDIAN: AFC Wimbledon, a failed £87m investment bid and the challenge for fan ownership"
+   ]
+  },
+  {
+   "name": "Alex Ferguson",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "GUARDIAN: Michael Carrick was just the latest fall guy for Manchester United’s dysfunctional hierarchy | Jamie Jackson",
+    "GUARDIAN: Pochettino’s Chelsea maelstrom the best yardstick for what lies ahead at United"
+   ]
+  },
+  {
+   "name": "Everton",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "GUARDIAN: Bunny Shaw shines again for five-star Manchester City – Women’s Football Weekly",
+    "GUARDIAN: Premier League: 10 talking points from the weekend’s action"
+   ]
+  },
+  {
+   "name": "Roma",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "Google Trends US: \"arresto\" (100+ searches) - Roma: cocaina nascosta nei poggiatesta dell’auto, arrestato dalla Polizia di locale di Roma Capitale un 22enne"
+   ]
+  },
+  {
+   "name": "Palestine national football team",
+   "kind": "country",
+   "heat": 1.92,
+   "why": [
+    "Wikipedia en: 83,074 reads of \"Palestine national football team\""
+   ]
+  },
+  {
+   "name": "Sean Connery",
+   "kind": "person",
+   "heat": 1.7,
+   "why": [
+    "Wikipedia en: 50,037 reads of \"Sean Connery\""
+   ]
+  },
+  {
+   "name": "Cody Fajardo",
+   "kind": "person",
+   "heat": 1.6,
+   "why": [
+    "Wikipedia en: 40,177 reads of \"Cody Fajardo\""
+   ]
+  },
+  {
+   "name": "Amon-Ra St. Brown",
+   "kind": "person",
+   "heat": 1.51,
+   "why": [
+    "Wikipedia en: 32,559 reads of \"Amon-Ra St. Brown\""
+   ]
+  },
+  {
+   "name": "Derry Scherhant",
+   "kind": "person",
+   "heat": 1.42,
+   "why": [
+    "Wikipedia en: 26,456 reads of \"Derry Scherhant\""
+   ]
+  },
+  {
+   "name": "Jude Bellingham",
+   "kind": "person",
+   "heat": 1.35,
+   "why": [
+    "BBC: England's Blues brothers - how the Bellinghams helped save Birmingham",
+    "Wikipedia es: 2,222 reads of \"Jude Bellingham\""
+   ]
+  }
+ ]
+}
