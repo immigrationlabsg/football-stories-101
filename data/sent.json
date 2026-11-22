@@ -1014,6 +1014,31 @@
       "at": "2026-11-21T02:02:59.094Z",
       "detail": "thread 18097530464177902 (cards, Reel in reply, topic Football)",
       "story": "bert-trautmann-broken-neck-final"
+    },
+    {
+      "number": 34,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-22T02:02:44.751Z",
+      "detail": "posted reel 1481754780598301 (music: sports-documentary)",
+      "story": "defoe-v-giroud-22-november",
+      "reel": "20a9b8b8210beb5ffa889dc3abdc5f93bfefd3ff"
+    },
+    {
+      "number": 34,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-22T02:02:44.751Z",
+      "detail": "reel media 18092125805694389",
+      "story": "defoe-v-giroud-22-november"
+    },
+    {
+      "number": 34,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-22T02:02:44.751Z",
+      "detail": "thread 18037309055675391 (cards, Reel in reply, topic Football)",
+      "story": "defoe-v-giroud-22-november"
     }
   ]
 }
