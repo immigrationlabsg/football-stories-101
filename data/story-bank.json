@@ -1175,12 +1175,12 @@
       ]
     },
     {
-      "number": 35,
+      "number": 899,
       "slug": "guess-the-legend-luka-modric",
       "title": "Guess the legend: Luka Modrić",
       "date": "2026-11-23",
       "posted": false,
-      "draft": false,
+      "draft": true,
       "people": [
         "Luka Modrić",
         "Lionel Messi",

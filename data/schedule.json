@@ -11,7 +11,7 @@
   "on_this_day_every": 3,
   "_on_this_day_help": "From on_this_day_from (Singapore date), every on_this_day_every-th day is an \"on this day\" comparison (series: \"On this day\"): two stars' moments from that calendar date, ending with a debate question. Owner decision 25 Oct 2026.",
   "guess_the_legend_from": null,
-  "open_slots": ["2026-11-21", "2026-11-23", "2026-12-02", "2026-12-11"],
+  "open_slots": ["2026-11-21", "2026-12-02", "2026-12-11"],
   "_open_slots_help": "Singapore dates left free on purpose (owner, 18 Nov 2026: the cancelled Guess the legend days, to fill with trending stories). Verify warns, not errors, while one is still empty.",
   "_guess_the_legend_stopped": "Owner, 18 Nov 2026: cancel Guess the legend; quizzes 035, 044 and 053 set to draft. Was 2026-11-05.",
   "guess_the_legend_every": 9,
