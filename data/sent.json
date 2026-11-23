@@ -1039,6 +1039,31 @@
       "at": "2026-11-22T02:02:44.751Z",
       "detail": "thread 18037309055675391 (cards, Reel in reply, topic Football)",
       "story": "defoe-v-giroud-22-november"
+    },
+    {
+      "number": 35,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-23T02:43:32.325Z",
+      "detail": "posted reel 1095553326848475 (music: cinematic-trailer)",
+      "story": "leeds-chelsea-1999-fall-and-rise",
+      "reel": "97c3f09a5df0665dc8d13c45d01d8ca9d553069f"
+    },
+    {
+      "number": 35,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-23T02:43:32.325Z",
+      "detail": "reel media 18135752953689614",
+      "story": "leeds-chelsea-1999-fall-and-rise"
+    },
+    {
+      "number": 35,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-23T02:43:32.325Z",
+      "detail": "thread 18170556220491439 (cards, Reel in reply, topic Football)",
+      "story": "leeds-chelsea-1999-fall-and-rise"
     }
   ]
 }
