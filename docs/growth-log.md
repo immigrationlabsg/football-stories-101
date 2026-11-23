@@ -994,3 +994,197 @@ two additions are tested, written into `.claude/skills/narrated-reel/SKILL.md` s
 - **B. Closing = a split verdict** ("Henry: cheat or genius?").
 Main measure: shares and reposts per 1,000 reached on every network. Guardrails: average watch and views at or above the
 trial medians, skip at or below 46.7%. Review on 29 Nov. 031, 911 and 032 were built before the change and count as "before".
+
+## Weekly review, 23 Nov 2026 (week 16-22 Nov)
+
+Sources: `npm run scoreboard` (read 23 Nov 04:43Z) over 14 snapshots (`data/metrics/2026-11-09` to `2026-11-22`);
+per-post figures from `data/metrics/2026-11-22.json` (read 22 Nov 13:04Z); TikTok and YouTube from
+`git show origin/live-stats:live.json` (read_at 23 Nov 04:42Z); posting method from `data/sent.json`. Every number was
+read from those files by the scoreboard or a script, never added by hand.
+
+**Snapshots.** No day missing from 16 to 22 Nov (scoreboard: "No missing days"), so no catch-up run was needed. All
+seven were read 13:04-14:07 UTC (21:04-22:07 SGT), still about 8 h after the 13:00 SGT the plan says; same rule for
+every post. The 23 Nov snapshot runs tonight.
+
+**Register fix (step 6).** The share test's entry had only a rule sentence and no story range, so the scoreboard printed
+"Nothing to score" for the test the 29 Nov review is meant to judge. Added on 23 Nov, in `data/experiments.json`: counted
+daily stories 033-040, extras 900-999 kept out and reported beside them (912, 913 if posted), a "before" column
+(028-032, 16-20 Nov), and a fidelity note. Rule, change and bar unchanged. 039 and 040 count only if their Reels are
+built from the scripts rewritten after 18 Nov (still drafts on 23 Nov, in `drafts/reels-2026-11-22`); otherwise the
+range is corrected before they are scored. Timing: 040 (28 Nov 02:00 UTC) first scores at 48 h in the 30 Nov snapshot,
+so the full share-test result is read at the Wednesday decision on 2 Dec; the 29 Nov review is interim for 039-040.
+
+**Numbers (scored at 48 h).** Week 16-22 Nov = daily stories 028-034; 5 of 7 are scorable (033 was 35 h old at the
+latest snapshot, 034 11 h). Baseline = trial 020-028 (locked 18 Nov). Week before = 021-027 (9-15 Nov), from the
+analyst's script, which reproduces the scoreboard's baseline and week columns.
+
+| | Week 16-22 Nov (028-032 scored) | Week 9-15 Nov (021-027) | Baseline (020-028) |
+|---|---|---|---|
+| Likes per post, all networks, mean / median | 6.00 / 4 | 8.43 / 1 | 7.78 / 1 |
+| Instagram shares per 1,000 reached | 0 (0 / 736) | 13.79 (25 / 1,813, all 021) | 11.54 (25, all 021) |
+| Facebook shares per 1,000 plays | 0 (0 / 1,280 plays) | 0 | 0 |
+| Threads reposts + shares per 1,000 views | 0 (0 / 251) | 0 | 0 |
+| Facebook plays, median | 193 | | 4 |
+| Instagram reach median / skip mean / watch mean | 125 / 41.0% / 13.7 s | | 118 / 45.5% / 16.9 s |
+| Threads views, median | 58 | | 14 |
+
+- Read honestly: the typical post did better (median likes 4 against 1; Instagram's median rose 1 → 2 and Facebook's
+  0 → 1, so both networks added), but the mean is lower because no post had a 021-sized breakout, and no scored post earned a share
+  on Meta. Watch time fell about 3 s (031: 53.2% skip, 9.3 s).
+- Followers (snapshots): Facebook 1 → 3 → 4 (9, 16, 22 Nov; +1 this week), Instagram 0 → 1 → 1 (+0), Threads 0. YouTube
+  16 and TikTok 0 (TikTok's public count, unreliable) in live.json only, with no history to compare. The 4-week trend
+  is first readable on 7 Dec (13 days so far: +3, +1, +0).
+- By format: 034 is the only "on this day" comparison; 028 (Messi's 47 seconds, a debut story) and 029-033 are regular; no quiz, no Legendary XI (the first
+  Legendary XI card is 039, 27 Nov). 028 = 10 likes; 029-032 = 1, 1, 14, 4. Far too few to read a format effect.
+- Over 3 times the median (median 4): 031 with 14 likes (most are its 9 Facebook reactions on 791 plays). Reported, not
+  decisive. Also high, not yet scorable: 034 at 11 h (IG reach 508, 15 likes, 4 saves, 1 share, 29.4% skip).
+
+| Story | Age at read | IG reach / likes / shares / saves / skip / watch | FB plays / reactions / shares | Threads views | TikTok views / likes / shares | YouTube views / likes |
+|---|---|---|---|---|---|---|
+| 029 Greece 2004 | 133 h | 125 / 1 / 0 / 0 / 39.4% / 18.8 s | 5 / 0 / 0 (scheduled ahead) | 94 | 528 / 20 / 0 | 1,153 / 15 |
+| 030 Brazil v Singapore | 109 h | 127 / 0 / 0 / 0 / 38.6% / 12.8 s | 87 / 1 / 0 (scheduled ahead) | 67 | 1,333 / 23 / 2 | 1,239 / 17 |
+| 031 Ronaldinho at 46 | 85 h | 124 / 5 / 0 / 0 / 53.2% / 9.3 s | 791 / 9 / 0 (same day) | 58 | 292 / 18 / 0 | 1,315 / 20 |
+| 032 Pochettino | 61 h | 125 / 2 / 0 / 0 / 33.9% / 12.5 s | 206 / 2 / 0 (same day) | 22 | 324 / 13 / 0 | 461 / 8 |
+| 033 Trautmann | 35 h (too young) | 127 / 1 / 0 / 0 / 45.2% / 12.2 s | 263 / 0 / 0 (same day) | 5 | 578 / 26 / 2 | 814 / 11 |
+| 034 Defoe v Giroud | 11 h (too young) | 508 / 15 / 1 / 4 / 29.4% / 17.9 s | 294 / 2 / 0 (same day) | 13 | 332 / 8 / 0 | 1,227 / 12 |
+| 910 Henry (extra) | 97 h | 1,279 / 36 / 1 / 1 / 33.8% / 20.1 s | 55 / 1 / 0 | 23 | 208 / 6 / 1 | 1,185 / 13 |
+| 911 Ronaldo (extra) | 73 h | 6 / 0 / 0 / 0 (reach looks wrong) | 245 / 1 / 0 | 1 | 241 / 5 / 0 | 1,344 / 35 |
+
+TikTok and YouTube are read about 15 h after the Meta figures; TikTok shares come from public counts, so a zero there is
+not proof of none. 912 Bodø/Glimt (extra) is not posted yet (24 Nov, still a draft).
+
+**The two running tests, interim only (no decision).**
+- *Share test* (Reels 19-28 Nov; decided 2 Dec): no counted post is 48 h old yet. Early: 033 has 2 TikTok shares and
+  missed the watch guardrail by 0.2 s (12.2 s at 35 h); 034 has the first Instagram share since 910, at 11 h. The
+  "before" posts 031 and 032 have 0 shares on every network. Far too small to read.
+- *Facebook same-day test* (031-037, 19-25 Nov): the four same-day posts so far had 206-791 plays (median 278.5) and
+  0-9 reactions (read at 11-85 h old, so mixed ages). Against them: 1-6 plays for the 6 trial posts scheduled 10 h or
+  more ahead (021-025, 027) and 3 at 48 h for 029 (scheduled the day before). Posts scheduled less than 10 h ahead, or
+  posted directly, also did well: 020 (2.5 h ahead, 254 plays at 48 h), 026 (posted directly on 14 Nov, 199), 028
+  (7.2 h ahead, 193) and 030 (6.6 h ahead, 87). So the gap may be about lead time rather than same-day posting as such.
+  Shares 0 in both groups. 036 and 037 still to come.
+
+**Our own work.**
+- Best: 034 Defoe v Giroud (hook "He won the World Cup without scoring a goal. Four years later, he caught Thierry
+  Henry."; closing "Giroud or Henry: who would you start up front for France?"): the week's lowest skip (29.4%) and 4x
+  the usual reach at 11 h. Its hook plants a puzzle a fan can't answer from memory. 910 Henry (extra) is still our
+  second-best Instagram Reel ever (1,279 reached, 36 likes, 1 share): a famous moment with a hidden payoff that makes
+  people angry. 030 is the best TikTok yet (1,333 views, 2 shares): a Singapore story on a Singapore account.
+- Weakest: 031 Ronaldinho, whose hook is a plain news line ("At 46, Ronaldinho is back playing professional
+  football."): 53.2% skip, 9.3 s watched, 124 reached on Instagram, though it got 791 plays on Facebook. 029-033 all
+  stalled on Instagram at 124-127 reached whatever their skip (032 had 33.9% and still stayed at 125), so low skip on
+  its own still doesn't make a post break out.
+- Captions open with the hook, as since 11 Nov; no separate caption effect can be read.
+- **Did the running test change one thing only? Not cleanly.** (1) The share test bundles two changes, A (hook) and B
+  (closing), which the owner registered as one test. (2) B is not on every counted Reel: 033 ("Which goalkeeper was braver
+  than Bert Trautmann?") and 036 ("Which Premier League moment, if any, beats 93:20?") close on open "name your own"
+  questions, not split verdicts. The 2 Dec read will be given with and without them. (3) The Facebook same-day test runs
+  over the same days. It changes only how Facebook gets the Reel, and Facebook shares were 0 before and after, so it
+  doesn't blur the share measure, but Facebook plays and reactions this week can't be credited to the share test.
+  (4) 035 was re-picked on 22 Nov (Leeds at Chelsea in place of the cancelled Modrić quiz, parked as 899): a topic swap,
+  not a format change, but it is the kind of topical tie-in the share test was meant to keep unchanged.
+
+**Reel-evaluator review (second).** `data/eval-log.json`: an `outcome` added to all 18 entries. Each was matched to
+its post by the Reel file's checksum in `data/sent.json` and scored at the first snapshot at least 48 h old (TikTok and
+YouTube from older live.json reads kept in the local git reflog, 48-63 h old). Scored: 028 (gates 1-3), 910 (Henry v2),
+031 (Ronaldinho v2). 033 and 034 are recorded as provisional (too young). Not posted: Pochettino v2 (032 went out as a
+later v6 that was never logged), the Modrić 035 entry (cancelled), the 028 v5/v6 and trend v1 drafts. 036 and 037 are not
+posted yet. Owner verdicts were taken from commit messages and owner-taste.md, never made up; "not found" for 033, 034,
+036 and 037. These are the commit's and the session's words, not the owner's verbatim.
+- Gate scores against outcomes: the five posted gated Reels scored 12-14 at gate 2 (028 13; 031 14 in the log, 13 for
+  the words actually built; 910 14; 033 13; 034 12). 910 and 031 scored about the same, and 910 reached ten times as
+  many people (1,277 against 124). 034, the lowest score, is the best early performer (11 h old), which counts against
+  the gate predicting reach. Share counts by gate mean nothing at this size (033 and 034 are not yet 48 h old). Gate passes matched the owner's approval 3 times
+  (028, 910, 031; 028's gate 3 failed on the credits rule and was fixed before install). There was 1 miss: the Pochettino final-v8 script scored 14/14 in `trend-out/v5/eval-v8.md`, a file
+  never entered in the log, and the owner then rejected its hook.
+- Rubric proposals for the owner to confirm (evaluators.md not changed): (1) take Zidane 908 out of the "high shares"
+  examples and use it as the "high reach, no shares" example: still 0 shares (high confidence); (2) a "send-to"
+  criterion: unchanged, low, decide on 2 Dec with the share test; (3) stricter hook and question scores: stronger on the
+  owner's taste (moderate), no share evidence, and no gate-1 score logged since 16 Nov; (4) every gate result goes
+  into eval-log, and scores given after the owner's verdict are marked retrospective (high); (5) score facts on the
+  evidence even when the owner settles a figure: no new case (medium); (6) **new:** a plain news hook may no longer score
+  S1=2; it must plant a question fans can't answer from the headlines (owner rejected "This week, Pochettino takes over
+  at Manchester United"; 031's news hook had the week's worst skip; moderate on taste, low on numbers, n=2); (7)
+  **new, process:** no install after an independent gate-3 fail without a new independent pass (032 v6 went out on the
+  builder's own check three minutes after a 10/12 independent fail), and re-score after fixes before building (high);
+  (8) **new:** word count (S7) should not decide pass or fail, or should be measured by spoken time (55 s or less),
+  because both Reels marked down for length did as well or better on TikTok (low, n=2).
+
+**Benchmark, 23 Nov 2026** (public pages read logged out on 23 Nov by the researcher; TikTok counts from public video
+metadata via yt-dlp, whose `repost_count` is TikTok's share count; follower counts from the profile page's embedded
+data; YouTube from public channel and video pages; nothing copied; the truth of their stories not checked).
+- **The Football Historian** (https://www.tiktok.com/@thefootballhistorian), TikTok: 30,700 followers, 1,166 videos,
+  "Football history stories every day"; 1-3 clips a day of 10-80 s, mostly archive or interview footage. The 23 posts of 11-14 and 18-22 Nov (15-17 Nov didn't load for the researcher; they did on the verifier's retry) had 390-275,200 views, median 2,583; median share rate about 0.12% of
+  views. Best: 12 Nov, a 42 s clip opening on a named manager's shock quote in quote marks ("He could've been KILLED.")
+  and closing on a split verdict ("Massive overreaction... or did Fergie have a point?"): 275,200 views, 449 shares,
+  about 106 times the median, and the only one of those posts with both (checked on titles and captions, not by watching). Its biggest post, just outside that window (10 Nov: 318,500 views,
+  3,764 shares), opens on a quote with no split verdict. Weakest: tribute and statement openers with no
+  dispute ("THIS GAVE ME GOOSEBUMPS", 1,322; 390-2,666 for the others). Not for us: other people's broadcast and interview
+  footage, unchecked captions.
+- **Diez Ball**, revisited (https://www.tiktok.com/@diez.ball), TikTok: 215,800 followers (216.7K on 8 Nov), 167 videos.
+  The 10 posts read (12 Aug-1 Sep; newer ones not established) of 159-201 s with a presenter on camera had 117,700-2.4M
+  views, median 337,850, and a steady share rate of 0.24-0.71% (median 0.36%). Best: 2.4M views, 8,510 shares, about
+  7 times the median, opens on a player's name and a tribute line, no question; the second best (1.4M views,
+  8,086 shares) opens on a name plus a feeling label ("The man who betrayed barcelona"). Not for us:
+  a presenter on camera, tribute topics.
+- Two small YouTube channels, both above our 16 YouTube subscribers, showing title effects: **GoalLore** (https://www.youtube.com/channel/UC-NOJChkqfDTrwXH6zpO2QQ, @GoalLoreOFC, 862 subscribers): "The Untold Story Behind Football's Yellow & Red Cards." 50,802 views against 201 for
+  its debate title "Is Natural Talent Getting Destroyed By Modern Football?". **Football Short History** (https://www.youtube.com/@FootballshortHistory, 94 subscribers): match-clip Shorts with no story, median about 1,600 views, about where our YouTube median (about 1,100)
+  sits.
+- Takeaways, by strength: (1) **shock-quote hook plus split-verdict close, together** (one page: 106 times its median).
+  This bears directly on the running share test and supports it, but can't say which half did the work: the page's
+  biggest post (10 Nov) had the quote hook without a split verdict, and both had a famous face on film,
+  the 12 Nov one in a heated moment. (2) **Shares mostly follow reach, but the rate varies widely** (two pages): median share rate 0.12% of
+  views on the Historian and 0.36% on Diez Ball, while single posts range from 0% to 1.8%. Our estimate, not a finding:
+  at typical rates a post needs a few hundred views or more before a share is likely, so 0 shares at about 120 reached
+  is not unusual; judge per 1,000 reached, as the register already does. (3) **Title the myth or the hidden origin
+  of something fans know, not an abstract debate** (several pages: GoalLore, AGH Stories and Scribble Stadium on 16 Nov).
+  A story-pick idea for test 1. (4) Instagram and Threads reactions to these hooks are unknown (no public counts).
+- Routes tried: WebFetch of the TikTok profiles (empty shell); curl of the profiles (embedded follower data read);
+  yt-dlp on TikTok profiles (worked for both pages, after retries for one; 5 other handles returned nothing); TikTok
+  oEmbed (no counts); YouTube via yt-dlp and curl (worked); @SoccerHistory on YouTube (404 via yt-dlp; a search excerpt
+  said about 216,908 subscribers, not confirmed); Instagram and Threads profiles opened logged out by the verifier with curl (page loads, but no counts are shown without a login); Social Blade (behind a
+  Cloudflare check, which we don't get around).
+
+**The four asks.**
+1. A head of social would stop treating Instagram's ~120 reach as a share problem: at the typical share rates of pages thousands of times our size (median 0.12-0.36% of views, though single posts vary from 0% to 1.8%), a post probably
+   needs several hundred views before a share is likely (our estimate). So they would push the
+   two things that lift a post out of the first batch (a hook that plants a puzzle, as 034 and 910 did, and low skip)
+   and judge shares per 1,000 reached, as the register does.
+2. Rawest material: the per-post table. 029-033 all sat at 124-127 reached on Instagram whatever their skip; the two
+   that got out (034 at 11 h, 910) open on a twist the viewer can't resolve ("won the World Cup without scoring", "then
+   FIFA paid for it"); the plain news hook (031) had the worst skip.
+3. Methods: keep the share test as registered (no mid-test change), read it on 2 Dec with and without 033 and 036 (no
+   split verdict), and per 1,000 reached on every network, TikTok included. Fix the register so the scoreboard can score
+   it (done today). Queue for test 1: the "myth or hidden origin of something fans know" pick (GoalLore, AGH Stories).
+4. Outside evidence: The Football Historian's best post is our share test's A + B shape at 106 times its median; Diez
+   Ball's and the Historian's typical share rates make our zeros at about 120 reached unsurprising; the reel-evaluator's finding that a plain news hook
+   (031) does worst matches the owner's own rejection of the Pochettino news hook. All of it is one or two pages or two
+   of our posts: leads, not proof.
+
+**What works (kept by a test): none yet.** The first keep-or-drop is the share test's, on Wednesday 2 Dec.
+
+**Next week's set-up (checked 23 Nov).**
+- 23-28 Nov: the share test continues (register entry `share-test`): one registered change (A + B, as the owner set it
+  on 18 Nov), dates 19-28 Nov, counted daily stories 033-040 (added today), bar written on 18 Nov before the week began
+  (main: shares and reposts per 1,000 reached above the trial; guardrails: IG watch at least 12.4 s, skip at most 46.7%,
+  views at least the trial medians). Owner's OK in writing: "Share test registered, 18 Nov 2026". The Facebook same-day
+  test (19-25 Nov) has its OK in "Owner decision, 18 Nov 2026 (evening)".
+- Tags: the share test's tag is the hook and the closing, which every counted story carries as `hook` and `question`;
+  the register's fidelity note records which closings are split verdicts. The `feeling` tags of 036-041 (from 16 Nov)
+  remain; 035 lost its tag when it was re-picked (Leeds at Chelsea, posted today), which is harmless because test 1 is
+  postponed and doesn't count it.
+- **Date change for the owner to note:** the owner's 18 Nov note and the register say the share test is reviewed on
+  29 Nov. 040 (28 Nov) can only be scored at 48 h in the 30 Nov snapshot, so the full read moves to the Wednesday
+  decision on 2 Dec (improvement-loop section 3), with 29 Nov as an interim read. The register's `review` date stays at
+  29 Nov until the owner agrees.
+- **For the owner, by the 2 Dec decision:** test 1 (story pick by feeling) is still registered for 23-29 Nov with
+  status "postponed"; the owner asked for new dates after the share test. Proposal: test 1 on 30 Nov-6 Dec (stories
+  042-048), test 2 on 7-13 Dec (049-055), test 3 (Threads text takes, Threads only) alongside test 2 or after Boxing
+  Day, and test 4 (Boxing Day countdown) unchanged on 17-26 Dec. Dates, counted stories and the "week before" will be
+  rewritten in the register only after the owner says yes. Two set-up gaps for whichever test takes 30 Nov-6 Dec: 044
+  (Guess the legend: Marta, 2 Dec) is still a draft, and `npm run verify` shows an open slot on 2 Dec before 045.
+
+**Checked.** Growth-verifier, three rounds on 23 Nov. Every number reproduced in each round (scoreboard rerun, both week
+columns and the per-post table recomputed, eval-log outcomes matched by checksum). Each round failed on wording: a wrong
+Diez Ball quote, overstated share-rate and size claims, the gate-score count, 028's format, and the Facebook lead-time
+groups. After round 3 the master session made the last fixes itself, as section 5 of the plan provides.

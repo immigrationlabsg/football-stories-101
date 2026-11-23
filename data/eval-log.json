@@ -1,276 +1,891 @@
 [
-  {
-    "story": "028 (story-messi-red-v2)",
-    "gate": "1 pitch",
-    "date": "2026-11-16",
-    "scores": {
-      "P1": {
-        "score": 2,
-        "evidence": "Greatest player's debut lasted under a minute and ended in a red card: a legend-vs-moment contradiction most fans haven't heard"
-      },
-      "P2": {
-        "score": 2,
-        "evidence": "Messi, global"
-      },
-      "P3": {
-        "score": 2,
-        "evidence": "Red card at 18 -> 2014/2016 finals lost, quit -> 2022 world champion"
-      },
-      "P4": {
-        "score": 2,
-        "evidence": "'Which other legend do you know who started with a red card?' invites naming own case"
-      },
-      "P5": {
-        "score": 2,
-        "evidence": "Red card: Infobae 2005, EFE/Plano, CBS (opened). '47 seconds' is owner-fixed; logged DISPUTED (40/43/45/47/50) in FACT-CHECK.md and docs/fact-checks/028.md, not marked down"
-      }
-    },
-    "total": 10,
-    "bar": "8/10 with P1=2",
-    "pass": true,
-    "fixes": [],
-    "owner_verdict": "approved"
+ {
+  "story": "028 (story-messi-red-v2)",
+  "gate": "1 pitch",
+  "date": "2026-11-16",
+  "scores": {
+   "P1": {
+    "score": 2,
+    "evidence": "Greatest player's debut lasted under a minute and ended in a red card: a legend-vs-moment contradiction most fans haven't heard"
+   },
+   "P2": {
+    "score": 2,
+    "evidence": "Messi, global"
+   },
+   "P3": {
+    "score": 2,
+    "evidence": "Red card at 18 -> 2014/2016 finals lost, quit -> 2022 world champion"
+   },
+   "P4": {
+    "score": 2,
+    "evidence": "'Which other legend do you know who started with a red card?' invites naming own case"
+   },
+   "P5": {
+    "score": 2,
+    "evidence": "Red card: Infobae 2005, EFE/Plano, CBS (opened). '47 seconds' is owner-fixed; logged DISPUTED (40/43/45/47/50) in FACT-CHECK.md and docs/fact-checks/028.md, not marked down"
+   }
   },
-  {
-    "story": "028 (story-messi-red-v2)",
-    "gate": "2 script",
-    "date": "2026-11-16",
-    "scores": {
-      "S1": {
-        "score": 2,
-        "evidence": "Line 0: one hard fact, one figure ('...red card after 47 seconds?')"
-      },
-      "S2": {
-        "score": 2,
-        "evidence": "Line 1: 'Budapest, August 2005. Messi, 18, comes off the bench'"
-      },
-      "S3": {
-        "score": 2,
-        "evidence": "One thread (red card -> redemption). Weakest link: line 7 'Shy off the pitch... hated losing' (owner's temper beat), kept as on-thread"
-      },
-      "S4": {
-        "score": 2,
-        "evidence": "Merk 'yellow also fair' (Goal DE 2021), Vanczak felt sorry (FFT + 444.hu excerpts), Pekerman tears (Bolavip), 2016 quit"
-      },
-      "S5": {
-        "score": 2,
-        "evidence": "Line 12 'Not bad for a career that began with a red card.'"
-      },
-      "S6": {
-        "score": 2,
-        "evidence": "Hook promise (debut red card, 47 s) told in lines 1-3"
-      },
-      "S7": {
-        "score": 1,
-        "evidence": "178 words (check_reel: 178 expected); outside 120-160, music loops once at 11.83 s"
-      }
-    },
-    "total": 13,
-    "bar": "12/14 with S1,S3=2",
-    "pass": true,
-    "fixes": [
-      "Hard-rule note: lines 4 (Pekerman's words), 5 (Merk, one Goal/SPOX interview) and 7 (Messi, Sport360) rest on one source each, spoken as attributed speech without 'reportedly'. Passed as attributed speech; rubric should say whether attribution counts as 'reportedly'.",
-      "Line 4 wording differs from first approved text ('left the pitch in tears' -> 'was in tears'); owner approved the v1 cut with the new wording."
-    ],
-    "owner_verdict": "approved"
-  },
-  {
-    "story": "028 (story-messi-red-v2)",
-    "gate": "3 final cut",
-    "date": "2026-11-16",
-    "scores": {
-      "F1": {
-        "score": 2,
-        "evidence": "Frame 0: whole hook over Merk raising the red card (card painting)"
-      },
-      "F2": {
-        "score": 1,
-        "evidence": "Cuts (scene detect): hook holds 0-5.4 s, Merk 21.8-25.9 s (4.1 s), pen16crop 51.4-55.1 s (3.7 s) exceed 3.5 s; none over 6 s. 908-v5 hook holds 3.5 s"
-      },
-      "F3": {
-        "score": 2,
-        "evidence": "Each line's picture matches (subon, pull, card, protest, walkoff+Pekerman, Merk, Vanczak, LEO 10 kerb, Ballon d'Or, Gotze/scoreboard, penalty crop, trophy lift)"
-      },
-      "F4": {
-        "score": 2,
-        "evidence": "timing.json captions match PROVENANCE script word for word; chips inside boxes, clear of faces (frames 6, 19.5, 43, 47, 49.5, 53, 57)"
-      },
-      "F5": {
-        "score": 2,
-        "evidence": "check_reel.py re-run: -13.9 LUFS, -1.5 dBTP, voice 9.9-13.5 dB over music, largest step 2.6 dB, no pumping; loop joint 11.83 s smooth. Only FAIL is word-survival spellings (Vanczak, 8/eight, d'Or)"
-      },
-      "F6": {
-        "score": 1,
-        "evidence": "Vanczak never transcribed right ('Real Mosvantar', 'Vansack'); Pekerman heard 'Pecherman'. Flagged for owner's ear (lines 2, 4, 6)"
-      },
-      "F7": {
-        "score": 2,
-        "evidence": "Page title/dek/body tell the same story; 47 s per owner; nothing beyond docs/fact-checks/028.md"
-      }
-    },
-    "total": 12,
-    "bar": "12/14 with F1,F4=2",
-    "pass": false,
-    "fixes": [
-      "HARD RULE FAIL: page reelCredits omits Commons authors J. Baikovicius (score14), Agencia Brasil/Marcello Casal Jr (goetze), Sebas (champ22). Replace with the PROVENANCE.md line (163 chars, names all).",
-      "Owner to listen to 'Vanczak' (lines 2, 6) and 'Pekerman' (line 4) before install (F6 -> 2).",
-      "Optional for F2 -> 2: split the 5.4 s hook hold and the 4.1 s Merk shot (needs re-render; not required to pass).",
-      "Not yet installed: assets/reels/028-baggio-v-messi-16-november.mp4 absent; public/images/derived/028-reel.mp4 is the old 9 Nov reel (sha cba9124...). Re-check after install.",
-      "npm run verify: 1 error (046 Facebook slot) and 028 'on this day' warning, both not caused by this Reel."
-    ],
-    "owner_verdict": "approved: \"The process below turned that into a story the owner called great\" and the owner described the process \"after the Messi red-card Reel (story 028, ~/Developer/football-stories-samples/story-messi-red-v2)\" (.claude/skills/narrated-reel/references/story-development.md lines 3 and 5, written by the session, not the owner's verbatim words); installed at the owner's request: commit 6d58a1e \"content: 028 becomes Messi's 47-second Argentina debut (owner, 16 Nov)\". No owner comment on F2 pace or F6 name pronunciation is written anywhere.",
-    "followup": "16 Nov 00:45: reelCredits set to the full 163-character line before install (commit 6d58a1e), so the failing hard rule now passes. Site 028-reel.mp4 confirmed to be v2 (sha256 f61b2dec...)."
-  },
-  {
-    "story": "028 v5 (story-028-v5)",
-    "gate": "1 pitch",
-    "date": "2026-11-16",
-    "scores": {
-      "P1": {
-        "score": 1,
-        "evidence": "Messi's Porto debut and a missed chance: mildly new, no shock ('ok, so what?')"
-      },
-      "P2": {
-        "score": 2,
-        "evidence": "Messi"
-      },
-      "P3": {
-        "score": 1,
-        "evidence": "Contradiction (record scorer / didn't shoot) only partial; no setback-to-triumph"
-      },
-      "P4": {
-        "score": 1,
-        "evidence": "'Porto or Espanyol: which is his real debut?' opinion/trivia"
-      },
-      "P5": {
-        "score": 1,
-        "evidence": "'I should have shot' rests on one source (ESPN Deportes)"
-      }
-    },
-    "total": 6,
-    "bar": "8/10 with P1=2",
-    "pass": false,
-    "fixes": [
-      "Would not reach owner: P1=1, total 6"
-    ],
-    "owner_verdict": "rejected: ok, so what?"
-  },
-  {
-    "story": "028 v5 (story-028-v5)",
-    "gate": "2 script",
-    "date": "2026-11-16",
-    "scores": {
-      "S1": {
-        "score": 1,
-        "evidence": "Line 0 stacks label + question + quote; no single hard figure"
-      },
-      "S2": {
-        "score": 2,
-        "evidence": "Line 1 'Porto, 16 November 2003...'"
-      },
-      "S3": {
-        "score": 0,
-        "evidence": "Mourinho / new stadium / Champions League line and Espanyol no. 30 line are side lines"
-      },
-      "S4": {
-        "score": 2,
-        "evidence": "No. 14 handiest shirt, two chances, quote, no. 30"
-      },
-      "S5": {
-        "score": 2,
-        "evidence": "'672 goals followed. That first night, he didn't score'"
-      },
-      "S6": {
-        "score": 2,
-        "evidence": "Quote told in line 5"
-      },
-      "S7": {
-        "score": 2,
-        "evidence": "~121 words"
-      }
-    },
-    "total": 11,
-    "bar": "12/14 with S1,S3=2",
-    "pass": false,
-    "fixes": [
-      "Would not reach owner: S3=0, S1=1"
-    ],
-    "owner_verdict": "rejected: ok, so what?"
-  },
-  {
-    "story": "028 v6 (story-028-v6)",
-    "gate": "1 pitch",
-    "date": "2026-11-16",
-    "scores": {
-      "P1": {
-        "score": 1,
-        "evidence": "Five youth/club teams in one season: a stat curiosity, no shock"
-      },
-      "P2": {
-        "score": 2,
-        "evidence": "Messi"
-      },
-      "P3": {
-        "score": 1,
-        "evidence": "Rise only, no setback"
-      },
-      "P4": {
-        "score": 2,
-        "evidence": "'Can you name a player who climbed faster?' invites naming (scores 2 too easily)"
-      },
-      "P5": {
-        "score": 2,
-        "evidence": "FC Barcelona, Goal, ESPN Deportes (opened)"
-      }
-    },
-    "total": 8,
-    "bar": "8/10 with P1=2",
-    "pass": false,
-    "fixes": [
-      "Total 8 met the bar; failed only on P1=1. P1 and P4 too soft (see proposal)"
-    ],
-    "owner_verdict": "rejected: ok, so what?"
-  },
-  {
-    "story": "028 v6 (story-028-v6)",
-    "gate": "2 script",
-    "date": "2026-11-16",
-    "scores": {
-      "S1": {
-        "score": 1,
-        "evidence": "Line 0 has two facts (five teams; first team before B)"
-      },
-      "S2": {
-        "score": 2,
-        "evidence": "Line 1 Porto"
-      },
-      "S3": {
-        "score": 1,
-        "evidence": "Porto two-chances/'I should have shot' line detours from the five-teams thread"
-      },
-      "S4": {
-        "score": 2,
-        "evidence": "U19B->U19A, 4 goals in one game, 37 games/35 goals"
-      },
-      "S5": {
-        "score": 1,
-        "evidence": "'It started with a shot he didn't take' ties to the Porto chance, not the hook"
-      },
-      "S6": {
-        "score": 1,
-        "evidence": "Barca C (team five) never spoken, only on the chip"
-      },
-      "S7": {
-        "score": 2,
-        "evidence": "~133 words"
-      }
-    },
-    "total": 10,
-    "bar": "12/14 with S1,S3=2",
-    "pass": false,
-    "fixes": [
-      "Would not reach owner: total 10, S1=1, S3=1"
-    ],
-    "owner_verdict": "rejected: ok, so what?"
+  "total": 10,
+  "bar": "8/10 with P1=2",
+  "pass": true,
+  "fixes": [],
+  "owner_verdict": "approved",
+  "outcome": {
+   "posted_as": "story 028 baggio-v-messi-16-november: Instagram and Threads 2026-11-16T00:03Z, Facebook reel 1475036754537576 scheduled for 2026-11-16T00:00Z, TikTok/YouTube 00:05Z (data/sent.json)",
+   "mapping_evidence": "sent.json Facebook reel sha1 1fa1acbd28ec6d446976978fd8f97974fc0ea774 = sha1 of ~/Developer/football-stories-samples/story-messi-red-v2/final.mp4; installed by commit 6d58a1e",
+   "snapshot": "data/metrics/2026-11-18.json (read 2026-11-18T13:40Z, Instagram 61.6 h after posting)",
+   "instagram": {
+    "reach": 235,
+    "views": 251,
+    "likes": 10,
+    "shares": 0,
+    "saves": 1,
+    "skip_rate_pct": 40,
+    "avg_watch_s": 15.2
+   },
+   "facebook": {
+    "plays": 193,
+    "reactions": 0,
+    "shares": 0
+   },
+   "threads": {
+    "views": 10,
+    "likes": 0,
+    "reposts": 0
+   },
+   "tiktok": {
+    "views": 378,
+    "likes": 7,
+    "shares": 1,
+    "read_at": "2026-11-18T15:02:17Z",
+    "age_h": 62.9,
+    "source": "live.json at origin/live-stats c8e20c8"
+   },
+   "youtube": {
+    "views": 1230,
+    "likes": 21,
+    "shares": 0,
+    "read_at": "2026-11-18T00:57:24Z",
+    "age_h": 48.9,
+    "source": "live.json at origin/live-stats 888c82d"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio."
   }
+ },
+ {
+  "story": "028 (story-messi-red-v2)",
+  "gate": "2 script",
+  "date": "2026-11-16",
+  "scores": {
+   "S1": {
+    "score": 2,
+    "evidence": "Line 0: one hard fact, one figure ('...red card after 47 seconds?')"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1: 'Budapest, August 2005. Messi, 18, comes off the bench'"
+   },
+   "S3": {
+    "score": 2,
+    "evidence": "One thread (red card -> redemption). Weakest link: line 7 'Shy off the pitch... hated losing' (owner's temper beat), kept as on-thread"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "Merk 'yellow also fair' (Goal DE 2021), Vanczak felt sorry (FFT + 444.hu excerpts), Pekerman tears (Bolavip), 2016 quit"
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "Line 12 'Not bad for a career that began with a red card.'"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Hook promise (debut red card, 47 s) told in lines 1-3"
+   },
+   "S7": {
+    "score": 1,
+    "evidence": "178 words (check_reel: 178 expected); outside 120-160, music loops once at 11.83 s"
+   }
+  },
+  "total": 13,
+  "bar": "12/14 with S1,S3=2",
+  "pass": true,
+  "fixes": [
+   "Hard-rule note: lines 4 (Pekerman's words), 5 (Merk, one Goal/SPOX interview) and 7 (Messi, Sport360) rest on one source each, spoken as attributed speech without 'reportedly'. Passed as attributed speech; rubric should say whether attribution counts as 'reportedly'.",
+   "Line 4 wording differs from first approved text ('left the pitch in tears' -> 'was in tears'); owner approved the v1 cut with the new wording."
+  ],
+  "owner_verdict": "approved",
+  "outcome": {
+   "posted_as": "story 028 baggio-v-messi-16-november: Instagram and Threads 2026-11-16T00:03Z, Facebook reel 1475036754537576 scheduled for 2026-11-16T00:00Z, TikTok/YouTube 00:05Z (data/sent.json)",
+   "mapping_evidence": "sent.json Facebook reel sha1 1fa1acbd28ec6d446976978fd8f97974fc0ea774 = sha1 of ~/Developer/football-stories-samples/story-messi-red-v2/final.mp4; installed by commit 6d58a1e",
+   "snapshot": "data/metrics/2026-11-18.json (read 2026-11-18T13:40Z, Instagram 61.6 h after posting)",
+   "instagram": {
+    "reach": 235,
+    "views": 251,
+    "likes": 10,
+    "shares": 0,
+    "saves": 1,
+    "skip_rate_pct": 40,
+    "avg_watch_s": 15.2
+   },
+   "facebook": {
+    "plays": 193,
+    "reactions": 0,
+    "shares": 0
+   },
+   "threads": {
+    "views": 10,
+    "likes": 0,
+    "reposts": 0
+   },
+   "tiktok": {
+    "views": 378,
+    "likes": 7,
+    "shares": 1,
+    "read_at": "2026-11-18T15:02:17Z",
+    "age_h": 62.9,
+    "source": "live.json at origin/live-stats c8e20c8"
+   },
+   "youtube": {
+    "views": 1230,
+    "likes": 21,
+    "shares": 0,
+    "read_at": "2026-11-18T00:57:24Z",
+    "age_h": 48.9,
+    "source": "live.json at origin/live-stats 888c82d"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio."
+  }
+ },
+ {
+  "story": "028 (story-messi-red-v2)",
+  "gate": "3 final cut",
+  "date": "2026-11-16",
+  "scores": {
+   "F1": {
+    "score": 2,
+    "evidence": "Frame 0: whole hook over Merk raising the red card (card painting)"
+   },
+   "F2": {
+    "score": 1,
+    "evidence": "Cuts (scene detect): hook holds 0-5.4 s, Merk 21.8-25.9 s (4.1 s), pen16crop 51.4-55.1 s (3.7 s) exceed 3.5 s; none over 6 s. 908-v5 hook holds 3.5 s"
+   },
+   "F3": {
+    "score": 2,
+    "evidence": "Each line's picture matches (subon, pull, card, protest, walkoff+Pekerman, Merk, Vanczak, LEO 10 kerb, Ballon d'Or, Gotze/scoreboard, penalty crop, trophy lift)"
+   },
+   "F4": {
+    "score": 2,
+    "evidence": "timing.json captions match PROVENANCE script word for word; chips inside boxes, clear of faces (frames 6, 19.5, 43, 47, 49.5, 53, 57)"
+   },
+   "F5": {
+    "score": 2,
+    "evidence": "check_reel.py re-run: -13.9 LUFS, -1.5 dBTP, voice 9.9-13.5 dB over music, largest step 2.6 dB, no pumping; loop joint 11.83 s smooth. Only FAIL is word-survival spellings (Vanczak, 8/eight, d'Or)"
+   },
+   "F6": {
+    "score": 1,
+    "evidence": "Vanczak never transcribed right ('Real Mosvantar', 'Vansack'); Pekerman heard 'Pecherman'. Flagged for owner's ear (lines 2, 4, 6)"
+   },
+   "F7": {
+    "score": 2,
+    "evidence": "Page title/dek/body tell the same story; 47 s per owner; nothing beyond docs/fact-checks/028.md"
+   }
+  },
+  "total": 12,
+  "bar": "12/14 with F1,F4=2",
+  "pass": false,
+  "fixes": [
+   "HARD RULE FAIL: page reelCredits omits Commons authors J. Baikovicius (score14), Agencia Brasil/Marcello Casal Jr (goetze), Sebas (champ22). Replace with the PROVENANCE.md line (163 chars, names all).",
+   "Owner to listen to 'Vanczak' (lines 2, 6) and 'Pekerman' (line 4) before install (F6 -> 2).",
+   "Optional for F2 -> 2: split the 5.4 s hook hold and the 4.1 s Merk shot (needs re-render; not required to pass).",
+   "Not yet installed: assets/reels/028-baggio-v-messi-16-november.mp4 absent; public/images/derived/028-reel.mp4 is the old 9 Nov reel (sha cba9124...). Re-check after install.",
+   "npm run verify: 1 error (046 Facebook slot) and 028 'on this day' warning, both not caused by this Reel."
+  ],
+  "owner_verdict": "approved: \"The process below turned that into a story the owner called great\" and the owner described the process \"after the Messi red-card Reel (story 028, ~/Developer/football-stories-samples/story-messi-red-v2)\" (.claude/skills/narrated-reel/references/story-development.md lines 3 and 5, written by the session, not the owner's verbatim words); installed at the owner's request: commit 6d58a1e \"content: 028 becomes Messi's 47-second Argentina debut (owner, 16 Nov)\". No owner comment on F2 pace or F6 name pronunciation is written anywhere.",
+  "followup": "16 Nov 00:45: reelCredits set to the full 163-character line before install (commit 6d58a1e), so the failing hard rule now passes. Site 028-reel.mp4 confirmed to be v2 (sha256 f61b2dec...).",
+  "outcome": {
+   "posted_as": "story 028 baggio-v-messi-16-november: Instagram and Threads 2026-11-16T00:03Z, Facebook reel 1475036754537576 scheduled for 2026-11-16T00:00Z, TikTok/YouTube 00:05Z (data/sent.json)",
+   "mapping_evidence": "sent.json Facebook reel sha1 1fa1acbd28ec6d446976978fd8f97974fc0ea774 = sha1 of ~/Developer/football-stories-samples/story-messi-red-v2/final.mp4; installed by commit 6d58a1e",
+   "snapshot": "data/metrics/2026-11-18.json (read 2026-11-18T13:40Z, Instagram 61.6 h after posting)",
+   "instagram": {
+    "reach": 235,
+    "views": 251,
+    "likes": 10,
+    "shares": 0,
+    "saves": 1,
+    "skip_rate_pct": 40,
+    "avg_watch_s": 15.2
+   },
+   "facebook": {
+    "plays": 193,
+    "reactions": 0,
+    "shares": 0
+   },
+   "threads": {
+    "views": 10,
+    "likes": 0,
+    "reposts": 0
+   },
+   "tiktok": {
+    "views": 378,
+    "likes": 7,
+    "shares": 1,
+    "read_at": "2026-11-18T15:02:17Z",
+    "age_h": 62.9,
+    "source": "live.json at origin/live-stats c8e20c8"
+   },
+   "youtube": {
+    "views": 1230,
+    "likes": 21,
+    "shares": 0,
+    "read_at": "2026-11-18T00:57:24Z",
+    "age_h": 48.9,
+    "source": "live.json at origin/live-stats 888c82d"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio."
+  }
+ },
+ {
+  "story": "028 v5 (story-028-v5)",
+  "gate": "1 pitch",
+  "date": "2026-11-16",
+  "scores": {
+   "P1": {
+    "score": 1,
+    "evidence": "Messi's Porto debut and a missed chance: mildly new, no shock ('ok, so what?')"
+   },
+   "P2": {
+    "score": 2,
+    "evidence": "Messi"
+   },
+   "P3": {
+    "score": 1,
+    "evidence": "Contradiction (record scorer / didn't shoot) only partial; no setback-to-triumph"
+   },
+   "P4": {
+    "score": 1,
+    "evidence": "'Porto or Espanyol: which is his real debut?' opinion/trivia"
+   },
+   "P5": {
+    "score": 1,
+    "evidence": "'I should have shot' rests on one source (ESPN Deportes)"
+   }
+  },
+  "total": 6,
+  "bar": "8/10 with P1=2",
+  "pass": false,
+  "fixes": [
+   "Would not reach owner: P1=1, total 6"
+  ],
+  "owner_verdict": "rejected: ok, so what?",
+  "outcome": "not posted: rejected by the owner on 16 Nov ('ok, so what?'); story 028 went out as story-messi-red-v2"
+ },
+ {
+  "story": "028 v5 (story-028-v5)",
+  "gate": "2 script",
+  "date": "2026-11-16",
+  "scores": {
+   "S1": {
+    "score": 1,
+    "evidence": "Line 0 stacks label + question + quote; no single hard figure"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 'Porto, 16 November 2003...'"
+   },
+   "S3": {
+    "score": 0,
+    "evidence": "Mourinho / new stadium / Champions League line and Espanyol no. 30 line are side lines"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "No. 14 handiest shirt, two chances, quote, no. 30"
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "'672 goals followed. That first night, he didn't score'"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Quote told in line 5"
+   },
+   "S7": {
+    "score": 2,
+    "evidence": "~121 words"
+   }
+  },
+  "total": 11,
+  "bar": "12/14 with S1,S3=2",
+  "pass": false,
+  "fixes": [
+   "Would not reach owner: S3=0, S1=1"
+  ],
+  "owner_verdict": "rejected: ok, so what?",
+  "outcome": "not posted: rejected by the owner on 16 Nov ('ok, so what?')"
+ },
+ {
+  "story": "028 v6 (story-028-v6)",
+  "gate": "1 pitch",
+  "date": "2026-11-16",
+  "scores": {
+   "P1": {
+    "score": 1,
+    "evidence": "Five youth/club teams in one season: a stat curiosity, no shock"
+   },
+   "P2": {
+    "score": 2,
+    "evidence": "Messi"
+   },
+   "P3": {
+    "score": 1,
+    "evidence": "Rise only, no setback"
+   },
+   "P4": {
+    "score": 2,
+    "evidence": "'Can you name a player who climbed faster?' invites naming (scores 2 too easily)"
+   },
+   "P5": {
+    "score": 2,
+    "evidence": "FC Barcelona, Goal, ESPN Deportes (opened)"
+   }
+  },
+  "total": 8,
+  "bar": "8/10 with P1=2",
+  "pass": false,
+  "fixes": [
+   "Total 8 met the bar; failed only on P1=1. P1 and P4 too soft (see proposal)"
+  ],
+  "owner_verdict": "rejected: ok, so what?",
+  "outcome": "not posted: rejected by the owner on 16 Nov ('ok, so what?')"
+ },
+ {
+  "story": "028 v6 (story-028-v6)",
+  "gate": "2 script",
+  "date": "2026-11-16",
+  "scores": {
+   "S1": {
+    "score": 1,
+    "evidence": "Line 0 has two facts (five teams; first team before B)"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 Porto"
+   },
+   "S3": {
+    "score": 1,
+    "evidence": "Porto two-chances/'I should have shot' line detours from the five-teams thread"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "U19B->U19A, 4 goals in one game, 37 games/35 goals"
+   },
+   "S5": {
+    "score": 1,
+    "evidence": "'It started with a shot he didn't take' ties to the Porto chance, not the hook"
+   },
+   "S6": {
+    "score": 1,
+    "evidence": "Barca C (team five) never spoken, only on the chip"
+   },
+   "S7": {
+    "score": 2,
+    "evidence": "~133 words"
+   }
+  },
+  "total": 10,
+  "bar": "12/14 with S1,S3=2",
+  "pass": false,
+  "fixes": [
+   "Would not reach owner: total 10, S1=1, S3=1"
+  ],
+  "owner_verdict": "rejected: ok, so what?",
+  "outcome": "not posted: rejected by the owner on 16 Nov ('ok, so what?')"
+ },
+ {
+  "story": "trend-ronaldinho-v1",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": {
+   "S1": 1,
+   "S2": 2,
+   "S3": 0,
+   "S4": 1,
+   "S5": 2,
+   "S6": 2,
+   "S7": 1
+  },
+  "total": 9,
+  "bar": 12,
+  "pass": false,
+  "fixes": "news hook had two figures; comeback and ovation were two stories; 167 words. v2: hook on the ovation, comeback as the late payoff, about 125 words.",
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files); superseded the same day",
+  "note": "first trend-scout scripts; quest rule (new question every 10-15 s) checked informally",
+  "outcome": "not posted: superseded the same day by trend-ronaldinho-v2 (posted as 031)"
+ },
+ {
+  "story": "trend-henry-v1",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": {
+   "S1": 2,
+   "S2": 1,
+   "S3": 1,
+   "S4": 2,
+   "S5": 2,
+   "S6": 2,
+   "S7": 1
+  },
+  "total": 11,
+  "bar": 12,
+  "pass": false,
+  "fixes": "Hansson line was colour; match recap before the moment; 169 words. v2: open on the handball, Hansson cut, about 120 words.",
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files); superseded the same day",
+  "note": "first trend-scout scripts; quest rule (new question every 10-15 s) checked informally",
+  "outcome": "not posted: superseded the same day by trend-henry-v2 (posted as 910)"
+ },
+ {
+  "story": "trend-pochettino-v1",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": {
+   "S1": 2,
+   "S2": 1,
+   "S3": 0,
+   "S4": 1,
+   "S5": 2,
+   "S6": 2,
+   "S7": 1
+  },
+  "total": 9,
+  "bar": 12,
+  "pass": false,
+  "fixes": "career tour after the 2 a.m. story; quote not verbatim (Griffa vs Bielsa); 172 words. v2: open on the farm, quote paraphrased as reportedly, one closing line on Spurs and United.",
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files); superseded the same day",
+  "note": "first trend-scout scripts; quest rule (new question every 10-15 s) checked informally",
+  "outcome": "not posted: superseded by trend-pochettino-v2 / final-v8"
+ },
+ {
+  "story": "trend-ronaldinho-v2",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": null,
+  "total": 14,
+  "bar": 12,
+  "pass": true,
+  "fixes": "\"This weekend\" changed to \"On Sunday\"; \"started\" changed to \"played the first half\" (sources say replaced at half-time).",
+  "owner_verdict": "approved (script): commit 5052753 '031: Ronaldinho v2 Reel (payoff ending, open loops, name tags, 1.1x), owner-approved script' (18 Nov; the session's words, not the owner's). The built words are trend-out/v5/final-v8.md, which trend-out/v5/eval-v8.md scored 13/14 (S2=1), not the 14 logged here. No owner comment after posting found.",
+  "outcome": {
+   "posted_as": "story 031 ronaldinho-back-at-46: Facebook reel 1142071285421714 (same-day test), Instagram and Threads 2026-11-19T00:03Z (data/sent.json)",
+   "mapping_evidence": "sent.json reel sha1 70c4f8c1a688455e43099b0fc12b34d532020f73 = sha1 of ~/Developer/football-stories-samples/trend-ronaldinho-v2/final.mp4 and assets/reels/031-ronaldinho-bernabeu-ovation.mp4 as committed in 5052753 ('031: Ronaldinho v2 Reel ..., owner-approved script'). Words: trend-out/v5/final-v8.md RONALDINHO section",
+   "snapshot": "data/metrics/2026-11-21.json (read 2026-11-21T13:15Z, 61.2 h after posting)",
+   "instagram": {
+    "reach": 124,
+    "views": 134,
+    "likes": 5,
+    "shares": 0,
+    "saves": 0,
+    "skip_rate_pct": 53.2,
+    "avg_watch_s": 9.3
+   },
+   "facebook": {
+    "plays": 791,
+    "reactions": 9,
+    "shares": 0
+   },
+   "threads": {
+    "views": 58,
+    "likes": 0,
+    "reposts": 0
+   },
+   "tiktok": {
+    "views": 291,
+    "likes": 18,
+    "shares": 0,
+    "read_at": "2026-11-21T02:08:44Z",
+    "age_h": 50.1,
+    "source": "live.json at origin/live-stats cd68188"
+   },
+   "youtube": {
+    "views": 1264,
+    "likes": 16,
+    "shares": 0,
+    "read_at": "2026-11-21T02:08:44Z",
+    "age_h": 50.0,
+    "source": "live.json at origin/live-stats cd68188"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio.",
+   "caveat": "First post of the Facebook same-day test (19 Nov); its 791 Facebook plays reflect that change as much as the Reel."
+  }
+ },
+ {
+  "story": "trend-henry-v2",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": null,
+  "total": 14,
+  "bar": 12,
+  "pass": true,
+  "fixes": "",
+  "owner_verdict": "approved (script): commit df0f2d8 '910: Henry v2 Reel (...), owner-approved script'; the earlier cut was approved too ('Owner approved the finished Reel and the 18 Nov 20:00 post', commit b5eeb4e). The session's words, not the owner's. No owner comment after posting found.",
+  "outcome": {
+   "posted_as": "story 910 thierry-henry-handball-fifa-paid (20:00 extra): Facebook reel 4256528577812368, Instagram and Threads 2026-11-18T12:03Z (data/sent.json)",
+   "mapping_evidence": "sent.json reel sha1 85d7a1f95a2e5f6364626feb8e4faba03d45749c = sha1 of ~/Developer/football-stories-samples/trend-henry-v2/final.mp4 and of assets/reels/910-henry-handball.mp4 as committed in df0f2d8 ('910: Henry v2 Reel ..., owner-approved script'). Words: trend-out/v5/final-v8.md HENRY section",
+   "snapshot": "data/metrics/2026-11-20.json (read 2026-11-20T13:49Z, 49.8 h after posting)",
+   "instagram": {
+    "reach": 1277,
+    "views": 1467,
+    "likes": 36,
+    "shares": 1,
+    "saves": 1,
+    "skip_rate_pct": 33.8,
+    "avg_watch_s": 20.1
+   },
+   "facebook": {
+    "plays": 54,
+    "reactions": 1,
+    "shares": 0
+   },
+   "threads": {
+    "views": 23,
+    "likes": 0,
+    "reposts": 0
+   },
+   "tiktok": {
+    "views": 207,
+    "likes": 6,
+    "shares": 1,
+    "read_at": "2026-11-21T00:00:52Z",
+    "age_h": 59.9,
+    "source": "live.json at origin/live-stats 57eef27"
+   },
+   "youtube": {
+    "views": 1179,
+    "likes": 13,
+    "shares": 0,
+    "read_at": "2026-11-21T00:00:52Z",
+    "age_h": 59.9,
+    "source": "live.json at origin/live-stats 57eef27"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio.",
+   "caveat": "Posted at 20:00 SGT as an extra, the slot of the other two Instagram breakouts (908); not comparable one-to-one with 08:00 daily posts."
+  }
+ },
+ {
+  "story": "trend-pochettino-v2",
+  "gate": "2-script",
+  "date": "2026-11-17",
+  "scores": null,
+  "total": 12,
+  "bar": 12,
+  "pass": false,
+  "fixes": "S3=1 for the Spurs-sacking clause; cut it and \"after years of being linked\" (v3, projected 13). Legs quote paraphrased to \"the makings of a footballer\" (Pochettino's own account); trial line changed to \"joined Newell's\".",
+  "owner_verdict": "approved, then rejected and replaced: the final-v8 words (this entry's v3, scored 14/14 in trend-out/v5/eval-v8.md) were built as an 'owner-approved script' (commit cc6adc6, 18 Nov). On 19 Nov the owner replaced them: owner-taste.md line 24 lists the hook 'This week, Mauricio Pochettino takes over at Manchester United.' under hooks the owner rejected ('a news statement that plants no question. It was replaced.'), and line 29 says the owner changed the body from his origin story (Bielsa at 1 a.m.) to his record against Liverpool. No verdict on this exact v2 text was found.",
+  "outcome": "not posted: built as a Reel (commit cc6adc6, the final-v8 words, i.e. this entry's v3) but replaced before posting: story 032 went out on 20 Nov as the new Anfield Reel (trend-pochettino-v6, sent.json sha1 ce8f36a2... = trend-pochettino-v6/final.mp4; commit 78b6b18), a different script never scored in this log. 032's 48 h numbers (data/metrics/2026-11-22.json, 61.0 h): Instagram reach 125, likes 2, shares 0, skip 33.9%, watch 12.5 s; Facebook 206 plays, 2 reactions, 0 shares; Threads 22 views; TikTok 319 views, 13 likes, 0 shares and YouTube 462 views, 8 likes (live.json 3599218, 2026-11-22T00:31Z, 48.4 h). They belong to v6, not to this script."
+ },
+ {
+  "story": "033 (story-033, Trautmann)",
+  "gate": "2 script",
+  "date": "2026-11-18",
+  "scores": {
+   "S1": {
+    "score": 2,
+    "evidence": "Line 0 'He won the FA Cup with a broken neck. Eleven years earlier, he was fighting for Nazi Germany.': one contradiction, one figure (eleven years), Bayern-model shape"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 'Wembley, nineteen fifty-six. Manchester City's keeper dives at a forward's feet...'"
+   },
+   "S3": {
+    "score": 2,
+    "evidence": "One thread (enemy soldier -> broken-neck hero): war/boycott (3), Altmann letter (4-5), Footballer of the Year (6), X-ray (7), his own bravery quote (8); no colour lines"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "Iron Cross paratrooper, boycott threat, Altmann whose parents died at Auschwitz (UCL + Stolpersteine), first keeper FWA FOTY two days before, hospital sent him away"
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "Line 8 quote 'if I'd known my neck was broken I'd have been off like a shot' lands late, ties to the hook's broken neck and runs straight into the question (no recap line)"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Broken neck told (1,2,7); fighting for Nazi Germany told (3)"
+   },
+   "S7": {
+    "score": 1,
+    "evidence": "174 words (10 lines), outside 120-160; at 1.1x about 52 s + 4 s card, under end_src 65, no loop needed"
+   }
+  },
+  "total": 13,
+  "bar": "12/14 with S1,S3=2",
+  "pass": true,
+  "fixes": [
+   "Optional, not needed to pass: S7->2 (14) needs 14+ words cut to reach 160. No cut found that doesn't lose a beat; accept S7=1 (1.1x voice fits under end_src without a loop).",
+   "Quotes verified verbatim by evaluator (curl, 2026-11-18): line 8 in Guardian 2 Nov 2004 (Luke Harding, 'He adds: ...'); line 5 in Observer 11 Apr 2010 (Louise Taylor, '...,' says Trautmann). 'Decades on' confirmed (2004). G06 confirms hospital 'sent me away'.",
+   "Before install: story mdx hook ('He finished a Cup final with a broken neck.') and question ('Is there a player you were taught to dislike...') must be set to line 0 and line 9.",
+   "Gate 1 risk for the owner: lessons.md records the owner rejecting a Trautmann Reel on 7 Nov ('don't know him'); no free photo of the 1956 final on Commons (F1/F3 risk at gate 3; Pinterest route allowed)."
+  ],
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files)",
+  "outcome": {
+   "posted_as": "story 033 bert-trautmann-broken-neck-final: Facebook reel 1700431448148242, Instagram and Threads 2026-11-21T02:02Z (data/sent.json)",
+   "mapping_evidence": "sent.json reel sha1 1b88599f284aa25bb5342cac74ee99132d8fdb50 = sha1 of ~/Developer/football-stories-samples/story-033/final.mp4; its lines.json is the 10-line script scored here, unchanged",
+   "snapshot": "NOT SCORED YET: data/metrics/2026-11-22.json was read 35.0 h after posting; score from data/metrics/2026-11-23.json when it exists",
+   "provisional_35h_from_2026-11-22_snapshot": {
+    "instagram": {
+     "reach": 127,
+     "views": 152,
+     "likes": 1,
+     "shares": 0,
+     "saves": 0,
+     "skip_rate_pct": 45.2,
+     "avg_watch_s": 12.2
+    },
+    "facebook": {
+     "plays": 263,
+     "reactions": 0,
+     "shares": 0
+    },
+    "threads": {
+     "views": 5,
+     "likes": 0,
+     "reposts": 0
+    }
+   },
+   "tiktok": {
+    "views": 578,
+    "likes": 26,
+    "shares": 2,
+    "read_at": "2026-11-23T04:37:47Z",
+    "age_h": 50.5,
+    "source": "live.json at origin/live-stats e5b341e"
+   },
+   "youtube": {
+    "views": 814,
+    "likes": 11,
+    "shares": 0,
+    "read_at": "2026-11-23T04:37:47Z",
+    "age_h": 50.5,
+    "source": "live.json at origin/live-stats e5b341e"
+   },
+   "instagram_live_json_50h": {
+    "views": 152,
+    "likes": 1,
+    "shares": 0,
+    "read_at": "2026-11-23T04:37:47Z"
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio."
+  }
+ },
+ {
+  "story": "034 (story-034, Giroud)",
+  "gate": "2 script",
+  "date": "2026-11-18",
+  "scores": {
+   "S1": {
+    "score": 2,
+    "evidence": "Line 0 'He won the World Cup without scoring a goal. Four years later, he caught Thierry Henry.': one contradiction, one figure"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 'Qatar, twenty twenty-two. Mbappe crosses, Olivier Giroud heads in: fifty-one goals for France, level with Henry.'"
+   },
+   "S3": {
+    "score": 2,
+    "evidence": "Giroud only (Defoe cut); Benzema line serves the 'backup who got lucky' thread. Note: timeline jumps 2022 -> 2007 -> 2010-12 -> 2018 -> 2022"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "Third-division loan at 20, Grenoble coach 'not good enough for L2' (L'Equipe via Maxifoot + Reuters), Ligue 2 top scorer, Montpellier title, 546 minutes, goal 52 twelve days later"
+   },
+   "S5": {
+    "score": 1,
+    "evidence": "Line 8 'Not bad for a striker who won a World Cup without scoring.' is the recap line the newest owner-approved model (Pochettino v2) cut; it restates line 0 instead of landing new. Line 7 'The record was his alone.' is the real payoff"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "WC without scoring (6), caught Henry (1, 7)"
+   },
+   "S7": {
+    "score": 1,
+    "evidence": "162 words, over 160"
+   }
+  },
+  "total": 12,
+  "bar": "12/14 with S1,S3=2",
+  "pass": true,
+  "fixes": [
+   "Delete line 8 ('Not bad for a striker who won a World Cup without scoring.') so line 7 runs straight into the question, as in Pochettino v2: S5->2, S7->2 (150 words), projected 14.",
+   "Defoe dropped: right for the Reel (one thread), but the page is 'Defoe v Giroud' (title, dek, hook, question all two-person, 'On this day' series). Gate 3 F7 (page and caption tell the same story) will fail unless the owner OKs reframing the page/hook to Giroud or accepts the mismatch. Owner decision needed before build.",
+   "Before install: mdx hook and question must be set to line 0 and the closing question.",
+   "Risk note: Mbappe passed Giroud's record on 16 Jun 2026 (fact check C12). Past tense 'was his alone' is correct and must stay; expect comments."
+  ],
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files). The Defoe-page decision flagged in fixes was not recorded either; the page posted as 'Defoe v Giroud'.",
+  "outcome": {
+   "posted_as": "story 034 defoe-v-giroud-22-november: Facebook reel 1481754780598301, Instagram and Threads 2026-11-22T02:02Z (data/sent.json)",
+   "mapping_evidence": "sent.json reel sha1 20a9b8b8210beb5ffa889dc3abdc5f93bfefd3ff = sha1 of ~/Developer/football-stories-samples/story-034/final.mp4; its lines.json is this script with the fix applied (line 8 'Not bad for a striker...' deleted). Page title stayed 'Defoe v Giroud' (the F7 risk flagged above)",
+   "snapshot": "NOT SCORED YET: data/metrics/2026-11-22.json was read 11.0 h after posting; score from data/metrics/2026-11-24.json",
+   "provisional_11h_from_2026-11-22_snapshot": {
+    "instagram": {
+     "reach": 508,
+     "views": 585,
+     "likes": 15,
+     "shares": 1,
+     "saves": 4,
+     "skip_rate_pct": 29.4,
+     "avg_watch_s": 17.9
+    },
+    "facebook": {
+     "plays": 294,
+     "reactions": 2,
+     "shares": 0
+    },
+    "threads": {
+     "views": 13,
+     "likes": 0,
+     "reposts": 0
+    }
+   },
+   "method": "Scored at the first daily snapshot at least 48 h after posting (scripts/scoreboard.ts, data/experiments.json 'scoring'). Facebook plays = snapshot 'views' (excl. replays), reactions = snapshot 'likes'. TikTok/YouTube from live.json versions kept in the local reflog of origin/live-stats (the branch keeps one commit); first read at least 48 h old. YouTube shares come from live.json only and were never checked in Studio."
+  }
+ },
+ {
+  "story": "035 (story-035, Modric)",
+  "gate": "2 script",
+  "date": "2026-11-18",
+  "scores": {
+   "S1": {
+    "score": 2,
+    "evidence": "Line 0 'Voted La Liga's worst signing. Six years later, Modric won the Ballon d'Or.': one contradiction, one figure"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 'Russia, twenty eighteen. Croatia reach their first World Cup final, and Modric wins the Golden Ball.'"
+   },
+   "S3": {
+    "score": 2,
+    "evidence": "Written off at every step: war/refugee hotel (2-3), Hajduk 'too small, too fragile' (4), Bosnia loan (5), Marca poll (6), Ballon d'Or (7). Softest detail: 'the man he was named after' (line 2), kept as on-thread"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "Grandfather killed Dec 1991 aged six, Hotel Kolovare car park under shelling, Hajduk rejection, Bosnian player of the year at 18, one goal by Christmas, Marca readers' 32.2% poll"
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "Line 7 'Six years after that vote, he ended a decade of Messi and Ronaldo: the Ballon d'Or.' ties back and runs straight into the question"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Poll told (6), Ballon d'Or told (7)"
+   },
+   "S7": {
+    "score": 2,
+    "evidence": "146 words, 9 lines; at 1.1x about 44 s + card, under end_src 65"
+   }
+  },
+  "total": 14,
+  "bar": "12/14 with S1,S3=2",
+  "pass": true,
+  "fixes": [
+   "No script edit needed. Every line has two independent sources in docs/fact-checks/035.md; fee says 'a reported'.",
+   "Owner decision before build: the page is a 'Guess the legend' quiz (hook 'Can you name him in 4 clues?', question 'How many clues did you need?'); the Reel names Modric in line 0 and its hook leads every caption, so the quiz is spoiled. Gate 3 F7 will fail unless the page hook/question/format are aligned to the Reel.",
+   "'Six years later' is 5 years 11 months by calendar (30 Dec 2012 -> 3 Dec 2018); accepted by year labels (2012 poll, 2018 award)."
+  ],
+  "owner_verdict": "cancelled with the format: the owner cancelled all 'Guess the legend' quizzes on 18 Nov (commit 4d10943). Not a verdict on this script.",
+  "outcome": "not posted: cancelled. The owner cancelled 'Guess the legend' on 18 Nov (commit 4d10943); the Modric draft was parked as story 899 (commit 6698677). Story number 035 was reused for Leeds at Chelsea (trend-leeds-chelsea, posted 2026-11-23T02:43Z), which is not this script and has no entry in this log. No outcome exists for this entry."
+ },
+ {
+  "story": "036 (story-036, Aguero 93:20)",
+  "gate": "2 script",
+  "date": "2026-11-18",
+  "scores": {
+   "S1": {
+    "score": 1,
+    "evidence": "Line 0 'Man City had forty-four shots. QPR had three. At ninety minutes, QPR were winning.' carries three figures (44, 3, 90); rubric asks one figure (Ronaldinho v1 failed on two; Messi 'stick to 47 seconds')"
+   },
+   "S2": {
+    "score": 2,
+    "evidence": "Line 1 'The last day of the season, May twenty twelve. Win, and City were champions.'"
+   },
+   "S3": {
+    "score": 1,
+    "evidence": "Line 2 'QPR's manager was Mark Hughes, the man City had sacked and replaced with Roberto Mancini.' is irony colour from the other bench (the Mourinho pattern); serves neither the shots-v-score thread nor the comeback"
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "44 v 3 shots, 19 v 0 corners, Dzeko from the last corner, Balotelli's only PL assist, booked for the shirt, Barton tweet"
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "Line 8 'Forty-four shots, for their first title in forty-four years.' ties back and runs into the question"
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Shots and losing at 90 told in lines 4-7"
+   },
+   "S7": {
+    "score": 2,
+    "evidence": "145 words"
+   }
+  },
+  "total": 12,
+  "bar": "12/14 with S1,S3=2",
+  "pass": false,
+  "fixes": [
+   "Line 0 -> 'Man City had forty-four shots. They went into stoppage time losing.' (meta hook: 'Man City had 44 shots. They went into stoppage time losing.'): one figure, same contradiction, payoff still ties back. S1->2. Fact = row 0b (QPR led 2-1 at 90).",
+   "Delete line 2 (Mark Hughes). S3->2.",
+   "Line 3: drop 'Then' -> 'QPR's Joey Barton was sent off. ...' (Cisse scored at 48 before Barton's 55 red; 'Then' + line 4 implies both goals came after).",
+   "Line 4: 'QPR scored twice from their three shots.' -> 'QPR scored twice from just three shots.' (the hook no longer introduces the three).",
+   "Projected after edits: 14/14, about 125 words. Re-score after the edit; fact-check row 0 wording to be updated.",
+   "story-036 has no PROVENANCE.md (the other three do): write it before build.",
+   "Barton tweet reads '1' in the original: caption must show it as tweeted."
+  ],
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files)",
+  "outcome": "not posted yet: built in commit 83280f5 with all four script fixes applied (story-036/lines.json); story 036 is dated 2026-11-24; first 48 h snapshot will be 2026-11-26. Not re-scored after the fixes."
+ },
+ {
+  "story": "037 (story-037, Best v Maradona)",
+  "gate": "2 script",
+  "date": "2026-11-18",
+  "scores": {
+   "S1": {
+    "score": 2,
+    "evidence": "Line 0 'Best never played at a World Cup. Maradona was never allowed to win the Ballon d'Or.': one mirrored contradiction (each lacked the other's prize), no figures, 16 words, 4 rows (PROVENANCE). Two clauses but one idea; the SKILL step 1 item 2 'sharp contradiction' route. Held at 2 with care: a fan may reply 'he has an honorary one', answered by line 7."
+   },
+   "S2": {
+    "score": 1,
+    "evidence": "Line 1 is the 25 November anniversary peg ('Both men died on the twenty-fifth of November...'); the thread's first moment (Wembley 1968) arrives in line 2."
+   },
+   "S3": {
+    "score": 2,
+    "evidence": "Every line serves 'each missing the other's prize'. Line 1 is a same-date fact (the lessons.md Rijkaard pattern), but here it is about both subjects, is the page's own premise (mdx title/hook '25 November', date 2026-11-25) and the only reason the two are paired, and it sits before the thread rather than interrupting it. Web-story extras (airports, stadiums) left out."
+   },
+   "S4": {
+    "score": 2,
+    "evidence": "Bingham considered taking Best to Spain 1982 then decided against (Irish FA, Guardian, WFI); Belanov got the 1986 Ballon d'Or; pre-1995 Europeans-only rule; 1995 honorary award; France Football 2020 says he'd have won 1986 and 1990. 5 lesser-known, all two-sourced (R8-R17)."
+   },
+   "S5": {
+    "score": 2,
+    "evidence": "Line 7 'France Football looked back, and said he would have won it twice' resolves the hook's 'never allowed to win the Ballon d'Or' and runs straight into the question (Pochettino v2 model). Best's half is resolved earlier (line 4), so the late tie-back covers one half only."
+   },
+   "S6": {
+    "score": 2,
+    "evidence": "Best/World Cup told in line 4 (NI reached 1982, manager decided against); Maradona/Ballon d'Or told in line 6 (Europeans only until 1995)."
+   },
+   "S7": {
+    "score": 2,
+    "evidence": "149 words (counted), 9 lines; about 46 s at 1.1x plus gaps and 4 s card, about 52-56 s, under end_src 65 of music sample 4 (PROVENANCE estimate)."
+   }
+  },
+  "total": 13,
+  "bar": "12/14 with S1,S3=2",
+  "pass": true,
+  "fixes": [
+   "No script edit needed to pass. Only improvement available is S2->2 (14) by cutting or moving line 1; not advised: it is the page's premise and F7 at gate 3 depends on it.",
+   "Hard rules: every line has a fact-check row with 2+ sources (R1-R18, docs/fact-checks/037.md 'Reel script (18 Nov 2026)'); evaluator re-opened Irish FA (extra time, 'never to have played at a World Cup', 'decided against it'), France Football 2020 (Europeans only, Belanov 1986, 'deuxieme et derniere fois', honorary 1995) and Guardian Joy of Six ('36-year-old Best', 'quietly dropped'). No quotes in script. No CTA. meta.json hook/question match lines 0 and 8.",
+   "Line 4 'He turned thirty-six that May.' true (born 22 May 1946); does not date Bingham's decision (R10 caution resolved).",
+   "Before install: story mdx hook is still 'Same date, 15 years apart: football lost George Best and Diego Maradona. Best or Maradona?' and must be set to line 0; question already matches line 8. PROVENANCE also proposes feeling: other -> paradox (test 1).",
+   "Style note, not scored: tense shifts (lines 2-3 present 'scores', 'wins'; lines 4-7 past). Fine to leave since voice is in progress."
+  ],
+  "owner_verdict": "not found (searched 23 Nov: docs/growth-log.md, git log messages since 16 Nov, owner-taste.md, lessons.md, story-development.md, docs/fact-checks, sample-folder PROVENANCE and gate3 files)",
+  "outcome": "not posted yet: built in commit 83280f5; story 037 is dated 2026-11-25; first 48 h snapshot will be 2026-11-27."
+ }
 ]

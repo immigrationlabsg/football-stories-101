@@ -36,7 +36,14 @@
       "start": "2026-11-19",
       "end": "2026-11-28",
       "change": "Two additions to the narrated-reel skill (SHARE-TEST-2026-11 blocks): (A) the hook is one quotable shock line; (B) the closing question is a split verdict. Topic choice and script structure unchanged.",
-      "counted": { "rule": "Every Reel posted 19-28 Nov whose script was written or rewritten from 18 Nov. 031, 911 and 032 were built earlier and count as 'before'." },
+      "counted": {
+        "stories": { "from": 33, "to": 40 },
+        "rule": "Every Reel posted 19-28 Nov whose script was written or rewritten from 18 Nov. 031, 911 and 032 were built earlier and count as 'before'. Daily stories counted by the scoreboard: 033-040 (21-28 Nov; 033-038 scripted 18-19 Nov, 035 re-picked as Leeds at Chelsea on 22 Nov; 039-040 count only if their Reels are built from the scripts rewritten after 18 Nov, which on 23 Nov were drafts in drafts/reels-2026-11-22 and uncommitted hook/question edits; if either goes out on its older script it counts as 'before' and this range is corrected before it is scored). Extras posted in the window under the same rule (912 Bodo/Glimt, 24 Nov; 913 if posted) are reported beside the daily posts from the snapshots and live.json, because the scoreboard keeps 900-999 out. Story range added at the 23 Nov review (the entry had none, so the scoreboard printed 'Nothing to score'); the rule, the change and the bar are unchanged.",
+        "fidelity": "Checked 23 Nov against each story's hook and question fields: (B) a split-verdict closing is on 034, 035, 037, 038 and 912, and on the 23 Nov draft rewrites of 039 (a yes/no verdict) and 040, but NOT on 033 ('Which goalkeeper was braver than Bert Trautmann?') or 036 ('Which Premier League moment, if any, beats 93:20?'), which are open 'name your own' questions. (A) every counted hook is built on a shock fact, in one to three short sentences (035 has three). The extra 912 (reported beside the counted posts, not scored) opens on a question, not a quotable line. Report the result with and without 033 and 036."
+      },
+      "excludeStories": "900-999",
+      "compare": { "previous": { "stories": { "from": 28, "to": 32 }, "label": "before the change (028-032, 16-20 Nov)" } },
+      "scoreNote": "040 (28 Nov 02:00 UTC) is first scorable at 48 h in the 30 Nov snapshot, so the full result is read at the Wednesday decision on 2 Dec; the 29 Nov review is interim for 039-040.",
       "bar": {
         "main": "shares and reposts per 1,000 reached (and per first ~120 views) above the trial",
         "guardrails": "IG average watch >= 12.4 s, IG skip <= 46.7%, views >= trial medians (IG reach 121.5, YouTube 1,134, TikTok 346.5)"
