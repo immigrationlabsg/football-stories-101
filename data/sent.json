@@ -1064,6 +1064,31 @@
       "at": "2026-11-23T02:43:32.325Z",
       "detail": "thread 18170556220491439 (cards, Reel in reply, topic Football)",
       "story": "leeds-chelsea-1999-fall-and-rise"
+    },
+    {
+      "number": 36,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-24T00:03:10.869Z",
+      "detail": "posted reel 2388693101921054 (music: sports-documentary)",
+      "story": "aguero-9320-manchester-city-2012",
+      "reel": "44e528d9f3447f4e2daa960da6c01906343f2058"
+    },
+    {
+      "number": 36,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-24T00:03:10.869Z",
+      "detail": "reel media 18096654038270080",
+      "story": "aguero-9320-manchester-city-2012"
+    },
+    {
+      "number": 36,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-24T00:03:10.869Z",
+      "detail": "thread 17979508092139570 (cards, Reel in reply, topic Football)",
+      "story": "aguero-9320-manchester-city-2012"
     }
   ]
 }
