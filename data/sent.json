@@ -1089,6 +1089,31 @@
       "at": "2026-11-24T00:03:10.869Z",
       "detail": "thread 17979508092139570 (cards, Reel in reply, topic Football)",
       "story": "aguero-9320-manchester-city-2012"
+    },
+    {
+      "number": 37,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-25T00:03:18.850Z",
+      "detail": "posted reel 1154243477090205 (music: cinematic-trailer)",
+      "story": "best-v-maradona-25-november",
+      "reel": "18257b2876959d89a540bbee4452a7f1a0af1ea7"
+    },
+    {
+      "number": 37,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-25T00:03:18.850Z",
+      "detail": "reel media 18116875208258725",
+      "story": "best-v-maradona-25-november"
+    },
+    {
+      "number": 37,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-25T00:03:18.850Z",
+      "detail": "thread 18106690214047544 (cards, Reel in reply, topic Football)",
+      "story": "best-v-maradona-25-november"
     }
   ]
 }
