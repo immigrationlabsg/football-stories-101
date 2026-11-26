@@ -1114,6 +1114,31 @@
       "at": "2026-11-25T00:03:18.850Z",
       "detail": "thread 18106690214047544 (cards, Reel in reply, topic Football)",
       "story": "best-v-maradona-25-november"
+    },
+    {
+      "number": 38,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-26T00:02:54.642Z",
+      "detail": "posted reel 1689990492528097 (music: sports-documentary)",
+      "story": "george-weah-monrovia-ballon-dor",
+      "reel": "53119f06bb667dffa3c8ea31733279708f81d35d"
+    },
+    {
+      "number": 38,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-26T00:02:54.642Z",
+      "detail": "reel media 18150859306573721",
+      "story": "george-weah-monrovia-ballon-dor"
+    },
+    {
+      "number": 38,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-26T00:02:54.642Z",
+      "detail": "thread 18142012798760219 (cards, Reel in reply, topic Football)",
+      "story": "george-weah-monrovia-ballon-dor"
     }
   ]
 }
