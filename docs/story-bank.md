@@ -107,6 +107,13 @@ Assigned numbers are reserved. Status: drafted, scheduled, sent. Add new angles 
 | 096 | Players | Gianluigi Buffon: the midfielder who became a goalkeeper because of Cameroon's Thomas N'Kono | reserved |
 | 097 | Clubs | Marseille 1993: European champions, then barred from defending the title | reserved |
 | 098 | Eras | Cruyff's Barcelona Dream Team, 1991–94: the first European Cup, then a 4–0 final defeat | reserved |
+| 099 | Moments | Gijón, 25 June 1982: West Germany 1–0 Austria, both went through and Algeria went home (never "fixed": collusion was never proven; same tournament as 094, keep a week apart) | reserved |
+| 100 | Players | Luís Figo at Camp Nou, 23 November 2002: the pig's head, the long stoppage and his old coach's blame (follow-up of 050; 7+ days from 050) | reserved |
+| 101 | Clubs | Inter, Madrid, 22 May 2010: the Italian treble winners started the final with no Italian | reserved |
+| 102 | Eras | Estudiantes de La Plata 1967–70: Zubeldía's team of doctors and the world title won at Old Trafford | reserved |
+| 103 | Moments | Munich, 7 July 1974: the missing corner flags and Neeskens's penalty before a German touched the ball | reserved |
+| 104 | Players | Sarina Wiegman: a PE teacher who never played at a Euros, then won three as a coach | reserved |
+| 105 | Clubs | Bayer Leverkusen: "Neverkusen" lost three trophies in 11 days in 2002, then the unbeaten title of 2024 and the one final they lost | reserved |
 
 ## Rules for new angles
 - **One legend per week (owner, 26 Oct 2026).** The same player is never featured in two pieces less than seven days
