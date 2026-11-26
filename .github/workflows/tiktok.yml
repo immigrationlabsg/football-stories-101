@@ -2,7 +2,7 @@ name: TikTok
 
 # TikTok through Zernio (scripts/tiktok.ts). "accounts" and "status" read and change nothing; "post" is a dry run unless
 # dry_run is unticked. Each real post is recorded in data/tiktok.json, which stops a second post of the same story.
-# Automatic (owner, 10 Nov 2026): when "Publish daily" or "Post extras" finishes, and at backup times, mode "auto" posts
+# Automatic (owner, 10 Nov 2026): when "Publish daily" or "Post extras" finishes (pass or fail, since 26 Nov), and at backup times, mode "auto" posts
 # to TikTok every Reel that went to Instagram in the last 20 hours and is not on TikTok yet; since 11 Nov 2026 the
 # same run posts it to YouTube too.
 on:
@@ -51,8 +51,10 @@ concurrency:
 
 jobs:
   tiktok:
-    # After a publishing run, only when it succeeded; the backup times cover the rest.
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    # After every publishing run, even a failed one (owner, 26 Nov 2026: 037 missed TikTok and YouTube because the
+    # website step failed after Facebook, Instagram and Threads had posted). Mode auto only posts Reels already on
+    # Instagram, and data/tiktok.json + data/youtube.json stop a second post, so a failed run cannot double-post.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion != 'skipped'
     runs-on: ubuntu-latest
     env:
       SITE_URL: ${{ vars.SITE_URL || 'https://immigrationlabsg.github.io' }}
