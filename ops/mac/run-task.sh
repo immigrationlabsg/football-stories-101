@@ -10,6 +10,9 @@ N=$1
 MODE=${2:-run}
 [[ $N == 6 ]] && N=6a   # task 6 was split on 9 Nov 2026; an old launchd job that still passes 6 runs the Monday review
 REPO=${0:A:h:h:h}
+# claude -p stops background subagents 10 minutes after its last turn; task 8's Reel builders take longer, so it killed
+# them on 22 and 25 Nov and 039 missed its Reel (docs/incidents/2026-11-26-reel-builders-stopped.md). Wait up to 3 hours.
+export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=10800000   # 3 hours, so a stuck builder cannot hold the job forever
 export PATH="$HOME/.local/bin:$HOME/.local/opt/gh/bin:$HOME/.local/opt/node/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 LOGS="$HOME/Library/Logs/football-stories-101"
 mkdir -p "$LOGS"
