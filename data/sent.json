@@ -1139,6 +1139,31 @@
       "at": "2026-11-26T00:02:54.642Z",
       "detail": "thread 18142012798760219 (cards, Reel in reply, topic Football)",
       "story": "george-weah-monrovia-ballon-dor"
+    },
+    {
+      "number": 39,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-27T00:02:48.358Z",
+      "detail": "posted reel 1156740780180436 (music: cinematic-trailer)",
+      "story": "celtic-lisbon-lions-1967",
+      "reel": "f10cb1ffaaac4727e63aab5447cb005cb69fa733"
+    },
+    {
+      "number": 39,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-27T00:02:48.358Z",
+      "detail": "reel media 18135566131873442",
+      "story": "celtic-lisbon-lions-1967"
+    },
+    {
+      "number": 39,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-27T00:02:48.358Z",
+      "detail": "thread 18121063406020918 (cards, Reel in reply, topic Football)",
+      "story": "celtic-lisbon-lions-1967"
     }
   ]
 }
