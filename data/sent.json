@@ -1164,6 +1164,31 @@
       "at": "2026-11-27T00:02:48.358Z",
       "detail": "thread 18121063406020918 (cards, Reel in reply, topic Football)",
       "story": "celtic-lisbon-lions-1967"
+    },
+    {
+      "number": 40,
+      "network": "facebook",
+      "status": "posted",
+      "at": "2026-11-28T06:04:10.614Z",
+      "detail": "posted reel 29674314665541538 (music: sports-documentary)",
+      "story": "riquelme-v-ronaldinho-28-november",
+      "reel": "f5f868ddf24a15be9b2a4d203a85a3424a5ada70"
+    },
+    {
+      "number": 40,
+      "network": "instagram",
+      "status": "posted",
+      "at": "2026-11-28T06:04:10.614Z",
+      "detail": "reel media 17926930728222765",
+      "story": "riquelme-v-ronaldinho-28-november"
+    },
+    {
+      "number": 40,
+      "network": "threads",
+      "status": "posted",
+      "at": "2026-11-28T06:04:10.614Z",
+      "detail": "thread 18104727371434760 (cards, Reel in reply, topic Football)",
+      "story": "riquelme-v-ronaldinho-28-november"
     }
   ]
 }
