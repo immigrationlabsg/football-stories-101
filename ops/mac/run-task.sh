@@ -42,6 +42,26 @@ The task:
 $PROMPT"
 fi
 echo "$(date): task $N ($MODE) starting" >> "$LOG"
+# Task 1 (start the morning post) is three fixed steps, so it runs here without Claude: on 28 Nov the 5-hour usage
+# limit stopped claude -p and 040 did not post until 14:00 (docs/incidents/2026-11-28-morning-post-missed.md).
+if [[ $N == 1 && $MODE == run ]]; then
+  TODAY=$(date -u +%Y-%m-%d)
+  busy() { gh run list --workflow publish-daily.yml --limit 5 --json status,createdAt \
+    -q "[.[] | select(.status != \"completed\" and (.createdAt | startswith(\"$TODAY\") or startswith(\"$(date -u -v-1d +%Y-%m-%d)T2\")))] | length"; }
+  if [[ $(busy 2>>"$LOG") != 0 ]]; then
+    echo "$(date): a publish run from today is already queued or running; nothing started" >> "$LOG"
+  else
+    for attempt in 1 2 3; do
+      gh workflow run publish-daily.yml --ref main -f dry_run=false -f wait_for_slot=true >> "$LOG" 2>&1 && break
+      sleep 20
+      [[ $(busy 2>>"$LOG") != 0 ]] && break   # the call errored but a run appeared: never start two
+    done
+    sleep 15
+    gh run list --workflow publish-daily.yml --limit 1 --json databaseId,status,createdAt >> "$LOG" 2>&1
+  fi
+  echo "$(date): task $N ($MODE) finished, exit 0" >> "$LOG"
+  exit 0
+fi
 GUARD=()
 # A test can never post, push or start a run, whatever the model decides.
 [[ $MODE == test ]] && GUARD=(--disallowedTools "Bash(gh workflow:*)" "Bash(gh run rerun:*)" "Bash(gh run cancel:*)" "Bash(gh api:*)" "Bash(git push:*)" "Bash(git commit:*)" "Bash(curl:*)" "Edit" "Write")

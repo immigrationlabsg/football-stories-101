@@ -7,6 +7,8 @@ session keeps running its copies; it switches them off only when told, so nothin
 
 ## 1. Morning post start: Mon-Fri 07:50, Sat-Sun 09:50
 
+Since 28 Nov 2026 the Mac runs these steps directly with `gh` in `ops/mac/run-task.sh`, without Claude (a usage limit stopped it that day). The instruction below is kept for the test mode and the cloud copy.
+
 ```
 Start today's Football Stories 101 morning post (08:00 Singapore slot on weekdays, 10:00 at weekends). In this folder:
 1. gh run list --workflow publish-daily.yml --limit 5. If a run from today is queued or in progress, do nothing more and say so in one line.
