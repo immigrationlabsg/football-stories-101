@@ -1,0 +1,1022 @@
+{
+ "schema": 1,
+ "day": "2026-11-26",
+ "read_at": "2026-11-26T03:48:02.183Z",
+ "counts": {
+  "bbc": 73,
+  "guardian": 58,
+  "google-trends": 30,
+  "wikipedia": 100
+ },
+ "errors": [
+  "espn: answered but sent 0 items"
+ ],
+ "hooks": [
+  {
+   "type": "anniversary",
+   "score": 8.12,
+   "anniversary": {
+    "date": "11-29",
+    "year": 2010,
+    "title": "Barcelona 5-0 Real Madrid at the Camp Nou",
+    "people": [
+     "Pep Guardiola",
+     "José Mourinho",
+     "David Villa"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Real Madrid"
+    ],
+    "countries": [
+     "Spain"
+    ],
+    "angle": "The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2010%E2%80%9311_FC_Barcelona_season",
+     "https://www.si.com/more-sports/2010/11/29/barca-realtactical"
+    ],
+    "yearsAgo": 16,
+    "inDays": 3
+   },
+   "names": [
+    "Pep Guardiola",
+    "José Mourinho",
+    "David Villa",
+    "Real Madrid",
+    "Spain"
+   ],
+   "headline": "In 3 days (11-29): 16 years since Barcelona 5-0 Real Madrid at the Camp Nou. Angle: The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links",
+    "Wikipedia es: 2,218 reads of \"Pep Guardiola\""
+   ],
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "new",
+   "score": 5.8,
+   "names": [
+    "Jude Bellingham"
+   ],
+   "why": [
+    "BBC: 'Best midfielder in the world' - where does Bellingham rank?",
+    "BBC: Real Madrid put in five-star second half to win against PSV",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ],
+   "headline": "Jude Bellingham is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "new",
+   "score": 5.64,
+   "names": [
+    "Mauricio Pochettino"
+   ],
+   "why": [
+    "BBC: Frustration reigns for Pochettino in chaotic start to Man Utd job",
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "GUARDIAN: Lammens errors cost Manchester United victory in frantic finale at Sporting",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links"
+   ],
+   "headline": "Mauricio Pochettino is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    32
+   ]
+  },
+  {
+   "type": "new",
+   "score": 4.7,
+   "names": [
+    "Raheem Sterling"
+   ],
+   "why": [
+    "BBC: Raheem Sterling - from national icon to suspended jail sentence",
+    "GUARDIAN: Raheem Sterling avoids jail over reckless driving while using nitrous oxide",
+    "GUARDIAN: Raheem Sterling’s rise and fall: a sign football is broken? - The Latest",
+    "Wikipedia en: 71,889 reads of \"Raheem Sterling\""
+   ],
+   "headline": "Raheem Sterling is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 3.8,
+   "anniversary": {
+    "date": "11-28",
+    "year": 2016,
+    "title": "Chapecoense plane crash near Medellín",
+    "people": [
+     "Alan Ruschel",
+     "Jakson Follmann"
+    ],
+    "clubs": [
+     "Associação Chapecoense de Futebol",
+     "Atlético Nacional"
+    ],
+    "countries": [
+     "Brazil",
+     "Colombia"
+    ],
+    "angle": "Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+    "round": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/LaMia_Airlines_Flight_2933",
+     "https://www.goal.com/en-my/news/chapecoense-confirmed-as-copa-sudamericana-champions/139potinu0ejm1fgwgrgu7lw60"
+    ],
+    "yearsAgo": 10,
+    "inDays": 2
+   },
+   "names": [],
+   "headline": "In 2 days (11-28): 10 years since Chapecoense plane crash near Medellín (round anniversary). Angle: Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+   "why": []
+  },
+  {
+   "type": "bank",
+   "score": 3.57,
+   "story": {
+    "number": 51,
+    "title": "Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player",
+    "date": "2026-12-09"
+   },
+   "names": [
+    "Ronaldinho",
+    "Diego Maradona",
+    "Zinedine Zidane",
+    "Lionel Messi",
+    "Manchester United",
+    "Real Madrid",
+    "Barcelona",
+    "Spain",
+    "Argentina"
+   ],
+   "headline": "Story 051 \"Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player\" (due 2026-12-09) features Ronaldinho, Diego Maradona, Zinedine Zidane, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Has a footballer had a longer career hiatus than Ronaldinho’s 11 year-gap? | The Knowledge",
+    "GUARDIAN: The story of how Pelé and Maradona went from friends to bitter rivals",
+    "Wikipedia es: 3,571 reads of \"Diego Maradona\"",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal"
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 3.2,
+   "anniversary": {
+    "date": "12-03",
+    "year": 2018,
+    "title": "Luka Modrić wins the Ballon d'Or, ending the Messi-Ronaldo run",
+    "people": [
+     "Luka Modrić",
+     "Lionel Messi",
+     "Cristiano Ronaldo"
+    ],
+    "clubs": [
+     "Real Madrid"
+    ],
+    "countries": [
+     "Croatia"
+    ],
+    "angle": "Messi finished only fifth, his first finish outside the top three since 2006, and Kaká in 2007 was the last winner before Modrić who was not Messi or Ronaldo.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2018_Ballon_d%27Or",
+     "https://www.theweek.in/news/sports/2018/12/04/luka-modric-wins-2018-ballon-d-or-ends-messi-ronaldo-reign.html"
+    ],
+    "yearsAgo": 8,
+    "inDays": 7
+   },
+   "names": [
+    "Luka Modrić",
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Real Madrid"
+   ],
+   "headline": "In 7 days (12-03): 8 years since Luka Modrić wins the Ballon d'Or, ending the Messi-Ronaldo run. Angle: Messi finished only fifth, his first finish outside the top three since 2006, and Kaká in 2007 was the last winner before Modrić who was not Messi or Ronaldo.",
+   "why": [
+    "GUARDIAN: Danny Kelly loved football and never forgot the absurdity of earning a living talking about it | Max Rushden",
+    "Wikipedia es: 2,344 reads of \"Lionel Messi\"",
+    "Wikipedia en: 20,834 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "new",
+   "score": 2.93,
+   "names": [
+    "Rayan"
+   ],
+   "why": [
+    "BBC: Cherki rescues point for Man City against Napoli",
+    "Google Trends GB: \"manchester city f.c.\" (1,000+ searches) - Man City 2-2 Napoli: Ayyoub Bouaddi and Rayan Cherki score for hosts"
+   ],
+   "headline": "Rayan is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    30
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.82,
+   "anniversary": {
+    "date": "12-02",
+    "year": 2019,
+    "title": "Messi wins a record sixth Ballon d'Or",
+    "people": [
+     "Lionel Messi",
+     "Virgil van Dijk",
+     "Cristiano Ronaldo"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Liverpool F.C."
+    ],
+    "countries": [
+     "Argentina",
+     "Netherlands"
+    ],
+    "angle": "Messi beat Virgil van Dijk by just 7 points (686 to 679), with Ronaldo third on 476.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2019_Ballon_d%27Or",
+     "https://www.thescore.com/uefa/news/1895668"
+    ],
+    "yearsAgo": 7,
+    "inDays": 6
+   },
+   "names": [
+    "Lionel Messi",
+    "Virgil van Dijk",
+    "Cristiano Ronaldo",
+    "Argentina"
+   ],
+   "headline": "In 6 days (12-02): 7 years since Messi wins a record sixth Ballon d'Or. Angle: Messi beat Virgil van Dijk by just 7 points (686 to 679), with Ronaldo third on 476.",
+   "why": [
+    "Wikipedia es: 2,344 reads of \"Lionel Messi\"",
+    "Google Trends GB: \"virgil van dijk\" (500+ searches) - Transfer rumors, news: Manchester United eye move for Ivan Toney",
+    "Wikipedia en: 20,834 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.64,
+   "story": {
+    "number": 41,
+    "title": "Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time",
+    "date": "2026-11-29"
+   },
+   "names": [
+    "Alex Ferguson",
+    "Roy Keane",
+    "Manchester United",
+    "Bayern Munich",
+    "England",
+    "Spain",
+    "Germany"
+   ],
+   "headline": "Story 041 \"Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time\" (due 2026-11-29) features Alex Ferguson, Roy Keane, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Ferguson's Glentoran reign hits early turbulence",
+    "GUARDIAN: Football Daily | Neville, Keane and Manchester United meltdowns at world’s funniest comedy club"
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.36,
+   "anniversary": {
+    "date": "12-01",
+    "year": 2009,
+    "title": "Lionel Messi wins his first Ballon d'Or",
+    "people": [
+     "Lionel Messi",
+     "Cristiano Ronaldo",
+     "Xavi"
+    ],
+    "clubs": [
+     "FC Barcelona"
+    ],
+    "countries": [
+     "Argentina"
+    ],
+    "angle": "Messi took 473 points to Ronaldo's 233, a record 240-point margin at the time.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2009_Ballon_d%27Or",
+     "https://www.uefa.com/uefachampionsleague/news/newsid=927070.html"
+    ],
+    "yearsAgo": 17,
+    "inDays": 5
+   },
+   "names": [
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Argentina"
+   ],
+   "headline": "In 5 days (12-01): 17 years since Lionel Messi wins his first Ballon d'Or. Angle: Messi took 473 points to Ronaldo's 233, a record 240-point margin at the time.",
+   "why": [
+    "Wikipedia es: 2,344 reads of \"Lionel Messi\"",
+    "Wikipedia en: 20,834 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 3,177 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.25,
+   "story": {
+    "number": 48,
+    "title": "Diego Maradona / Four minutes against England",
+    "date": "2026-12-06"
+   },
+   "names": [
+    "Diego Maradona",
+    "Gary Lineker",
+    "England",
+    "Argentina"
+   ],
+   "headline": "Story 048 \"Diego Maradona / Four minutes against England\" (due 2026-12-06) features Diego Maradona, Gary Lineker, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: The story of how Pelé and Maradona went from friends to bitter rivals",
+    "Wikipedia es: 3,571 reads of \"Diego Maradona\"",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes"
+   ]
+  },
+  {
+   "type": "new",
+   "score": 2.21,
+   "names": [
+    "Pep Guardiola"
+   ],
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links",
+    "Wikipedia es: 2,218 reads of \"Pep Guardiola\"",
+    "Wikipedia pt: 1,272 reads of \"Pep Guardiola\""
+   ],
+   "headline": "Pep Guardiola is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.17,
+   "story": {
+    "number": 50,
+    "title": "Real Madrid's Galácticos / The election promise, and the trophies that stopped coming",
+    "date": "2026-12-08"
+   },
+   "names": [
+    "Zinedine Zidane",
+    "Manchester United",
+    "Arsenal",
+    "Real Madrid",
+    "Barcelona",
+    "Chelsea",
+    "England",
+    "Inter Milan",
+    "Spain"
+   ],
+   "headline": "Story 050 \"Real Madrid's Galácticos / The election promise, and the trophies that stopped coming\" (due 2026-12-08) features Zinedine Zidane, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.14,
+   "story": {
+    "number": 43,
+    "title": "Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December",
+    "date": "2026-12-01"
+   },
+   "names": [
+    "Cristiano Ronaldo",
+    "Lionel Messi",
+    "Clarence Seedorf",
+    "Manchester United",
+    "Real Madrid",
+    "Liverpool",
+    "Barcelona",
+    "Spain",
+    "Argentina",
+    "Japan"
+   ],
+   "headline": "Story 043 \"Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December\" (due 2026-12-01) features Cristiano Ronaldo, Lionel Messi, Clarence Seedorf, trending now: move it up or open with today's news.",
+   "why": [
+    "Wikipedia en: 20,834 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 3,177 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia pt: 1,274 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,344 reads of \"Lionel Messi\""
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.1,
+   "anniversary": {
+    "date": "11-30",
+    "year": 1872,
+    "title": "Scotland and England play the first international",
+    "people": [
+     "Charles Alcock"
+    ],
+    "clubs": [
+     "Queen's Park F.C."
+    ],
+    "countries": [
+     "Scotland",
+     "England"
+    ],
+    "angle": "The 0-0 draw at Hamilton Crescent used tape as the crossbar and all eleven Scotland players came from Queen's Park.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1872_Scotland_v_England_football_match",
+     "https://www.scottishfa.co.uk/news/scottish-fa-marks-150-years-since-first-international-football-game/"
+    ],
+    "yearsAgo": 154,
+    "inDays": 4
+   },
+   "names": [
+    "Scotland",
+    "England"
+   ],
+   "headline": "In 4 days (11-30): 154 years since Scotland and England play the first international. Angle: The 0-0 draw at Hamilton Crescent used tape as the crossbar and all eleven Scotland players came from Queen's Park.",
+   "why": []
+  },
+  {
+   "type": "new",
+   "score": 2.09,
+   "names": [
+    "Anthony Gordon"
+   ],
+   "why": [
+    "BBC: Gordon stars in comfortable Barca win over Sabah",
+    "GUARDIAN: Champions League: Lille comeback adds to Bayern woes, Gordon leads Barcelona rout",
+    "Wikipedia es: 2,093 reads of \"Anthony Gordon\""
+   ],
+   "headline": "Anthony Gordon is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "bank",
+   "score": 2,
+   "story": {
+    "number": 40,
+    "title": "Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt",
+    "date": "2026-11-28"
+   },
+   "names": [
+    "Ronaldinho",
+    "Arsenal",
+    "Real Madrid",
+    "Barcelona",
+    "Spain",
+    "Argentina",
+    "Japan"
+   ],
+   "headline": "Story 040 \"Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt\" (due 2026-11-28) features Ronaldinho, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Has a footballer had a longer career hiatus than Ronaldinho’s 11 year-gap? | The Knowledge"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2,
+   "story": {
+    "number": 42,
+    "title": "Leicester City / Champions at 5,000 to 1",
+    "date": "2026-11-30"
+   },
+   "names": [
+    "Wes Morgan",
+    "Arsenal",
+    "Chelsea",
+    "England",
+    "Italy"
+   ],
+   "headline": "Story 042 \"Leicester City / Champions at 5,000 to 1\" (due 2026-11-30) features Wes Morgan, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: Wales and West Ham's Morgan suffers serious injury",
+    "GUARDIAN: Saudi Arabia’s PIF looking to sell 25% of Newcastle through share issue"
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.98,
+   "names": [
+    "Sabah Futbol Klubu"
+   ],
+   "why": [
+    "Wikipedia es: 32,733 reads of \"Sabah Futbol Klubu\"",
+    "Wikipedia pt: 4,896 reads of \"Sabah Futbol Klubu\""
+   ],
+   "headline": "Sabah Futbol Klubu is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "bank",
+   "score": 1.85,
+   "story": {
+    "number": 47,
+    "title": "Manchester United after Munich / Ten years from the runway to the European Cup",
+    "date": "2026-12-05"
+   },
+   "names": [
+    "Duncan Edwards",
+    "Manchester United",
+    "Real Madrid",
+    "England",
+    "Wales"
+   ],
+   "headline": "Story 047 \"Manchester United after Munich / Ten years from the runway to the European Cup\" (due 2026-12-05) features Duncan Edwards, trending now: move it up or open with today's news.",
+   "why": [
+    "Google Trends GB: \"arthur edwards\" (200+ searches) - Arthur Edwards: William and Harry both changed when they married"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 1.83,
+   "story": {
+    "number": 49,
+    "title": "Son Heung-min v Scholes / Two runs on 7 December: one ended a record, one won the Puskás",
+    "date": "2026-12-07"
+   },
+   "names": [
+    "José Mourinho",
+    "Manchester United",
+    "Arsenal",
+    "Barcelona",
+    "England",
+    "Burnley"
+   ],
+   "headline": "Story 049 \"Son Heung-min v Scholes / Two runs on 7 December: one ended a record, one won the Puskás\" (due 2026-12-07) features José Mourinho, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: 'Best midfielder in the world' - where does Bellingham rank?",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "David Villa"
+   ],
+   "why": [
+    "BBC: Blunt Villa beaten by late Galatasaray winner",
+    "GUARDIAN: Alejandro Garnacho and the curious case of Aston Villa’s outcast loanees | Ben Fisher"
+   ],
+   "headline": "David Villa is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Anghel Iordănescu"
+   ],
+   "why": [
+    "BBC: Watford appoint Iordanescu as head coach",
+    "BBC: Can Iordanescu make a difference at Watford & how do you become a free-kick specialist?"
+   ],
+   "headline": "Anghel Iordănescu is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Harry Kane"
+   ],
+   "why": [
+    "BBC: Vote for the first BBC Men's Footballer of the Year",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it"
+   ],
+   "headline": "Harry Kane is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    32
+   ]
+  }
+ ],
+ "heat": [
+  {
+   "name": "Manchester City",
+   "kind": "club",
+   "heat": 8.25,
+   "why": [
+    "BBC: Regulator chief 'has stomach' to face Man City",
+    "BBC: Cherki rescues point for Man City against Napoli",
+    "BBC: 'Pass, pass, slow, slow' - Man City's slick machine grinding to a halt",
+    "GUARDIAN: Raheem Sterling’s rise and fall: a sign football is broken? - The Latest"
+   ]
+  },
+  {
+   "name": "Manchester United",
+   "kind": "club",
+   "heat": 8.17,
+   "why": [
+    "BBC: Frustration reigns for Pochettino in chaotic start to Man Utd job",
+    "BBC: Divots, howlers and bad decisions - dissecting Man Utd's draw in Lisbon",
+    "BBC: Lammens howler denies Man Utd victory against Sporting in incident-packed game",
+    "GUARDIAN: Lammens errors cost Manchester United victory in frantic finale at Sporting"
+   ]
+  },
+  {
+   "name": "Jude Bellingham",
+   "kind": "person",
+   "heat": 6.44,
+   "why": [
+    "BBC: 'Best midfielder in the world' - where does Bellingham rank?",
+    "BBC: Real Madrid put in five-star second half to win against PSV",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "name": "Mauricio Pochettino",
+   "kind": "person",
+   "heat": 6.27,
+   "why": [
+    "BBC: Frustration reigns for Pochettino in chaotic start to Man Utd job",
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "GUARDIAN: Lammens errors cost Manchester United victory in frantic finale at Sporting",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links"
+   ]
+  },
+  {
+   "name": "Arsenal",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Borussia Dortmund fight back to draw with Arsenal",
+    "BBC: Arteta says Arsenal need more luck to kill off games",
+    "BBC: Arsenal had more than 20 players on shortlist to capitalise on title win",
+    "GUARDIAN: Peter Storey obituary"
+   ]
+  },
+  {
+   "name": "Scotland",
+   "kind": "country",
+   "heat": 6,
+   "why": [
+    "BBC: Murrell flourishing at high-flying Falkirk after 'random' move",
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: Andreatta's masterplan to shock Sweden & take Scots to World Cup",
+    "GUARDIAN: Championship roundup: Stoke rise to second, Birmingham condemn Burnley to record drought"
+   ]
+  },
+  {
+   "name": "Napoli",
+   "kind": "club",
+   "heat": 5.25,
+   "why": [
+    "BBC: Cherki rescues point for Man City against Napoli",
+    "BBC: 'Pass, pass, slow, slow' - Man City's slick machine grinding to a halt",
+    "GUARDIAN: Premier League sides stumble in Europe and Bellingham brilliance | Football Weekly video",
+    "Google Trends GB: \"manchester city f.c.\" (1,000+ searches) - Man City 2-2 Napoli: Ayyoub Bouaddi and Rayan Cherki score for hosts"
+   ]
+  },
+  {
+   "name": "Raheem Sterling",
+   "kind": "person",
+   "heat": 5.22,
+   "why": [
+    "BBC: Raheem Sterling - from national icon to suspended jail sentence",
+    "GUARDIAN: Raheem Sterling avoids jail over reckless driving while using nitrous oxide",
+    "GUARDIAN: Raheem Sterling’s rise and fall: a sign football is broken? - The Latest",
+    "Wikipedia en: 71,889 reads of \"Raheem Sterling\""
+   ]
+  },
+  {
+   "name": "Turkey",
+   "kind": "country",
+   "heat": 4.08,
+   "why": [
+    "Google Trends GB: \"warriors vs kings\" (100+ searches) - Kings vs Warriors Thread: Prepping That Thanksgiving Turkey",
+    "Google Trends SG: \"warriors vs kings\" (200+ searches) - Kings vs Warriors Thread: Prepping That Thanksgiving Turkey"
+   ]
+  },
+  {
+   "name": "Liverpool",
+   "kind": "club",
+   "heat": 4,
+   "why": [
+    "BBC: 'All coming together' - Isak repaying Liverpool faith",
+    "BBC: Isak scores twice as clinical Liverpool beat Brugge",
+    "BBC: How Isak and Wirtz are becoming Liverpool's 'big-game players'",
+    "GUARDIAN: Isak and Wirtz on target as resurgent Liverpool sweep aside Club Brugge"
+   ]
+  },
+  {
+   "name": "Real Madrid",
+   "kind": "club",
+   "heat": 4,
+   "why": [
+    "BBC: 'Best midfielder in the world' - where does Bellingham rank?",
+    "BBC: Real Madrid put in five-star second half to win against PSV",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "name": "Bayern Munich",
+   "kind": "club",
+   "heat": 4,
+   "why": [
+    "BBC: Terrible Pavlovic own goal gifts Lille shock win against Bayern",
+    "BBC: How to unearth young stars, the Bayern Munich way",
+    "GUARDIAN: Champions League: Lille comeback adds to Bayern woes, Gordon leads Barcelona rout",
+    "GUARDIAN: Jamal Musiala controversy the nadir of Bayern Munich’s turbulent week"
+   ]
+  },
+  {
+   "name": "Everton",
+   "kind": "club",
+   "heat": 4,
+   "why": [
+    "BBC: Ferguson's Glentoran reign hits early turbulence",
+    "BBC: Janelt scores stunner as Brentford beat 10-man Everton",
+    "BBC: Moyes questions Tarkowski red in Brentford loss",
+    "GUARDIAN: Football Daily | The game’s gone: has fantasy football been ruined by AI gafferbots?"
+   ]
+  },
+  {
+   "name": "Wales",
+   "kind": "country",
+   "heat": 4,
+   "why": [
+    "BBC: Wales and West Ham's Morgan suffers serious injury",
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: The summer that changed Welsh football",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK"
+   ]
+  },
+  {
+   "name": "England",
+   "kind": "country",
+   "heat": 4,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "GUARDIAN: Raheem Sterling avoids jail over reckless driving while using nitrous oxide",
+    "GUARDIAN: ‘It threw me off my bowling a bit’: Isobel Goodwin living dream after England callup",
+    "GUARDIAN: Raheem Sterling’s rise and fall: a sign football is broken? - The Latest"
+   ]
+  },
+  {
+   "name": "Rayan",
+   "kind": "person",
+   "heat": 3.25,
+   "why": [
+    "BBC: Cherki rescues point for Man City against Napoli",
+    "Google Trends GB: \"manchester city f.c.\" (1,000+ searches) - Man City 2-2 Napoli: Ayyoub Bouaddi and Rayan Cherki score for hosts"
+   ]
+  },
+  {
+   "name": "José Mourinho",
+   "kind": "person",
+   "heat": 3,
+   "why": [
+    "BBC: 'Best midfielder in the world' - where does Bellingham rank?",
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "name": "Barcelona",
+   "kind": "club",
+   "heat": 3,
+   "why": [
+    "BBC: Gordon stars in comfortable Barca win over Sabah",
+    "GUARDIAN: Champions League: Lille comeback adds to Bayern woes, Gordon leads Barcelona rout",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links"
+   ]
+  },
+  {
+   "name": "Northern Ireland",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: IFA 'positive' over upgrades needed for World Cup",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK"
+   ]
+  },
+  {
+   "name": "Chelsea",
+   "kind": "club",
+   "heat": 3,
+   "why": [
+    "GUARDIAN: Premier League: 10 talking points from the weekend’s action",
+    "GUARDIAN: Chelsea back on top as Baltimore bullet stuns Manchester City: Women’s Football Weekly – podcast",
+    "GUARDIAN: WSL talking points: Chelsea’s gamble pays off and have Arsenal lost fear factor?"
+   ]
+  },
+  {
+   "name": "Pep Guardiola",
+   "kind": "person",
+   "heat": 2.45,
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Pep Guardiola says next coaching role will be with a national team amid USA links",
+    "Wikipedia es: 2,218 reads of \"Pep Guardiola\"",
+    "Wikipedia pt: 1,272 reads of \"Pep Guardiola\""
+   ]
+  },
+  {
+   "name": "Anthony Gordon",
+   "kind": "person",
+   "heat": 2.32,
+   "why": [
+    "BBC: Gordon stars in comfortable Barca win over Sabah",
+    "GUARDIAN: Champions League: Lille comeback adds to Bayern woes, Gordon leads Barcelona rout",
+    "Wikipedia es: 2,093 reads of \"Anthony Gordon\""
+   ]
+  },
+  {
+   "name": "Sabah Futbol Klubu",
+   "kind": "person",
+   "heat": 2.2,
+   "why": [
+    "Wikipedia es: 32,733 reads of \"Sabah Futbol Klubu\"",
+    "Wikipedia pt: 4,896 reads of \"Sabah Futbol Klubu\""
+   ]
+  },
+  {
+   "name": "Virgil van Dijk",
+   "kind": "person",
+   "heat": 2.17,
+   "why": [
+    "Google Trends GB: \"virgil van dijk\" (500+ searches) - Transfer rumors, news: Manchester United eye move for Ivan Toney"
+   ]
+  },
+  {
+   "name": "Santos FC",
+   "kind": "club",
+   "heat": 2.17,
+   "why": [
+    "Google Trends US: \"gui santos\" (500+ searches) - Why one NBA GM reportedly shied away from trading up to draft Yaxel Lendeborg"
+   ]
+  },
+  {
+   "name": "Duncan Edwards",
+   "kind": "person",
+   "heat": 2.08,
+   "why": [
+    "Google Trends GB: \"arthur edwards\" (200+ searches) - Arthur Edwards: William and Harry both changed when they married"
+   ]
+  },
+  {
+   "name": "Nottingham Forest",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Glasner criticises Forest players yet to learn English",
+    "GUARDIAN: Oliver Glasner criticises Nottingham Forest players for not learning English"
+   ]
+  },
+  {
+   "name": "Roma",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: PSG held by Roma as in-form Malen scores again",
+    "GUARDIAN: Champions League: Lille comeback adds to Bayern woes, Gordon leads Barcelona rout"
+   ]
+  },
+  {
+   "name": "Inter",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Martinez secures Inter win against Stuttgart",
+    "GUARDIAN: Esposito emulates Vieri with Inter hat-trick but De Ketelaere haunts him again"
+   ]
+  },
+  {
+   "name": "Borussia Dortmund",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Borussia Dortmund fight back to draw with Arsenal",
+    "BBC: Arteta says Arsenal need more luck to kill off games"
+   ]
+  },
+  {
+   "name": "PSV Eindhoven",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Real Madrid put in five-star second half to win against PSV",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "name": "Aston Villa",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Blunt Villa beaten by late Galatasaray winner",
+    "GUARDIAN: Alejandro Garnacho and the curious case of Aston Villa’s outcast loanees | Ben Fisher"
+   ]
+  },
+  {
+   "name": "David Villa",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Blunt Villa beaten by late Galatasaray winner",
+    "GUARDIAN: Alejandro Garnacho and the curious case of Aston Villa’s outcast loanees | Ben Fisher"
+   ]
+  },
+  {
+   "name": "Anghel Iordănescu",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Watford appoint Iordanescu as head coach",
+    "BBC: Can Iordanescu make a difference at Watford & how do you become a free-kick specialist?"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "kind": "country",
+   "heat": 2,
+   "why": [
+    "BBC: 'Justice for sport' - Afcon reaction as Senegal reinstated as winners",
+    "GUARDIAN: Senegal regaining Afcon title is the right end to fiasco but issues do not stop there | Osasu Obayiuwana"
+   ]
+  },
+  {
+   "name": "Zinedine Zidane",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Bellingham plays down Zidane comparison after wonder goal",
+    "GUARDIAN: ‘He’s more elegant’: Bellingham downplays Zidane comparisons after wondergoal"
+   ]
+  },
+  {
+   "name": "Crystal Palace F.C.",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: EFL Trophy holders Luton face Palace U21s in last 32",
+    "BBC: Palace docked points for using four sub windows in WSL win"
+   ]
+  },
+  {
+   "name": "Harry Kane",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Vote for the first BBC Men's Footballer of the Year",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it"
+   ]
+  },
+  {
+   "name": "United States",
+   "kind": "country",
+   "heat": 2,
+   "why": [
+    "BBC: Murrell flourishing at high-flying Falkirk after 'random' move",
+    "GUARDIAN: Netflix, Fox and the $2bn bid for the 2030 World Cup that could reshape live sports"
+   ]
+  },
+  {
+   "name": "Rangers F.C.",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "BBC: Rangers 'dug it out' despite naivety & complacency - McInnes",
+    "BBC: Celtic consider move for midfielder Ashour - gossip"
+   ]
+  }
+ ]
+}

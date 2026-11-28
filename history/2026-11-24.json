@@ -1,0 +1,1056 @@
+{
+ "schema": 1,
+ "day": "2026-11-24",
+ "read_at": "2026-11-24T05:33:03.334Z",
+ "counts": {
+  "bbc": 81,
+  "guardian": 59,
+  "google-trends": 30,
+  "onthisday": 1,
+  "wikipedia": 80
+ },
+ "errors": [
+  "espn: answered but sent 0 items"
+ ],
+ "hooks": [
+  {
+   "type": "new",
+   "score": 7.26,
+   "names": [
+    "Mauricio Pochettino"
+   ],
+   "why": [
+    "BBC: 'No-one's coming to save us' - but how can Man Utd save themselves?",
+    "BBC: Chaotic week, nightmare start and huge reality check for Pochettino",
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "GUARDIAN: Mauricio Pochettino can now see just how desperate Manchester United are | Jonathan Wilson"
+   ],
+   "headline": "Mauricio Pochettino is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    32
+   ]
+  },
+  {
+   "type": "new",
+   "score": 4.18,
+   "names": [
+    "Rio Ngumoha"
+   ],
+   "why": [
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "BBC: A 'wow' player - why Ngumoha is already a Liverpool game-changer",
+    "BBC: Yoro sees red as Ngumoha shines - Liverpool v Man Utd player ratings",
+    "Wikipedia en: 43,867 reads of \"Rio Ngumoha\""
+   ],
+   "headline": "Rio Ngumoha is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 3.8,
+   "anniversary": {
+    "date": "11-25",
+    "year": 2005,
+    "title": "George Best dies aged 59",
+    "people": [
+     "George Best"
+    ],
+    "clubs": [
+     "Manchester United"
+    ],
+    "countries": [
+     "Northern Ireland",
+     "England"
+    ],
+    "angle": "Best scored six goals in an 8-2 FA Cup win over Northampton Town in 1970, and Glentoran had earlier rejected him as too small and light.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/George_Best",
+     "https://www.aljazeera.com/news/2005/12/3/belfast-funeral-for-soccer-legend-best"
+    ],
+    "yearsAgo": 21,
+    "inDays": 1
+   },
+   "names": [
+    "Manchester United",
+    "Northern Ireland",
+    "England"
+   ],
+   "headline": "In 1 day (11-25): 21 years since George Best dies aged 59. Angle: Best scored six goals in an 8-2 FA Cup win over Northampton Town in 1970, and Glentoran had earlier rejected him as too small and light.",
+   "why": []
+  },
+  {
+   "type": "new",
+   "score": 3.11,
+   "names": [
+    "Primera División de Argentina"
+   ],
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview",
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes",
+    "Wikipedia es: 2,842 reads of \"Primera División de Argentina\""
+   ],
+   "headline": "Primera División de Argentina is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 3.06,
+   "anniversary": {
+    "date": "11-28",
+    "year": 2016,
+    "title": "Chapecoense plane crash near Medellín",
+    "people": [
+     "Alan Ruschel",
+     "Jakson Follmann"
+    ],
+    "clubs": [
+     "Associação Chapecoense de Futebol",
+     "Atlético Nacional"
+    ],
+    "countries": [
+     "Brazil",
+     "Colombia"
+    ],
+    "angle": "Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+    "round": true,
+    "sources": [
+     "https://en.wikipedia.org/wiki/LaMia_Airlines_Flight_2933",
+     "https://www.goal.com/en-my/news/chapecoense-confirmed-as-copa-sudamericana-champions/139potinu0ejm1fgwgrgu7lw60"
+    ],
+    "yearsAgo": 10,
+    "inDays": 4
+   },
+   "names": [
+    "Brazil"
+   ],
+   "headline": "In 4 days (11-28): 10 years since Chapecoense plane crash near Medellín (round anniversary). Angle: Atlético Nacional asked CONMEBOL to award Chapecoense the Copa Sudamericana, which was done on 5 December 2016, and Nacional received a Fair Play award for it.",
+   "why": []
+  },
+  {
+   "type": "anniversary",
+   "score": 3.03,
+   "anniversary": {
+    "date": "11-29",
+    "year": 2010,
+    "title": "Barcelona 5-0 Real Madrid at the Camp Nou",
+    "people": [
+     "Pep Guardiola",
+     "José Mourinho",
+     "David Villa"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Real Madrid"
+    ],
+    "countries": [
+     "Spain"
+    ],
+    "angle": "The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2010%E2%80%9311_FC_Barcelona_season",
+     "https://www.si.com/more-sports/2010/11/29/barca-realtactical"
+    ],
+    "yearsAgo": 16,
+    "inDays": 5
+   },
+   "names": [
+    "Pep Guardiola",
+    "Real Madrid",
+    "Spain"
+   ],
+   "headline": "In 5 days (11-29): 16 years since Barcelona 5-0 Real Madrid at the Camp Nou. Angle: The Clásico was moved to a Monday because Catalonia held parliamentary elections the day before; Villa scored twice and Madrid had been unbeaten that season.",
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Do good club managers necessarily make good international managers? | Jonathan Wilson"
+   ],
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.8,
+   "anniversary": {
+    "date": "11-25",
+    "year": 1953,
+    "title": "Hungary beat England 6-3 at Wembley",
+    "people": [
+     "Ferenc Puskás",
+     "Nándor Hidegkuti",
+     "Billy Wright"
+    ],
+    "clubs": [],
+    "countries": [
+     "Hungary",
+     "England"
+    ],
+    "angle": "Hidegkuti scored a hat-trick, the first within a minute of kick-off, and Puskás's sole-of-the-boot drag-back left England captain Billy Wright chasing empty space before his goal.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/England_v_Hungary_(1953)",
+     "https://www.englandcaps.co.uk/1953EnglandHungary.html"
+    ],
+    "yearsAgo": 73,
+    "inDays": 1
+   },
+   "names": [
+    "England"
+   ],
+   "headline": "In 1 day (11-25): 73 years since Hungary beat England 6-3 at Wembley. Angle: Hidegkuti scored a hat-trick, the first within a minute of kick-off, and Puskás's sole-of-the-boot drag-back left England captain Billy Wright chasing empty space before his goal.",
+   "why": [],
+   "coveredIn": [
+    2,
+    18
+   ]
+  },
+  {
+   "type": "new",
+   "score": 2.79,
+   "names": [
+    "Jamal Musiala"
+   ],
+   "why": [
+    "GUARDIAN: Jamal Musiala controversy the nadir of Bayern Munich’s turbulent week",
+    "Wikipedia en: 20,491 reads of \"Jamal Musiala\"",
+    "Wikipedia es: 3,705 reads of \"Jamal Musiala\"",
+    "Wikipedia pt: 1,678 reads of \"Jamal Musiala\""
+   ],
+   "headline": "Jamal Musiala is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 2.7,
+   "anniversary": {
+    "date": "11-25",
+    "year": 2020,
+    "title": "Diego Maradona dies aged 60",
+    "people": [
+     "Diego Maradona"
+    ],
+    "clubs": [
+     "S.S.C. Napoli"
+    ],
+    "countries": [
+     "Argentina",
+     "Italy"
+    ],
+    "angle": "Nine days after his death, on 4 December 2020, Napoli's stadium was renamed the Stadio Diego Armando Maradona.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/Diego_Maradona",
+     "https://www.tribuneindia.com/news/sports/argentina-soccer-legend-maradona-dies-of-heart-attack-175761"
+    ],
+    "yearsAgo": 6,
+    "inDays": 1
+   },
+   "names": [
+    "Argentina",
+    "Italy"
+   ],
+   "headline": "In 1 day (11-25): 6 years since Diego Maradona dies aged 60. Angle: Nine days after his death, on 4 December 2020, Napoli's stadium was renamed the Stadio Diego Armando Maradona.",
+   "why": [],
+   "coveredIn": [
+    31,
+    907
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2.59,
+   "story": {
+    "number": 51,
+    "title": "Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player",
+    "date": "2026-12-09"
+   },
+   "names": [
+    "Ronaldinho",
+    "Lionel Messi",
+    "Manchester United",
+    "Spain",
+    "Argentina",
+    "Barcelona",
+    "Real Madrid",
+    "Paris Saint-Germain",
+    "Brazil"
+   ],
+   "headline": "Story 051 \"Ronaldinho / The night Real Madrid's fans stood up for a Barcelona player\" (due 2026-12-09) features Ronaldinho, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46",
+    "Wikipedia es: 2,317 reads of \"Lionel Messi\""
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.39,
+   "anniversary": {
+    "date": "12-01",
+    "year": 2009,
+    "title": "Lionel Messi wins his first Ballon d'Or",
+    "people": [
+     "Lionel Messi",
+     "Cristiano Ronaldo",
+     "Xavi"
+    ],
+    "clubs": [
+     "FC Barcelona"
+    ],
+    "countries": [
+     "Argentina"
+    ],
+    "angle": "Messi took 473 points to Ronaldo's 233, a record 240-point margin at the time.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2009_Ballon_d%27Or",
+     "https://www.uefa.com/uefachampionsleague/news/newsid=927070.html"
+    ],
+    "yearsAgo": 17,
+    "inDays": 7
+   },
+   "names": [
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Argentina"
+   ],
+   "headline": "In 7 days (12-01): 17 years since Lionel Messi wins his first Ballon d'Or. Angle: Messi took 473 points to Ronaldo's 233, a record 240-point margin at the time.",
+   "why": [
+    "Wikipedia es: 2,317 reads of \"Lionel Messi\"",
+    "Wikipedia en: 16,363 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,567 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 2.1,
+   "anniversary": {
+    "date": "11-30",
+    "year": 1872,
+    "title": "Scotland and England play the first international",
+    "people": [
+     "Charles Alcock"
+    ],
+    "clubs": [
+     "Queen's Park F.C."
+    ],
+    "countries": [
+     "Scotland",
+     "England"
+    ],
+    "angle": "The 0-0 draw at Hamilton Crescent used tape as the crossbar and all eleven Scotland players came from Queen's Park.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/1872_Scotland_v_England_football_match",
+     "https://www.scottishfa.co.uk/news/scottish-fa-marks-150-years-since-first-international-football-game/"
+    ],
+    "yearsAgo": 154,
+    "inDays": 6
+   },
+   "names": [
+    "Scotland",
+    "England"
+   ],
+   "headline": "In 6 days (11-30): 154 years since Scotland and England play the first international. Angle: The 0-0 draw at Hamilton Crescent used tape as the crossbar and all eleven Scotland players came from Queen's Park.",
+   "why": []
+  },
+  {
+   "type": "bank",
+   "score": 2.01,
+   "story": {
+    "number": 43,
+    "title": "Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December",
+    "date": "2026-12-01"
+   },
+   "names": [
+    "Cristiano Ronaldo",
+    "Lionel Messi",
+    "Manchester United",
+    "Liverpool",
+    "Spain",
+    "Argentina",
+    "Real Madrid",
+    "Barcelona"
+   ],
+   "headline": "Story 043 \"Raúl v Messi / A winner in Tokyo and a record Ballon d'Or on 1 December\" (due 2026-12-01) features Cristiano Ronaldo, Lionel Messi, trending now: move it up or open with today's news.",
+   "why": [
+    "Wikipedia en: 16,363 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,567 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,317 reads of \"Lionel Messi\""
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 2,
+   "story": {
+    "number": 40,
+    "title": "Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt",
+    "date": "2026-11-28"
+   },
+   "names": [
+    "Ronaldinho",
+    "Arsenal",
+    "Argentina",
+    "Spain",
+    "Boca Juniors",
+    "Real Madrid",
+    "Barcelona",
+    "Paris Saint-Germain",
+    "Villarreal",
+    "Brazil"
+   ],
+   "headline": "Story 040 \"Riquelme v Ronaldinho / Two number 10s on 28 November, and one Barcelona shirt\" (due 2026-11-28) features Ronaldinho, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: A long wait, some magic and that smile: Ronaldinho savours Ravenna debut at 46"
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Xabi Alonso"
+   ],
+   "why": [
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip",
+    "GUARDIAN: ‘Fragile’ Chelsea must toughen up after Leeds humiliation, admits Xabi Alonso"
+   ],
+   "headline": "Xabi Alonso is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    5
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Harry Kane"
+   ],
+   "why": [
+    "BBC: Vote for the first BBC Men's Footballer of the Year",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it"
+   ],
+   "headline": "Harry Kane is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    32
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Pep Guardiola"
+   ],
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Do good club managers necessarily make good international managers? | Jonathan Wilson"
+   ],
+   "headline": "Pep Guardiola is trending: pitch a lesser-known story about them, opened with today's news.",
+   "coveredIn": [
+    20
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.8,
+   "names": [
+    "Enzo Fernández"
+   ],
+   "why": [
+    "GUARDIAN: Brighton are rocking the Premier League elite. But can they mount a title tilt?",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes"
+   ],
+   "headline": "Enzo Fernández is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "bank",
+   "score": 1.7,
+   "story": {
+    "number": 54,
+    "title": "David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup",
+    "date": "2026-12-12"
+   },
+   "names": [
+    "Diego Simeone",
+    "Manchester United",
+    "England",
+    "Argentina",
+    "Greece",
+    "Germany",
+    "Italy"
+   ],
+   "headline": "Story 054 \"David Beckham v Greece / Five failed free kicks, then the one that sent England to the World Cup\" (due 2026-12-12) features Diego Simeone, trending now: move it up or open with today's news.",
+   "why": [
+    "BBC: 'You don't win 345 matches by defending' - Simeone breaks La Liga record"
+   ]
+  },
+  {
+   "type": "bank",
+   "score": 1.64,
+   "story": {
+    "number": 41,
+    "title": "Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time",
+    "date": "2026-11-29"
+   },
+   "names": [
+    "Roy Keane",
+    "Manchester United",
+    "England",
+    "Spain",
+    "Bayern Munich",
+    "Germany"
+   ],
+   "headline": "Story 041 \"Camp Nou, 26 May 1999 / Two substitutes and the Treble in stoppage time\" (due 2026-11-29) features Roy Keane, trending now: move it up or open with today's news.",
+   "why": [
+    "GUARDIAN: Football Daily | Neville, Keane and Manchester United meltdowns at world’s funniest comedy club"
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 1.59,
+   "anniversary": {
+    "date": "12-03",
+    "year": 2018,
+    "title": "Luka Modrić wins the Ballon d'Or, ending the Messi-Ronaldo run",
+    "people": [
+     "Luka Modrić",
+     "Lionel Messi",
+     "Cristiano Ronaldo"
+    ],
+    "clubs": [
+     "Real Madrid"
+    ],
+    "countries": [
+     "Croatia"
+    ],
+    "angle": "Messi finished only fifth, his first finish outside the top three since 2006, and Kaká in 2007 was the last winner before Modrić who was not Messi or Ronaldo.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2018_Ballon_d%27Or",
+     "https://www.theweek.in/news/sports/2018/12/04/luka-modric-wins-2018-ballon-d-or-ends-messi-ronaldo-reign.html"
+    ],
+    "yearsAgo": 8,
+    "inDays": 9
+   },
+   "names": [
+    "Luka Modrić",
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Real Madrid"
+   ],
+   "headline": "In 9 days (12-03): 8 years since Luka Modrić wins the Ballon d'Or, ending the Messi-Ronaldo run. Angle: Messi finished only fifth, his first finish outside the top three since 2006, and Kaká in 2007 was the last winner before Modrić who was not Messi or Ronaldo.",
+   "why": [
+    "GUARDIAN: Danny Kelly loved football and never forgot the absurdity of earning a living talking about it | Max Rushden",
+    "Wikipedia es: 2,317 reads of \"Lionel Messi\"",
+    "Wikipedia en: 16,363 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "new",
+   "score": 1.56,
+   "names": [
+    "Leandro Paredes"
+   ],
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview",
+    "Wikipedia es: 4,752 reads of \"Leandro Paredes\"",
+    "Wikipedia pt: 1,130 reads of \"Leandro Paredes\""
+   ],
+   "headline": "Leandro Paredes is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "new",
+   "score": 1.35,
+   "names": [
+    "Estadio Azteca"
+   ],
+   "why": [
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid",
+    "Wikipedia es: 3,185 reads of \"Estadio Azteca\""
+   ],
+   "headline": "Estadio Azteca is trending: pitch a lesser-known story about them, opened with today's news."
+  },
+  {
+   "type": "anniversary",
+   "score": 1.32,
+   "anniversary": {
+    "date": "12-02",
+    "year": 2019,
+    "title": "Messi wins a record sixth Ballon d'Or",
+    "people": [
+     "Lionel Messi",
+     "Virgil van Dijk",
+     "Cristiano Ronaldo"
+    ],
+    "clubs": [
+     "FC Barcelona",
+     "Liverpool F.C."
+    ],
+    "countries": [
+     "Argentina",
+     "Netherlands"
+    ],
+    "angle": "Messi beat Virgil van Dijk by just 7 points (686 to 679), with Ronaldo third on 476.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2019_Ballon_d%27Or",
+     "https://www.thescore.com/uefa/news/1895668"
+    ],
+    "yearsAgo": 7,
+    "inDays": 8
+   },
+   "names": [
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Argentina"
+   ],
+   "headline": "In 8 days (12-02): 7 years since Messi wins a record sixth Ballon d'Or. Angle: Messi beat Virgil van Dijk by just 7 points (686 to 679), with Ronaldo third on 476.",
+   "why": [
+    "Wikipedia es: 2,317 reads of \"Lionel Messi\"",
+    "Wikipedia en: 16,363 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,567 reads of \"Cristiano Ronaldo\""
+   ],
+   "coveredIn": [
+    10,
+    13,
+    19,
+    20,
+    28,
+    29,
+    900,
+    911
+   ]
+  },
+  {
+   "type": "anniversary",
+   "score": 1.04,
+   "anniversary": {
+    "date": "12-06",
+    "year": 2022,
+    "title": "Morocco beat Spain on penalties in the World Cup round of 16",
+    "people": [
+     "Yassine Bounou",
+     "Achraf Hakimi",
+     "Hakim Ziyech"
+    ],
+    "clubs": [],
+    "countries": [
+     "Morocco",
+     "Spain"
+    ],
+    "angle": "Spain scored none of their three shootout penalties (Morocco won 3-0), and Morocco's goalkeeper Yassine Bounou had made just one save in open play over 120 minutes.",
+    "round": false,
+    "sources": [
+     "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_knockout_stage",
+     "https://www.nbcsports.com/soccer/news/morocco-vs-spain-score-recap-analysis-video-highlights-yassine-bounou"
+    ],
+    "yearsAgo": 4,
+    "inDays": 12
+   },
+   "names": [
+    "Morocco",
+    "Spain"
+   ],
+   "headline": "In 12 days (12-06): 4 years since Morocco beat Spain on penalties in the World Cup round of 16. Angle: Spain scored none of their three shootout penalties (Morocco won 3-0), and Morocco's goalkeeper Yassine Bounou had made just one save in open play over 120 minutes.",
+   "why": []
+  }
+ ],
+ "heat": [
+  {
+   "name": "Mauricio Pochettino",
+   "kind": "person",
+   "heat": 8.06,
+   "why": [
+    "BBC: 'No-one's coming to save us' - but how can Man Utd save themselves?",
+    "BBC: Chaotic week, nightmare start and huge reality check for Pochettino",
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "GUARDIAN: Mauricio Pochettino can now see just how desperate Manchester United are | Jonathan Wilson"
+   ]
+  },
+  {
+   "name": "Manchester United",
+   "kind": "club",
+   "heat": 7.27,
+   "why": [
+    "BBC: 'No-one's coming to save us' - but how can Man Utd save themselves?",
+    "BBC: One of football's most-hyped 16-year-olds - what next for JJ Gabriel?",
+    "BBC: Chaotic week, nightmare start and huge reality check for Pochettino",
+    "GUARDIAN: Mauricio Pochettino can now see just how desperate Manchester United are | Jonathan Wilson"
+   ]
+  },
+  {
+   "name": "Manchester City",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: De Bruyne's feelings for Man City will 'never change'",
+    "BBC: Spurs 'a match for anyone' as win at Man City boosts European hopes",
+    "BBC: Were any current Man City players signed during charges period?",
+    "GUARDIAN: WSL talking points: captain Spence inspires Spurs’ shock win at City and Lionesses impress"
+   ]
+  },
+  {
+   "name": "Arsenal",
+   "kind": "club",
+   "heat": 6,
+   "why": [
+    "BBC: Raya to miss Dortmund game but injury 'not serious'",
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip",
+    "BBC: Arsenal frustrations grow as winless home run continues",
+    "GUARDIAN: David Raya’s shoulder injury ‘not too serious’ and no surgery needed for Arsenal goalkeeper"
+   ]
+  },
+  {
+   "name": "Everton",
+   "kind": "club",
+   "heat": 5,
+   "why": [
+    "BBC: Tarkowski's first Premier League red ruins Moyes' night - was it deserved?",
+    "BBC: Janelt scores stunner as Brentford beat 10-man Everton",
+    "BBC: Moyes questions Tarkowski red in Brentford loss",
+    "GUARDIAN: Lewis-Potter double and Janelt stunner ease Brentford past 10-man Everton"
+   ]
+  },
+  {
+   "name": "England",
+   "kind": "country",
+   "heat": 5,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: Hosting World Cup means decade of excitement - Weir",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK",
+    "GUARDIAN: Training hard and biding his time, Dele Alli has not given up on football yet"
+   ]
+  },
+  {
+   "name": "Scotland",
+   "kind": "country",
+   "heat": 5,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: Andreatta's masterplan to shock Sweden & take Scots to World Cup",
+    "BBC: Hosting World Cup means decade of excitement - Weir",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK"
+   ]
+  },
+  {
+   "name": "Liverpool",
+   "kind": "club",
+   "heat": 5,
+   "why": [
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip",
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "BBC: A 'wow' player - why Ngumoha is already a Liverpool game-changer",
+    "GUARDIAN: 'We feel the pain': Pochettino on 4-0 defeat at Liverpool to start Manchester United era – video"
+   ]
+  },
+  {
+   "name": "Chelsea",
+   "kind": "club",
+   "heat": 5,
+   "why": [
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip",
+    "BBC: Which game will Chelsea's Palmer miss after red card?",
+    "GUARDIAN: WSL talking points: captain Spence inspires Spurs’ shock win at City and Lionesses impress",
+    "GUARDIAN: ‘Fragile’ Chelsea must toughen up after Leeds humiliation, admits Xabi Alonso"
+   ]
+  },
+  {
+   "name": "Rio Ngumoha",
+   "kind": "person",
+   "heat": 4.64,
+   "why": [
+    "BBC: Ngumoha stars as Liverpool thrash 10-man Man Utd",
+    "BBC: A 'wow' player - why Ngumoha is already a Liverpool game-changer",
+    "BBC: Yoro sees red as Ngumoha shines - Liverpool v Man Utd player ratings",
+    "Wikipedia en: 43,867 reads of \"Rio Ngumoha\""
+   ]
+  },
+  {
+   "name": "Northern Ireland",
+   "kind": "country",
+   "heat": 4,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: Three years on NI Women finally have friendlies again",
+    "BBC: IFA 'positive' over upgrades needed for World Cup",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK"
+   ]
+  },
+  {
+   "name": "Wales",
+   "kind": "country",
+   "heat": 4,
+   "why": [
+    "BBC: England, Northern Ireland, Scotland & Wales to host 2035 Women's World Cup",
+    "BBC: Hosting World Cup means decade of excitement - Weir",
+    "BBC: The summer that changed Welsh football",
+    "GUARDIAN: The 2035 Women’s World Cup has huge potential for women and girls in UK"
+   ]
+  },
+  {
+   "name": "Primera División de Argentina",
+   "kind": "person",
+   "heat": 3.45,
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview",
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes",
+    "Wikipedia es: 2,842 reads of \"Primera División de Argentina\""
+   ]
+  },
+  {
+   "name": "Jamal Musiala",
+   "kind": "person",
+   "heat": 3.11,
+   "why": [
+    "GUARDIAN: Jamal Musiala controversy the nadir of Bayern Munich’s turbulent week",
+    "Wikipedia en: 20,491 reads of \"Jamal Musiala\"",
+    "Wikipedia es: 3,705 reads of \"Jamal Musiala\"",
+    "Wikipedia pt: 1,678 reads of \"Jamal Musiala\""
+   ]
+  },
+  {
+   "name": "Rangers F.C.",
+   "kind": "club",
+   "heat": 3,
+   "why": [
+    "BBC: Key questions as Rangers host Aberdeen & Dundee visit Hibs",
+    "BBC: Holders Celtic win 17-0 in Women's Scottish Cup",
+    "BBC: Rangers plan January exit for Cifuentes - gossip"
+   ]
+  },
+  {
+   "name": "Argentina",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview",
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes"
+   ]
+  },
+  {
+   "name": "Spain",
+   "kind": "country",
+   "heat": 3,
+   "why": [
+    "GUARDIAN: Madness erupts as Sevilla deny Betis in wild end to Spain’s ‘derby of derbies’",
+    "GUARDIAN: Gonzalo García: ‘I love Craven Cottage – the fans can reach out and touch you’",
+    "GUARDIAN: Football comes together across Spain to honour Jesús de Miguel: ‘We’ve seen how fragile life is’"
+   ]
+  },
+  {
+   "name": "Xabi Alonso",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip",
+    "GUARDIAN: ‘Fragile’ Chelsea must toughen up after Leeds humiliation, admits Xabi Alonso"
+   ]
+  },
+  {
+   "name": "Greece",
+   "kind": "country",
+   "heat": 2,
+   "why": [
+    "BBC: Three years on NI Women finally have friendlies again",
+    "BBC: From conceding seven to Hull heroics - how Tzolakis recovered to defy Brighton"
+   ]
+  },
+  {
+   "name": "Harry Kane",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: Vote for the first BBC Men's Footballer of the Year",
+    "BBC: 73 goals from dropping deep - we ask Kane to break down how he did it"
+   ]
+  },
+  {
+   "name": "Pep Guardiola",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "BBC: The part-timers who won three Wembley finals in a row",
+    "GUARDIAN: Do good club managers necessarily make good international managers? | Jonathan Wilson"
+   ]
+  },
+  {
+   "name": "Fulham F.C.",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "GUARDIAN: Elliot Anderson halts Manchester City’s losing run but boos greet Fulham draw",
+    "GUARDIAN: Gonzalo García: ‘I love Craven Cottage – the fans can reach out and touch you’"
+   ]
+  },
+  {
+   "name": "Crystal Palace F.C.",
+   "kind": "club",
+   "heat": 2,
+   "why": [
+    "GUARDIAN: 'We feel the pain': Pochettino on 4-0 defeat at Liverpool to start Manchester United era – video",
+    "GUARDIAN: Thomas Frank’s to-do list: lift mood, fix defence and fire up Sarr and Mateta"
+   ]
+  },
+  {
+   "name": "Enzo Fernández",
+   "kind": "person",
+   "heat": 2,
+   "why": [
+    "GUARDIAN: Brighton are rocking the Premier League elite. But can they mount a title tilt?",
+    "GUARDIAN: Reliving the drama: England and Argentina stars watch 1986 classic with fresh eyes"
+   ]
+  },
+  {
+   "name": "Leandro Paredes",
+   "kind": "person",
+   "heat": 1.73,
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview",
+    "Wikipedia es: 4,752 reads of \"Leandro Paredes\"",
+    "Wikipedia pt: 1,130 reads of \"Leandro Paredes\""
+   ]
+  },
+  {
+   "name": "Cristiano Ronaldo",
+   "kind": "person",
+   "heat": 1.62,
+   "why": [
+    "Wikipedia en: 16,363 reads of \"Cristiano Ronaldo\"",
+    "Wikipedia es: 2,567 reads of \"Cristiano Ronaldo\""
+   ]
+  },
+  {
+   "name": "Estadio Azteca",
+   "kind": "person",
+   "heat": 1.5,
+   "why": [
+    "GUARDIAN: Echoes of Azteca but not like Argentina: fearless England start afresh in Madrid",
+    "Wikipedia es: 3,185 reads of \"Estadio Azteca\""
+   ]
+  },
+  {
+   "name": "Borussia Dortmund",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: Raya to miss Dortmund game but injury 'not serious'"
+   ]
+  },
+  {
+   "name": "Atlético Madrid",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: 'You don't win 345 matches by defending' - Simeone breaks La Liga record"
+   ]
+  },
+  {
+   "name": "Diego Simeone",
+   "kind": "person",
+   "heat": 1,
+   "why": [
+    "BBC: 'You don't win 345 matches by defending' - Simeone breaks La Liga record"
+   ]
+  },
+  {
+   "name": "Romania",
+   "kind": "country",
+   "heat": 1,
+   "why": [
+    "BBC: Watford set to appoint former Romania boss Iordanescu"
+   ]
+  },
+  {
+   "name": "Anghel Iordănescu",
+   "kind": "person",
+   "heat": 1,
+   "why": [
+    "BBC: Watford set to appoint former Romania boss Iordanescu"
+   ]
+  },
+  {
+   "name": "Alisson Becker",
+   "kind": "person",
+   "heat": 1,
+   "why": [
+    "BBC: Arsenal and PSG keen on Nusa - Tuesday's gossip"
+   ]
+  },
+  {
+   "name": "Real Madrid",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: One of football's most-hyped 16-year-olds - what next for JJ Gabriel?"
+   ]
+  },
+  {
+   "name": "Sweden",
+   "kind": "country",
+   "heat": 1,
+   "why": [
+    "BBC: Andreatta's masterplan to shock Sweden & take Scots to World Cup"
+   ]
+  },
+  {
+   "name": "Vittorio Pozzo",
+   "kind": "person",
+   "heat": 1,
+   "why": [
+    "BBC: Pioneer or coach-eater? The complex world of Pozzo's Watford"
+   ]
+  },
+  {
+   "name": "Morocco",
+   "kind": "country",
+   "heat": 1,
+   "why": [
+    "BBC: Morocco and Senegal await Afcon final verdict after court case"
+   ]
+  },
+  {
+   "name": "Villarreal",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: Pepe did not injure eyes staring at sun, say Villarreal"
+   ]
+  },
+  {
+   "name": "Celtic",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: Holders Celtic win 17-0 in Women's Scottish Cup"
+   ]
+  },
+  {
+   "name": "Boca Juniors",
+   "kind": "club",
+   "heat": 1,
+   "why": [
+    "BBC: Argentina midfielder Paredes collapses during TV interview"
+   ]
+  }
+ ]
+}
